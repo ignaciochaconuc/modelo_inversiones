@@ -26,6 +26,12 @@ Los estados describen planificación, no autorizan iniciar una fase. Cada fase r
 **Entregables:** selección point-in-time, cobertura/calidad ampliada y pipeline de features para el universo. Massive puede evaluarse más adelante solo como fuente de referencia histórica de tickers.  
 **Finalización aproximada:** feature store reproducible para el universo sin look-ahead ni dependencia de la composición actual para backtests válidos.
 
+### Phase 1A.1 correction
+
+**Status:** complete
+
+Se separaron latest-basis y normalización split-adjusted as-of, se desacoplaron features de `adjClose` del proveedor y se añadieron anomalías no destructivas para fechas ausentes durante refresh.
+
 ## Phase 2 — Backtesting engine
 
 **Objetivo:** simular decisiones after-close y ejecución next-open.  

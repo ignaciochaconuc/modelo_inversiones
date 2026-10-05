@@ -30,7 +30,7 @@ class ProviderSettings(BaseModel):
 class IngestionSettings(BaseModel):
     refresh_overlap_days: int = Field(default=5, ge=0)
     schema_version: str = "1"
-    normalization_version: str = "split-adjusted-v1"
+    normalization_version: str = "split-adjusted-latest-v1"
 
 class Settings(BaseModel):
     decision_timing: str = "after_close"

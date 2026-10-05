@@ -60,7 +60,7 @@ def main() -> int:
         if source is not None:
             source.close()
     for summary in summaries:
-        print(json.dumps({**summary.__dict__, "requested_start": summary.requested_start.isoformat(), "effective_start": summary.effective_start.isoformat(), "end_date": summary.end_date.isoformat(), "unexpected_gaps": [item.isoformat() for item in summary.unexpected_gaps]}))
+        print(json.dumps({**summary.__dict__, "requested_start": summary.requested_start.isoformat(), "effective_start": summary.effective_start.isoformat(), "end_date": summary.end_date.isoformat(), "unexpected_gaps": [item.isoformat() for item in summary.unexpected_gaps], "missing_refreshed_dates": [item.isoformat() for item in summary.missing_refreshed_dates]}))
     return 0
 
 if __name__ == "__main__":

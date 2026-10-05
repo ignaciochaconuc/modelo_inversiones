@@ -9,3 +9,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-005: Parquet and DuckDB](ADR-005-parquet-duckdb.md)
 - [ADR-006: Agents do not execute](ADR-006-agents-do-not-execute.md)
 - [ADR-007: Corporate actions and price adjustment](ADR-007-corporate-actions-and-price-adjustment.md)
+- [ADR-008: Point-in-time split normalization](ADR-008-point-in-time-split-normalization.md)

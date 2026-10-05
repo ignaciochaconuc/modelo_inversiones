@@ -32,7 +32,11 @@ Las familias de features son: identificación; OHLCV; retornos; momentum; riesgo
 
 Tiingo EOD es el proveedor principal inicial. Su adapter traduce nombres externos a `MarketBar`; ninguna otra capa conoce campos propios de Tiingo. La API key se obtiene de `TIINGO_API_KEY` y los tests usan transporte simulado.
 
-Se conservan por separado OHLCV raw, corporate actions normalizadas y OHLCV ajustado exclusivamente por splits para features. La convención interna es `split_factor = acciones nuevas / acciones antiguas`: 2.0 representa 2:1 y 0.5 un reverse split 1:2. La fecha efectiva ya contiene precios post-split; solo las filas anteriores se ajustan. Precios históricos se dividen por el producto de splits futuros y volumen se multiplica. Los dividendos permanecen como cash flows y no alteran precios ni volumen.
+Se conservan por separado OHLCV raw, corporate actions normalizadas y OHLCV ajustado exclusivamente por splits. La convención interna es `split_factor = acciones nuevas / acciones antiguas`: 2.0 representa 2:1 y 0.5 un reverse split 1:2. La fecha efectiva ya contiene precios post-split; solo las filas anteriores se ajustan. Precios históricos se dividen por el producto de splits aplicables y volumen se multiplica. Los dividendos permanecen como cash flows y no alteran precios ni volumen.
+
+Hay dos representaciones: `split_adjusted_latest` persiste toda la historia en la base más reciente y no es point-in-time safe por sí sola; `build_split_adjusted_series_as_of()` construye la ventana válida para una decisión usando únicamente barras y acciones disponibles. Phase 1B deberá alimentar features con `split_adjusted_open/high/low/close/volume` provenientes de la vista as-of, nunca con `adj*` del proveedor.
+
+Features como retornos, momentum, RSI, distancias relativas y ratios de volumen son invariantes ante un reescalado uniforme. ATR, MACD, sus señales y dollar volume son nominales. Se conservan ATR/MACD originales para interpretabilidad y se añaden `atr_pct`, `macd_pct`, `macd_signal_pct` y `macd_histogram_pct` para inputs invariantes a escala.
 
 Como Tiingo EOD no aporta un timestamp histórico exacto de publicación por barra, `available_at` se deriva de `trading_date` y `providers.tiingo.assumed_eod_available_time` (20:00 America/New_York inicialmente). Es una hipótesis conservadora y configurable, distinta de `observed_at` (16:00 inicialmente). El cutoff conceptual de decisión es 20:15.
 

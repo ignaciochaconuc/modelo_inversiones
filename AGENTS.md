@@ -33,6 +33,8 @@ No intercambiar ni colapsar el significado de:
 
 Todo cambio en ingestión, joins, feature building o backtesting debe conservar esta regla y tener tests contra look-ahead bias.
 
+Para splits, no confundir el dataset persisted `split_adjusted_latest` con una vista point-in-time. Las decisiones históricas deben usar `build_split_adjusted_series_as_of()` y solo acciones con `effective_date <= decision_date` y `available_at <= decision_time`.
+
 ## Features y targets
 
 Los targets son exclusivamente:

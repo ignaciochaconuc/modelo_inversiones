@@ -61,7 +61,7 @@ python scripts/ingest_market_data.py --ticker AAPL --start 2020-01-01 --dry-run
 5. Mantenga credenciales en entorno, nunca en código/config versionada.
 6. Añada fixtures locales; los tests unitarios no deben depender de APIs reales.
 
-Para EOD, no propague nombres de campos del proveedor fuera de `data.sources`. Conserve raw y corporate actions por separado, use la convención de splits del ADR-007 y regenere processed cuando una acción cambie.
+Para EOD, no propague nombres de campos del proveedor fuera de `data.sources`. Conserve raw y corporate actions por separado y use la convención de splits de ADR-007. El artefacto latest-basis se regenera cuando cambia una acción, pero features históricas deben usar la vista as-of de ADR-008. Una nueva feature cuantitativa debe aceptar las columnas split-adjusted internas, no `adj*` del proveedor.
 
 ## Añadir un proveedor LLM
 

@@ -57,7 +57,7 @@ python scripts/ingest_market_data.py --ticker AAPL --start 2020-01-01 --dry-run
 
 Para una descarga real, defina `TIINGO_API_KEY` solo en el `.env` local y quite `--dry-run`. También puede usar `--universe`; el procesamiento es secuencial y respeta el throttling configurado.
 
-Los datasets quedan separados en `data/raw/tiingo/daily`, `data/raw/tiingo/corporate_actions` y `data/processed/market/split_adjusted`. El universo versionado es una lista fija de desarrollo similar al S&P 100 actual: no es point-in-time e introduce survivorship bias en backtests históricos.
+Los datasets quedan separados en `data/raw/tiingo/daily`, `data/raw/tiingo/corporate_actions` y `data/processed/market/split_adjusted_latest`. Este último usa la base accionaria más reciente y no debe utilizarse ciegamente en backtests; las decisiones históricas requieren la vista split-adjusted as-of. El universo versionado es fijo: no es point-in-time e introduce survivorship bias.
 
 ## Estado y roadmap
 

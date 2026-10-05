@@ -47,16 +47,19 @@ def test_empty_history_incremental_overlap_and_idempotency(tmp_path) -> None:
     assert source.calls[-1][1] == date(2025, 1, 6)
     assert len(store.read_bars("AAPL")) == 3
     assert len(store.read_actions("AAPL")) == 2
-    assert len(store.read_split_adjusted("AAPL")) == 3
+    assert len(store.read_latest_basis_split_adjusted("AAPL")) == 3
 
-def test_overlap_is_bounded_by_requested_start(tmp_path) -> None:
+def test_missing_refreshed_date_is_reported_and_retained(tmp_path, caplog) -> None:
     store = MarketDataStore(tmp_path / "raw", tmp_path / "processed")
     initial_source = FakeSource([make_bar(date(2025, 1, 10), 100)])
     MarketDataIngestionService(initial_source, store, WeekdayCalendar()).ingest_ticker("AAPL", date(2025, 1, 10), date(2025, 1, 10))
     source = FakeSource([])
     service = MarketDataIngestionService(source, store, WeekdayCalendar(), refresh_overlap_days=5)
-    summary = service.ingest_ticker("AAPL", date(2025, 1, 1), date(2025, 1, 12))
+    with caplog.at_level("WARNING"):
+        summary = service.ingest_ticker("AAPL", date(2025, 1, 1), date(2025, 1, 12))
     assert summary.effective_start == date(2025, 1, 5)
+    assert summary.missing_refreshed_dates == (date(2025, 1, 10),)
+    assert "retained=true" in caplog.text
     assert len(store.read_bars("AAPL")) == 1
 
 def test_dry_run_needs_no_source(tmp_path) -> None:

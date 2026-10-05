@@ -8,7 +8,7 @@ FEATURE_COLUMNS = (
     "gap_open intraday_return overnight_return momentum_5d momentum_10d momentum_20d momentum_60d momentum_120d "
     "relative_momentum_spy_5d relative_momentum_spy_20d relative_momentum_spy_60d volatility_5d volatility_10d "
     "volatility_20d volatility_60d downside_volatility atr_14 beta_20d beta_60d max_drawdown_20d max_drawdown_60d "
-    "rsi_14 macd macd_signal macd_histogram distance_ma10 distance_ma20 distance_ma50 distance_ma200 "
+    "rsi_14 atr_pct macd macd_signal macd_histogram macd_pct macd_signal_pct macd_histogram_pct distance_ma10 distance_ma20 distance_ma50 distance_ma200 "
     "volume_ratio_5d volume_ratio_20d volume_change_1d avg_dollar_volume_20d avg_dollar_volume_60d distance_52w_high "
     "distance_52w_low percentile_price_252d percentile_volume_252d percentile_volatility_252d spy_return_1d spy_return_5d "
     "spy_return_20d excess_return_5d excess_return_20d correlation_spy_20d correlation_spy_60d sector_return_5d "

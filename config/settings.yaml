@@ -15,4 +15,4 @@ providers:
 ingestion:
   refresh_overlap_days: 5
   schema_version: "1"
-  normalization_version: split-adjusted-v1
+  normalization_version: split-adjusted-latest-v1
