@@ -1,0 +1,5 @@
+market_timezone: America/New_York
+decision_timing: after_close
+prediction_horizon_days: 10
+execution_timing: next_market_open
+paths: {raw: data/raw, processed: data/processed, features: data/features, cache: data/cache, logs: logs}

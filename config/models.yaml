@@ -1,0 +1,6 @@
+routes:
+  default: {provider: ollama, model: local-default}
+  simple_extraction: {provider: ollama, model: local-default}
+  basic_classification: {provider: ollama, model: local-default}
+  complex_interpretation: {provider: openai, model: configurable-powerful-model}
+pricing_usd_per_million_tokens: {}
