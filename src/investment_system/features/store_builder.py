@@ -48,8 +48,8 @@ class QuantitativeFeatureStoreBuilder:
         decision_cutoff: str = "20:15",
         raw_history_start: date = date(2009, 1, 1),
         feature_history_start: date = date(2010, 1, 1),
-        feature_schema_version: str = "2",
-        quantitative_feature_version: str = "quantitative-v1",
+        feature_schema_version: str = "3",
+        quantitative_feature_version: str = "quantitative-v1.1",
         minimum_rank_assets: int = 20,
     ) -> None:
         self.market_store = market_store
@@ -78,16 +78,47 @@ class QuantitativeFeatureStoreBuilder:
         eligible = actions[action_type.str.endswith("split") & (effective <= day) & available.notna() & (available <= cutoff)]
         return tuple(sorted((str(row.effective_date), str(row.provider), float(row.split_factor)) for row in eligible.itertuples()))
 
-    def _segments(self, days: list[date], asset_actions: pd.DataFrame, benchmark_actions: pd.DataFrame) -> list[list[date]]:
+    def _late_bar_signature(self, raw: pd.DataFrame, day: date, decision_time: datetime) -> tuple[tuple[str, str], ...]:
+        """Identify past bars that became known only after their own cutoff."""
+        if raw.empty:
+            return ()
+        trading_dates = pd.to_datetime(raw["trading_date"]).dt.date
+        available = pd.to_datetime(raw["available_at"], utc=True, errors="coerce")
+        own_cutoffs = pd.Series(
+            [pd.Timestamp(self.decision_time(value)).tz_convert("UTC") for value in trading_dates],
+            index=raw.index,
+        )
+        current_cutoff = pd.Timestamp(decision_time).tz_convert("UTC")
+        eligible = raw[
+            (trading_dates <= day)
+            & available.notna()
+            & (available <= current_cutoff)
+            & (available > own_cutoffs)
+        ]
+        return tuple(sorted((str(row.trading_date), str(row.available_at)) for row in eligible.itertuples()))
+
+    def _segments(self, days: list[date], asset_actions: pd.DataFrame, benchmark_actions: pd.DataFrame, asset_raw: pd.DataFrame, benchmark_raw: pd.DataFrame) -> list[list[date]]:
         segments: list[list[date]] = []
         signature: tuple[Any, ...] | None = None
         for day in days:
-            current = (self._split_signature(asset_actions, day, self.decision_time(day)), self._split_signature(benchmark_actions, day, self.decision_time(day)))
+            decision_time = self.decision_time(day)
+            current = (
+                self._split_signature(asset_actions, day, decision_time),
+                self._split_signature(benchmark_actions, day, decision_time),
+                self._late_bar_signature(asset_raw, day, decision_time),
+                self._late_bar_signature(benchmark_raw, day, decision_time),
+            )
             if current != signature:
                 segments.append([])
                 signature = current
             segments[-1].append(day)
         return segments
+
+    def _history_count(self, raw: pd.DataFrame, day: date) -> int:
+        trading_dates = pd.to_datetime(raw["trading_date"]).dt.date
+        available = pd.to_datetime(raw["available_at"], utc=True, errors="coerce")
+        cutoff = pd.Timestamp(self.decision_time(day)).tz_convert("UTC")
+        return int(((trading_dates <= day) & available.notna() & (available <= cutoff)).sum())
 
     def build_ticker(self, ticker: str, start_date: date, end_date: date, benchmark_raw: pd.DataFrame, benchmark_actions: pd.DataFrame) -> pd.DataFrame:
         raw = self.market_store.read_bars(ticker)
@@ -101,7 +132,7 @@ class QuantitativeFeatureStoreBuilder:
         if not candidate_days:
             return pd.DataFrame()
         pieces: list[pd.DataFrame] = []
-        for segment in self._segments(candidate_days, actions, benchmark_actions):
+        for segment in self._segments(candidate_days, actions, benchmark_actions, raw, benchmark_raw):
             segment_end = segment[-1]
             cutoff = self.decision_time(segment_end)
             asset_view = build_split_adjusted_series_as_of(raw, actions, decision_date=segment_end, decision_time=cutoff)
@@ -113,9 +144,9 @@ class QuantitativeFeatureStoreBuilder:
             if asset_view.index.intersection(benchmark_close.index).empty:
                 raise ValueError(f"benchmark has no dates overlapping {ticker}")
             calculated = build_quantitative_features(asset_view, benchmark_close)
-            calculated["history_count"] = np.arange(1, len(calculated) + 1)
             pieces.append(calculated.loc[calculated.index.intersection(segment)].copy())
         frame = pd.concat(pieces).sort_index()
+        frame["history_count"] = [self._history_count(raw, day) for day in frame.index]
         frame["ticker"] = ticker
         frame["decision_date"] = frame.index
         frame["decision_time"] = [self.decision_time(day) for day in frame.index]
@@ -129,6 +160,7 @@ class QuantitativeFeatureStoreBuilder:
             frame[column] = np.nan
         output_columns = [
             "ticker", "decision_date", "decision_time", "sector", "industry", "market_cap",
+            "history_count",
             "has_20d_history", "has_60d_history", "has_120d_history", "has_252d_history", "model_eligible",
             *QUANTITATIVE_FEATURE_COLUMNS,
         ]
@@ -156,7 +188,7 @@ class QuantitativeFeatureStoreBuilder:
                 continue
             feature_frames.append(frame)
             if with_targets:
-                targets = build_price_targets(self.market_store.read_bars(ticker), self.market_store.read_actions(ticker))
+                targets = build_price_targets(self.market_store.read_bars(ticker), self.market_store.read_actions(ticker), self.calendar)
                 dates = pd.to_datetime(targets["decision_date"]).dt.date
                 target_frames.append(targets[(dates >= start_date) & (dates <= end_date)])
         features = pd.concat(feature_frames, ignore_index=True) if feature_frames else pd.DataFrame()
@@ -171,9 +203,9 @@ class QuantitativeFeatureStoreBuilder:
         manifest = self._manifest(tickers, start_date, end_date, now, with_targets)
         report = self._report(features, missing_tickers)
         if persist:
-            self.feature_store.write_features(features)
+            self.feature_store.replace_feature_range(features, tickers, start_date, end_date)
             if targets is not None:
-                self.feature_store.write_targets(targets)
+                self.feature_store.replace_target_range(targets, tickers, start_date, end_date)
             self.feature_store.write_manifest(manifest)
             self.feature_store.write_report(report)
         return FeatureBuildResult(features, targets, manifest, report)

@@ -78,3 +78,5 @@ Para EOD, no propague nombres de campos del proveedor fuera de `data.sources`. C
 La regla `available_at <= decision_time` prevalece sobre conveniencia y rendimiento. No haga joins con “último dato” sin condición temporal, no rellene retrospectivamente revisiones y no use targets como features. Todo cambio en ingestión, datasets o backtesting necesita una prueba que falle ante información futura.
 
 Features viven en `data/features` y targets en `data/targets`. No añada labels al Feature Store de inferencia. Una feature de mercado debe provenir de la vista split-adjusted as-of. Al cambiar fórmulas incremente `quantitative_feature_version` y evalúe si requiere reconstrucción completa.
+
+Los targets se resuelven por sesiones exactas del `TradingCalendar`, no por posición entre las filas disponibles. Los rebuilds de Feature Store son autoritativos dentro del ticker/rango solicitado; tests nuevos deben comprobar que filas obsoletas desaparezcan.

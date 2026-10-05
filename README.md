@@ -62,6 +62,8 @@ Los datasets quedan separados en `data/raw/tiingo/daily`, `data/raw/tiingo/corpo
 
 El Feature Store cuantitativo se particiona anualmente en `data/features/quantitative/year=YYYY/data.parquet`. Los targets opcionales se guardan físicamente aparte en `data/targets/quantitative`; una construcción de inferencia no usa `--with-targets`. `manifest.json` y `build_report.json` registran versiones, universo, cobertura, nulos y calidad.
 
+Los rebuilds reemplazan autoritativamente las filas del ticker y rango solicitados, por lo que una corrección puede eliminar registros obsoletos. Los targets de 5/10/20 días apuntan a la sesión bursátil exacta; si falta su barra, quedan NULL. `history_count` es acumulativo por decision time y no se reinicia después de splits.
+
 ## Estado y roadmap
 
 Son funcionales los schemas, validación point-in-time, adapter Tiingo EOD, actualización incremental, calendario XNYS, normalización as-of, Feature Store cuantitativo, targets separados, cache y reglas básicas de riesgo. Son contratos/stubs: clientes OpenAI/Ollama, modelos predictivos, optimización, backtesting completo y ejecución.

@@ -14,6 +14,8 @@ Persist production/inference features under `data/features/quantitative` and sup
 
 Future corporate actions may be used to make target price returns split-consistent, but never for feature generation. Targets remain price returns and exclude dividends in Phase 1B.
 
+Range rebuilds are authoritative for the requested tickers and dates: prior rows in that scope are removed before current results are written. This prevents stale features or labels surviving a historical correction.
+
 ## Consequences
 
 Live/inference readers can load a directory that physically contains no labels. Training requires an explicit key join and validation. Two datasets and their lifecycle must be managed, but leakage risk is materially reduced.

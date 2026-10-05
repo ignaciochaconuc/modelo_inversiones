@@ -1,10 +1,11 @@
 import json
+from datetime import date
 from pathlib import Path
 from typing import Any
 import pandas as pd
 
 class QuantitativeFeatureStore:
-    """Separate, year-partitioned feature and target Parquet datasets."""
+    """Separate yearly datasets with upsert and authoritative range rebuild APIs."""
     def __init__(self, features_root: str | Path, targets_root: str | Path | None = None) -> None:
         root = Path(features_root)
         self.features = root / "quantitative"
@@ -31,11 +32,36 @@ class QuantitativeFeatureStore:
             combined = combined.drop_duplicates(["ticker", "decision_date"], keep="last").sort_values(["decision_date", "ticker"])
             QuantitativeFeatureStore._write_atomic(combined, path)
 
+    @staticmethod
+    def _replace_range(root: Path, frame: pd.DataFrame, tickers: list[str], start_date: date, end_date: date) -> None:
+        """Authoritatively replace selected ticker/date keys, removing stale rows."""
+        incoming_dates = pd.to_datetime(frame["decision_date"]) if not frame.empty else pd.Series(dtype="datetime64[ns]")
+        for year in range(start_date.year, end_date.year + 1):
+            path = root / f"year={year}" / "data.parquet"
+            existing = pd.read_parquet(path) if path.exists() else pd.DataFrame()
+            if not existing.empty:
+                dates = pd.to_datetime(existing["decision_date"]).dt.date
+                stale = existing["ticker"].isin(tickers) & (dates >= start_date) & (dates <= end_date)
+                existing = existing[~stale]
+            incoming = frame[incoming_dates.dt.year == year] if not frame.empty else frame
+            combined = pd.concat([existing, incoming], ignore_index=True)
+            if not combined.empty:
+                combined = combined.drop_duplicates(["ticker", "decision_date"], keep="last").sort_values(["decision_date", "ticker"])
+                QuantitativeFeatureStore._write_atomic(combined, path)
+            elif path.exists():
+                path.unlink()
+
     def write_features(self, frame: pd.DataFrame) -> None:
         self._upsert_dataset(self.features, frame)
 
     def write_targets(self, frame: pd.DataFrame) -> None:
         self._upsert_dataset(self.targets, frame)
+
+    def replace_feature_range(self, frame: pd.DataFrame, tickers: list[str], start_date: date, end_date: date) -> None:
+        self._replace_range(self.features, frame, tickers, start_date, end_date)
+
+    def replace_target_range(self, frame: pd.DataFrame, tickers: list[str], start_date: date, end_date: date) -> None:
+        self._replace_range(self.targets, frame, tickers, start_date, end_date)
 
     def read_features(self) -> pd.DataFrame:
         files = list(self.features.glob("year=*/data.parquet"))

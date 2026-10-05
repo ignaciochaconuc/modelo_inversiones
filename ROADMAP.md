@@ -26,6 +26,12 @@ Los estados describen planificación, no autorizan iniciar una fase. Cada fase r
 **Entregables:** selección point-in-time, cobertura/calidad ampliada y pipeline de features para el universo. Massive puede evaluarse más adelante solo como fuente de referencia histórica de tickers.  
 **Finalización aproximada:** feature store reproducible para el universo sin look-ahead ni dependencia de la composición actual para backtests válidos.
 
+### Phase 1B.1 correctness review
+
+**Status:** complete
+
+Se corrigieron conteos históricos globales, segmentación por barras retrasadas, targets por sesiones exactas y reemplazo autoritativo de rangos persistidos.
+
 ### Phase 1A.1 correction
 
 **Status:** complete

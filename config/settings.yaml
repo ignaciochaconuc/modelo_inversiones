@@ -19,6 +19,6 @@ ingestion:
 features:
   raw_history_start: "2009-01-01"
   feature_history_start: "2010-01-01"
-  schema_version: "2"
-  quantitative_version: quantitative-v1
+  schema_version: "3"
+  quantitative_version: quantitative-v1.1
   minimum_rank_assets: 20

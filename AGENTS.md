@@ -35,6 +35,8 @@ Todo cambio en ingestión, joins, feature building o backtesting debe conservar 
 
 Para splits, no confundir el dataset persisted `split_adjusted_latest` con una vista point-in-time. Las decisiones históricas deben usar `build_split_adjusted_series_as_of()` y solo acciones con `effective_date <= decision_date` y `available_at <= decision_time`.
 
+Una barra retrasada puede participar en decisiones posteriores a su disponibilidad, pero nunca debe modificar una fila cuyo `decision_time` sea anterior. Las optimizaciones por segmentos deben crear límites tanto por corporate actions como por aparición de barras históricas tardías.
+
 ## Features y targets
 
 Los targets son exclusivamente:

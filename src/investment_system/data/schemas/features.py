@@ -54,6 +54,7 @@ class _FeatureRowBase(BaseModel):
     sector: str | None = None
     industry: str | None = None
     market_cap: float | None = Field(default=None, ge=0)
+    history_count: int = Field(default=0, ge=0)
     has_20d_history: bool = False
     has_60d_history: bool = False
     has_120d_history: bool = False

@@ -30,7 +30,7 @@ Phase 1B añade `decision_time` explícito, fijado inicialmente a las 20:15 Amer
 
 El histórico raw comienza conceptualmente en 2009-01-01 y las filas de features en 2010-01-01, dejando warm-up real sin backfill. Las posiciones históricas usan `close / max_252 - 1`, `close / min_252 - 1` y percentil trailing con rank promedio para ties. `percentile_volatility_252d` posiciona la volatilidad de 20 sesiones actual dentro de 252 observaciones válidas de esa serie.
 
-La elegibilidad informa disponibilidad de 20, 60, 120 y 252 observaciones. `model_eligible` exige 252 sesiones previas —253 observaciones incluyendo la actual— y features esenciales completas, incluido benchmark. No constituye una señal de estrategia.
+La elegibilidad informa disponibilidad de 20, 60, 120 y 252 observaciones. `history_count` cuenta para cada decisión todas las barras históricas válidas que ya estaban disponibles; no se reinicia por segmentos ni splits. `model_eligible` exige 252 sesiones previas —253 observaciones incluyendo la actual— y features esenciales completas, incluido benchmark. No constituye una señal de estrategia.
 
 Las familias de features son: identificación; OHLCV; retornos; momentum; riesgo/volatilidad; tendencia técnica; volumen/liquidez; posición histórica; mercado/sector; News; Analyst; Earnings; Fundamental; Macro; y Event. La lista canónica está en `src/investment_system/data/schemas/features.py`.
 
@@ -58,7 +58,7 @@ El upsert usa `ticker + trading_date + provider` para barras y `ticker + effecti
 
 El objetivo principal es `target_return_10d = P(t+10) / P(t) - 1`; `target_positive_10d` indica si este retorno es positivo. Targets y features permanecen disjuntos y los targets no pueden participar en una decisión.
 
-Targets se guardan en un dataset físico separado y usan una base latest-basis exclusivamente para que splits futuros dentro del horizonte no creen retornos falsos. Son price returns y no incorporan dividendos. `target_rank_10d` usa rank cross-sectional promedio, normalizado a [0,1], y queda NULL si hay menos de 20 activos válidos en la fecha.
+Targets se guardan en un dataset físico separado y usan una base latest-basis exclusivamente para que splits futuros dentro del horizonte no creen retornos falsos. Cada horizonte apunta a la sesión bursátil exacta obtenida del calendario; si falta la barra de esa sesión, el label queda NULL y no salta a otra observación. Son price returns y no incorporan dividendos. `target_rank_10d` usa rank cross-sectional promedio, normalizado a [0,1], y queda NULL si hay menos de 20 activos válidos en la fecha.
 
 ## Agentes
 
