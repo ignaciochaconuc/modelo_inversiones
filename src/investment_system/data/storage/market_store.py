@@ -30,10 +30,16 @@ class MarketDataStore:
         temporary.replace(path)
 
     def read_bars(self, ticker: str) -> pd.DataFrame:
-        return self._read(self._ticker_file(self.raw_daily, ticker))
+        return self._read(self.bar_path(ticker))
+
+    def bar_path(self, ticker: str) -> Path:
+        return self._ticker_file(self.raw_daily, ticker)
+
+    def action_path(self, ticker: str) -> Path:
+        return self._ticker_file(self.actions, ticker)
 
     def read_actions(self, ticker: str) -> pd.DataFrame:
-        return self._read(self._ticker_file(self.actions, ticker))
+        return self._read(self.action_path(ticker))
 
     def read_latest_basis_split_adjusted(self, ticker: str) -> pd.DataFrame:
         return self._read(self._ticker_file(self.latest_basis_split_adjusted, ticker))

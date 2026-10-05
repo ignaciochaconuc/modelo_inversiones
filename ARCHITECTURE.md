@@ -44,6 +44,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `data.normalization` | Corporate actions y ajuste explícito por splits | Funcional |
 | `data.storage` | Persistencia idempotente Parquet y consulta DuckDB | Funcional básico |
 | `data.validation` | Invariantes temporales y feature/target | Funcional |
+| `data.pilot` | Orquestación y diagnóstico no destructivo del piloto real | Funcional Phase 1C |
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
@@ -86,6 +87,8 @@ Features y targets tienen registros y persistencia separados conforme a ADR-009.
 El builder agrupa fechas consecutivas cuyo conjunto de splits elegibles no cambia. También abre un nuevo segmento cuando una barra histórica retrasada del activo o SPY pasa a estar disponible. Para cada segmento construye una sola vista as-of hasta su fecha final, calcula rolling features vectorizadas y conserva únicamente sus filas. Barras futuras con fecha posterior son causalmente inocuas; una barra retrasada con fecha histórica no lo es y por eso constituye un límite.
 
 Features se almacenan por año en un archivo Parquet consolidado. Un rebuild reemplaza autoritativamente todos los registros de los tickers y rango solicitados antes de insertar el resultado, eliminando filas obsoletas sin afectar otros rangos o activos. Targets usan la misma política en otra raíz. DuckDB puede consultar `year=*/data.parquet` con hive partitioning. Un cambio histórico de corporate actions, disponibilidad, cutoff, calendario, fórmula o versión exige reconstruir el período afectado; cambios de splits pueden justificar full rebuild del ticker.
+
+Phase 1C añade una capa de pilotaje, no una nueva metodología financiera. `RealDataPilot` reutiliza ingesta, stores y builder existentes; mide cobertura y rendimiento, reconstruye ventanas as-of alrededor de splits y bloquea el resultado si falla una comprobación temporal. Su JSON de reporte es evidencia diagnóstica, no una entrada de features ni de entrenamiento.
 
 ## LLM Router, costos y cache
 

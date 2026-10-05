@@ -86,6 +86,7 @@ def test_warmup_ipo_history_and_model_eligibility(tmp_path) -> None:
     assert build_result.manifest["feature_schema_version"] == "3"
     assert build_result.manifest["quantitative_feature_version"] == "quantitative-v1.1"
     assert build_result.manifest["universe_point_in_time"] is False
+    assert set(build_result.report["feature_build_seconds_by_ticker"]) == {"AAPL"}
     assert (tmp_path / "features" / "quantitative" / "manifest.json").exists()
 
 def test_history_count_and_eligibility_do_not_reset_after_split(tmp_path) -> None:

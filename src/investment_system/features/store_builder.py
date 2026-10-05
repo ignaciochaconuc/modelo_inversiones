@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date, datetime, time, timezone
+from bisect import bisect_left
+from time import perf_counter
 from typing import Any
 from zoneinfo import ZoneInfo
 
@@ -98,16 +100,45 @@ class QuantitativeFeatureStoreBuilder:
         return tuple(sorted((str(row.trading_date), str(row.available_at)) for row in eligible.itertuples()))
 
     def _segments(self, days: list[date], asset_actions: pd.DataFrame, benchmark_actions: pd.DataFrame, asset_raw: pd.DataFrame, benchmark_raw: pd.DataFrame) -> list[list[date]]:
+        """Group days by causal inputs, using activation events instead of O(days*rows) rescans."""
+        def activations(frame: pd.DataFrame, *, actions: bool) -> dict[date, list[tuple[Any, ...]]]:
+            events: dict[date, list[tuple[Any, ...]]] = {}
+            if frame.empty:
+                return events
+            for row in frame.itertuples(index=False):
+                effective = pd.Timestamp(row.effective_date if actions else row.trading_date).date()
+                available = pd.to_datetime(row.available_at, utc=True, errors="coerce")
+                if pd.isna(available):
+                    continue
+                if actions:
+                    if not str(row.action_type).lower().endswith("split"):
+                        continue
+                    payload = (str(row.effective_date), str(row.provider), float(row.split_factor))
+                else:
+                    own_cutoff = pd.Timestamp(self.decision_time(effective)).tz_convert("UTC")
+                    if available <= own_cutoff:
+                        continue
+                    payload = (str(row.trading_date), str(row.available_at))
+                index = bisect_left(days, effective)
+                while index < len(days) and pd.Timestamp(self.decision_time(days[index])).tz_convert("UTC") < available:
+                    index += 1
+                if index < len(days):
+                    events.setdefault(days[index], []).append(payload)
+            return events
+
+        event_sets = (
+            activations(asset_actions, actions=True),
+            activations(benchmark_actions, actions=True),
+            activations(asset_raw, actions=False),
+            activations(benchmark_raw, actions=False),
+        )
+        active: tuple[set[tuple[Any, ...]], ...] = (set(), set(), set(), set())
         segments: list[list[date]] = []
         signature: tuple[Any, ...] | None = None
         for day in days:
-            decision_time = self.decision_time(day)
-            current = (
-                self._split_signature(asset_actions, day, decision_time),
-                self._split_signature(benchmark_actions, day, decision_time),
-                self._late_bar_signature(asset_raw, day, decision_time),
-                self._late_bar_signature(benchmark_raw, day, decision_time),
-            )
+            for state, events in zip(active, event_sets):
+                state.update(events.get(day, ()))
+            current = tuple(tuple(sorted(state)) for state in active)
             if current != signature:
                 segments.append([])
                 signature = current
@@ -119,6 +150,26 @@ class QuantitativeFeatureStoreBuilder:
         available = pd.to_datetime(raw["available_at"], utc=True, errors="coerce")
         cutoff = pd.Timestamp(self.decision_time(day)).tz_convert("UTC")
         return int(((trading_dates <= day) & available.notna() & (available <= cutoff)).sum())
+
+    def _history_counts(self, raw: pd.DataFrame, days: list[date]) -> list[int]:
+        """Return the same causal counts as ``_history_count`` in linear-event form."""
+        events = [0] * len(days)
+        for row in raw.itertuples(index=False):
+            trading_day = pd.Timestamp(row.trading_date).date()
+            available = pd.to_datetime(row.available_at, utc=True, errors="coerce")
+            if pd.isna(available):
+                continue
+            index = bisect_left(days, trading_day)
+            while index < len(days) and pd.Timestamp(self.decision_time(days[index])).tz_convert("UTC") < available:
+                index += 1
+            if index < len(days):
+                events[index] += 1
+        total = 0
+        result: list[int] = []
+        for increment in events:
+            total += increment
+            result.append(total)
+        return result
 
     def build_ticker(self, ticker: str, start_date: date, end_date: date, benchmark_raw: pd.DataFrame, benchmark_actions: pd.DataFrame) -> pd.DataFrame:
         raw = self.market_store.read_bars(ticker)
@@ -146,7 +197,7 @@ class QuantitativeFeatureStoreBuilder:
             calculated = build_quantitative_features(asset_view, benchmark_close)
             pieces.append(calculated.loc[calculated.index.intersection(segment)].copy())
         frame = pd.concat(pieces).sort_index()
-        frame["history_count"] = [self._history_count(raw, day) for day in frame.index]
+        frame["history_count"] = self._history_counts(raw, list(frame.index))
         frame["ticker"] = ticker
         frame["decision_date"] = frame.index
         frame["decision_time"] = [self.decision_time(day) for day in frame.index]
@@ -181,8 +232,11 @@ class QuantitativeFeatureStoreBuilder:
         feature_frames: list[pd.DataFrame] = []
         target_frames: list[pd.DataFrame] = []
         missing_tickers: list[str] = []
+        build_seconds_by_ticker: dict[str, float] = {}
         for ticker in tickers:
+            started = perf_counter()
             frame = self.build_ticker(ticker, start_date, end_date, benchmark_raw, benchmark_actions)
+            build_seconds_by_ticker[ticker] = perf_counter() - started
             if frame.empty:
                 missing_tickers.append(ticker)
                 continue
@@ -202,6 +256,7 @@ class QuantitativeFeatureStoreBuilder:
         now = datetime.now(timezone.utc)
         manifest = self._manifest(tickers, start_date, end_date, now, with_targets)
         report = self._report(features, missing_tickers)
+        report["feature_build_seconds_by_ticker"] = build_seconds_by_ticker
         if persist:
             self.feature_store.replace_feature_range(features, tickers, start_date, end_date)
             if targets is not None:

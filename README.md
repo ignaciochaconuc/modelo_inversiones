@@ -54,6 +54,7 @@ python scripts/validate_data.py
 python scripts/build_feature_store.py
 python scripts/ingest_market_data.py --ticker AAPL --start 2020-01-01 --dry-run
 python scripts/build_quantitative_feature_store.py --ticker AAPL --start 2010-01-01 --dry-run
+python scripts/run_real_data_pilot.py --end 2026-10-05 --with-targets
 ```
 
 Para una descarga real, defina `TIINGO_API_KEY` solo en el `.env` local y quite `--dry-run`. También puede usar `--universe`; el procesamiento es secuencial y respeta el throttling configurado.
@@ -63,6 +64,8 @@ Los datasets quedan separados en `data/raw/tiingo/daily`, `data/raw/tiingo/corpo
 El Feature Store cuantitativo se particiona anualmente en `data/features/quantitative/year=YYYY/data.parquet`. Los targets opcionales se guardan físicamente aparte en `data/targets/quantitative`; una construcción de inferencia no usa `--with-targets`. `manifest.json` y `build_report.json` registran versiones, universo, cobertura, nulos y calidad.
 
 Los rebuilds reemplazan autoritativamente las filas del ticker y rango solicitados, por lo que una corrección puede eliminar registros obsoletos. Los targets de 5/10/20 días apuntan a la sesión bursátil exacta; si falta su barra, quedan NULL. `history_count` es acumulativo por decision time y no se reinicia después de splits.
+
+El piloto acotado de Phase 1C orquesta SPY, AAPL, MSFT y NVDA (configurables por CLI), audita raw, splits reales, point-in-time, benchmark, outliers y targets, y escribe `data/reports/real_data_pilot.json`. `--skip-download` permite reconstruir y diagnosticar datos locales sin red; `--skip-features` audita un Feature Store ya construido. Las reglas de outliers son solo diagnósticas y nunca alteran observaciones.
 
 ## Estado y roadmap
 

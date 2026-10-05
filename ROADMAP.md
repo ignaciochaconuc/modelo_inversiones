@@ -38,6 +38,12 @@ Se corrigieron conteos históricos globales, segmentación por barras retrasadas
 
 Se separaron latest-basis y normalización split-adjusted as-of, se desacoplaron features de `adjClose` del proveedor y se añadieron anomalías no destructivas para fechas ausentes durante refresh.
 
+### Phase 1C — Real Data Pilot
+
+**Status:** complete for the four-ticker pilot
+
+El runner acotado para SPY, AAPL, MSFT y NVDA valida cobertura raw, corporate actions, ventanas de splits, invariantes point-in-time, features de benchmark, outliers, targets y rendimiento. Produce `data/reports/real_data_pilot.json` sin cambiar fórmulas, schema, elegibilidad ni el universo principal. Los tests permanecen completamente offline. El piloto real fue ejecutado hasta 2026-10-05; esa sesión aún estaba antes del cutoff durante la consulta y quedó clasificada como pendiente, no como gap histórico inesperado.
+
 ## Phase 2 — Backtesting engine
 
 **Objetivo:** simular decisiones after-close y ejecución next-open.  
