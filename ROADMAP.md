@@ -10,13 +10,21 @@ Los estados describen planificación, no autorizan iniciar una fase. Cada fase r
 **Entregables:** schemas, FeatureRow, Parquet/DuckDB, features cuantitativas base, agentes/LLM/modelos como interfaces, costos, cache, riesgo básico, auditoría, tests y documentación.  
 **Finalización aproximada:** contratos estables, suite verde y revisión de los detalles pendientes de Phase 0 sin conexiones externas.
 
-## Phase 1 — Market data ingestion + quantitative baseline
+## Phase 1A — Tiingo market data ingestion
+
+**Status:** complete
+
+**Objetivo:** incorporar OHLCV diario, corporate actions y series split-adjusted reproducibles.  
+**Entregables:** adapter Tiingo, configuración temporal, calendario XNYS, storage incremental idempotente, CLI, universo fijo de desarrollo y tests mockeados.  
+**Finalización aproximada:** cumplida para el alcance local; una descarga real requiere una API key del usuario.
+
+## Phase 1B — Quantitative ingestion pipeline
 
 **Status:** next
 
-**Objetivo:** incorporar OHLCV diario confiable y construir datasets causales reproducibles.  
-**Entregables:** adaptador de proveedor, normalización, validación, calendario bursátil, universe de ~100 activos y pipeline incremental de features.  
-**Finalización aproximada:** histórico versionado, controles de calidad y feature store reproducible sin look-ahead.
+**Objetivo:** conectar datos processed con construcción incremental del Feature Store.  
+**Entregables:** selección point-in-time, cobertura/calidad ampliada y pipeline de features para el universo. Massive puede evaluarse más adelante solo como fuente de referencia histórica de tickers.  
+**Finalización aproximada:** feature store reproducible para el universo sin look-ahead ni dependencia de la composición actual para backtests válidos.
 
 ## Phase 2 — Backtesting engine
 

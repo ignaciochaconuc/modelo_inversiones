@@ -4,7 +4,12 @@
 
 ```mermaid
 flowchart TD
-    MD[Market Data] --> FS[Feature Store]
+    TG[Tiingo EOD] --> IN[MarketDataIngestionService]
+    IN --> RAW[Raw OHLCV]
+    IN --> CA[Corporate Actions]
+    RAW --> SA[Split-adjusted Series]
+    CA --> SA
+    SA --> FS[Feature Store]
     AI[AI Agents] --> FS
     FS --> PM[Predictive Models]
     PM --> PO[Portfolio Optimizer]
@@ -28,8 +33,11 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 |---|---|---|
 | `core` | Configuración, tiempo, excepciones, enums y logging | Funcional |
 | `data.schemas` | Contratos point-in-time y FeatureRow | Funcional |
-| `data.sources` | Contrato de fuentes externas | Stub |
-| `data.storage` | Persistencia Parquet y consulta DuckDB | Funcional básico |
+| `data.sources` | Contrato de fuentes y adapter Tiingo EOD | Funcional para Tiingo |
+| `data.ingestion` | Orquestación incremental, validación y normalización | Funcional Phase 1A |
+| `data.calendar` | Sesiones, aperturas y cierres XNYS | Funcional |
+| `data.normalization` | Corporate actions y ajuste explícito por splits | Funcional |
+| `data.storage` | Persistencia idempotente Parquet y consulta DuckDB | Funcional básico |
 | `data.validation` | Invariantes temporales y feature/target | Funcional |
 | `features` | Transformaciones cuantitativas causales y targets separados | Funcional básico |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
@@ -59,6 +67,10 @@ Dependencias prohibidas: `agents → execution`, `llm → execution`, `models �
 ## Almacenamiento
 
 Parquet es el formato durable inicial para raw, processed y features. DuckDB consulta estos archivos localmente sin introducir un servicio de base de datos. El cache de análisis usa archivos JSON identificados por `source_id`, hash de contenido y versión de análisis. La auditoría inicial usa JSON Lines. Esta elección es adecuada para una fase local y testeable; escalar infraestructura requiere una necesidad demostrada y un ADR.
+
+`MarketDataIngestionService` consulta el último dato local, aplica overlap, obtiene barras desde el adapter, valida, extrae acciones, hace upsert y reconstruye la serie split-adjusted. La estructura física es `raw/tiingo/daily`, `raw/tiingo/corporate_actions` y `processed/market/split_adjusted`. Los archivos permiten reconstruir provider, ingestión, schema, normalización, ticker y rango.
+
+La capa processed no usa los campos `adj*` del proveedor como fuente de verdad. Los conserva en raw para comparación, pero deriva su propia serie reproducible solo con splits. Véase ADR-007.
 
 ## Point-in-time y Feature Store
 

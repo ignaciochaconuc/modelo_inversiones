@@ -1,5 +1,18 @@
-market_timezone: America/New_York
 decision_timing: after_close
 prediction_horizon_days: 10
 execution_timing: next_market_open
 paths: {raw: data/raw, processed: data/processed, features: data/features, cache: data/cache, logs: logs}
+market:
+  timezone: America/New_York
+  close_time: "16:00"
+  decision_cutoff: "20:15"
+providers:
+  tiingo:
+    base_url: https://api.tiingo.com/tiingo/daily
+    assumed_eod_available_time: "20:00"
+    timeout_seconds: 20
+    throttle_seconds: 0.25
+ingestion:
+  refresh_overlap_days: 5
+  schema_version: "1"
+  normalization_version: split-adjusted-v1

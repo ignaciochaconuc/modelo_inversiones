@@ -78,7 +78,7 @@ No modificar decisiones arquitectónicas silenciosamente.
 
 ## Fuera de alcance actual
 
-No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. La siguiente fase prevista es ingestión de market data y baseline cuantitativo, pero no debe iniciarse por iniciativa propia.
+No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 1A de ingestión Tiingo está implementada; Phase 1B es la siguiente fase prevista y no debe iniciarse por iniciativa propia.
 
 ## Verificación mínima
 

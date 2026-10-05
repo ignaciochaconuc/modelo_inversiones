@@ -27,6 +27,12 @@ python -m pytest
 python scripts/validate_data.py
 ```
 
+Para probar el plan de ingestión sin red ni credenciales:
+
+```bash
+python scripts/ingest_market_data.py --ticker AAPL --start 2020-01-01 --dry-run
+```
+
 ## Añadir una feature
 
 1. Confirme que puede calcularse solo con información disponible en `decision_time`.
@@ -54,6 +60,8 @@ python scripts/validate_data.py
 4. Valide `available_at <= decision_time` antes de joins o features.
 5. Mantenga credenciales en entorno, nunca en código/config versionada.
 6. Añada fixtures locales; los tests unitarios no deben depender de APIs reales.
+
+Para EOD, no propague nombres de campos del proveedor fuera de `data.sources`. Conserve raw y corporate actions por separado, use la convención de splits del ADR-007 y regenere processed cuando una acción cambie.
 
 ## Añadir un proveedor LLM
 

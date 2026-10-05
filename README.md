@@ -1,6 +1,6 @@
 # AI Investment System
 
-Base modular para un sistema multiagente de análisis de acciones estadounidenses a frecuencia diaria. Esta fase construye contratos, datos point-in-time, feature store local, features cuantitativas, auditoría y control de costos; no realiza llamadas externas, entrenamiento ni trading.
+Base modular para un sistema multiagente de análisis de acciones estadounidenses a frecuencia diaria. Phase 1A incorpora ingestión EOD desde Tiingo, corporate actions explícitas, calendario XNYS y series split-adjusted; no realiza entrenamiento ni trading.
 
 ## Documentación
 
@@ -52,10 +52,15 @@ Copie `.env.example` a `.env` si necesita configurar proveedores en fases futura
 ```bash
 python scripts/validate_data.py
 python scripts/build_feature_store.py
+python scripts/ingest_market_data.py --ticker AAPL --start 2020-01-01 --dry-run
 ```
+
+Para una descarga real, defina `TIINGO_API_KEY` solo en el `.env` local y quite `--dry-run`. También puede usar `--universe`; el procesamiento es secuencial y respeta el throttling configurado.
+
+Los datasets quedan separados en `data/raw/tiingo/daily`, `data/raw/tiingo/corporate_actions` y `data/processed/market/split_adjusted`. El universo versionado es una lista fija de desarrollo similar al S&P 100 actual: no es point-in-time e introduce survivorship bias en backtests históricos.
 
 ## Estado y roadmap
 
-Son funcionales los schemas, validación point-in-time, cálculos cuantitativos principales, Parquet/DuckDB, cache JSON local, agregaciones de costos y reglas básicas de riesgo. Son contratos/stubs: fuentes externas, clientes OpenAI/Ollama, modelos predictivos, optimización, backtesting completo y ejecución.
+Son funcionales los schemas, validación point-in-time, adapter Tiingo EOD, actualización incremental Parquet, calendario XNYS, normalización de splits, cálculos cuantitativos principales, cache y reglas básicas de riesgo. Son contratos/stubs: clientes OpenAI/Ollama, modelos predictivos, optimización, backtesting completo y ejecución.
 
 Phases: 0 Architecture + feature store; 1 ingestión + baseline cuantitativo; 2 backtesting; 3 modelos baseline; 4 News; 5 Analyst + Earnings; 6 Fundamental + Macro + Event; 7 Portfolio + Risk; 8 paper trading; 9 live supervisado; 10 posible ejecución automática. Crypto será una expansión con schemas y predictores separados.

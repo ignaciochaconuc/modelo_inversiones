@@ -28,6 +28,16 @@ El Feature Store representa una fila por `ticker + decision_date`. Su almacenami
 
 Las familias de features son: identificación; OHLCV; retornos; momentum; riesgo/volatilidad; tendencia técnica; volumen/liquidez; posición histórica; mercado/sector; News; Analyst; Earnings; Fundamental; Macro; y Event. La lista canónica está en `src/investment_system/data/schemas/features.py`.
 
+### Market data de Phase 1A
+
+Tiingo EOD es el proveedor principal inicial. Su adapter traduce nombres externos a `MarketBar`; ninguna otra capa conoce campos propios de Tiingo. La API key se obtiene de `TIINGO_API_KEY` y los tests usan transporte simulado.
+
+Se conservan por separado OHLCV raw, corporate actions normalizadas y OHLCV ajustado exclusivamente por splits para features. La convención interna es `split_factor = acciones nuevas / acciones antiguas`: 2.0 representa 2:1 y 0.5 un reverse split 1:2. La fecha efectiva ya contiene precios post-split; solo las filas anteriores se ajustan. Precios históricos se dividen por el producto de splits futuros y volumen se multiplica. Los dividendos permanecen como cash flows y no alteran precios ni volumen.
+
+Como Tiingo EOD no aporta un timestamp histórico exacto de publicación por barra, `available_at` se deriva de `trading_date` y `providers.tiingo.assumed_eod_available_time` (20:00 America/New_York inicialmente). Es una hipótesis conservadora y configurable, distinta de `observed_at` (16:00 inicialmente). El cutoff conceptual de decisión es 20:15.
+
+El upsert usa `ticker + trading_date + provider` para barras y `ticker + effective_date + action_type + provider` para acciones. Un overlap configurable reemplaza correcciones y la serie split-adjusted completa se reconstruye. El calendario XNYS proviene de `exchange-calendars`. El universo fijo de desarrollo no es point-in-time e introduce survivorship bias.
+
 ## Targets
 
 - `target_return_5d`

@@ -9,3 +9,12 @@ class ConfigurationError(InvestmentSystemError):
 
 class ExternalCallDisabled(InvestmentSystemError):
     """Provider calls are disabled in phase zero."""
+
+class DataSourceError(InvestmentSystemError):
+    """A market-data provider request or payload failed."""
+
+class DataSourceRateLimitError(DataSourceError):
+    """A provider rejected a request due to rate limiting."""
+
+class DataQualityError(InvestmentSystemError):
+    """Market data violates an internal quality invariant."""

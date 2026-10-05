@@ -13,12 +13,38 @@ class DataPaths(BaseModel):
     cache: Path
     logs: Path
 
+class MarketSettings(BaseModel):
+    timezone: str = "America/New_York"
+    close_time: str = "16:00"
+    decision_cutoff: str = "20:15"
+
+class TiingoSettings(BaseModel):
+    base_url: str = "https://api.tiingo.com/tiingo/daily"
+    assumed_eod_available_time: str = "20:00"
+    timeout_seconds: float = Field(default=20, gt=0)
+    throttle_seconds: float = Field(default=0.25, ge=0)
+
+class ProviderSettings(BaseModel):
+    tiingo: TiingoSettings = TiingoSettings()
+
+class IngestionSettings(BaseModel):
+    refresh_overlap_days: int = Field(default=5, ge=0)
+    schema_version: str = "1"
+    normalization_version: str = "split-adjusted-v1"
+
 class Settings(BaseModel):
-    market_timezone: str = "America/New_York"
     decision_timing: str = "after_close"
     prediction_horizon_days: int = Field(default=10, gt=0)
     execution_timing: str = "next_market_open"
     paths: DataPaths
+    market: MarketSettings = MarketSettings()
+    providers: ProviderSettings = ProviderSettings()
+    ingestion: IngestionSettings = IngestionSettings()
+
+    @property
+    def market_timezone(self) -> str:
+        """Backward-compatible alias for the original flat setting."""
+        return self.market.timezone
 
 def load_yaml(path: str | Path) -> dict[str, Any]:
     path = Path(path)
