@@ -46,6 +46,12 @@ El runner acotado para SPY, AAPL, MSFT y NVDA valida cobertura raw, corporate ac
 
 La revisión de rendimiento reemplazó rescans por fecha en segmentación y conteos históricos por eventos de disponibilidad, y vectorizó los factores de splits. El benchmark sintético y el reporte reproducible permiten detectar regresiones antes de ampliar el universo.
 
+### Phase 1D — Full Development Universe Dataset
+
+**Status:** in progress; provider-limited resumable ingestion
+
+El workflow reutiliza Tiingo, ingesta incremental, normalización as-of, Feature Store y targets existentes para los 101 activos configurados. Aísla fallos por ticker, valida calidad transversal y rankings, conserva la advertencia de survivorship bias y permite reanudar lotes sin repetir series locales completas.
+
 ## Phase 2 — Backtesting engine
 
 **Objetivo:** simular decisiones after-close y ejecución next-open.  

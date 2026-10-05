@@ -243,3 +243,20 @@ def test_optimized_builder_is_numerically_equivalent_to_naive_reference(tmp_path
     finally:
         service._segments, service._history_counts = original_segments, original_counts
     pd.testing.assert_frame_equal(optimized, reference, check_exact=False, rtol=1e-12, atol=1e-12)
+
+
+def test_build_excludes_raw_bar_not_yet_available_from_features_and_targets(tmp_path) -> None:
+    days = list(pd.bdate_range("2025-01-02", periods=40).date)
+    service, market = builder(tmp_path, days)
+    asset = make_bars("AAPL", days)
+    asset[-1] = asset[-1].model_copy(update={
+        "available_at": datetime(2099, 1, 1, tzinfo=timezone.utc),
+        "ingested_at": datetime(2025, 3, 1, tzinfo=timezone.utc),
+    })
+    persist_bars(market, asset)
+    persist_bars(market, make_bars("SPY", days))
+
+    result = service.build(["AAPL"], days[0], days[-1], with_targets=True, persist=False)
+
+    assert days[-1] not in set(result.features["decision_date"])
+    assert days[-1] not in set(result.targets["decision_date"])

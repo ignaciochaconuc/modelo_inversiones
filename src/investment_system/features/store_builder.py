@@ -219,11 +219,16 @@ class QuantitativeFeatureStoreBuilder:
         validate_quantitative_feature_frame(result)
         return result
 
-    def build(self, tickers: list[str], start_date: date, end_date: date, *, with_targets: bool = False, persist: bool = True) -> FeatureBuildResult:
+    def build(
+        self, tickers: list[str], start_date: date, end_date: date, *,
+        with_targets: bool = False, persist: bool = True,
+        continue_on_ticker_error: bool = False,
+    ) -> FeatureBuildResult:
         if start_date < self.feature_history_start:
             start_date = self.feature_history_start
         if start_date > end_date:
             raise ValueError("start_date must be <= end_date")
+        known_at = datetime.now(timezone.utc)
         benchmark_raw = self.market_store.read_bars(self.universe.benchmark)
         benchmark_actions = self.market_store.read_actions(self.universe.benchmark)
         if benchmark_raw.empty:
@@ -233,18 +238,44 @@ class QuantitativeFeatureStoreBuilder:
         target_frames: list[pd.DataFrame] = []
         missing_tickers: list[str] = []
         build_seconds_by_ticker: dict[str, float] = {}
+        target_seconds_by_ticker: dict[str, float] = {}
+        ticker_errors: dict[str, dict[str, str]] = {}
         for ticker in tickers:
             started = perf_counter()
-            frame = self.build_ticker(ticker, start_date, end_date, benchmark_raw, benchmark_actions)
+            try:
+                frame = self.build_ticker(ticker, start_date, end_date, benchmark_raw, benchmark_actions)
+            except ValueError as error:
+                build_seconds_by_ticker[ticker] = perf_counter() - started
+                if not continue_on_ticker_error:
+                    raise
+                ticker_errors[ticker] = {"stage": "features", "type": type(error).__name__, "message": str(error)}
+                missing_tickers.append(ticker)
+                continue
             build_seconds_by_ticker[ticker] = perf_counter() - started
             if frame.empty:
                 missing_tickers.append(ticker)
                 continue
             feature_frames.append(frame)
             if with_targets:
-                targets = build_price_targets(self.market_store.read_bars(ticker), self.market_store.read_actions(ticker), self.calendar)
-                dates = pd.to_datetime(targets["decision_date"]).dt.date
-                target_frames.append(targets[(dates >= start_date) & (dates <= end_date)])
+                target_started = perf_counter()
+                try:
+                    target_bars = self.market_store.read_bars(ticker)
+                    target_actions = self.market_store.read_actions(ticker)
+                    if not target_bars.empty:
+                        bar_availability = pd.to_datetime(target_bars["available_at"], utc=True, errors="coerce")
+                        target_bars = target_bars[bar_availability.notna() & (bar_availability <= known_at)]
+                    if not target_actions.empty:
+                        action_availability = pd.to_datetime(target_actions["available_at"], utc=True, errors="coerce")
+                        target_actions = target_actions[action_availability.notna() & (action_availability <= known_at)]
+                    targets = build_price_targets(target_bars, target_actions, self.calendar)
+                    dates = pd.to_datetime(targets["decision_date"]).dt.date
+                    target_frames.append(targets[(dates >= start_date) & (dates <= end_date)])
+                except ValueError as error:
+                    if not continue_on_ticker_error:
+                        raise
+                    ticker_errors[ticker] = {"stage": "targets", "type": type(error).__name__, "message": str(error)}
+                finally:
+                    target_seconds_by_ticker[ticker] = perf_counter() - target_started
         features = pd.concat(feature_frames, ignore_index=True) if feature_frames else pd.DataFrame()
         if not features.empty:
             validate_quantitative_feature_frame(features)
@@ -253,10 +284,11 @@ class QuantitativeFeatureStoreBuilder:
             targets = pd.concat(target_frames, ignore_index=True) if target_frames else pd.DataFrame(columns=["ticker", "decision_date"])
             targets = add_cross_sectional_rank(targets, self.minimum_rank_assets)
             validate_target_frame(targets)
-        now = datetime.now(timezone.utc)
-        manifest = self._manifest(tickers, start_date, end_date, now, with_targets)
+        manifest = self._manifest(tickers, start_date, end_date, known_at, with_targets)
         report = self._report(features, missing_tickers)
         report["feature_build_seconds_by_ticker"] = build_seconds_by_ticker
+        report["target_build_seconds_by_ticker"] = target_seconds_by_ticker
+        report["ticker_errors"] = ticker_errors
         if persist:
             self.feature_store.replace_feature_range(features, tickers, start_date, end_date)
             if targets is not None:

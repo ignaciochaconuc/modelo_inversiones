@@ -1,0 +1,6097 @@
+{
+  "phase": "1D-full-development-universe",
+  "status": "completed_with_ticker_errors",
+  "reproducibility": {
+    "report_schema_version": "1",
+    "generated_at": "2026-10-05T21:08:24.628101+00:00",
+    "git_commit": null,
+    "dirty_worktree": null,
+    "feature_schema_version": "3",
+    "quantitative_feature_version": "quantitative-v1.1",
+    "normalization_version": "split-adjusted-as-of-v1",
+    "provider": "tiingo",
+    "settings": {
+      "raw_start": "2009-01-01",
+      "feature_start": "2010-01-01",
+      "end": "2026-10-05",
+      "effective_feature_end": "2026-10-02",
+      "market_timezone": "America/New_York",
+      "decision_cutoff": "20:15",
+      "minimum_rank_assets": 20,
+      "assumed_eod_available_time": "20:00",
+      "refresh_overlap_days": 5,
+      "throttle_seconds": 0.25
+    }
+  },
+  "universe": {
+    "name": "sp100_development",
+    "type": "development_fixed",
+    "as_of": "2026-10-05",
+    "benchmark": "SPY",
+    "configured_tickers": 101,
+    "universe_point_in_time": false,
+    "survivorship_bias_warning": true,
+    "provider_tickers_explicitly_skipped": []
+  },
+  "global_summary": {
+    "status_counts": {
+      "success": 83,
+      "no_data": 0,
+      "partial_history": 17,
+      "provider_error": 1,
+      "validation_error": 0
+    },
+    "tickers_downloaded_successfully": 100,
+    "raw_bars": 422765,
+    "corporate_actions": 5476,
+    "splits": 39,
+    "dividends": 5437,
+    "feature_rows": 397265,
+    "model_eligible_rows": 393331,
+    "target_rows": 397265,
+    "first_raw_date": "2009-01-02",
+    "last_raw_date": "2026-10-05",
+    "first_feature_date": "2010-01-04",
+    "last_feature_date": "2026-10-02",
+    "duplicates": 0,
+    "ohlc_violations": 0,
+    "unexpected_gaps": 79,
+    "infinities": 0,
+    "unexpected_nan_cells_eligible": 1881,
+    "raw_bars_not_yet_available": 16
+  },
+  "benchmark": {
+    "status": "success",
+    "error": null,
+    "first_raw_date": "2009-01-02",
+    "last_raw_date": "2026-10-02",
+    "raw_bars": 4465,
+    "expected_sessions_from_first_raw": 4466,
+    "unexpected_missing_sessions": [],
+    "pending_sessions_before_cutoff": [
+      "2026-10-05"
+    ],
+    "raw_bars_not_yet_available": 0,
+    "split_count": 0,
+    "split_dates": [],
+    "dividend_count": 71,
+    "dividend_date_examples": [
+      "2009-03-20",
+      "2009-06-19",
+      "2009-09-18",
+      "2009-12-18",
+      "2010-03-19"
+    ],
+    "duplicates": 0,
+    "ohlc_violations": 0,
+    "first_feature_date": null,
+    "feature_rows": 0,
+    "first_model_eligible": null,
+    "model_eligible_percentage": 0.0,
+    "valid_target_5d": 0,
+    "valid_target_10d": 0,
+    "valid_target_20d": 0,
+    "ingestion_seconds": 0.0,
+    "build_seconds": null,
+    "warnings": []
+  },
+  "tickers": {
+    "AAPL": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 2,
+      "split_dates": [
+        "2014-06-09",
+        "2020-08-31"
+      ],
+      "dividend_count": 57,
+      "dividend_date_examples": [
+        "2012-08-09",
+        "2012-11-07",
+        "2013-02-07",
+        "2013-05-09",
+        "2013-08-08"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.9611206999979913,
+      "warnings": []
+    },
+    "ABBV": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2013-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 3459,
+      "expected_sessions_from_first_raw": 3460,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 55,
+      "dividend_date_examples": [
+        "2013-01-11",
+        "2013-04-11",
+        "2013-07-11",
+        "2013-10-10",
+        "2014-01-13"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2013-01-02",
+      "feature_rows": 3459,
+      "first_model_eligible": "2014-01-02",
+      "model_eligible_percentage": 92.71465741543798,
+      "valid_target_5d": 3454,
+      "valid_target_10d": 3449,
+      "valid_target_20d": 3439,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.42528590001165867,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "ABT": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 72,
+      "dividend_date_examples": [
+        "2009-01-13",
+        "2009-04-13",
+        "2009-07-13",
+        "2009-10-13",
+        "2010-01-13"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5857633000705391,
+      "warnings": []
+    },
+    "ACN": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 48,
+      "dividend_date_examples": [
+        "2009-10-14",
+        "2010-04-14",
+        "2010-10-13",
+        "2011-04-13",
+        "2011-10-12"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5361361999530345,
+      "warnings": []
+    },
+    "ADBE": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5040295999497175,
+      "warnings": []
+    },
+    "AIG": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2009-07-01"
+      ],
+      "dividend_count": 54,
+      "dividend_date_examples": [
+        "2011-01-20",
+        "2013-09-10",
+        "2013-12-03",
+        "2014-03-07",
+        "2014-06-06"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5263546998612583,
+      "warnings": []
+    },
+    "AMD": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5176526999566704,
+      "warnings": []
+    },
+    "AMGN": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 61,
+      "dividend_date_examples": [
+        "2011-08-16",
+        "2011-11-15",
+        "2012-02-13",
+        "2012-05-14",
+        "2012-08-14"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5177158999722451,
+      "warnings": []
+    },
+    "AMT": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 60,
+      "dividend_date_examples": [
+        "2011-12-08",
+        "2012-04-09",
+        "2012-06-28",
+        "2012-09-27",
+        "2012-12-13"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.504628200083971,
+      "warnings": []
+    },
+    "AMZN": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2022-06-06"
+      ],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.7011645999737084,
+      "warnings": []
+    },
+    "ANET": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2014-06-06",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 3100,
+      "expected_sessions_from_first_raw": 3101,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 2,
+      "split_dates": [
+        "2021-11-18",
+        "2024-12-04"
+      ],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2014-06-06",
+      "feature_rows": 3100,
+      "first_model_eligible": "2015-06-08",
+      "model_eligible_percentage": 91.87096774193549,
+      "valid_target_5d": 3095,
+      "valid_target_10d": 3090,
+      "valid_target_20d": 3080,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.654169199988246,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "AVGO": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2009-08-06",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4316,
+      "expected_sessions_from_first_raw": 4317,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2024-07-15"
+      ],
+      "dividend_count": 64,
+      "dividend_date_examples": [
+        "2010-12-13",
+        "2011-03-16",
+        "2011-06-15",
+        "2011-09-15",
+        "2011-12-15"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-08-06",
+      "model_eligible_percentage": 96.46332779492049,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6916517000645399,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "AXP": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-07",
+        "2009-04-01",
+        "2009-06-30",
+        "2009-09-30",
+        "2010-01-07"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.4809764998499304,
+      "warnings": []
+    },
+    "BA": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 45,
+      "dividend_date_examples": [
+        "2009-02-04",
+        "2009-05-06",
+        "2009-08-05",
+        "2009-11-04",
+        "2010-02-03"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5203611000906676,
+      "warnings": []
+    },
+    "BAC": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-04",
+        "2009-06-03",
+        "2009-09-02",
+        "2009-12-02",
+        "2010-03-03"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5050975000485778,
+      "warnings": []
+    },
+    "BK": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2026-06-04",
+      "last_raw_date": "2026-06-10",
+      "raw_bars": 5,
+      "expected_sessions_from_first_raw": 85,
+      "unexpected_missing_sessions": [
+        "2026-06-11",
+        "2026-06-12",
+        "2026-06-15",
+        "2026-06-16",
+        "2026-06-17",
+        "2026-06-18",
+        "2026-06-22",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-26",
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-10",
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02"
+      ],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2026-06-04",
+      "feature_rows": 5,
+      "first_model_eligible": null,
+      "model_eligible_percentage": 0.0,
+      "valid_target_5d": 0,
+      "valid_target_10d": 0,
+      "valid_target_20d": 0,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.10685910005122423,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "79 unexpected missing sessions"
+      ]
+    },
+    "BKNG": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2026-04-06"
+      ],
+      "dividend_count": 11,
+      "dividend_date_examples": [
+        "2024-03-07",
+        "2024-06-07",
+        "2024-09-06",
+        "2024-12-06",
+        "2025-03-07"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.7340806999709457,
+      "warnings": []
+    },
+    "BLK": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 72,
+      "dividend_date_examples": [
+        "2009-03-05",
+        "2009-06-04",
+        "2009-08-31",
+        "2009-11-24",
+        "2010-03-04"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5175128001719713,
+      "warnings": []
+    },
+    "BMY": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-04-01",
+        "2009-07-01",
+        "2009-09-30",
+        "2009-12-30",
+        "2010-03-30"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5107055001426488,
+      "warnings": []
+    },
+    "BRK.B": {
+      "status": "provider_error",
+      "error": {
+        "type": "ProviderTickerSkipped",
+        "message": "provider request explicitly skipped after manual review"
+      },
+      "first_raw_date": null,
+      "last_raw_date": null,
+      "raw_bars": 0,
+      "expected_sessions_from_first_raw": 0,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": null,
+      "feature_rows": 0,
+      "first_model_eligible": null,
+      "model_eligible_percentage": 0.0,
+      "valid_target_5d": 0,
+      "valid_target_10d": 0,
+      "valid_target_20d": 0,
+      "ingestion_seconds": 0.0,
+      "build_seconds": null,
+      "warnings": []
+    },
+    "C": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2011-05-09"
+      ],
+      "dividend_count": 63,
+      "dividend_date_examples": [
+        "2009-01-29",
+        "2011-05-25",
+        "2011-07-28",
+        "2011-11-03",
+        "2012-02-02"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5792421998921782,
+      "warnings": []
+    },
+    "CAT": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-15",
+        "2009-04-16",
+        "2009-07-16",
+        "2009-10-22",
+        "2010-01-15"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5678669000044465,
+      "warnings": []
+    },
+    "CHTR": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2010-01-05",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4212,
+      "expected_sessions_from_first_raw": 4213,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-05",
+      "feature_rows": 4212,
+      "first_model_eligible": "2011-01-04",
+      "model_eligible_percentage": 94.01709401709401,
+      "valid_target_5d": 4207,
+      "valid_target_10d": 4202,
+      "valid_target_20d": 4192,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5054022001568228,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "CMCSA": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2017-02-21"
+      ],
+      "dividend_count": 72,
+      "dividend_date_examples": [
+        "2009-01-05",
+        "2009-04-06",
+        "2009-07-06",
+        "2009-10-05",
+        "2010-01-04"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.9156849998980761,
+      "warnings": []
+    },
+    "COF": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-06",
+        "2009-05-07",
+        "2009-08-07",
+        "2009-11-06",
+        "2010-02-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5135178999044001,
+      "warnings": []
+    },
+    "COP": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 81,
+      "dividend_date_examples": [
+        "2009-02-19",
+        "2009-05-21",
+        "2009-07-29",
+        "2009-10-28",
+        "2010-02-18"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.510159800061956,
+      "warnings": []
+    },
+    "COST": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 76,
+      "dividend_date_examples": [
+        "2009-02-11",
+        "2009-05-13",
+        "2009-08-12",
+        "2009-10-21",
+        "2010-02-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5675204999279231,
+      "warnings": []
+    },
+    "CRM": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2013-04-18"
+      ],
+      "dividend_count": 11,
+      "dividend_date_examples": [
+        "2024-03-13",
+        "2024-07-09",
+        "2024-09-18",
+        "2024-12-18",
+        "2025-04-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6392125999554992,
+      "warnings": []
+    },
+    "CSCO": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 63,
+      "dividend_date_examples": [
+        "2011-03-29",
+        "2011-07-05",
+        "2011-10-04",
+        "2012-01-03",
+        "2012-04-03"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5053362001199275,
+      "warnings": []
+    },
+    "CVS": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-21",
+        "2009-04-20",
+        "2009-07-21",
+        "2009-10-20",
+        "2010-01-20"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5243279000278562,
+      "warnings": []
+    },
+    "CVX": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-12",
+        "2009-05-15",
+        "2009-08-17",
+        "2009-11-16",
+        "2010-02-12"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5382904999423772,
+      "warnings": []
+    },
+    "DE": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-27",
+        "2009-06-26",
+        "2009-09-28",
+        "2009-12-29",
+        "2010-03-29"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6198730999603868,
+      "warnings": []
+    },
+    "DELL": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2018-12-21",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 1955,
+      "expected_sessions_from_first_raw": 1956,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2021-11-02"
+      ],
+      "dividend_count": 18,
+      "dividend_date_examples": [
+        "2022-04-19",
+        "2022-07-19",
+        "2022-10-18",
+        "2023-01-24",
+        "2023-04-24"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2018-12-21",
+      "feature_rows": 1955,
+      "first_model_eligible": "2019-12-23",
+      "model_eligible_percentage": 87.10997442455243,
+      "valid_target_5d": 1950,
+      "valid_target_10d": 1945,
+      "valid_target_20d": 1935,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.3580529000610113,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "DHR": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2010-06-14"
+      ],
+      "dividend_count": 73,
+      "dividend_date_examples": [
+        "2009-03-25",
+        "2009-06-24",
+        "2009-09-23",
+        "2009-12-29",
+        "2010-03-24"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6083136000670493,
+      "warnings": []
+    },
+    "DIS": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 22,
+      "dividend_date_examples": [
+        "2009-12-10",
+        "2010-12-09",
+        "2011-12-14",
+        "2012-12-06",
+        "2013-12-12"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5071557001210749,
+      "warnings": []
+    },
+    "DOW": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2019-03-20",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 1896,
+      "expected_sessions_from_first_raw": 1897,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 30,
+      "dividend_date_examples": [
+        "2019-05-30",
+        "2019-08-29",
+        "2019-11-27",
+        "2020-02-27",
+        "2020-05-28"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2019-03-20",
+      "feature_rows": 1896,
+      "first_model_eligible": "2020-03-19",
+      "model_eligible_percentage": 86.70886075949366,
+      "valid_target_5d": 1891,
+      "valid_target_10d": 1886,
+      "valid_target_20d": 1876,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.30174760008230805,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "DUK": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2012-07-03"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-11",
+        "2009-05-14",
+        "2009-08-12",
+        "2009-11-10",
+        "2010-02-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6722760999109596,
+      "warnings": []
+    },
+    "EMR": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-11",
+        "2009-05-13",
+        "2009-08-12",
+        "2009-11-10",
+        "2010-02-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5406633999664336,
+      "warnings": []
+    },
+    "FDX": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2026-06-01"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-09",
+        "2009-06-16",
+        "2009-09-08",
+        "2009-12-10",
+        "2010-03-09"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.8721438001375645,
+      "warnings": []
+    },
+    "GD": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-14",
+        "2009-04-07",
+        "2009-06-30",
+        "2009-10-07",
+        "2010-01-13"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5183598999865353,
+      "warnings": []
+    },
+    "GILD": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2013-01-28"
+      ],
+      "dividend_count": 46,
+      "dividend_date_examples": [
+        "2015-06-12",
+        "2015-09-14",
+        "2015-12-14",
+        "2016-03-14",
+        "2016-06-14"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5777044000569731,
+      "warnings": []
+    },
+    "GM": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2010-11-18",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 3991,
+      "expected_sessions_from_first_raw": 3992,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 42,
+      "dividend_date_examples": [
+        "2014-03-14",
+        "2014-06-06",
+        "2014-09-08",
+        "2014-12-08",
+        "2015-03-09"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-11-18",
+      "feature_rows": 3991,
+      "first_model_eligible": "2011-11-17",
+      "model_eligible_percentage": 93.68579303432723,
+      "valid_target_5d": 3986,
+      "valid_target_10d": 3981,
+      "valid_target_20d": 3971,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.45832269988022745,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "GOOG": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2014-03-27",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 3149,
+      "expected_sessions_from_first_raw": 3150,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2022-07-18"
+      ],
+      "dividend_count": 11,
+      "dividend_date_examples": [
+        "2015-04-27",
+        "2024-06-10",
+        "2024-09-09",
+        "2024-12-09",
+        "2025-03-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2014-03-27",
+      "feature_rows": 3149,
+      "first_model_eligible": "2015-03-27",
+      "model_eligible_percentage": 91.99745951095586,
+      "valid_target_5d": 3144,
+      "valid_target_10d": 3139,
+      "valid_target_20d": 3129,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.530920600052923,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "GOOGL": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2022-07-18"
+      ],
+      "dividend_count": 11,
+      "dividend_date_examples": [
+        "2014-04-03",
+        "2024-06-10",
+        "2024-09-09",
+        "2024-12-09",
+        "2025-03-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.883446600055322,
+      "warnings": []
+    },
+    "GS": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-20",
+        "2009-05-21",
+        "2009-08-21",
+        "2009-11-30",
+        "2010-02-26"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5279343998990953,
+      "warnings": []
+    },
+    "HD": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-10",
+        "2009-06-09",
+        "2009-09-01",
+        "2009-12-01",
+        "2010-03-09"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5464600000996143,
+      "warnings": []
+    },
+    "IBM": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2021-11-04"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-06",
+        "2009-05-06",
+        "2009-08-06",
+        "2009-11-06",
+        "2010-02-08"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.7598359000403434,
+      "warnings": []
+    },
+    "INTC": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 63,
+      "dividend_date_examples": [
+        "2009-02-04",
+        "2009-05-05",
+        "2009-08-05",
+        "2009-11-04",
+        "2010-02-03"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6134786000475287,
+      "warnings": []
+    },
+    "JNJ": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-20",
+        "2009-05-21",
+        "2009-08-21",
+        "2009-11-20",
+        "2010-02-19"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.4807359001133591,
+      "warnings": []
+    },
+    "JPM": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-02",
+        "2009-04-02",
+        "2009-07-01",
+        "2009-10-02",
+        "2010-01-04"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.4985541000496596,
+      "warnings": []
+    },
+    "KO": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2012-08-13"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-11",
+        "2009-06-11",
+        "2009-09-11",
+        "2009-11-27",
+        "2010-03-11"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5937113000545651,
+      "warnings": []
+    },
+    "LIN": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2018-10-01",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 2012,
+      "expected_sessions_from_first_raw": 2013,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 32,
+      "dividend_date_examples": [
+        "2018-12-17",
+        "2019-03-07",
+        "2019-05-31",
+        "2019-08-30",
+        "2019-12-02"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2018-10-01",
+      "feature_rows": 2012,
+      "first_model_eligible": "2019-10-02",
+      "model_eligible_percentage": 87.47514910536779,
+      "valid_target_5d": 2007,
+      "valid_target_10d": 2002,
+      "valid_target_20d": 1992,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.2771846998948604,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "LLY": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-11",
+        "2009-05-13",
+        "2009-08-12",
+        "2009-11-10",
+        "2010-02-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5265738000161946,
+      "warnings": []
+    },
+    "LMT": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-26",
+        "2009-05-28",
+        "2009-08-28",
+        "2009-11-27",
+        "2010-02-25"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6296639000065625,
+      "warnings": []
+    },
+    "LOW": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-14",
+        "2009-04-15",
+        "2009-07-15",
+        "2009-10-14",
+        "2010-01-15"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6019020001403987,
+      "warnings": []
+    },
+    "MA": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2014-01-22"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-07",
+        "2009-04-08",
+        "2009-07-08",
+        "2009-10-07",
+        "2010-01-06"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6208384998608381,
+      "warnings": []
+    },
+    "MCD": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-26",
+        "2009-06-04",
+        "2009-08-28",
+        "2009-11-27",
+        "2010-02-25"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5062792000826448,
+      "warnings": []
+    },
+    "MDLZ": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 72,
+      "dividend_date_examples": [
+        "2009-03-23",
+        "2009-06-26",
+        "2009-09-28",
+        "2009-12-28",
+        "2010-03-29"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5118589999619871,
+      "warnings": []
+    },
+    "MDT": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-04-01",
+        "2009-07-08",
+        "2009-10-07",
+        "2010-01-06",
+        "2010-04-07"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.49417850002646446,
+      "warnings": []
+    },
+    "MET": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 60,
+      "dividend_date_examples": [
+        "2009-11-05",
+        "2010-11-05",
+        "2011-11-07",
+        "2012-11-07",
+        "2013-02-04"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5032575998920947,
+      "warnings": []
+    },
+    "META": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2012-05-18",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 3614,
+      "expected_sessions_from_first_raw": 3615,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 11,
+      "dividend_date_examples": [
+        "2024-02-21",
+        "2024-06-14",
+        "2024-09-16",
+        "2024-12-16",
+        "2025-03-14"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2012-05-18",
+      "feature_rows": 3614,
+      "first_model_eligible": "2013-05-22",
+      "model_eligible_percentage": 93.02711676812396,
+      "valid_target_5d": 3609,
+      "valid_target_10d": 3604,
+      "valid_target_20d": 3594,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.41246939986012876,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "MMM": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 72,
+      "dividend_date_examples": [
+        "2009-02-18",
+        "2009-05-20",
+        "2009-08-19",
+        "2009-11-18",
+        "2010-02-17"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5093106999993324,
+      "warnings": []
+    },
+    "MO": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-12",
+        "2009-06-11",
+        "2009-09-11",
+        "2009-12-28",
+        "2010-03-11"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5044943999964744,
+      "warnings": []
+    },
+    "MRK": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2021-06-03"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-04",
+        "2009-06-04",
+        "2009-09-02",
+        "2009-12-11",
+        "2010-03-11"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.7559348000213504,
+      "warnings": []
+    },
+    "MS": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 70,
+      "dividend_date_examples": [
+        "2009-01-28",
+        "2009-04-28",
+        "2009-07-29",
+        "2009-10-28",
+        "2010-01-27"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.494649900123477,
+      "warnings": []
+    },
+    "MSFT": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-17",
+        "2009-05-19",
+        "2009-08-18",
+        "2009-11-17",
+        "2010-02-16"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5218752999790013,
+      "warnings": []
+    },
+    "MU": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 20,
+      "dividend_date_examples": [
+        "2021-09-30",
+        "2021-12-31",
+        "2022-04-08",
+        "2022-07-08",
+        "2022-10-07"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5041598998941481,
+      "warnings": []
+    },
+    "NEE": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2020-10-27"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-25",
+        "2009-06-03",
+        "2009-08-26",
+        "2009-11-24",
+        "2010-02-24"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6523982000071555,
+      "warnings": []
+    },
+    "NFLX": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 2,
+      "split_dates": [
+        "2015-07-15",
+        "2025-11-17"
+      ],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.8118684000801295,
+      "warnings": []
+    },
+    "NOW": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2012-06-29",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 3585,
+      "expected_sessions_from_first_raw": 3586,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2025-12-18"
+      ],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2012-06-29",
+      "feature_rows": 3585,
+      "first_model_eligible": "2013-07-03",
+      "model_eligible_percentage": 92.97071129707113,
+      "valid_target_5d": 3580,
+      "valid_target_10d": 3575,
+      "valid_target_20d": 3565,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6429751999676228,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "NVDA": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 2,
+      "split_dates": [
+        "2021-07-20",
+        "2024-06-10"
+      ],
+      "dividend_count": 56,
+      "dividend_date_examples": [
+        "2012-11-20",
+        "2013-02-26",
+        "2013-05-21",
+        "2013-08-20",
+        "2013-11-19"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.8533149000722915,
+      "warnings": []
+    },
+    "ORCL": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 69,
+      "dividend_date_examples": [
+        "2009-04-06",
+        "2009-07-13",
+        "2009-10-09",
+        "2010-01-14",
+        "2010-04-12"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.48419300001114607,
+      "warnings": []
+    },
+    "PANW": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2012-07-20",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 3571,
+      "expected_sessions_from_first_raw": 3572,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 2,
+      "split_dates": [
+        "2022-09-14",
+        "2024-12-16"
+      ],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2012-07-20",
+      "feature_rows": 3571,
+      "first_model_eligible": "2013-07-24",
+      "model_eligible_percentage": 92.94315317838141,
+      "valid_target_5d": 3566,
+      "valid_target_10d": 3561,
+      "valid_target_20d": 3551,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.7368266000412405,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "PEP": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-04",
+        "2009-06-03",
+        "2009-09-02",
+        "2009-12-02",
+        "2010-03-03"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.49660600000061095,
+      "warnings": []
+    },
+    "PFE": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2020-11-17"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-04",
+        "2009-05-06",
+        "2009-08-05",
+        "2009-11-04",
+        "2010-02-03"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6394201999064535,
+      "warnings": []
+    },
+    "PG": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-21",
+        "2009-04-22",
+        "2009-07-22",
+        "2009-10-21",
+        "2010-01-20"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.4736495001707226,
+      "warnings": []
+    },
+    "PLD": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-04-02",
+        "2009-07-01",
+        "2009-10-01",
+        "2009-12-21",
+        "2010-03-31"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5035135999787599,
+      "warnings": []
+    },
+    "PLTR": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2020-09-30",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 1509,
+      "expected_sessions_from_first_raw": 1510,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2020-09-30",
+      "feature_rows": 1509,
+      "first_model_eligible": "2021-09-30",
+      "model_eligible_percentage": 83.30019880715706,
+      "valid_target_5d": 1504,
+      "valid_target_10d": 1499,
+      "valid_target_20d": 1489,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.24094259995035827,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "PM": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-23",
+        "2009-06-22",
+        "2009-09-24",
+        "2009-12-23",
+        "2010-03-23"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.48651010007597506,
+      "warnings": []
+    },
+    "PYPL": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2015-07-20",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 2819,
+      "expected_sessions_from_first_raw": 2820,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 4,
+      "dividend_date_examples": [
+        "2025-11-19",
+        "2026-03-04",
+        "2026-06-04",
+        "2026-09-04"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2015-07-20",
+      "feature_rows": 2819,
+      "first_model_eligible": "2016-07-19",
+      "model_eligible_percentage": 91.06065980844271,
+      "valid_target_5d": 2814,
+      "valid_target_10d": 2809,
+      "valid_target_20d": 2799,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.35594139993190765,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "QCOM": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-25",
+        "2009-05-27",
+        "2009-08-26",
+        "2009-11-23",
+        "2010-02-24"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5377990000415593,
+      "warnings": []
+    },
+    "RTX": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 72,
+      "dividend_date_examples": [
+        "2009-02-18",
+        "2009-05-13",
+        "2009-08-19",
+        "2009-11-18",
+        "2010-02-17"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.520707500167191,
+      "warnings": []
+    },
+    "SBUX": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2015-04-09"
+      ],
+      "dividend_count": 66,
+      "dividend_date_examples": [
+        "2010-04-05",
+        "2010-08-02",
+        "2010-11-16",
+        "2011-02-07",
+        "2011-05-09"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.595439599826932,
+      "warnings": []
+    },
+    "SCHW": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-11",
+        "2009-05-06",
+        "2009-08-12",
+        "2009-11-10",
+        "2010-02-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.49856780003756285,
+      "warnings": []
+    },
+    "SNDK": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2025-02-24",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 405,
+      "expected_sessions_from_first_raw": 406,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2025-02-24",
+      "feature_rows": 405,
+      "first_model_eligible": "2026-02-25",
+      "model_eligible_percentage": 37.77777777777778,
+      "valid_target_5d": 400,
+      "valid_target_10d": 395,
+      "valid_target_20d": 385,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.12984109995886683,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "SO": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-29",
+        "2009-04-30",
+        "2009-07-30",
+        "2009-10-29",
+        "2010-01-28"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.48211730015464127,
+      "warnings": []
+    },
+    "T": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-02",
+      "raw_bars": 4465,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 0,
+      "split_count": 1,
+      "split_dates": [
+        "2022-04-11"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-07",
+        "2009-04-07",
+        "2009-07-08",
+        "2009-10-07",
+        "2010-01-06"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6584173999726772,
+      "warnings": []
+    },
+    "TGT": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-18",
+        "2009-05-18",
+        "2009-08-18",
+        "2009-11-18",
+        "2010-02-17"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.47749980003573,
+      "warnings": []
+    },
+    "TMO": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 59,
+      "dividend_date_examples": [
+        "2012-03-13",
+        "2012-06-13",
+        "2012-09-13",
+        "2012-12-13",
+        "2013-03-13"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.4898673000279814,
+      "warnings": []
+    },
+    "TMUS": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 1,
+      "split_dates": [
+        "2013-05-01"
+      ],
+      "dividend_count": 14,
+      "dividend_date_examples": [
+        "2013-05-01",
+        "2023-11-30",
+        "2024-02-29",
+        "2024-05-31",
+        "2024-08-30"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6152868000790477,
+      "warnings": []
+    },
+    "TSLA": {
+      "status": "partial_history",
+      "error": null,
+      "first_raw_date": "2010-06-29",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4092,
+      "expected_sessions_from_first_raw": 4092,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 2,
+      "split_dates": [
+        "2020-08-31",
+        "2022-08-25"
+      ],
+      "dividend_count": 0,
+      "dividend_date_examples": [],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-06-29",
+      "feature_rows": 4091,
+      "first_model_eligible": "2011-06-28",
+      "model_eligible_percentage": 93.84013688584699,
+      "valid_target_5d": 4086,
+      "valid_target_10d": 4081,
+      "valid_target_20d": 4071,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.7647297999355942,
+      "warnings": [
+        "history_starts_after_requested_period; review IPO/listing or ticker history"
+      ]
+    },
+    "TXN": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 70,
+      "dividend_date_examples": [
+        "2009-01-28",
+        "2009-04-28",
+        "2009-07-29",
+        "2009-10-28",
+        "2010-01-28"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5117506999522448,
+      "warnings": []
+    },
+    "UNH": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 68,
+      "dividend_date_examples": [
+        "2009-03-31",
+        "2010-04-01",
+        "2010-06-03",
+        "2010-09-10",
+        "2010-12-03"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.4757995998952538,
+      "warnings": []
+    },
+    "UNP": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 1,
+      "split_dates": [
+        "2014-06-09"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-25",
+        "2009-05-27",
+        "2009-08-27",
+        "2009-11-25",
+        "2010-02-24"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5956552000716329,
+      "warnings": []
+    },
+    "UPS": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-19",
+        "2009-05-14",
+        "2009-08-20",
+        "2009-11-12",
+        "2010-02-11"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5020134998485446,
+      "warnings": []
+    },
+    "USB": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-27",
+        "2009-06-26",
+        "2009-09-28",
+        "2009-12-29",
+        "2010-03-29"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.4892167001962662,
+      "warnings": []
+    },
+    "V": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 1,
+      "split_dates": [
+        "2015-03-19"
+      ],
+      "dividend_count": 72,
+      "dividend_date_examples": [
+        "2009-02-11",
+        "2009-05-13",
+        "2009-08-12",
+        "2009-11-12",
+        "2010-02-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.6052089999429882,
+      "warnings": []
+    },
+    "VZ": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 72,
+      "dividend_date_examples": [
+        "2009-01-07",
+        "2009-04-07",
+        "2009-07-08",
+        "2009-10-07",
+        "2010-01-06"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.500860100146383,
+      "warnings": []
+    },
+    "WFC": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 73,
+      "dividend_date_examples": [
+        "2009-02-04",
+        "2009-05-06",
+        "2009-08-05",
+        "2009-11-04",
+        "2010-02-03"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.5113117001019418,
+      "warnings": []
+    },
+    "WMT": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 1,
+      "split_dates": [
+        "2024-02-26"
+      ],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-03-11",
+        "2009-05-13",
+        "2009-08-12",
+        "2009-12-09",
+        "2010-03-10"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.669768099905923,
+      "warnings": []
+    },
+    "XOM": {
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [
+        "2026-10-05"
+      ],
+      "raw_bars_not_yet_available": 1,
+      "split_count": 0,
+      "split_dates": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-02-06",
+        "2009-05-11",
+        "2009-08-11",
+        "2009-11-09",
+        "2010-02-08"
+      ],
+      "duplicates": 0,
+      "ohlc_violations": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4213,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 100.0,
+      "valid_target_5d": 4208,
+      "valid_target_10d": 4203,
+      "valid_target_20d": 4193,
+      "ingestion_seconds": 0.0,
+      "build_seconds": 0.48104119999334216,
+      "warnings": []
+    }
+  },
+  "possible_ticker_history_issue": [
+    {
+      "ticker": "ABBV",
+      "first_available_date": "2013-01-02",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 1462
+    },
+    {
+      "ticker": "ANET",
+      "first_available_date": "2014-06-06",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 1982
+    },
+    {
+      "ticker": "AVGO",
+      "first_available_date": "2009-08-06",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 217
+    },
+    {
+      "ticker": "BK",
+      "first_available_date": "2026-06-04",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 6363
+    },
+    {
+      "ticker": "CHTR",
+      "first_available_date": "2010-01-05",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 369
+    },
+    {
+      "ticker": "DELL",
+      "first_available_date": "2018-12-21",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 3641
+    },
+    {
+      "ticker": "DOW",
+      "first_available_date": "2019-03-20",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 3730
+    },
+    {
+      "ticker": "GM",
+      "first_available_date": "2010-11-18",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 686
+    },
+    {
+      "ticker": "GOOG",
+      "first_available_date": "2014-03-27",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 1911
+    },
+    {
+      "ticker": "LIN",
+      "first_available_date": "2018-10-01",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 3560
+    },
+    {
+      "ticker": "META",
+      "first_available_date": "2012-05-18",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 1233
+    },
+    {
+      "ticker": "NOW",
+      "first_available_date": "2012-06-29",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 1275
+    },
+    {
+      "ticker": "PANW",
+      "first_available_date": "2012-07-20",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 1296
+    },
+    {
+      "ticker": "PLTR",
+      "first_available_date": "2020-09-30",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 4290
+    },
+    {
+      "ticker": "PYPL",
+      "first_available_date": "2015-07-20",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 2391
+    },
+    {
+      "ticker": "SNDK",
+      "first_available_date": "2025-02-24",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 5898
+    },
+    {
+      "ticker": "TSLA",
+      "first_available_date": "2010-06-29",
+      "requested_start": "2009-01-01",
+      "calendar_days_after_requested": 544
+    }
+  ],
+  "cross_sectional_coverage": {
+    "dates": 4213,
+    "assets_with_features": {
+      "min": 84,
+      "median": 94.0,
+      "mean": 94.29503916449086,
+      "max": 100
+    },
+    "model_eligible": {
+      "min": 83,
+      "median": 94.0,
+      "mean": 93.3612627581296,
+      "max": 99
+    },
+    "target_return_10d": {
+      "min": 0,
+      "median": 94.0,
+      "mean": 94.05886541656777,
+      "max": 99
+    },
+    "target_rank_10d": {
+      "min": 0,
+      "median": 94.0,
+      "mean": 94.05886541656777,
+      "max": 99
+    }
+  },
+  "ranking_coverage": {
+    "valid_rank_rows": 396270,
+    "rank_min": 0.0,
+    "rank_max": 1.0,
+    "dates_with_valid_ranking": 4203,
+    "percentage_dates_with_valid_ranking": 99.76263944932352,
+    "average_ranked_assets_per_valid_date": 94.28265524625267,
+    "minimum_ranked_assets_per_valid_date": 84,
+    "maximum_ranked_assets_per_valid_date": 99,
+    "dates_without_ranking": [
+      {
+        "decision_date": "2026-09-21",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
+      },
+      {
+        "decision_date": "2026-09-22",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
+      },
+      {
+        "decision_date": "2026-09-23",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
+      },
+      {
+        "decision_date": "2026-09-24",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
+      },
+      {
+        "decision_date": "2026-09-25",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
+      },
+      {
+        "decision_date": "2026-09-28",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
+      },
+      {
+        "decision_date": "2026-09-29",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
+      },
+      {
+        "decision_date": "2026-09-30",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
+      },
+      {
+        "decision_date": "2026-10-01",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
+      },
+      {
+        "decision_date": "2026-10-02",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
+      }
+    ]
+  },
+  "unexpected_nans_eligible": {
+    "percentile_volatility_252d": {
+      "count": 1881,
+      "percentage": 0.478223175900196
+    }
+  },
+  "deliberate_null_fields": [
+    "sector",
+    "industry",
+    "market_cap",
+    "sector_return_5d",
+    "sector_return_20d",
+    "relative_sector_return_20d"
+  ],
+  "outliers_diagnostic_only": {
+    "thresholds_are_diagnostic_only": true,
+    "abs_return_1d_gt_0_30": {
+      "count": 15,
+      "observations": [
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-02",
+          "return_1d": -0.5106870229007634
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-22",
+          "return_1d": 0.5229007633587786
+        },
+        {
+          "ticker": "DELL",
+          "decision_date": "2024-03-01",
+          "return_1d": 0.3161842383266429
+        },
+        {
+          "ticker": "DELL",
+          "decision_date": "2026-05-29",
+          "return_1d": 0.3275824002523262
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-03",
+          "return_1d": -0.4965201303849881
+        },
+        {
+          "ticker": "MDLZ",
+          "decision_date": "2012-10-02",
+          "return_1d": -0.3412982126058326
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2011-10-25",
+          "return_1d": -0.3489565802760013
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-24",
+          "return_1d": 0.42223513461165996
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2022-04-20",
+          "return_1d": -0.3511660594934167
+        },
+        {
+          "ticker": "ORCL",
+          "decision_date": "2025-09-10",
+          "return_1d": 0.35948821994948443
+        },
+        {
+          "ticker": "PLTR",
+          "decision_date": "2024-02-06",
+          "return_1d": 0.30801435406698574
+        },
+        {
+          "ticker": "RTX",
+          "decision_date": "2020-04-03",
+          "return_1d": -0.41948610626671323
+        },
+        {
+          "ticker": "TMUS",
+          "decision_date": "2011-08-02",
+          "return_1d": -0.3658838071693449
+        },
+        {
+          "ticker": "TMUS",
+          "decision_date": "2012-07-26",
+          "return_1d": 0.36783439490445846
+        },
+        {
+          "ticker": "TMUS",
+          "decision_date": "2013-05-01",
+          "return_1d": -0.3023648648648649
+        }
+      ],
+      "observations_truncated": false
+    },
+    "abs_return_5d_gt_0_60": {
+      "count": 8,
+      "observations": [
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-26",
+          "return_5d": 0.8478149626445606
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-27",
+          "return_5d": 0.7050836754025891
+        },
+        {
+          "ticker": "DELL",
+          "decision_date": "2026-05-29",
+          "return_5d": 0.6649920886075951
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-25",
+          "return_5d": 0.7355168884339816
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-28",
+          "return_5d": 0.6346677422607645
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-29",
+          "return_5d": 0.7290665576116961
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-30",
+          "return_5d": 0.6240557815223706
+        },
+        {
+          "ticker": "PLTR",
+          "decision_date": "2020-11-25",
+          "return_5d": 0.6229050279329611
+        }
+      ],
+      "observations_truncated": false
+    },
+    "volatility_20d_gt_1_50": {
+      "count": 276,
+      "observations": [
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-02",
+          "volatility_20d": 1.8209764659788459
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-03",
+          "volatility_20d": 1.8324990793809697
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-04",
+          "volatility_20d": 1.8312240990124173
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-07",
+          "volatility_20d": 1.8327188512566368
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-08",
+          "volatility_20d": 1.8295196825925515
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-09",
+          "volatility_20d": 1.8312700842681269
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-10",
+          "volatility_20d": 1.8301661231543092
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-11",
+          "volatility_20d": 1.8288663232368934
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-14",
+          "volatility_20d": 1.8302064121798884
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-15",
+          "volatility_20d": 1.8287602314847056
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-16",
+          "volatility_20d": 1.8277916475921228
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-17",
+          "volatility_20d": 1.8258050891407243
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-18",
+          "volatility_20d": 1.8268934208415026
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-22",
+          "volatility_20d": 1.8272370120470436
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-23",
+          "volatility_20d": 1.825212111080051
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-24",
+          "volatility_20d": 1.8264412461587474
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-25",
+          "volatility_20d": 1.8273434822493706
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-28",
+          "volatility_20d": 1.8286261476929448
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-29",
+          "volatility_20d": 1.831954434999317
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-30",
+          "volatility_20d": 1.827603234786946
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5766813664971693
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.6635764418998353
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-03-26",
+          "volatility_20d": 1.6940333593647041
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-03-27",
+          "volatility_20d": 1.7052248324814858
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-03-30",
+          "volatility_20d": 1.7031347549369307
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-03-31",
+          "volatility_20d": 1.7078155876875694
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-04-01",
+          "volatility_20d": 1.7260214314892683
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-04-02",
+          "volatility_20d": 1.7252382382886642
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-04-03",
+          "volatility_20d": 1.7184036754238938
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-04-06",
+          "volatility_20d": 1.6887821238268215
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-04-07",
+          "volatility_20d": 1.6972163486525862
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-04-08",
+          "volatility_20d": 1.691034780047339
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-04-09",
+          "volatility_20d": 1.5579135689670371
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-04-13",
+          "volatility_20d": 1.5138688585686675
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-22",
+          "volatility_20d": 1.910205702981838
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-25",
+          "volatility_20d": 1.9903872441060244
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-26",
+          "volatility_20d": 1.9962143784850843
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-27",
+          "volatility_20d": 1.995038266593739
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-28",
+          "volatility_20d": 2.0019673605537465
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-29",
+          "volatility_20d": 2.0038393855642602
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-02",
+          "volatility_20d": 2.0066865384615435
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-03",
+          "volatility_20d": 2.010947450765744
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-04",
+          "volatility_20d": 2.012076216366022
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-05",
+          "volatility_20d": 1.9921367108891697
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-06",
+          "volatility_20d": 1.992116140107783
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-09",
+          "volatility_20d": 1.9942553795027047
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-10",
+          "volatility_20d": 1.9958891870537323
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-11",
+          "volatility_20d": 1.995071292244814
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-12",
+          "volatility_20d": 1.9916746939382235
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-13",
+          "volatility_20d": 1.9890781065933685
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-16",
+          "volatility_20d": 1.9894862363003378
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-17",
+          "volatility_20d": 1.9730142729869793
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-18",
+          "volatility_20d": 1.9732610933040438
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-19",
+          "volatility_20d": 1.9695978293619698
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.534320553006948
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5643807767075164
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-03-26",
+          "volatility_20d": 1.5646074259686553
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-03-27",
+          "volatility_20d": 1.5708607084354222
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-03-30",
+          "volatility_20d": 1.5656714377765077
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-03-31",
+          "volatility_20d": 1.5657319953203905
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-04-01",
+          "volatility_20d": 1.5639021452585264
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-04-02",
+          "volatility_20d": 1.560894623567512
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-04-03",
+          "volatility_20d": 1.5632588150035753
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-04-06",
+          "volatility_20d": 1.6261384185456198
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-04-07",
+          "volatility_20d": 1.6233425298936945
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-04-08",
+          "volatility_20d": 1.6102767870126664
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-04-09",
+          "volatility_20d": 1.5401455103621564
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.754576852911449
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 2.013769900076739
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-26",
+          "volatility_20d": 2.0886815349400756
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-27",
+          "volatility_20d": 2.109913123849711
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-30",
+          "volatility_20d": 2.0985504316875017
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-31",
+          "volatility_20d": 2.098417266213185
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-01",
+          "volatility_20d": 2.124472885173754
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-02",
+          "volatility_20d": 2.118623769373123
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-03",
+          "volatility_20d": 2.11922852033426
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-06",
+          "volatility_20d": 2.220161815695777
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-07",
+          "volatility_20d": 2.2211124158427373
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-08",
+          "volatility_20d": 2.137677556593186
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-09",
+          "volatility_20d": 2.0351572103476463
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-13",
+          "volatility_20d": 2.0087892800518725
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-14",
+          "volatility_20d": 1.8105968926241962
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-15",
+          "volatility_20d": 1.8017749836843595
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-16",
+          "volatility_20d": 1.6920257090478663
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-17",
+          "volatility_20d": 1.7349299599659942
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-20",
+          "volatility_20d": 1.7575907883500337
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-21",
+          "volatility_20d": 1.7475198424886085
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-04-22",
+          "volatility_20d": 1.5970771692386412
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.559721458881394
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5703257967702902
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-03-26",
+          "volatility_20d": 1.618866532069722
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-03-27",
+          "volatility_20d": 1.62405489367712
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-03-30",
+          "volatility_20d": 1.5996512134678083
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-03-31",
+          "volatility_20d": 1.6010540562861169
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-04-01",
+          "volatility_20d": 1.6063034623496821
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-04-02",
+          "volatility_20d": 1.60705642243988
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-04-03",
+          "volatility_20d": 1.6086687894318237
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-04-06",
+          "volatility_20d": 1.5664041712367556
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-04-07",
+          "volatility_20d": 1.5320401985897287
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-04-08",
+          "volatility_20d": 1.5317227985282593
+        }
+      ],
+      "observations_truncated": true
+    },
+    "volume_ratio_20d_gt_10": {
+      "count": 12,
+      "observations": [
+        {
+          "ticker": "AIG",
+          "decision_date": "2011-05-25",
+          "volume_ratio_20d": 13.606954989770745
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2012-09-11",
+          "volume_ratio_20d": 10.277050795035692
+        },
+        {
+          "ticker": "AVGO",
+          "decision_date": "2010-01-28",
+          "volume_ratio_20d": 11.846510598897092
+        },
+        {
+          "ticker": "AVGO",
+          "decision_date": "2014-05-07",
+          "volume_ratio_20d": 10.533806491034289
+        },
+        {
+          "ticker": "BLK",
+          "decision_date": "2010-11-09",
+          "volume_ratio_20d": 10.16168694100494
+        },
+        {
+          "ticker": "BLK",
+          "decision_date": "2012-05-23",
+          "volume_ratio_20d": 11.331225973498753
+        },
+        {
+          "ticker": "CHTR",
+          "decision_date": "2010-07-29",
+          "volume_ratio_20d": 12.266706355112367
+        },
+        {
+          "ticker": "FDX",
+          "decision_date": "2022-09-16",
+          "volume_ratio_20d": 10.112467400349118
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2022-04-20",
+          "volume_ratio_20d": 11.410725670021137
+        },
+        {
+          "ticker": "PLD",
+          "decision_date": "2011-06-02",
+          "volume_ratio_20d": 11.249677097451105
+        },
+        {
+          "ticker": "TMUS",
+          "decision_date": "2011-08-02",
+          "volume_ratio_20d": 10.077038848107762
+        },
+        {
+          "ticker": "VZ",
+          "decision_date": "2014-02-24",
+          "volume_ratio_20d": 11.233883370260658
+        }
+      ],
+      "observations_truncated": false
+    },
+    "atr_pct_gt_0_25": {
+      "count": 4,
+      "observations": [
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-18",
+          "atr_pct": 0.26314793264444847
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-19",
+          "atr_pct": 0.27079404067429863
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-20",
+          "atr_pct": 0.27495601966710276
+        },
+        {
+          "ticker": "RTX",
+          "decision_date": "2020-04-03",
+          "atr_pct": 0.2551572201081515
+        }
+      ],
+      "observations_truncated": false
+    }
+  },
+  "extremes_top_25": {
+    "largest_return_1d": [
+      {
+        "ticker": "AMD",
+        "decision_date": "2016-04-22",
+        "return_1d": 0.5229007633587786
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2013-01-24",
+        "return_1d": 0.42223513461165996
+      },
+      {
+        "ticker": "TMUS",
+        "decision_date": "2012-07-26",
+        "return_1d": 0.36783439490445846
+      },
+      {
+        "ticker": "ORCL",
+        "decision_date": "2025-09-10",
+        "return_1d": 0.35948821994948443
+      },
+      {
+        "ticker": "DELL",
+        "decision_date": "2026-05-29",
+        "return_1d": 0.3275824002523262
+      },
+      {
+        "ticker": "DELL",
+        "decision_date": "2024-03-01",
+        "return_1d": 0.3161842383266429
+      },
+      {
+        "ticker": "PLTR",
+        "decision_date": "2024-02-06",
+        "return_1d": 0.30801435406698574
+      },
+      {
+        "ticker": "NVDA",
+        "decision_date": "2016-11-11",
+        "return_1d": 0.298066991294083
+      },
+      {
+        "ticker": "META",
+        "decision_date": "2013-07-25",
+        "return_1d": 0.29607695209354956
+      },
+      {
+        "ticker": "PLTR",
+        "decision_date": "2026-08-04",
+        "return_1d": 0.2945483485873457
+      },
+      {
+        "ticker": "SNDK",
+        "decision_date": "2026-01-06",
+        "return_1d": 0.27564944541739633
+      },
+      {
+        "ticker": "CRM",
+        "decision_date": "2020-08-26",
+        "return_1d": 0.2604489701457995
+      },
+      {
+        "ticker": "SNDK",
+        "decision_date": "2026-07-30",
+        "return_1d": 0.25993956038547483
+      },
+      {
+        "ticker": "PLTR",
+        "decision_date": "2021-01-22",
+        "return_1d": 0.25404157043879905
+      },
+      {
+        "ticker": "COP",
+        "decision_date": "2020-03-24",
+        "return_1d": 0.2521384928716903
+      },
+      {
+        "ticker": "SBUX",
+        "decision_date": "2024-08-13",
+        "return_1d": 0.24496949240555632
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2013-04-23",
+        "return_1d": 0.2444227791477891
+      },
+      {
+        "ticker": "AVGO",
+        "decision_date": "2024-12-13",
+        "return_1d": 0.24432635890623278
+      },
+      {
+        "ticker": "TSLA",
+        "decision_date": "2013-05-09",
+        "return_1d": 0.24402857322112004
+      },
+      {
+        "ticker": "NVDA",
+        "decision_date": "2023-05-25",
+        "return_1d": 0.24369637828279522
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-25",
+        "return_1d": 0.2431860902255638
+      },
+      {
+        "ticker": "PLTR",
+        "decision_date": "2025-02-04",
+        "return_1d": 0.23990924289467408
+      },
+      {
+        "ticker": "AMD",
+        "decision_date": "2025-04-09",
+        "return_1d": 0.23820483314154206
+      },
+      {
+        "ticker": "AMD",
+        "decision_date": "2025-10-06",
+        "return_1d": 0.23708022104815707
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2010-01-28",
+        "return_1d": 0.23680596429272116
+      }
+    ],
+    "smallest_return_1d": [
+      {
+        "ticker": "ABT",
+        "decision_date": "2013-01-02",
+        "return_1d": -0.5106870229007634
+      },
+      {
+        "ticker": "GOOGL",
+        "decision_date": "2014-04-03",
+        "return_1d": -0.4965201303849881
+      },
+      {
+        "ticker": "RTX",
+        "decision_date": "2020-04-03",
+        "return_1d": -0.41948610626671323
+      },
+      {
+        "ticker": "TMUS",
+        "decision_date": "2011-08-02",
+        "return_1d": -0.3658838071693449
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2022-04-20",
+        "return_1d": -0.3511660594934167
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2011-10-25",
+        "return_1d": -0.3489565802760013
+      },
+      {
+        "ticker": "MDLZ",
+        "decision_date": "2012-10-02",
+        "return_1d": -0.3412982126058326
+      },
+      {
+        "ticker": "TMUS",
+        "decision_date": "2013-05-01",
+        "return_1d": -0.3023648648648649
+      },
+      {
+        "ticker": "PANW",
+        "decision_date": "2024-02-21",
+        "return_1d": -0.28441093720123456
+      },
+      {
+        "ticker": "META",
+        "decision_date": "2022-02-03",
+        "return_1d": -0.26390092879256966
+      },
+      {
+        "ticker": "INTC",
+        "decision_date": "2024-08-02",
+        "return_1d": -0.26058519793459556
+      },
+      {
+        "ticker": "CHTR",
+        "decision_date": "2026-04-24",
+        "return_1d": -0.25498386963355113
+      },
+      {
+        "ticker": "IBM",
+        "decision_date": "2026-07-14",
+        "return_1d": -0.2520759397719051
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2012-07-25",
+        "return_1d": -0.250155491976614
+      },
+      {
+        "ticker": "TGT",
+        "decision_date": "2022-05-18",
+        "return_1d": -0.24930323299888513
+      },
+      {
+        "ticker": "COP",
+        "decision_date": "2020-03-09",
+        "return_1d": -0.24840061769247734
+      },
+      {
+        "ticker": "LOW",
+        "decision_date": "2020-03-16",
+        "return_1d": -0.24769406156078344
+      },
+      {
+        "ticker": "PYPL",
+        "decision_date": "2022-02-02",
+        "return_1d": -0.24590443686006835
+      },
+      {
+        "ticker": "META",
+        "decision_date": "2022-10-27",
+        "return_1d": -0.24557079032506546
+      },
+      {
+        "ticker": "ANET",
+        "decision_date": "2019-11-01",
+        "return_1d": -0.24234370527865223
+      },
+      {
+        "ticker": "AMD",
+        "decision_date": "2017-05-02",
+        "return_1d": -0.2422907488986783
+      },
+      {
+        "ticker": "PANW",
+        "decision_date": "2017-03-01",
+        "return_1d": -0.241540487162607
+      },
+      {
+        "ticker": "COF",
+        "decision_date": "2020-03-16",
+        "return_1d": -0.23874244920373422
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-16",
+        "return_1d": -0.23848413631022314
+      },
+      {
+        "ticker": "UNH",
+        "decision_date": "2025-04-17",
+        "return_1d": -0.22379666347600158
+      }
+    ],
+    "largest_return_10d": [
+      {
+        "ticker": "DELL",
+        "decision_date": "2026-06-01",
+        "return_10d": 0.9255341129798751
+      },
+      {
+        "ticker": "PLTR",
+        "decision_date": "2020-11-27",
+        "return_10d": 0.8971193415637859
+      },
+      {
+        "ticker": "DELL",
+        "decision_date": "2026-06-02",
+        "return_10d": 0.8288030920472209
+      },
+      {
+        "ticker": "PLTR",
+        "decision_date": "2020-11-25",
+        "return_10d": 0.8201754385964912
+      },
+      {
+        "ticker": "SNDK",
+        "decision_date": "2025-09-16",
+        "return_10d": 0.792637556295281
+      },
+      {
+        "ticker": "DELL",
+        "decision_date": "2026-06-03",
+        "return_10d": 0.7898495281815863
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2013-02-06",
+        "return_10d": 0.7858803021499128
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2013-02-05",
+        "return_10d": 0.7829158572743073
+      },
+      {
+        "ticker": "SNDK",
+        "decision_date": "2025-09-17",
+        "return_10d": 0.7726843991699679
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2013-02-04",
+        "return_10d": 0.7620248058888777
+      },
+      {
+        "ticker": "SNDK",
+        "decision_date": "2025-09-11",
+        "return_10d": 0.7402972749793559
+      },
+      {
+        "ticker": "DELL",
+        "decision_date": "2026-06-04",
+        "return_10d": 0.7373317416539744
+      },
+      {
+        "ticker": "INTC",
+        "decision_date": "2026-05-06",
+        "return_10d": 0.7314233185230583
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2013-01-25",
+        "return_10d": 0.7302040816326532
+      },
+      {
+        "ticker": "SNDK",
+        "decision_date": "2026-01-15",
+        "return_10d": 0.7239868565169771
+      },
+      {
+        "ticker": "SNDK",
+        "decision_date": "2025-09-15",
+        "return_10d": 0.7169811320754718
+      },
+      {
+        "ticker": "PLTR",
+        "decision_date": "2020-11-30",
+        "return_10d": 0.7158227848101264
+      },
+      {
+        "ticker": "TSLA",
+        "decision_date": "2013-05-16",
+        "return_10d": 0.7048235076695621
+      },
+      {
+        "ticker": "PLTR",
+        "decision_date": "2020-11-24",
+        "return_10d": 0.7014285714285715
+      },
+      {
+        "ticker": "PLTR",
+        "decision_date": "2020-11-17",
+        "return_10d": 0.7000000000000002
+      },
+      {
+        "ticker": "DELL",
+        "decision_date": "2026-05-29",
+        "return_10d": 0.697970874178063
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2013-01-31",
+        "return_10d": 0.6951169470660647
+      },
+      {
+        "ticker": "SNDK",
+        "decision_date": "2025-09-12",
+        "return_10d": 0.6931393748771377
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2013-02-01",
+        "return_10d": 0.6867963152507677
+      },
+      {
+        "ticker": "TSLA",
+        "decision_date": "2013-05-17",
+        "return_10d": 0.6773602199816682
+      }
+    ],
+    "largest_volatility_20d": [
+      {
+        "ticker": "BA",
+        "decision_date": "2020-04-07",
+        "volatility_20d": 2.2211124158427373
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-04-06",
+        "volatility_20d": 2.220161815695777
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-04-08",
+        "volatility_20d": 2.137677556593186
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-04-01",
+        "volatility_20d": 2.124472885173754
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-04-03",
+        "volatility_20d": 2.11922852033426
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-04-02",
+        "volatility_20d": 2.118623769373123
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-27",
+        "volatility_20d": 2.109913123849711
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-30",
+        "volatility_20d": 2.0985504316875017
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-31",
+        "volatility_20d": 2.098417266213185
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-26",
+        "volatility_20d": 2.0886815349400756
+      },
+      {
+        "ticker": "RTX",
+        "decision_date": "2020-04-09",
+        "volatility_20d": 2.0361381060504704
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-04-09",
+        "volatility_20d": 2.0351572103476463
+      },
+      {
+        "ticker": "RTX",
+        "decision_date": "2020-04-13",
+        "volatility_20d": 2.032809507483142
+      },
+      {
+        "ticker": "RTX",
+        "decision_date": "2020-04-08",
+        "volatility_20d": 2.031607196039313
+      },
+      {
+        "ticker": "RTX",
+        "decision_date": "2020-04-06",
+        "volatility_20d": 2.023637534625857
+      },
+      {
+        "ticker": "RTX",
+        "decision_date": "2020-04-07",
+        "volatility_20d": 2.0144282459459717
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-25",
+        "volatility_20d": 2.013769900076739
+      },
+      {
+        "ticker": "AMD",
+        "decision_date": "2016-05-04",
+        "volatility_20d": 2.012076216366022
+      },
+      {
+        "ticker": "AMD",
+        "decision_date": "2016-05-03",
+        "volatility_20d": 2.010947450765744
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-04-13",
+        "volatility_20d": 2.0087892800518725
+      },
+      {
+        "ticker": "AMD",
+        "decision_date": "2016-05-02",
+        "volatility_20d": 2.0066865384615435
+      },
+      {
+        "ticker": "AMD",
+        "decision_date": "2016-04-29",
+        "volatility_20d": 2.0038393855642602
+      },
+      {
+        "ticker": "AMD",
+        "decision_date": "2016-04-28",
+        "volatility_20d": 2.0019673605537465
+      },
+      {
+        "ticker": "AMD",
+        "decision_date": "2016-04-26",
+        "volatility_20d": 1.9962143784850843
+      },
+      {
+        "ticker": "AMD",
+        "decision_date": "2016-05-10",
+        "volatility_20d": 1.9958891870537323
+      }
+    ],
+    "largest_volume_ratio_20d": [
+      {
+        "ticker": "AIG",
+        "decision_date": "2011-05-25",
+        "volume_ratio_20d": 13.606954989770745
+      },
+      {
+        "ticker": "CHTR",
+        "decision_date": "2010-07-29",
+        "volume_ratio_20d": 12.266706355112367
+      },
+      {
+        "ticker": "AVGO",
+        "decision_date": "2010-01-28",
+        "volume_ratio_20d": 11.846510598897092
+      },
+      {
+        "ticker": "NFLX",
+        "decision_date": "2022-04-20",
+        "volume_ratio_20d": 11.410725670021137
+      },
+      {
+        "ticker": "BLK",
+        "decision_date": "2012-05-23",
+        "volume_ratio_20d": 11.331225973498753
+      },
+      {
+        "ticker": "PLD",
+        "decision_date": "2011-06-02",
+        "volume_ratio_20d": 11.249677097451105
+      },
+      {
+        "ticker": "VZ",
+        "decision_date": "2014-02-24",
+        "volume_ratio_20d": 11.233883370260658
+      },
+      {
+        "ticker": "AVGO",
+        "decision_date": "2014-05-07",
+        "volume_ratio_20d": 10.533806491034289
+      },
+      {
+        "ticker": "AIG",
+        "decision_date": "2012-09-11",
+        "volume_ratio_20d": 10.277050795035692
+      },
+      {
+        "ticker": "BLK",
+        "decision_date": "2010-11-09",
+        "volume_ratio_20d": 10.16168694100494
+      },
+      {
+        "ticker": "FDX",
+        "decision_date": "2022-09-16",
+        "volume_ratio_20d": 10.112467400349118
+      },
+      {
+        "ticker": "TMUS",
+        "decision_date": "2011-08-02",
+        "volume_ratio_20d": 10.077038848107762
+      },
+      {
+        "ticker": "BLK",
+        "decision_date": "2011-04-01",
+        "volume_ratio_20d": 9.926903342890014
+      },
+      {
+        "ticker": "CHTR",
+        "decision_date": "2016-09-07",
+        "volume_ratio_20d": 9.917221024223224
+      },
+      {
+        "ticker": "ANET",
+        "decision_date": "2019-11-01",
+        "volume_ratio_20d": 9.872624451313024
+      },
+      {
+        "ticker": "TMUS",
+        "decision_date": "2013-11-15",
+        "volume_ratio_20d": 9.864304083610833
+      },
+      {
+        "ticker": "ABBV",
+        "decision_date": "2019-06-25",
+        "volume_ratio_20d": 9.772747441432156
+      },
+      {
+        "ticker": "BMY",
+        "decision_date": "2016-08-05",
+        "volume_ratio_20d": 9.736351857943605
+      },
+      {
+        "ticker": "WMT",
+        "decision_date": "2026-01-16",
+        "volume_ratio_20d": 9.726346874037366
+      },
+      {
+        "ticker": "MET",
+        "decision_date": "2011-03-03",
+        "volume_ratio_20d": 9.650205327396133
+      },
+      {
+        "ticker": "CHTR",
+        "decision_date": "2010-10-15",
+        "volume_ratio_20d": 9.616659517217174
+      },
+      {
+        "ticker": "MDT",
+        "decision_date": "2014-06-16",
+        "volume_ratio_20d": 9.54914384611119
+      },
+      {
+        "ticker": "TGT",
+        "decision_date": "2024-11-20",
+        "volume_ratio_20d": 9.037011810964845
+      },
+      {
+        "ticker": "TMUS",
+        "decision_date": "2019-07-12",
+        "volume_ratio_20d": 8.910005146936912
+      },
+      {
+        "ticker": "FDX",
+        "decision_date": "2024-09-20",
+        "volume_ratio_20d": 8.820257856051805
+      }
+    ],
+    "largest_atr_pct": [
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-20",
+        "atr_pct": 0.27495601966710276
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-19",
+        "atr_pct": 0.27079404067429863
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-18",
+        "atr_pct": 0.26314793264444847
+      },
+      {
+        "ticker": "RTX",
+        "decision_date": "2020-04-03",
+        "atr_pct": 0.2551572201081515
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-23",
+        "atr_pct": 0.24839721914139642
+      },
+      {
+        "ticker": "RTX",
+        "decision_date": "2020-04-06",
+        "atr_pct": 0.21926188821602305
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-24",
+        "atr_pct": 0.21299901539563193
+      },
+      {
+        "ticker": "AIG",
+        "decision_date": "2020-03-20",
+        "atr_pct": 0.21071985736572318
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-17",
+        "atr_pct": 0.20801974728992612
+      },
+      {
+        "ticker": "AIG",
+        "decision_date": "2020-03-23",
+        "atr_pct": 0.20732790525536635
+      },
+      {
+        "ticker": "AIG",
+        "decision_date": "2020-03-18",
+        "atr_pct": 0.20660276890308835
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-04-02",
+        "atr_pct": 0.20171168978664722
+      },
+      {
+        "ticker": "TSLA",
+        "decision_date": "2020-03-18",
+        "atr_pct": 0.20004824918727804
+      },
+      {
+        "ticker": "RTX",
+        "decision_date": "2020-04-07",
+        "atr_pct": 0.19803620894341115
+      },
+      {
+        "ticker": "AIG",
+        "decision_date": "2020-03-19",
+        "atr_pct": 0.19445214979195558
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-04-01",
+        "atr_pct": 0.19395015848726638
+      },
+      {
+        "ticker": "COP",
+        "decision_date": "2020-03-18",
+        "atr_pct": 0.19122187913542124
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-30",
+        "atr_pct": 0.1891065330781643
+      },
+      {
+        "ticker": "COF",
+        "decision_date": "2020-03-23",
+        "atr_pct": 0.18751041354260384
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-16",
+        "atr_pct": 0.18681318681318676
+      },
+      {
+        "ticker": "COF",
+        "decision_date": "2020-03-20",
+        "atr_pct": 0.1853556352556574
+      },
+      {
+        "ticker": "SNDK",
+        "decision_date": "2026-07-29",
+        "atr_pct": 0.18362111758444036
+      },
+      {
+        "ticker": "AIG",
+        "decision_date": "2020-03-24",
+        "atr_pct": 0.18297925362905737
+      },
+      {
+        "ticker": "COF",
+        "decision_date": "2020-03-18",
+        "atr_pct": 0.18248951950983547
+      },
+      {
+        "ticker": "BA",
+        "decision_date": "2020-03-25",
+        "atr_pct": 0.18196218196218197
+      }
+    ]
+  },
+  "split_validation": {
+    "events": [
+      {
+        "ticker": "AAPL",
+        "split_date": "2014-06-09",
+        "split_factor": 7.000007,
+        "adjusted_return_1d_on_split": 0.016002379137816103,
+        "maximum_absolute_return_1d_in_window": 0.01672704027274652,
+        "validation_passed": true
+      },
+      {
+        "ticker": "AAPL",
+        "split_date": "2020-08-31",
+        "split_factor": 4.0,
+        "adjusted_return_1d_on_split": 0.03391222482623224,
+        "maximum_absolute_return_1d_in_window": 0.08006088280060886,
+        "validation_passed": true
+      },
+      {
+        "ticker": "AIG",
+        "split_date": "2009-07-01",
+        "split_factor": 0.05,
+        "adjusted_return_1d_on_split": -0.22068965517241368,
+        "maximum_absolute_return_1d_in_window": 0.22068965517241368,
+        "validation_passed": true
+      },
+      {
+        "ticker": "AMZN",
+        "split_date": "2022-06-06",
+        "split_factor": 20.0,
+        "adjusted_return_1d_on_split": 0.019942787086228098,
+        "maximum_absolute_return_1d_in_window": 0.041508499752434425,
+        "validation_passed": true
+      },
+      {
+        "ticker": "ANET",
+        "split_date": "2021-11-18",
+        "split_factor": 4.0,
+        "adjusted_return_1d_on_split": 0.003558449424591048,
+        "maximum_absolute_return_1d_in_window": 0.02708411920030185,
+        "validation_passed": true
+      },
+      {
+        "ticker": "ANET",
+        "split_date": "2024-12-04",
+        "split_factor": 4.0,
+        "adjusted_return_1d_on_split": 0.01751676880760522,
+        "maximum_absolute_return_1d_in_window": 0.021524249422632757,
+        "validation_passed": true
+      },
+      {
+        "ticker": "AVGO",
+        "split_date": "2024-07-15",
+        "split_factor": 10.0,
+        "adjusted_return_1d_on_split": 0.007955688052355692,
+        "maximum_absolute_return_1d_in_window": 0.07908487084870852,
+        "validation_passed": true
+      },
+      {
+        "ticker": "BKNG",
+        "split_date": "2026-04-06",
+        "split_factor": 25.0,
+        "adjusted_return_1d_on_split": 0.05017273401346101,
+        "maximum_absolute_return_1d_in_window": 0.05017273401346101,
+        "validation_passed": true
+      },
+      {
+        "ticker": "C",
+        "split_date": "2011-05-09",
+        "split_factor": 0.1,
+        "adjusted_return_1d_on_split": -0.023008849557522137,
+        "maximum_absolute_return_1d_in_window": 0.028959276018099556,
+        "validation_passed": true
+      },
+      {
+        "ticker": "CMCSA",
+        "split_date": "2017-02-21",
+        "split_factor": 2.0,
+        "adjusted_return_1d_on_split": 0.006107275624004371,
+        "maximum_absolute_return_1d_in_window": 0.00881694959863144,
+        "validation_passed": true
+      },
+      {
+        "ticker": "CRM",
+        "split_date": "2013-04-18",
+        "split_factor": 4.0,
+        "adjusted_return_1d_on_split": -0.0193008664475649,
+        "maximum_absolute_return_1d_in_window": 0.03154134883157744,
+        "validation_passed": true
+      },
+      {
+        "ticker": "DELL",
+        "split_date": "2021-11-02",
+        "split_factor": 1.973,
+        "adjusted_return_1d_on_split": -0.03375903506411981,
+        "maximum_absolute_return_1d_in_window": 0.03375903506411981,
+        "validation_passed": true
+      },
+      {
+        "ticker": "DHR",
+        "split_date": "2010-06-14",
+        "split_factor": 2.0,
+        "adjusted_return_1d_on_split": 0.008262361764331816,
+        "maximum_absolute_return_1d_in_window": 0.03202520015750099,
+        "validation_passed": true
+      },
+      {
+        "ticker": "DUK",
+        "split_date": "2012-07-03",
+        "split_factor": 0.3333333333,
+        "adjusted_return_1d_on_split": -0.016466208574871355,
+        "maximum_absolute_return_1d_in_window": 0.03412571095231132,
+        "validation_passed": true
+      },
+      {
+        "ticker": "FDX",
+        "split_date": "2026-06-01",
+        "split_factor": 1.241,
+        "adjusted_return_1d_on_split": 0.020196939890710475,
+        "maximum_absolute_return_1d_in_window": 0.029449999999999754,
+        "validation_passed": true
+      },
+      {
+        "ticker": "GILD",
+        "split_date": "2013-01-28",
+        "split_factor": 2.0,
+        "adjusted_return_1d_on_split": -0.006048387096774244,
+        "maximum_absolute_return_1d_in_window": 0.020301926080166677,
+        "validation_passed": true
+      },
+      {
+        "ticker": "GOOG",
+        "split_date": "2022-07-18",
+        "split_factor": 20.0,
+        "adjusted_return_1d_on_split": -0.0253354261441735,
+        "maximum_absolute_return_1d_in_window": 0.0428532435629152,
+        "validation_passed": true
+      },
+      {
+        "ticker": "GOOGL",
+        "split_date": "2022-07-18",
+        "split_factor": 20.0,
+        "adjusted_return_1d_on_split": -0.024580080964415885,
+        "maximum_absolute_return_1d_in_window": 0.04384114463909028,
+        "validation_passed": true
+      },
+      {
+        "ticker": "IBM",
+        "split_date": "2021-11-04",
+        "split_factor": 1.046,
+        "adjusted_return_1d_on_split": -0.00567057342877364,
+        "maximum_absolute_return_1d_in_window": 0.029629034848241642,
+        "validation_passed": true
+      },
+      {
+        "ticker": "KO",
+        "split_date": "2012-08-13",
+        "split_factor": 2.0,
+        "adjusted_return_1d_on_split": -0.0024114735372510188,
+        "maximum_absolute_return_1d_in_window": 0.00567895002523966,
+        "validation_passed": true
+      },
+      {
+        "ticker": "MA",
+        "split_date": "2014-01-22",
+        "split_factor": 10.0,
+        "adjusted_return_1d_on_split": 0.01774020134884169,
+        "maximum_absolute_return_1d_in_window": 0.0467459932005827,
+        "validation_passed": true
+      },
+      {
+        "ticker": "MRK",
+        "split_date": "2021-06-03",
+        "split_factor": 1.048,
+        "adjusted_return_1d_on_split": 0.020926321339132636,
+        "maximum_absolute_return_1d_in_window": 0.020926321339132636,
+        "validation_passed": true
+      },
+      {
+        "ticker": "NEE",
+        "split_date": "2020-10-27",
+        "split_factor": 4.0,
+        "adjusted_return_1d_on_split": 0.001552948950933608,
+        "maximum_absolute_return_1d_in_window": 0.017418844022169533,
+        "validation_passed": true
+      },
+      {
+        "ticker": "NFLX",
+        "split_date": "2015-07-15",
+        "split_factor": 7.000007,
+        "adjusted_return_1d_on_split": -0.022330363065755865,
+        "maximum_absolute_return_1d_in_window": 0.18016916335473354,
+        "validation_passed": true
+      },
+      {
+        "ticker": "NFLX",
+        "split_date": "2025-11-17",
+        "split_factor": 10.0,
+        "adjusted_return_1d_on_split": -0.008335056690973563,
+        "maximum_absolute_return_1d_in_window": 0.03936363636363638,
+        "validation_passed": true
+      },
+      {
+        "ticker": "NOW",
+        "split_date": "2025-12-18",
+        "split_factor": 5.0,
+        "adjusted_return_1d_on_split": -0.019798310305602196,
+        "maximum_absolute_return_1d_in_window": 0.11543707950893567,
+        "validation_passed": true
+      },
+      {
+        "ticker": "NVDA",
+        "split_date": "2021-07-20",
+        "split_factor": 4.0,
+        "adjusted_return_1d_on_split": -0.008932493776541262,
+        "maximum_absolute_return_1d_in_window": 0.044112088299775754,
+        "validation_passed": true
+      },
+      {
+        "ticker": "NVDA",
+        "split_date": "2024-06-10",
+        "split_factor": 10.0,
+        "adjusted_return_1d_on_split": 0.007461451922440521,
+        "maximum_absolute_return_1d_in_window": 0.05155577694375535,
+        "validation_passed": true
+      },
+      {
+        "ticker": "PANW",
+        "split_date": "2022-09-14",
+        "split_factor": 3.0,
+        "adjusted_return_1d_on_split": -0.004919108001748995,
+        "maximum_absolute_return_1d_in_window": 0.03379805661174484,
+        "validation_passed": true
+      },
+      {
+        "ticker": "PANW",
+        "split_date": "2024-12-16",
+        "split_factor": 2.0,
+        "adjusted_return_1d_on_split": 0.030219780219780112,
+        "maximum_absolute_return_1d_in_window": 0.0620155038759691,
+        "validation_passed": true
+      },
+      {
+        "ticker": "PFE",
+        "split_date": "2020-11-17",
+        "split_factor": 1.054,
+        "adjusted_return_1d_on_split": 0.0175772836860435,
+        "maximum_absolute_return_1d_in_window": 0.03340238218539626,
+        "validation_passed": true
+      },
+      {
+        "ticker": "SBUX",
+        "split_date": "2015-04-09",
+        "split_factor": 2.0,
+        "adjusted_return_1d_on_split": 0.007245615877349509,
+        "maximum_absolute_return_1d_in_window": 0.012331242691612676,
+        "validation_passed": true
+      },
+      {
+        "ticker": "T",
+        "split_date": "2022-04-11",
+        "split_factor": 1.324,
+        "adjusted_return_1d_on_split": 0.0766412593206296,
+        "maximum_absolute_return_1d_in_window": 0.0766412593206296,
+        "validation_passed": true
+      },
+      {
+        "ticker": "TMUS",
+        "split_date": "2013-05-01",
+        "split_factor": 0.5,
+        "adjusted_return_1d_on_split": -0.3023648648648649,
+        "maximum_absolute_return_1d_in_window": 0.3023648648648649,
+        "validation_passed": false
+      },
+      {
+        "ticker": "TSLA",
+        "split_date": "2020-08-31",
+        "split_factor": 5.0,
+        "adjusted_return_1d_on_split": 0.12568898527152794,
+        "maximum_absolute_return_1d_in_window": 0.12568898527152794,
+        "validation_passed": true
+      },
+      {
+        "ticker": "TSLA",
+        "split_date": "2022-08-25",
+        "split_factor": 3.0,
+        "adjusted_return_1d_on_split": -0.0034556653838817564,
+        "maximum_absolute_return_1d_in_window": 0.026953085418988776,
+        "validation_passed": true
+      },
+      {
+        "ticker": "UNP",
+        "split_date": "2014-06-09",
+        "split_factor": 2.0,
+        "adjusted_return_1d_on_split": 0.011988506885960426,
+        "maximum_absolute_return_1d_in_window": 0.014777843022117931,
+        "validation_passed": true
+      },
+      {
+        "ticker": "V",
+        "split_date": "2015-03-19",
+        "split_factor": 4.0,
+        "adjusted_return_1d_on_split": -0.0016064557103896426,
+        "maximum_absolute_return_1d_in_window": 0.0168017247788268,
+        "validation_passed": true
+      },
+      {
+        "ticker": "WMT",
+        "split_date": "2024-02-26",
+        "split_factor": 3.0,
+        "adjusted_return_1d_on_split": 0.018455228981544725,
+        "maximum_absolute_return_1d_in_window": 0.018455228981544725,
+        "validation_passed": true
+      }
+    ],
+    "total": 39,
+    "passed": 38,
+    "failed": [
+      {
+        "ticker": "TMUS",
+        "split_date": "2013-05-01",
+        "split_factor": 0.5,
+        "adjusted_return_1d_on_split": -0.3023648648648649,
+        "maximum_absolute_return_1d_in_window": 0.3023648648648649,
+        "validation_passed": false
+      }
+    ]
+  },
+  "performance": {
+    "ingestion_seconds_by_ticker": {
+      "SPY": 0.0,
+      "AAPL": 0.0,
+      "ABBV": 0.0,
+      "ABT": 0.0,
+      "ACN": 0.0,
+      "ADBE": 0.0,
+      "AIG": 0.0,
+      "AMD": 0.0,
+      "AMGN": 0.0,
+      "AMT": 0.0,
+      "AMZN": 0.0,
+      "ANET": 0.0,
+      "AVGO": 0.0,
+      "AXP": 0.0,
+      "BA": 0.0,
+      "BAC": 0.0,
+      "BK": 0.0,
+      "BKNG": 0.0,
+      "BLK": 0.0,
+      "BMY": 0.0,
+      "BRK.B": 0.0,
+      "C": 0.0,
+      "CAT": 0.0,
+      "CHTR": 0.0,
+      "CMCSA": 0.0,
+      "COF": 0.0,
+      "COP": 0.0,
+      "COST": 0.0,
+      "CRM": 0.0,
+      "CSCO": 0.0,
+      "CVS": 0.0,
+      "CVX": 0.0,
+      "DE": 0.0,
+      "DELL": 0.0,
+      "DHR": 0.0,
+      "DIS": 0.0,
+      "DOW": 0.0,
+      "DUK": 0.0,
+      "EMR": 0.0,
+      "FDX": 0.0,
+      "GD": 0.0,
+      "GILD": 0.0,
+      "GM": 0.0,
+      "GOOG": 0.0,
+      "GOOGL": 0.0,
+      "GS": 0.0,
+      "HD": 0.0,
+      "IBM": 0.0,
+      "INTC": 0.0,
+      "JNJ": 0.0,
+      "JPM": 0.0,
+      "KO": 0.0,
+      "LIN": 0.0,
+      "LLY": 0.0,
+      "LMT": 0.0,
+      "LOW": 0.0,
+      "MA": 0.0,
+      "MCD": 0.0,
+      "MDLZ": 0.0,
+      "MDT": 0.0,
+      "MET": 0.0,
+      "META": 0.0,
+      "MMM": 0.0,
+      "MO": 0.0,
+      "MRK": 0.0,
+      "MS": 0.0,
+      "MSFT": 0.0,
+      "MU": 0.0,
+      "NEE": 0.0,
+      "NFLX": 0.0,
+      "NOW": 0.0,
+      "NVDA": 0.0,
+      "ORCL": 0.0,
+      "PANW": 0.0,
+      "PEP": 0.0,
+      "PFE": 0.0,
+      "PG": 0.0,
+      "PLD": 0.0,
+      "PLTR": 0.0,
+      "PM": 0.0,
+      "PYPL": 0.0,
+      "QCOM": 0.0,
+      "RTX": 0.0,
+      "SBUX": 0.0,
+      "SCHW": 0.0,
+      "SNDK": 0.0,
+      "SO": 0.0,
+      "T": 0.0,
+      "TGT": 0.0,
+      "TMO": 0.0,
+      "TMUS": 0.0,
+      "TSLA": 0.0,
+      "TXN": 0.0,
+      "UNH": 0.0,
+      "UNP": 0.0,
+      "UPS": 0.0,
+      "USB": 0.0,
+      "V": 0.0,
+      "VZ": 0.0,
+      "WFC": 0.0,
+      "WMT": 0.0,
+      "XOM": 0.0
+    },
+    "feature_build_seconds_by_ticker": {
+      "AAPL": 0.9611206999979913,
+      "ABBV": 0.42528590001165867,
+      "ABT": 0.5857633000705391,
+      "ACN": 0.5361361999530345,
+      "ADBE": 0.5040295999497175,
+      "AIG": 0.5263546998612583,
+      "AMD": 0.5176526999566704,
+      "AMGN": 0.5177158999722451,
+      "AMT": 0.504628200083971,
+      "AMZN": 0.7011645999737084,
+      "ANET": 0.654169199988246,
+      "AVGO": 0.6916517000645399,
+      "AXP": 0.4809764998499304,
+      "BA": 0.5203611000906676,
+      "BAC": 0.5050975000485778,
+      "BK": 0.10685910005122423,
+      "BKNG": 0.7340806999709457,
+      "BLK": 0.5175128001719713,
+      "BMY": 0.5107055001426488,
+      "C": 0.5792421998921782,
+      "CAT": 0.5678669000044465,
+      "CHTR": 0.5054022001568228,
+      "CMCSA": 0.9156849998980761,
+      "COF": 0.5135178999044001,
+      "COP": 0.510159800061956,
+      "COST": 0.5675204999279231,
+      "CRM": 0.6392125999554992,
+      "CSCO": 0.5053362001199275,
+      "CVS": 0.5243279000278562,
+      "CVX": 0.5382904999423772,
+      "DE": 0.6198730999603868,
+      "DELL": 0.3580529000610113,
+      "DHR": 0.6083136000670493,
+      "DIS": 0.5071557001210749,
+      "DOW": 0.30174760008230805,
+      "DUK": 0.6722760999109596,
+      "EMR": 0.5406633999664336,
+      "FDX": 0.8721438001375645,
+      "GD": 0.5183598999865353,
+      "GILD": 0.5777044000569731,
+      "GM": 0.45832269988022745,
+      "GOOG": 0.530920600052923,
+      "GOOGL": 0.883446600055322,
+      "GS": 0.5279343998990953,
+      "HD": 0.5464600000996143,
+      "IBM": 0.7598359000403434,
+      "INTC": 0.6134786000475287,
+      "JNJ": 0.4807359001133591,
+      "JPM": 0.4985541000496596,
+      "KO": 0.5937113000545651,
+      "LIN": 0.2771846998948604,
+      "LLY": 0.5265738000161946,
+      "LMT": 0.6296639000065625,
+      "LOW": 0.6019020001403987,
+      "MA": 0.6208384998608381,
+      "MCD": 0.5062792000826448,
+      "MDLZ": 0.5118589999619871,
+      "MDT": 0.49417850002646446,
+      "MET": 0.5032575998920947,
+      "META": 0.41246939986012876,
+      "MMM": 0.5093106999993324,
+      "MO": 0.5044943999964744,
+      "MRK": 0.7559348000213504,
+      "MS": 0.494649900123477,
+      "MSFT": 0.5218752999790013,
+      "MU": 0.5041598998941481,
+      "NEE": 0.6523982000071555,
+      "NFLX": 0.8118684000801295,
+      "NOW": 0.6429751999676228,
+      "NVDA": 0.8533149000722915,
+      "ORCL": 0.48419300001114607,
+      "PANW": 0.7368266000412405,
+      "PEP": 0.49660600000061095,
+      "PFE": 0.6394201999064535,
+      "PG": 0.4736495001707226,
+      "PLD": 0.5035135999787599,
+      "PLTR": 0.24094259995035827,
+      "PM": 0.48651010007597506,
+      "PYPL": 0.35594139993190765,
+      "QCOM": 0.5377990000415593,
+      "RTX": 0.520707500167191,
+      "SBUX": 0.595439599826932,
+      "SCHW": 0.49856780003756285,
+      "SNDK": 0.12984109995886683,
+      "SO": 0.48211730015464127,
+      "T": 0.6584173999726772,
+      "TGT": 0.47749980003573,
+      "TMO": 0.4898673000279814,
+      "TMUS": 0.6152868000790477,
+      "TSLA": 0.7647297999355942,
+      "TXN": 0.5117506999522448,
+      "UNH": 0.4757995998952538,
+      "UNP": 0.5956552000716329,
+      "UPS": 0.5020134998485446,
+      "USB": 0.4892167001962662,
+      "V": 0.6052089999429882,
+      "VZ": 0.500860100146383,
+      "WFC": 0.5113117001019418,
+      "WMT": 0.669768099905923,
+      "XOM": 0.48104119999334216
+    },
+    "target_build_seconds_by_ticker": {
+      "AAPL": 3.0048861000686884,
+      "ABBV": 2.0167231999803334,
+      "ABT": 2.7017759999725968,
+      "ACN": 2.821208600187674,
+      "ADBE": 2.670458600157872,
+      "AIG": 2.6550749000161886,
+      "AMD": 2.5904401999432594,
+      "AMGN": 2.602715800050646,
+      "AMT": 2.603892399929464,
+      "AMZN": 2.5734023000113666,
+      "ANET": 1.787570099812001,
+      "AVGO": 2.4943099000956863,
+      "AXP": 2.6414363000076264,
+      "BA": 2.849354599835351,
+      "BAC": 2.6590151998680085,
+      "BK": 0.012740700040012598,
+      "BKNG": 2.609594800043851,
+      "BLK": 2.5698754000477493,
+      "BMY": 2.5772579999174923,
+      "C": 2.589139899937436,
+      "CAT": 2.6534715997986495,
+      "CHTR": 2.9904332000296563,
+      "CMCSA": 3.187807699898258,
+      "COF": 2.8579938001930714,
+      "COP": 2.716236799955368,
+      "COST": 2.690268199890852,
+      "CRM": 2.773386700078845,
+      "CSCO": 2.667543200077489,
+      "CVS": 2.653638100018725,
+      "CVX": 3.5496969998348504,
+      "DE": 3.4898409999441355,
+      "DELL": 1.1546241000760347,
+      "DHR": 2.789084600051865,
+      "DIS": 2.6724781000521034,
+      "DOW": 1.1661032000556588,
+      "DUK": 3.3906018000561744,
+      "EMR": 2.6708935000933707,
+      "FDX": 3.2220483999699354,
+      "GD": 2.9325976001564413,
+      "GILD": 2.6303079000208527,
+      "GM": 2.476669699884951,
+      "GOOG": 2.148167100036517,
+      "GOOGL": 3.1273060999810696,
+      "GS": 2.963609700091183,
+      "HD": 2.8999735999386758,
+      "IBM": 3.394729500170797,
+      "INTC": 2.7143039000220597,
+      "JNJ": 2.533023100113496,
+      "JPM": 2.5571576999500394,
+      "KO": 2.5741231001447886,
+      "LIN": 1.207090500043705,
+      "LLY": 3.685171499848366,
+      "LMT": 3.189206400187686,
+      "LOW": 3.218036999925971,
+      "MA": 2.61254519992508,
+      "MCD": 2.6056122998706996,
+      "MDLZ": 2.579583500046283,
+      "MDT": 2.6171624998096377,
+      "MET": 2.535183999920264,
+      "META": 2.067615299951285,
+      "MMM": 2.6136407000012696,
+      "MO": 2.614698800025508,
+      "MRK": 2.5957933000754565,
+      "MS": 2.663414399838075,
+      "MSFT": 2.576125199906528,
+      "MU": 2.618056100094691,
+      "NEE": 2.6251141000539064,
+      "NFLX": 2.545875099953264,
+      "NOW": 2.0445826000068337,
+      "NVDA": 2.6413690000772476,
+      "ORCL": 2.5735881000291556,
+      "PANW": 2.036496500018984,
+      "PEP": 2.6811426000203937,
+      "PFE": 2.571885099867359,
+      "PG": 2.5240724000614136,
+      "PLD": 2.6013307999819517,
+      "PLTR": 0.8707558000460267,
+      "PM": 2.4824456002097577,
+      "PYPL": 1.620363200083375,
+      "QCOM": 2.538640500046313,
+      "RTX": 2.581396099878475,
+      "SBUX": 2.511204600101337,
+      "SCHW": 2.5077492999844253,
+      "SNDK": 0.2381648998707533,
+      "SO": 2.552184500033036,
+      "T": 2.499870100058615,
+      "TGT": 2.5232962002046406,
+      "TMO": 2.5145293998066336,
+      "TMUS": 2.562613399932161,
+      "TSLA": 2.33800660003908,
+      "TXN": 2.5887974000070244,
+      "UNH": 2.585115500027314,
+      "UNP": 2.5142740001901984,
+      "UPS": 2.5661796000786126,
+      "USB": 2.544097400037572,
+      "V": 2.553635999793187,
+      "VZ": 2.5853057000786066,
+      "WFC": 2.53040979988873,
+      "WMT": 2.6299525999929756,
+      "XOM": 2.537326999939978
+    },
+    "ingestion_wall_seconds": 4.998873919248581e-07,
+    "feature_and_target_build_wall_seconds": 322.93602739996277,
+    "feature_build_seconds_sum": 55.20320870098658,
+    "target_build_seconds_sum": 254.09970120037906,
+    "stages_skipped": {
+      "download": true,
+      "features": false
+    },
+    "validation_report_seconds": 6.7906416999176145,
+    "total_seconds": 332.68322700005956
+  },
+  "dataset_sizes_bytes": {
+    "raw": 42200387,
+    "processed": 15604010,
+    "features": 203975131,
+    "targets": 12428751
+  }
+}

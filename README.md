@@ -55,6 +55,7 @@ python scripts/build_feature_store.py
 python scripts/ingest_market_data.py --ticker AAPL --start 2020-01-01 --dry-run
 python scripts/build_quantitative_feature_store.py --ticker AAPL --start 2010-01-01 --dry-run
 python scripts/run_real_data_pilot.py --end 2026-10-05 --with-targets
+python scripts/build_full_universe.py --raw-start 2009-01-01 --feature-start 2010-01-01 --end 2026-10-05 --with-targets
 ```
 
 Para una descarga real, defina `TIINGO_API_KEY` solo en el `.env` local y quite `--dry-run`. También puede usar `--universe`; el procesamiento es secuencial y respeta el throttling configurado.
@@ -68,6 +69,8 @@ Los rebuilds reemplazan autoritativamente las filas del ticker y rango solicitad
 El piloto acotado de Phase 1C orquesta SPY, AAPL, MSFT y NVDA (configurables por CLI), audita raw, splits reales, point-in-time, benchmark, outliers y targets, y escribe `data/reports/real_data_pilot.json`. `--skip-download` permite reconstruir y diagnosticar datos locales sin red; `--skip-features` audita un Feature Store ya construido. Las reglas de outliers son solo diagnósticas y nunca alteran observaciones.
 
 `python scripts/benchmark_feature_builder.py` ejecuta un benchmark sintético opcional de 4.500 sesiones. No forma parte de pytest. El manifest y el reporte del piloto incluyen versiones, configuración relevante, timestamp UTC y metadata Git best-effort; si Git no puede ejecutarse, sus campos quedan `null` sin interrumpir el pipeline.
+
+Phase 1D reutiliza el mismo pipeline mediante `build_full_universe.py` y escribe `data/reports/full_universe_build.json`. La ejecución es incremental y reanudable: `--skip-features` continúa descargas pendientes sin reconstruir el dataset tras cada lote, y `--skip-download` realiza el rebuild final desde raw local. `--skip-provider-ticker` solo excluye explícitamente un símbolo ya revisado; nunca inventa un mapping.
 
 ## Estado y roadmap
 
