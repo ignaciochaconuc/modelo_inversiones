@@ -16,6 +16,7 @@ from investment_system.data.schemas.features import QUANTITATIVE_FEATURE_COLUMNS
 from investment_system.data.storage.feature_store import QuantitativeFeatureStore
 from investment_system.data.storage.market_store import MarketDataStore
 from investment_system.data.universe import UniverseConfig
+from investment_system.core.reproducibility import git_metadata
 from investment_system.features.quantitative import build_quantitative_features
 from investment_system.features.targets import add_cross_sectional_rank, build_price_targets
 from investment_system.features.validation import validate_quantitative_feature_frame, validate_target_frame
@@ -101,6 +102,8 @@ class QuantitativeFeatureStoreBuilder:
 
     def _segments(self, days: list[date], asset_actions: pd.DataFrame, benchmark_actions: pd.DataFrame, asset_raw: pd.DataFrame, benchmark_raw: pd.DataFrame) -> list[list[date]]:
         """Group days by causal inputs, using activation events instead of O(days*rows) rescans."""
+        decision_cutoffs = [pd.Timestamp(self.decision_time(day)).tz_convert("UTC") for day in days]
+
         def activations(frame: pd.DataFrame, *, actions: bool) -> dict[date, list[tuple[Any, ...]]]:
             events: dict[date, list[tuple[Any, ...]]] = {}
             if frame.empty:
@@ -119,9 +122,7 @@ class QuantitativeFeatureStoreBuilder:
                     if available <= own_cutoff:
                         continue
                     payload = (str(row.trading_date), str(row.available_at))
-                index = bisect_left(days, effective)
-                while index < len(days) and pd.Timestamp(self.decision_time(days[index])).tz_convert("UTC") < available:
-                    index += 1
+                index = max(bisect_left(days, effective), bisect_left(decision_cutoffs, available))
                 if index < len(days):
                     events.setdefault(days[index], []).append(payload)
             return events
@@ -154,14 +155,13 @@ class QuantitativeFeatureStoreBuilder:
     def _history_counts(self, raw: pd.DataFrame, days: list[date]) -> list[int]:
         """Return the same causal counts as ``_history_count`` in linear-event form."""
         events = [0] * len(days)
+        decision_cutoffs = [pd.Timestamp(self.decision_time(day)).tz_convert("UTC") for day in days]
         for row in raw.itertuples(index=False):
             trading_day = pd.Timestamp(row.trading_date).date()
             available = pd.to_datetime(row.available_at, utc=True, errors="coerce")
             if pd.isna(available):
                 continue
-            index = bisect_left(days, trading_day)
-            while index < len(days) and pd.Timestamp(self.decision_time(days[index])).tz_convert("UTC") < available:
-                index += 1
+            index = max(bisect_left(days, trading_day), bisect_left(decision_cutoffs, available))
             if index < len(days):
                 events[index] += 1
         total = 0
@@ -267,6 +267,9 @@ class QuantitativeFeatureStoreBuilder:
 
     def _manifest(self, tickers: list[str], start: date, end: date, built_at: datetime, with_targets: bool) -> dict[str, Any]:
         return {
+            "manifest_schema_version": "1",
+            "generated_at": built_at.isoformat(),
+            **git_metadata(),
             "feature_schema_version": self.feature_schema_version,
             "quantitative_feature_version": self.quantitative_feature_version,
             "normalization_version": AS_OF_VERSION,
@@ -283,6 +286,11 @@ class QuantitativeFeatureStoreBuilder:
             "source_provider": "tiingo",
             "tickers": tickers,
             "targets_built": with_targets,
+            "settings": {
+                "market_timezone": str(self.timezone),
+                "decision_cutoff": self.cutoff.isoformat(timespec="minutes"),
+                "minimum_rank_assets": self.minimum_rank_assets,
+            },
         }
 
     def _report(self, features: pd.DataFrame, missing_tickers: list[str]) -> dict[str, Any]:

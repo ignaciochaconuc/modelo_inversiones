@@ -67,6 +67,8 @@ Los rebuilds reemplazan autoritativamente las filas del ticker y rango solicitad
 
 El piloto acotado de Phase 1C orquesta SPY, AAPL, MSFT y NVDA (configurables por CLI), audita raw, splits reales, point-in-time, benchmark, outliers y targets, y escribe `data/reports/real_data_pilot.json`. `--skip-download` permite reconstruir y diagnosticar datos locales sin red; `--skip-features` audita un Feature Store ya construido. Las reglas de outliers son solo diagnósticas y nunca alteran observaciones.
 
+`python scripts/benchmark_feature_builder.py` ejecuta un benchmark sintético opcional de 4.500 sesiones. No forma parte de pytest. El manifest y el reporte del piloto incluyen versiones, configuración relevante, timestamp UTC y metadata Git best-effort; si Git no puede ejecutarse, sus campos quedan `null` sin interrumpir el pipeline.
+
 ## Estado y roadmap
 
 Son funcionales los schemas, validación point-in-time, adapter Tiingo EOD, actualización incremental, calendario XNYS, normalización as-of, Feature Store cuantitativo, targets separados, cache y reglas básicas de riesgo. Son contratos/stubs: clientes OpenAI/Ollama, modelos predictivos, optimización, backtesting completo y ejecución.

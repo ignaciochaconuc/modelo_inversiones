@@ -170,3 +170,76 @@ def test_authoritative_range_rebuild_removes_stale_rows(tmp_path) -> None:
     assert len(result) == 2
     assert result[result["ticker"] == "AAPL"]["value"].tolist() == [10]
     assert result[result["ticker"] == "MSFT"]["value"].tolist() == [3]
+
+
+def _naive_segments(service, days, asset_actions, benchmark_actions, asset_raw, benchmark_raw):
+    segments = []
+    signature = None
+    for day in days:
+        decision_time = service.decision_time(day)
+        current = (
+            service._split_signature(asset_actions, day, decision_time),
+            service._split_signature(benchmark_actions, day, decision_time),
+            service._late_bar_signature(asset_raw, day, decision_time),
+            service._late_bar_signature(benchmark_raw, day, decision_time),
+        )
+        if current != signature:
+            segments.append([])
+            signature = current
+        segments[-1].append(day)
+    return segments
+
+
+def test_optimized_history_counts_equal_naive_reference_with_delayed_bars(tmp_path) -> None:
+    days = list(pd.bdate_range("2025-01-02", periods=80).date)
+    service, market = builder(tmp_path, days)
+    bars = make_bars("AAPL", days)
+    for source_index, available_index in ((5, 8), (31, 45), (60, 61)):
+        bars[source_index] = bars[source_index].model_copy(update={
+            "available_at": datetime.combine(days[available_index], time(20), ZoneInfo("America/New_York")),
+            "ingested_at": datetime.combine(days[available_index], time(20), ZoneInfo("America/New_York")),
+        })
+    persist_bars(market, bars)
+    raw = market.read_bars("AAPL")
+    assert service._history_counts(raw, days) == [service._history_count(raw, day) for day in days]
+
+
+def test_event_segments_equal_naive_signatures_for_splits_and_delays(tmp_path) -> None:
+    days = list(pd.bdate_range("2024-01-02", periods=100).date)
+    service, market = builder(tmp_path, days)
+    asset = make_bars("AAPL", days, split_day=days[70])
+    asset[25] = asset[25].model_copy(update={
+        "available_at": datetime.combine(days[40], time(20), ZoneInfo("America/New_York")),
+        "ingested_at": datetime.combine(days[40], time(20), ZoneInfo("America/New_York")),
+    })
+    benchmark = make_bars("SPY", days, split_day=days[80])
+    benchmark[10] = benchmark[10].model_copy(update={
+        "available_at": datetime.combine(days[15], time(20), ZoneInfo("America/New_York")),
+        "ingested_at": datetime.combine(days[15], time(20), ZoneInfo("America/New_York")),
+    })
+    persist_bars(market, asset); persist_bars(market, benchmark)
+    inputs = (market.read_actions("AAPL"), market.read_actions("SPY"),
+              market.read_bars("AAPL"), market.read_bars("SPY"))
+    assert service._segments(days, *inputs) == _naive_segments(service, days, *inputs)
+
+
+def test_optimized_builder_is_numerically_equivalent_to_naive_reference(tmp_path) -> None:
+    days = list(pd.bdate_range("2023-01-02", periods=330).date)
+    service, market = builder(tmp_path, days)
+    asset = make_bars("AAPL", days, split_day=days[290])
+    asset[100] = asset[100].model_copy(update={
+        "available_at": datetime.combine(days[110], time(20), ZoneInfo("America/New_York")),
+        "ingested_at": datetime.combine(days[110], time(20), ZoneInfo("America/New_York")),
+    })
+    persist_bars(market, asset); persist_bars(market, make_bars("SPY", days))
+    benchmark_raw, benchmark_actions = market.read_bars("SPY"), market.read_actions("SPY")
+    optimized = service.build_ticker("AAPL", days[0], days[-1], benchmark_raw, benchmark_actions)
+
+    original_segments, original_counts = service._segments, service._history_counts
+    service._segments = lambda candidate_days, *inputs: _naive_segments(service, candidate_days, *inputs)
+    service._history_counts = lambda raw, candidate_days: [service._history_count(raw, day) for day in candidate_days]
+    try:
+        reference = service.build_ticker("AAPL", days[0], days[-1], benchmark_raw, benchmark_actions)
+    finally:
+        service._segments, service._history_counts = original_segments, original_counts
+    pd.testing.assert_frame_equal(optimized, reference, check_exact=False, rtol=1e-12, atol=1e-12)

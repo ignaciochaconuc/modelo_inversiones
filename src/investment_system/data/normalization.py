@@ -2,6 +2,7 @@
 from collections.abc import Iterable
 from datetime import date, datetime
 
+import numpy as np
 import pandas as pd
 
 from investment_system.data.schemas.market import CorporateAction, CorporateActionType, MarketBar
@@ -39,13 +40,22 @@ def _apply_splits(raw_bars: pd.DataFrame, split_actions: pd.DataFrame, normaliza
     bars = raw_bars.copy()
     bars["trading_date"] = pd.to_datetime(bars["trading_date"]).dt.date
     bars = bars.sort_values(["ticker", "trading_date"]).reset_index(drop=True)
-    factors: list[float] = []
-    for row in bars.itertuples(index=False):
-        relevant = split_actions[
-            (split_actions["ticker"] == row.ticker)
-            & (split_actions["effective_date"] > row.trading_date)
-        ] if not split_actions.empty else split_actions
-        factors.append(float(relevant["split_factor"].fillna(1.0).prod()) if not relevant.empty else 1.0)
+    factors = np.ones(len(bars), dtype=float)
+    if not split_actions.empty:
+        actions = split_actions.copy()
+        actions["effective_date"] = pd.to_datetime(actions["effective_date"]).dt.date
+        for ticker, indices in bars.groupby("ticker", sort=False).groups.items():
+            ticker_actions = actions[actions["ticker"] == ticker]
+            if ticker_actions.empty:
+                continue
+            daily_factors = ticker_actions.groupby("effective_date", sort=True)["split_factor"].prod()
+            split_dates = np.asarray(list(daily_factors.index), dtype="datetime64[D]")
+            split_factors = daily_factors.to_numpy(dtype=float, na_value=1.0)
+            suffix_products = np.ones(len(split_factors) + 1, dtype=float)
+            suffix_products[:-1] = np.cumprod(split_factors[::-1])[::-1]
+            bar_dates = np.asarray(bars.loc[indices, "trading_date"].tolist(), dtype="datetime64[D]")
+            first_future_split = np.searchsorted(split_dates, bar_dates, side="right")
+            factors[np.asarray(indices)] = suffix_products[first_future_split]
     bars["cumulative_future_split_factor"] = factors
     for column in ("open", "high", "low", "close"):
         bars[f"split_adjusted_{column}"] = bars[column] / bars["cumulative_future_split_factor"]

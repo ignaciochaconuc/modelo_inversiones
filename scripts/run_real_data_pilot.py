@@ -69,8 +69,15 @@ def main() -> int:
         refresh_overlap_days=settings.ingestion.refresh_overlap_days,
         normalization_version=settings.ingestion.normalization_version,
         throttle_seconds=settings.providers.tiingo.throttle_seconds) if source else None
-    pilot = RealDataPilot(market_store, feature_store, calendar, builder,
-                          "data/reports/real_data_pilot.json", ingestion)
+    pilot = RealDataPilot(
+        market_store, feature_store, calendar, builder,
+        "data/reports/real_data_pilot.json", ingestion,
+        settings_metadata={
+            "provider": "tiingo",
+            "assumed_eod_available_time": settings.providers.tiingo.assumed_eod_available_time,
+            "refresh_overlap_days": settings.ingestion.refresh_overlap_days,
+        },
+    )
     try:
         report = pilot.run(request, skip_download=args.skip_download, skip_features=args.skip_features)
     finally:

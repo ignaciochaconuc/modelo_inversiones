@@ -1,6 +1,32 @@
 {
   "phase": "1C-real-data-pilot",
   "status": "passed",
+  "reproducibility": {
+    "report_schema_version": "1",
+    "generated_at": "2026-10-05T20:23:39.037682+00:00",
+    "git_commit": null,
+    "dirty_worktree": null,
+    "feature_schema_version": "3",
+    "quantitative_feature_version": "quantitative-v1.1",
+    "normalization_version": "split-adjusted-as-of-v1",
+    "settings": {
+      "market_timezone": "America/New_York",
+      "decision_cutoff": "20:15",
+      "raw_history_start": "2009-01-01",
+      "feature_history_start": "2010-01-01",
+      "minimum_rank_assets": 20,
+      "benchmark": "SPY",
+      "tickers": [
+        "AAPL",
+        "MSFT",
+        "NVDA"
+      ],
+      "with_targets": true,
+      "provider": "tiingo",
+      "assumed_eod_available_time": "20:00",
+      "refresh_overlap_days": 5
+    }
+  },
   "request": {
     "raw_start": "2009-01-01",
     "feature_start": "2010-01-01",
@@ -84,6 +110,10 @@
       "missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_decision_cutoff": [
+        "2026-10-05"
+      ],
+      "unexpected_missing_sessions": [],
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 71,
@@ -175,6 +205,10 @@
       "missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_decision_cutoff": [
+        "2026-10-05"
+      ],
+      "unexpected_missing_sessions": [],
       "split_count": 2,
       "split_dates": [
         "2014-06-09",
@@ -255,6 +289,10 @@
       "missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_decision_cutoff": [
+        "2026-10-05"
+      ],
+      "unexpected_missing_sessions": [],
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 71,
@@ -346,6 +384,10 @@
       "missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_decision_cutoff": [
+        "2026-10-05"
+      ],
+      "unexpected_missing_sessions": [],
       "split_count": 2,
       "split_dates": [
         "2021-07-20",
@@ -1216,12 +1258,16 @@
       "NVDA": 2.0812023000326008
     },
     "feature_build_seconds_by_ticker": {
-      "SPY": 251.1482572001405,
-      "AAPL": 303.0631011999212,
-      "MSFT": 332.96487960009836,
-      "NVDA": 356.1276452001184
+      "SPY": 0.47061980003491044,
+      "AAPL": 0.9145774999633431,
+      "MSFT": 0.6619911999441683,
+      "NVDA": 0.8421479999087751
     },
-    "total_seconds": 1280.1508186999708,
+    "total_seconds": 16.949515499873087,
+    "stages_skipped": {
+      "download": true,
+      "features": false
+    },
     "file_sizes_bytes": {
       "raw_by_ticker": {
         "SPY": {
@@ -1252,7 +1298,36 @@
     "model_eligible_rows": 16852,
     "raw_duplicates": 0,
     "ohlc_violations": 0,
+    "unexpected_raw_gaps": 0,
     "unexpected_benchmark_nans": [],
     "pit_passed": true
+  },
+  "comparison_to_previous": {
+    "previous_generated_at": "2026-10-05 20:21:13.067399+00:00",
+    "raw_bars_equal": true,
+    "feature_rows_equal": true,
+    "feature_row_delta": 0,
+    "splits_equal": true,
+    "point_in_time_passed_before_and_after": true,
+    "targets_equal": true,
+    "outlier_diagnostics_equal": true,
+    "feature_build_seconds_before": {
+      "SPY": 251.1482572001405,
+      "AAPL": 303.0631011999212,
+      "MSFT": 332.96487960009836,
+      "NVDA": 356.1276452001184
+    },
+    "feature_build_seconds_after": {
+      "SPY": 0.47061980003491044,
+      "AAPL": 0.9145774999633431,
+      "MSFT": 0.6619911999441683,
+      "NVDA": 0.8421479999087751
+    },
+    "feature_build_speedup": {
+      "SPY": 533.6542516517801,
+      "AAPL": 331.3695134770626,
+      "MSFT": 502.9747821846881,
+      "NVDA": 422.88011755498513
+    }
   }
 }

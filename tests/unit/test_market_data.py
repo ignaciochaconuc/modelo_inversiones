@@ -83,3 +83,19 @@ def test_effective_but_unavailable_split_is_excluded() -> None:
         decision_date=date(2025, 6, 2), decision_time=datetime(2025, 6, 2, 21, tzinfo=timezone.utc),
     )
     assert result["split_adjusted_close"].tolist() == [100, 110]
+
+
+def test_vectorized_split_factors_match_strict_future_split_semantics() -> None:
+    raw, _, _ = frames([
+        bar(date(2025, 1, 1), 600),
+        bar(date(2025, 1, 2), 300, split=2),
+        bar(date(2025, 6, 1), 100, split=3),
+        bar(date(2025, 6, 2), 101),
+    ])
+    actions = pd.DataFrame([item.model_dump(mode="python") for item in extract_corporate_actions([
+        bar(date(2025, 1, 2), 300, split=2),
+        bar(date(2025, 6, 1), 100, split=3),
+    ])])
+    adjusted = build_split_adjusted_series(raw, actions)
+    assert adjusted["cumulative_future_split_factor"].tolist() == [6.0, 3.0, 1.0, 1.0]
+    assert adjusted["split_adjusted_close"].tolist() == [100.0, 100.0, 100.0, 101.0]

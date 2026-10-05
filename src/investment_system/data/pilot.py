@@ -18,6 +18,9 @@ from investment_system.data.schemas.features import QUANTITATIVE_FEATURE_COLUMNS
 from investment_system.data.storage.feature_store import QuantitativeFeatureStore
 from investment_system.data.storage.market_store import MarketDataStore
 from investment_system.features.store_builder import QuantitativeFeatureStoreBuilder
+from investment_system.core.reproducibility import git_metadata
+
+REPORT_SCHEMA_VERSION = "1"
 
 
 @dataclass(frozen=True)
@@ -61,6 +64,7 @@ class RealDataPilot:
         builder: QuantitativeFeatureStoreBuilder,
         report_path: str | Path,
         ingestion: MarketDataIngestionService | None = None,
+        settings_metadata: dict[str, Any] | None = None,
     ) -> None:
         self.market_store = market_store
         self.feature_store = feature_store
@@ -68,6 +72,7 @@ class RealDataPilot:
         self.builder = builder
         self.report_path = Path(report_path)
         self.ingestion = ingestion
+        self.settings_metadata = settings_metadata or {}
 
     def run(self, request: PilotRequest, *, skip_download: bool = False, skip_features: bool = False) -> dict[str, Any]:
         if request.raw_start > request.feature_start or request.feature_start > request.end:
@@ -119,9 +124,30 @@ class RealDataPilot:
         outliers = self._outliers(features)
         target_diagnostics = self._target_diagnostics(features, targets, split_windows) if request.with_targets else None
         sizes = self._sizes(request)
+        generated_at = datetime.now(timezone.utc)
+        provenance = {
+            "report_schema_version": REPORT_SCHEMA_VERSION,
+            "generated_at": generated_at.isoformat(),
+            **git_metadata(),
+            "feature_schema_version": self.builder.feature_schema_version,
+            "quantitative_feature_version": self.builder.quantitative_feature_version,
+            "normalization_version": AS_OF_VERSION,
+            "settings": {
+                "market_timezone": str(self.builder.timezone),
+                "decision_cutoff": self.builder.cutoff.isoformat(timespec="minutes"),
+                "raw_history_start": request.raw_start,
+                "feature_history_start": request.feature_start,
+                "minimum_rank_assets": self.builder.minimum_rank_assets,
+                "benchmark": request.benchmark,
+                "tickers": request.tickers,
+                "with_targets": request.with_targets,
+                **self.settings_metadata,
+            },
+        }
         report = {
             "phase": "1C-real-data-pilot",
             "status": "passed",
+            "reproducibility": provenance,
             "request": asdict(request),
             "ingestion": ingestion_summaries or previous.get("ingestion", {}),
             "raw_by_ticker": raw,
@@ -150,11 +176,56 @@ class RealDataPilot:
                 "pit_passed": pit["passed"],
             },
         }
+        report["comparison_to_previous"] = self._comparison(previous, report) if previous else None
         self.report_path.parent.mkdir(parents=True, exist_ok=True)
         temporary = self.report_path.with_suffix(".tmp.json")
         temporary.write_text(json.dumps(report, indent=2, default=_json_value), encoding="utf-8")
         temporary.replace(self.report_path)
         return report
+
+    @staticmethod
+    def _comparison(previous: dict[str, Any], current: dict[str, Any]) -> dict[str, Any]:
+        previous_raw = previous.get("raw_by_ticker", {})
+        current_raw = current["raw_by_ticker"]
+        raw_bars_equal = all(
+            previous_raw.get(ticker, {}).get("bars") == diagnostic["bars"]
+            for ticker, diagnostic in current_raw.items()
+        )
+        splits_equal = all(
+            [str(value) for value in previous_raw.get(ticker, {}).get("split_dates", [])]
+            == [str(value) for value in diagnostic["split_dates"]]
+            for ticker, diagnostic in current_raw.items()
+        )
+        old_targets = previous.get("targets") or {}
+        new_targets = current.get("targets") or {}
+        old_outliers = previous.get("outliers_diagnostic_only", {})
+        new_outliers = current.get("outliers_diagnostic_only", {})
+        outlier_names = sorted(set(old_outliers) & set(new_outliers) - {"thresholds_are_diagnostic_only"})
+        outliers_equal = all(old_outliers[name].get("count") == new_outliers[name].get("count") for name in outlier_names)
+        old_rows = previous.get("global_summary", {}).get("feature_rows")
+        new_rows = current["global_summary"]["feature_rows"]
+        old_times = (
+            (previous.get("comparison_to_previous") or {}).get("feature_build_seconds_before")
+            or previous.get("performance", {}).get("feature_build_seconds_by_ticker", {})
+        )
+        new_times = current.get("performance", {}).get("feature_build_seconds_by_ticker", {})
+        return {
+            "previous_generated_at": previous.get("reproducibility", {}).get("generated_at"),
+            "raw_bars_equal": raw_bars_equal,
+            "feature_rows_equal": old_rows == new_rows,
+            "feature_row_delta": None if old_rows is None else new_rows - old_rows,
+            "splits_equal": splits_equal,
+            "point_in_time_passed_before_and_after": bool(previous.get("point_in_time", {}).get("passed") and current["point_in_time"]["passed"]),
+            "targets_equal": old_targets.get("horizons") == new_targets.get("horizons"),
+            "outlier_diagnostics_equal": outliers_equal,
+            "feature_build_seconds_before": old_times,
+            "feature_build_seconds_after": new_times,
+            "feature_build_speedup": {
+                ticker: old_times[ticker] / elapsed
+                for ticker, elapsed in new_times.items()
+                if ticker in old_times and elapsed > 0
+            },
+        }
 
     def _range(self, frame: pd.DataFrame, request: PilotRequest, column: str) -> pd.DataFrame:
         if frame.empty:

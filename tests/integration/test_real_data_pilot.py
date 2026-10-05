@@ -91,6 +91,19 @@ def test_pilot_builds_offline_report_with_pit_and_split_evidence(tmp_path) -> No
     assert report["features_by_ticker"]["AAPL"]["first_model_eligible"] is not None
     assert report["targets"]["rank_all_nan_expected_small_universe"]
     assert report["targets"]["horizons"]["20"]["trailing_nan"]
+    metadata = report["reproducibility"]
+    assert metadata["report_schema_version"] == "1"
+    assert datetime.fromisoformat(metadata["generated_at"]).tzinfo is not None
+    assert metadata["feature_schema_version"] == "3"
+    assert metadata["quantitative_feature_version"] == "quantitative-v1.1"
+    assert metadata["normalization_version"] == "split-adjusted-as-of-v1"
+    assert "git_commit" in metadata and "dirty_worktree" in metadata
+
+    resumed = pilot.run(request, skip_download=True, skip_features=True)
+    assert resumed["comparison_to_previous"]["raw_bars_equal"]
+    assert resumed["comparison_to_previous"]["feature_rows_equal"]
+    assert resumed["comparison_to_previous"]["targets_equal"]
+    assert resumed["comparison_to_previous"]["outlier_diagnostics_equal"]
 
 
 def test_pilot_request_includes_benchmark_once() -> None:
