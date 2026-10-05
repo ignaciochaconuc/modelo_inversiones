@@ -20,7 +20,7 @@ Los estados describen planificación, no autorizan iniciar una fase. Cada fase r
 
 ## Phase 1B — Quantitative ingestion pipeline
 
-**Status:** next
+**Status:** complete
 
 **Objetivo:** conectar datos processed con construcción incremental del Feature Store.  
 **Entregables:** selección point-in-time, cobertura/calidad ampliada y pipeline de features para el universo. Massive puede evaluarse más adelante solo como fuente de referencia histórica de tickers.  

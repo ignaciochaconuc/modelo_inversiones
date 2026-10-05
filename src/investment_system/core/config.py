@@ -32,6 +32,13 @@ class IngestionSettings(BaseModel):
     schema_version: str = "1"
     normalization_version: str = "split-adjusted-latest-v1"
 
+class FeatureSettings(BaseModel):
+    raw_history_start: str = "2009-01-01"
+    feature_history_start: str = "2010-01-01"
+    schema_version: str = "2"
+    quantitative_version: str = "quantitative-v1"
+    minimum_rank_assets: int = Field(default=20, ge=2)
+
 class Settings(BaseModel):
     decision_timing: str = "after_close"
     prediction_horizon_days: int = Field(default=10, gt=0)
@@ -40,6 +47,7 @@ class Settings(BaseModel):
     market: MarketSettings = MarketSettings()
     providers: ProviderSettings = ProviderSettings()
     ingestion: IngestionSettings = IngestionSettings()
+    features: FeatureSettings = FeatureSettings()
 
     @property
     def market_timezone(self) -> str:

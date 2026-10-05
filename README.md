@@ -53,14 +53,17 @@ Copie `.env.example` a `.env` si necesita configurar proveedores en fases futura
 python scripts/validate_data.py
 python scripts/build_feature_store.py
 python scripts/ingest_market_data.py --ticker AAPL --start 2020-01-01 --dry-run
+python scripts/build_quantitative_feature_store.py --ticker AAPL --start 2010-01-01 --dry-run
 ```
 
 Para una descarga real, defina `TIINGO_API_KEY` solo en el `.env` local y quite `--dry-run`. También puede usar `--universe`; el procesamiento es secuencial y respeta el throttling configurado.
 
 Los datasets quedan separados en `data/raw/tiingo/daily`, `data/raw/tiingo/corporate_actions` y `data/processed/market/split_adjusted_latest`. Este último usa la base accionaria más reciente y no debe utilizarse ciegamente en backtests; las decisiones históricas requieren la vista split-adjusted as-of. El universo versionado es fijo: no es point-in-time e introduce survivorship bias.
 
+El Feature Store cuantitativo se particiona anualmente en `data/features/quantitative/year=YYYY/data.parquet`. Los targets opcionales se guardan físicamente aparte en `data/targets/quantitative`; una construcción de inferencia no usa `--with-targets`. `manifest.json` y `build_report.json` registran versiones, universo, cobertura, nulos y calidad.
+
 ## Estado y roadmap
 
-Son funcionales los schemas, validación point-in-time, adapter Tiingo EOD, actualización incremental Parquet, calendario XNYS, normalización de splits, cálculos cuantitativos principales, cache y reglas básicas de riesgo. Son contratos/stubs: clientes OpenAI/Ollama, modelos predictivos, optimización, backtesting completo y ejecución.
+Son funcionales los schemas, validación point-in-time, adapter Tiingo EOD, actualización incremental, calendario XNYS, normalización as-of, Feature Store cuantitativo, targets separados, cache y reglas básicas de riesgo. Son contratos/stubs: clientes OpenAI/Ollama, modelos predictivos, optimización, backtesting completo y ejecución.
 
 Phases: 0 Architecture + feature store; 1 ingestión + baseline cuantitativo; 2 backtesting; 3 modelos baseline; 4 News; 5 Analyst + Earnings; 6 Fundamental + Macro + Event; 7 Portfolio + Risk; 8 paper trading; 9 live supervisado; 10 posible ejecución automática. Crypto será una expansión con schemas y predictores separados.

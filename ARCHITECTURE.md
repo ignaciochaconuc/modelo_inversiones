@@ -10,6 +10,11 @@ flowchart TD
     RAW --> SA[Split-adjusted Series]
     CA --> SA
     SA --> FS[Feature Store]
+    RAW --> ASOF[As-of Normalization]
+    CA --> ASOF
+    ASOF --> QF[Quantitative Feature Builder]
+    QF --> FS
+    RAW --> TGTS[Separated Targets]
     AI[AI Agents] --> FS
     FS --> PM[Predictive Models]
     PM --> PO[Portfolio Optimizer]
@@ -39,7 +44,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `data.normalization` | Corporate actions y ajuste explícito por splits | Funcional |
 | `data.storage` | Persistencia idempotente Parquet y consulta DuckDB | Funcional básico |
 | `data.validation` | Invariantes temporales y feature/target | Funcional |
-| `features` | Transformaciones cuantitativas causales y targets separados | Funcional básico |
+| `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
 | `models` | Contratos de regresión, clasificación y ranking | Stub |
@@ -76,7 +81,11 @@ La capa processed no usa los campos `adj*` del proveedor como fuente de verdad. 
 
 Los schemas preservan cuatro timestamps con semánticas distintas. `available_at <= decision_time` se valida antes de usar registros. El Feature Store tiene granularidad `ticker + decision_date`; los joins deben respetar disponibilidad y nunca usar la última revisión conocida hoy para simular una decisión pasada.
 
-Features y targets comparten un schema de persistencia por conveniencia, pero tienen registros de columnas disjuntos. `model_features()` expone solo inputs. `FeatureBuilder.add_targets()` es una operación explícita y separada, apropiada para preparación de datasets supervisados, no para inferencia.
+Features y targets tienen registros y persistencia separados conforme a ADR-009. `model_features()` expone solo inputs. Labels se construyen en `features.targets` y solo se unen a features por `ticker + decision_date` durante entrenamiento futuro.
+
+El builder agrupa fechas consecutivas cuyo conjunto de splits elegibles no cambia. Para cada segmento construye una sola vista as-of hasta su fecha final, calcula rolling features vectorizadas y conserva únicamente las filas del segmento. Como las transformaciones son causales, barras posteriores dentro del segmento no cambian filas anteriores. Los límites usan la unión de cambios del activo y SPY.
+
+Features se almacenan por año en un archivo Parquet consolidado, con upsert por clave. Targets usan otra raíz. DuckDB puede consultar `year=*/data.parquet` con hive partitioning. Un cambio histórico de corporate actions, disponibilidad, cutoff, calendario, fórmula o versión exige reconstruir el período afectado; cambios de splits pueden justificar full rebuild del ticker.
 
 ## LLM Router, costos y cache
 

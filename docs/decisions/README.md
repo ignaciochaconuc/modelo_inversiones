@@ -10,3 +10,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-006: Agents do not execute](ADR-006-agents-do-not-execute.md)
 - [ADR-007: Corporate actions and price adjustment](ADR-007-corporate-actions-and-price-adjustment.md)
 - [ADR-008: Point-in-time split normalization](ADR-008-point-in-time-split-normalization.md)
+- [ADR-009: Feature and target storage separation](ADR-009-feature-target-storage-separation.md)

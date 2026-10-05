@@ -26,6 +26,12 @@ Toda observación externa puede conservar `observed_at`, `published_at`, `availa
 
 El Feature Store representa una fila por `ticker + decision_date`. Su almacenamiento inicial es Parquet y su capa de consulta DuckDB; no se usa PostgreSQL. `FeatureRow` define identificación, variables cuantitativas y estructuradas de agentes, categorías de régimen y targets opcionales.
 
+Phase 1B añade `decision_time` explícito, fijado inicialmente a las 20:15 America/New_York. Los campos de mercado se llaman `split_adjusted_open/high/low/close/volume` y siempre representan la vista interna as-of; se eliminan nombres ambiguos asociados a `adjClose` del proveedor. Sector, industry y market cap permanecen NULL hasta disponer de fuentes históricas point-in-time.
+
+El histórico raw comienza conceptualmente en 2009-01-01 y las filas de features en 2010-01-01, dejando warm-up real sin backfill. Las posiciones históricas usan `close / max_252 - 1`, `close / min_252 - 1` y percentil trailing con rank promedio para ties. `percentile_volatility_252d` posiciona la volatilidad de 20 sesiones actual dentro de 252 observaciones válidas de esa serie.
+
+La elegibilidad informa disponibilidad de 20, 60, 120 y 252 observaciones. `model_eligible` exige 252 sesiones previas —253 observaciones incluyendo la actual— y features esenciales completas, incluido benchmark. No constituye una señal de estrategia.
+
 Las familias de features son: identificación; OHLCV; retornos; momentum; riesgo/volatilidad; tendencia técnica; volumen/liquidez; posición histórica; mercado/sector; News; Analyst; Earnings; Fundamental; Macro; y Event. La lista canónica está en `src/investment_system/data/schemas/features.py`.
 
 ### Market data de Phase 1A
@@ -51,6 +57,8 @@ El upsert usa `ticker + trading_date + provider` para barras y `ticker + effecti
 - `target_rank_10d`
 
 El objetivo principal es `target_return_10d = P(t+10) / P(t) - 1`; `target_positive_10d` indica si este retorno es positivo. Targets y features permanecen disjuntos y los targets no pueden participar en una decisión.
+
+Targets se guardan en un dataset físico separado y usan una base latest-basis exclusivamente para que splits futuros dentro del horizonte no creen retornos falsos. Son price returns y no incorporan dividendos. `target_rank_10d` usa rank cross-sectional promedio, normalizado a [0,1], y queda NULL si hay menos de 20 activos válidos en la fecha.
 
 ## Agentes
 

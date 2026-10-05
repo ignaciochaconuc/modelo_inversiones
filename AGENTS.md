@@ -47,6 +47,8 @@ Los targets son exclusivamente:
 
 Nunca incluirlos en entradas de entrenamiento, inferencia o decisiones. En el código, `FeatureRow.model_features()` y los registros `FEATURE_COLUMNS`/`TARGET_COLUMNS` materializan esta separación. La generación de targets debe permanecer separada de la generación causal de features.
 
+La separación también es física: features de producción viven bajo `data/features` y targets supervisados bajo `data/targets`. Solo pueden unirse explícitamente por `ticker + decision_date` durante entrenamiento. Future corporate actions están permitidas únicamente al construir targets split-consistent, nunca features.
+
 ## Agentes
 
 Existen `NewsAgent`, `AnalystAgent`, `EarningsAgent`, `FundamentalAgent`, `MacroAgent` y `EventAgent`. Actualmente son stubs. Toda respuesta debe mantener el contrato `AgentResponse` y contener salida explicable, `structured_features`, `confidence`, referencias de fuentes y timestamps. El texto libre no debe sustituir features numéricas cuando estas puedan expresarse estructuradamente.
@@ -80,7 +82,7 @@ No modificar decisiones arquitectónicas silenciosamente.
 
 ## Fuera de alcance actual
 
-No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 1A de ingestión Tiingo está implementada; Phase 1B es la siguiente fase prevista y no debe iniciarse por iniciativa propia.
+No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 1B está implementada; no iniciar Phase 2 o posteriores por iniciativa propia.
 
 ## Verificación mínima
 

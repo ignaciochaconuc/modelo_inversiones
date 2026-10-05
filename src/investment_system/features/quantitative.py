@@ -68,6 +68,15 @@ def rolling_beta(prices: pd.Series, benchmark: pd.Series, window: int) -> pd.Ser
     benchmark_returns = benchmark.pct_change(fill_method=None)
     return asset_returns.rolling(window).cov(benchmark_returns) / benchmark_returns.rolling(window).var()
 
+def rolling_percentile(values: pd.Series, window: int = 252) -> pd.Series:
+    """Average-tie percentile of the current value within a full trailing window."""
+    def percentile(items: np.ndarray) -> float:
+        current = items[-1]
+        less = np.sum(items < current)
+        equal = np.sum(items == current)
+        return float((less + (equal - 1) / 2) / (len(items) - 1))
+    return values.rolling(window, min_periods=window).apply(percentile, raw=True)
+
 def build_quantitative_features(frame: pd.DataFrame, benchmark_close: pd.Series | None = None, *, columns: OHLCVColumns = SPLIT_ADJUSTED_COLUMNS) -> pd.DataFrame:
     """Build features from an explicit OHLCV source, split-adjusted by default."""
     required = {columns.open, columns.high, columns.low, columns.close, columns.volume}
@@ -106,8 +115,19 @@ def build_quantitative_features(frame: pd.DataFrame, benchmark_close: pd.Series 
     result["macd_pct"] = result["macd"] / price
     result["macd_signal_pct"] = result["macd_signal"] / price
     result["macd_histogram_pct"] = result["macd_histogram"] / price
+    rolling_high = price.rolling(252, min_periods=252).max()
+    rolling_low = price.rolling(252, min_periods=252).min()
+    result["distance_52w_high"] = price / rolling_high - 1
+    result["distance_52w_low"] = price / rolling_low - 1
+    result["percentile_price_252d"] = rolling_percentile(price)
+    result["percentile_volume_252d"] = rolling_percentile(volume)
+    result["percentile_volatility_252d"] = rolling_percentile(result["volatility_20d"])
     if benchmark_close is not None:
         benchmark = benchmark_close.reindex(result.index)
+        for period in (1, 5, 20):
+            result[f"spy_return_{period}d"] = returns(benchmark, period)
+        result["excess_return_5d"] = result["return_5d"] - result["spy_return_5d"]
+        result["excess_return_20d"] = result["return_20d"] - result["spy_return_20d"]
         for period in (5, 20, 60):
             result[f"relative_momentum_spy_{period}d"] = returns(price, period) - returns(benchmark, period)
         for window in (20, 60):

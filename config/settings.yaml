@@ -16,3 +16,9 @@ ingestion:
   refresh_overlap_days: 5
   schema_version: "1"
   normalization_version: split-adjusted-latest-v1
+features:
+  raw_history_start: "2009-01-01"
+  feature_history_start: "2010-01-01"
+  schema_version: "2"
+  quantitative_version: quantitative-v1
+  minimum_rank_assets: 20

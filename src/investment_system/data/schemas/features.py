@@ -1,10 +1,10 @@
-from datetime import date
+from datetime import date, datetime
 from typing import Any
-from pydantic import BaseModel, ConfigDict, Field, create_model
+from pydantic import BaseModel, ConfigDict, Field, create_model, field_validator
 
-IDENTIFIER_COLUMNS = ("ticker", "decision_date", "sector", "industry", "market_cap")
+IDENTIFIER_COLUMNS = ("ticker", "decision_date", "decision_time", "sector", "industry", "market_cap")
 FEATURE_COLUMNS = (
-    "open high low close adjusted_close volume return_1d return_2d return_5d return_10d return_20d return_60d "
+    "split_adjusted_open split_adjusted_high split_adjusted_low split_adjusted_close split_adjusted_volume return_1d return_2d return_5d return_10d return_20d return_60d "
     "gap_open intraday_return overnight_return momentum_5d momentum_10d momentum_20d momentum_60d momentum_120d "
     "relative_momentum_spy_5d relative_momentum_spy_20d relative_momentum_spy_60d volatility_5d volatility_10d "
     "volatility_20d volatility_60d downside_volatility atr_14 beta_20d beta_60d max_drawdown_20d max_drawdown_60d "
@@ -34,13 +34,38 @@ BOOLEAN_COLUMNS = {
     "earnings_pre_event", "earnings_post_event", "event_fed", "event_cpi", "event_fda", "event_court", "event_product", "event_investor_day",
 }
 
+QUANTITATIVE_FEATURE_COLUMNS = tuple(
+    "split_adjusted_open split_adjusted_high split_adjusted_low split_adjusted_close split_adjusted_volume "
+    "return_1d return_2d return_5d return_10d return_20d return_60d momentum_5d momentum_10d momentum_20d momentum_60d momentum_120d "
+    "volatility_5d volatility_10d volatility_20d volatility_60d downside_volatility gap_open intraday_return overnight_return "
+    "rsi_14 atr_14 atr_pct macd macd_signal macd_histogram macd_pct macd_signal_pct macd_histogram_pct "
+    "distance_ma10 distance_ma20 distance_ma50 distance_ma200 volume_ratio_5d volume_ratio_20d volume_change_1d "
+    "avg_dollar_volume_20d avg_dollar_volume_60d max_drawdown_20d max_drawdown_60d distance_52w_high distance_52w_low "
+    "percentile_price_252d percentile_volume_252d percentile_volatility_252d spy_return_1d spy_return_5d spy_return_20d "
+    "excess_return_5d excess_return_20d relative_momentum_spy_5d relative_momentum_spy_20d relative_momentum_spy_60d "
+    "correlation_spy_20d correlation_spy_60d beta_20d beta_60d sector_return_5d sector_return_20d relative_sector_return_20d".split()
+)
+
 class _FeatureRowBase(BaseModel):
     model_config = ConfigDict(extra="forbid")
     ticker: str = Field(min_length=1)
     decision_date: date
+    decision_time: datetime
     sector: str | None = None
     industry: str | None = None
     market_cap: float | None = Field(default=None, ge=0)
+    has_20d_history: bool = False
+    has_60d_history: bool = False
+    has_120d_history: bool = False
+    has_252d_history: bool = False
+    model_eligible: bool = False
+
+    @field_validator("decision_time")
+    @classmethod
+    def decision_time_must_be_aware(cls, value: datetime) -> datetime:
+        if value.tzinfo is None or value.utcoffset() is None:
+            raise ValueError("decision_time must be timezone-aware")
+        return value
 
     def model_features(self) -> dict[str, Any]:
         return {name: getattr(self, name) for name in (*FEATURE_COLUMNS, *CATEGORICAL_FEATURE_COLUMNS)}
