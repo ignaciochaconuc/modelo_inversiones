@@ -2,6 +2,15 @@
 
 Base modular para un sistema multiagente de análisis de acciones estadounidenses a frecuencia diaria. Esta fase construye contratos, datos point-in-time, feature store local, features cuantitativas, auditoría y control de costos; no realiza llamadas externas, entrenamiento ni trading.
 
+## Documentación
+
+- [Especificación funcional](PROJECT_SPEC.md)
+- [Arquitectura y dependencias](ARCHITECTURE.md)
+- [Roadmap](ROADMAP.md)
+- [Guía para agentes de IA](AGENTS.md)
+- [Guía de contribución](CONTRIBUTING.md)
+- [Architecture Decision Records](docs/decisions/)
+
 ## Arquitectura y flujo
 
 El código vive bajo `src/investment_system` para evitar colisiones con paquetes genéricos de Python. Los datos se validan con Pydantic, se escriben en Parquet y se consultan con DuckDB.
