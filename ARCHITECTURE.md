@@ -52,7 +52,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `models` | Contratos de regresión, clasificación y ranking | Stub |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
-| `backtesting` | Contrato de motor y métricas | Parcial |
+| `backtesting` | Contrato de motor, schemas, accounting histórico y métricas | Funcional Phase 2A.1; loop pendiente |
 | `execution` | Órdenes, fills y paper executor | Contrato/stub |
 | `audit` | Registro reconstruible de decisiones | Funcional básico |
 
@@ -100,6 +100,21 @@ Features se almacenan por año en un archivo Parquet consolidado. Un rebuild ree
 Phase 1C añade una capa de pilotaje, no una nueva metodología financiera. `RealDataPilot` reutiliza ingesta, stores y builder existentes; mide cobertura y rendimiento, reconstruye ventanas as-of alrededor de splits y bloquea el resultado si falla una comprobación temporal. Su JSON de reporte es evidencia diagnóstica, no una entrada de features ni de entrenamiento.
 
 Phase 1D amplía esa orquestación al universo fijo configurado. Los errores recuperables se aíslan por ticker, la ingesta puede reanudarse omitiendo coberturas locales completas y el ranking se calcula conjuntamente solo sobre activos invertibles; SPY continúa siendo benchmark de entrada y no participa en el ranking.
+
+## Backtesting y accounting histórico
+
+`backtesting.schemas` define contratos históricos separados de los contratos
+conceptuales basados en pesos de `portfolio` y de la ejecución futura. Una
+`TargetAllocation` sigue siendo una intención de pesos, mientras
+`SimulatedOrder` y `SimulatedFill` representan unidades. Esta separación no
+autoriza una ruta que omita al Risk Manager cuando se implemente el loop.
+
+`PortfolioLedger` mantiene cash y posiciones long-only de forma determinista.
+Los fills usan precios raw; `fill_price` ya incorpora slippage y las comisiones
+se cargan directamente a cash. Splits cambian quantity y average cost usando la
+convención acciones nuevas/antiguas, y dividendos acreditan cash explícitamente.
+Los snapshots expresan gross/net exposure como fracción de NAV. Phase 2A.1 no
+incluye calendario, estrategia, generación de órdenes ni ejecución temporal.
 
 ## LLM Router, costos y cache
 

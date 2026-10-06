@@ -64,9 +64,20 @@ movimientos aún no explicados.
 
 ## Phase 2 — Backtesting engine
 
+**Status:** Phase 2A.1 complete; temporal engine pending
+
 **Objetivo:** simular decisiones after-close y ejecución next-open.  
 **Entregables:** loop temporal, fills, costos, cartera, benchmark, métricas y auditoría.  
 **Finalización aproximada:** backtests deterministas con pruebas explícitas de ausencia de leakage.
+
+### Phase 2A.1 — Backtesting contracts + portfolio accounting
+
+**Status:** complete
+
+Schemas específicos separan target weights, órdenes, fills, posiciones por
+unidades, snapshots y resultados. `PortfolioLedger` implementa accounting
+long-only determinista, mark-to-market estricto, splits y dividendos. No incluye
+loop temporal, estrategias, benchmark, optimizador, ML ni PaperExecutor.
 
 ## Phase 3 — Baseline predictive models
 

@@ -95,7 +95,12 @@ El Risk Manager es una autoridad separada que puede `APPROVE`, `REDUCE` o `BLOCK
 
 ## Backtesting, paper trading y ejecución
 
-El backtesting deberá reproducir decisiones point-in-time después del cierre y fills en la apertura siguiente, con métricas y costos. Actualmente existen contrato y métricas básicas, no un motor funcional completo.
+El backtesting deberá reproducir decisiones point-in-time después del cierre y fills en la apertura siguiente, con métricas y costos. Phase 2A.1 implementa contratos históricos y un `PortfolioLedger` determinista con unidades, cash, compras/ventas long-only, mark-to-market, splits y dividendos. Los fills conservan `raw_open_price`; slippage y comisiones quedan auditables. Todavía no existe loop temporal, estrategia ni generación automática de órdenes.
+
+El accounting de costo promedio excluye comisiones: el `fill_price` determina
+el costo unitario y la comisión reduce NAV a través de cash. P&L realizado y no
+realizado se calcularán en una fase posterior después de fijar metodología de
+lotes; quantity, average cost y precios ya preservan la información necesaria.
 
 Paper trading corresponde a Phase 8. La ejecución real supervisada y una eventual ejecución automática corresponden a Phases 9 y 10. No existe conexión con brokers ni autorización para órdenes reales.
 
