@@ -116,6 +116,10 @@ def test_full_universe_orchestration_is_resilient_and_builds_rankings(tmp_path) 
     assert report["cross_sectional_coverage"]["assets_with_features"]["max"] == 2
     assert report["global_summary"]["raw_bars"] == 660
     assert report["split_validation"]["failed"] == []
+    assert "corporate_action_integrity" in report
+    assert "number_of_detected_complex_events" in report["global_summary"]
+    assert "expected_warmup_nans" in report
+    assert "unresolved_provider_symbol_issues" in report
 
     resumed = workflow.run(
         FullUniverseRequest(days[0], days[0], days[-1], True),

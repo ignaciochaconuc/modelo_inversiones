@@ -42,6 +42,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `data.ingestion` | Orquestación incremental, validación y normalización | Funcional Phase 1A |
 | `data.calendar` | Sesiones, aperturas y cierres XNYS | Funcional |
 | `data.normalization` | Corporate actions y ajuste explícito por splits | Funcional |
+| `data.corporate_actions` | Detección y exclusión auditable de eventos complejos | Funcional Phase 1D.1 |
 | `data.storage` | Persistencia idempotente Parquet y consulta DuckDB | Funcional básico |
 | `data.validation` | Invariantes temporales y feature/target | Funcional |
 | `data.pilot` | Orquestación y diagnóstico no destructivo del piloto real | Funcional Phase 1C |
@@ -69,6 +70,12 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 - `audit` puede registrar resultados de todas las etapas, pero ninguna etapa debe depender de audit para su lógica financiera.
 
 Dependencias prohibidas: `agents → execution`, `llm → execution`, `models → data.sources`, `execution → agents`, y cualquier ruta que evite `risk`. Los targets tampoco pueden fluir hacia agentes, inferencia o optimización.
+
+Los aliases viven en `config/provider_symbols.yaml`: solo el adapter traduce la
+request y toda salida conserva el ticker interno. Los eventos complejos viven en
+una tabla processed separada. Sus flags de features están limitados por
+`known_at`; los flags de targets pueden mirar dentro del horizonte futuro y no
+retornan al flujo de inferencia.
 
 ## Almacenamiento
 

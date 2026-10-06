@@ -10,6 +10,7 @@ from investment_system.data.calendar import XNYSTradingCalendar
 from investment_system.data.ingestion import MarketDataIngestionService
 from investment_system.data.pilot import PilotRequest, RealDataPilot
 from investment_system.data.sources.tiingo import TiingoEODDataSource
+from investment_system.data.provider_symbols import load_provider_symbols
 from investment_system.data.storage.feature_store import QuantitativeFeatureStore
 from investment_system.data.storage.market_store import MarketDataStore
 from investment_system.data.universe import load_universe
@@ -53,6 +54,7 @@ def main() -> int:
         raw_history_start=args.start, feature_history_start=args.feature_start,
         feature_schema_version=settings.features.schema_version,
         quantitative_feature_version=settings.features.quantitative_version,
+        target_version=settings.features.target_version,
         minimum_rank_assets=settings.features.minimum_rank_assets,
     )
     source = None
@@ -62,6 +64,7 @@ def main() -> int:
             raise SystemExit("TIINGO_API_KEY is not set. Add it to the local .env file or use --skip-download.")
         provider = settings.providers.tiingo
         source = TiingoEODDataSource(api_key, base_url=provider.base_url,
+                                     symbol_aliases=load_provider_symbols(),
             market_timezone=settings.market.timezone, market_close_time=settings.market.close_time,
             assumed_available_time=provider.assumed_eod_available_time,
             timeout_seconds=provider.timeout_seconds, schema_version=settings.ingestion.schema_version)

@@ -2,7 +2,7 @@ from datetime import date, datetime, timedelta, timezone
 import pandas as pd
 import pytest
 
-from investment_system.features.targets import add_cross_sectional_rank, build_price_targets
+from investment_system.features.targets import add_cross_sectional_rank, build_price_targets, build_training_dataset
 
 NOW = datetime(2025, 1, 1, tzinfo=timezone.utc)
 
@@ -64,3 +64,34 @@ def test_cross_sectional_rank_is_zero_to_one_with_average_ties() -> None:
     assert ranked.loc[3, "target_rank_10d"] == 1
     assert ranked.loc[1, "target_rank_10d"] == ranked.loc[2, "target_rank_10d"] == pytest.approx(0.5)
     assert add_cross_sectional_rank(frame, minimum_assets=5)["target_rank_10d"].isna().all()
+
+def test_target_contamination_looks_forward_and_rank_excludes_it() -> None:
+    raw, actions = market_frames(1.0, 100.0, 100.0)
+    event_day = raw.loc[10, "trading_date"]
+    events = pd.DataFrame([{"event_date": event_day, "training_exclusion": True}])
+    targets = build_price_targets(raw, actions, WeekdayCalendar(), events)
+    origin = raw.loc[0, "trading_date"]
+    row = targets[targets["decision_date"] == origin].iloc[0]
+    assert row["target_corporate_action_contaminated_10d"]
+    assert not row["target_10d_training_eligible"]
+
+    cross = pd.DataFrame({
+        "ticker": ["A", "B", "C"], "decision_date": origin,
+        "target_return_10d": [0.1, 0.2, 0.3],
+        "target_10d_training_eligible": [True, False, True],
+    })
+    assert add_cross_sectional_rank(cross, minimum_assets=3)["target_rank_10d"].isna().all()
+    ranked = add_cross_sectional_rank(cross, minimum_assets=2)
+    assert pd.isna(ranked.loc[1, "target_rank_10d"])
+
+def test_training_eligibility_is_created_only_by_explicit_join() -> None:
+    features = pd.DataFrame({
+        "ticker": ["A"], "decision_date": [date(2025, 1, 1)], "model_eligible": [True],
+        "feature_corporate_action_contaminated": [False],
+    })
+    targets = pd.DataFrame({
+        "ticker": ["A"], "decision_date": [date(2025, 1, 1)],
+        "target_10d_training_eligible": [True],
+    })
+    assert "training_eligible" not in features
+    assert build_training_dataset(features, targets)["training_eligible"].iloc[0]

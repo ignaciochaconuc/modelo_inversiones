@@ -9,6 +9,7 @@ from investment_system.core.logging import configure_logging
 from investment_system.data.calendar import XNYSTradingCalendar
 from investment_system.data.ingestion import MarketDataIngestionService
 from investment_system.data.sources.tiingo import TiingoEODDataSource
+from investment_system.data.provider_symbols import load_provider_symbols
 from investment_system.data.storage.market_store import MarketDataStore
 from investment_system.data.universe import load_universe
 
@@ -26,6 +27,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--start", required=True, type=parse_date)
     parser.add_argument("--end", type=parse_date, default=date.today())
     parser.add_argument("--dry-run", action="store_true", help="show effective ranges without HTTP calls")
+    parser.add_argument("--force-full-refresh", action="store_true",
+                        help="request the complete range, for example after a reviewed symbol alias change")
     return parser
 
 def main() -> int:
@@ -47,6 +50,7 @@ def main() -> int:
             assumed_available_time=provider.assumed_eod_available_time,
             timeout_seconds=provider.timeout_seconds,
             schema_version=settings.ingestion.schema_version,
+            symbol_aliases=load_provider_symbols(),
         )
     service = MarketDataIngestionService(
         source, store, XNYSTradingCalendar(),
@@ -55,7 +59,10 @@ def main() -> int:
         throttle_seconds=settings.providers.tiingo.throttle_seconds,
     )
     try:
-        summaries = service.ingest_many(tickers, args.start, args.end, dry_run=args.dry_run)
+        summaries = service.ingest_many(
+            tickers, args.start, args.end, dry_run=args.dry_run,
+            force_full_refresh=args.force_full_refresh,
+        )
     finally:
         if source is not None:
             source.close()

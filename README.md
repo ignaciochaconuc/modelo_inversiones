@@ -62,7 +62,17 @@ Para una descarga real, defina `TIINGO_API_KEY` solo en el `.env` local y quite 
 
 Los datasets quedan separados en `data/raw/tiingo/daily`, `data/raw/tiingo/corporate_actions` y `data/processed/market/split_adjusted_latest`. Este último usa la base accionaria más reciente y no debe utilizarse ciegamente en backtests; las decisiones históricas requieren la vista split-adjusted as-of. El universo versionado es fijo: no es point-in-time e introduce survivorship bias.
 
+Phase 1D.1 añade `config/provider_symbols.yaml` para aliases request-only y
+`data/processed/market/corporate_action_events` para clasificaciones auditables.
+Los eventos complejos no reescriben precios: marcan contaminación separada de
+features y targets. `config/corporate_action_overrides.yaml` permite revisiones
+versionadas sin ajustes manuales de precio.
+
 El Feature Store cuantitativo se particiona anualmente en `data/features/quantitative/year=YYYY/data.parquet`. Los targets opcionales se guardan físicamente aparte en `data/targets/quantitative`; una construcción de inferencia no usa `--with-targets`. `manifest.json` y `build_report.json` registran versiones, universo, cobertura, nulos y calidad.
+
+`model_eligible` sigue describiendo capacidad de inferencia. La elegibilidad de
+entrenamiento solo se crea en un join supervisado explícito y combina ese flag
+con contaminación de features y validez/contaminación del horizonte objetivo.
 
 Los rebuilds reemplazan autoritativamente las filas del ticker y rango solicitados, por lo que una corrección puede eliminar registros obsoletos. Los targets de 5/10/20 días apuntan a la sesión bursátil exacta; si falta su barra, quedan NULL. `history_count` es acumulativo por decision time y no se reinicia después de splits.
 
@@ -71,6 +81,11 @@ El piloto acotado de Phase 1C orquesta SPY, AAPL, MSFT y NVDA (configurables por
 `python scripts/benchmark_feature_builder.py` ejecuta un benchmark sintético opcional de 4.500 sesiones. No forma parte de pytest. El manifest y el reporte del piloto incluyen versiones, configuración relevante, timestamp UTC y metadata Git best-effort; si Git no puede ejecutarse, sus campos quedan `null` sin interrumpir el pipeline.
 
 Phase 1D reutiliza el mismo pipeline mediante `build_full_universe.py` y escribe `data/reports/full_universe_build.json`. La ejecución es incremental y reanudable: `--skip-features` continúa descargas pendientes sin reconstruir el dataset tras cada lote, y `--skip-download` realiza el rebuild final desde raw local. `--skip-provider-ticker` solo excluye explícitamente un símbolo ya revisado; nunca inventa un mapping.
+
+`python scripts/diagnose_provider_symbol.py BRK.B --start 2009-01-01` consulta
+metadata y cobertura sin persistir datos. Para un alias revisado, una ingesta
+puntual puede usar `--force-full-refresh`; el adapter solicita el alias, pero raw,
+features y targets conservan el ticker interno.
 
 ## Estado y roadmap
 

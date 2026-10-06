@@ -17,6 +17,9 @@ from pydantic import ValidationError
 from investment_system.core.exceptions import DataQualityError, DataSourceError, DataSourceRateLimitError
 from investment_system.core.reproducibility import git_metadata
 from investment_system.data.calendar import TradingCalendar
+from investment_system.data.corporate_actions import (
+    CorporateActionEvent, detect_corporate_action_events, load_corporate_action_overrides,
+)
 from investment_system.data.ingestion import MarketDataIngestionService
 from investment_system.data.normalization import AS_OF_VERSION, build_split_adjusted_series_as_of
 from investment_system.data.schemas.features import QUANTITATIVE_FEATURE_COLUMNS
@@ -25,7 +28,7 @@ from investment_system.data.storage.market_store import MarketDataStore
 from investment_system.data.universe import UniverseConfig
 from investment_system.features.store_builder import QuantitativeFeatureStoreBuilder
 
-REPORT_SCHEMA_VERSION = "1"
+REPORT_SCHEMA_VERSION = "2"
 DELIBERATE_NULL_FEATURES = {
     "sector_return_5d", "sector_return_20d", "relative_sector_return_20d",
 }
@@ -189,6 +192,19 @@ class FullUniverseBuild:
             if states[ticker]["status"] in {"provider_error", "validation_error"}:
                 states[ticker]["warnings"].append("build uses previously stored local data")
 
+        overrides = load_corporate_action_overrides()
+        detected_frames = []
+        detection_time = datetime.now(timezone.utc)
+        for ticker in all_market_tickers:
+            detected_frames.append(detect_corporate_action_events(
+                self.market_store.read_bars(ticker), self.market_store.read_actions(ticker),
+                ticker=ticker, overrides=overrides, detected_at=detection_time,
+            ))
+        nonempty_events = [frame for frame in detected_frames if not frame.empty]
+        events = (pd.concat(nonempty_events, ignore_index=True) if nonempty_events
+                  else pd.DataFrame(columns=list(CorporateActionEvent.model_fields)))
+        self.market_store.write_corporate_action_events(events)
+
         if self.market_store.read_bars(self.universe.benchmark).empty:
             raise ValueError(f"benchmark data is required: {self.universe.benchmark}")
         build_tickers = [ticker for ticker in self.universe.tickers if not self.market_store.read_bars(ticker).empty]
@@ -238,6 +254,9 @@ class FullUniverseBuild:
         unexpected_nans = self._unexpected_nans(features)
         outliers, extremes = self._outliers_and_extremes(features)
         split_validation = self._split_validation(all_market_tickers)
+        contamination = self._contamination_diagnostics(features, targets, events)
+        expected_warmup, unexpected_nans = self._nan_diagnostics(features)
+        outliers = self._classify_outliers(outliers, features)
         validation_seconds = perf_counter() - validation_started
         sizes = self._dataset_sizes()
         status_counts = {name: sum(item["status"] == name for item in per_ticker.values())
@@ -254,6 +273,7 @@ class FullUniverseBuild:
                 **git_metadata(),
                 "feature_schema_version": self.builder.feature_schema_version,
                 "quantitative_feature_version": self.builder.quantitative_feature_version,
+                "target_version": self.builder.target_version,
                 "normalization_version": AS_OF_VERSION,
                 "provider": "tiingo",
                 "settings": {
@@ -296,6 +316,8 @@ class FullUniverseBuild:
                 "unexpected_gaps": sum(len(item["unexpected_missing_sessions"]) for item in all_reports),
                 "infinities": int(np.isinf(numeric.to_numpy()).sum()) if not numeric.empty else 0,
                 "unexpected_nan_cells_eligible": sum(item["count"] for item in unexpected_nans.values()),
+                "expected_warmup_nan_cells": sum(item["count"] for item in expected_warmup.values()),
+                **contamination["summary"],
                 "raw_bars_not_yet_available": sum(item["raw_bars_not_yet_available"] for item in all_reports),
             },
             "benchmark": benchmark_report,
@@ -310,6 +332,7 @@ class FullUniverseBuild:
             "cross_sectional_coverage": cross_sectional,
             "ranking_coverage": ranking,
             "unexpected_nans_eligible": unexpected_nans,
+            "expected_warmup_nans": expected_warmup,
             "deliberate_null_fields": [
                 "sector", "industry", "market_cap", "sector_return_5d",
                 "sector_return_20d", "relative_sector_return_20d",
@@ -317,6 +340,15 @@ class FullUniverseBuild:
             "outliers_diagnostic_only": outliers,
             "extremes_top_25": extremes,
             "split_validation": split_validation,
+            "corporate_action_integrity": contamination["detail"],
+            "unresolved_provider_symbol_issues": [
+                {"ticker": ticker, "status": item["status"],
+                 "unexpected_missing_sessions": len(item["unexpected_missing_sessions"]),
+                 "error": item["error"]}
+                for ticker, item in per_ticker.items()
+                if (item["status"] in {"provider_error", "validation_error"}
+                    or len(item["unexpected_missing_sessions"]) >= 20)
+            ],
             "performance": {
                 "ingestion_seconds_by_ticker": {ticker: states[ticker]["ingestion_seconds"] for ticker in all_market_tickers},
                 "feature_build_seconds_by_ticker": build_report.get("feature_build_seconds_by_ticker", {}),
@@ -460,6 +492,86 @@ class FullUniverseBuild:
             count = int(eligible[column].isna().sum())
             if count:
                 result[column] = {"count": count, "percentage": float(count / len(eligible) * 100)}
+        return result
+
+    @classmethod
+    def _nan_diagnostics(cls, features: pd.DataFrame) -> tuple[dict[str, Any], dict[str, Any]]:
+        """Separate the extra 20+252 observation volatility-percentile warm-up."""
+        unexpected = cls._unexpected_nans(features)
+        if features.empty or "percentile_volatility_252d" not in features:
+            return {}, unexpected
+        eligible = features[features["model_eligible"]]
+        mask = eligible["percentile_volatility_252d"].isna() & (eligible["history_count"] < 272)
+        count = int(mask.sum())
+        expected = {}
+        if count:
+            expected["percentile_volatility_252d"] = {
+                "count": count,
+                "reason": "252 valid volatility_20d observations require 272 price observations",
+            }
+            remaining = int(eligible["percentile_volatility_252d"].isna().sum()) - count
+            if remaining:
+                unexpected["percentile_volatility_252d"] = {
+                    "count": remaining, "percentage": float(remaining / len(eligible) * 100),
+                }
+            else:
+                unexpected.pop("percentile_volatility_252d", None)
+        return expected, unexpected
+
+    @staticmethod
+    def _contamination_diagnostics(
+        features: pd.DataFrame, targets: pd.DataFrame | None, events: pd.DataFrame,
+    ) -> dict[str, Any]:
+        excluded = events[events["training_exclusion"].fillna(False)] if not events.empty else events
+        event_counts = (excluded["event_type"].value_counts().to_dict() if not excluded.empty else {})
+        feature_mask = features.get(
+            "feature_corporate_action_contaminated", pd.Series(False, index=features.index)
+        ).eq(True)
+        target_counts = {}
+        for horizon in (5, 10, 20):
+            column = f"target_corporate_action_contaminated_{horizon}d"
+            target_counts[horizon] = int(targets[column].eq(True).sum()) if targets is not None and column in targets else 0
+        rank_exclusions = 0
+        if targets is not None and "target_corporate_action_contaminated_10d" in targets:
+            rank_exclusions = int((targets["target_corporate_action_contaminated_10d"].eq(True)
+                                   & targets["target_return_10d"].notna()).sum())
+        return {
+            "summary": {
+                "number_of_detected_complex_events": int(len(excluded)),
+                "contaminated_feature_rows": int(feature_mask.sum()),
+                "contaminated_targets_5d": target_counts[5],
+                "contaminated_targets_10d": target_counts[10],
+                "contaminated_targets_20d": target_counts[20],
+                "rankings_excluded_due_to_corporate_actions": rank_exclusions,
+            },
+            "detail": {
+                "events_by_type": event_counts,
+                "tickers_with_contaminated_features": sorted(features.loc[feature_mask, "ticker"].unique().tolist()) if not features.empty else [],
+                "relevant_events": excluded.sort_values(["event_date", "ticker"]).to_dict("records") if not excluded.empty else [],
+                "pending_review_events": events[~events["training_exclusion"].fillna(False)].to_dict("records") if not events.empty else [],
+                "feature_window_sessions": {"before": 1, "event_day": True, "after": 1},
+                "feature_flags_are_point_in_time_gated_by_known_at": True,
+            },
+        }
+
+    @staticmethod
+    def _classify_outliers(outliers: dict[str, Any], features: pd.DataFrame) -> dict[str, Any]:
+        result = {"thresholds_are_diagnostic_only": True}
+        contaminated = features.get(
+            "feature_corporate_action_contaminated", pd.Series(False, index=features.index)
+        ).eq(True)
+        for name, payload in outliers.items():
+            if name == "thresholds_are_diagnostic_only":
+                continue
+            observations = payload.get("observations", [])
+            explained, unexplained = [], []
+            for item in observations:
+                dates = pd.to_datetime(features["decision_date"]).dt.date
+                mask = (features["ticker"] == item["ticker"]) & (dates == item["decision_date"])
+                target = explained if bool(contaminated[mask].any()) else unexplained
+                target.append(item)
+            result[name] = {**payload, "explained_or_contaminated": explained,
+                            "unexplained": unexplained, "unexplained_count_in_reported_observations": len(unexplained)}
         return result
 
     @staticmethod

@@ -60,6 +60,12 @@ El objetivo principal es `target_return_10d = P(t+10) / P(t) - 1`; `target_posit
 
 Targets se guardan en un dataset físico separado y usan una base latest-basis exclusivamente para que splits futuros dentro del horizonte no creen retornos falsos. Cada horizonte apunta a la sesión bursátil exacta obtenida del calendario; si falta la barra de esa sesión, el label queda NULL y no salta a otra observación. Son price returns y no incorporan dividendos. `target_rank_10d` usa rank cross-sectional promedio, normalizado a [0,1], y queda NULL si hay menos de 20 activos válidos en la fecha.
 
+Phase 1D.1 añade integridad conservadora para corporate actions complejas. Los
+eventos se persisten por separado y nunca modifican raw. Features contienen
+flags point-in-time; labels contienen flags por horizonte cuando el futuro cruza
+un evento excluido. El ranking ignora esos labels. `training_eligible` se calcula
+solo al unir features y targets y permanece separado de `model_eligible`.
+
 ## Agentes
 
 - **NewsAgent:** impacto, novedad, polaridad, tipo y horizonte de noticias.

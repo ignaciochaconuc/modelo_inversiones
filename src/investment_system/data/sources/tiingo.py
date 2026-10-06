@@ -9,6 +9,7 @@ import httpx
 from investment_system.core.exceptions import DataSourceError, DataSourceRateLimitError
 from investment_system.data.schemas.market import MarketBar
 from investment_system.data.sources.base import BaseDataSource
+from investment_system.data.provider_symbols import provider_symbol
 
 _TICKER_PATTERN = re.compile(r"^[A-Z0-9.-]+$")
 
@@ -35,6 +36,7 @@ class TiingoEODDataSource(BaseDataSource):
         schema_version: str = "1",
         client: httpx.Client | None = None,
         clock: Callable[[], datetime] | None = None,
+        symbol_aliases: dict[str, dict[str, str]] | None = None,
     ) -> None:
         if not api_key:
             raise ValueError("TIINGO_API_KEY is required")
@@ -48,16 +50,18 @@ class TiingoEODDataSource(BaseDataSource):
         self._client = client or httpx.Client()
         self._owns_client = client is None
         self._clock = clock or (lambda: datetime.now(timezone.utc))
+        self._symbol_aliases = symbol_aliases or {}
 
     def fetch_daily_bars(self, ticker: str, start_date: date, end_date: date) -> list[MarketBar]:
         ticker = ticker.strip().upper()
-        if not _TICKER_PATTERN.fullmatch(ticker):
+        provider_ticker = provider_symbol(self.provider, ticker, self._symbol_aliases)
+        if not _TICKER_PATTERN.fullmatch(ticker) or not _TICKER_PATTERN.fullmatch(provider_ticker):
             raise ValueError(f"invalid ticker: {ticker!r}")
         if start_date > end_date:
             raise ValueError("start_date must be <= end_date")
         try:
             response = self._client.get(
-                f"{self._base_url}/{ticker}/prices",
+                f"{self._base_url}/{provider_ticker}/prices",
                 params={"startDate": start_date.isoformat(), "endDate": end_date.isoformat(), "resampleFreq": "daily"},
                 headers={"Authorization": f"Token {self._api_key}", "Accept": "application/json"},
                 timeout=self._timeout,
@@ -78,6 +82,34 @@ class TiingoEODDataSource(BaseDataSource):
         if ingested_at.tzinfo is None:
             raise ValueError("ingestion clock must return a timezone-aware datetime")
         return [self._parse_bar(ticker, item, ingested_at) for item in payload]
+
+    def diagnose_symbol(self, ticker: str, start_date: date, end_date: date) -> dict[str, object]:
+        """Return a small, non-persisting provider diagnostic for one internal symbol."""
+        internal = ticker.strip().upper()
+        external = provider_symbol(self.provider, internal, self._symbol_aliases)
+        metadata_response = self._client.get(
+            f"{self._base_url}/{external}",
+            headers={"Authorization": f"Token {self._api_key}", "Accept": "application/json"},
+            timeout=self._timeout,
+        )
+        metadata = metadata_response.json() if not metadata_response.is_error else None
+        try:
+            bars = self.fetch_daily_bars(internal, start_date, end_date)
+            price_status = 200
+            error = None
+        except DataSourceError as exc:
+            bars, price_status, error = [], None, type(exc).__name__
+        return {
+            "ticker_requested": internal,
+            "provider_ticker": external,
+            "metadata_status": metadata_response.status_code,
+            "metadata": metadata,
+            "price_response_status": price_status,
+            "first_date": bars[0].trading_date if bars else None,
+            "last_date": bars[-1].trading_date if bars else None,
+            "number_of_bars": len(bars),
+            "error": error,
+        }
 
     def _parse_bar(self, ticker: str, item: object, ingested_at: datetime) -> MarketBar:
         if not isinstance(item, dict):

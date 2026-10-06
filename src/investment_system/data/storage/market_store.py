@@ -11,7 +11,8 @@ class MarketDataStore:
         self.raw_daily = Path(raw_root) / "tiingo" / "daily"
         self.actions = Path(raw_root) / "tiingo" / "corporate_actions"
         self.latest_basis_split_adjusted = Path(processed_root) / "market" / "split_adjusted_latest"
-        for path in (self.raw_daily, self.actions, self.latest_basis_split_adjusted):
+        self.corporate_action_events = Path(processed_root) / "market" / "corporate_action_events"
+        for path in (self.raw_daily, self.actions, self.latest_basis_split_adjusted, self.corporate_action_events):
             path.mkdir(parents=True, exist_ok=True)
 
     @staticmethod
@@ -98,3 +99,16 @@ class MarketDataStore:
     def write_split_adjusted(self, ticker: str, frame: pd.DataFrame) -> int:
         """Backward-compatible alias; persists the latest-basis artifact."""
         return self.write_latest_basis_split_adjusted(ticker, frame)
+
+    def read_corporate_action_events(self) -> pd.DataFrame:
+        return self._read(self.corporate_action_events / "events.parquet")
+
+    def write_corporate_action_events(self, frame: pd.DataFrame) -> int:
+        path = self.corporate_action_events / "events.parquet"
+        if frame.empty:
+            if path.exists():
+                self._write_atomic(frame, path)
+            return 0
+        ordered = frame.drop_duplicates("event_id", keep="last").sort_values(["ticker", "event_date", "event_id"])
+        self._write_atomic(ordered, path)
+        return len(ordered)

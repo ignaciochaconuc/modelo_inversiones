@@ -40,3 +40,17 @@ def test_http_errors_are_explicit(status, exception) -> None:
 def test_invalid_ticker_is_rejected_without_http() -> None:
     with pytest.raises(ValueError, match="invalid ticker"):
         source_for(lambda _: pytest.fail("HTTP must not be called")).fetch_daily_bars("bad ticker", date(2025, 1, 1), date(2025, 1, 2))
+
+def test_provider_alias_is_used_only_for_request_and_internal_ticker_is_preserved() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert "/BRK-B/prices" in str(request.url)
+        return httpx.Response(200, json=[{
+            "date": "2025-01-02T00:00:00Z", "open": 10, "high": 11,
+            "low": 9, "close": 10, "volume": 100,
+        }])
+    source = TiingoEODDataSource(
+        "secret", client=httpx.Client(transport=httpx.MockTransport(handler)), clock=lambda: NOW,
+        symbol_aliases={"tiingo": {"BRK.B": "BRK-B"}},
+    )
+    bars = source.fetch_daily_bars("BRK.B", date(2025, 1, 2), date(2025, 1, 2))
+    assert bars[0].ticker == "BRK.B"

@@ -48,9 +48,19 @@ La revisión de rendimiento reemplazó rescans por fecha en segmentación y cont
 
 ### Phase 1D — Full Development Universe Dataset
 
-**Status:** in progress; provider-limited resumable ingestion
+**Status:** complete
 
 El workflow reutiliza Tiingo, ingesta incremental, normalización as-of, Feature Store y targets existentes para los 101 activos configurados. Aísla fallos por ticker, valida calidad transversal y rankings, conserva la advertencia de survivorship bias y permite reanudar lotes sin repetir series locales completas.
+
+### Phase 1D.1 — Corporate Action Integrity
+
+**Status:** complete
+
+Aliases provider-specific conservan la identidad interna; una tabla separada
+clasifica eventos complejos sin alterar raw. Features usan flags point-in-time,
+targets marcan horizontes que cruzan exclusiones y el ranking usa solo labels
+training-valid. El reporte separa warm-up esperado y outliers explicados de los
+movimientos aún no explicados.
 
 ## Phase 2 — Backtesting engine
 

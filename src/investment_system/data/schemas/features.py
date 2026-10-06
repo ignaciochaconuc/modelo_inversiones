@@ -60,6 +60,9 @@ class _FeatureRowBase(BaseModel):
     has_120d_history: bool = False
     has_252d_history: bool = False
     model_eligible: bool = False
+    feature_corporate_action_contaminated: bool = False
+    corporate_action_reason: str | None = None
+    corporate_action_event_id: str | None = None
 
     @field_validator("decision_time")
     @classmethod

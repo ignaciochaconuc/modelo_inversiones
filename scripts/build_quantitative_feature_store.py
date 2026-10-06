@@ -51,6 +51,7 @@ def main() -> int:
         feature_history_start=date.fromisoformat(settings.features.feature_history_start),
         feature_schema_version=settings.features.schema_version,
         quantitative_feature_version=settings.features.quantitative_version,
+        target_version=settings.features.target_version,
         minimum_rank_assets=settings.features.minimum_rank_assets,
     )
     result = builder.build(tickers, start, args.end, with_targets=args.with_targets)

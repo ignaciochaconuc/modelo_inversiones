@@ -13,6 +13,7 @@ import pandas as pd
 from investment_system.data.calendar import TradingCalendar
 from investment_system.data.normalization import AS_OF_VERSION, build_split_adjusted_series_as_of
 from investment_system.data.schemas.features import QUANTITATIVE_FEATURE_COLUMNS
+from investment_system.data.corporate_actions import add_feature_contamination_flags
 from investment_system.data.storage.feature_store import QuantitativeFeatureStore
 from investment_system.data.storage.market_store import MarketDataStore
 from investment_system.data.universe import UniverseConfig
@@ -53,6 +54,7 @@ class QuantitativeFeatureStoreBuilder:
         feature_history_start: date = date(2010, 1, 1),
         feature_schema_version: str = "3",
         quantitative_feature_version: str = "quantitative-v1.1",
+        target_version: str = "price-target-v1",
         minimum_rank_assets: int = 20,
     ) -> None:
         self.market_store = market_store
@@ -65,6 +67,7 @@ class QuantitativeFeatureStoreBuilder:
         self.feature_history_start = feature_history_start
         self.feature_schema_version = feature_schema_version
         self.quantitative_feature_version = quantitative_feature_version
+        self.target_version = target_version
         self.minimum_rank_assets = minimum_rank_assets
 
     def decision_time(self, day: date) -> datetime:
@@ -216,6 +219,10 @@ class QuantitativeFeatureStoreBuilder:
             *QUANTITATIVE_FEATURE_COLUMNS,
         ]
         result = frame.reindex(columns=output_columns).replace([np.inf, -np.inf], np.nan).reset_index(drop=True)
+        events = self.market_store.read_corporate_action_events()
+        if not events.empty:
+            events = events[events["ticker"] == ticker]
+        result = add_feature_contamination_flags(result, events, self.calendar)
         validate_quantitative_feature_frame(result)
         return result
 
@@ -267,7 +274,10 @@ class QuantitativeFeatureStoreBuilder:
                     if not target_actions.empty:
                         action_availability = pd.to_datetime(target_actions["available_at"], utc=True, errors="coerce")
                         target_actions = target_actions[action_availability.notna() & (action_availability <= known_at)]
-                    targets = build_price_targets(target_bars, target_actions, self.calendar)
+                    events = self.market_store.read_corporate_action_events()
+                    if not events.empty:
+                        events = events[events["ticker"] == ticker]
+                    targets = build_price_targets(target_bars, target_actions, self.calendar, events)
                     dates = pd.to_datetime(targets["decision_date"]).dt.date
                     target_frames.append(targets[(dates >= start_date) & (dates <= end_date)])
                 except ValueError as error:
@@ -304,6 +314,7 @@ class QuantitativeFeatureStoreBuilder:
             **git_metadata(),
             "feature_schema_version": self.feature_schema_version,
             "quantitative_feature_version": self.quantitative_feature_version,
+            "target_version": self.target_version,
             "normalization_version": AS_OF_VERSION,
             "universe_name": self.universe.universe.name,
             "universe_as_of": self.universe.universe.as_of,

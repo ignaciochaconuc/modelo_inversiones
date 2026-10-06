@@ -1,0 +1,6 @@
+schema_version: "1"
+providers:
+  tiingo:
+    BRK.B: BRK-B
+    BK: BNY
+

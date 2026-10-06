@@ -39,11 +39,14 @@ class MarketDataIngestionService:
         latest = self.store.latest_trading_date(ticker)
         return requested_start if latest is None else max(requested_start, latest - timedelta(days=self.refresh_overlap_days))
 
-    def ingest_ticker(self, ticker: str, start_date: date, end_date: date, *, dry_run: bool = False) -> IngestionSummary:
+    def ingest_ticker(
+        self, ticker: str, start_date: date, end_date: date, *, dry_run: bool = False,
+        force_full_refresh: bool = False,
+    ) -> IngestionSummary:
         if start_date > end_date:
             raise ValueError("start_date must be <= end_date")
         ticker = ticker.strip().upper()
-        effective_start = self.effective_start_date(ticker, start_date)
+        effective_start = start_date if force_full_refresh else self.effective_start_date(ticker, start_date)
         if dry_run:
             return IngestionSummary(ticker, start_date, effective_start, end_date, 0, 0, 0, 0, (), (), True)
         if self.source is None:
@@ -72,10 +75,15 @@ class MarketDataIngestionService:
         logger.info("market_data_ingestion ticker=%s start=%s end=%s downloaded=%d saved=%d actions=%d normalized=%d gaps=%d elapsed_ms=%.1f", ticker, effective_start, end_date, len(bars), saved, len(actions), normalized_rows, len(gaps), (time.monotonic() - started) * 1000)
         return IngestionSummary(ticker, start_date, effective_start, end_date, len(bars), saved, len(actions), normalized_rows, gaps, missing_refreshed_dates)
 
-    def ingest_many(self, tickers: list[str], start_date: date, end_date: date, *, dry_run: bool = False) -> list[IngestionSummary]:
+    def ingest_many(
+        self, tickers: list[str], start_date: date, end_date: date, *, dry_run: bool = False,
+        force_full_refresh: bool = False,
+    ) -> list[IngestionSummary]:
         summaries: list[IngestionSummary] = []
         for index, ticker in enumerate(tickers):
-            summaries.append(self.ingest_ticker(ticker, start_date, end_date, dry_run=dry_run))
+            summaries.append(self.ingest_ticker(
+                ticker, start_date, end_date, dry_run=dry_run, force_full_refresh=force_full_refresh,
+            ))
             if not dry_run and self.throttle_seconds and index < len(tickers) - 1:
                 time.sleep(self.throttle_seconds)
         return summaries

@@ -1,26 +1,31 @@
 {
   "phase": "1D-full-development-universe",
-  "status": "completed_with_ticker_errors",
+  "status": "passed",
   "reproducibility": {
-    "report_schema_version": "1",
-    "generated_at": "2026-10-05T21:08:24.628101+00:00",
+    "report_schema_version": "2",
+    "generated_at": "2026-10-06T22:19:23.988931+00:00",
     "git_commit": null,
     "dirty_worktree": null,
-    "feature_schema_version": "3",
-    "quantitative_feature_version": "quantitative-v1.1",
+    "feature_schema_version": "4",
+    "quantitative_feature_version": "quantitative-v1.2",
+    "target_version": "corporate-action-safe-target-v2",
     "normalization_version": "split-adjusted-as-of-v1",
     "provider": "tiingo",
     "settings": {
       "raw_start": "2009-01-01",
       "feature_start": "2010-01-01",
       "end": "2026-10-05",
-      "effective_feature_end": "2026-10-02",
+      "effective_feature_end": "2026-10-05",
       "market_timezone": "America/New_York",
       "decision_cutoff": "20:15",
       "minimum_rank_assets": 20,
       "assumed_eod_available_time": "20:00",
       "refresh_overlap_days": 5,
-      "throttle_seconds": 0.25
+      "throttle_seconds": 0.25,
+      "provider_symbol_aliases": {
+        "BRK.B": "BRK-B",
+        "BK": "BNY"
+      }
     }
   },
   "universe": {
@@ -35,30 +40,37 @@
   },
   "global_summary": {
     "status_counts": {
-      "success": 83,
+      "success": 85,
       "no_data": 0,
-      "partial_history": 17,
-      "provider_error": 1,
+      "partial_history": 16,
+      "provider_error": 0,
       "validation_error": 0
     },
-    "tickers_downloaded_successfully": 100,
-    "raw_bars": 422765,
-    "corporate_actions": 5476,
-    "splits": 39,
-    "dividends": 5437,
-    "feature_rows": 397265,
-    "model_eligible_rows": 393331,
-    "target_rows": 397265,
+    "tickers_downloaded_successfully": 101,
+    "raw_bars": 431692,
+    "corporate_actions": 5548,
+    "splits": 40,
+    "dividends": 5508,
+    "feature_rows": 405704,
+    "model_eligible_rows": 401757,
+    "target_rows": 405704,
     "first_raw_date": "2009-01-02",
     "last_raw_date": "2026-10-05",
     "first_feature_date": "2010-01-04",
-    "last_feature_date": "2026-10-02",
+    "last_feature_date": "2026-10-05",
     "duplicates": 0,
     "ohlc_violations": 0,
-    "unexpected_gaps": 79,
+    "unexpected_gaps": 84,
     "infinities": 0,
-    "unexpected_nan_cells_eligible": 1881,
-    "raw_bars_not_yet_available": 16
+    "unexpected_nan_cells_eligible": 0,
+    "expected_warmup_nan_cells": 1919,
+    "number_of_detected_complex_events": 5,
+    "contaminated_feature_rows": 10,
+    "contaminated_targets_5d": 25,
+    "contaminated_targets_10d": 50,
+    "contaminated_targets_20d": 100,
+    "rankings_excluded_due_to_corporate_actions": 50,
+    "raw_bars_not_yet_available": 0
   },
   "benchmark": {
     "status": "success",
@@ -67,10 +79,10 @@
     "last_raw_date": "2026-10-02",
     "raw_bars": 4465,
     "expected_sessions_from_first_raw": 4466,
-    "unexpected_missing_sessions": [],
-    "pending_sessions_before_cutoff": [
+    "unexpected_missing_sessions": [
       "2026-10-05"
     ],
+    "pending_sessions_before_cutoff": [],
     "raw_bars_not_yet_available": 0,
     "split_count": 0,
     "split_dates": [],
@@ -93,7 +105,9 @@
     "valid_target_20d": 0,
     "ingestion_seconds": 0.0,
     "build_seconds": null,
-    "warnings": []
+    "warnings": [
+      "1 unexpected missing sessions"
+    ]
   },
   "tickers": {
     "AAPL": {
@@ -103,10 +117,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 2,
       "split_dates": [
@@ -131,8 +145,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.9611206999979913,
-      "warnings": []
+      "build_seconds": 0.7184813998173922,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "ABBV": {
       "status": "partial_history",
@@ -141,10 +157,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 3459,
       "expected_sessions_from_first_raw": 3460,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -166,9 +182,10 @@
       "valid_target_10d": 3449,
       "valid_target_20d": 3439,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.42528590001165867,
+      "build_seconds": 0.40566369984298944,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "ABT": {
@@ -178,10 +195,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -203,8 +220,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5857633000705391,
-      "warnings": []
+      "build_seconds": 0.47671200009062886,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "ACN": {
       "status": "success",
@@ -213,10 +232,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -238,8 +257,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5361361999530345,
-      "warnings": []
+      "build_seconds": 0.469897200120613,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "ADBE": {
       "status": "success",
@@ -248,10 +269,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -267,8 +288,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5040295999497175,
-      "warnings": []
+      "build_seconds": 0.4869263998698443,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "AIG": {
       "status": "success",
@@ -277,10 +300,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -304,8 +327,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5263546998612583,
-      "warnings": []
+      "build_seconds": 0.47851799987256527,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "AMD": {
       "status": "success",
@@ -314,10 +339,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -333,8 +358,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5176526999566704,
-      "warnings": []
+      "build_seconds": 0.470485599944368,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "AMGN": {
       "status": "success",
@@ -343,10 +370,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -368,8 +395,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5177158999722451,
-      "warnings": []
+      "build_seconds": 0.5644160998053849,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "AMT": {
       "status": "success",
@@ -378,10 +407,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -403,8 +432,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.504628200083971,
-      "warnings": []
+      "build_seconds": 0.47425090009346604,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "AMZN": {
       "status": "success",
@@ -413,10 +444,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -434,8 +465,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.7011645999737084,
-      "warnings": []
+      "build_seconds": 0.6632441999390721,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "ANET": {
       "status": "partial_history",
@@ -444,10 +477,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 3100,
       "expected_sessions_from_first_raw": 3101,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 2,
       "split_dates": [
@@ -466,9 +499,10 @@
       "valid_target_10d": 3090,
       "valid_target_20d": 3080,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.654169199988246,
+      "build_seconds": 0.6320042000152171,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "AVGO": {
@@ -478,10 +512,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4316,
       "expected_sessions_from_first_raw": 4317,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -505,9 +539,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6916517000645399,
+      "build_seconds": 0.6488370997831225,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "AXP": {
@@ -517,10 +552,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -542,8 +577,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4809764998499304,
-      "warnings": []
+      "build_seconds": 0.46595950005576015,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "BA": {
       "status": "success",
@@ -552,10 +589,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -577,8 +614,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5203611000906676,
-      "warnings": []
+      "build_seconds": 0.49841530015692115,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "BAC": {
       "status": "success",
@@ -587,10 +626,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -612,120 +651,43 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5050975000485778,
-      "warnings": []
+      "build_seconds": 0.46992750000208616,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "BK": {
-      "status": "partial_history",
+      "status": "success",
       "error": null,
-      "first_raw_date": "2026-06-04",
-      "last_raw_date": "2026-06-10",
-      "raw_bars": 5,
-      "expected_sessions_from_first_raw": 85,
-      "unexpected_missing_sessions": [
-        "2026-06-11",
-        "2026-06-12",
-        "2026-06-15",
-        "2026-06-16",
-        "2026-06-17",
-        "2026-06-18",
-        "2026-06-22",
-        "2026-06-23",
-        "2026-06-24",
-        "2026-06-25",
-        "2026-06-26",
-        "2026-06-29",
-        "2026-06-30",
-        "2026-07-01",
-        "2026-07-02",
-        "2026-07-06",
-        "2026-07-07",
-        "2026-07-08",
-        "2026-07-09",
-        "2026-07-10",
-        "2026-07-13",
-        "2026-07-14",
-        "2026-07-15",
-        "2026-07-16",
-        "2026-07-17",
-        "2026-07-20",
-        "2026-07-21",
-        "2026-07-22",
-        "2026-07-23",
-        "2026-07-24",
-        "2026-07-27",
-        "2026-07-28",
-        "2026-07-29",
-        "2026-07-30",
-        "2026-07-31",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06",
-        "2026-08-07",
-        "2026-08-10",
-        "2026-08-11",
-        "2026-08-12",
-        "2026-08-13",
-        "2026-08-14",
-        "2026-08-17",
-        "2026-08-18",
-        "2026-08-19",
-        "2026-08-20",
-        "2026-08-21",
-        "2026-08-24",
-        "2026-08-25",
-        "2026-08-26",
-        "2026-08-27",
-        "2026-08-28",
-        "2026-08-31",
-        "2026-09-01",
-        "2026-09-02",
-        "2026-09-03",
-        "2026-09-04",
-        "2026-09-08",
-        "2026-09-09",
-        "2026-09-10",
-        "2026-09-11",
-        "2026-09-14",
-        "2026-09-15",
-        "2026-09-16",
-        "2026-09-17",
-        "2026-09-18",
-        "2026-09-21",
-        "2026-09-22",
-        "2026-09-23",
-        "2026-09-24",
-        "2026-09-25",
-        "2026-09-28",
-        "2026-09-29",
-        "2026-09-30",
-        "2026-10-01",
-        "2026-10-02"
-      ],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
+      "unexpected_missing_sessions": [],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
-      "dividend_count": 0,
-      "dividend_date_examples": [],
+      "dividend_count": 71,
+      "dividend_date_examples": [
+        "2009-01-21",
+        "2009-04-29",
+        "2009-07-30",
+        "2009-10-28",
+        "2010-01-28"
+      ],
       "duplicates": 0,
       "ohlc_violations": 0,
-      "first_feature_date": "2026-06-04",
-      "feature_rows": 5,
-      "first_model_eligible": null,
-      "model_eligible_percentage": 0.0,
-      "valid_target_5d": 0,
-      "valid_target_10d": 0,
-      "valid_target_20d": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4214,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.10685910005122423,
-      "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history",
-        "79 unexpected missing sessions"
-      ]
+      "build_seconds": 0.47156249987892807,
+      "warnings": []
     },
     "BKNG": {
       "status": "success",
@@ -734,10 +696,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -761,8 +723,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.7340806999709457,
-      "warnings": []
+      "build_seconds": 0.6957394001074135,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "BLK": {
       "status": "success",
@@ -771,10 +735,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -796,8 +760,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5175128001719713,
-      "warnings": []
+      "build_seconds": 0.55445949989371,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "BMY": {
       "status": "success",
@@ -806,10 +772,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -831,37 +797,38 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5107055001426488,
-      "warnings": []
+      "build_seconds": 0.47928400011733174,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "BRK.B": {
-      "status": "provider_error",
-      "error": {
-        "type": "ProviderTickerSkipped",
-        "message": "provider request explicitly skipped after manual review"
-      },
-      "first_raw_date": null,
-      "last_raw_date": null,
-      "raw_bars": 0,
-      "expected_sessions_from_first_raw": 0,
+      "status": "success",
+      "error": null,
+      "first_raw_date": "2009-01-02",
+      "last_raw_date": "2026-10-05",
+      "raw_bars": 4466,
+      "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
       "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
-      "split_count": 0,
-      "split_dates": [],
+      "split_count": 1,
+      "split_dates": [
+        "2010-01-21"
+      ],
       "dividend_count": 0,
       "dividend_date_examples": [],
       "duplicates": 0,
       "ohlc_violations": 0,
-      "first_feature_date": null,
-      "feature_rows": 0,
-      "first_model_eligible": null,
-      "model_eligible_percentage": 0.0,
-      "valid_target_5d": 0,
-      "valid_target_10d": 0,
-      "valid_target_20d": 0,
+      "first_feature_date": "2010-01-04",
+      "feature_rows": 4214,
+      "first_model_eligible": "2010-01-04",
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": null,
+      "build_seconds": 0.5301230000331998,
       "warnings": []
     },
     "C": {
@@ -871,10 +838,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -898,8 +865,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5792421998921782,
-      "warnings": []
+      "build_seconds": 0.5353991000447422,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "CAT": {
       "status": "success",
@@ -908,10 +877,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -933,8 +902,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5678669000044465,
-      "warnings": []
+      "build_seconds": 0.4717818000353873,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "CHTR": {
       "status": "partial_history",
@@ -943,10 +914,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4212,
       "expected_sessions_from_first_raw": 4213,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -962,9 +933,10 @@
       "valid_target_10d": 4202,
       "valid_target_20d": 4192,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5054022001568228,
+      "build_seconds": 0.46706250007264316,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "CMCSA": {
@@ -974,10 +946,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1001,8 +973,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.9156849998980761,
-      "warnings": []
+      "build_seconds": 0.5919381000567228,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "COF": {
       "status": "success",
@@ -1011,10 +985,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1036,8 +1010,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5135178999044001,
-      "warnings": []
+      "build_seconds": 0.4970665001310408,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "COP": {
       "status": "success",
@@ -1046,10 +1022,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1071,8 +1047,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.510159800061956,
-      "warnings": []
+      "build_seconds": 0.49482899997383356,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "COST": {
       "status": "success",
@@ -1081,10 +1059,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1106,8 +1084,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5675204999279231,
-      "warnings": []
+      "build_seconds": 0.4741811000276357,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "CRM": {
       "status": "success",
@@ -1116,10 +1096,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1143,8 +1123,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6392125999554992,
-      "warnings": []
+      "build_seconds": 0.552473499905318,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "CSCO": {
       "status": "success",
@@ -1153,10 +1135,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1178,8 +1160,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5053362001199275,
-      "warnings": []
+      "build_seconds": 0.4950959999114275,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "CVS": {
       "status": "success",
@@ -1188,10 +1172,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1213,8 +1197,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5243279000278562,
-      "warnings": []
+      "build_seconds": 0.4697975998278707,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "CVX": {
       "status": "success",
@@ -1223,10 +1209,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1248,8 +1234,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5382904999423772,
-      "warnings": []
+      "build_seconds": 0.5625675001647323,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "DE": {
       "status": "success",
@@ -1258,10 +1246,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1283,8 +1271,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6198730999603868,
-      "warnings": []
+      "build_seconds": 0.4739943000022322,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "DELL": {
       "status": "partial_history",
@@ -1293,10 +1283,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 1955,
       "expected_sessions_from_first_raw": 1956,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1320,9 +1310,10 @@
       "valid_target_10d": 1945,
       "valid_target_20d": 1935,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.3580529000610113,
+      "build_seconds": 0.31896759988740087,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "DHR": {
@@ -1332,10 +1323,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1359,8 +1350,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6083136000670493,
-      "warnings": []
+      "build_seconds": 0.5311684000771493,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "DIS": {
       "status": "success",
@@ -1369,10 +1362,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1394,8 +1387,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5071557001210749,
-      "warnings": []
+      "build_seconds": 0.4629005999304354,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "DOW": {
       "status": "partial_history",
@@ -1404,10 +1399,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 1896,
       "expected_sessions_from_first_raw": 1897,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1429,9 +1424,10 @@
       "valid_target_10d": 1886,
       "valid_target_20d": 1876,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.30174760008230805,
+      "build_seconds": 0.24804869992658496,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "DUK": {
@@ -1441,10 +1437,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1468,8 +1464,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6722760999109596,
-      "warnings": []
+      "build_seconds": 0.5337360000703484,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "EMR": {
       "status": "success",
@@ -1478,10 +1476,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1503,8 +1501,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5406633999664336,
-      "warnings": []
+      "build_seconds": 0.46307509997859597,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "FDX": {
       "status": "success",
@@ -1513,10 +1513,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1540,8 +1540,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.8721438001375645,
-      "warnings": []
+      "build_seconds": 0.6934183998964727,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "GD": {
       "status": "success",
@@ -1550,10 +1552,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1575,8 +1577,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5183598999865353,
-      "warnings": []
+      "build_seconds": 0.45508309989236295,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "GILD": {
       "status": "success",
@@ -1585,10 +1589,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1612,8 +1616,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5777044000569731,
-      "warnings": []
+      "build_seconds": 0.5284797998610884,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "GM": {
       "status": "partial_history",
@@ -1622,10 +1628,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 3991,
       "expected_sessions_from_first_raw": 3992,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1647,9 +1653,10 @@
       "valid_target_10d": 3981,
       "valid_target_20d": 3971,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.45832269988022745,
+      "build_seconds": 0.48902580002322793,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "GOOG": {
@@ -1659,10 +1666,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 3149,
       "expected_sessions_from_first_raw": 3150,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1686,9 +1693,10 @@
       "valid_target_10d": 3139,
       "valid_target_20d": 3129,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.530920600052923,
+      "build_seconds": 0.4917309999000281,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "GOOGL": {
@@ -1698,10 +1706,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1725,8 +1733,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.883446600055322,
-      "warnings": []
+      "build_seconds": 0.6936476998962462,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "GS": {
       "status": "success",
@@ -1735,10 +1745,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1760,8 +1770,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5279343998990953,
-      "warnings": []
+      "build_seconds": 0.5599263999611139,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "HD": {
       "status": "success",
@@ -1770,10 +1782,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1795,8 +1807,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5464600000996143,
-      "warnings": []
+      "build_seconds": 0.47799509996548295,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "IBM": {
       "status": "success",
@@ -1805,10 +1819,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1832,8 +1846,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.7598359000403434,
-      "warnings": []
+      "build_seconds": 0.6482997999992222,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "INTC": {
       "status": "success",
@@ -1842,10 +1858,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1867,8 +1883,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6134786000475287,
-      "warnings": []
+      "build_seconds": 0.46923879999667406,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "JNJ": {
       "status": "success",
@@ -1877,10 +1895,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1902,8 +1920,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4807359001133591,
-      "warnings": []
+      "build_seconds": 0.4849632999394089,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "JPM": {
       "status": "success",
@@ -1912,10 +1932,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -1937,8 +1957,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4985541000496596,
-      "warnings": []
+      "build_seconds": 0.5385203999467194,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "KO": {
       "status": "success",
@@ -1947,10 +1969,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -1974,8 +1996,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5937113000545651,
-      "warnings": []
+      "build_seconds": 0.5427687000483274,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "LIN": {
       "status": "partial_history",
@@ -1984,10 +2008,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 2012,
       "expected_sessions_from_first_raw": 2013,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2009,9 +2033,10 @@
       "valid_target_10d": 2002,
       "valid_target_20d": 1992,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.2771846998948604,
+      "build_seconds": 0.3494333000853658,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "LLY": {
@@ -2022,10 +2047,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 71,
@@ -2039,14 +2062,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5265738000161946,
+      "build_seconds": 0.4806359000504017,
       "warnings": []
     },
     "LMT": {
@@ -2057,10 +2080,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 71,
@@ -2074,14 +2095,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6296639000065625,
+      "build_seconds": 0.5370836001820862,
       "warnings": []
     },
     "LOW": {
@@ -2091,10 +2112,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2116,8 +2137,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6019020001403987,
-      "warnings": []
+      "build_seconds": 0.5103978000115603,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "MA": {
       "status": "success",
@@ -2126,10 +2149,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -2153,8 +2176,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6208384998608381,
-      "warnings": []
+      "build_seconds": 0.5910395998507738,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "MCD": {
       "status": "success",
@@ -2163,10 +2188,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2188,8 +2213,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5062792000826448,
-      "warnings": []
+      "build_seconds": 0.4940631000790745,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "MDLZ": {
       "status": "success",
@@ -2198,10 +2225,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2223,8 +2250,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5118589999619871,
-      "warnings": []
+      "build_seconds": 0.4804006000049412,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "MDT": {
       "status": "success",
@@ -2233,10 +2262,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2258,8 +2287,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.49417850002646446,
-      "warnings": []
+      "build_seconds": 0.503496800083667,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "MET": {
       "status": "success",
@@ -2268,10 +2299,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2293,8 +2324,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5032575998920947,
-      "warnings": []
+      "build_seconds": 0.47214130009524524,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "META": {
       "status": "partial_history",
@@ -2303,10 +2336,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 3614,
       "expected_sessions_from_first_raw": 3615,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2328,9 +2361,10 @@
       "valid_target_10d": 3604,
       "valid_target_20d": 3594,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.41246939986012876,
+      "build_seconds": 0.44478549994528294,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "MMM": {
@@ -2340,10 +2374,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2365,8 +2399,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5093106999993324,
-      "warnings": []
+      "build_seconds": 0.5161578999832273,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "MO": {
       "status": "success",
@@ -2375,10 +2411,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2400,8 +2436,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5044943999964744,
-      "warnings": []
+      "build_seconds": 0.49572010012343526,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "MRK": {
       "status": "success",
@@ -2410,10 +2448,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -2437,8 +2475,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.7559348000213504,
-      "warnings": []
+      "build_seconds": 0.6473502998705953,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "MS": {
       "status": "success",
@@ -2447,10 +2487,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2472,8 +2512,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.494649900123477,
-      "warnings": []
+      "build_seconds": 0.4977105997968465,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "MSFT": {
       "status": "success",
@@ -2482,10 +2524,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2507,8 +2549,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5218752999790013,
-      "warnings": []
+      "build_seconds": 0.4813914999831468,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "MU": {
       "status": "success",
@@ -2517,10 +2561,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2542,8 +2586,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5041598998941481,
-      "warnings": []
+      "build_seconds": 0.48263789992779493,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "NEE": {
       "status": "success",
@@ -2552,10 +2598,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -2579,8 +2625,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6523982000071555,
-      "warnings": []
+      "build_seconds": 0.6169082000851631,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "NFLX": {
       "status": "success",
@@ -2589,10 +2637,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 2,
       "split_dates": [
@@ -2611,8 +2659,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.8118684000801295,
-      "warnings": []
+      "build_seconds": 0.904064399888739,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "NOW": {
       "status": "partial_history",
@@ -2621,10 +2671,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 3585,
       "expected_sessions_from_first_raw": 3586,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -2642,9 +2692,10 @@
       "valid_target_10d": 3575,
       "valid_target_20d": 3565,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6429751999676228,
+      "build_seconds": 0.5689254999160767,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "NVDA": {
@@ -2654,10 +2705,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 2,
       "split_dates": [
@@ -2682,8 +2733,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.8533149000722915,
-      "warnings": []
+      "build_seconds": 0.8129481999203563,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "ORCL": {
       "status": "success",
@@ -2692,10 +2745,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2717,8 +2770,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.48419300001114607,
-      "warnings": []
+      "build_seconds": 0.47690270002931356,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "PANW": {
       "status": "partial_history",
@@ -2727,10 +2782,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 3571,
       "expected_sessions_from_first_raw": 3572,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 2,
       "split_dates": [
@@ -2749,9 +2804,10 @@
       "valid_target_10d": 3561,
       "valid_target_20d": 3551,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.7368266000412405,
+      "build_seconds": 0.6930308002047241,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "PEP": {
@@ -2761,10 +2817,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2786,8 +2842,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.49660600000061095,
-      "warnings": []
+      "build_seconds": 0.4630369998048991,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "PFE": {
       "status": "success",
@@ -2796,10 +2854,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -2823,8 +2881,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6394201999064535,
-      "warnings": []
+      "build_seconds": 0.6342054000124335,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "PG": {
       "status": "success",
@@ -2833,10 +2893,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2858,8 +2918,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4736495001707226,
-      "warnings": []
+      "build_seconds": 0.47992089996114373,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "PLD": {
       "status": "success",
@@ -2868,10 +2930,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2893,8 +2955,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5035135999787599,
-      "warnings": []
+      "build_seconds": 0.4676315998658538,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "PLTR": {
       "status": "partial_history",
@@ -2903,10 +2967,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 1509,
       "expected_sessions_from_first_raw": 1510,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2922,9 +2986,10 @@
       "valid_target_10d": 1499,
       "valid_target_20d": 1489,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.24094259995035827,
+      "build_seconds": 0.21802060003392398,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "PM": {
@@ -2934,10 +2999,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2959,8 +3024,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.48651010007597506,
-      "warnings": []
+      "build_seconds": 0.46974430000409484,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "PYPL": {
       "status": "partial_history",
@@ -2969,10 +3036,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 2819,
       "expected_sessions_from_first_raw": 2820,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -2993,9 +3060,10 @@
       "valid_target_10d": 2809,
       "valid_target_20d": 2799,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.35594139993190765,
+      "build_seconds": 0.34356920002028346,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "QCOM": {
@@ -3005,10 +3073,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -3030,8 +3098,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5377990000415593,
-      "warnings": []
+      "build_seconds": 0.5911101999226958,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "RTX": {
       "status": "success",
@@ -3040,10 +3110,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -3065,8 +3135,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.520707500167191,
-      "warnings": []
+      "build_seconds": 0.4846390997990966,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "SBUX": {
       "status": "success",
@@ -3075,10 +3147,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -3102,8 +3174,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.595439599826932,
-      "warnings": []
+      "build_seconds": 0.5717803998850286,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "SCHW": {
       "status": "success",
@@ -3112,10 +3186,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -3137,8 +3211,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.49856780003756285,
-      "warnings": []
+      "build_seconds": 0.4826780001167208,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "SNDK": {
       "status": "partial_history",
@@ -3147,10 +3223,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 405,
       "expected_sessions_from_first_raw": 406,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -3166,9 +3242,10 @@
       "valid_target_10d": 395,
       "valid_target_20d": 385,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.12984109995886683,
+      "build_seconds": 0.12519019981846213,
       "warnings": [
-        "history_starts_after_requested_period; review IPO/listing or ticker history"
+        "history_starts_after_requested_period; review IPO/listing or ticker history",
+        "1 unexpected missing sessions"
       ]
     },
     "SO": {
@@ -3178,10 +3255,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
@@ -3203,8 +3280,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.48211730015464127,
-      "warnings": []
+      "build_seconds": 0.46677100006490946,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "T": {
       "status": "success",
@@ -3213,10 +3292,10 @@
       "last_raw_date": "2026-10-02",
       "raw_bars": 4465,
       "expected_sessions_from_first_raw": 4466,
-      "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
+      "unexpected_missing_sessions": [
         "2026-10-05"
       ],
+      "pending_sessions_before_cutoff": [],
       "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
@@ -3240,8 +3319,10 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6584173999726772,
-      "warnings": []
+      "build_seconds": 0.6374014001339674,
+      "warnings": [
+        "1 unexpected missing sessions"
+      ]
     },
     "TGT": {
       "status": "success",
@@ -3251,10 +3332,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 71,
@@ -3268,14 +3347,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47749980003573,
+      "build_seconds": 0.47817620006389916,
       "warnings": []
     },
     "TMO": {
@@ -3286,10 +3365,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 59,
@@ -3303,14 +3380,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4898673000279814,
+      "build_seconds": 0.4785307999700308,
       "warnings": []
     },
     "TMUS": {
@@ -3321,10 +3398,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
         "2013-05-01"
@@ -3340,14 +3415,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6152868000790477,
+      "build_seconds": 0.5533377001993358,
       "warnings": []
     },
     "TSLA": {
@@ -3358,10 +3433,8 @@
       "raw_bars": 4092,
       "expected_sessions_from_first_raw": 4092,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 2,
       "split_dates": [
         "2020-08-31",
@@ -3372,14 +3445,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-06-29",
-      "feature_rows": 4091,
+      "feature_rows": 4092,
       "first_model_eligible": "2011-06-28",
-      "model_eligible_percentage": 93.84013688584699,
-      "valid_target_5d": 4086,
-      "valid_target_10d": 4081,
-      "valid_target_20d": 4071,
+      "model_eligible_percentage": 93.81720430107528,
+      "valid_target_5d": 4087,
+      "valid_target_10d": 4082,
+      "valid_target_20d": 4072,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.7647297999355942,
+      "build_seconds": 0.7506891000084579,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history"
       ]
@@ -3392,10 +3465,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 70,
@@ -3409,14 +3480,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5117506999522448,
+      "build_seconds": 0.4658633000217378,
       "warnings": []
     },
     "UNH": {
@@ -3427,10 +3498,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 68,
@@ -3444,14 +3513,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4757995998952538,
+      "build_seconds": 0.49169689998961985,
       "warnings": []
     },
     "UNP": {
@@ -3462,10 +3531,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
         "2014-06-09"
@@ -3481,14 +3548,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5956552000716329,
+      "build_seconds": 0.5759895001538098,
       "warnings": []
     },
     "UPS": {
@@ -3499,10 +3566,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 71,
@@ -3516,14 +3581,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5020134998485446,
+      "build_seconds": 0.4802116001956165,
       "warnings": []
     },
     "USB": {
@@ -3534,10 +3599,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 71,
@@ -3551,14 +3614,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4892167001962662,
+      "build_seconds": 0.47016009991057217,
       "warnings": []
     },
     "V": {
@@ -3569,10 +3632,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
         "2015-03-19"
@@ -3588,14 +3649,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6052089999429882,
+      "build_seconds": 0.5644012000411749,
       "warnings": []
     },
     "VZ": {
@@ -3606,10 +3667,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 72,
@@ -3623,14 +3682,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.500860100146383,
+      "build_seconds": 0.4964929998386651,
       "warnings": []
     },
     "WFC": {
@@ -3641,10 +3700,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 73,
@@ -3658,14 +3715,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5113117001019418,
+      "build_seconds": 0.5065552000887692,
       "warnings": []
     },
     "WMT": {
@@ -3676,10 +3733,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 1,
       "split_dates": [
         "2024-02-26"
@@ -3695,14 +3750,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.669768099905923,
+      "build_seconds": 0.6549699001479894,
       "warnings": []
     },
     "XOM": {
@@ -3713,10 +3768,8 @@
       "raw_bars": 4466,
       "expected_sessions_from_first_raw": 4466,
       "unexpected_missing_sessions": [],
-      "pending_sessions_before_cutoff": [
-        "2026-10-05"
-      ],
-      "raw_bars_not_yet_available": 1,
+      "pending_sessions_before_cutoff": [],
+      "raw_bars_not_yet_available": 0,
       "split_count": 0,
       "split_dates": [],
       "dividend_count": 71,
@@ -3730,14 +3783,14 @@
       "duplicates": 0,
       "ohlc_violations": 0,
       "first_feature_date": "2010-01-04",
-      "feature_rows": 4213,
+      "feature_rows": 4214,
       "first_model_eligible": "2010-01-04",
-      "model_eligible_percentage": 100.0,
-      "valid_target_5d": 4208,
-      "valid_target_10d": 4203,
-      "valid_target_20d": 4193,
+      "model_eligible_percentage": 99.97626957759849,
+      "valid_target_5d": 4209,
+      "valid_target_10d": 4204,
+      "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.48104119999334216,
+      "build_seconds": 0.46292770002037287,
       "warnings": []
     }
   },
@@ -3759,12 +3812,6 @@
       "first_available_date": "2009-08-06",
       "requested_start": "2009-01-01",
       "calendar_days_after_requested": 217
-    },
-    {
-      "ticker": "BK",
-      "first_available_date": "2026-06-04",
-      "requested_start": "2009-01-01",
-      "calendar_days_after_requested": 6363
     },
     {
       "ticker": "CHTR",
@@ -3846,45 +3893,45 @@
     }
   ],
   "cross_sectional_coverage": {
-    "dates": 4213,
+    "dates": 4214,
     "assets_with_features": {
-      "min": 84,
-      "median": 94.0,
-      "mean": 94.29503916449086,
-      "max": 100
+      "min": 18,
+      "median": 96.0,
+      "mean": 96.27527289985761,
+      "max": 101
     },
     "model_eligible": {
-      "min": 83,
-      "median": 94.0,
-      "mean": 93.3612627581296,
-      "max": 99
+      "min": 0,
+      "median": 96.0,
+      "mean": 95.33863312766967,
+      "max": 101
     },
     "target_return_10d": {
       "min": 0,
-      "median": 94.0,
-      "mean": 94.05886541656777,
-      "max": 99
+      "median": 96.0,
+      "mean": 96.03559563360228,
+      "max": 101
     },
     "target_rank_10d": {
       "min": 0,
-      "median": 94.0,
-      "mean": 94.05886541656777,
-      "max": 99
+      "median": 96.0,
+      "mean": 96.01945894636924,
+      "max": 101
     }
   },
   "ranking_coverage": {
-    "valid_rank_rows": 396270,
+    "valid_rank_rows": 404626,
     "rank_min": 0.0,
     "rank_max": 1.0,
     "dates_with_valid_ranking": 4203,
-    "percentage_dates_with_valid_ranking": 99.76263944932352,
-    "average_ranked_assets_per_valid_date": 94.28265524625267,
-    "minimum_ranked_assets_per_valid_date": 84,
-    "maximum_ranked_assets_per_valid_date": 99,
+    "percentage_dates_with_valid_ranking": 99.7389653535833,
+    "average_ranked_assets_per_valid_date": 96.27075898167975,
+    "minimum_ranked_assets_per_valid_date": 86,
+    "maximum_ranked_assets_per_valid_date": 101,
     "dates_without_ranking": [
       {
         "decision_date": "2026-09-21",
-        "valid_target_return_10d_assets": 0,
+        "valid_target_return_10d_assets": 18,
         "reason": "insufficient_valid_target_return_10d"
       },
       {
@@ -3931,13 +3978,19 @@
         "decision_date": "2026-10-02",
         "valid_target_return_10d_assets": 0,
         "reason": "insufficient_valid_target_return_10d"
+      },
+      {
+        "decision_date": "2026-10-05",
+        "valid_target_return_10d_assets": 0,
+        "reason": "insufficient_valid_target_return_10d"
       }
     ]
   },
-  "unexpected_nans_eligible": {
+  "unexpected_nans_eligible": {},
+  "expected_warmup_nans": {
     "percentile_volatility_252d": {
-      "count": 1881,
-      "percentage": 0.478223175900196
+      "count": 1919,
+      "reason": "252 valid volatility_20d observations require 272 price observations"
     }
   },
   "deliberate_null_fields": [
@@ -3954,34 +4007,9 @@
       "count": 15,
       "observations": [
         {
-          "ticker": "ABT",
-          "decision_date": "2013-01-02",
-          "return_1d": -0.5106870229007634
-        },
-        {
-          "ticker": "AMD",
-          "decision_date": "2016-04-22",
-          "return_1d": 0.5229007633587786
-        },
-        {
-          "ticker": "DELL",
-          "decision_date": "2024-03-01",
-          "return_1d": 0.3161842383266429
-        },
-        {
-          "ticker": "DELL",
-          "decision_date": "2026-05-29",
-          "return_1d": 0.3275824002523262
-        },
-        {
-          "ticker": "GOOGL",
-          "decision_date": "2014-04-03",
-          "return_1d": -0.4965201303849881
-        },
-        {
-          "ticker": "MDLZ",
-          "decision_date": "2012-10-02",
-          "return_1d": -0.3412982126058326
+          "ticker": "TMUS",
+          "decision_date": "2011-08-02",
+          "return_1d": -0.3658838071693449
         },
         {
           "ticker": "NFLX",
@@ -3989,24 +4017,39 @@
           "return_1d": -0.3489565802760013
         },
         {
+          "ticker": "TMUS",
+          "decision_date": "2012-07-26",
+          "return_1d": 0.36783439490445846
+        },
+        {
+          "ticker": "MDLZ",
+          "decision_date": "2012-10-02",
+          "return_1d": -0.3412982126058326
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-02",
+          "return_1d": -0.5106870229007634
+        },
+        {
           "ticker": "NFLX",
           "decision_date": "2013-01-24",
           "return_1d": 0.42223513461165996
         },
         {
-          "ticker": "NFLX",
-          "decision_date": "2022-04-20",
-          "return_1d": -0.3511660594934167
+          "ticker": "TMUS",
+          "decision_date": "2013-05-01",
+          "return_1d": -0.3023648648648649
         },
         {
-          "ticker": "ORCL",
-          "decision_date": "2025-09-10",
-          "return_1d": 0.35948821994948443
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-03",
+          "return_1d": -0.4965201303849881
         },
         {
-          "ticker": "PLTR",
-          "decision_date": "2024-02-06",
-          "return_1d": 0.30801435406698574
+          "ticker": "AMD",
+          "decision_date": "2016-04-22",
+          "return_1d": 0.5229007633587786
         },
         {
           "ticker": "RTX",
@@ -4014,9 +4057,69 @@
           "return_1d": -0.41948610626671323
         },
         {
+          "ticker": "NFLX",
+          "decision_date": "2022-04-20",
+          "return_1d": -0.3511660594934167
+        },
+        {
+          "ticker": "PLTR",
+          "decision_date": "2024-02-06",
+          "return_1d": 0.30801435406698574
+        },
+        {
+          "ticker": "DELL",
+          "decision_date": "2024-03-01",
+          "return_1d": 0.3161842383266429
+        },
+        {
+          "ticker": "ORCL",
+          "decision_date": "2025-09-10",
+          "return_1d": 0.35948821994948443
+        },
+        {
+          "ticker": "DELL",
+          "decision_date": "2026-05-29",
+          "return_1d": 0.3275824002523262
+        }
+      ],
+      "observations_truncated": false,
+      "explained_or_contaminated": [
+        {
+          "ticker": "MDLZ",
+          "decision_date": "2012-10-02",
+          "return_1d": -0.3412982126058326
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-02",
+          "return_1d": -0.5106870229007634
+        },
+        {
+          "ticker": "TMUS",
+          "decision_date": "2013-05-01",
+          "return_1d": -0.3023648648648649
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-03",
+          "return_1d": -0.4965201303849881
+        },
+        {
+          "ticker": "RTX",
+          "decision_date": "2020-04-03",
+          "return_1d": -0.41948610626671323
+        }
+      ],
+      "unexplained": [
+        {
           "ticker": "TMUS",
           "decision_date": "2011-08-02",
           "return_1d": -0.3658838071693449
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2011-10-25",
+          "return_1d": -0.3489565802760013
         },
         {
           "ticker": "TMUS",
@@ -4024,31 +4127,46 @@
           "return_1d": 0.36783439490445846
         },
         {
-          "ticker": "TMUS",
-          "decision_date": "2013-05-01",
-          "return_1d": -0.3023648648648649
-        }
-      ],
-      "observations_truncated": false
-    },
-    "abs_return_5d_gt_0_60": {
-      "count": 8,
-      "observations": [
-        {
-          "ticker": "BA",
-          "decision_date": "2020-03-26",
-          "return_5d": 0.8478149626445606
+          "ticker": "NFLX",
+          "decision_date": "2013-01-24",
+          "return_1d": 0.42223513461165996
         },
         {
-          "ticker": "BA",
-          "decision_date": "2020-03-27",
-          "return_5d": 0.7050836754025891
+          "ticker": "AMD",
+          "decision_date": "2016-04-22",
+          "return_1d": 0.5229007633587786
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2022-04-20",
+          "return_1d": -0.3511660594934167
+        },
+        {
+          "ticker": "PLTR",
+          "decision_date": "2024-02-06",
+          "return_1d": 0.30801435406698574
+        },
+        {
+          "ticker": "DELL",
+          "decision_date": "2024-03-01",
+          "return_1d": 0.3161842383266429
+        },
+        {
+          "ticker": "ORCL",
+          "decision_date": "2025-09-10",
+          "return_1d": 0.35948821994948443
         },
         {
           "ticker": "DELL",
           "decision_date": "2026-05-29",
-          "return_5d": 0.6649920886075951
-        },
+          "return_1d": 0.3275824002523262
+        }
+      ],
+      "unexplained_count_in_reported_observations": 10
+    },
+    "abs_return_5d_gt_0_60": {
+      "count": 8,
+      "observations": [
         {
           "ticker": "NFLX",
           "decision_date": "2013-01-25",
@@ -4070,12 +4188,71 @@
           "return_5d": 0.6240557815223706
         },
         {
+          "ticker": "BA",
+          "decision_date": "2020-03-26",
+          "return_5d": 0.8478149626445606
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-27",
+          "return_5d": 0.7050836754025891
+        },
+        {
           "ticker": "PLTR",
           "decision_date": "2020-11-25",
           "return_5d": 0.6229050279329611
+        },
+        {
+          "ticker": "DELL",
+          "decision_date": "2026-05-29",
+          "return_5d": 0.6649920886075951
         }
       ],
-      "observations_truncated": false
+      "observations_truncated": false,
+      "explained_or_contaminated": [],
+      "unexplained": [
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-25",
+          "return_5d": 0.7355168884339816
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-28",
+          "return_5d": 0.6346677422607645
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-29",
+          "return_5d": 0.7290665576116961
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-30",
+          "return_5d": 0.6240557815223706
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-26",
+          "return_5d": 0.8478149626445606
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-27",
+          "return_5d": 0.7050836754025891
+        },
+        {
+          "ticker": "PLTR",
+          "decision_date": "2020-11-25",
+          "return_5d": 0.6229050279329611
+        },
+        {
+          "ticker": "DELL",
+          "decision_date": "2026-05-29",
+          "return_5d": 0.6649920886075951
+        }
+      ],
+      "unexplained_count_in_reported_observations": 8
     },
     "volatility_20d_gt_1_50": {
       "count": 276,
@@ -4161,9 +4338,19 @@
           "volatility_20d": 1.8264412461587474
         },
         {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-24",
+          "volatility_20d": 1.5268502743503412
+        },
+        {
           "ticker": "ABT",
           "decision_date": "2013-01-25",
           "volatility_20d": 1.8273434822493706
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-25",
+          "volatility_20d": 1.5877265629280555
         },
         {
           "ticker": "ABT",
@@ -4171,9 +4358,19 @@
           "volatility_20d": 1.8286261476929448
         },
         {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-28",
+          "volatility_20d": 1.6078798037974176
+        },
+        {
           "ticker": "ABT",
           "decision_date": "2013-01-29",
           "volatility_20d": 1.831954434999317
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-29",
+          "volatility_20d": 1.5986728957365992
         },
         {
           "ticker": "ABT",
@@ -4181,74 +4378,184 @@
           "volatility_20d": 1.827603234786946
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-03-24",
-          "volatility_20d": 1.5766813664971693
+          "ticker": "NFLX",
+          "decision_date": "2013-01-30",
+          "volatility_20d": 1.6065504358595712
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-03-25",
-          "volatility_20d": 1.6635764418998353
+          "ticker": "NFLX",
+          "decision_date": "2013-01-31",
+          "volatility_20d": 1.6096274153942598
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-03-26",
-          "volatility_20d": 1.6940333593647041
+          "ticker": "NFLX",
+          "decision_date": "2013-02-01",
+          "volatility_20d": 1.613443572672508
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-03-27",
-          "volatility_20d": 1.7052248324814858
+          "ticker": "NFLX",
+          "decision_date": "2013-02-04",
+          "volatility_20d": 1.6102888293752562
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-03-30",
-          "volatility_20d": 1.7031347549369307
+          "ticker": "NFLX",
+          "decision_date": "2013-02-05",
+          "volatility_20d": 1.6154853050432345
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-03-31",
-          "volatility_20d": 1.7078155876875694
+          "ticker": "NFLX",
+          "decision_date": "2013-02-06",
+          "volatility_20d": 1.605093596218299
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-04-01",
-          "volatility_20d": 1.7260214314892683
+          "ticker": "NFLX",
+          "decision_date": "2013-02-07",
+          "volatility_20d": 1.6052767298114246
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-04-02",
-          "volatility_20d": 1.7252382382886642
+          "ticker": "NFLX",
+          "decision_date": "2013-02-08",
+          "volatility_20d": 1.6114933290669486
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-04-03",
-          "volatility_20d": 1.7184036754238938
+          "ticker": "NFLX",
+          "decision_date": "2013-02-11",
+          "volatility_20d": 1.6221259187837196
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-04-06",
-          "volatility_20d": 1.6887821238268215
+          "ticker": "NFLX",
+          "decision_date": "2013-02-12",
+          "volatility_20d": 1.625768618069717
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-04-07",
-          "volatility_20d": 1.6972163486525862
+          "ticker": "NFLX",
+          "decision_date": "2013-02-13",
+          "volatility_20d": 1.6162361003496293
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-04-08",
-          "volatility_20d": 1.691034780047339
+          "ticker": "NFLX",
+          "decision_date": "2013-02-14",
+          "volatility_20d": 1.5952103547347039
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-04-09",
-          "volatility_20d": 1.5579135689670371
+          "ticker": "NFLX",
+          "decision_date": "2013-02-15",
+          "volatility_20d": 1.5929151683420748
         },
         {
-          "ticker": "AIG",
-          "decision_date": "2020-04-13",
-          "volatility_20d": 1.5138688585686675
+          "ticker": "NFLX",
+          "decision_date": "2013-02-19",
+          "volatility_20d": 1.5907042164295075
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-20",
+          "volatility_20d": 1.6098624258272618
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-21",
+          "volatility_20d": 1.6133622959130194
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-03",
+          "volatility_20d": 1.759505702193103
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-04",
+          "volatility_20d": 1.7580969811909815
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-07",
+          "volatility_20d": 1.7569974065038612
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-08",
+          "volatility_20d": 1.769435051802631
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-09",
+          "volatility_20d": 1.7727316567741886
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-10",
+          "volatility_20d": 1.7722395612199229
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-11",
+          "volatility_20d": 1.7719559791499995
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-14",
+          "volatility_20d": 1.7710821688373528
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-15",
+          "volatility_20d": 1.7681206973862016
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-16",
+          "volatility_20d": 1.778777958838922
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-17",
+          "volatility_20d": 1.7762354814159302
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-21",
+          "volatility_20d": 1.776909643686993
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-22",
+          "volatility_20d": 1.782693419359821
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-23",
+          "volatility_20d": 1.7802589634759753
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-24",
+          "volatility_20d": 1.7820525770075937
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-25",
+          "volatility_20d": 1.781655373722656
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-28",
+          "volatility_20d": 1.7803959325991006
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-29",
+          "volatility_20d": 1.7889957754539056
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-30",
+          "volatility_20d": 1.78351447703745
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-05-01",
+          "volatility_20d": 1.7850562574667763
         },
         {
           "ticker": "AMD",
@@ -4351,69 +4658,14 @@
           "volatility_20d": 1.9695978293619698
         },
         {
+          "ticker": "AIG",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5766813664971693
+        },
+        {
           "ticker": "AXP",
           "decision_date": "2020-03-24",
           "volatility_20d": 1.534320553006948
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-03-25",
-          "volatility_20d": 1.5643807767075164
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-03-26",
-          "volatility_20d": 1.5646074259686553
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-03-27",
-          "volatility_20d": 1.5708607084354222
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-03-30",
-          "volatility_20d": 1.5656714377765077
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-03-31",
-          "volatility_20d": 1.5657319953203905
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-04-01",
-          "volatility_20d": 1.5639021452585264
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-04-02",
-          "volatility_20d": 1.560894623567512
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-04-03",
-          "volatility_20d": 1.5632588150035753
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-04-06",
-          "volatility_20d": 1.6261384185456198
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-04-07",
-          "volatility_20d": 1.6233425298936945
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-04-08",
-          "volatility_20d": 1.6102767870126664
-        },
-        {
-          "ticker": "AXP",
-          "decision_date": "2020-04-09",
-          "volatility_20d": 1.5401455103621564
         },
         {
           "ticker": "BA",
@@ -4421,109 +4673,49 @@
           "volatility_20d": 1.754576852911449
         },
         {
-          "ticker": "BA",
-          "decision_date": "2020-03-25",
-          "volatility_20d": 2.013769900076739
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-03-26",
-          "volatility_20d": 2.0886815349400756
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-03-27",
-          "volatility_20d": 2.109913123849711
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-03-30",
-          "volatility_20d": 2.0985504316875017
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-03-31",
-          "volatility_20d": 2.098417266213185
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-01",
-          "volatility_20d": 2.124472885173754
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-02",
-          "volatility_20d": 2.118623769373123
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-03",
-          "volatility_20d": 2.11922852033426
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-06",
-          "volatility_20d": 2.220161815695777
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-07",
-          "volatility_20d": 2.2211124158427373
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-08",
-          "volatility_20d": 2.137677556593186
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-09",
-          "volatility_20d": 2.0351572103476463
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-13",
-          "volatility_20d": 2.0087892800518725
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-14",
-          "volatility_20d": 1.8105968926241962
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-15",
-          "volatility_20d": 1.8017749836843595
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-16",
-          "volatility_20d": 1.6920257090478663
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-17",
-          "volatility_20d": 1.7349299599659942
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-20",
-          "volatility_20d": 1.7575907883500337
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-21",
-          "volatility_20d": 1.7475198424886085
-        },
-        {
-          "ticker": "BA",
-          "decision_date": "2020-04-22",
-          "volatility_20d": 1.5970771692386412
-        },
-        {
           "ticker": "C",
           "decision_date": "2020-03-24",
           "volatility_20d": 1.559721458881394
+        },
+        {
+          "ticker": "COF",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5723974573129604
+        },
+        {
+          "ticker": "COP",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.783040014298878
+        },
+        {
+          "ticker": "CVX",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5560190178501112
+        },
+        {
+          "ticker": "DOW",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5111439363647174
+        },
+        {
+          "ticker": "TSLA",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5628336463285342
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.6635764418998353
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5643807767075164
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 2.013769900076739
         },
         {
           "ticker": "C",
@@ -4531,90 +4723,560 @@
           "volatility_20d": 1.5703257967702902
         },
         {
-          "ticker": "C",
+          "ticker": "COF",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.581308370409614
+        },
+        {
+          "ticker": "COP",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.7824949983460316
+        },
+        {
+          "ticker": "CVX",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5682134547878637
+        },
+        {
+          "ticker": "DOW",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5401975484570092
+        },
+        {
+          "ticker": "TSLA",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5917120687128066
+        },
+        {
+          "ticker": "AIG",
           "decision_date": "2020-03-26",
-          "volatility_20d": 1.618866532069722
+          "volatility_20d": 1.6940333593647041
         },
         {
-          "ticker": "C",
-          "decision_date": "2020-03-27",
-          "volatility_20d": 1.62405489367712
-        },
-        {
-          "ticker": "C",
-          "decision_date": "2020-03-30",
-          "volatility_20d": 1.5996512134678083
-        },
-        {
-          "ticker": "C",
-          "decision_date": "2020-03-31",
-          "volatility_20d": 1.6010540562861169
-        },
-        {
-          "ticker": "C",
-          "decision_date": "2020-04-01",
-          "volatility_20d": 1.6063034623496821
-        },
-        {
-          "ticker": "C",
-          "decision_date": "2020-04-02",
-          "volatility_20d": 1.60705642243988
-        },
-        {
-          "ticker": "C",
-          "decision_date": "2020-04-03",
-          "volatility_20d": 1.6086687894318237
-        },
-        {
-          "ticker": "C",
-          "decision_date": "2020-04-06",
-          "volatility_20d": 1.5664041712367556
-        },
-        {
-          "ticker": "C",
-          "decision_date": "2020-04-07",
-          "volatility_20d": 1.5320401985897287
-        },
-        {
-          "ticker": "C",
-          "decision_date": "2020-04-08",
-          "volatility_20d": 1.5317227985282593
+          "ticker": "AXP",
+          "decision_date": "2020-03-26",
+          "volatility_20d": 1.5646074259686553
         }
       ],
-      "observations_truncated": true
+      "observations_truncated": true,
+      "explained_or_contaminated": [
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-02",
+          "volatility_20d": 1.8209764659788459
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-03",
+          "volatility_20d": 1.8324990793809697
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-03",
+          "volatility_20d": 1.759505702193103
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-04",
+          "volatility_20d": 1.7580969811909815
+        }
+      ],
+      "unexplained": [
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-04",
+          "volatility_20d": 1.8312240990124173
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-07",
+          "volatility_20d": 1.8327188512566368
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-08",
+          "volatility_20d": 1.8295196825925515
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-09",
+          "volatility_20d": 1.8312700842681269
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-10",
+          "volatility_20d": 1.8301661231543092
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-11",
+          "volatility_20d": 1.8288663232368934
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-14",
+          "volatility_20d": 1.8302064121798884
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-15",
+          "volatility_20d": 1.8287602314847056
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-16",
+          "volatility_20d": 1.8277916475921228
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-17",
+          "volatility_20d": 1.8258050891407243
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-18",
+          "volatility_20d": 1.8268934208415026
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-22",
+          "volatility_20d": 1.8272370120470436
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-23",
+          "volatility_20d": 1.825212111080051
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-24",
+          "volatility_20d": 1.8264412461587474
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-24",
+          "volatility_20d": 1.5268502743503412
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-25",
+          "volatility_20d": 1.8273434822493706
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-25",
+          "volatility_20d": 1.5877265629280555
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-28",
+          "volatility_20d": 1.8286261476929448
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-28",
+          "volatility_20d": 1.6078798037974176
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-29",
+          "volatility_20d": 1.831954434999317
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-29",
+          "volatility_20d": 1.5986728957365992
+        },
+        {
+          "ticker": "ABT",
+          "decision_date": "2013-01-30",
+          "volatility_20d": 1.827603234786946
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-30",
+          "volatility_20d": 1.6065504358595712
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-01-31",
+          "volatility_20d": 1.6096274153942598
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-01",
+          "volatility_20d": 1.613443572672508
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-04",
+          "volatility_20d": 1.6102888293752562
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-05",
+          "volatility_20d": 1.6154853050432345
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-06",
+          "volatility_20d": 1.605093596218299
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-07",
+          "volatility_20d": 1.6052767298114246
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-08",
+          "volatility_20d": 1.6114933290669486
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-11",
+          "volatility_20d": 1.6221259187837196
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-12",
+          "volatility_20d": 1.625768618069717
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-13",
+          "volatility_20d": 1.6162361003496293
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-14",
+          "volatility_20d": 1.5952103547347039
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-15",
+          "volatility_20d": 1.5929151683420748
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-19",
+          "volatility_20d": 1.5907042164295075
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-20",
+          "volatility_20d": 1.6098624258272618
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2013-02-21",
+          "volatility_20d": 1.6133622959130194
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-07",
+          "volatility_20d": 1.7569974065038612
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-08",
+          "volatility_20d": 1.769435051802631
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-09",
+          "volatility_20d": 1.7727316567741886
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-10",
+          "volatility_20d": 1.7722395612199229
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-11",
+          "volatility_20d": 1.7719559791499995
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-14",
+          "volatility_20d": 1.7710821688373528
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-15",
+          "volatility_20d": 1.7681206973862016
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-16",
+          "volatility_20d": 1.778777958838922
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-17",
+          "volatility_20d": 1.7762354814159302
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-21",
+          "volatility_20d": 1.776909643686993
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-22",
+          "volatility_20d": 1.782693419359821
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-23",
+          "volatility_20d": 1.7802589634759753
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-24",
+          "volatility_20d": 1.7820525770075937
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-25",
+          "volatility_20d": 1.781655373722656
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-28",
+          "volatility_20d": 1.7803959325991006
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-29",
+          "volatility_20d": 1.7889957754539056
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-04-30",
+          "volatility_20d": 1.78351447703745
+        },
+        {
+          "ticker": "GOOGL",
+          "decision_date": "2014-05-01",
+          "volatility_20d": 1.7850562574667763
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-22",
+          "volatility_20d": 1.910205702981838
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-25",
+          "volatility_20d": 1.9903872441060244
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-26",
+          "volatility_20d": 1.9962143784850843
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-27",
+          "volatility_20d": 1.995038266593739
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-28",
+          "volatility_20d": 2.0019673605537465
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-04-29",
+          "volatility_20d": 2.0038393855642602
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-02",
+          "volatility_20d": 2.0066865384615435
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-03",
+          "volatility_20d": 2.010947450765744
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-04",
+          "volatility_20d": 2.012076216366022
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-05",
+          "volatility_20d": 1.9921367108891697
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-06",
+          "volatility_20d": 1.992116140107783
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-09",
+          "volatility_20d": 1.9942553795027047
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-10",
+          "volatility_20d": 1.9958891870537323
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-11",
+          "volatility_20d": 1.995071292244814
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-12",
+          "volatility_20d": 1.9916746939382235
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-13",
+          "volatility_20d": 1.9890781065933685
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-16",
+          "volatility_20d": 1.9894862363003378
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-17",
+          "volatility_20d": 1.9730142729869793
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-18",
+          "volatility_20d": 1.9732610933040438
+        },
+        {
+          "ticker": "AMD",
+          "decision_date": "2016-05-19",
+          "volatility_20d": 1.9695978293619698
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5766813664971693
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.534320553006948
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.754576852911449
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.559721458881394
+        },
+        {
+          "ticker": "COF",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5723974573129604
+        },
+        {
+          "ticker": "COP",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.783040014298878
+        },
+        {
+          "ticker": "CVX",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5560190178501112
+        },
+        {
+          "ticker": "DOW",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5111439363647174
+        },
+        {
+          "ticker": "TSLA",
+          "decision_date": "2020-03-24",
+          "volatility_20d": 1.5628336463285342
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.6635764418998353
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5643807767075164
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 2.013769900076739
+        },
+        {
+          "ticker": "C",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5703257967702902
+        },
+        {
+          "ticker": "COF",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.581308370409614
+        },
+        {
+          "ticker": "COP",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.7824949983460316
+        },
+        {
+          "ticker": "CVX",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5682134547878637
+        },
+        {
+          "ticker": "DOW",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5401975484570092
+        },
+        {
+          "ticker": "TSLA",
+          "decision_date": "2020-03-25",
+          "volatility_20d": 1.5917120687128066
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2020-03-26",
+          "volatility_20d": 1.6940333593647041
+        },
+        {
+          "ticker": "AXP",
+          "decision_date": "2020-03-26",
+          "volatility_20d": 1.5646074259686553
+        }
+      ],
+      "unexplained_count_in_reported_observations": 96
     },
     "volume_ratio_20d_gt_10": {
-      "count": 12,
+      "count": 13,
       "observations": [
-        {
-          "ticker": "AIG",
-          "decision_date": "2011-05-25",
-          "volume_ratio_20d": 13.606954989770745
-        },
-        {
-          "ticker": "AIG",
-          "decision_date": "2012-09-11",
-          "volume_ratio_20d": 10.277050795035692
-        },
         {
           "ticker": "AVGO",
           "decision_date": "2010-01-28",
           "volume_ratio_20d": 11.846510598897092
         },
         {
-          "ticker": "AVGO",
-          "decision_date": "2014-05-07",
-          "volume_ratio_20d": 10.533806491034289
-        },
-        {
-          "ticker": "BLK",
-          "decision_date": "2010-11-09",
-          "volume_ratio_20d": 10.16168694100494
-        },
-        {
-          "ticker": "BLK",
-          "decision_date": "2012-05-23",
-          "volume_ratio_20d": 11.331225973498753
+          "ticker": "BRK.B",
+          "decision_date": "2010-02-12",
+          "volume_ratio_20d": 12.100402950925751
         },
         {
           "ticker": "CHTR",
@@ -4622,14 +5284,14 @@
           "volume_ratio_20d": 12.266706355112367
         },
         {
-          "ticker": "FDX",
-          "decision_date": "2022-09-16",
-          "volume_ratio_20d": 10.112467400349118
+          "ticker": "BLK",
+          "decision_date": "2010-11-09",
+          "volume_ratio_20d": 10.16168694100494
         },
         {
-          "ticker": "NFLX",
-          "decision_date": "2022-04-20",
-          "volume_ratio_20d": 11.410725670021137
+          "ticker": "AIG",
+          "decision_date": "2011-05-25",
+          "volume_ratio_20d": 13.606954989770745
         },
         {
           "ticker": "PLD",
@@ -4642,12 +5304,106 @@
           "volume_ratio_20d": 10.077038848107762
         },
         {
+          "ticker": "BLK",
+          "decision_date": "2012-05-23",
+          "volume_ratio_20d": 11.331225973498753
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2012-09-11",
+          "volume_ratio_20d": 10.277050795035692
+        },
+        {
           "ticker": "VZ",
           "decision_date": "2014-02-24",
           "volume_ratio_20d": 11.233883370260658
+        },
+        {
+          "ticker": "AVGO",
+          "decision_date": "2014-05-07",
+          "volume_ratio_20d": 10.533806491034289
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2022-04-20",
+          "volume_ratio_20d": 11.410725670021137
+        },
+        {
+          "ticker": "FDX",
+          "decision_date": "2022-09-16",
+          "volume_ratio_20d": 10.112467400349118
         }
       ],
-      "observations_truncated": false
+      "observations_truncated": false,
+      "explained_or_contaminated": [],
+      "unexplained": [
+        {
+          "ticker": "AVGO",
+          "decision_date": "2010-01-28",
+          "volume_ratio_20d": 11.846510598897092
+        },
+        {
+          "ticker": "BRK.B",
+          "decision_date": "2010-02-12",
+          "volume_ratio_20d": 12.100402950925751
+        },
+        {
+          "ticker": "CHTR",
+          "decision_date": "2010-07-29",
+          "volume_ratio_20d": 12.266706355112367
+        },
+        {
+          "ticker": "BLK",
+          "decision_date": "2010-11-09",
+          "volume_ratio_20d": 10.16168694100494
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2011-05-25",
+          "volume_ratio_20d": 13.606954989770745
+        },
+        {
+          "ticker": "PLD",
+          "decision_date": "2011-06-02",
+          "volume_ratio_20d": 11.249677097451105
+        },
+        {
+          "ticker": "TMUS",
+          "decision_date": "2011-08-02",
+          "volume_ratio_20d": 10.077038848107762
+        },
+        {
+          "ticker": "BLK",
+          "decision_date": "2012-05-23",
+          "volume_ratio_20d": 11.331225973498753
+        },
+        {
+          "ticker": "AIG",
+          "decision_date": "2012-09-11",
+          "volume_ratio_20d": 10.277050795035692
+        },
+        {
+          "ticker": "VZ",
+          "decision_date": "2014-02-24",
+          "volume_ratio_20d": 11.233883370260658
+        },
+        {
+          "ticker": "AVGO",
+          "decision_date": "2014-05-07",
+          "volume_ratio_20d": 10.533806491034289
+        },
+        {
+          "ticker": "NFLX",
+          "decision_date": "2022-04-20",
+          "volume_ratio_20d": 11.410725670021137
+        },
+        {
+          "ticker": "FDX",
+          "decision_date": "2022-09-16",
+          "volume_ratio_20d": 10.112467400349118
+        }
+      ],
+      "unexplained_count_in_reported_observations": 13
     },
     "atr_pct_gt_0_25": {
       "count": 4,
@@ -4673,7 +5429,32 @@
           "atr_pct": 0.2551572201081515
         }
       ],
-      "observations_truncated": false
+      "observations_truncated": false,
+      "explained_or_contaminated": [
+        {
+          "ticker": "RTX",
+          "decision_date": "2020-04-03",
+          "atr_pct": 0.2551572201081515
+        }
+      ],
+      "unexplained": [
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-18",
+          "atr_pct": 0.26314793264444847
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-19",
+          "atr_pct": 0.27079404067429863
+        },
+        {
+          "ticker": "BA",
+          "decision_date": "2020-03-20",
+          "atr_pct": 0.27495601966710276
+        }
+      ],
+      "unexplained_count_in_reported_observations": 3
     }
   },
   "extremes_top_25": {
@@ -5197,6 +5978,11 @@
         "volume_ratio_20d": 12.266706355112367
       },
       {
+        "ticker": "BRK.B",
+        "decision_date": "2010-02-12",
+        "volume_ratio_20d": 12.100402950925751
+      },
+      {
         "ticker": "AVGO",
         "decision_date": "2010-01-28",
         "volume_ratio_20d": 11.846510598897092
@@ -5302,14 +6088,9 @@
         "volume_ratio_20d": 9.037011810964845
       },
       {
-        "ticker": "TMUS",
-        "decision_date": "2019-07-12",
-        "volume_ratio_20d": 8.910005146936912
-      },
-      {
-        "ticker": "FDX",
-        "decision_date": "2024-09-20",
-        "volume_ratio_20d": 8.820257856051805
+        "ticker": "BRK.B",
+        "decision_date": "2010-06-25",
+        "volume_ratio_20d": 9.001818619949622
       }
     ],
     "largest_atr_pct": [
@@ -5504,6 +6285,14 @@
         "split_factor": 25.0,
         "adjusted_return_1d_on_split": 0.05017273401346101,
         "maximum_absolute_return_1d_in_window": 0.05017273401346101,
+        "validation_passed": true
+      },
+      {
+        "ticker": "BRK.B",
+        "split_date": "2010-01-21",
+        "split_factor": 50.0,
+        "adjusted_return_1d_on_split": 0.04602991944764101,
+        "maximum_absolute_return_1d_in_window": 0.04602991944764101,
         "validation_passed": true
       },
       {
@@ -5755,8 +6544,8 @@
         "validation_passed": true
       }
     ],
-    "total": 39,
-    "passed": 38,
+    "total": 40,
+    "passed": 39,
     "failed": [
       {
         "ticker": "TMUS",
@@ -5768,6 +6557,394 @@
       }
     ]
   },
+  "corporate_action_integrity": {
+    "events_by_type": {
+      "complex_distribution": 4,
+      "complex_recapitalization": 1
+    },
+    "tickers_with_contaminated_features": [
+      "ABT",
+      "GOOGL",
+      "MDLZ",
+      "RTX",
+      "TMUS"
+    ],
+    "relevant_events": [
+      {
+        "event_id": "89f2ab472a86d18abc22",
+        "ticker": "MDLZ",
+        "event_date": "2012-10-02",
+        "event_type": "complex_distribution",
+        "source": "heuristic",
+        "confidence": 0.95,
+        "known_at": "2012-10-03T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": true,
+        "notes": "split_only_return=-0.341298; provider_adjusted_return=0.004386; split=False; extraordinary_distribution=True",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "b35533b35976ca04e483",
+        "ticker": "ABT",
+        "event_date": "2013-01-02",
+        "event_type": "complex_distribution",
+        "source": "heuristic",
+        "confidence": 0.95,
+        "known_at": "2013-01-03T01:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": true,
+        "notes": "split_only_return=-0.510687; provider_adjusted_return=0.018316; split=False; extraordinary_distribution=True",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "e653f71b02957333e821",
+        "ticker": "TMUS",
+        "event_date": "2013-05-01",
+        "event_type": "complex_recapitalization",
+        "source": "heuristic",
+        "confidence": 0.95,
+        "known_at": "2013-05-02T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": true,
+        "notes": "split_only_return=-0.302365; provider_adjusted_return=0.039696; split=True; extraordinary_distribution=True",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "9aef821b433135154689",
+        "ticker": "GOOGL",
+        "event_date": "2014-04-03",
+        "event_type": "complex_distribution",
+        "source": "heuristic",
+        "confidence": 0.95,
+        "known_at": "2014-04-04T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": true,
+        "notes": "split_only_return=-0.496520; provider_adjusted_return=0.003851; split=False; extraordinary_distribution=True",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "18fb85423936f266f806",
+        "ticker": "RTX",
+        "event_date": "2020-04-03",
+        "event_type": "complex_distribution",
+        "source": "heuristic",
+        "confidence": 0.95,
+        "known_at": "2020-04-04T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": true,
+        "notes": "split_only_return=-0.419486; provider_adjusted_return=0.052319; split=False; extraordinary_distribution=True",
+        "schema_version": "1"
+      }
+    ],
+    "pending_review_events": [
+      {
+        "event_id": "d27eb329d3af78ec64a7",
+        "ticker": "AIG",
+        "event_date": "2009-03-16",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-03-17T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.660000; provider_adjusted_return=0.660000; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "07c90b41855a4969b40e",
+        "ticker": "AIG",
+        "event_date": "2009-03-18",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-03-19T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.437500; provider_adjusted_return=0.437500; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "ca60cf7c841978ef8ef7",
+        "ticker": "AIG",
+        "event_date": "2009-08-05",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-08-06T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.627219; provider_adjusted_return=0.627219; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "51dbf7bddd8bc390da85",
+        "ticker": "AMD",
+        "event_date": "2016-04-22",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2016-04-23T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.522901; provider_adjusted_return=0.522901; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "c054e5b91b9138372149",
+        "ticker": "BAC",
+        "event_date": "2009-01-21",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-01-22T01:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.309804; provider_adjusted_return=0.309804; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "12aa6d331e66b7eb1ed3",
+        "ticker": "BAC",
+        "event_date": "2009-04-09",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-04-10T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.352691; provider_adjusted_return=0.352691; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "6c5994fefdb56a8bb07d",
+        "ticker": "C",
+        "event_date": "2009-01-21",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-01-22T01:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.310714; provider_adjusted_return=0.310714; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "de8e26151ab2dac7d21b",
+        "ticker": "C",
+        "event_date": "2009-02-27",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-02-28T01:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=-0.390244; provider_adjusted_return=-0.390244; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "55bf20890038c40b35a9",
+        "ticker": "C",
+        "event_date": "2009-03-10",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-03-11T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.380952; provider_adjusted_return=0.380952; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "e0fc740ef46b0e1d27ae",
+        "ticker": "C",
+        "event_date": "2009-03-16",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-03-17T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.308989; provider_adjusted_return=0.308989; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "c326ddbfc82d18e42acb",
+        "ticker": "DELL",
+        "event_date": "2024-03-01",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2024-03-02T01:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.316184; provider_adjusted_return=0.316184; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "e943c8ff6cad3b903a08",
+        "ticker": "DELL",
+        "event_date": "2026-05-29",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2026-05-30T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.327582; provider_adjusted_return=0.327582; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "309c06b4a3d08123aa7a",
+        "ticker": "NFLX",
+        "event_date": "2011-10-25",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2011-10-26T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=-0.348957; provider_adjusted_return=-0.348957; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "96fa19d0cd97ce2dba8a",
+        "ticker": "NFLX",
+        "event_date": "2013-01-24",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2013-01-25T01:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.422235; provider_adjusted_return=0.422235; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "3c1a6182ebbd2f5f93ad",
+        "ticker": "NFLX",
+        "event_date": "2022-04-20",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2022-04-21T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=-0.351166; provider_adjusted_return=-0.351166; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "6bcd21fe70d512e9e16d",
+        "ticker": "ORCL",
+        "event_date": "2025-09-10",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2025-09-11T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.359488; provider_adjusted_return=0.359488; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "be17adc8a58c7f67c76f",
+        "ticker": "PLTR",
+        "event_date": "2024-02-06",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2024-02-07T01:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.308014; provider_adjusted_return=0.308014; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "e55c980d330ac519111e",
+        "ticker": "TMUS",
+        "event_date": "2011-08-02",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2011-08-03T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=-0.365884; provider_adjusted_return=-0.365884; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "b73291ea232fc636d38e",
+        "ticker": "TMUS",
+        "event_date": "2012-07-26",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2012-07-27T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.367834; provider_adjusted_return=0.367834; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "dff14dcc3bcf3edf26e3",
+        "ticker": "WFC",
+        "event_date": "2009-01-28",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-01-29T01:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.308833; provider_adjusted_return=0.308833; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      },
+      {
+        "event_id": "b89c9dac231f31026288",
+        "ticker": "WFC",
+        "event_date": "2009-04-09",
+        "event_type": "unexplained_price_discontinuity",
+        "source": "heuristic",
+        "confidence": 0.4,
+        "known_at": "2009-04-10T00:00:00+00:00",
+        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "adjustment_supported": false,
+        "training_exclusion": false,
+        "notes": "split_only_return=0.316991; provider_adjusted_return=0.316991; split=False; extraordinary_distribution=False",
+        "schema_version": "1"
+      }
+    ],
+    "feature_window_sessions": {
+      "before": 1,
+      "event_day": true,
+      "after": 1
+    },
+    "feature_flags_are_point_in_time_gated_by_known_at": true
+  },
+  "unresolved_provider_symbol_issues": [],
   "performance": {
     "ingestion_seconds_by_ticker": {
       "SPY": 0.0,
@@ -5874,224 +7051,226 @@
       "XOM": 0.0
     },
     "feature_build_seconds_by_ticker": {
-      "AAPL": 0.9611206999979913,
-      "ABBV": 0.42528590001165867,
-      "ABT": 0.5857633000705391,
-      "ACN": 0.5361361999530345,
-      "ADBE": 0.5040295999497175,
-      "AIG": 0.5263546998612583,
-      "AMD": 0.5176526999566704,
-      "AMGN": 0.5177158999722451,
-      "AMT": 0.504628200083971,
-      "AMZN": 0.7011645999737084,
-      "ANET": 0.654169199988246,
-      "AVGO": 0.6916517000645399,
-      "AXP": 0.4809764998499304,
-      "BA": 0.5203611000906676,
-      "BAC": 0.5050975000485778,
-      "BK": 0.10685910005122423,
-      "BKNG": 0.7340806999709457,
-      "BLK": 0.5175128001719713,
-      "BMY": 0.5107055001426488,
-      "C": 0.5792421998921782,
-      "CAT": 0.5678669000044465,
-      "CHTR": 0.5054022001568228,
-      "CMCSA": 0.9156849998980761,
-      "COF": 0.5135178999044001,
-      "COP": 0.510159800061956,
-      "COST": 0.5675204999279231,
-      "CRM": 0.6392125999554992,
-      "CSCO": 0.5053362001199275,
-      "CVS": 0.5243279000278562,
-      "CVX": 0.5382904999423772,
-      "DE": 0.6198730999603868,
-      "DELL": 0.3580529000610113,
-      "DHR": 0.6083136000670493,
-      "DIS": 0.5071557001210749,
-      "DOW": 0.30174760008230805,
-      "DUK": 0.6722760999109596,
-      "EMR": 0.5406633999664336,
-      "FDX": 0.8721438001375645,
-      "GD": 0.5183598999865353,
-      "GILD": 0.5777044000569731,
-      "GM": 0.45832269988022745,
-      "GOOG": 0.530920600052923,
-      "GOOGL": 0.883446600055322,
-      "GS": 0.5279343998990953,
-      "HD": 0.5464600000996143,
-      "IBM": 0.7598359000403434,
-      "INTC": 0.6134786000475287,
-      "JNJ": 0.4807359001133591,
-      "JPM": 0.4985541000496596,
-      "KO": 0.5937113000545651,
-      "LIN": 0.2771846998948604,
-      "LLY": 0.5265738000161946,
-      "LMT": 0.6296639000065625,
-      "LOW": 0.6019020001403987,
-      "MA": 0.6208384998608381,
-      "MCD": 0.5062792000826448,
-      "MDLZ": 0.5118589999619871,
-      "MDT": 0.49417850002646446,
-      "MET": 0.5032575998920947,
-      "META": 0.41246939986012876,
-      "MMM": 0.5093106999993324,
-      "MO": 0.5044943999964744,
-      "MRK": 0.7559348000213504,
-      "MS": 0.494649900123477,
-      "MSFT": 0.5218752999790013,
-      "MU": 0.5041598998941481,
-      "NEE": 0.6523982000071555,
-      "NFLX": 0.8118684000801295,
-      "NOW": 0.6429751999676228,
-      "NVDA": 0.8533149000722915,
-      "ORCL": 0.48419300001114607,
-      "PANW": 0.7368266000412405,
-      "PEP": 0.49660600000061095,
-      "PFE": 0.6394201999064535,
-      "PG": 0.4736495001707226,
-      "PLD": 0.5035135999787599,
-      "PLTR": 0.24094259995035827,
-      "PM": 0.48651010007597506,
-      "PYPL": 0.35594139993190765,
-      "QCOM": 0.5377990000415593,
-      "RTX": 0.520707500167191,
-      "SBUX": 0.595439599826932,
-      "SCHW": 0.49856780003756285,
-      "SNDK": 0.12984109995886683,
-      "SO": 0.48211730015464127,
-      "T": 0.6584173999726772,
-      "TGT": 0.47749980003573,
-      "TMO": 0.4898673000279814,
-      "TMUS": 0.6152868000790477,
-      "TSLA": 0.7647297999355942,
-      "TXN": 0.5117506999522448,
-      "UNH": 0.4757995998952538,
-      "UNP": 0.5956552000716329,
-      "UPS": 0.5020134998485446,
-      "USB": 0.4892167001962662,
-      "V": 0.6052089999429882,
-      "VZ": 0.500860100146383,
-      "WFC": 0.5113117001019418,
-      "WMT": 0.669768099905923,
-      "XOM": 0.48104119999334216
+      "AAPL": 0.7184813998173922,
+      "ABBV": 0.40566369984298944,
+      "ABT": 0.47671200009062886,
+      "ACN": 0.469897200120613,
+      "ADBE": 0.4869263998698443,
+      "AIG": 0.47851799987256527,
+      "AMD": 0.470485599944368,
+      "AMGN": 0.5644160998053849,
+      "AMT": 0.47425090009346604,
+      "AMZN": 0.6632441999390721,
+      "ANET": 0.6320042000152171,
+      "AVGO": 0.6488370997831225,
+      "AXP": 0.46595950005576015,
+      "BA": 0.49841530015692115,
+      "BAC": 0.46992750000208616,
+      "BK": 0.47156249987892807,
+      "BKNG": 0.6957394001074135,
+      "BLK": 0.55445949989371,
+      "BMY": 0.47928400011733174,
+      "BRK.B": 0.5301230000331998,
+      "C": 0.5353991000447422,
+      "CAT": 0.4717818000353873,
+      "CHTR": 0.46706250007264316,
+      "CMCSA": 0.5919381000567228,
+      "COF": 0.4970665001310408,
+      "COP": 0.49482899997383356,
+      "COST": 0.4741811000276357,
+      "CRM": 0.552473499905318,
+      "CSCO": 0.4950959999114275,
+      "CVS": 0.4697975998278707,
+      "CVX": 0.5625675001647323,
+      "DE": 0.4739943000022322,
+      "DELL": 0.31896759988740087,
+      "DHR": 0.5311684000771493,
+      "DIS": 0.4629005999304354,
+      "DOW": 0.24804869992658496,
+      "DUK": 0.5337360000703484,
+      "EMR": 0.46307509997859597,
+      "FDX": 0.6934183998964727,
+      "GD": 0.45508309989236295,
+      "GILD": 0.5284797998610884,
+      "GM": 0.48902580002322793,
+      "GOOG": 0.4917309999000281,
+      "GOOGL": 0.6936476998962462,
+      "GS": 0.5599263999611139,
+      "HD": 0.47799509996548295,
+      "IBM": 0.6482997999992222,
+      "INTC": 0.46923879999667406,
+      "JNJ": 0.4849632999394089,
+      "JPM": 0.5385203999467194,
+      "KO": 0.5427687000483274,
+      "LIN": 0.3494333000853658,
+      "LLY": 0.4806359000504017,
+      "LMT": 0.5370836001820862,
+      "LOW": 0.5103978000115603,
+      "MA": 0.5910395998507738,
+      "MCD": 0.4940631000790745,
+      "MDLZ": 0.4804006000049412,
+      "MDT": 0.503496800083667,
+      "MET": 0.47214130009524524,
+      "META": 0.44478549994528294,
+      "MMM": 0.5161578999832273,
+      "MO": 0.49572010012343526,
+      "MRK": 0.6473502998705953,
+      "MS": 0.4977105997968465,
+      "MSFT": 0.4813914999831468,
+      "MU": 0.48263789992779493,
+      "NEE": 0.6169082000851631,
+      "NFLX": 0.904064399888739,
+      "NOW": 0.5689254999160767,
+      "NVDA": 0.8129481999203563,
+      "ORCL": 0.47690270002931356,
+      "PANW": 0.6930308002047241,
+      "PEP": 0.4630369998048991,
+      "PFE": 0.6342054000124335,
+      "PG": 0.47992089996114373,
+      "PLD": 0.4676315998658538,
+      "PLTR": 0.21802060003392398,
+      "PM": 0.46974430000409484,
+      "PYPL": 0.34356920002028346,
+      "QCOM": 0.5911101999226958,
+      "RTX": 0.4846390997990966,
+      "SBUX": 0.5717803998850286,
+      "SCHW": 0.4826780001167208,
+      "SNDK": 0.12519019981846213,
+      "SO": 0.46677100006490946,
+      "T": 0.6374014001339674,
+      "TGT": 0.47817620006389916,
+      "TMO": 0.4785307999700308,
+      "TMUS": 0.5533377001993358,
+      "TSLA": 0.7506891000084579,
+      "TXN": 0.4658633000217378,
+      "UNH": 0.49169689998961985,
+      "UNP": 0.5759895001538098,
+      "UPS": 0.4802116001956165,
+      "USB": 0.47016009991057217,
+      "V": 0.5644012000411749,
+      "VZ": 0.4964929998386651,
+      "WFC": 0.5065552000887692,
+      "WMT": 0.6549699001479894,
+      "XOM": 0.46292770002037287
     },
     "target_build_seconds_by_ticker": {
-      "AAPL": 3.0048861000686884,
-      "ABBV": 2.0167231999803334,
-      "ABT": 2.7017759999725968,
-      "ACN": 2.821208600187674,
-      "ADBE": 2.670458600157872,
-      "AIG": 2.6550749000161886,
-      "AMD": 2.5904401999432594,
-      "AMGN": 2.602715800050646,
-      "AMT": 2.603892399929464,
-      "AMZN": 2.5734023000113666,
-      "ANET": 1.787570099812001,
-      "AVGO": 2.4943099000956863,
-      "AXP": 2.6414363000076264,
-      "BA": 2.849354599835351,
-      "BAC": 2.6590151998680085,
-      "BK": 0.012740700040012598,
-      "BKNG": 2.609594800043851,
-      "BLK": 2.5698754000477493,
-      "BMY": 2.5772579999174923,
-      "C": 2.589139899937436,
-      "CAT": 2.6534715997986495,
-      "CHTR": 2.9904332000296563,
-      "CMCSA": 3.187807699898258,
-      "COF": 2.8579938001930714,
-      "COP": 2.716236799955368,
-      "COST": 2.690268199890852,
-      "CRM": 2.773386700078845,
-      "CSCO": 2.667543200077489,
-      "CVS": 2.653638100018725,
-      "CVX": 3.5496969998348504,
-      "DE": 3.4898409999441355,
-      "DELL": 1.1546241000760347,
-      "DHR": 2.789084600051865,
-      "DIS": 2.6724781000521034,
-      "DOW": 1.1661032000556588,
-      "DUK": 3.3906018000561744,
-      "EMR": 2.6708935000933707,
-      "FDX": 3.2220483999699354,
-      "GD": 2.9325976001564413,
-      "GILD": 2.6303079000208527,
-      "GM": 2.476669699884951,
-      "GOOG": 2.148167100036517,
-      "GOOGL": 3.1273060999810696,
-      "GS": 2.963609700091183,
-      "HD": 2.8999735999386758,
-      "IBM": 3.394729500170797,
-      "INTC": 2.7143039000220597,
-      "JNJ": 2.533023100113496,
-      "JPM": 2.5571576999500394,
-      "KO": 2.5741231001447886,
-      "LIN": 1.207090500043705,
-      "LLY": 3.685171499848366,
-      "LMT": 3.189206400187686,
-      "LOW": 3.218036999925971,
-      "MA": 2.61254519992508,
-      "MCD": 2.6056122998706996,
-      "MDLZ": 2.579583500046283,
-      "MDT": 2.6171624998096377,
-      "MET": 2.535183999920264,
-      "META": 2.067615299951285,
-      "MMM": 2.6136407000012696,
-      "MO": 2.614698800025508,
-      "MRK": 2.5957933000754565,
-      "MS": 2.663414399838075,
-      "MSFT": 2.576125199906528,
-      "MU": 2.618056100094691,
-      "NEE": 2.6251141000539064,
-      "NFLX": 2.545875099953264,
-      "NOW": 2.0445826000068337,
-      "NVDA": 2.6413690000772476,
-      "ORCL": 2.5735881000291556,
-      "PANW": 2.036496500018984,
-      "PEP": 2.6811426000203937,
-      "PFE": 2.571885099867359,
-      "PG": 2.5240724000614136,
-      "PLD": 2.6013307999819517,
-      "PLTR": 0.8707558000460267,
-      "PM": 2.4824456002097577,
-      "PYPL": 1.620363200083375,
-      "QCOM": 2.538640500046313,
-      "RTX": 2.581396099878475,
-      "SBUX": 2.511204600101337,
-      "SCHW": 2.5077492999844253,
-      "SNDK": 0.2381648998707533,
-      "SO": 2.552184500033036,
-      "T": 2.499870100058615,
-      "TGT": 2.5232962002046406,
-      "TMO": 2.5145293998066336,
-      "TMUS": 2.562613399932161,
-      "TSLA": 2.33800660003908,
-      "TXN": 2.5887974000070244,
-      "UNH": 2.585115500027314,
-      "UNP": 2.5142740001901984,
-      "UPS": 2.5661796000786126,
-      "USB": 2.544097400037572,
-      "V": 2.553635999793187,
-      "VZ": 2.5853057000786066,
-      "WFC": 2.53040979988873,
-      "WMT": 2.6299525999929756,
-      "XOM": 2.537326999939978
+      "AAPL": 4.983453700086102,
+      "ABBV": 3.814065899932757,
+      "ABT": 4.934670000104234,
+      "ACN": 4.906882799929008,
+      "ADBE": 4.909108499996364,
+      "AIG": 4.937476099934429,
+      "AMD": 5.004008100135252,
+      "AMGN": 5.04251049994491,
+      "AMT": 5.003675000043586,
+      "AMZN": 5.100485799834132,
+      "ANET": 3.413795900065452,
+      "AVGO": 4.787711499957368,
+      "AXP": 4.920153399929404,
+      "BA": 4.893439899897203,
+      "BAC": 4.886295099975541,
+      "BK": 4.9942776998505,
+      "BKNG": 4.892165799858049,
+      "BLK": 5.170262400060892,
+      "BMY": 4.95560109987855,
+      "BRK.B": 4.982467700028792,
+      "C": 4.928474800195545,
+      "CAT": 4.913709099870175,
+      "CHTR": 4.62416150001809,
+      "CMCSA": 4.93913139984943,
+      "COF": 4.937421899987385,
+      "COP": 4.932050299830735,
+      "COST": 4.850937100127339,
+      "CRM": 4.9447618999984115,
+      "CSCO": 4.893078000051901,
+      "CVS": 5.011996499961242,
+      "CVX": 5.349054899998009,
+      "DE": 4.747061700094491,
+      "DELL": 2.0922822998836637,
+      "DHR": 4.766522299963981,
+      "DIS": 4.737165300175548,
+      "DOW": 2.0151653999928385,
+      "DUK": 4.754553300095722,
+      "EMR": 4.72552049998194,
+      "FDX": 4.731385299935937,
+      "GD": 4.71672370005399,
+      "GILD": 4.741208499995992,
+      "GM": 4.483632700052112,
+      "GOOG": 3.4584335000254214,
+      "GOOGL": 5.147916599875316,
+      "GS": 5.131932100048289,
+      "HD": 5.115147899836302,
+      "IBM": 5.071104600094259,
+      "INTC": 4.989460399840027,
+      "JNJ": 5.020723199937493,
+      "JPM": 5.049141599796712,
+      "KO": 5.049949799897149,
+      "LIN": 2.708333499962464,
+      "LLY": 5.434642900014296,
+      "LMT": 5.143064700067043,
+      "LOW": 5.134010800160468,
+      "MA": 5.133525800192729,
+      "MCD": 5.27402100013569,
+      "MDLZ": 5.243047900032252,
+      "MDT": 5.1802944000810385,
+      "MET": 4.921712099807337,
+      "META": 4.4296399999875575,
+      "MMM": 5.134001600090414,
+      "MO": 5.482020300114527,
+      "MRK": 5.46866809995845,
+      "MS": 4.999429899966344,
+      "MSFT": 4.9514253998640925,
+      "MU": 5.093393400078639,
+      "NEE": 4.9326869999058545,
+      "NFLX": 5.005340100033209,
+      "NOW": 3.944497999968007,
+      "NVDA": 4.920722400071099,
+      "ORCL": 4.932482700096443,
+      "PANW": 3.9273534999229014,
+      "PEP": 4.927797999931499,
+      "PFE": 4.971849799854681,
+      "PG": 4.923818199895322,
+      "PLD": 4.870235699927434,
+      "PLTR": 1.6972223999910057,
+      "PM": 5.050233300076798,
+      "PYPL": 3.069817200070247,
+      "QCOM": 5.0003849000204355,
+      "RTX": 5.093419499928132,
+      "SBUX": 5.000275400001556,
+      "SCHW": 4.884960100054741,
+      "SNDK": 0.4579586999025196,
+      "SO": 4.8743644000496715,
+      "T": 4.918058200040832,
+      "TGT": 4.986480299849063,
+      "TMO": 4.91805909993127,
+      "TMUS": 4.949186400044709,
+      "TSLA": 4.53027160000056,
+      "TXN": 5.268002500059083,
+      "UNH": 5.048927800031379,
+      "UNP": 5.122301299823448,
+      "UPS": 5.290870799915865,
+      "USB": 4.981384400045499,
+      "V": 4.936732499860227,
+      "VZ": 5.13552529993467,
+      "WFC": 4.976958299987018,
+      "WMT": 4.908205999992788,
+      "XOM": 5.089050800073892
     },
-    "ingestion_wall_seconds": 4.998873919248581e-07,
-    "feature_and_target_build_wall_seconds": 322.93602739996277,
-    "feature_build_seconds_sum": 55.20320870098658,
-    "target_build_seconds_sum": 254.09970120037906,
+    "ingestion_wall_seconds": 3.0011869966983795e-07,
+    "feature_and_target_build_wall_seconds": 1.304776299977675,
+    "feature_build_seconds_sum": 52.29501629900187,
+    "target_build_seconds_sum": 478.67898339871317,
     "stages_skipped": {
       "download": true,
-      "features": false
+      "features": true
     },
-    "validation_report_seconds": 6.7906416999176145,
-    "total_seconds": 332.68322700005956
+    "validation_report_seconds": 19.439650099957362,
+    "total_seconds": 24.441978599876165
   },
   "dataset_sizes_bytes": {
-    "raw": 42200387,
-    "processed": 15604010,
-    "features": 203975131,
-    "targets": 12428751
+    "raw": 43008385,
+    "processed": 15918153,
+    "features": 208206457,
+    "targets": 12792790
   }
 }
