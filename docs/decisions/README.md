@@ -12,3 +12,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-008: Point-in-time split normalization](ADR-008-point-in-time-split-normalization.md)
 - [ADR-009: Feature and target storage separation](ADR-009-feature-target-storage-separation.md)
 - [ADR-010: Corporate-action training contamination](ADR-010-corporate-action-training-contamination.md)
+- [ADR-011: Temporal backtesting semantics](ADR-011-temporal-backtesting-semantics.md)

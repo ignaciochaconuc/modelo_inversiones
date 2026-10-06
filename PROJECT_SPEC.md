@@ -95,12 +95,31 @@ El Risk Manager es una autoridad separada que puede `APPROVE`, `REDUCE` o `BLOCK
 
 ## Backtesting, paper trading y ejecución
 
-El backtesting deberá reproducir decisiones point-in-time después del cierre y fills en la apertura siguiente, con métricas y costos. Phase 2A.1 implementa contratos históricos y un `PortfolioLedger` determinista con unidades, cash, compras/ventas long-only, mark-to-market, splits y dividendos. Los fills conservan `raw_open_price`; slippage y comisiones quedan auditables. Todavía no existe loop temporal, estrategia ni generación automática de órdenes.
+Phase 2A.2 reproduce decisiones point-in-time después del cierre y fills en la
+apertura siguiente. `HistoricalBacktestEngine` recibe `TargetAllocation` por
+fecha, genera cantidades con el raw close disponible a las 20:15 ET y ejecuta
+solo en el raw open de `next_session`. No contiene estrategia. Las ventas se
+procesan antes que las compras y una compra se reduce si gap, slippage o comisión
+superan el cash disponible; nunca se usa leverage.
 
-El accounting de costo promedio excluye comisiones: el `fill_price` determina
-el costo unitario y la comisión reduce NAV a través de cash. P&L realizado y no
-realizado se calcularán en una fase posterior después de fijar metodología de
-lotes; quantity, average cost y precios ya preservan la información necesaria.
+Cada sesión procesa splits antes del open, fills pendientes en el open,
+valoración al close, dividendos después del close y un snapshot final. Un open
+ausente produce una ejecución `UNFILLED` con `missing_execution_open` y no se
+arrastra. Para valoración, un close ausente puede usar el precio válido anterior
+con marca stale; sin precio previo el run falla. Todos los precios de órdenes,
+fills y snapshots son raw, nunca `adjusted_*`.
+
+Splits con fracciones deshabilitadas conservan la parte entera y liquidan la
+fracción como cash-in-lieu al raw open post-split, documentado como proxy. Los
+dividendos usan `effective_date` como proxy temporal y se acreditan tras el
+cierre. Una acción corporativa compleja no modelable sobre una posición mantenida
+invalida el run. Allocation, order y fill poseen IDs deterministas enlazados.
+
+El accounting usa costo promedio y excluye comisiones del costo unitario: el
+`fill_price` determina average cost y la comisión reduce cash/NAV. Una venta
+realiza `(fill_price - average_cost) × quantity - commission`; el P&L no realizado
+es `(market_price - average_cost) × quantity`. No se implementan lotes fiscales
+ni FIFO.
 
 Paper trading corresponde a Phase 8. La ejecución real supervisada y una eventual ejecución automática corresponden a Phases 9 y 10. No existe conexión con brokers ni autorización para órdenes reales.
 

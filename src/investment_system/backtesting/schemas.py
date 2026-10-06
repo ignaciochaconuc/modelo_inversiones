@@ -1,7 +1,7 @@
 """Backtest-only contracts for historical orders, fills, and portfolio state."""
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from enum import StrEnum
 import math
 from typing import Any
@@ -31,13 +31,24 @@ class OrderSide(StrEnum):
     SELL = "SELL"
 
 
+class OrderStatus(StrEnum):
+    FILLED = "FILLED"
+    PARTIALLY_FILLED = "PARTIALLY_FILLED"
+    UNFILLED = "UNFILLED"
+
+
+class CashFlowType(StrEnum):
+    DIVIDEND = "DIVIDEND"
+    CASH_IN_LIEU = "CASH_IN_LIEU"
+
+
 class BacktestConfig(BaseModel):
     """Simulator-specific settings; global market timing stays in Settings."""
 
     model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
     initial_cash: float = Field(gt=0)
-    commission_bps: float = Field(default=0, ge=0)
-    slippage_bps: float = Field(default=0, ge=0)
+    commission_bps: float = Field(default=0, ge=0, lt=10_000)
+    slippage_bps: float = Field(default=0, ge=0, lt=10_000)
     allow_fractional_shares: bool = True
     benchmark_ticker: str = "SPY"
 
@@ -68,6 +79,8 @@ class TargetAllocation(BaseModel):
     generated_at: datetime
     weights: dict[str, float] = Field(default_factory=dict)
     cash_weight: float = Field(ge=0, le=1)
+    allocation_id: str | None = None
+    risk_decision_id: str | None = None
 
     _validate_generated_at = field_validator("generated_at")(_aware)
 
@@ -95,10 +108,14 @@ class SimulatedOrder(BaseModel):
     """Historical order created after a decision; a future engine may fill it only next-session-open."""
 
     model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    order_id: str = Field(min_length=1)
+    allocation_id: str = Field(min_length=1)
+    risk_decision_id: str | None = None
     ticker: str
     side: OrderSide
     quantity: float = Field(gt=0)
     submitted_at: datetime
+    execution_date: date
     target_weight: float = Field(ge=0, le=1)
     reference_price: float = Field(gt=0)
 
@@ -110,6 +127,9 @@ class SimulatedFill(BaseModel):
     """A simulated execution priced from the raw next-session opening price."""
 
     model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    fill_id: str = Field(min_length=1)
+    order_id: str = Field(min_length=1)
+    allocation_id: str = Field(min_length=1)
     ticker: str
     side: OrderSide
     quantity: float = Field(gt=0)
@@ -147,6 +167,9 @@ class PortfolioSnapshot(BaseModel):
     nav: float = Field(ge=0)
     weights: dict[str, float] = Field(default_factory=dict)
     cash_weight: float = Field(ge=0, le=1)
+    stale_price_tickers: list[str] = Field(default_factory=list)
+    realized_pnl: float = 0
+    unrealized_pnl: float = 0
 
     _validate_as_of = field_validator("as_of")(_aware)
 
@@ -155,6 +178,8 @@ class PortfolioSnapshot(BaseModel):
         tickers = [position.ticker for position in self.positions]
         if len(tickers) != len(set(tickers)):
             raise ValueError("snapshot contains duplicate positions")
+        if not set(self.stale_price_tickers).issubset(tickers):
+            raise ValueError("stale prices may reference only held positions")
         expected_market_value = sum(position.market_value for position in self.positions)
         if not math.isclose(self.market_value, expected_market_value, abs_tol=VALUE_TOLERANCE):
             raise ValueError("market_value must equal the sum of position values")
@@ -181,13 +206,78 @@ class PortfolioSnapshot(BaseModel):
         return self
 
 
-class BacktestResult(BaseModel):
-    """Result envelope for a future engine; no temporal loop is implemented here."""
+class OrderExecutionRecord(BaseModel):
+    """Auditable outcome for one order on its one permitted execution session."""
 
     model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    order_id: str = Field(min_length=1)
+    allocation_id: str = Field(min_length=1)
+    ticker: str
+    execution_date: date
+    status: OrderStatus
+    requested_quantity: float = Field(gt=0)
+    filled_quantity: float = Field(default=0, ge=0)
+    reason: str | None = None
+    quantity_reduced: bool = False
+    recorded_at: datetime
+
+    _normalize_ticker = field_validator("ticker")(_ticker)
+    _validate_recorded_at = field_validator("recorded_at")(_aware)
+
+    @model_validator(mode="after")
+    def validate_execution(self) -> "OrderExecutionRecord":
+        if self.filled_quantity > self.requested_quantity + VALUE_TOLERANCE:
+            raise ValueError("filled quantity cannot exceed requested quantity")
+        if self.status == OrderStatus.FILLED and not math.isclose(
+            self.filled_quantity, self.requested_quantity, abs_tol=VALUE_TOLERANCE,
+        ):
+            raise ValueError("FILLED requires the complete requested quantity")
+        if self.status == OrderStatus.PARTIALLY_FILLED and not (
+            VALUE_TOLERANCE < self.filled_quantity < self.requested_quantity - VALUE_TOLERANCE
+        ):
+            raise ValueError("PARTIALLY_FILLED requires a partial positive quantity")
+        if self.status == OrderStatus.UNFILLED and self.filled_quantity > VALUE_TOLERANCE:
+            raise ValueError("UNFILLED requires zero filled quantity")
+        return self
+
+
+class CorporateActionCashFlow(BaseModel):
+    """Explicit cash movement caused by a dividend or fractional split settlement."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    cash_flow_id: str = Field(min_length=1)
+    event_id: str | None = None
+    ticker: str
+    cash_flow_type: CashFlowType
+    effective_date: date
+    quantity: float = Field(ge=0)
+    amount_per_share: float = Field(ge=0)
+    amount: float = Field(ge=0)
+    occurred_at: datetime
+    notes: str = ""
+
+    _normalize_ticker = field_validator("ticker")(_ticker)
+    _validate_occurred_at = field_validator("occurred_at")(_aware)
+
+    @model_validator(mode="after")
+    def validate_amount(self) -> "CorporateActionCashFlow":
+        if not math.isclose(self.amount, self.quantity * self.amount_per_share, abs_tol=VALUE_TOLERANCE):
+            raise ValueError("cash-flow amount must equal quantity * amount_per_share")
+        return self
+
+
+class BacktestResult(BaseModel):
+    """Complete, auditable output of one deterministic historical run."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    run_id: str = Field(min_length=1)
     config: BacktestConfig
+    allocations: list[TargetAllocation] = Field(default_factory=list)
     snapshots: list[PortfolioSnapshot] = Field(default_factory=list)
     orders: list[SimulatedOrder] = Field(default_factory=list)
     fills: list[SimulatedFill] = Field(default_factory=list)
+    executions: list[OrderExecutionRecord] = Field(default_factory=list)
+    cash_flows: list[CorporateActionCashFlow] = Field(default_factory=list)
+    realized_pnl: float = 0
+    final_unrealized_pnl: float = 0
     metadata: dict[str, Any] = Field(default_factory=dict)
-

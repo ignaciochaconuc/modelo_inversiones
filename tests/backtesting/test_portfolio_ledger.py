@@ -16,6 +16,7 @@ def fill(
     commission: float = 0,
 ) -> SimulatedFill:
     return SimulatedFill(
+        fill_id="fill-1", order_id="order-1", allocation_id="allocation-1",
         ticker=ticker, side=side, quantity=quantity,
         raw_open_price=price, fill_price=price, notional=quantity * price,
         commission=commission, slippage_cost=0, filled_at=NOW,
@@ -59,6 +60,7 @@ def test_partial_sell_preserves_average_cost_and_credits_cash() -> None:
     assert book.positions["AAPL"].quantity == 6
     assert book.positions["AAPL"].average_cost == 10
     assert book.cash == 959
+    assert book.realized_pnl == 19
 
 
 def test_total_sell_removes_position() -> None:
@@ -148,7 +150,7 @@ def test_split_rejects_invalid_factor_and_fractional_result() -> None:
     book.apply_fill(fill(OrderSide.BUY, 3, 10))
     with pytest.raises(ValueError, match="split_factor"):
         book.apply_split("AAPL", 0)
-    with pytest.raises(ValueError, match="fractional shares"):
+    with pytest.raises(ValueError, match="cash-in-lieu"):
         book.apply_split("AAPL", 0.5)
     assert book.positions["AAPL"].quantity == 3
 
@@ -169,6 +171,7 @@ def test_dividend_for_unowned_ticker_is_noop() -> None:
 def test_position_quantities_cannot_be_negative() -> None:
     with pytest.raises(ValidationError):
         SimulatedFill(
+            fill_id="fill-1", order_id="order-1", allocation_id="allocation-1",
             ticker="AAPL", side="BUY", quantity=-1, raw_open_price=10,
             fill_price=10, notional=10, commission=0, slippage_cost=0, filled_at=NOW,
         )

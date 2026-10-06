@@ -35,11 +35,13 @@ def test_target_allocation_requires_long_only_weights_plus_cash_equal_one() -> N
 def test_orders_and_fills_reject_invalid_quantities() -> None:
     with pytest.raises(ValidationError):
         SimulatedOrder(
+            order_id="order-1", allocation_id="allocation-1",
             ticker="AAPL", side=OrderSide.BUY, quantity=0, submitted_at=NOW,
-            target_weight=0.1, reference_price=100,
+            execution_date=NOW.date(), target_weight=0.1, reference_price=100,
         )
     with pytest.raises(ValidationError):
         SimulatedFill(
+            fill_id="fill-1", order_id="order-1", allocation_id="allocation-1",
             ticker="AAPL", side=OrderSide.BUY, quantity=0, raw_open_price=100,
             fill_price=100, notional=100, commission=0, slippage_cost=0, filled_at=NOW,
         )
@@ -47,6 +49,7 @@ def test_orders_and_fills_reject_invalid_quantities() -> None:
 
 def test_fill_validates_notional_and_slippage_audit_values() -> None:
     fill = SimulatedFill(
+        fill_id="fill-1", order_id="order-1", allocation_id="allocation-1",
         ticker="AAPL", side=OrderSide.BUY, quantity=10, raw_open_price=100,
         fill_price=100.1, notional=1_001, commission=1, slippage_cost=1, filled_at=NOW,
     )
@@ -71,7 +74,7 @@ def test_position_market_value_is_calculated_not_persisted_input() -> None:
         BacktestPosition(ticker="AAPL", quantity=2, average_cost=10, market_price=12, market_value=999)
 
 
-def test_backtest_result_is_an_empty_future_engine_envelope() -> None:
-    result = BacktestResult(config=BacktestConfig(initial_cash=10_000))
+def test_backtest_result_is_an_empty_engine_envelope() -> None:
+    result = BacktestResult(run_id="run-1", config=BacktestConfig(initial_cash=10_000))
     assert result.snapshots == result.orders == result.fills == []
     assert result.metadata == {}

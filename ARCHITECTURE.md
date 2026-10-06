@@ -52,7 +52,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `models` | Contratos de regresión, clasificación y ranking | Stub |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
-| `backtesting` | Contrato de motor, schemas, accounting histórico y métricas | Funcional Phase 2A.1; loop pendiente |
+| `backtesting` | Motor temporal, schemas, accounting histórico y auditoría de fills | Funcional Phase 2A.2 |
 | `execution` | Órdenes, fills y paper executor | Contrato/stub |
 | `audit` | Registro reconstruible de decisiones | Funcional básico |
 
@@ -110,11 +110,30 @@ conceptuales basados en pesos de `portfolio` y de la ejecución futura. Una
 autoriza una ruta que omita al Risk Manager cuando se implemente el loop.
 
 `PortfolioLedger` mantiene cash y posiciones long-only de forma determinista.
-Los fills usan precios raw; `fill_price` ya incorpora slippage y las comisiones
-se cargan directamente a cash. Splits cambian quantity y average cost usando la
+Los fills usan precios raw; `fill_price` incorpora slippage y las comisiones se
+cargan directamente a cash. El P&L realizado usa costo promedio y el no realizado
+se calcula en cada snapshot. Splits cambian quantity y average cost usando la
 convención acciones nuevas/antiguas, y dividendos acreditan cash explícitamente.
-Los snapshots expresan gross/net exposure como fracción de NAV. Phase 2A.1 no
-incluye calendario, estrategia, generación de órdenes ni ejecución temporal.
+
+`HistoricalBacktestEngine` recibe allocations por fecha y no conoce estrategias,
+modelos ni optimizadores. Recorre sesiones XNYS y, en cada sesión, aplica este
+orden: splits pre-open; fills pendientes en raw open; mark-to-market en raw close;
+dividendos; snapshot final a las 20:15 ET; y nuevas órdenes para la apertura de
+la sesión siguiente. Las ventas preceden a las compras. Un open ausente deja la
+orden `UNFILLED` sin rollover; un close ausente puede reutilizar exclusivamente
+el último precio de valoración y queda marcado como stale.
+
+Con acciones fraccionales deshabilitadas, un split liquida la fracción al raw
+open post-split como aproximación auditable de cash-in-lieu. Si falta ese precio,
+el run falla. Dividendos se acreditan después del cierre de `effective_date`
+porque la fuente no garantiza payment date. Una acción compleja no modelable en
+una posición mantenida invalida el run; nunca se inventa continuidad económica.
+Estas semánticas se fijan en ADR-011.
+
+Los IDs deterministas enlazan allocation, order y fill. `risk_decision_id` deja
+preparado el vínculo futuro, pero Phase 2A.2 no integra Risk Manager: el input del
+simulador no constituye una nueva ruta de ejecución y la autoridad definida en
+ADR-004 permanece intacta.
 
 ## LLM Router, costos y cache
 

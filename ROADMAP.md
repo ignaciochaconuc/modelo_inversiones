@@ -64,7 +64,7 @@ movimientos aún no explicados.
 
 ## Phase 2 — Backtesting engine
 
-**Status:** Phase 2A.1 complete; temporal engine pending
+**Status:** Phase 2A.2 complete; baselines and advanced metrics pending
 
 **Objetivo:** simular decisiones after-close y ejecución next-open.  
 **Entregables:** loop temporal, fills, costos, cartera, benchmark, métricas y auditoría.  
@@ -78,6 +78,17 @@ Schemas específicos separan target weights, órdenes, fills, posiciones por
 unidades, snapshots y resultados. `PortfolioLedger` implementa accounting
 long-only determinista, mark-to-market estricto, splits y dividendos. No incluye
 loop temporal, estrategias, benchmark, optimizador, ML ni PaperExecutor.
+
+### Phase 2A.2 — Temporal backtesting engine
+
+**Status:** complete
+
+Motor genérico por sesiones XNYS que convierte allocations fechadas en órdenes
+al raw close y fills exclusivamente en el raw open de la sesión siguiente.
+Incluye costos, restricciones de cash, ventas antes de compras, estados unfilled,
+valoración stale explícita, splits/cash-in-lieu, dividendos, invalidación por
+acciones complejas, P&L por costo promedio e IDs deterministas. No incluye
+estrategias, optimizer, integración con Risk Manager, ML ni PaperExecutor.
 
 ## Phase 3 — Baseline predictive models
 

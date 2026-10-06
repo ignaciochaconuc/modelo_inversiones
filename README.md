@@ -91,9 +91,9 @@ features y targets conservan el ticker interno.
 
 Son funcionales los schemas, validación point-in-time, adapter Tiingo EOD, actualización incremental, calendario XNYS, normalización as-of, Feature Store cuantitativo, targets separados, cache y reglas básicas de riesgo. Son contratos/stubs: clientes OpenAI/Ollama, modelos predictivos, optimización, backtesting completo y ejecución.
 
-Phase 2A.1 añade contratos de backtesting y `PortfolioLedger` para accounting
-histórico por unidades. Aún no existe loop temporal ni estrategia: las compras,
-ventas, comisiones, splits, dividendos y snapshots pueden probarse de forma
+Phase 2A.2 añade contratos de backtesting, `PortfolioLedger` y el loop temporal
+por sesiones XNYS. Aún no existen estrategias: compras, ventas, comisiones,
+splits, dividendos, P&L y snapshots pueden probarse de forma
 aislada sin reutilizar `PaperExecutor` ni modificar la autoridad de riesgo.
 
 Phases: 0 Architecture + feature store; 1 ingestión + baseline cuantitativo; 2 backtesting; 3 modelos baseline; 4 News; 5 Analyst + Earnings; 6 Fundamental + Macro + Event; 7 Portfolio + Risk; 8 paper trading; 9 live supervisado; 10 posible ejecución automática. Crypto será una expansión con schemas y predictores separados.
