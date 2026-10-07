@@ -1,0 +1,135 @@
+{
+  "overall": {
+    "pooled": {
+      "mae": 0.044151525081861966,
+      "rmse": 0.06400483036406564,
+      "pearson_correlation": null,
+      "spearman_correlation": null
+    },
+    "daily_pearson": {
+      "days": 0,
+      "mean": null,
+      "median": null,
+      "std": null,
+      "icir": null,
+      "pct_positive": null
+    },
+    "daily_spearman": {
+      "days": 0,
+      "mean": null,
+      "median": null,
+      "std": null,
+      "icir": null,
+      "pct_positive": null
+    },
+    "top10": {
+      "dates": 0,
+      "average_top10_actual_return": null,
+      "average_universe_actual_return": null,
+      "average_top10_uplift": null,
+      "pct_dates_positive_uplift": null
+    }
+  },
+  "by_year": {
+    "2019": {
+      "pooled": {
+        "mae": 0.03532399394809026,
+        "rmse": 0.04857248628984662,
+        "pearson_correlation": null,
+        "spearman_correlation": null
+      },
+      "daily_pearson": {
+        "days": 0,
+        "mean": null,
+        "median": null,
+        "std": null,
+        "icir": null,
+        "pct_positive": null
+      },
+      "daily_spearman": {
+        "days": 0,
+        "mean": null,
+        "median": null,
+        "std": null,
+        "icir": null,
+        "pct_positive": null
+      },
+      "top10": {
+        "dates": 0,
+        "average_top10_actual_return": null,
+        "average_universe_actual_return": null,
+        "average_top10_uplift": null,
+        "pct_dates_positive_uplift": null
+      }
+    },
+    "2020": {
+      "pooled": {
+        "mae": 0.05914462769635525,
+        "rmse": 0.08518761224430081,
+        "pearson_correlation": null,
+        "spearman_correlation": null
+      },
+      "daily_pearson": {
+        "days": 0,
+        "mean": null,
+        "median": null,
+        "std": null,
+        "icir": null,
+        "pct_positive": null
+      },
+      "daily_spearman": {
+        "days": 0,
+        "mean": null,
+        "median": null,
+        "std": null,
+        "icir": null,
+        "pct_positive": null
+      },
+      "top10": {
+        "dates": 0,
+        "average_top10_actual_return": null,
+        "average_universe_actual_return": null,
+        "average_top10_uplift": null,
+        "pct_dates_positive_uplift": null
+      }
+    },
+    "2021": {
+      "pooled": {
+        "mae": 0.03747210324040796,
+        "rmse": 0.05063648347353043,
+        "pearson_correlation": null,
+        "spearman_correlation": null
+      },
+      "daily_pearson": {
+        "days": 0,
+        "mean": null,
+        "median": null,
+        "std": null,
+        "icir": null,
+        "pct_positive": null
+      },
+      "daily_spearman": {
+        "days": 0,
+        "mean": null,
+        "median": null,
+        "std": null,
+        "icir": null,
+        "pct_positive": null
+      },
+      "top10": {
+        "dates": 0,
+        "average_top10_actual_return": null,
+        "average_universe_actual_return": null,
+        "average_top10_uplift": null,
+        "pct_dates_positive_uplift": null
+      }
+    }
+  },
+  "primary_selection_metric": "mean_daily_cross_sectional_spearman_ic",
+  "tie_breaking": [
+    "icir",
+    "pct_days_ic_positive",
+    "rmse",
+    "larger_alpha_within_0.001"
+  ]
+}

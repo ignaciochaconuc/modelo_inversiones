@@ -16,3 +16,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-012: Backtest performance metrics](ADR-012-backtest-performance-metrics.md)
 - [ADR-013: Reviewed complex corporate-action treatments](ADR-013-reviewed-complex-corporate-action-treatments.md)
 - [ADR-014: Supervised dataset and temporal validation](ADR-014-supervised-dataset-temporal-validation.md)
+- [ADR-015: Sealed-test simple predictive baselines](ADR-015-sealed-test-simple-predictive-baselines.md)

@@ -184,11 +184,32 @@ allowlist canónica. El fixed holdout oficial separa fechas completas, purga por
 default cero. Se incorporan manifest reproducible, contratos de métricas y schema
 de predicción OOS desacoplado de portfolio/risk/execution. No se entrenan modelos.
 
+### Phase 3A.1 — Target Store v3 real-data rebuild
+
+**Status:** complete
+
+El Target Store real fue reconstruido localmente para los 101 activos de
+`development_fixed`, sin descargas, con schema
+`corporate-action-safe-target-v3`. La validación exhaustiva comprobó 405.704
+filas, targets/end dates XNYS/positive/ranking simétricos, contaminación por
+acciones corporativas, manifests v3 y smoke tests supervisados sin usar test
+para selección. SPY permanece exclusivamente como benchmark y se retiraron sus
+filas target v2 obsoletas. El reporte reproducible vive en
+`data/reports/phase3a1_target_validation.json`.
+
 ### Phase 3B — Predictive baselines
 
-**Status:** not started
+**Status:** complete for TRAIN/VALIDATION model selection; TEST remains sealed
 
-Entrenamiento y evaluación de modelos baseline permanecen fuera de Phase 3A.
+`quantitative-baseline-v1` fija 52 features cuantitativas y
+`baseline-standard-v1` aplica log1p de liquidez, imputación mediana y scaling
+ajustados solo en TRAIN. Se compararon baselines ingenuos, OLS, Ridge y Logistic
+L2 para 5/10/20d, además de momentum, predicted-return ranking y regresión
+directa de rank. La selección utilizó exclusivamente VALIDATION 2019–2021; los
+69 experimentos y sus predicciones/coeficientes/manifests viven en
+`data/reports/models/phase3b`. TEST 2022+ permanece sellado (`test_used=false`).
+No se eligió un horizonte final ni se inició evaluación final, portfolio o
+Phase 3C.
 
 ## Phase 4 — News Agent
 

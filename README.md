@@ -37,6 +37,11 @@ El código vive bajo `src/investment_system` para evitar colisiones con paquetes
 
 La regla invariante es `available_at <= decision_time`. `FeatureRow` separa identificación, features y targets; `FEATURE_COLUMNS` y `TARGET_COLUMNS` son disjuntos y `model_features()` nunca devuelve targets. Regression, classification y ranking soportan horizontes de 5, 10 y 20 sesiones, con 10 como referencia. Phase 3A construye el dataset supervisado con fixed holdout, purging por fin real del label y embargo XNYS opcional. Las señales se calculan tras el cierre y una ejecución simulada corresponde a la apertura de la siguiente sesión.
 
+Phase 3B compara baselines predictivos simples mediante TRAIN 2010–2018 y
+VALIDATION 2019–2021. El holdout TEST 2022+ permanece sellado y no se usa para
+selección, métricas ni predicciones. Los resultados son diagnósticos predictivos,
+no recomendaciones ni backtests de cartera.
+
 ## Instalación
 
 Requiere Python 3.11 o posterior.

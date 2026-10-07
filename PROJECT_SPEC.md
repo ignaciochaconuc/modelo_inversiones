@@ -89,7 +89,7 @@ Cada llamada puede registrar tokens, cache, costo estimado, latencia, estado, ag
 
 ## Modelos previstos
 
-Se contemplan baseline lineal/logístico, LightGBM, XGBoost, Random Forest y modelos de ranking. `TargetSpec` selecciona task y horizonte sin interpretar nombres manualmente. Phase 3A solo define datasets temporales y contratos de predicción OOS; no hay entrenamiento ni inferencia real.
+`TargetSpec` selecciona task y horizonte sin interpretar nombres manualmente. Phase 3B implementa únicamente baselines simples: predictores ingenuos, OLS, Ridge, Logistic L2, momentum y scoring de ranking derivado de regresiones lineales. El feature set y preprocessing son versionados y se ajustan solo en TRAIN; la selección usa VALIDATION 2019–2021 y mantiene TEST 2022+ sellado. LightGBM, XGBoost, Random Forest, modelos finales e inferencia integrada permanecen sin implementar.
 
 ## Cartera y riesgo
 

@@ -1,0 +1,135 @@
+{
+  "overall": {
+    "pooled": {
+      "mae": 0.030582806130519603,
+      "rmse": 0.04551610767326871,
+      "pearson_correlation": 0.11863482041004801,
+      "spearman_correlation": 0.08825625278319563
+    },
+    "daily_pearson": {
+      "days": 752,
+      "mean": 0.02524619906960889,
+      "median": 0.011124526907518632,
+      "std": 0.22847857858740134,
+      "icir": 0.11049700687782991,
+      "pct_positive": 0.5159574468085106
+    },
+    "daily_spearman": {
+      "days": 752,
+      "mean": 0.015322521958979794,
+      "median": 0.0019253868370215938,
+      "std": 0.2262334696606606,
+      "icir": 0.06772880238261317,
+      "pct_positive": 0.5013297872340425
+    },
+    "top10": {
+      "dates": 752,
+      "average_top10_actual_return": 0.00823235789128443,
+      "average_universe_actual_return": 0.005138302917019185,
+      "average_top10_uplift": 0.0030940549742652455,
+      "pct_dates_positive_uplift": 0.5345744680851063
+    }
+  },
+  "by_year": {
+    "2019": {
+      "pooled": {
+        "mae": 0.024025826129808137,
+        "rmse": 0.03387789228488539,
+        "pearson_correlation": 0.07131119873870174,
+        "spearman_correlation": 0.06219524318987496
+      },
+      "daily_pearson": {
+        "days": 252,
+        "mean": 0.02056088274088939,
+        "median": 0.01551094804865542,
+        "std": 0.1687005450218638,
+        "icir": 0.12187798645359844,
+        "pct_positive": 0.5396825396825397
+      },
+      "daily_spearman": {
+        "days": 252,
+        "mean": -0.0006088299568057408,
+        "median": -0.008437330439500814,
+        "std": 0.1628297661041031,
+        "icir": -0.003739058105730455,
+        "pct_positive": 0.47619047619047616
+      },
+      "top10": {
+        "dates": 252,
+        "average_top10_actual_return": 0.008612548389397356,
+        "average_universe_actual_return": 0.005490917562311544,
+        "average_top10_uplift": 0.0031216308270858115,
+        "pct_dates_positive_uplift": 0.5674603174603174
+      }
+    },
+    "2020": {
+      "pooled": {
+        "mae": 0.041186681446543,
+        "rmse": 0.061124508027096874,
+        "pearson_correlation": 0.14155153414062827,
+        "spearman_correlation": 0.1152812126022416
+      },
+      "daily_pearson": {
+        "days": 253,
+        "mean": 0.0553131442459301,
+        "median": 0.05715735821651856,
+        "std": 0.29261303458787696,
+        "icir": 0.18903171666236407,
+        "pct_positive": 0.5731225296442688
+      },
+      "daily_spearman": {
+        "days": 253,
+        "mean": 0.03307553300795165,
+        "median": 0.0311317254174397,
+        "std": 0.2913988936928156,
+        "icir": 0.11350603493649133,
+        "pct_positive": 0.5375494071146245
+      },
+      "top10": {
+        "dates": 253,
+        "average_top10_actual_return": 0.011421816263414701,
+        "average_universe_actual_return": 0.004887853482832204,
+        "average_top10_uplift": 0.006533962780582499,
+        "pct_dates_positive_uplift": 0.549407114624506
+      }
+    },
+    "2021": {
+      "pooled": {
+        "mae": 0.026263459631755044,
+        "rmse": 0.035910254850012036,
+        "pearson_correlation": 0.08072052270480856,
+        "spearman_correlation": 0.06217874038229882
+      },
+      "daily_pearson": {
+        "days": 247,
+        "mean": -0.0007709564557836278,
+        "median": -0.02131009721976611,
+        "std": 0.20244778769870458,
+        "icir": -0.003808174268276091,
+        "pct_positive": 0.4331983805668016
+      },
+      "daily_spearman": {
+        "days": 247,
+        "mean": 0.013392112596178472,
+        "median": -0.0034384662956091524,
+        "std": 0.20402154570275566,
+        "icir": 0.06564067804725777,
+        "pct_positive": 0.4898785425101215
+      },
+      "top10": {
+        "dates": 247,
+        "average_top10_actual_return": 0.004577536135521615,
+        "average_universe_actual_return": 0.00503508354955211,
+        "average_top10_uplift": -0.0004575474140304941,
+        "pct_dates_positive_uplift": 0.48582995951417
+      }
+    }
+  },
+  "primary_selection_metric": "mean_daily_cross_sectional_spearman_ic",
+  "tie_breaking": [
+    "icir",
+    "pct_days_ic_positive",
+    "rmse",
+    "larger_alpha_within_0.001"
+  ]
+}

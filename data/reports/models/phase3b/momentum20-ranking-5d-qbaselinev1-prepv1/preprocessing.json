@@ -1,0 +1,15 @@
+{
+  "preprocessing_version": "none",
+  "fit_partition": "none",
+  "features": [
+    {
+      "original_feature": "momentum_20d",
+      "transformed_feature": "momentum_20d",
+      "transformation": "identity",
+      "train_median": null,
+      "scaler_mean": null,
+      "scaler_std": null,
+      "excluded_as_degenerate": false
+    }
+  ]
+}

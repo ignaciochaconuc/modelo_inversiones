@@ -49,7 +49,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
-| `models` | Contratos de targets, datasets temporales, predicción y modelos futuros | Funcional Phase 3A; entrenamiento stub |
+| `models` | Datasets temporales, preprocessing, métricas y baselines predictivos simples | Funcional Phase 3B; TEST sellado |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
 | `backtesting` | Motor temporal, métricas, benchmark y baselines sistemáticos | Funcional Phase 2B; validación real completa en el universo fijo actual |
@@ -92,6 +92,15 @@ Los schemas preservan cuatro timestamps con semánticas distintas. `available_at
 Features y targets tienen registros y persistencia separados conforme a ADR-009. `model_features()` expone solo inputs. Labels se construyen en `features.targets` y solo se unen a features por `ticker + decision_date`, con cardinalidad one-to-one, mediante el builder supervisado. Los targets 5/10/20 persisten su sesión final exacta como metadata y nunca la exponen en `X`.
 
 Phase 3A define un fixed holdout por `decision_date`: train 2010-01-04–2018-12-31, validation 2019-01-02–2021-12-31 y test desde 2022-01-03. Antes de una frontera, solo sobrevive un label cuyo `target_end_date < next_split_start`. Un embargo opcional y separado elimina las primeras N sesiones XNYS del split posterior; su valor V1 es cero. Todas las filas de una fecha permanecen en el mismo split. El contrato OOS de predicción termina en forecasts y no contiene allocations, riesgo ni execution.
+
+Phase 3B usa un contrato de selección que expone únicamente TRAIN y VALIDATION;
+TEST 2022+ no entra al runner. `quantitative-baseline-v1` es una allowlist fija
+de 52 features y `baseline-standard-v1` ajusta transformaciones deterministas,
+medianas y StandardScaler solo en TRAIN. OLS, Ridge, Logistic L2 y baselines
+ingenuos se comparan con métricas pooled y cross-sectional por fecha/año. Sus
+artefactos son predicciones exclusivas de validation, parámetros de
+preprocessing y coeficientes auditables; no son forecasts liberados hacia
+portfolio ni backtesting. ADR-015 fija estas decisiones.
 
 El builder agrupa fechas consecutivas cuyo conjunto de splits elegibles no cambia. También abre un nuevo segmento cuando una barra histórica retrasada del activo o SPY pasa a estar disponible. Para cada segmento construye una sola vista as-of hasta su fecha final, calcula rolling features vectorizadas y conserva únicamente sus filas. Barras futuras con fecha posterior son causalmente inocuas; una barra retrasada con fecha histórica no lo es y por eso constituye un límite.
 

@@ -1,0 +1,14 @@
+{
+  "phase": "3B-simple-predictive-baselines",
+  "mode": "selection",
+  "feature_set_version": "quantitative-baseline-v1",
+  "preprocessing_version": "baseline-standard-v1",
+  "feature_schema_version": "4",
+  "target_schema_version": "corporate-action-safe-target-v3",
+  "sklearn_version": "1.8.0",
+  "random_state": 42,
+  "test_used": false,
+  "generated_at": "2026-10-07T21:17:07.065510+00:00",
+  "git_commit": null,
+  "dirty_worktree": null
+}

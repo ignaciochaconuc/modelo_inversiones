@@ -1,0 +1,44 @@
+{
+  "overall": {
+    "rows": 73256,
+    "positive_prevalence": 0.5916921480834334,
+    "log_loss": 0.6786862655251227,
+    "balanced_accuracy": 0.520157810502067,
+    "roc_auc": 0.5498098320746287,
+    "degenerate_reason": null
+  },
+  "by_year": {
+    "2019": {
+      "rows": 24261,
+      "positive_prevalence": 0.6262726186059931,
+      "log_loss": 0.6678889981255621,
+      "balanced_accuracy": 0.5037302634030699,
+      "roc_auc": 0.5470063593828047,
+      "degenerate_reason": null
+    },
+    "2020": {
+      "rows": 24982,
+      "positive_prevalence": 0.5706508686254103,
+      "log_loss": 0.6825440597239765,
+      "balanced_accuracy": 0.5293635094391822,
+      "roc_auc": 0.5547926943309658,
+      "degenerate_reason": null
+    },
+    "2021": {
+      "rows": 24013,
+      "positive_prevalence": 0.578644900678799,
+      "log_loss": 0.6855815759696721,
+      "balanced_accuracy": 0.5112984665083002,
+      "roc_auc": 0.5262421668286867,
+      "degenerate_reason": null
+    }
+  },
+  "train_positive_prevalence": 0.5650081109265768,
+  "validation_positive_prevalence": 0.5916921480834334,
+  "primary_selection_metric": "roc_auc",
+  "tie_breaking": [
+    "log_loss",
+    "balanced_accuracy",
+    "smaller_C_within_0.001"
+  ]
+}
