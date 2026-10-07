@@ -102,17 +102,21 @@ solo en el raw open de `next_session`. No contiene estrategia. Las ventas se
 procesan antes que las compras y una compra se reduce si gap, slippage o comisión
 superan el cash disponible; nunca se usa leverage.
 
-Cada sesión procesa splits antes del open, fills pendientes en el open,
-valoración al close, dividendos después del close y un snapshot final. Un open
+Cada sesión procesa corporate actions complejas y splits antes del open, captura
+el entitlement de dividendos, ejecuta fills pendientes en el open, valora al
+close, acredita dividendos después del close y produce un snapshot final. Un open
 ausente produce una ejecución `UNFILLED` con `missing_execution_open` y no se
 arrastra. Para valoración, un close ausente puede usar el precio válido anterior
 con marca stale; sin precio previo el run falla. Todos los precios de órdenes,
 fills y snapshots son raw, nunca `adjusted_*`.
 
 Splits con fracciones deshabilitadas conservan la parte entera y liquidan la
-fracción como cash-in-lieu al raw open post-split, documentado como proxy. Los
-dividendos usan `effective_date` como proxy temporal y se acreditan tras el
-cierre. Una acción corporativa compleja no modelable sobre una posición mantenida
+fracción como cash-in-lieu al raw open post-split, documentado como proxy. Tiingo
+EOD `divCash` se interpreta como ex-date. La cantidad elegible se captura después
+de splits efectivos y antes de fills de apertura; por eso ventas en ex-date
+conservan el derecho y compras en ex-date no lo adquieren. El cash se acredita
+tras el cierre como proxy conservador mientras payment date no esté disponible.
+Una acción corporativa compleja no modelable sobre una posición mantenida
 invalida el run. Allocation, order y fill poseen IDs deterministas enlazados.
 
 El accounting usa costo promedio y excluye comisiones del costo unitario: el

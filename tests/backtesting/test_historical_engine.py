@@ -395,6 +395,110 @@ def test_dividend_is_credited_after_open_fill_and_before_final_snapshot() -> Non
     assert result.snapshots[-1].nav == 1_012.5
 
 
+def test_sell_on_ex_date_keeps_pre_open_dividend_entitlement() -> None:
+    d1, d2, ex_date = date(2025, 1, 2), date(2025, 1, 3), date(2025, 1, 6)
+    store = MemoryMarketStore(
+        {"AAPL": frame(
+            "AAPL", bar(d1, 10, 10), bar(d2, 10, 10), bar(ex_date, 10, 10),
+        )},
+        {"AAPL": pd.DataFrame([action("AAPL", ex_date, "dividend", dividend=1)])},
+    )
+    subject = engine(store, cash=100)
+    allocations = {
+        d1: allocation(subject, d1, AAPL=1),
+        d2: allocation(subject, d2),
+    }
+
+    first = subject.run(d1, ex_date, allocations)
+    second = subject.run(d1, ex_date, allocations)
+
+    assert first.snapshots[-1].positions == []
+    assert len(first.cash_flows) == 1
+    assert first.cash_flows[0].quantity == 10
+    assert first.cash_flows[0].amount == 10
+    assert first.snapshots[-1].cash == 110
+    assert first.cash_flows == second.cash_flows
+    assert first.snapshots[-1].nav == second.snapshots[-1].nav
+
+
+def test_buy_on_ex_date_does_not_create_dividend_entitlement() -> None:
+    decision_date, ex_date = date(2025, 1, 3), date(2025, 1, 6)
+    store = MemoryMarketStore(
+        {"AAPL": frame(
+            "AAPL", bar(decision_date, 10, 10), bar(ex_date, 10, 10),
+        )},
+        {"AAPL": pd.DataFrame([action("AAPL", ex_date, "dividend", dividend=1)])},
+    )
+    subject = engine(store, cash=100)
+    result = subject.run(
+        decision_date, ex_date,
+        {decision_date: allocation(subject, decision_date, AAPL=1)},
+    )
+
+    assert result.snapshots[-1].positions[0].quantity == 10
+    assert result.cash_flows == []
+    assert result.snapshots[-1].cash == 0
+
+
+def test_partial_sell_on_ex_date_uses_full_pre_open_quantity() -> None:
+    d1, d2, ex_date = date(2025, 1, 2), date(2025, 1, 3), date(2025, 1, 6)
+    store = MemoryMarketStore(
+        {"AAPL": frame(
+            "AAPL", bar(d1, 10, 10), bar(d2, 10, 10), bar(ex_date, 10, 10),
+        )},
+        {"AAPL": pd.DataFrame([action("AAPL", ex_date, "dividend", dividend=1)])},
+    )
+    subject = engine(store, cash=100)
+    result = subject.run(d1, ex_date, {
+        d1: allocation(subject, d1, AAPL=1),
+        d2: allocation(subject, d2, AAPL=0.6),
+    })
+
+    assert result.snapshots[-1].positions[0].quantity == 6
+    assert result.cash_flows[0].quantity == 10
+    assert result.cash_flows[0].amount == 10
+
+
+def test_additional_buy_on_ex_date_does_not_increase_entitlement() -> None:
+    d1, d2, ex_date = date(2025, 1, 2), date(2025, 1, 3), date(2025, 1, 6)
+    store = MemoryMarketStore(
+        {"AAPL": frame(
+            "AAPL", bar(d1, 10, 10), bar(d2, 10, 10), bar(ex_date, 10, 10),
+        )},
+        {"AAPL": pd.DataFrame([action("AAPL", ex_date, "dividend", dividend=1)])},
+    )
+    subject = engine(store, cash=200)
+    result = subject.run(d1, ex_date, {
+        d1: allocation(subject, d1, AAPL=0.5),
+        d2: allocation(subject, d2, AAPL=0.75),
+    })
+
+    assert result.snapshots[-1].positions[0].quantity == 15
+    assert result.cash_flows[0].quantity == 10
+    assert result.cash_flows[0].amount == 10
+
+
+def test_same_day_split_precedes_dividend_entitlement_capture() -> None:
+    d1, d2, ex_date = date(2025, 1, 2), date(2025, 1, 3), date(2025, 1, 6)
+    store = MemoryMarketStore(
+        {"AAPL": frame(
+            "AAPL", bar(d1, 100, 100), bar(d2, 100, 100), bar(ex_date, 50, 50),
+        )},
+        {"AAPL": pd.DataFrame([
+            action("AAPL", ex_date, "split", split=2),
+            action("AAPL", ex_date, "dividend", dividend=0.5),
+        ])},
+    )
+    subject = engine(store)
+    result = subject.run(d1, ex_date, {d1: allocation(subject, d1, AAPL=1)})
+
+    assert result.snapshots[-1].positions[0].quantity == 20
+    assert result.cash_flows[0].cash_flow_type == CashFlowType.DIVIDEND
+    assert result.cash_flows[0].quantity == 20
+    assert result.cash_flows[0].amount == 10
+    assert result.snapshots[-1].nav == 1_010
+
+
 def test_complex_action_on_held_position_invalidates_run_with_context() -> None:
     d1, d2, d3 = date(2025, 1, 2), date(2025, 1, 3), date(2025, 1, 6)
     events = pd.DataFrame([{

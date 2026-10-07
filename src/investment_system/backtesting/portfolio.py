@@ -101,12 +101,27 @@ class PortfolioLedger:
         self.cash += cash_credit
         return cash_credit
 
-    def apply_dividend(self, ticker: str, dividend_per_share: float) -> float:
-        """Credit a non-negative cash dividend; return the credited amount."""
+    def apply_dividend(
+        self,
+        ticker: str,
+        dividend_per_share: float,
+        *,
+        entitlement_quantity: float | None = None,
+    ) -> float:
+        """Credit a dividend using an explicit ex-date entitlement when supplied."""
         if dividend_per_share < 0 or not math.isfinite(dividend_per_share):
             raise ValueError("dividend_per_share must be finite and non-negative")
+        if entitlement_quantity is not None and (
+            entitlement_quantity < 0 or not math.isfinite(entitlement_quantity)
+        ):
+            raise ValueError("entitlement_quantity must be finite and non-negative")
         current = self._positions.get(ticker.strip().upper())
-        credit = 0.0 if current is None else current.quantity * dividend_per_share
+        quantity = (
+            entitlement_quantity
+            if entitlement_quantity is not None
+            else (0.0 if current is None else current.quantity)
+        )
+        credit = quantity * dividend_per_share
         self.cash += credit
         return credit
 

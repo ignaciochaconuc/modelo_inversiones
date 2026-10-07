@@ -117,7 +117,8 @@ convención acciones nuevas/antiguas, y dividendos acreditan cash explícitament
 
 `HistoricalBacktestEngine` recibe allocations por fecha y no conoce estrategias,
 modelos ni optimizadores. Recorre sesiones XNYS y, en cada sesión, aplica este
-orden: splits pre-open; fills pendientes en raw open; mark-to-market en raw close;
+orden: corporate actions complejas y splits pre-open; captura del entitlement de
+dividendos; fills pendientes en raw open; mark-to-market en raw close; crédito de
 dividendos; snapshot final a las 20:15 ET; y nuevas órdenes para la apertura de
 la sesión siguiente. Las ventas preceden a las compras. Un open ausente deja la
 orden `UNFILLED` sin rollover; un close ausente puede reutilizar exclusivamente
@@ -125,9 +126,11 @@ el último precio de valoración y queda marcado como stale.
 
 Con acciones fraccionales deshabilitadas, un split liquida la fracción al raw
 open post-split como aproximación auditable de cash-in-lieu. Si falta ese precio,
-el run falla. Dividendos se acreditan después del cierre de `effective_date`
-porque la fuente no garantiza payment date. Una acción compleja no modelable en
-una posición mantenida invalida el run; nunca se inventa continuidad económica.
+el run falla. Tiingo EOD `divCash` se interpreta como ex-date: la cantidad elegible
+se captura después de splits y antes de cualquier fill, mientras el cash se
+acredita después del cierre porque la fuente no garantiza payment date. Una
+acción compleja no modelable en una posición mantenida invalida el run; nunca se
+inventa continuidad económica.
 Estas semánticas se fijan en ADR-011.
 
 Los IDs deterministas enlazan allocation, order y fill. `risk_decision_id` deja

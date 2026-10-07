@@ -344,21 +344,41 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
             prices[ticker] = close
         return prices, stale
 
+    @staticmethod
+    def _capture_dividend_entitlements(
+        session: date,
+        ledger: PortfolioLedger,
+        actions: dict[str, dict[date, list[Any]]],
+    ) -> dict[str, float]:
+        """Capture post-split, pre-open quantities entitled on Tiingo ex-date."""
+        entitlements: dict[str, float] = {}
+        positions = ledger.positions
+        for ticker in sorted(actions):
+            if any(
+                str(action.action_type).lower().endswith("dividend")
+                for action in actions[ticker].get(session, [])
+            ):
+                position = positions.get(ticker)
+                entitlements[ticker] = position.quantity if position else 0.0
+        return entitlements
+
     def _apply_dividends(
         self,
         session: date,
         ledger: PortfolioLedger,
         actions: dict[str, dict[date, list[Any]]],
+        entitlements: dict[str, float],
         cash_flows: list[CorporateActionCashFlow],
     ) -> None:
         for ticker in sorted(actions):
             for sequence, action in enumerate(actions[ticker].get(session, [])):
                 if not str(action.action_type).lower().endswith("dividend"):
                     continue
-                position = ledger.positions.get(ticker)
-                quantity = position.quantity if position else 0.0
+                quantity = entitlements.get(ticker, 0.0)
                 per_share = float(action.dividend_cash)
-                amount = ledger.apply_dividend(ticker, per_share)
+                amount = ledger.apply_dividend(
+                    ticker, per_share, entitlement_quantity=quantity,
+                )
                 if amount <= VALUE_TOLERANCE:
                     continue
                 cash_flows.append(CorporateActionCashFlow(
@@ -369,7 +389,10 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
                     effective_date=session, quantity=quantity,
                     amount_per_share=per_share, amount=amount,
                     occurred_at=self.calendar.session_close(session),
-                    notes="effective-date proxy; payment date unavailable",
+                    notes=(
+                        "Tiingo ex-date entitlement; cash credited post-close "
+                        "because payment date is unavailable"
+                    ),
                 ))
 
     def _orders_from_allocation(
@@ -449,9 +472,14 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
                 session, ledger, pending_by_date.pop(session, []), bars, actions,
                 complex_by_date.get(session, []), cash_flows,
             )
+            dividend_entitlements = self._capture_dividend_entitlements(
+                session, ledger, actions,
+            )
             self._execute_pending(session, ledger, pending, bars, fills, executions)
             prices, stale = self._valuation_prices(session, ledger, bars)
-            self._apply_dividends(session, ledger, actions, cash_flows)
+            self._apply_dividends(
+                session, ledger, actions, dividend_entitlements, cash_flows,
+            )
             snapshot = ledger.mark_to_market(
                 prices, self.decision_time(session), stale_price_tickers=stale,
             )

@@ -17,12 +17,13 @@ real de liquidación de fracciones.
 El motor recibe allocations externas por fecha y permanece independiente de la
 estrategia. Recorre sesiones XNYS. Para cada sesión D ejecuta, en orden:
 
-1. splits efectivos antes de la apertura;
-2. órdenes de la decisión anterior en el raw open;
-3. mark-to-market al raw close;
-4. dividendos de D después del cierre;
-5. snapshot final disponible a las 20:15 America/New_York;
-6. conversión de la allocation de D en órdenes para `next_session(D)`.
+1. corporate actions complejas y splits efectivos antes de la apertura;
+2. captura de cantidades con derecho a dividendos;
+3. órdenes de la decisión anterior en el raw open;
+4. mark-to-market al raw close;
+5. dividendos de D después del cierre;
+6. snapshot final disponible a las 20:15 America/New_York;
+7. conversión de la allocation de D en órdenes para `next_session(D)`.
 
 El raw close de D dimensiona las órdenes y debe satisfacer
 `available_at <= decision_time`. El raw open siguiente es la única base del fill.
@@ -37,10 +38,14 @@ se carga separadamente.
 
 Los splits usan `new shares / old shares`. Con fracciones deshabilitadas se
 conservan shares enteras y se acredita cash-in-lieu usando el raw open post-split
-como proxy auditable; sin ese open el run falla. Dividendos usan `effective_date`
-como proxy y se acreditan después del cierre, por lo que no financian fills de esa
-apertura. Un evento complejo marcado como no ajustable sobre una posición
-mantenida invalida el run con ticker, fecha y event ID; no se aplican heurísticas.
+como proxy auditable; sin ese open el run falla. Tiingo EOD `divCash` se
+interpreta como ex-date. El entitlement se captura después de aplicar los splits
+efectivos de esa fecha y antes de los fills de apertura: una venta en ex-date
+conserva el derecho y una compra en ex-date no lo adquiere. El cash se acredita
+después del cierre como proxy conservador mientras payment date no forme parte
+del pipeline, por lo que no financia fills de esa apertura. Un evento complejo
+marcado como no ajustable sobre una posición mantenida invalida el run con ticker,
+fecha y event ID; no se aplican heurísticas.
 
 P&L usa costo promedio, no FIFO. Allocation, order y fill se enlazan mediante IDs
 hash deterministas. `risk_decision_id` es solo un vínculo futuro; este simulador
