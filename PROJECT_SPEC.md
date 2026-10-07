@@ -144,6 +144,15 @@ Nasdaq: GOOGL contiene Class A histórica y GOOG comienza con Class C when-issue
 el 2014-03-27. El pseudo-dividendo GOOGL se consume; no existe split del
 proveedor. Ambas clases siguen siendo activos independientes del universo.
 
+Phase 2B.1.3 generaliza esa economía a una distribución de uno o más securities
+en un solo evento revisado. La historia Tiingo de `RTX` conserva el lineage de
+UTC y no genera una venta/compra por rename. La posición padre permanece 1:1 y,
+según ownership regular-way al cierre de 2020-04-02, recibe 1 CARR y 0.5 OTIS
+antes del open de 2020-04-03. CARR y OTIS son auxiliares no invertibles, con
+basis no asignado; el único pseudo-dividendo RTX de USD 40.58 se consume y no
+hay split. El ratio 2.3348 corresponde exclusivamente a antiguos accionistas
+RTN y no se aplica a este lineage.
+
 El accounting usa costo promedio y excluye comisiones del costo unitario: el
 `fill_price` determina average cost y la comisión reduce cash/NAV. Una venta
 realiza `(fill_price - average_cost) × quantity - commission`; el P&L no realizado

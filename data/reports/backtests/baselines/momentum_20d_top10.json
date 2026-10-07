@@ -46,7 +46,7 @@
         "sortino_ratio": 1.2164730817481284,
         "start_date": "2010-01-04"
       },
-      "run_id": "baseline_b498258e26d198a1e8e1:benchmark:SPY:backtest-metrics-v2",
+      "run_id": "baseline_16508310f80859c39202:benchmark:SPY:backtest-metrics-v2",
       "ticker": "SPY",
       "tracking_difference": 31.24464191205113
     },
@@ -111,7 +111,7 @@
       "start_date": "2010-01-04"
     },
     "realized_pnl": 3544214.933283523,
-    "run_id": "baseline_b498258e26d198a1e8e1",
+    "run_id": "baseline_16508310f80859c39202",
     "total_trading_pnl": 3667128.9193183053,
     "trading_pnl_complete": true,
     "unknown_cost_basis_tickers": [],
@@ -121,7 +121,7 @@
   },
   "requested_end": "2026-10-02",
   "requested_start": "2010-01-01",
-  "run_id": "baseline_b498258e26d198a1e8e1",
+  "run_id": "baseline_16508310f80859c39202",
   "status": "completed",
   "strategy_name": "momentum_20d_top10",
   "strategy_version": "momentum-20d-top10-v1"

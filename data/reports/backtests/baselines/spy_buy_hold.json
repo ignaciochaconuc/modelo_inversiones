@@ -46,7 +46,7 @@
         "sortino_ratio": 1.2164730817481284,
         "start_date": "2010-01-04"
       },
-      "run_id": "baseline_54c7fdc9e8e2f5812625:benchmark:SPY:backtest-metrics-v2",
+      "run_id": "baseline_ec86203faafbb684568b:benchmark:SPY:backtest-metrics-v2",
       "ticker": "SPY",
       "tracking_difference": 0.0
     },
@@ -111,7 +111,7 @@
       "start_date": "2010-01-04"
     },
     "realized_pnl": 0.0,
-    "run_id": "baseline_54c7fdc9e8e2f5812625",
+    "run_id": "baseline_ec86203faafbb684568b",
     "total_trading_pnl": 723980.6589291012,
     "trading_pnl_complete": true,
     "unknown_cost_basis_tickers": [],
@@ -121,7 +121,7 @@
   },
   "requested_end": "2026-10-02",
   "requested_start": "2010-01-01",
-  "run_id": "baseline_54c7fdc9e8e2f5812625",
+  "run_id": "baseline_ec86203faafbb684568b",
   "status": "completed",
   "strategy_name": "spy_buy_hold",
   "strategy_version": "spy-buy-hold-v1"

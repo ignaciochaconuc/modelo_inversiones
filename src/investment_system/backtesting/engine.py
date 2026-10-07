@@ -17,12 +17,13 @@ from investment_system.backtesting.corporate_actions import (
     EntitlementTiming, ProviderActionType,
     RecapitalizationCashAndSplitTreatment,
     ReviewedCorporateActionTreatments, ReviewedTreatment,
-    SpinOffDistributionTreatment,
+    SecurityDistributionTreatment,
 )
 from investment_system.backtesting.portfolio import PortfolioLedger
 from investment_system.backtesting.schemas import (
     BacktestConfig, BacktestResult, CashFlowType, CorporateActionCashFlow,
     CorporateActionTransformation, CostBasisStatus, OrderExecutionRecord,
+    DistributedSecurityTransformation,
     OrderSide, OrderStatus, PortfolioSnapshot, SimulatedFill, SimulatedOrder,
     TargetAllocation, VALUE_TOLERANCE,
 )
@@ -314,7 +315,7 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
         if entitlement_quantity <= VALUE_TOLERANCE:
             return pending
 
-        if isinstance(treatment, SpinOffDistributionTreatment):
+        if isinstance(treatment, SecurityDistributionTreatment):
             parent_open = self._raw_price(
                 bars.get(treatment.ticker, {}).get(session), "open",
             )
@@ -323,42 +324,41 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
                     "missing required parent-security raw open for "
                     f"{treatment.ticker} on {session}"
                 )
-            distributed_quantity = (
-                entitlement_quantity * treatment.shares_per_parent_share
-            )
-            if not self.config.allow_fractional_shares and not math.isclose(
-                distributed_quantity,
-                round(distributed_quantity),
-                abs_tol=VALUE_TOLERANCE,
-            ):
-                raise UnmodelledCorporateActionError(
-                    treatment.ticker,
-                    session,
-                    treatment.event_id,
-                    "reviewed spin-off has no actual fractional cash-in-lieu price",
+            received: list[tuple[str, float, float]] = []
+            for distribution in treatment.distributions:
+                quantity = entitlement_quantity * distribution.shares_per_parent_share
+                if not self.config.allow_fractional_shares and not math.isclose(
+                    quantity, round(quantity), abs_tol=VALUE_TOLERANCE,
+                ):
+                    raise UnmodelledCorporateActionError(
+                        treatment.ticker,
+                        session,
+                        treatment.event_id,
+                        "reviewed security distribution has no actual fractional "
+                        f"cash-in-lieu price for {distribution.ticker}",
+                    )
+                if not self.config.allow_fractional_shares:
+                    quantity = float(round(quantity))
+                initial_price = self._raw_price(
+                    bars.get(distribution.ticker, {}).get(session), "open",
                 )
-            if not self.config.allow_fractional_shares:
-                distributed_quantity = float(round(distributed_quantity))
-            initial_price = self._raw_price(
-                bars.get(treatment.distributed_ticker, {}).get(session), "open",
-            )
-            if initial_price is None:
-                raise BacktestDataError(
-                    "missing required auxiliary-security raw open for "
-                    f"{treatment.distributed_ticker} on {session}"
+                if initial_price is None:
+                    raise BacktestDataError(
+                        "missing required auxiliary-security raw open for "
+                        f"{distribution.ticker} on {session}"
+                    )
+                received.append((distribution.ticker, quantity, initial_price))
+            for ticker, quantity, initial_price in received:
+                ledger.add_unallocated_distribution(
+                    ticker, quantity, market_price=initial_price,
                 )
-            ledger.add_unallocated_distribution(
-                treatment.distributed_ticker,
-                distributed_quantity,
-                market_price=initial_price,
-            )
             parent = ledger.positions.get(treatment.ticker)
             transformation_id = _stable_id(
                 "transformation",
                 treatment.event_id,
                 treatment.treatment_version,
                 entitlement_quantity,
-                distributed_quantity,
+                [(ticker, quantity) for ticker, quantity, _ in received],
             )
             transformations.append(CorporateActionTransformation(
                 transformation_id=transformation_id,
@@ -373,10 +373,15 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
                 treatment_version=treatment.treatment_version,
                 quantity_before=entitlement_quantity,
                 quantity_after=0.0 if parent is None else parent.quantity,
-                distributed_security=treatment.distributed_ticker,
-                distributed_quantity=distributed_quantity,
+                distributed_securities=tuple(
+                    DistributedSecurityTransformation(
+                        ticker=ticker,
+                        quantity=quantity,
+                        cost_basis_status=CostBasisStatus.UNALLOCATED,
+                    )
+                    for ticker, quantity, _ in received
+                ),
                 cash_received=0.0,
-                cost_basis_status=CostBasisStatus.UNALLOCATED,
                 notes=treatment.review_notes,
             ))
             return pending

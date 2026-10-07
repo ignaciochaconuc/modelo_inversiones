@@ -6,9 +6,9 @@ from investment_system.backtesting.engine import (
 )
 from investment_system.backtesting.portfolio import PortfolioLedger
 from investment_system.backtesting.corporate_actions import (
-    CostBasisPolicy, EntitlementTiming, FractionalDistributionPolicy,
+    CostBasisPolicy, DistributedSecurity, EntitlementTiming, FractionalDistributionPolicy,
     ProviderActionType, RecapitalizationCashAndSplitTreatment,
-    ReviewedCorporateActionTreatments, SpinOffDistributionTreatment,
+    ReviewedCorporateActionTreatments, SecurityDistributionTreatment,
     load_reviewed_corporate_action_treatments,
 )
 from investment_system.backtesting.reporting import (
@@ -19,6 +19,7 @@ from investment_system.backtesting.schemas import (
     BenchmarkMetrics, CashFlowType, CorporateActionCashFlow,
     CorporateActionMetrics, CorporateActionTransformation, CostBasisStatus,
     CostMetrics, ExecutionMetrics, ExposureMetrics,
+    DistributedSecurityTransformation,
     OrderExecutionRecord, OrderSide, OrderStatus, PerformanceMetrics,
     PortfolioSnapshot, SimulatedFill, SimulatedOrder, TargetAllocation,
 )
@@ -40,7 +41,8 @@ __all__ = [
     "PortfolioLedger", "PortfolioSnapshot", "SimpleMomentumStrategy",
     "SimulatedFill", "SimulatedOrder", "SpyBuyAndHoldStrategy", "StrategyPlan",
     "RecapitalizationCashAndSplitTreatment", "ReviewedCorporateActionTreatments",
-    "SpinOffDistributionTreatment", "TargetAllocation",
+    "DistributedSecurity", "DistributedSecurityTransformation",
+    "SecurityDistributionTreatment", "TargetAllocation",
     "UnmodelledCorporateActionError", "build_backtest_report",
     "load_reviewed_corporate_action_treatments", "simulate_benchmark",
 ]

@@ -28,7 +28,11 @@ provider action types consumed, evidence, notes, and treatment version. A
 mismatch between the event and treatment fails explicitly; there is no heuristic
 fallback.
 
-Treatments transform portfolio holdings and cash. They never rewrite raw OHLCV,
+Treatments transform portfolio holdings and cash. A single reviewed security-
+distribution event may contain one or more typed `distributions`, each with its
+own ticker, ratio, basis policy, and fractional policy. Its single deterministic
+`CorporateActionTransformation` records all received securities explicitly.
+Treatments never rewrite raw OHLCV,
 adjusted history, strategy allocations, or eligibility. Provider split/dividend
 records listed as consumed by a treatment are suppressed for that event session
 to prevent double counting.
@@ -104,6 +108,40 @@ per pre-split share. The cash is `RECAPITALIZATION_CASH`, not an ordinary
 dividend, and does not enter trading P&L. The provider's 0.5 split and 8.10
 post-split-equivalent dividend records are consumed by the treatment.
 
+### Multi-security distributions
+
+UTC's 2020 separation is the canonical multi-security case. Tiingo stores the
+historical UTC lineage under `RTX` from 2009 onward; there are no local `UTX` or
+`RTN` bars. It stores one RTX pseudo-dividend of USD 40.58 on 2020-04-03 and no
+split. CARR and OTIS each begin on 2020-03-19 with when-issued history and have
+raw opens on the processing date. The reviewed event therefore consumes the
+single RTX dividend record, leaves parent quantity and basis unchanged, and
+adds both received securities with unallocated basis. Since the persisted
+provider-action identity is ticker + effective date + type + provider, there
+cannot be a second same-type RTX record that day in the current store; no more
+granular consumption key is needed for this observed event.
+
+The legal record date is 2020-03-19, but regular-way UTX traded with both
+distribution rights through 2020-04-02. The simulator captures entitlement
+after that close and processes the event before the 2020-04-03 open. Fractional
+mode preserves exactly 1 CARR and 0.5 OTIS per entitled parent share. Whole-
+share mode blocks if either entitlement is fractional because actual net
+cash-in-lieu proceeds are unavailable.
+
+### Same-day sequence and legacy shareholder distinction
+
+At 00:01 ET on 2020-04-03 UTC completed the Carrier and Otis distributions. At
+08:30 ET UTC and Raytheon Company completed their merger and UTC was renamed
+Raytheon Technologies Corporation. Regular trading then used `RTX`. These
+events create two distinct shareholder paths:
+
+- UTC holders keep one continuing parent share and receive 1 CARR plus 0.5 OTIS.
+- Legacy RTN holders receive 2.3348 continuing-company shares per RTN share.
+
+The reviewed `RTX` event models only the first path. Applying 2.3348 to the
+restated UTC/RTX lineage would be economically false, as would manufacturing a
+`UTX SELL / RTX BUY` pair.
+
 Every application emits a deterministic `CorporateActionTransformation` linked
 to event ID and treatment version. Cash movements also retain the event ID.
 The report contract is `backtest-metrics-v2`; it preserves the ADR-012 formulas
@@ -136,6 +174,19 @@ Primary evidence:
   <https://www.nasdaqtrader.com/content/GOOGLEfaq.pdf>
 - T-Mobile US 2013-04-30 Form 8-K: 0.5 factor and exact USD 4.0491 cash amount.
   <https://www.sec.gov/Archives/edgar/data/1283699/000119312513193449/d527693d8k.htm>
+- Carrier 2020 Form 10-Q: 2020-03-19 record date, 00:01 ET effective time, and
+  one CARR per UTC share.
+  <https://www.sec.gov/Archives/edgar/data/1783180/000178318020000067/carr-20200930.htm>
+- Otis filing: the same record/effective dates and 0.5 OTIS per UTC share.
+  <https://www.sec.gov/Archives/edgar/data/1781335/000178133520000005/R25.htm>
+- UTC distribution announcement: ratios, fractional cash-in-lieu, retained UTC
+  shares, and regular-way versus ex-distribution/when-issued mechanics.
+  <https://www.sec.gov/Archives/edgar/data/101829/000114036120005675/nc10009877x1_ex99-1.htm>
+- RTX transaction completion filing: distributions at 00:01 ET, merger at
+  08:30 ET, rename, and separate legacy RTN exchange ratio.
+  <https://www.sec.gov/Archives/edgar/data/101829/000114036120008397/nc10010681x2_ex99-2.htm>
+- Raytheon 8-K: 2.3348 ratio applies to outstanding legacy Raytheon shares.
+  <https://www.sec.gov/Archives/edgar/data/1047122/000119312520097237/d827106d8k.htm>
 
 ## Consequences
 

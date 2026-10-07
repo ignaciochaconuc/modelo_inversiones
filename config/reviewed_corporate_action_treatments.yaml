@@ -1,4 +1,4 @@
-schema_version: "3"
+schema_version: "4"
 treatments:
   - event_id: "89f2ab472a86d18abc22"
     ticker: "MDLZ"
@@ -8,13 +8,14 @@ treatments:
     processing_date: 2012-10-02
     entitlement_date: 2012-10-01
     entitlement_timing: "post_close"
-    treatment_type: "spin_off_distribution"
+    treatment_type: "security_distribution"
     treatment_version: "2"
     provider_action_types_consumed: ["dividend"]
-    distributed_ticker: "KRFT"
-    shares_per_parent_share: 0.3333333333333333
-    cost_basis_policy: "unallocated"
-    fractional_policy: "block_without_actual_settlement_price"
+    distributions:
+      - ticker: "KRFT"
+        shares_per_parent_share: 0.3333333333333333
+        cost_basis_policy: "unallocated"
+        fractional_policy: "block_without_actual_settlement_price"
     evidence:
       - "https://www.sec.gov/Archives/edgar/data/1103982/000119312512355657/d397214d8k.htm"
       - "https://www.sec.gov/Archives/edgar/data/1103982/000119312512411522/d418430d8k.htm"
@@ -35,13 +36,14 @@ treatments:
     processing_date: 2013-01-02
     entitlement_date: 2012-12-31
     entitlement_timing: "post_close"
-    treatment_type: "spin_off_distribution"
+    treatment_type: "security_distribution"
     treatment_version: "1"
     provider_action_types_consumed: ["dividend"]
-    distributed_ticker: "ABBV"
-    shares_per_parent_share: 1.0
-    cost_basis_policy: "unallocated"
-    fractional_policy: "block_without_actual_settlement_price"
+    distributions:
+      - ticker: "ABBV"
+        shares_per_parent_share: 1.0
+        cost_basis_policy: "unallocated"
+        fractional_policy: "block_without_actual_settlement_price"
     evidence:
       - "https://www.sec.gov/Archives/edgar/data/1800/000110465913001016/a13-2169_18k.htm"
       - "https://www.sec.gov/Archives/edgar/data/1551152/000104746913000017/a2212291zex-99_1.htm"
@@ -78,13 +80,14 @@ treatments:
     processing_date: 2014-04-03
     entitlement_date: 2014-04-02
     entitlement_timing: "post_close"
-    treatment_type: "spin_off_distribution"
+    treatment_type: "security_distribution"
     treatment_version: "1"
     provider_action_types_consumed: ["dividend"]
-    distributed_ticker: "GOOG"
-    shares_per_parent_share: 1.0
-    cost_basis_policy: "unallocated"
-    fractional_policy: "block_without_actual_settlement_price"
+    distributions:
+      - ticker: "GOOG"
+        shares_per_parent_share: 1.0
+        cost_basis_policy: "unallocated"
+        fractional_policy: "block_without_actual_settlement_price"
     evidence:
       - "https://www.sec.gov/Archives/edgar/data/1288776/000119312514138800/d709408ds8.htm"
       - "https://www.sec.gov/Archives/edgar/data/1288776/000128877615000008/goog2014123110-k.htm"
@@ -99,3 +102,39 @@ treatments:
       the 2014-04-02 close and adds one GOOG Class C share per entitled share
       before the 2014-04-03 open. Tiingo carries pre-event Class A history under
       GOOGL and starts GOOG with Class C when-issued history on 2014-03-27.
+  - event_id: "18fb85423936f266f806"
+    ticker: "RTX"
+    event_type: "complex_distribution"
+    record_date: 2020-03-19
+    effective_date: 2020-04-03
+    processing_date: 2020-04-03
+    entitlement_date: 2020-04-02
+    entitlement_timing: "post_close"
+    treatment_type: "security_distribution"
+    treatment_version: "1"
+    provider_action_types_consumed: ["dividend"]
+    distributions:
+      - ticker: "CARR"
+        shares_per_parent_share: 1.0
+        cost_basis_policy: "unallocated"
+        fractional_policy: "block_without_actual_settlement_price"
+      - ticker: "OTIS"
+        shares_per_parent_share: 0.5
+        cost_basis_policy: "unallocated"
+        fractional_policy: "block_without_actual_settlement_price"
+    evidence:
+      - "https://www.sec.gov/Archives/edgar/data/1783180/000178318020000067/carr-20200930.htm"
+      - "https://www.sec.gov/Archives/edgar/data/1781335/000178133520000005/R25.htm"
+      - "https://www.sec.gov/Archives/edgar/data/101829/000114036120005675/nc10009877x1_ex99-1.htm"
+      - "https://www.sec.gov/Archives/edgar/data/101829/000114036120008397/nc10010681x2_ex99-2.htm"
+      - "https://www.sec.gov/Archives/edgar/data/1047122/000119312520097237/d827106d8k.htm"
+    review_notes: >-
+      Tiingo carries the continuing UTC economic lineage under RTX from 2009,
+      so the parent remains one-for-one without a synthetic rename trade. The
+      simulator observes regular-way RTX/UTX ownership after the 2020-04-02
+      close and, before the 2020-04-03 open, adds one CARR and 0.5 OTIS per
+      entitled parent share. CARR and OTIS start local when-issued history on
+      2020-03-19. Tiingo's single USD 40.58 RTX pseudo-dividend represents the
+      combined distribution and is consumed; no provider split exists. The
+      2.3348 merger ratio applies only to legacy RTN holders and is not part of
+      this treatment. Fractional cash-in-lieu blocks without actual proceeds.

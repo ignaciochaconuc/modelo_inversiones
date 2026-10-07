@@ -78,25 +78,37 @@ class ReviewedTreatmentBase(BaseModel):
         return self
 
 
-class SpinOffDistributionTreatment(ReviewedTreatmentBase):
-    """Distribute shares of a new security while leaving the parent position intact."""
+class DistributedSecurity(BaseModel):
+    """One security received from a reviewed parent-security distribution."""
 
-    treatment_type: Literal["spin_off_distribution"]
-    distributed_ticker: str
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    ticker: str
     shares_per_parent_share: float = Field(gt=0)
     cost_basis_policy: CostBasisPolicy = CostBasisPolicy.UNALLOCATED
     fractional_policy: FractionalDistributionPolicy
 
-    _normalize_distributed_ticker = field_validator("distributed_ticker")(
+    _normalize_ticker = field_validator("ticker")(
         ReviewedTreatmentBase.normalize_ticker.__func__
     )
 
+
+class SecurityDistributionTreatment(ReviewedTreatmentBase):
+    """Distribute one or more securities while leaving the parent position intact."""
+
+    treatment_type: Literal["security_distribution"]
+    distributions: tuple[DistributedSecurity, ...] = Field(min_length=1)
+
     @model_validator(mode="after")
-    def validate_consumed_actions(self) -> "SpinOffDistributionTreatment":
+    def validate_distribution(self) -> "SecurityDistributionTreatment":
         if self.record_date is None:
-            raise ValueError("spin-off treatment requires its legal record_date")
+            raise ValueError("security distribution requires its legal record_date")
         if ProviderActionType.DIVIDEND not in self.provider_action_types_consumed:
-            raise ValueError("spin-off treatment must consume the provider dividend record")
+            raise ValueError("security distribution must consume the provider dividend record")
+        tickers = [item.ticker for item in self.distributions]
+        if len(tickers) != len(set(tickers)):
+            raise ValueError("distributed security tickers must be unique")
+        if self.ticker in tickers:
+            raise ValueError("parent ticker cannot also be a distributed security")
         return self
 
 
@@ -116,7 +128,7 @@ class RecapitalizationCashAndSplitTreatment(ReviewedTreatmentBase):
 
 
 ReviewedTreatment = Annotated[
-    SpinOffDistributionTreatment | RecapitalizationCashAndSplitTreatment,
+    SecurityDistributionTreatment | RecapitalizationCashAndSplitTreatment,
     Field(discriminator="treatment_type"),
 ]
 
@@ -148,9 +160,10 @@ class ReviewedCorporateActionTreatments(BaseModel):
 
     def auxiliary_tickers(self) -> set[str]:
         return {
-            item.distributed_ticker
+            distribution.ticker
             for item in self.treatments
-            if isinstance(item, SpinOffDistributionTreatment)
+            if isinstance(item, SecurityDistributionTreatment)
+            for distribution in item.distributions
         }
 
 

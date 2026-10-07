@@ -25,6 +25,7 @@ NY = ZoneInfo("America/New_York")
 MDLZ_EVENT = "89f2ab472a86d18abc22"
 TMUS_EVENT = "e653f71b02957333e821"
 GOOGLE_EVENT = "9aef821b433135154689"
+RTX_EVENT = "18fb85423936f266f806"
 
 
 class MemoryMarketStore:
@@ -222,8 +223,8 @@ def test_mdlz_transformation_is_event_linked_and_deterministic() -> None:
     assert transformation.event_id == MDLZ_EVENT
     assert transformation.quantity_before == 30
     assert transformation.quantity_after == 30
-    assert transformation.distributed_security == "KRFT"
-    assert transformation.distributed_quantity == 10
+    assert transformation.distributed_securities[0].ticker == "KRFT"
+    assert transformation.distributed_securities[0].quantity == 10
 
 
 def test_mdlz_fractional_policy_keeps_fractions_or_blocks_without_actual_price() -> None:
@@ -236,7 +237,7 @@ def test_mdlz_fractional_policy_keeps_fractions_or_blocks_without_actual_price()
     with pytest.raises(UnmodelledCorporateActionError, match="fractional cash-in-lieu"):
         run_mdlz(cash=310, fractional=False)
     whole = run_mdlz(cash=300, fractional=False)
-    assert whole.corporate_action_transformations[0].distributed_quantity == 10
+    assert whole.corporate_action_transformations[0].distributed_securities[0].quantity == 10
 
 
 def test_mdlz_missing_auxiliary_market_data_blocks_simulation() -> None:
@@ -277,7 +278,7 @@ def test_mdlz_regular_way_sale_after_record_date_reduces_entitlement() -> None:
     assert transformation.record_date == date(2012, 9, 19)
     assert transformation.entitlement_date == date(2012, 10, 1)
     assert transformation.quantity_before == 15
-    assert transformation.distributed_quantity == 5
+    assert transformation.distributed_securities[0].quantity == 5
 
 
 def test_mdlz_regular_way_purchase_after_record_date_acquires_entitlement() -> None:
@@ -290,7 +291,7 @@ def test_mdlz_regular_way_purchase_after_record_date_acquires_entitlement() -> N
     )
     transformation = result.corporate_action_transformations[0]
     assert transformation.quantity_before == 30
-    assert transformation.distributed_quantity == 10
+    assert transformation.distributed_securities[0].quantity == 10
 
 
 def tmus_store() -> MemoryMarketStore:
@@ -407,8 +408,8 @@ def test_abt_distributes_one_for_one_without_pseudo_dividend_double_count() -> N
     assert transformation.entitlement_date == date(2012, 12, 31)
     assert transformation.quantity_before == 10
     assert transformation.quantity_after == 10
-    assert transformation.distributed_security == "ABBV"
-    assert transformation.distributed_quantity == 10
+    assert transformation.distributed_securities[0].ticker == "ABBV"
+    assert transformation.distributed_securities[0].quantity == 10
 
 
 def test_abt_auxiliary_holding_is_liquidated_by_implicit_zero_target() -> None:
@@ -430,7 +431,7 @@ def test_abt_regular_way_purchase_after_record_date_acquires_entitlement() -> No
         date(2013, 1, 2),
         {decision: allocation(subject, decision, ABT=1)},
     )
-    assert result.corporate_action_transformations[0].distributed_quantity == 10
+    assert result.corporate_action_transformations[0].distributed_securities[0].quantity == 10
 
 
 def test_abt_regular_way_sale_after_record_date_reduces_entitlement() -> None:
@@ -444,7 +445,7 @@ def test_abt_regular_way_sale_after_record_date_reduces_entitlement() -> None:
             sale_decision: allocation(subject, sale_decision, ABT=0.5),
         },
     )
-    assert result.corporate_action_transformations[0].distributed_quantity == 5
+    assert result.corporate_action_transformations[0].distributed_securities[0].quantity == 5
 
 
 def test_abt_fractional_entitlement_follows_backtest_share_policy() -> None:
@@ -455,7 +456,7 @@ def test_abt_fractional_entitlement_follows_backtest_share_policy() -> None:
         date(2013, 1, 2),
         {entry: allocation(fractional_subject, entry, ABT=1)},
     )
-    assert fractional.corporate_action_transformations[0].distributed_quantity == 10.5
+    assert fractional.corporate_action_transformations[0].distributed_securities[0].quantity == 10.5
 
     whole_subject = engine(abt_store(), cash=650, fractional=False)
     whole = whole_subject.run(
@@ -463,7 +464,7 @@ def test_abt_fractional_entitlement_follows_backtest_share_policy() -> None:
         date(2013, 1, 2),
         {entry: allocation(whole_subject, entry, ABT=1)},
     )
-    assert whole.corporate_action_transformations[0].distributed_quantity == 10
+    assert whole.corporate_action_transformations[0].distributed_securities[0].quantity == 10
 
 
 def test_abt_transformation_is_deterministic() -> None:
@@ -579,8 +580,8 @@ def test_google_distribution_preserves_distinct_parent_and_child_economics() -> 
     assert transformation.entitlement_date == date(2014, 4, 2)
     assert transformation.quantity_before == 1
     assert transformation.quantity_after == 1
-    assert transformation.distributed_security == "GOOG"
-    assert transformation.distributed_quantity == 1
+    assert transformation.distributed_securities[0].ticker == "GOOG"
+    assert transformation.distributed_securities[0].quantity == 1
 
 
 def test_google_received_holding_and_strategy_purchase_merge_without_duplicates() -> None:
@@ -610,7 +611,7 @@ def test_google_regular_way_purchase_after_record_date_acquires_entitlement() ->
         date(2014, 4, 3),
         {decision: allocation(subject, decision, GOOGL=1)},
     )
-    assert result.corporate_action_transformations[0].distributed_quantity == 1
+    assert result.corporate_action_transformations[0].distributed_securities[0].quantity == 1
 
 
 def test_google_regular_way_sale_after_record_date_loses_entitlement() -> None:
@@ -624,7 +625,7 @@ def test_google_regular_way_sale_after_record_date_loses_entitlement() -> None:
             sale_decision: allocation(subject, sale_decision, GOOGL=0.5),
         },
     )
-    assert result.corporate_action_transformations[0].distributed_quantity == 0.5
+    assert result.corporate_action_transformations[0].distributed_securities[0].quantity == 0.5
 
 
 def test_google_missing_distributed_or_parent_raw_data_blocks() -> None:
@@ -652,6 +653,227 @@ def test_google_transformation_is_deterministic() -> None:
     assert (
         run_google().corporate_action_transformations
         == run_google().corporate_action_transformations
+    )
+
+
+def rtx_store(
+    *, include_parent_open: bool = True, include_carr: bool = True,
+    include_otis: bool = True,
+) -> MemoryMarketStore:
+    processing = date(2020, 4, 3)
+    parent_rows = [
+        (date(2020, 3, 18), 100, 100),
+        (date(2020, 3, 19), 100, 100),
+        (date(2020, 3, 31), 100, 100),
+        (date(2020, 4, 1), 100, 100),
+        (date(2020, 4, 2), 100, 100),
+        (date(2020, 4, 6), 50, 50),
+    ]
+    if include_parent_open:
+        parent_rows.insert(-1, (processing, 50, 50))
+    local_bars = {"RTX": bars("RTX", parent_rows)}
+    if include_carr:
+        local_bars["CARR"] = bars("CARR", [
+            (processing, 20, 20), (date(2020, 4, 6), 20, 20),
+        ])
+    if include_otis:
+        local_bars["OTIS"] = bars("OTIS", [
+            (processing, 60, 60), (date(2020, 4, 6), 60, 60),
+        ])
+    return MemoryMarketStore(
+        local_bars,
+        {"RTX": pd.DataFrame([
+            provider_action("RTX", processing, "dividend", dividend=50),
+        ])},
+        event(RTX_EVENT, "RTX", processing, "complex_distribution"),
+    )
+
+
+def run_rtx(*, cash: float = 1_000, fractional: bool = True):
+    subject = engine(rtx_store(), cash=cash, fractional=fractional)
+    entry, processing = date(2020, 3, 18), date(2020, 4, 3)
+    return subject.run(
+        entry,
+        date(2020, 4, 6),
+        {
+            entry: allocation(subject, entry, RTX=1),
+            processing: allocation(subject, processing, RTX=0.5),
+        },
+    )
+
+
+def test_rtx_multi_security_distribution_preserves_parent_and_nav() -> None:
+    result = run_rtx()
+    snapshot = next(
+        item for item in result.snapshots if item.as_of.date() == date(2020, 4, 3)
+    )
+    positions = {item.ticker: item for item in snapshot.positions}
+    assert set(positions) == {"RTX", "CARR", "OTIS"}
+    assert positions["RTX"].quantity == 10
+    assert positions["RTX"].average_cost == 100
+    assert positions["CARR"].quantity == 10
+    assert positions["OTIS"].quantity == 5
+    assert positions["CARR"].cost_basis_status == CostBasisStatus.UNALLOCATED
+    assert positions["OTIS"].cost_basis_status == CostBasisStatus.UNALLOCATED
+    assert positions["CARR"].average_cost is None
+    assert positions["OTIS"].average_cost is None
+    assert snapshot.nav == 1_000
+    assert result.cash_flows == []
+
+    transformation = result.corporate_action_transformations[0]
+    assert transformation.record_date == date(2020, 3, 19)
+    assert transformation.entitlement_date == date(2020, 4, 2)
+    assert transformation.processed_at == XNYSTradingCalendar().session_open(
+        date(2020, 4, 3),
+    )
+    assert transformation.quantity_before == 10
+    assert transformation.quantity_after == 10
+    assert {
+        item.ticker: item.quantity for item in transformation.distributed_securities
+    } == {"CARR": 10, "OTIS": 5}
+    assert all(
+        item.cost_basis_status == CostBasisStatus.UNALLOCATED
+        for item in transformation.distributed_securities
+    )
+
+
+def test_rtx_regular_way_trades_after_record_date_change_entitlement() -> None:
+    purchase_subject = engine(rtx_store(), cash=1_000)
+    purchase_decision = date(2020, 3, 31)
+    purchased = purchase_subject.run(
+        purchase_decision,
+        date(2020, 4, 3),
+        {purchase_decision: allocation(purchase_subject, purchase_decision, RTX=1)},
+    )
+    assert {
+        item.ticker: item.quantity
+        for item in purchased.corporate_action_transformations[0].distributed_securities
+    } == {"CARR": 10, "OTIS": 5}
+
+    sale_subject = engine(rtx_store(), cash=1_000)
+    entry, sale_decision = date(2020, 3, 18), date(2020, 3, 31)
+    sold = sale_subject.run(
+        entry,
+        date(2020, 4, 3),
+        {
+            entry: allocation(sale_subject, entry, RTX=1),
+            sale_decision: allocation(sale_subject, sale_decision, RTX=0.5),
+        },
+    )
+    transformation = sold.corporate_action_transformations[0]
+    assert transformation.quantity_before == 5
+    assert {item.ticker: item.quantity for item in transformation.distributed_securities} == {
+        "CARR": 5, "OTIS": 2.5,
+    }
+
+
+def test_rtx_auxiliary_holdings_are_unique_and_liquidated_at_next_open() -> None:
+    result = run_rtx()
+    event_snapshot = next(
+        item for item in result.snapshots if item.as_of.date() == date(2020, 4, 3)
+    )
+    assert sum(item.ticker == "CARR" for item in event_snapshot.positions) == 1
+    assert sum(item.ticker == "OTIS" for item in event_snapshot.positions) == 1
+    auxiliary_sales = {
+        fill.ticker: fill for fill in result.fills
+        if fill.ticker in {"CARR", "OTIS"} and fill.side == OrderSide.SELL
+    }
+    assert set(auxiliary_sales) == {"CARR", "OTIS"}
+    assert all(
+        fill.filled_at.date() == date(2020, 4, 6)
+        for fill in auxiliary_sales.values()
+    )
+    assert not ({"CARR", "OTIS"} & {item.ticker for item in result.snapshots[-1].positions})
+    assert set(result.pnl_incomplete_tickers) >= {"CARR", "OTIS"}
+    assert build_backtest_report(result).total_trading_pnl is None
+
+
+def test_carr_and_otis_are_not_strategy_eligible_auxiliaries() -> None:
+    day = date(2020, 4, 3)
+    rows = pd.DataFrame([
+        {
+            "ticker": ticker,
+            "decision_date": day,
+            "decision_time": datetime(2020, 4, 3, 20, 15, tzinfo=NY),
+            "model_eligible": True,
+            "momentum_20d": 1.0,
+        }
+        for ticker in ("RTX", "CARR", "OTIS")
+    ])
+    universe = UniverseConfig.model_validate({
+        "benchmark": "SPY",
+        "asset_class": "US_EQUITY",
+        "universe_type": "development_fixed",
+        "description": "test",
+        "universe": {
+            "name": "test",
+            "point_in_time": False,
+            "survivorship_bias_warning": True,
+            "as_of": "2026-10-05",
+        },
+        "tickers": ["RTX"],
+    })
+    generated = EqualWeightStrategy(
+        FeatureStore(rows), universe, XNYSTradingCalendar(),
+    ).generate_allocations(day, day).allocations[day]
+    assert generated.weights == {"RTX": 1.0}
+
+
+def test_rtx_fractional_policy_preserves_or_blocks_otis_fraction() -> None:
+    fractional = run_rtx(cash=900)
+    distributed = {
+        item.ticker: item.quantity
+        for item in fractional.corporate_action_transformations[0].distributed_securities
+    }
+    assert distributed == {"CARR": 9, "OTIS": 4.5}
+    with pytest.raises(
+        UnmodelledCorporateActionError,
+        match="fractional cash-in-lieu price for OTIS",
+    ):
+        run_rtx(cash=900, fractional=False)
+    whole = run_rtx(cash=1_000, fractional=False)
+    assert {
+        item.ticker: item.quantity
+        for item in whole.corporate_action_transformations[0].distributed_securities
+    } == {"CARR": 10, "OTIS": 5}
+
+
+@pytest.mark.parametrize(
+    ("kwargs", "message"),
+    [
+        ({"include_parent_open": False}, "parent-security raw open"),
+        ({"include_carr": False}, "auxiliary-security raw open for CARR"),
+        ({"include_otis": False}, "auxiliary-security raw open for OTIS"),
+    ],
+)
+def test_rtx_missing_required_raw_data_blocks_atomically(
+    kwargs: dict[str, bool], message: str,
+) -> None:
+    subject = engine(rtx_store(**kwargs), cash=1_000)
+    entry = date(2020, 3, 18)
+    with pytest.raises(BacktestDataError, match=message):
+        subject.run(
+            entry,
+            date(2020, 4, 3),
+            {entry: allocation(subject, entry, RTX=1)},
+        )
+
+
+def test_rtx_lineage_does_not_apply_legacy_rtn_ratio_or_fake_trade() -> None:
+    result = run_rtx()
+    transformation = result.corporate_action_transformations[0]
+    assert transformation.quantity_before == transformation.quantity_after == 10
+    assert all(fill.ticker != "RTN" for fill in result.fills)
+    assert [
+        (fill.ticker, fill.side) for fill in result.fills if fill.ticker == "RTX"
+    ] == [("RTX", OrderSide.BUY)]
+    assert transformation.quantity_after != pytest.approx(10 * 2.3348)
+
+
+def test_rtx_transformation_is_deterministic() -> None:
+    assert (
+        run_rtx().corporate_action_transformations
+        == run_rtx().corporate_action_transformations
     )
 
 

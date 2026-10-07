@@ -52,7 +52,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `models` | Contratos de regresión, clasificación y ranking | Stub |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
-| `backtesting` | Motor temporal, métricas, benchmark y baselines sistemáticos | Funcional Phase 2B; validación real parcial |
+| `backtesting` | Motor temporal, métricas, benchmark y baselines sistemáticos | Funcional Phase 2B; validación real completa en el universo fijo actual |
 | `execution` | Órdenes, fills y paper executor | Contrato/stub |
 | `audit` | Registro reconstruible de decisiones | Funcional básico |
 
@@ -147,7 +147,8 @@ trade del ticker padre se interpreta regular-way: el derecho acompaña a la
 posición hasta el último cierre anterior a la distribución. Una venta posterior
 al record date pierde el derecho y una compra regular-way lo adquiere.
 
-Un spin-off puede crear un `auxiliary security` aunque no esté en
+Una distribución revisada puede crear uno o más `auxiliary securities` aunque
+no estén en
 `development_fixed`. El engine carga sus barras raw, lo mantiene y valora, y el
 target implícito cero permite venderlo en la siguiente apertura; la estrategia
 no lo selecciona ni lo incorpora a elegibilidad. KRFT usa basis no asignado: NAV
@@ -156,7 +157,9 @@ publica. ABBV demuestra el caso dual: puede nacer como distribución y seguir
 siendo un activo normal de `development_fixed` elegible en fechas posteriores.
 Si ya existe una posición del security distribuido, las quantities se combinan
 en una sola posición y todo el basis queda conservadoramente no asignado. La
-falta de datos del security requerido bloquea la simulación.
+falta de datos de cualquier security requerido bloquea la simulación antes de
+mutar el ledger. Una sola `CorporateActionTransformation` enumera todos los
+securities distribuidos con quantity y estado de basis propios.
 
 La identidad económica no se deriva únicamente del ticker. Para Google 2014,
 Nasdaq trasladó la historia Class A del antiguo `GOOG` al nuevo `GOOGL` y la
@@ -165,6 +168,13 @@ lineage restated: GOOGL conserva Class A pre-evento y GOOG empieza como Class C
 el 2014-03-27. El registry enlaza esas representaciones verificadas sin branches
 por ticker ni duplicación de Class A. Los treatments de distribución requieren
 raw open válido tanto del parent como del security recibido en processing date.
+
+La historia Tiingo de RTX aplica la misma regla de identidad: contiene el
+lineage histórico de UTC desde 2009 y continúa 1:1 tras el rename. El evento de
+2020 distribuye simultáneamente CARR 1:1 y OTIS 0.5:1; ambos comienzan localmente
+con barras when-issued el 2020-03-19. No se sintetiza `UTX SELL / RTX BUY`. El
+ratio 2.3348 de la fusión pertenece al lineage separado de RTN y no participa en
+la transformación de una posición UTC/RTX.
 
 Los IDs deterministas enlazan allocation, order y fill. `risk_decision_id` deja
 preparado el vínculo futuro, pero Phase 2A.2 no integra Risk Manager: el input del

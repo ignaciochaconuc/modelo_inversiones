@@ -290,6 +290,17 @@ class CorporateActionCashFlow(BaseModel):
         return self
 
 
+class DistributedSecurityTransformation(BaseModel):
+    """Auditable quantity and basis state for one security received in an event."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    ticker: str
+    quantity: float = Field(gt=0)
+    cost_basis_status: CostBasisStatus
+
+    _normalize_ticker = field_validator("ticker")(_ticker)
+
+
 class CorporateActionTransformation(BaseModel):
     """Auditable holding/cash transformation from one reviewed complex event."""
 
@@ -306,28 +317,18 @@ class CorporateActionTransformation(BaseModel):
     treatment_version: str = Field(min_length=1)
     quantity_before: float = Field(ge=0)
     quantity_after: float = Field(ge=0)
-    distributed_security: str | None = None
-    distributed_quantity: float = Field(default=0, ge=0)
+    distributed_securities: tuple[DistributedSecurityTransformation, ...] = ()
     cash_received: float = Field(default=0, ge=0)
-    cost_basis_status: CostBasisStatus | None = None
     notes: str = ""
 
     _normalize_ticker = field_validator("ticker")(_ticker)
     _validate_processed_at = field_validator("processed_at")(_aware)
 
-    @field_validator("distributed_security")
-    @classmethod
-    def normalize_optional_ticker(cls, value: str | None) -> str | None:
-        return None if value is None else _ticker(value)
-
     @model_validator(mode="after")
     def validate_distribution(self) -> "CorporateActionTransformation":
-        if (self.distributed_security is None) != (
-            self.distributed_quantity <= VALUE_TOLERANCE
-        ):
-            raise ValueError(
-                "distributed_security and positive distributed_quantity must appear together"
-            )
+        tickers = [item.ticker for item in self.distributed_securities]
+        if len(tickers) != len(set(tickers)):
+            raise ValueError("distributed security transformations must be unique")
         return self
 
 

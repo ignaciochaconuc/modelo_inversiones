@@ -64,7 +64,7 @@ movimientos aún no explicados.
 
 ## Phase 2 — Backtesting engine
 
-**Status:** Phase 2B.1 implementation complete; real-data validation partial
+**Status:** complete for the current fixed-universe real-data scope
 
 **Objetivo:** simular decisiones after-close y ejecución next-open.  
 **Entregables:** loop temporal, fills, costos, cartera, benchmark, métricas y auditoría.  
@@ -102,34 +102,34 @@ causalmente y los mismos costos. No es una estrategia reutilizable.
 
 ### Phase 2B — Baselines
 
-**Status:** implementation complete; real-data validation partial
+**Status:** complete for the current fixed-universe real-data scope
 
 Implementa SPY buy-and-hold con dividendos reinvertidos causalmente, equal-weight
 diario del universo elegible y momentum 20d top-10 diario. Todos producen
 `TargetAllocation` y reutilizan engine y reporting sin acceder a targets.
 
-La validación local 2010-01-01 a 2026-10-02 completa SPY y momentum. Tras Phase
-2B.1.2, equal-weight supera MDLZ, ABT/ABBV y Google, y se detiene correctamente
-en el siguiente evento no revisado: `RTX` 2020-04-03,
-`complex_distribution`, event ID `18fb85423936f266f806`. No se creó un
-treatment automático. Por ello Phase 2
-sigue parcialmente validada con datos reales.
+La validación local 2010-01-01 a 2026-10-02 completa SPY, momentum y equal-weight.
+Tras Phase 2B.1.3, equal-weight supera MDLZ, ABT/ABBV, Google y RTX/UTC sin
+encontrar otro evento complejo no revisado. Phase 2 queda validada de extremo a
+extremo para el universo fijo, proveedor y ventana actuales; esto no elimina el
+survivorship bias documentado ni autoriza Phase 3.
 
 ### Phase 2B.1 — Reviewed complex corporate actions
 
-**Status:** implementation complete; real-data validation partial
+**Status:** complete for the current fixed-universe real-data scope
 
 Añade contratos económicos event-specific para MDLZ/KRFT y TMUS/MetroPCS,
 entitlements fechados, securities auxiliares, cash de recapitalización y registros
 de transformación deterministas. El default para cualquier otro evento complejo
 sigue siendo `UnmodelledCorporateActionError`. KRFT se ingirió únicamente como
 dependencia auxiliar y no pertenece al universo invertible. La validación real
-debe detenerse ante el siguiente evento complejo no revisado. Phase 2B.1.1
-revisó ABT posteriormente sin cambiar esta política.
+debe detenerse ante el siguiente evento complejo no revisado. Las revisiones
+2B.1.1–2B.1.3 cubren todos los blockers encontrados en el rerun actual sin
+cambiar esta política.
 
 ### Phase 2B.1.1 — Regular-way spin-off entitlement + ABT/ABBV
 
-**Status:** implementation complete; real-data validation partial
+**Status:** complete
 
 Separa `record_date` legal de la observación de entitlement regular-way. MDLZ
 ahora observa ownership al cierre de 2012-10-01. ABT/ABBV reutiliza el treatment
@@ -142,15 +142,28 @@ confirmó que ABT ya no bloquea. Google fue revisado posteriormente en Phase
 
 ### Phase 2B.1.2 — Google 2014 Class C distribution
 
-**Status:** implementation complete; real-data validation partial
+**Status:** complete
 
 Reutiliza la distribución genérica para mantener GOOGL Class A y añadir GOOG
 Class C 1:1. Se verificó la lineage restated de Tiingo/Nasdaq, el entitlement
 regular-way al cierre de 2014-04-02, la ausencia de split y el pseudo-dividendo
 GOOGL consumido. GOOG y GOOGL siguen siendo activos invertibles independientes;
 no se añadió lógica hardcodeada por ticker. El rerun confirmó que Google ya no
-bloquea y avanzó hasta RTX 2020-04-03, que permanece intencionalmente
-unsupported.
+bloquea y avanzó hasta RTX 2020-04-03, revisado posteriormente en Phase 2B.1.3.
+
+### Phase 2B.1.3 — UTC / RTX 2020 Carrier + Otis distributions
+
+**Status:** complete
+
+Generaliza el treatment de distribución a múltiples securities dentro de un
+solo evento económico y migra limpiamente MDLZ, ABT y Google. El lineage UTC se
+conserva bajo RTX 1:1, con entitlement regular-way al cierre de 2020-04-02; el
+evento añade 1 CARR y 0.5 OTIS por parent antes del open siguiente. CARR y OTIS
+son dependencias auxiliares, no miembros del universo, y conservan basis no
+asignado. Se consume el único pseudo-dividendo RTX de USD 40.58, sin split. El
+ratio 2.3348 de legacy RTN queda explícitamente fuera. El rerun completo de SPY,
+Momentum y Equal Weight finaliza sin otro blocker; Phase 2 queda validada para
+el alcance real actual.
 
 ## Phase 3 — Baseline predictive models
 

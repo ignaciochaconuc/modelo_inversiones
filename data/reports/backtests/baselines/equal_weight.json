@@ -1,13 +1,135 @@
 {
-  "error": "unmodelled corporate action for RTX on 2020-04-03: event_id=18fb85423936f266f806 reason=complex_distribution",
-  "error_type": "UnmodelledCorporateActionError",
-  "event_date": "2020-04-03",
-  "event_id": "18fb85423936f266f806",
-  "reason": "complex_distribution",
+  "allocation_count": 4213,
+  "eligibility_summary": {
+    "average_eligible_assets": 95.3612627581296,
+    "decision_dates": 4213,
+    "eligibility_observations": 4213,
+    "maximum_eligible_assets": 101,
+    "minimum_eligible_assets": 85
+  },
+  "metrics": {
+    "backtest_config": {
+      "allow_fractional_shares": true,
+      "benchmark_ticker": "SPY",
+      "commission_bps": 0.0,
+      "initial_cash": 100000.0,
+      "slippage_bps": 0.0
+    },
+    "benchmark": {
+      "costs": {
+        "annualized_turnover": 0.07727040917837495,
+        "average_daily_turnover": 0.00030662860785069424,
+        "cost_over_initial_nav": 0.0,
+        "cost_over_traded_notional": 0.0,
+        "gross_traded_notional": 189484.70083905163,
+        "total_commissions": 0.0,
+        "total_slippage_cost": 0.0,
+        "total_transaction_cost": 0.0,
+        "total_turnover": 1.2918263248749748
+      },
+      "excess_cagr": 0.04498931961304309,
+      "excess_cumulative_return": 8.316097193061601,
+      "performance": {
+        "annualized_volatility": 0.17046447099038994,
+        "cagr": 0.14125397464925893,
+        "cumulative_return": 8.134653597681528,
+        "drawdown_peak_date": "2020-02-19",
+        "drawdown_recovery_date": "2020-08-10",
+        "drawdown_trough_date": "2020-03-23",
+        "end_date": "2026-10-02",
+        "final_nav": 913465.3597681528,
+        "initial_nav": 100000.0,
+        "max_drawdown": -0.3369883290471869,
+        "return_observation_count": 4212,
+        "session_count": 4213,
+        "sharpe_ratio": 0.8620246500484199,
+        "sortino_ratio": 1.2164730817481284,
+        "start_date": "2010-01-04"
+      },
+      "run_id": "baseline_515e62a3aa9fdbc15d56:benchmark:SPY:backtest-metrics-v2",
+      "ticker": "SPY",
+      "tracking_difference": 8.316097193061601
+    },
+    "corporate_actions": {
+      "cash_in_lieu": 0.0,
+      "cash_in_lieu_count": 0,
+      "dividend_cash": 202633.23071152953,
+      "dividend_cash_flow_count": 5171,
+      "recapitalization_cash": 650.3273458006436,
+      "recapitalization_cash_flow_count": 1,
+      "reviewed_transformation_count": 5
+    },
+    "costs": {
+      "annualized_turnover": 2.563556359094512,
+      "average_daily_turnover": 0.010172842694819492,
+      "cost_over_initial_nav": 0.0,
+      "cost_over_traded_notional": 0.0,
+      "gross_traded_notional": 26222844.514333807,
+      "total_commissions": 0.0,
+      "total_slippage_cost": 0.0,
+      "total_transaction_cost": 0.0,
+      "total_turnover": 42.85818627327452
+    },
+    "execution": {
+      "fill_rate": 0.9938903702375884,
+      "filled_orders": 399207,
+      "partial_fill_rate": 0.0051535996773398466,
+      "partially_filled_orders": 2070,
+      "pending_orders": 101,
+      "total_execution_records": 401661,
+      "total_fills": 401277,
+      "total_orders": 401762,
+      "unfilled_orders": 384,
+      "unfilled_rate": 0.0009560300850717395
+    },
+    "exposure": {
+      "average_cash_weight": 0.0003371891637589381,
+      "average_gross_exposure": 0.999662810836241,
+      "average_net_exposure": 0.999662810836241,
+      "average_positions": 95.33847614526465,
+      "maximum_cash_weight": 1.0,
+      "maximum_positions": 101,
+      "minimum_cash_weight": 0.0
+    },
+    "final_unrealized_pnl": 80659.7392201682,
+    "metrics_version": "backtest-metrics-v2",
+    "performance": {
+      "annualized_volatility": 0.17154881657631119,
+      "cagr": 0.18624329426230202,
+      "cumulative_return": 16.45075079074313,
+      "drawdown_peak_date": "2020-02-19",
+      "drawdown_recovery_date": "2020-08-05",
+      "drawdown_trough_date": "2020-03-23",
+      "end_date": "2026-10-02",
+      "final_nav": 1745075.079074313,
+      "initial_nav": 100000.0,
+      "max_drawdown": -0.3382677608684944,
+      "return_observation_count": 4212,
+      "session_count": 4213,
+      "sharpe_ratio": 1.0835910370639439,
+      "sortino_ratio": 1.5416430460736126,
+      "start_date": "2010-01-04"
+    },
+    "realized_pnl": 1356497.418989364,
+    "run_id": "baseline_515e62a3aa9fdbc15d56",
+    "total_trading_pnl": null,
+    "trading_pnl_complete": false,
+    "unknown_cost_basis_tickers": [
+      "ABBV",
+      "CARR",
+      "GOOG",
+      "KRFT",
+      "OTIS"
+    ],
+    "warnings": [
+      "development_fixed universe is not point-in-time and contains survivorship bias",
+      "trading P&L is unavailable because reviewed spin-off holdings have unallocated cost basis; NAV performance remains complete"
+    ]
+  },
   "requested_end": "2026-10-02",
   "requested_start": "2010-01-01",
-  "status": "failed",
+  "run_id": "baseline_515e62a3aa9fdbc15d56",
+  "status": "completed",
   "strategy_name": "equal_weight",
-  "strategy_version": "equal-weight-v1",
-  "ticker": "RTX"
+  "strategy_version": "equal-weight-v1"
 }
