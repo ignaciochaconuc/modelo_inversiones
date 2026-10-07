@@ -1,0 +1,17 @@
+{
+  "phase": "3C-nonlinear-predictive-models",
+  "mode": "selection",
+  "feature_set_version": "quantitative-baseline-v1",
+  "preprocessing_version": "tree-preprocessing-v1",
+  "feature_schema_version": "4",
+  "target_schema_version": "corporate-action-safe-target-v3",
+  "sklearn_version": "1.8.0",
+  "xgboost_version": "3.4.1",
+  "lightgbm_version": "4.7.0",
+  "random_state": 42,
+  "permutation_repeats": 2,
+  "test_used": false,
+  "generated_at": "2026-10-07T23:32:07.938594+00:00",
+  "git_commit": null,
+  "dirty_worktree": null
+}

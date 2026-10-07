@@ -1,0 +1,54 @@
+{
+  "overall": {
+    "rows": 72246,
+    "positive_prevalence": 0.6161586800653324,
+    "log_loss": 0.6669793269477499,
+    "balanced_accuracy": 0.49800166465838974,
+    "roc_auc": 0.5475349710973259,
+    "degenerate_reason": null
+  },
+  "by_year": {
+    "2019": {
+      "rows": 24261,
+      "positive_prevalence": 0.6526936235109847,
+      "log_loss": 0.6525714840695572,
+      "balanced_accuracy": 0.49919481410291916,
+      "roc_auc": 0.5590802402325609,
+      "degenerate_reason": null
+    },
+    "2020": {
+      "rows": 24972,
+      "positive_prevalence": 0.5981098830690373,
+      "log_loss": 0.6761481172741919,
+      "balanced_accuracy": 0.49491002183249033,
+      "roc_auc": 0.5213976404280423,
+      "degenerate_reason": null
+    },
+    "2021": {
+      "rows": 23013,
+      "positive_prevalence": 0.5972276539347325,
+      "log_loss": 0.6722192193579496,
+      "balanced_accuracy": 0.49673600153779085,
+      "roc_auc": 0.5619968410228946,
+      "degenerate_reason": null
+    }
+  },
+  "train_positive_prevalence": 0.5871206240782426,
+  "validation_positive_prevalence": 0.6161586800653324,
+  "primary_selection_metric": "roc_auc",
+  "selection_tolerance": 0.001,
+  "tie_breaking": [
+    "log_loss",
+    "balanced_accuracy",
+    "worst_year_auc",
+    "lower_complexity"
+  ],
+  "classification_threshold": 0.5,
+  "stability": {
+    "auc_2019": 0.5590802402325609,
+    "auc_2020": 0.5213976404280423,
+    "auc_2021": 0.5619968410228946,
+    "worst_year_auc": 0.5213976404280423,
+    "year_auc_std": 0.02264501408382111
+  }
+}

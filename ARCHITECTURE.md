@@ -49,7 +49,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
-| `models` | Datasets temporales, preprocessing, métricas y baselines predictivos simples | Funcional Phase 3B; TEST sellado |
+| `models` | Datasets temporales, preprocessing, métricas y modelos predictivos lineales/no lineales | Funcional Phase 3C; TEST sellado |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
 | `backtesting` | Motor temporal, métricas, benchmark y baselines sistemáticos | Funcional Phase 2B; validación real completa en el universo fijo actual |
@@ -101,6 +101,15 @@ ingenuos se comparan con métricas pooled y cross-sectional por fecha/año. Sus
 artefactos son predicciones exclusivas de validation, parámetros de
 preprocessing y coeficientes auditables; no son forecasts liberados hacia
 portfolio ni backtesting. ADR-015 fija estas decisiones.
+
+Phase 3C reutiliza exactamente ese contrato, split, feature set y Target Store.
+`tree-preprocessing-v1` conserva los dos `log1p`, ajusta medianas solo en TRAIN,
+registra/excluye constantes y no escala. Los perfiles fijos de Random Forest,
+XGBoost y LightGBM se seleccionan dentro de familia y luego entre familias con
+tolerancias predeclaradas, métricas por año y desempate por complejidad. Los
+rankings derivados reutilizan predicciones de regresión; no son fits nuevos.
+Las importancias nativas y por permutación son diagnósticas sobre VALIDATION y
+no retroalimentan features ni modelos. ADR-016 fija estas decisiones.
 
 El builder agrupa fechas consecutivas cuyo conjunto de splits elegibles no cambia. También abre un nuevo segmento cuando una barra histórica retrasada del activo o SPY pasa a estar disponible. Para cada segmento construye una sola vista as-of hasta su fecha final, calcula rolling features vectorizadas y conserva únicamente sus filas. Barras futuras con fecha posterior son causalmente inocuas; una barra retrasada con fecha histórica no lo es y por eso constituye un límite.
 

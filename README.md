@@ -42,6 +42,11 @@ VALIDATION 2019–2021. El holdout TEST 2022+ permanece sellado y no se usa para
 selección, métricas ni predicciones. Los resultados son diagnósticos predictivos,
 no recomendaciones ni backtests de cartera.
 
+Phase 3C mantiene ese mismo contrato y compara perfiles congelados de Random
+Forest, XGBoost y LightGBM con `tree-preprocessing-v1`. Sus 81 fits y 108
+evaluaciones reales están bajo `data/reports/models/phase3c`; la importancia de
+features es diagnóstica y no alteró ningún fit. TEST continúa sellado.
+
 ## Instalación
 
 Requiere Python 3.11 o posterior.

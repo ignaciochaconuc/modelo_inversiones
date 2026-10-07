@@ -211,6 +211,22 @@ directa de rank. La selección utilizó exclusivamente VALIDATION 2019–2021; l
 No se eligió un horizonte final ni se inició evaluación final, portfolio o
 Phase 3C.
 
+### Phase 3C — Nonlinear Predictive Models
+
+**Status:** complete for TRAIN/VALIDATION nonlinear model selection; TEST remains sealed
+
+Se compararon Random Forest, XGBoost y LightGBM con tres perfiles congelados por
+familia sobre las mismas 52 features, targets y split de Phase 3B.
+`tree-preprocessing-v1` aplica `log1p` de liquidez e imputación por mediana de
+TRAIN, sin scaling ni selección de features. La corrida real produjo 81 fits y
+108 evaluaciones, incluidos 27 rankings derivados sin reentrenamiento, además
+de importancia nativa y por permutación para 27 ganadores family/task/horizon.
+Regression y ranking mejoraron materialmente los mean IC de 3B en 5/10/20d;
+classification no mejoró ROC-AUC en ningún horizonte. 20d conserva la señal
+predictiva más fuerte, pero no se declaró modelo final ni se hizo portfolio
+backtest. Los artefactos viven en `data/reports/models/phase3c`; TEST 2022+
+permanece sellado (`test_used=false`). No se inició Phase 3D.
+
 ## Phase 4 — News Agent
 
 **Objetivo:** convertir noticias point-in-time en análisis explicable y features estructuradas.  
