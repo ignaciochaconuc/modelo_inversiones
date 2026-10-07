@@ -64,7 +64,7 @@ movimientos aún no explicados.
 
 ## Phase 2 — Backtesting engine
 
-**Status:** Phase 2A.2 complete; baselines and advanced metrics pending
+**Status:** Phase 2A.3 complete; Phase 2B baselines pending
 
 **Objetivo:** simular decisiones after-close y ejecución next-open.  
 **Entregables:** loop temporal, fills, costos, cartera, benchmark, métricas y auditoría.  
@@ -89,6 +89,24 @@ Incluye costos, restricciones de cash, ventas antes de compras, estados unfilled
 valoración stale explícita, splits/cash-in-lieu, dividendos, invalidación por
 acciones complejas, P&L por costo promedio e IDs deterministas. No incluye
 estrategias, optimizer, integración con Risk Manager, ML ni PaperExecutor.
+
+### Phase 2A.3 — Backtest metrics + benchmark reporting
+
+**Status:** complete
+
+`BacktestResult` se convierte en un reporte versionado y serializable con
+performance basada en NAV, drawdown, ratios risk-adjusted, ejecuciones, costos,
+turnover por notional ejecutado, exposición, P&L y corporate actions. El
+benchmark interno simula SPY con raw prices, splits, dividendos reinvertidos
+causalmente y los mismos costos. No es una estrategia reutilizable.
+
+### Phase 2B — Baselines
+
+**Status:** pending
+
+Implementará explícitamente, en una fase separada, los baselines reutilizables
+SPY buy-and-hold, equal-weight del development universe y momentum simple.
+Phase 2A.3 no adelanta estas estrategias.
 
 ## Phase 3 — Baseline predictive models
 

@@ -125,6 +125,24 @@ realiza `(fill_price - average_cost) × quantity - commission`; el P&L no realiz
 es `(market_price - average_cost) × quantity`. No se implementan lotes fiscales
 ni FIFO.
 
+Phase 2A.3 transforma `BacktestResult` en `BacktestMetrics` sin modificar el
+engine. NAV es la fuente de verdad de performance. CAGR usa días calendario y
+365.25; volatilidad, Sharpe, Sortino y turnover anualizado usan 252 sesiones.
+Sharpe asume risk-free 0. Sortino usa MAR 0 y la desviación downside RMS de
+`min(return, 0)`. Maximum drawdown se reporta como retorno no positivo e incluye
+peak, trough y recovery cuando existe.
+
+Turnover diario es gross notional efectivamente ejecutado en la sesión dividido
+por el NAV final de esa sesión; órdenes unfilled no participan. Comisiones y
+slippage se reportan para auditoría, pero no se vuelven a descontar del NAV.
+Dividendos y cash-in-lieu permanecen separados del trading P&L.
+
+El benchmark de reporting simula SPY con el mismo capital y costos: decisión al
+cierre de la primera sesión, compra al raw open siguiente, splits explícitos y
+dividend entitlement post-split/pre-open. El cash se acredita post-close y se
+reinvierte causalmente en el next open. No usa precios ajustados. Esta utilidad
+interna no constituye la estrategia SPY reutilizable prevista para Phase 2B.
+
 Paper trading corresponde a Phase 8. La ejecución real supervisada y una eventual ejecución automática corresponden a Phases 9 y 10. No existe conexión con brokers ni autorización para órdenes reales.
 
 ## Auditoría

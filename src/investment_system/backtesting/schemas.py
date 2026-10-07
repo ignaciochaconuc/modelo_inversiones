@@ -281,3 +281,112 @@ class BacktestResult(BaseModel):
     realized_pnl: float = 0
     final_unrealized_pnl: float = 0
     metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+class PerformanceMetrics(BaseModel):
+    """NAV-based performance statistics for one ordered session range."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    start_date: date
+    end_date: date
+    initial_nav: float = Field(gt=0)
+    final_nav: float = Field(gt=0)
+    session_count: int = Field(ge=1)
+    return_observation_count: int = Field(ge=0)
+    cumulative_return: float
+    cagr: float | None = None
+    annualized_volatility: float | None = Field(default=None, ge=0)
+    sharpe_ratio: float | None = None
+    sortino_ratio: float | None = None
+    max_drawdown: float = Field(le=0)
+    drawdown_peak_date: date | None = None
+    drawdown_trough_date: date | None = None
+    drawdown_recovery_date: date | None = None
+
+
+class ExecutionMetrics(BaseModel):
+    """Order-level execution outcomes; rates use execution records as denominator."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    total_orders: int = Field(ge=0)
+    total_fills: int = Field(ge=0)
+    total_execution_records: int = Field(ge=0)
+    filled_orders: int = Field(ge=0)
+    partially_filled_orders: int = Field(ge=0)
+    unfilled_orders: int = Field(ge=0)
+    pending_orders: int = Field(ge=0)
+    fill_rate: float | None = Field(default=None, ge=0, le=1)
+    partial_fill_rate: float | None = Field(default=None, ge=0, le=1)
+    unfilled_rate: float | None = Field(default=None, ge=0, le=1)
+
+
+class CostMetrics(BaseModel):
+    """Audited execution costs and fill-notional turnover."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    gross_traded_notional: float = Field(ge=0)
+    total_commissions: float = Field(ge=0)
+    total_slippage_cost: float = Field(ge=0)
+    total_transaction_cost: float = Field(ge=0)
+    cost_over_initial_nav: float = Field(ge=0)
+    cost_over_traded_notional: float | None = Field(default=None, ge=0)
+    total_turnover: float = Field(ge=0)
+    average_daily_turnover: float = Field(ge=0)
+    annualized_turnover: float = Field(ge=0)
+
+
+class ExposureMetrics(BaseModel):
+    """Session-average exposure, cash, and position-count statistics."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    average_gross_exposure: float = Field(ge=0)
+    average_net_exposure: float = Field(ge=0)
+    average_cash_weight: float = Field(ge=0, le=1)
+    minimum_cash_weight: float = Field(ge=0, le=1)
+    maximum_cash_weight: float = Field(ge=0, le=1)
+    maximum_positions: int = Field(ge=0)
+    average_positions: float = Field(ge=0)
+
+
+class CorporateActionMetrics(BaseModel):
+    """Cash distributions reported separately from trading P&L."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    dividend_cash: float = Field(ge=0)
+    dividend_cash_flow_count: int = Field(ge=0)
+    cash_in_lieu: float = Field(ge=0)
+    cash_in_lieu_count: int = Field(ge=0)
+
+
+class BenchmarkMetrics(BaseModel):
+    """Economically simulated benchmark and direct portfolio comparison."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    ticker: str
+    run_id: str = Field(min_length=1)
+    performance: PerformanceMetrics
+    costs: CostMetrics
+    excess_cumulative_return: float
+    excess_cagr: float | None = None
+    tracking_difference: float
+
+    _normalize_ticker = field_validator("ticker")(_ticker)
+
+
+class BacktestMetrics(BaseModel):
+    """Stable JSON-serializable Phase 2A.3 economic report."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    metrics_version: str = Field(min_length=1)
+    run_id: str = Field(min_length=1)
+    backtest_config: dict[str, Any]
+    performance: PerformanceMetrics
+    execution: ExecutionMetrics
+    costs: CostMetrics
+    exposure: ExposureMetrics
+    corporate_actions: CorporateActionMetrics
+    realized_pnl: float
+    final_unrealized_pnl: float
+    total_trading_pnl: float
+    benchmark: BenchmarkMetrics | None = None
+    warnings: list[str] = Field(default_factory=list)

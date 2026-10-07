@@ -52,7 +52,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `models` | Contratos de regresión, clasificación y ranking | Stub |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
-| `backtesting` | Motor temporal, schemas, accounting histórico y auditoría de fills | Funcional Phase 2A.2 |
+| `backtesting` | Motor temporal, accounting, métricas y benchmark económico | Funcional Phase 2A.3 |
 | `execution` | Órdenes, fills y paper executor | Contrato/stub |
 | `audit` | Registro reconstruible de decisiones | Funcional básico |
 
@@ -137,6 +137,18 @@ Los IDs deterministas enlazan allocation, order y fill. `risk_decision_id` deja
 preparado el vínculo futuro, pero Phase 2A.2 no integra Risk Manager: el input del
 simulador no constituye una nueva ruta de ejecución y la autoridad definida en
 ADR-004 permanece intacta.
+
+La evaluación vive fuera del engine. `backtesting.metrics` contiene funciones
+puras cuya fuente de performance es la curva de NAV; `backtesting.reporting`
+agrega ejecuciones, costos, turnover, exposición, P&L y corporate actions en un
+`BacktestMetrics` JSON-serializable. La metodología versionada es
+`backtest-metrics-v1` y está fijada en ADR-012.
+
+El benchmark de reporting no es una estrategia de Phase 2B. Es una simulación
+interna de SPY con el mismo capital, rango, configuración de costos y semántica
+after-close/next-open. Usa raw prices, splits y entitlement de dividendos; el
+cash del dividendo se reinvierte mediante una decisión al cierre de ex-date y un
+fill en la apertura siguiente. No se usa `adjusted_close` ni información futura.
 
 ## LLM Router, costos y cache
 
