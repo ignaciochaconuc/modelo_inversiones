@@ -315,6 +315,14 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
             return pending
 
         if isinstance(treatment, SpinOffDistributionTreatment):
+            parent_open = self._raw_price(
+                bars.get(treatment.ticker, {}).get(session), "open",
+            )
+            if parent_open is None:
+                raise BacktestDataError(
+                    "missing required parent-security raw open for "
+                    f"{treatment.ticker} on {session}"
+                )
             distributed_quantity = (
                 entitlement_quantity * treatment.shares_per_parent_share
             )

@@ -1,4 +1,4 @@
-schema_version: "2"
+schema_version: "3"
 treatments:
   - event_id: "89f2ab472a86d18abc22"
     ticker: "MDLZ"
@@ -70,3 +70,32 @@ treatments:
       The 2013-04-30 closing recapitalization converted each pre-event share
       into 0.5 post-event share and paid exactly USD 4.0491 per pre-split share.
       The transformation is applied before the 2013-05-01 regular-session open.
+  - event_id: "9aef821b433135154689"
+    ticker: "GOOGL"
+    event_type: "complex_distribution"
+    record_date: 2014-03-27
+    effective_date: 2014-04-02
+    processing_date: 2014-04-03
+    entitlement_date: 2014-04-02
+    entitlement_timing: "post_close"
+    treatment_type: "spin_off_distribution"
+    treatment_version: "1"
+    provider_action_types_consumed: ["dividend"]
+    distributed_ticker: "GOOG"
+    shares_per_parent_share: 1.0
+    cost_basis_policy: "unallocated"
+    fractional_policy: "block_without_actual_settlement_price"
+    evidence:
+      - "https://www.sec.gov/Archives/edgar/data/1288776/000119312514138800/d709408ds8.htm"
+      - "https://www.sec.gov/Archives/edgar/data/1288776/000128877615000008/goog2014123110-k.htm"
+      - "https://www.nasdaqtrader.com/TraderNews.aspx?id=ETA2014-24"
+      - "https://www.nasdaqtrader.com/content/GOOGLEfaq.pdf"
+      - "https://www.sec.gov/rules/sro/cboe/2014/34-71848.pdf"
+    review_notes: >-
+      This is economically a security distribution although legally described
+      as a stock split effected through a stock dividend. From record date
+      through payment date, regular-way Class A traded with the Class C
+      entitlement. The simulator observes restated GOOGL Class A ownership at
+      the 2014-04-02 close and adds one GOOG Class C share per entitled share
+      before the 2014-04-03 open. Tiingo carries pre-event Class A history under
+      GOOGL and starts GOOG with Class C when-issued history on 2014-03-27.

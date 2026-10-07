@@ -24,6 +24,7 @@ from investment_system.data.universe import UniverseConfig
 NY = ZoneInfo("America/New_York")
 MDLZ_EVENT = "89f2ab472a86d18abc22"
 TMUS_EVENT = "e653f71b02957333e821"
+GOOGLE_EVENT = "9aef821b433135154689"
 
 
 class MemoryMarketStore:
@@ -512,6 +513,148 @@ def test_existing_abbv_position_is_merged_and_can_receive_later_buys() -> None:
     assert position.cost_basis_status == CostBasisStatus.UNALLOCATED
 
 
+def google_store(
+    *, include_goog: bool = True, include_processing_parent: bool = True,
+) -> MemoryMarketStore:
+    processing = date(2014, 4, 3)
+    parent_rows = [
+        (date(2014, 3, 26), 1_000, 1_000),
+        (date(2014, 3, 27), 1_000, 1_000),
+        (date(2014, 4, 1), 1_000, 1_000),
+        (date(2014, 4, 2), 1_000, 1_000),
+        (date(2014, 4, 4), 500, 500),
+    ]
+    if include_processing_parent:
+        parent_rows.insert(-1, (processing, 500, 500))
+    local_bars = {"GOOGL": bars("GOOGL", parent_rows)}
+    if include_goog:
+        local_bars["GOOG"] = bars("GOOG", [
+            (date(2014, 3, 27), 500, 500),
+            (date(2014, 4, 1), 500, 500),
+            (date(2014, 4, 2), 500, 500),
+            (processing, 500, 500),
+            (date(2014, 4, 4), 500, 500),
+        ])
+    return MemoryMarketStore(
+        local_bars,
+        {"GOOGL": pd.DataFrame([
+            provider_action(
+                "GOOGL", processing, "dividend", dividend=567.971668,
+            ),
+        ])},
+        event(GOOGLE_EVENT, "GOOGL", processing, "complex_distribution"),
+    )
+
+
+def run_google():
+    subject = engine(google_store(), cash=1_000)
+    entry, processing = date(2014, 3, 26), date(2014, 4, 3)
+    return subject.run(
+        entry,
+        date(2014, 4, 4),
+        {
+            entry: allocation(subject, entry, GOOGL=1),
+            processing: allocation(subject, processing, GOOGL=0.5),
+        },
+    )
+
+
+def test_google_distribution_preserves_distinct_parent_and_child_economics() -> None:
+    result = run_google()
+    snapshot = next(
+        item for item in result.snapshots if item.as_of.date() == date(2014, 4, 3)
+    )
+    positions = {item.ticker: item for item in snapshot.positions}
+    assert set(positions) == {"GOOG", "GOOGL"}
+    assert positions["GOOGL"].quantity == 1
+    assert positions["GOOGL"].average_cost == 1_000
+    assert positions["GOOG"].quantity == 1
+    assert positions["GOOG"].average_cost is None
+    assert positions["GOOG"].cost_basis_status == CostBasisStatus.UNALLOCATED
+    assert snapshot.nav == 1_000
+    assert result.cash_flows == []
+    transformation = result.corporate_action_transformations[0]
+    assert transformation.event_id == GOOGLE_EVENT
+    assert transformation.record_date == date(2014, 3, 27)
+    assert transformation.entitlement_date == date(2014, 4, 2)
+    assert transformation.quantity_before == 1
+    assert transformation.quantity_after == 1
+    assert transformation.distributed_security == "GOOG"
+    assert transformation.distributed_quantity == 1
+
+
+def test_google_received_holding_and_strategy_purchase_merge_without_duplicates() -> None:
+    subject = engine(google_store(), cash=1_000)
+    entry, processing = date(2014, 3, 26), date(2014, 4, 3)
+    result = subject.run(
+        entry,
+        date(2014, 4, 4),
+        {
+            entry: allocation(subject, entry, GOOGL=1),
+            processing: allocation(subject, processing, GOOGL=0.25, GOOG=0.75),
+        },
+    )
+    goog_positions = [
+        item for item in result.snapshots[-1].positions if item.ticker == "GOOG"
+    ]
+    assert len(goog_positions) == 1
+    assert goog_positions[0].quantity == 1.5
+    assert goog_positions[0].cost_basis_status == CostBasisStatus.UNALLOCATED
+
+
+def test_google_regular_way_purchase_after_record_date_acquires_entitlement() -> None:
+    subject = engine(google_store(), cash=1_000)
+    decision = date(2014, 4, 1)
+    result = subject.run(
+        decision,
+        date(2014, 4, 3),
+        {decision: allocation(subject, decision, GOOGL=1)},
+    )
+    assert result.corporate_action_transformations[0].distributed_quantity == 1
+
+
+def test_google_regular_way_sale_after_record_date_loses_entitlement() -> None:
+    subject = engine(google_store(), cash=1_000)
+    entry, sale_decision = date(2014, 3, 26), date(2014, 4, 1)
+    result = subject.run(
+        entry,
+        date(2014, 4, 3),
+        {
+            entry: allocation(subject, entry, GOOGL=1),
+            sale_decision: allocation(subject, sale_decision, GOOGL=0.5),
+        },
+    )
+    assert result.corporate_action_transformations[0].distributed_quantity == 0.5
+
+
+def test_google_missing_distributed_or_parent_raw_data_blocks() -> None:
+    entry = date(2014, 3, 26)
+    missing_goog = engine(google_store(include_goog=False), cash=1_000)
+    with pytest.raises(BacktestDataError, match="auxiliary-security raw open"):
+        missing_goog.run(
+            entry,
+            date(2014, 4, 3),
+            {entry: allocation(missing_goog, entry, GOOGL=1)},
+        )
+
+    missing_googl = engine(
+        google_store(include_processing_parent=False), cash=1_000,
+    )
+    with pytest.raises(BacktestDataError, match="parent-security raw open"):
+        missing_googl.run(
+            entry,
+            date(2014, 4, 3),
+            {entry: allocation(missing_googl, entry, GOOGL=1)},
+        )
+
+
+def test_google_transformation_is_deterministic() -> None:
+    assert (
+        run_google().corporate_action_transformations
+        == run_google().corporate_action_transformations
+    )
+
+
 def test_unknown_complex_event_still_blocks_with_reviewed_registry_present() -> None:
     d1, d2, event_day = date(2025, 1, 2), date(2025, 1, 3), date(2025, 1, 6)
     store = MemoryMarketStore(
@@ -583,3 +726,40 @@ def test_distributed_abbv_can_later_be_selected_from_development_universe() -> N
         FeatureStore(rows), universe, XNYSTradingCalendar(),
     ).generate_allocations(day, day).allocations[day]
     assert generated.weights == {"ABBV": 1.0}
+
+
+def test_goog_and_googl_are_independently_strategy_eligible() -> None:
+    day = date(2015, 1, 2)
+    base = {
+        "decision_date": day,
+        "decision_time": datetime(2015, 1, 2, 20, 15, tzinfo=NY),
+        "momentum_20d": 0.1,
+    }
+    rows = pd.DataFrame([
+        {**base, "ticker": "GOOG", "model_eligible": True},
+        {**base, "ticker": "GOOGL", "model_eligible": True},
+    ])
+    universe = UniverseConfig.model_validate({
+        "benchmark": "SPY",
+        "asset_class": "US_EQUITY",
+        "universe_type": "development_fixed",
+        "description": "test",
+        "universe": {
+            "name": "test",
+            "point_in_time": False,
+            "survivorship_bias_warning": True,
+            "as_of": "2026-10-05",
+        },
+        "tickers": ["GOOG", "GOOGL"],
+    })
+    strategy = EqualWeightStrategy(
+        FeatureStore(rows), universe, XNYSTradingCalendar(),
+    )
+    both = strategy.generate_allocations(day, day).allocations[day]
+    assert both.weights == {"GOOG": 0.5, "GOOGL": 0.5}
+
+    rows.loc[rows["ticker"] == "GOOG", "model_eligible"] = False
+    only_class_a = EqualWeightStrategy(
+        FeatureStore(rows), universe, XNYSTradingCalendar(),
+    ).generate_allocations(day, day).allocations[day]
+    assert only_class_a.weights == {"GOOGL": 1.0}

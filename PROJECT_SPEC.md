@@ -136,6 +136,14 @@ valorar/ejecutar y nunca modifican la historia de precios. NAV sigue siendo la
 fuente de performance; si falta basis, el total de trading P&L queda explícitamente
 no disponible. Datos ausentes de un security distribuido invalidan el run.
 
+Phase 2B.1.2 modela la distribución Google 2014 como la misma economía genérica
+`parent remains + distributed security`: ownership regular-way de GOOGL se
+observa al cierre de 2014-04-02 y genera 1 GOOG Class C por GOOGL Class A antes
+del open siguiente. La lineage de Tiingo está restated según la instrucción de
+Nasdaq: GOOGL contiene Class A histórica y GOOG comienza con Class C when-issued
+el 2014-03-27. El pseudo-dividendo GOOGL se consume; no existe split del
+proveedor. Ambas clases siguen siendo activos independientes del universo.
+
 El accounting usa costo promedio y excluye comisiones del costo unitario: el
 `fill_price` determina average cost y la comisión reduce cash/NAV. Una venta
 realiza `(fill_price - average_cost) × quantity - commission`; el P&L no realizado

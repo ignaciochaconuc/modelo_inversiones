@@ -158,6 +158,14 @@ Si ya existe una posición del security distribuido, las quantities se combinan
 en una sola posición y todo el basis queda conservadoramente no asignado. La
 falta de datos del security requerido bloquea la simulación.
 
+La identidad económica no se deriva únicamente del ticker. Para Google 2014,
+Nasdaq trasladó la historia Class A del antiguo `GOOG` al nuevo `GOOGL` y la
+historia when-issued Class C `GOOCV` al `GOOG` posterior. Tiingo entrega esa
+lineage restated: GOOGL conserva Class A pre-evento y GOOG empieza como Class C
+el 2014-03-27. El registry enlaza esas representaciones verificadas sin branches
+por ticker ni duplicación de Class A. Los treatments de distribución requieren
+raw open válido tanto del parent como del security recibido en processing date.
+
 Los IDs deterministas enlazan allocation, order y fill. `risk_decision_id` deja
 preparado el vínculo futuro, pero Phase 2A.2 no integra Risk Manager: el input del
 simulador no constituye una nueva ruta de ejecución y la autoridad definida en

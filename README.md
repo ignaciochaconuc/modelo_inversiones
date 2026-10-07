@@ -103,7 +103,7 @@ no un miembro del universo invertible. No se reutiliza `PaperExecutor` ni se
 modifica la autoridad de riesgo.
 
 La validación real 2010-01-01 a 2026-10-02 completa SPY y Momentum. Equal Weight
-supera MDLZ y ABT/ABBV, y se detiene en el siguiente evento no revisado, GOOGL
-2014-04-03; por eso Phase 2 continúa validada solo parcialmente.
+supera MDLZ, ABT/ABBV y Google, y se detiene en el siguiente evento no revisado,
+RTX 2020-04-03; por eso Phase 2 continúa validada solo parcialmente.
 
 Phases: 0 Architecture + feature store; 1 ingestión + baseline cuantitativo; 2 backtesting; 3 modelos baseline; 4 News; 5 Analyst + Earnings; 6 Fundamental + Macro + Event; 7 Portfolio + Risk; 8 paper trading; 9 live supervisado; 10 posible ejecución automática. Crypto será una expansión con schemas y predictores separados.

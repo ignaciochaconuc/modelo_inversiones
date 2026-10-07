@@ -2,12 +2,12 @@
   "comparison_version": "baseline-comparison-v1",
   "failures": {
     "equal_weight": {
-      "error": "unmodelled corporate action for GOOGL on 2014-04-03: event_id=9aef821b433135154689 reason=complex_distribution",
+      "error": "unmodelled corporate action for RTX on 2020-04-03: event_id=18fb85423936f266f806 reason=complex_distribution",
       "error_type": "UnmodelledCorporateActionError",
-      "event_date": "2014-04-03",
-      "event_id": "9aef821b433135154689",
+      "event_date": "2020-04-03",
+      "event_id": "18fb85423936f266f806",
       "reason": "complex_distribution",
-      "ticker": "GOOGL"
+      "ticker": "RTX"
     }
   },
   "strategies": {
@@ -17,7 +17,7 @@
       "cagr": 0.24720010053775976,
       "cumulative_return": 39.37929550973266,
       "max_drawdown": -0.2935245628841645,
-      "run_id": "baseline_1d75577c5bfa1082770c",
+      "run_id": "baseline_b498258e26d198a1e8e1",
       "sharpe_ratio": 1.162194905934589,
       "sortino_ratio": 1.6796557761765252,
       "strategy_version": "momentum-20d-top10-v1",
@@ -30,7 +30,7 @@
       "cagr": 0.14125397464925893,
       "cumulative_return": 8.134653597681528,
       "max_drawdown": -0.3369883290471869,
-      "run_id": "baseline_aab5ff975dd27a89a00c",
+      "run_id": "baseline_54c7fdc9e8e2f5812625",
       "sharpe_ratio": 0.8620246500484199,
       "sortino_ratio": 1.2164730817481284,
       "strategy_version": "spy-buy-hold-v1",

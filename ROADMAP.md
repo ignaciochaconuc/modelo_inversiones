@@ -109,9 +109,10 @@ diario del universo elegible y momentum 20d top-10 diario. Todos producen
 `TargetAllocation` y reutilizan engine y reporting sin acceder a targets.
 
 La validación local 2010-01-01 a 2026-10-02 completa SPY y momentum. Tras Phase
-2B.1.1, equal-weight supera MDLZ y ABT/ABBV y se detiene correctamente en el
-siguiente evento no revisado: `GOOGL` 2014-04-03, `complex_distribution`, event
-ID `9aef821b433135154689`. No se creó un treatment automático. Por ello Phase 2
+2B.1.2, equal-weight supera MDLZ, ABT/ABBV y Google, y se detiene correctamente
+en el siguiente evento no revisado: `RTX` 2020-04-03,
+`complex_distribution`, event ID `18fb85423936f266f806`. No se creó un
+treatment automático. Por ello Phase 2
 sigue parcialmente validada con datos reales.
 
 ### Phase 2B.1 — Reviewed complex corporate actions
@@ -136,8 +137,20 @@ genérico de spin-off con record date 2012-12-12, entitlement 2012-12-31,
 distribución 1:1 el 2013-01-01 y procesamiento pre-open 2013-01-02. ABBV mantiene
 basis no asignado, consume el pseudo-dividendo Tiingo y continúa siendo miembro
 normal del universo invertible; no se agregaron excepciones por ticker. El rerun
-confirmó que ABT ya no bloquea y avanzó hasta GOOGL 2014-04-03, que permanece
-intencionalmente unsupported.
+confirmó que ABT ya no bloquea. Google fue revisado posteriormente en Phase
+2B.1.2 sin cambiar la política conservadora.
+
+### Phase 2B.1.2 — Google 2014 Class C distribution
+
+**Status:** implementation complete; real-data validation partial
+
+Reutiliza la distribución genérica para mantener GOOGL Class A y añadir GOOG
+Class C 1:1. Se verificó la lineage restated de Tiingo/Nasdaq, el entitlement
+regular-way al cierre de 2014-04-02, la ausencia de split y el pseudo-dividendo
+GOOGL consumido. GOOG y GOOGL siguen siendo activos invertibles independientes;
+no se añadió lógica hardcodeada por ticker. El rerun confirmó que Google ya no
+bloquea y avanzó hasta RTX 2020-04-03, que permanece intencionalmente
+unsupported.
 
 ## Phase 3 — Baseline predictive models
 

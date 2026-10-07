@@ -1,13 +1,13 @@
 {
-  "error": "unmodelled corporate action for GOOGL on 2014-04-03: event_id=9aef821b433135154689 reason=complex_distribution",
+  "error": "unmodelled corporate action for RTX on 2020-04-03: event_id=18fb85423936f266f806 reason=complex_distribution",
   "error_type": "UnmodelledCorporateActionError",
-  "event_date": "2014-04-03",
-  "event_id": "9aef821b433135154689",
+  "event_date": "2020-04-03",
+  "event_id": "18fb85423936f266f806",
   "reason": "complex_distribution",
   "requested_end": "2026-10-02",
   "requested_start": "2010-01-01",
   "status": "failed",
   "strategy_name": "equal_weight",
   "strategy_version": "equal-weight-v1",
-  "ticker": "GOOGL"
+  "ticker": "RTX"
 }
