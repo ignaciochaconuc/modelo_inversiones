@@ -44,6 +44,7 @@ class ReviewedTreatmentBase(BaseModel):
     event_id: str = Field(min_length=1)
     ticker: str = Field(min_length=1)
     event_type: str = Field(min_length=1)
+    record_date: date | None = None
     effective_date: date
     processing_date: date
     entitlement_date: date
@@ -64,6 +65,8 @@ class ReviewedTreatmentBase(BaseModel):
 
     @model_validator(mode="after")
     def validate_dates(self) -> "ReviewedTreatmentBase":
+        if self.record_date is not None and self.record_date > self.entitlement_date:
+            raise ValueError("record_date must be <= entitlement_date")
         if self.entitlement_date > self.effective_date:
             raise ValueError("entitlement_date must be <= effective_date")
         if self.effective_date > self.processing_date:
@@ -90,6 +93,8 @@ class SpinOffDistributionTreatment(ReviewedTreatmentBase):
 
     @model_validator(mode="after")
     def validate_consumed_actions(self) -> "SpinOffDistributionTreatment":
+        if self.record_date is None:
+            raise ValueError("spin-off treatment requires its legal record_date")
         if ProviderActionType.DIVIDEND not in self.provider_action_types_consumed:
             raise ValueError("spin-off treatment must consume the provider dividend record")
         return self

@@ -9,7 +9,8 @@ Accepted.
 ADR-011 blocks a historical run when a held position crosses a complex corporate
 action whose economics are not represented by simple split/dividend handling.
 That conservative default prevented artificial continuity, but the 2012 Kraft
-spin-off and 2013 MetroPCS recapitalization have sufficiently precise primary
+spin-offs of Kraft and Abbott and the 2013 MetroPCS recapitalization have
+sufficiently precise primary
 evidence to model the assets and cash actually received by shareholders.
 
 A provider may encode a complex event as an extraordinary dividend, split, or
@@ -32,8 +33,24 @@ adjusted history, strategy allocations, or eligibility. Provider split/dividend
 records listed as consumed by a treatment are suppressed for that event session
 to prevent double counting.
 
-The Kraft/Mondelez treatment captures MDLZ quantity after the 2012-09-19 close,
-uses the 2012-10-01 distribution date, and creates one KRFT share for every three
+### Record date vs regular-way entitlement
+
+`record_date` records the issuer's legal record date. `entitlement_date` is the
+session when this simulator observes ownership for the economic transformation;
+the two dates need not be equal. The engine simulates only the normal parent
+ticker and interprets every trade as regular-way. It does not simulate separate
+ex-distribution or when-issued markets.
+
+For a due-bill spin-off, regular-way parent shares trade with the distribution
+right through the distribution date. A regular-way sale after record date also
+sells the right, while a regular-way purchase acquires it. The treatment
+therefore observes the parent position after the final regular-way close before
+distribution. This is a simulation mapping of documented market mechanics, not
+a redefinition of the legal record date.
+
+The Kraft/Mondelez treatment records 2012-09-19 as the legal record date,
+captures regular-way MDLZ quantity after the 2012-10-01 close, and creates one
+KRFT share for every three
 entitled parent shares before the 2012-10-02 open. MDLZ remains held. KRFT is a
 corporate-action auxiliary security: the engine loads and values its raw data,
 but it is not added to `development_fixed` or strategy eligibility. If the next
@@ -47,6 +64,15 @@ report. With fractional shares enabled, the exact entitlement is retained. With
 fractions disabled, a non-integral KRFT entitlement blocks because the actual
 net proceeds of the distribution agent's sale are not available; no proxy was
 selected for this reviewed event.
+
+The Abbott treatment records 2012-12-12 as the legal record date, captures ABT
+regular-way ownership after the 2012-12-31 close, and creates one ABBV share per
+entitled ABT share before the 2013-01-02 open. ABT remains held. Tiingo's
+34.649721 extraordinary dividend is consumed by the treatment. ABBV is both a
+possible distributed holding and a configured development-universe asset: being
+received does not mean a strategy selected it, but a later eligible allocation
+may buy it normally. ABBV basis remains unallocated; Abbott's issuer reference
+allocation is non-binding guidance and is not an active accounting rule.
 
 The MetroPCS treatment captures the pre-event TMUS quantity after the 2013-04-30
 close and, before the 2013-05-01 open, applies a 0.5 share factor plus USD 4.0491
@@ -67,6 +93,15 @@ Primary evidence:
 - Mondelez 2012-10-01 completion Form 8-K: completed distribution and resulting
   independent KRFT security.
   <https://www.sec.gov/Archives/edgar/data/1103982/000119312512411522/d418430d8k.htm>
+- Kraft Foods Group information statement: regular-way shares carried the
+  distribution entitlement through the distribution date.
+  <https://www.sec.gov/Archives/edgar/data/1545158/000119312512146220/d317589dex991.htm>
+- Abbott 2013-01-01 Form 8-K: completed 1:1 ABBV distribution and legal record
+  date.
+  <https://www.sec.gov/Archives/edgar/data/1800/000110465913001016/a13-2169_18k.htm>
+- AbbVie information statement: regular-way/due-bill trading, fractions, and
+  first regular trading after distribution.
+  <https://www.sec.gov/Archives/edgar/data/1551152/000104746913000017/a2212291zex-99_1.htm>
 - T-Mobile US 2013-04-30 Form 8-K: 0.5 factor and exact USD 4.0491 cash amount.
   <https://www.sec.gov/Archives/edgar/data/1283699/000119312513193449/d527693d8k.htm>
 
@@ -74,8 +109,8 @@ Primary evidence:
 
 - Reviewed events can preserve actual economic NAV without adjusted-price
   heuristics.
-- Entitlement dates are distinct from event detection and processing dates;
-  purchases after entitlement do not receive distributions.
+- Legal record dates, simulated regular-way entitlement observations, event
+  detection, and processing dates remain distinct and auditable.
 - Auxiliary holdings expand the engine's required market-data inputs, not the
   investable universe.
 - Reports distinguish complete NAV performance from incomplete tax-basis P&L.

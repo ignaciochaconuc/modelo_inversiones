@@ -45,17 +45,21 @@ class PortfolioLedger:
             cash_required = fill.notional + fill.commission
             if cash_required > self.cash + VALUE_TOLERANCE:
                 raise ValueError("insufficient cash for buy fill")
-            if current and current.cost_basis_status == CostBasisStatus.UNALLOCATED:
-                raise ValueError("cannot merge a purchase into an unallocated-basis position")
             old_quantity = current.quantity if current else 0.0
-            old_cost = current.average_cost if current else 0.0
-            assert old_cost is not None
             new_quantity = old_quantity + fill.quantity
-            average_cost = (old_quantity * old_cost + fill.notional) / new_quantity
+            if current and current.cost_basis_status == CostBasisStatus.UNALLOCATED:
+                average_cost = None
+                cost_basis_status = CostBasisStatus.UNALLOCATED
+                self._pnl_incomplete_tickers.add(fill.ticker)
+            else:
+                old_cost = current.average_cost if current else 0.0
+                assert old_cost is not None
+                average_cost = (old_quantity * old_cost + fill.notional) / new_quantity
+                cost_basis_status = CostBasisStatus.KNOWN
             new_cash = self.cash - cash_required
             self._positions[fill.ticker] = BacktestPosition(
                 ticker=fill.ticker, quantity=new_quantity, average_cost=average_cost,
-                market_price=fill.fill_price,
+                market_price=fill.fill_price, cost_basis_status=cost_basis_status,
             )
             self.cash = 0.0 if abs(new_cash) <= VALUE_TOLERANCE else new_cash
             return
@@ -88,13 +92,11 @@ class PortfolioLedger:
         """Add an auxiliary holding without inventing a tax/accounting cost basis."""
         self._validate_quantity(quantity)
         ticker = ticker.strip().upper()
-        if ticker in self._positions:
-            raise ValueError(
-                f"cannot combine distributed {ticker} with an existing position"
-            )
+        current = self._positions.get(ticker)
+        combined_quantity = quantity + (0.0 if current is None else current.quantity)
         self._positions[ticker] = BacktestPosition(
             ticker=ticker,
-            quantity=quantity,
+            quantity=combined_quantity,
             average_cost=None,
             market_price=market_price,
             cost_basis_status=CostBasisStatus.UNALLOCATED,

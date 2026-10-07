@@ -8,7 +8,8 @@ import pytest
 
 from investment_system.backtesting import (
     BacktestConfig, BacktestDataError, CashFlowType, CostBasisStatus,
-    HistoricalBacktestEngine, OrderSide, TargetAllocation,
+    HistoricalBacktestEngine, OrderSide, PortfolioLedger, SimulatedFill,
+    TargetAllocation,
     UnmodelledCorporateActionError, build_backtest_report,
     load_reviewed_corporate_action_treatments,
 )
@@ -144,6 +145,8 @@ def mdlz_store(*, include_krft: bool = True) -> MemoryMarketStore:
         "MDLZ": bars("MDLZ", [
             (date(2012, 9, 18), 10, 10),
             (record, 10, 42),
+            (date(2012, 9, 24), 42, 42),
+            (date(2012, 9, 25), 42, 42),
             (date(2012, 10, 1), 42, 42),
             (processing, 28, 28),
             (liquidation, 28, 28),
@@ -246,7 +249,7 @@ def test_mdlz_missing_auxiliary_market_data_blocks_simulation() -> None:
         )
 
 
-def test_post_record_date_purchase_does_not_receive_mdlz_distribution() -> None:
+def test_purchase_after_mdlz_entitlement_close_does_not_receive_distribution() -> None:
     subject = engine(mdlz_store(), cash=300)
     decision = date(2012, 10, 1)
     result = subject.run(
@@ -256,6 +259,37 @@ def test_post_record_date_purchase_does_not_receive_mdlz_distribution() -> None:
     )
     assert result.corporate_action_transformations == []
     assert "KRFT" not in {item.ticker for item in result.snapshots[-1].positions}
+
+
+def test_mdlz_regular_way_sale_after_record_date_reduces_entitlement() -> None:
+    subject = engine(mdlz_store(), cash=300)
+    entry, sale_decision = date(2012, 9, 18), date(2012, 9, 24)
+    result = subject.run(
+        entry,
+        date(2012, 10, 2),
+        {
+            entry: allocation(subject, entry, MDLZ=1),
+            sale_decision: allocation(subject, sale_decision, MDLZ=0.5),
+        },
+    )
+    transformation = result.corporate_action_transformations[0]
+    assert transformation.record_date == date(2012, 9, 19)
+    assert transformation.entitlement_date == date(2012, 10, 1)
+    assert transformation.quantity_before == 15
+    assert transformation.distributed_quantity == 5
+
+
+def test_mdlz_regular_way_purchase_after_record_date_acquires_entitlement() -> None:
+    subject = engine(mdlz_store(), cash=1_260)
+    decision = date(2012, 9, 24)
+    result = subject.run(
+        decision,
+        date(2012, 10, 2),
+        {decision: allocation(subject, decision, MDLZ=1)},
+    )
+    transformation = result.corporate_action_transformations[0]
+    assert transformation.quantity_before == 30
+    assert transformation.distributed_quantity == 10
 
 
 def tmus_store() -> MemoryMarketStore:
@@ -305,6 +339,179 @@ def test_tmus_result_and_transformation_are_deterministic() -> None:
     assert run_tmus().model_dump() == run_tmus().model_dump()
 
 
+def abt_store(*, include_abbv: bool = True) -> MemoryMarketStore:
+    processing = date(2013, 1, 2)
+    local_bars = {
+        "ABT": bars("ABT", [
+            (date(2012, 12, 11), 65, 65),
+            (date(2012, 12, 12), 65, 65),
+            (date(2012, 12, 27), 65, 65),
+            (date(2012, 12, 28), 65, 65),
+            (date(2012, 12, 31), 65, 65),
+            (processing, 30, 30),
+            (date(2013, 1, 3), 30, 30),
+        ]),
+    }
+    if include_abbv:
+        local_bars["ABBV"] = bars("ABBV", [
+            (processing, 35, 35),
+            (date(2013, 1, 3), 35, 35),
+        ])
+    return MemoryMarketStore(
+        local_bars,
+        {"ABT": pd.DataFrame([
+            provider_action(
+                "ABT", processing, "dividend", dividend=34.649721,
+            ),
+        ])},
+        event(ABT_EVENT, "ABT", processing, "complex_distribution"),
+    )
+
+
+ABT_EVENT = "b35533b35976ca04e483"
+
+
+def run_abt():
+    subject = engine(abt_store(), cash=650)
+    entry, processing = date(2012, 12, 11), date(2013, 1, 2)
+    return subject.run(
+        entry,
+        date(2013, 1, 3),
+        {
+            entry: allocation(subject, entry, ABT=1),
+            processing: allocation(subject, processing, ABT=6 / 13),
+        },
+    )
+
+
+def test_abt_distributes_one_for_one_without_pseudo_dividend_double_count() -> None:
+    result = run_abt()
+    snapshot = next(
+        item for item in result.snapshots if item.as_of.date() == date(2013, 1, 2)
+    )
+    positions = {item.ticker: item for item in snapshot.positions}
+    assert positions["ABT"].quantity == 10
+    assert positions["ABT"].average_cost == 65
+    assert positions["ABBV"].quantity == 10
+    assert positions["ABBV"].average_cost is None
+    assert positions["ABBV"].cost_basis_status == CostBasisStatus.UNALLOCATED
+    assert snapshot.nav == 650
+    assert result.cash_flows == []
+    transformation = result.corporate_action_transformations[0]
+    assert transformation.event_id == ABT_EVENT
+    assert transformation.processed_at == XNYSTradingCalendar().session_open(
+        date(2013, 1, 2),
+    )
+    assert transformation.record_date == date(2012, 12, 12)
+    assert transformation.entitlement_date == date(2012, 12, 31)
+    assert transformation.quantity_before == 10
+    assert transformation.quantity_after == 10
+    assert transformation.distributed_security == "ABBV"
+    assert transformation.distributed_quantity == 10
+
+
+def test_abt_auxiliary_holding_is_liquidated_by_implicit_zero_target() -> None:
+    result = run_abt()
+    sale = next(
+        fill for fill in result.fills
+        if fill.ticker == "ABBV" and fill.side == OrderSide.SELL
+    )
+    assert sale.filled_at.date() == date(2013, 1, 3)
+    assert "ABBV" not in {item.ticker for item in result.snapshots[-1].positions}
+    assert build_backtest_report(result).total_trading_pnl is None
+
+
+def test_abt_regular_way_purchase_after_record_date_acquires_entitlement() -> None:
+    subject = engine(abt_store(), cash=650)
+    decision = date(2012, 12, 27)
+    result = subject.run(
+        decision,
+        date(2013, 1, 2),
+        {decision: allocation(subject, decision, ABT=1)},
+    )
+    assert result.corporate_action_transformations[0].distributed_quantity == 10
+
+
+def test_abt_regular_way_sale_after_record_date_reduces_entitlement() -> None:
+    subject = engine(abt_store(), cash=650)
+    entry, sale_decision = date(2012, 12, 11), date(2012, 12, 27)
+    result = subject.run(
+        entry,
+        date(2013, 1, 2),
+        {
+            entry: allocation(subject, entry, ABT=1),
+            sale_decision: allocation(subject, sale_decision, ABT=0.5),
+        },
+    )
+    assert result.corporate_action_transformations[0].distributed_quantity == 5
+
+
+def test_abt_fractional_entitlement_follows_backtest_share_policy() -> None:
+    entry = date(2012, 12, 11)
+    fractional_subject = engine(abt_store(), cash=682.5)
+    fractional = fractional_subject.run(
+        entry,
+        date(2013, 1, 2),
+        {entry: allocation(fractional_subject, entry, ABT=1)},
+    )
+    assert fractional.corporate_action_transformations[0].distributed_quantity == 10.5
+
+    whole_subject = engine(abt_store(), cash=650, fractional=False)
+    whole = whole_subject.run(
+        entry,
+        date(2013, 1, 2),
+        {entry: allocation(whole_subject, entry, ABT=1)},
+    )
+    assert whole.corporate_action_transformations[0].distributed_quantity == 10
+
+
+def test_abt_transformation_is_deterministic() -> None:
+    assert (
+        run_abt().corporate_action_transformations
+        == run_abt().corporate_action_transformations
+    )
+
+
+def test_abt_missing_distributed_security_data_blocks() -> None:
+    subject = engine(abt_store(include_abbv=False), cash=650)
+    entry = date(2012, 12, 11)
+    with pytest.raises(BacktestDataError, match="auxiliary-security raw open"):
+        subject.run(
+            entry,
+            date(2013, 1, 2),
+            {entry: allocation(subject, entry, ABT=1)},
+        )
+
+
+def test_existing_abbv_position_is_merged_and_can_receive_later_buys() -> None:
+    ledger = PortfolioLedger(BacktestConfig(initial_cash=1_000))
+    first = SimulatedFill(
+        fill_id="first",
+        order_id="order-first",
+        allocation_id="allocation-first",
+        ticker="ABBV",
+        side=OrderSide.BUY,
+        quantity=2,
+        raw_open_price=35,
+        fill_price=35,
+        notional=70,
+        filled_at=datetime(2012, 12, 31, 9, 30, tzinfo=NY),
+    )
+    ledger.apply_fill(first)
+    ledger.add_unallocated_distribution("ABBV", 10, market_price=35)
+    second = first.model_copy(update={
+        "fill_id": "second",
+        "order_id": "order-second",
+        "quantity": 1,
+        "notional": 35,
+    })
+    ledger.apply_fill(second)
+    position = ledger.positions["ABBV"]
+    assert position.quantity == 13
+    assert position.average_cost is None
+    assert position.cost_basis_status == CostBasisStatus.UNALLOCATED
+
+
 def test_unknown_complex_event_still_blocks_with_reviewed_registry_present() -> None:
     d1, d2, event_day = date(2025, 1, 2), date(2025, 1, 3), date(2025, 1, 6)
     store = MemoryMarketStore(
@@ -348,3 +555,31 @@ def test_auxiliary_security_does_not_enter_strategy_universe() -> None:
     generated = strategy.generate_allocations(day, day).allocations[day]
     assert generated.weights == {"MDLZ": 1.0}
     assert "KRFT" not in universe.tickers
+
+
+def test_distributed_abbv_can_later_be_selected_from_development_universe() -> None:
+    day = date(2014, 1, 2)
+    rows = pd.DataFrame([{
+        "ticker": "ABBV",
+        "decision_date": day,
+        "decision_time": datetime(2014, 1, 2, 20, 15, tzinfo=NY),
+        "model_eligible": True,
+        "momentum_20d": 0.1,
+    }])
+    universe = UniverseConfig.model_validate({
+        "benchmark": "SPY",
+        "asset_class": "US_EQUITY",
+        "universe_type": "development_fixed",
+        "description": "test",
+        "universe": {
+            "name": "test",
+            "point_in_time": False,
+            "survivorship_bias_warning": True,
+            "as_of": "2026-10-05",
+        },
+        "tickers": ["ABBV"],
+    })
+    generated = EqualWeightStrategy(
+        FeatureStore(rows), universe, XNYSTradingCalendar(),
+    ).generate_allocations(day, day).allocations[day]
+    assert generated.weights == {"ABBV": 1.0}

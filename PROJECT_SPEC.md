@@ -120,9 +120,15 @@ Una acción corporativa compleja no modelable sobre una posición mantenida
 invalida el run. Allocation, order y fill poseen IDs deterministas enlazados.
 
 Phase 2B.1 agrega treatments económicos revisados, tipados y versionados sin
-relajar ese bloqueo por defecto. MDLZ 2012 distribuye 1 KRFT por cada 3 acciones
-con derecho al cierre de 2012-09-19; KRFT es auxiliar, no invertible, y conserva
-basis no asignado hasta una futura convención fiscal. TMUS 2013 aplica factor 0.5
+relajar ese bloqueo por defecto. En spin-offs con due bills, `record_date` es la
+fecha legal y `entitlement_date` observa la posición regular-way inmediatamente
+antes de distribución, porque el engine no simula mercados ex-distribution ni
+when-issued. MDLZ 2012 distribuye 1 KRFT por cada 3 acciones mantenidas al cierre
+de 2012-10-01; KRFT es auxiliar, no invertible. ABT distribuye 1 ABBV por acción
+mantenida al cierre de 2012-12-31 antes de la distribución de 2013-01-01; ABBV
+puede ser simultáneamente security recibido y miembro normal de
+`development_fixed`. Ambos securities distribuidos conservan basis no asignado
+hasta una futura convención fiscal. TMUS 2013 aplica factor 0.5
 y acredita USD 4.0491 por acción pre-split como `RECAPITALIZATION_CASH`. Los
 treatments consumen las acciones genéricas equivalentes del proveedor para no
 duplicarlas, emiten `CorporateActionTransformation`, usan solo raw prices para

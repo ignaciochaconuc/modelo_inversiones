@@ -1,14 +1,15 @@
-schema_version: "1"
+schema_version: "2"
 treatments:
   - event_id: "89f2ab472a86d18abc22"
     ticker: "MDLZ"
     event_type: "complex_distribution"
+    record_date: 2012-09-19
     effective_date: 2012-10-01
     processing_date: 2012-10-02
-    entitlement_date: 2012-09-19
+    entitlement_date: 2012-10-01
     entitlement_timing: "post_close"
     treatment_type: "spin_off_distribution"
-    treatment_version: "1"
+    treatment_version: "2"
     provider_action_types_consumed: ["dividend"]
     distributed_ticker: "KRFT"
     shares_per_parent_share: 0.3333333333333333
@@ -17,12 +18,40 @@ treatments:
     evidence:
       - "https://www.sec.gov/Archives/edgar/data/1103982/000119312512355657/d397214d8k.htm"
       - "https://www.sec.gov/Archives/edgar/data/1103982/000119312512411522/d418430d8k.htm"
+      - "https://www.sec.gov/Archives/edgar/data/1545158/000119312512146220/d317589dex991.htm"
     review_notes: >-
-      Holders of record at the 2012-09-19 close received one KRFT share per
-      three parent shares at 17:00 ET on 2012-10-01. Regular separate trading
-      and the first post-distribution valuation are mapped to 2012-10-02.
+      The legal record date was 2012-09-19, but regular-way parent shares traded
+      with the KRFT entitlement through distribution. Because the simulator
+      represents only regular-way ownership, entitlement is observed at the
+      2012-10-01 close. One KRFT share per three entitled parent shares is added
+      before the first post-distribution regular session on 2012-10-02.
       Fractional shares were aggregated and sold, but the actual net settlement
       price is absent, so whole-share mode blocks if a fraction would result.
+  - event_id: "b35533b35976ca04e483"
+    ticker: "ABT"
+    event_type: "complex_distribution"
+    record_date: 2012-12-12
+    effective_date: 2013-01-01
+    processing_date: 2013-01-02
+    entitlement_date: 2012-12-31
+    entitlement_timing: "post_close"
+    treatment_type: "spin_off_distribution"
+    treatment_version: "1"
+    provider_action_types_consumed: ["dividend"]
+    distributed_ticker: "ABBV"
+    shares_per_parent_share: 1.0
+    cost_basis_policy: "unallocated"
+    fractional_policy: "block_without_actual_settlement_price"
+    evidence:
+      - "https://www.sec.gov/Archives/edgar/data/1800/000110465913001016/a13-2169_18k.htm"
+      - "https://www.sec.gov/Archives/edgar/data/1551152/000104746913000017/a2212291zex-99_1.htm"
+    review_notes: >-
+      The legal record date was 2012-12-12, but regular-way ABT traded with the
+      ABBV entitlement through distribution. The simulator observes regular-way
+      ownership at the 2012-12-31 close and adds one ABBV share per entitled ABT
+      share before the first regular session on 2013-01-02. Fractional shares
+      were aggregated and sold; without actual net settlement proceeds,
+      whole-share mode blocks only if a fractional entitlement exists.
   - event_id: "e653f71b02957333e821"
     ticker: "TMUS"
     event_type: "complex_recapitalization"

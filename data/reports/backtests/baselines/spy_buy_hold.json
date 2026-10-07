@@ -46,7 +46,7 @@
         "sortino_ratio": 1.2164730817481284,
         "start_date": "2010-01-04"
       },
-      "run_id": "baseline_1eb78d917d021b57c0b7:benchmark:SPY:backtest-metrics-v1",
+      "run_id": "baseline_aab5ff975dd27a89a00c:benchmark:SPY:backtest-metrics-v2",
       "ticker": "SPY",
       "tracking_difference": 0.0
     },
@@ -54,7 +54,10 @@
       "cash_in_lieu": 0.0,
       "cash_in_lieu_count": 0,
       "dividend_cash": 89484.70083905163,
-      "dividend_cash_flow_count": 67
+      "dividend_cash_flow_count": 67,
+      "recapitalization_cash": 0.0,
+      "recapitalization_cash_flow_count": 0,
+      "reviewed_transformation_count": 0
     },
     "costs": {
       "annualized_turnover": 0.07727040917837495,
@@ -89,7 +92,7 @@
       "minimum_cash_weight": 0.0
     },
     "final_unrealized_pnl": 723980.6589291012,
-    "metrics_version": "backtest-metrics-v1",
+    "metrics_version": "backtest-metrics-v2",
     "performance": {
       "annualized_volatility": 0.17046447099038994,
       "cagr": 0.14125397464925893,
@@ -108,15 +111,17 @@
       "start_date": "2010-01-04"
     },
     "realized_pnl": 0.0,
-    "run_id": "baseline_1eb78d917d021b57c0b7",
+    "run_id": "baseline_aab5ff975dd27a89a00c",
     "total_trading_pnl": 723980.6589291012,
+    "trading_pnl_complete": true,
+    "unknown_cost_basis_tickers": [],
     "warnings": [
       "development_fixed universe is not point-in-time and contains survivorship bias"
     ]
   },
   "requested_end": "2026-10-02",
   "requested_start": "2010-01-01",
-  "run_id": "baseline_1eb78d917d021b57c0b7",
+  "run_id": "baseline_aab5ff975dd27a89a00c",
   "status": "completed",
   "strategy_name": "spy_buy_hold",
   "strategy_version": "spy-buy-hold-v1"

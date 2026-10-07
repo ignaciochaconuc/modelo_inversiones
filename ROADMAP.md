@@ -108,11 +108,10 @@ Implementa SPY buy-and-hold con dividendos reinvertidos causalmente, equal-weigh
 diario del universo elegible y momentum 20d top-10 diario. Todos producen
 `TargetAllocation` y reutilizan engine y reporting sin acceder a targets.
 
-La validación local 2010-01-01 a 2026-10-02 completó SPY. Tras Phase 2B.1,
-momentum también completa el rango y aplica el treatment TMUS; equal-weight
-supera MDLZ y se detiene correctamente en el siguiente evento no revisado:
-`ABT` 2013-01-02, `complex_distribution`, event ID
-`b35533b35976ca04e483`. No se creó un treatment automático. Por ello Phase 2
+La validación local 2010-01-01 a 2026-10-02 completa SPY y momentum. Tras Phase
+2B.1.1, equal-weight supera MDLZ y ABT/ABBV y se detiene correctamente en el
+siguiente evento no revisado: `GOOGL` 2014-04-03, `complex_distribution`, event
+ID `9aef821b433135154689`. No se creó un treatment automático. Por ello Phase 2
 sigue parcialmente validada con datos reales.
 
 ### Phase 2B.1 — Reviewed complex corporate actions
@@ -124,9 +123,21 @@ entitlements fechados, securities auxiliares, cash de recapitalización y regist
 de transformación deterministas. El default para cualquier otro evento complejo
 sigue siendo `UnmodelledCorporateActionError`. KRFT se ingirió únicamente como
 dependencia auxiliar y no pertenece al universo invertible. La validación real
-debe detenerse ante el siguiente evento complejo no revisado. El rerun confirmó
-que MDLZ y TMUS ya no bloquean; momentum completó y equal-weight avanzó hasta el
-evento ABT indicado arriba, que permanece intencionalmente bloqueado.
+debe detenerse ante el siguiente evento complejo no revisado. Phase 2B.1.1
+revisó ABT posteriormente sin cambiar esta política.
+
+### Phase 2B.1.1 — Regular-way spin-off entitlement + ABT/ABBV
+
+**Status:** implementation complete; real-data validation partial
+
+Separa `record_date` legal de la observación de entitlement regular-way. MDLZ
+ahora observa ownership al cierre de 2012-10-01. ABT/ABBV reutiliza el treatment
+genérico de spin-off con record date 2012-12-12, entitlement 2012-12-31,
+distribución 1:1 el 2013-01-01 y procesamiento pre-open 2013-01-02. ABBV mantiene
+basis no asignado, consume el pseudo-dividendo Tiingo y continúa siendo miembro
+normal del universo invertible; no se agregaron excepciones por ticker. El rerun
+confirmó que ABT ya no bloquea y avanzó hasta GOOGL 2014-04-03, que permanece
+intencionalmente unsupported.
 
 ## Phase 3 — Baseline predictive models
 

@@ -298,6 +298,8 @@ class CorporateActionTransformation(BaseModel):
     event_id: str = Field(min_length=1)
     ticker: str
     event_type: str = Field(min_length=1)
+    record_date: date | None = None
+    entitlement_date: date
     effective_date: date
     processed_at: datetime
     treatment_type: str = Field(min_length=1)

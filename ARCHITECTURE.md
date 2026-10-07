@@ -140,12 +140,23 @@ los componentes split/dividend con que el proveedor haya representado el mismo
 evento para no duplicarlos. Sin treatment compatible, el evento sigue fallando.
 Las transformaciones nunca reescriben OHLCV raw ni precios históricos.
 
+Para spin-offs con due bills, `record_date` conserva la fecha legal y
+`entitlement_date` identifica cuándo el engine observa la propiedad económica.
+Como no existen mercados ex-distribution ni when-issued en el simulador, todo
+trade del ticker padre se interpreta regular-way: el derecho acompaña a la
+posición hasta el último cierre anterior a la distribución. Una venta posterior
+al record date pierde el derecho y una compra regular-way lo adquiere.
+
 Un spin-off puede crear un `auxiliary security` aunque no esté en
 `development_fixed`. El engine carga sus barras raw, lo mantiene y valora, y el
 target implícito cero permite venderlo en la siguiente apertura; la estrategia
 no lo selecciona ni lo incorpora a elegibilidad. KRFT usa basis no asignado: NAV
 permanece completo, pero P&L de trading se marca incompleto y su total no se
-publica. La falta de datos del security requerido bloquea la simulación.
+publica. ABBV demuestra el caso dual: puede nacer como distribución y seguir
+siendo un activo normal de `development_fixed` elegible en fechas posteriores.
+Si ya existe una posición del security distribuido, las quantities se combinan
+en una sola posición y todo el basis queda conservadoramente no asignado. La
+falta de datos del security requerido bloquea la simulación.
 
 Los IDs deterministas enlazan allocation, order y fill. `risk_decision_id` deja
 preparado el vínculo futuro, pero Phase 2A.2 no integra Risk Manager: el input del
