@@ -53,12 +53,16 @@ El upsert usa `ticker + trading_date + provider` para barras y `ticker + effecti
 - `target_return_5d`
 - `target_return_10d`
 - `target_return_20d`
+- `target_positive_5d`
 - `target_positive_10d`
+- `target_positive_20d`
+- `target_rank_5d`
 - `target_rank_10d`
+- `target_rank_20d`
 
-El objetivo principal es `target_return_10d = P(t+10) / P(t) - 1`; `target_positive_10d` indica si este retorno es positivo. Targets y features permanecen disjuntos y los targets no pueden participar en una decisión.
+El horizonte de referencia es 10 sesiones, pero regression, classification y ranking soportan simétricamente 5, 10 y 20. Los retornos son los targets primarios; positive y rank se derivan del retorno del mismo horizonte. Targets y features permanecen disjuntos y los targets no pueden participar en una decisión.
 
-Targets se guardan en un dataset físico separado y usan una base latest-basis exclusivamente para que splits futuros dentro del horizonte no creen retornos falsos. Cada horizonte apunta a la sesión bursátil exacta obtenida del calendario; si falta la barra de esa sesión, el label queda NULL y no salta a otra observación. Son price returns y no incorporan dividendos. `target_rank_10d` usa rank cross-sectional promedio, normalizado a [0,1], y queda NULL si hay menos de 20 activos válidos en la fecha.
+Targets se guardan en un dataset físico separado y usan una base latest-basis exclusivamente para que splits futuros dentro del horizonte no creen retornos falsos. Cada horizonte persiste su `target_end_date_hd`, la sesión bursátil exacta obtenida del calendario; si falta la barra de esa sesión, el label queda NULL y no salta a otra observación. Son price returns y no incorporan dividendos. Cada rank usa rank cross-sectional promedio del retorno correspondiente, normalizado a [0,1], y queda NULL si hay menos de 20 activos training-eligible en la fecha.
 
 Phase 1D.1 añade integridad conservadora para corporate actions complejas. Los
 eventos se persisten por separado y nunca modifican raw. Features contienen
@@ -85,7 +89,7 @@ Cada llamada puede registrar tokens, cache, costo estimado, latencia, estado, ag
 
 ## Modelos previstos
 
-Se contemplan baseline lineal/logístico, LightGBM, XGBoost, Random Forest y modelos de ranking. Sus objetivos corresponden a regresión (`target_return_10d`), clasificación (`target_positive_10d`) y ranking (`target_rank_10d`). Actualmente solo existen interfaces; no hay entrenamiento ni inferencia real.
+Se contemplan baseline lineal/logístico, LightGBM, XGBoost, Random Forest y modelos de ranking. `TargetSpec` selecciona task y horizonte sin interpretar nombres manualmente. Phase 3A solo define datasets temporales y contratos de predicción OOS; no hay entrenamiento ni inferencia real.
 
 ## Cartera y riesgo
 

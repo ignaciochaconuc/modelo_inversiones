@@ -37,7 +37,7 @@ class FeatureSettings(BaseModel):
     feature_history_start: str = "2010-01-01"
     schema_version: str = "3"
     quantitative_version: str = "quantitative-v1.1"
-    target_version: str = "price-target-v1"
+    target_version: str = "corporate-action-safe-target-v3"
     minimum_rank_assets: int = Field(default=20, ge=2)
 
 class Settings(BaseModel):

@@ -28,7 +28,11 @@ FEATURE_COLUMNS = (
     "major_event_impact major_event_uncertainty event_confidence event_fed event_cpi event_fda event_court event_product event_investor_day"
 ).split()
 CATEGORICAL_FEATURE_COLUMNS = ("market_regime", "growth_regime", "inflation_regime", "rates_regime")
-TARGET_COLUMNS = ("target_return_5d", "target_return_10d", "target_return_20d", "target_positive_10d", "target_rank_10d")
+TARGET_COLUMNS = tuple(
+    [f"target_return_{horizon}d" for horizon in (5, 10, 20)]
+    + [f"target_positive_{horizon}d" for horizon in (5, 10, 20)]
+    + [f"target_rank_{horizon}d" for horizon in (5, 10, 20)]
+)
 BOOLEAN_COLUMNS = {
     "news_event_regulation", "news_event_product", "news_event_legal", "news_event_management", "news_event_ma",
     "earnings_pre_event", "earnings_post_event", "event_fed", "event_cpi", "event_fda", "event_court", "event_product", "event_investor_day",
@@ -80,6 +84,6 @@ for _name in FEATURE_COLUMNS:
 for _name in CATEGORICAL_FEATURE_COLUMNS:
     _fields[_name] = (str | None, None)
 for _name in TARGET_COLUMNS:
-    _fields[_name] = ((int | None) if _name == "target_positive_10d" else (float | None), None)
+    _fields[_name] = ((int | None) if _name.startswith("target_positive_") else (float | None), None)
 
 FeatureRow = create_model("FeatureRow", __base__=_FeatureRowBase, **_fields)

@@ -35,7 +35,7 @@ El código vive bajo `src/investment_system` para evitar colisiones con paquetes
 
 ## Protección contra leakage
 
-La regla invariante es `available_at <= decision_time`. `FeatureRow` separa identificación, features y targets; `FEATURE_COLUMNS` y `TARGET_COLUMNS` son disjuntos y `model_features()` nunca devuelve targets. El target principal es `P(t+10) / P(t) - 1`. Las señales se calculan tras el cierre y una ejecución simulada corresponde a la apertura de la siguiente sesión (el calendario bursátil completo queda para backtesting).
+La regla invariante es `available_at <= decision_time`. `FeatureRow` separa identificación, features y targets; `FEATURE_COLUMNS` y `TARGET_COLUMNS` son disjuntos y `model_features()` nunca devuelve targets. Regression, classification y ranking soportan horizontes de 5, 10 y 20 sesiones, con 10 como referencia. Phase 3A construye el dataset supervisado con fixed holdout, purging por fin real del label y embargo XNYS opcional. Las señales se calculan tras el cierre y una ejecución simulada corresponde a la apertura de la siguiente sesión.
 
 ## Instalación
 

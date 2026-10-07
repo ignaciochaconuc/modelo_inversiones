@@ -19,7 +19,12 @@ from investment_system.data.storage.market_store import MarketDataStore
 from investment_system.data.universe import UniverseConfig
 from investment_system.core.reproducibility import git_metadata
 from investment_system.features.quantitative import build_quantitative_features
-from investment_system.features.targets import add_cross_sectional_rank, build_price_targets
+from investment_system.features.targets import (
+    TARGET_COLUMNS,
+    TARGET_METADATA_COLUMNS,
+    add_cross_sectional_rank,
+    build_price_targets,
+)
 from investment_system.features.validation import validate_quantitative_feature_frame, validate_target_frame
 
 ESSENTIAL_FEATURES = (
@@ -54,7 +59,7 @@ class QuantitativeFeatureStoreBuilder:
         feature_history_start: date = date(2010, 1, 1),
         feature_schema_version: str = "3",
         quantitative_feature_version: str = "quantitative-v1.1",
-        target_version: str = "price-target-v1",
+        target_version: str = "corporate-action-safe-target-v3",
         minimum_rank_assets: int = 20,
     ) -> None:
         self.market_store = market_store
@@ -315,6 +320,9 @@ class QuantitativeFeatureStoreBuilder:
             "feature_schema_version": self.feature_schema_version,
             "quantitative_feature_version": self.quantitative_feature_version,
             "target_version": self.target_version,
+            "target_schema_version": self.target_version,
+            "target_columns": list(TARGET_COLUMNS),
+            "target_metadata_columns": list(TARGET_METADATA_COLUMNS),
             "normalization_version": AS_OF_VERSION,
             "universe_name": self.universe.universe.name,
             "universe_as_of": self.universe.universe.as_of,

@@ -171,6 +171,25 @@ el alcance real actual.
 **Entregables:** splits temporales, pipelines, métricas, versionado y baselines lineal/logístico antes de modelos complejos.  
 **Finalización aproximada:** evaluación out-of-sample reproducible y comparación contra baselines ingenuos.
 
+### Phase 3A — Supervised Dataset + Temporal Validation
+
+**Status:** complete
+
+Implementa targets simétricos de regression, classification y ranking para 5,
+10 y 20 sesiones, con `target_end_date` exacta y schema
+`corporate-action-safe-target-v3`. `TargetSpec` resuelve label y elegibilidad; el
+join Feature Store + Target Store es one-to-one y construye `X` solo desde la
+allowlist canónica. El fixed holdout oficial separa fechas completas, purga por
+`target_end_date < next_split_start` y soporta embargo XNYS configurable con
+default cero. Se incorporan manifest reproducible, contratos de métricas y schema
+de predicción OOS desacoplado de portfolio/risk/execution. No se entrenan modelos.
+
+### Phase 3B — Predictive baselines
+
+**Status:** not started
+
+Entrenamiento y evaluación de modelos baseline permanecen fuera de Phase 3A.
+
 ## Phase 4 — News Agent
 
 **Objetivo:** convertir noticias point-in-time en análisis explicable y features estructuradas.  

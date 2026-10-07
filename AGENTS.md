@@ -44,12 +44,16 @@ Los targets son exclusivamente:
 - `target_return_5d`
 - `target_return_10d`
 - `target_return_20d`
+- `target_positive_5d`
 - `target_positive_10d`
+- `target_positive_20d`
+- `target_rank_5d`
 - `target_rank_10d`
+- `target_rank_20d`
 
 Nunca incluirlos en entradas de entrenamiento, inferencia o decisiones. En el código, `FeatureRow.model_features()` y los registros `FEATURE_COLUMNS`/`TARGET_COLUMNS` materializan esta separación. La generación de targets debe permanecer separada de la generación causal de features.
 
-La separación también es física: features de producción viven bajo `data/features` y targets supervisados bajo `data/targets`. Solo pueden unirse explícitamente por `ticker + decision_date` durante entrenamiento. Future corporate actions están permitidas únicamente al construir targets split-consistent, nunca features.
+La separación también es física: features de producción viven bajo `data/features` y targets supervisados bajo `data/targets`. Solo pueden unirse explícitamente por `ticker + decision_date` durante entrenamiento. Future corporate actions están permitidas únicamente al construir targets split-consistent, nunca features. Los targets persisten `target_end_date_{5,10,20}d` como metadata auditable; esas fechas no son features ni labels predictivos.
 
 ## Agentes
 
@@ -84,7 +88,7 @@ No modificar decisiones arquitectónicas silenciosamente.
 
 ## Fuera de alcance actual
 
-No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 1B está implementada; no iniciar Phase 2 o posteriores por iniciativa propia.
+No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 3A está implementada; no iniciar Phase 3B o posteriores por iniciativa propia.
 
 ## Verificación mínima
 
