@@ -27,8 +27,13 @@ from investment_system.data.storage.feature_store import QuantitativeFeatureStor
 from investment_system.data.storage.market_store import MarketDataStore
 from investment_system.data.universe import UniverseConfig
 from investment_system.features.store_builder import QuantitativeFeatureStoreBuilder
+from investment_system.features.targets import (
+    SUPPORTED_HORIZONS,
+    TARGET_COLUMNS,
+    TARGET_METADATA_COLUMNS,
+)
 
-REPORT_SCHEMA_VERSION = "2"
+REPORT_SCHEMA_VERSION = "3"
 DELIBERATE_NULL_FEATURES = {
     "sector_return_5d", "sector_return_20d", "relative_sector_return_20d",
 }
@@ -274,6 +279,9 @@ class FullUniverseBuild:
                 "feature_schema_version": self.builder.feature_schema_version,
                 "quantitative_feature_version": self.builder.quantitative_feature_version,
                 "target_version": self.builder.target_version,
+                "target_schema_version": self.builder.target_version,
+                "target_columns": list(TARGET_COLUMNS),
+                "target_metadata_columns": list(TARGET_METADATA_COLUMNS),
                 "normalization_version": AS_OF_VERSION,
                 "provider": "tiingo",
                 "settings": {
@@ -457,28 +465,43 @@ class FullUniverseBuild:
     def _ranking_diagnostics(self, targets: pd.DataFrame | None) -> dict[str, Any] | None:
         if targets is None or targets.empty:
             return None
-        values = targets["target_rank_10d"].dropna()
-        if not values.empty and not values.between(0, 1).all():
-            raise ValueError("target_rank_10d is outside [0, 1]")
-        counts = targets[targets["target_rank_10d"].notna()].groupby("decision_date")["ticker"].nunique()
-        valid_returns = targets[targets["target_return_10d"].notna()].groupby("decision_date")["ticker"].nunique()
         all_dates = sorted(set(_dates(targets, "decision_date")))
-        missing = []
-        for day in all_dates:
-            ranked = int(counts.get(day, 0))
-            if ranked:
-                continue
-            available = int(valid_returns.get(day, 0))
-            reason = "insufficient_valid_target_return_10d" if available < self.builder.minimum_rank_assets else "ranking_unavailable"
-            missing.append({"decision_date": day, "valid_target_return_10d_assets": available, "reason": reason})
-        return {"valid_rank_rows": int(values.count()), "rank_min": float(values.min()) if not values.empty else None,
+        by_horizon: dict[str, dict[str, Any]] = {}
+        for horizon in SUPPORTED_HORIZONS:
+            rank_column = f"target_rank_{horizon}d"
+            eligibility_column = f"target_{horizon}d_training_eligible"
+            values = targets[rank_column].dropna()
+            if not values.empty and not values.between(0, 1).all():
+                raise ValueError(f"{rank_column} is outside [0, 1]")
+            counts = targets[targets[rank_column].notna()].groupby("decision_date")["ticker"].nunique()
+            eligible = targets[targets[eligibility_column].fillna(False)].groupby("decision_date")["ticker"].nunique()
+            missing = []
+            for day in all_dates:
+                if int(counts.get(day, 0)):
+                    continue
+                available = int(eligible.get(day, 0))
+                reason = (
+                    f"insufficient_training_eligible_target_{horizon}d"
+                    if available < self.builder.minimum_rank_assets else "ranking_unavailable"
+                )
+                missing.append({
+                    "decision_date": day,
+                    f"training_eligible_target_{horizon}d_assets": available,
+                    "reason": reason,
+                })
+            by_horizon[f"{horizon}d"] = {
+                "valid_rank_rows": int(values.count()),
+                "rank_min": float(values.min()) if not values.empty else None,
                 "rank_max": float(values.max()) if not values.empty else None,
                 "dates_with_valid_ranking": int(len(counts)),
                 "percentage_dates_with_valid_ranking": float(len(counts) / len(all_dates) * 100) if all_dates else 0.0,
                 "average_ranked_assets_per_valid_date": float(counts.mean()) if not counts.empty else 0.0,
                 "minimum_ranked_assets_per_valid_date": int(counts.min()) if not counts.empty else 0,
                 "maximum_ranked_assets_per_valid_date": int(counts.max()) if not counts.empty else 0,
-                "dates_without_ranking": missing}
+                "dates_without_ranking": missing,
+            }
+        # Preserve the Phase 1D 10-day summary while exposing all v3 horizons.
+        return {**by_horizon["10d"], "by_horizon": by_horizon}
 
     @staticmethod
     def _unexpected_nans(features: pd.DataFrame) -> dict[str, dict[str, float | int]]:

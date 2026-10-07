@@ -130,3 +130,17 @@ def test_duplicate_keys_and_invalid_feature_selection_fail_explicitly() -> None:
     with pytest.raises(ValueError, match="not registered"):
         _builder().build(features, targets, TargetSpec(task="regression", horizon=5),
                          feature_columns=["target_end_date_5d"])
+
+
+def test_nullable_object_eligibility_metadata_is_normalized_without_warning() -> None:
+    features, targets = _inputs()
+    features["feature_corporate_action_contaminated"] = pd.Series(
+        [False] * (len(features) - 1) + [None], dtype=object
+    )
+    with pytest.warns(None) as warnings:
+        dataset = _builder().build(
+            features, targets, TargetSpec(task="regression", horizon=5),
+            feature_columns=["return_1d"],
+        )
+    assert not warnings
+    assert len(dataset.test.y) == 3

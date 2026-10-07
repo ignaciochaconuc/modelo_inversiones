@@ -113,6 +113,11 @@ def test_full_universe_orchestration_is_resilient_and_builds_rankings(tmp_path) 
     assert report["ranking_coverage"]["valid_rank_rows"] > 0
     assert report["ranking_coverage"]["rank_min"] == 0.0
     assert report["ranking_coverage"]["rank_max"] == 1.0
+    assert set(report["ranking_coverage"]["by_horizon"]) == {"5d", "10d", "20d"}
+    assert report["reproducibility"]["report_schema_version"] == "3"
+    assert report["reproducibility"]["target_schema_version"] == builder.target_version
+    assert "target_rank_5d" in report["reproducibility"]["target_columns"]
+    assert "target_end_date_20d" in report["reproducibility"]["target_metadata_columns"]
     assert report["cross_sectional_coverage"]["assets_with_features"]["max"] == 2
     assert report["global_summary"]["raw_bars"] == 660
     assert report["split_validation"]["failed"] == []

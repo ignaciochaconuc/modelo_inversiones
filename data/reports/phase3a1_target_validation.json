@@ -1,0 +1,279 @@
+{
+  "phase": "3A.1-target-store-v3-real-data-validation",
+  "status": "passed",
+  "generated_at": "2026-10-07T18:56:08.672538+00:00",
+  "target_schema_version": "corporate-action-safe-target-v3",
+  "dataset": {
+    "rows": 405704,
+    "tickers": 101,
+    "first_decision_date": "2010-01-04",
+    "last_decision_date": "2026-10-05",
+    "duplicates": 0,
+    "feature_target_store_separation": true,
+    "target_columns": [
+      "target_return_5d",
+      "target_return_10d",
+      "target_return_20d",
+      "target_positive_5d",
+      "target_positive_10d",
+      "target_positive_20d",
+      "target_rank_5d",
+      "target_rank_10d",
+      "target_rank_20d"
+    ],
+    "target_metadata_columns": [
+      "target_end_date_5d",
+      "target_end_date_10d",
+      "target_end_date_20d",
+      "target_corporate_action_contaminated_5d",
+      "target_corporate_action_contaminated_10d",
+      "target_corporate_action_contaminated_20d",
+      "target_5d_training_eligible",
+      "target_10d_training_eligible",
+      "target_20d_training_eligible"
+    ]
+  },
+  "coverage": {
+    "5d": {
+      "valid_targets": 405199,
+      "training_eligible": 405174,
+      "contaminated": 25,
+      "valid_rankings": 405156,
+      "missing_targets": 505
+    },
+    "10d": {
+      "valid_targets": 404694,
+      "training_eligible": 404644,
+      "contaminated": 50,
+      "valid_rankings": 404626,
+      "missing_targets": 1010
+    },
+    "20d": {
+      "valid_targets": 403684,
+      "training_eligible": 403584,
+      "contaminated": 100,
+      "valid_rankings": 403566,
+      "missing_targets": 2020
+    }
+  },
+  "target_end_dates": {
+    "5d": {
+      "rows_checked": 405704,
+      "exact_xnys_match": true
+    },
+    "10d": {
+      "rows_checked": 405704,
+      "exact_xnys_match": true
+    },
+    "20d": {
+      "rows_checked": 405704,
+      "exact_xnys_match": true
+    },
+    "strictly_ordered": true
+  },
+  "positive_targets": {
+    "5d": {
+      "rows_checked": 405704,
+      "exact_match": true
+    },
+    "10d": {
+      "rows_checked": 405704,
+      "exact_match": true
+    },
+    "20d": {
+      "rows_checked": 405704,
+      "exact_match": true
+    }
+  },
+  "ranking": {
+    "5d": {
+      "valid_rows": 405156,
+      "dates_with_ranking": 4208,
+      "rank_min": 0.0,
+      "rank_max": 1.0,
+      "minimum_ranked_assets": 86,
+      "eligible_tie_groups_checked": 106,
+      "average_rank_exact_match": true,
+      "monotonic_with_return": true
+    },
+    "10d": {
+      "valid_rows": 404626,
+      "dates_with_ranking": 4203,
+      "rank_min": 0.0,
+      "rank_max": 1.0,
+      "minimum_ranked_assets": 86,
+      "eligible_tie_groups_checked": 69,
+      "average_rank_exact_match": true,
+      "monotonic_with_return": true
+    },
+    "20d": {
+      "valid_rows": 403566,
+      "dates_with_ranking": 4193,
+      "rank_min": 0.0,
+      "rank_max": 1.0,
+      "minimum_ranked_assets": 86,
+      "eligible_tie_groups_checked": 29,
+      "average_rank_exact_match": true,
+      "monotonic_with_return": true
+    }
+  },
+  "corporate_actions": {
+    "excluded_events": 5,
+    "by_horizon": {
+      "5d": {
+        "contaminated_rows": 25,
+        "training_eligible_rows": 405174
+      },
+      "10d": {
+        "contaminated_rows": 50,
+        "training_eligible_rows": 404644
+      },
+      "20d": {
+        "contaminated_rows": 100,
+        "training_eligible_rows": 403584
+      }
+    },
+    "contamination_non_decreasing_by_horizon": true
+  },
+  "end_of_sample": {
+    "valid_targets_strictly_decrease_5d_10d_20d": true,
+    "missing_targets_are_not_training_eligible": true
+  },
+  "manifest": {
+    "feature_manifest_generated_at": "2026-10-07T18:43:50.088890+00:00",
+    "full_universe_report_generated_at": "2026-10-07T18:54:05.687984+00:00",
+    "target_version": "corporate-action-safe-target-v3",
+    "target_schema_version": "corporate-action-safe-target-v3",
+    "universe": "sp100_development",
+    "survivorship_bias_warning": true,
+    "minimum_rank_assets": 20
+  },
+  "supervised_smoke_test": {
+    "regression_5d": {
+      "rows": {
+        "train": 207628,
+        "validation": 73761,
+        "test": 118866
+      },
+      "decision_dates": {
+        "train": 2259,
+        "validation": 752,
+        "test": 1188
+      },
+      "eligibility_removed": {
+        "train": 2766,
+        "validation": 946,
+        "test": 757
+      },
+      "purging_removed": {
+        "train": 480,
+        "validation": 500,
+        "test": 0
+      },
+      "train_labels_before_validation": true,
+      "validation_labels_before_test": true,
+      "test_all_target_eligible": true
+    },
+    "regression_10d": {
+      "rows": {
+        "train": 207128,
+        "validation": 73256,
+        "test": 118361
+      },
+      "decision_dates": {
+        "train": 2254,
+        "validation": 747,
+        "test": 1183
+      },
+      "eligibility_removed": {
+        "train": 2786,
+        "validation": 951,
+        "test": 1262
+      },
+      "purging_removed": {
+        "train": 960,
+        "validation": 1000,
+        "test": 0
+      },
+      "train_labels_before_validation": true,
+      "validation_labels_before_test": true,
+      "test_all_target_eligible": true
+    },
+    "regression_20d": {
+      "rows": {
+        "train": 206128,
+        "validation": 72246,
+        "test": 117351
+      },
+      "decision_dates": {
+        "train": 2244,
+        "validation": 737,
+        "test": 1173
+      },
+      "eligibility_removed": {
+        "train": 2826,
+        "validation": 961,
+        "test": 2272
+      },
+      "purging_removed": {
+        "train": 1920,
+        "validation": 2000,
+        "test": 0
+      },
+      "train_labels_before_validation": true,
+      "validation_labels_before_test": true,
+      "test_all_target_eligible": true
+    },
+    "classification_10d": {
+      "rows": {
+        "train": 207128,
+        "validation": 73256,
+        "test": 118361
+      },
+      "decision_dates": {
+        "train": 2254,
+        "validation": 747,
+        "test": 1183
+      },
+      "eligibility_removed": {
+        "train": 2786,
+        "validation": 951,
+        "test": 1262
+      },
+      "purging_removed": {
+        "train": 960,
+        "validation": 1000,
+        "test": 0
+      },
+      "train_labels_before_validation": true,
+      "validation_labels_before_test": true,
+      "test_all_target_eligible": true
+    },
+    "ranking_10d": {
+      "rows": {
+        "train": 207128,
+        "validation": 73256,
+        "test": 118343
+      },
+      "decision_dates": {
+        "train": 2254,
+        "validation": 747,
+        "test": 1182
+      },
+      "eligibility_removed": {
+        "train": 2786,
+        "validation": 951,
+        "test": 1280
+      },
+      "purging_removed": {
+        "train": 960,
+        "validation": 1000,
+        "test": 0
+      },
+      "train_labels_before_validation": true,
+      "validation_labels_before_test": true,
+      "test_all_target_eligible": true
+    }
+  },
+  "purging_varies_by_horizon": true
+}

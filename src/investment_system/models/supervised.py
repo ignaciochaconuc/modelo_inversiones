@@ -87,6 +87,11 @@ def _assert_unique(frame: pd.DataFrame, name: str) -> None:
         raise ValueError(f"duplicate ticker + decision_date in {name} dataset")
 
 
+def _boolean_mask(values: pd.Series) -> pd.Series:
+    """Normalize nullable/object boolean metadata without implicit downcasting."""
+    return values.astype("boolean").fillna(False).astype(bool)
+
+
 def _embargoed_sessions(start: date, count: int, calendar: TradingCalendar) -> set[date]:
     if count == 0:
         return set()
@@ -163,9 +168,9 @@ class SupervisedDatasetBuilder:
             joined[target_spec.target_end_date_column], errors="coerce"
         ).dt.date
         joined["training_eligible"] = (
-            joined["model_eligible"].fillna(False)
-            & ~joined["feature_corporate_action_contaminated"].fillna(False)
-            & joined[target_spec.eligibility_column].fillna(False)
+            _boolean_mask(joined["model_eligible"])
+            & ~_boolean_mask(joined["feature_corporate_action_contaminated"])
+            & _boolean_mask(joined[target_spec.eligibility_column])
             & joined[target_spec.target_column].notna()
         )
         if target_spec.task is TargetTask.RANKING:

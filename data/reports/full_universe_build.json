@@ -2,13 +2,36 @@
   "phase": "1D-full-development-universe",
   "status": "passed",
   "reproducibility": {
-    "report_schema_version": "2",
-    "generated_at": "2026-10-06T22:19:23.988931+00:00",
+    "report_schema_version": "3",
+    "generated_at": "2026-10-07T18:54:05.687984+00:00",
     "git_commit": null,
     "dirty_worktree": null,
     "feature_schema_version": "4",
     "quantitative_feature_version": "quantitative-v1.2",
-    "target_version": "corporate-action-safe-target-v2",
+    "target_version": "corporate-action-safe-target-v3",
+    "target_schema_version": "corporate-action-safe-target-v3",
+    "target_columns": [
+      "target_return_5d",
+      "target_return_10d",
+      "target_return_20d",
+      "target_positive_5d",
+      "target_positive_10d",
+      "target_positive_20d",
+      "target_rank_5d",
+      "target_rank_10d",
+      "target_rank_20d"
+    ],
+    "target_metadata_columns": [
+      "target_end_date_5d",
+      "target_end_date_10d",
+      "target_end_date_20d",
+      "target_corporate_action_contaminated_5d",
+      "target_corporate_action_contaminated_10d",
+      "target_corporate_action_contaminated_20d",
+      "target_5d_training_eligible",
+      "target_10d_training_eligible",
+      "target_20d_training_eligible"
+    ],
     "normalization_version": "split-adjusted-as-of-v1",
     "provider": "tiingo",
     "settings": {
@@ -145,7 +168,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.7184813998173922,
+      "build_seconds": 1.0294768000021577,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -182,7 +205,7 @@
       "valid_target_10d": 3449,
       "valid_target_20d": 3439,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.40566369984298944,
+      "build_seconds": 0.582420599879697,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -220,7 +243,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47671200009062886,
+      "build_seconds": 0.6658701000269502,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -257,7 +280,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.469897200120613,
+      "build_seconds": 0.6717280000448227,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -288,7 +311,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4869263998698443,
+      "build_seconds": 0.5558044000063092,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -327,7 +350,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47851799987256527,
+      "build_seconds": 0.5444030999206007,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -358,7 +381,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.470485599944368,
+      "build_seconds": 0.6751495997887105,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -395,7 +418,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5644160998053849,
+      "build_seconds": 0.7544225000310689,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -432,7 +455,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47425090009346604,
+      "build_seconds": 0.6645815998781472,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -465,7 +488,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6632441999390721,
+      "build_seconds": 0.914512500166893,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -499,7 +522,7 @@
       "valid_target_10d": 3090,
       "valid_target_20d": 3080,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6320042000152171,
+      "build_seconds": 0.8930871998891234,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -539,7 +562,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6488370997831225,
+      "build_seconds": 0.9287927001714706,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -577,7 +600,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.46595950005576015,
+      "build_seconds": 0.6847204000223428,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -614,7 +637,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.49841530015692115,
+      "build_seconds": 0.6912136999890208,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -651,7 +674,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.46992750000208616,
+      "build_seconds": 0.7058063000440598,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -686,7 +709,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47156249987892807,
+      "build_seconds": 0.7157142998185009,
       "warnings": []
     },
     "BKNG": {
@@ -723,7 +746,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6957394001074135,
+      "build_seconds": 0.9765473001170903,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -760,7 +783,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.55445949989371,
+      "build_seconds": 0.6162916000466794,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -797,7 +820,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47928400011733174,
+      "build_seconds": 0.7999708000570536,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -828,7 +851,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5301230000331998,
+      "build_seconds": 0.7831619998905808,
       "warnings": []
     },
     "C": {
@@ -865,7 +888,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5353991000447422,
+      "build_seconds": 0.7908338999841362,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -902,7 +925,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4717818000353873,
+      "build_seconds": 0.6788837998174131,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -933,7 +956,7 @@
       "valid_target_10d": 4202,
       "valid_target_20d": 4192,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.46706250007264316,
+      "build_seconds": 0.6836917998734862,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -973,7 +996,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5919381000567228,
+      "build_seconds": 0.8461039001122117,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1010,7 +1033,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4970665001310408,
+      "build_seconds": 0.6941138999536633,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1047,7 +1070,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.49482899997383356,
+      "build_seconds": 0.6936395999509841,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1084,7 +1107,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4741811000276357,
+      "build_seconds": 0.6822480999398977,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1123,7 +1146,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.552473499905318,
+      "build_seconds": 0.8118106999900192,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1160,7 +1183,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4950959999114275,
+      "build_seconds": 0.7170346998609602,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1197,7 +1220,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4697975998278707,
+      "build_seconds": 0.6958916001021862,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1234,7 +1257,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5625675001647323,
+      "build_seconds": 0.6985764000564814,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1271,7 +1294,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4739943000022322,
+      "build_seconds": 0.7323710999917239,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1310,7 +1333,7 @@
       "valid_target_10d": 1945,
       "valid_target_20d": 1935,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.31896759988740087,
+      "build_seconds": 0.4718296998180449,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -1350,7 +1373,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5311684000771493,
+      "build_seconds": 0.7858710999134928,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1387,7 +1410,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4629005999304354,
+      "build_seconds": 0.6990653998218477,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1424,7 +1447,7 @@
       "valid_target_10d": 1886,
       "valid_target_20d": 1876,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.24804869992658496,
+      "build_seconds": 0.4051431999541819,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -1464,7 +1487,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5337360000703484,
+      "build_seconds": 0.8019155999645591,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1501,7 +1524,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.46307509997859597,
+      "build_seconds": 0.7038726999890059,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1540,7 +1563,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6934183998964727,
+      "build_seconds": 1.0019564998801798,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1577,7 +1600,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.45508309989236295,
+      "build_seconds": 0.684097700053826,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1616,7 +1639,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5284797998610884,
+      "build_seconds": 0.7887720998842269,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1653,7 +1676,7 @@
       "valid_target_10d": 3981,
       "valid_target_20d": 3971,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.48902580002322793,
+      "build_seconds": 0.691810900112614,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -1693,7 +1716,7 @@
       "valid_target_10d": 3139,
       "valid_target_20d": 3129,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4917309999000281,
+      "build_seconds": 0.7171672999393195,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -1733,7 +1756,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6936476998962462,
+      "build_seconds": 0.95762600004673,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1770,7 +1793,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5599263999611139,
+      "build_seconds": 0.6989673001226038,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1807,7 +1830,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47799509996548295,
+      "build_seconds": 0.677639199886471,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1846,7 +1869,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6482997999992222,
+      "build_seconds": 0.9276091998908669,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1883,7 +1906,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.46923879999667406,
+      "build_seconds": 0.6917997000273317,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1920,7 +1943,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4849632999394089,
+      "build_seconds": 0.7019893999677151,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1957,7 +1980,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5385203999467194,
+      "build_seconds": 0.6969571001827717,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -1996,7 +2019,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5427687000483274,
+      "build_seconds": 0.7749963998794556,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2033,7 +2056,7 @@
       "valid_target_10d": 2002,
       "valid_target_20d": 1992,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.3494333000853658,
+      "build_seconds": 0.42332010017707944,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -2069,7 +2092,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4806359000504017,
+      "build_seconds": 0.7044877998996526,
       "warnings": []
     },
     "LMT": {
@@ -2102,7 +2125,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5370836001820862,
+      "build_seconds": 0.6861274999100715,
       "warnings": []
     },
     "LOW": {
@@ -2137,7 +2160,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5103978000115603,
+      "build_seconds": 0.6854479000903666,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2176,7 +2199,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5910395998507738,
+      "build_seconds": 0.8743541999720037,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2213,7 +2236,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4940631000790745,
+      "build_seconds": 0.6829301998950541,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2250,7 +2273,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4804006000049412,
+      "build_seconds": 0.6821653000079095,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2287,7 +2310,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.503496800083667,
+      "build_seconds": 0.7182362000457942,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2324,7 +2347,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47214130009524524,
+      "build_seconds": 0.6815691001247615,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2361,7 +2384,7 @@
       "valid_target_10d": 3604,
       "valid_target_20d": 3594,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.44478549994528294,
+      "build_seconds": 0.5875421001110226,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -2399,7 +2422,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5161578999832273,
+      "build_seconds": 0.6828596000559628,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2436,7 +2459,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.49572010012343526,
+      "build_seconds": 0.676087599946186,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2475,7 +2498,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6473502998705953,
+      "build_seconds": 0.9251852000597864,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2512,7 +2535,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4977105997968465,
+      "build_seconds": 0.6801402000710368,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2549,7 +2572,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4813914999831468,
+      "build_seconds": 0.7039506998844445,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2586,7 +2609,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.48263789992779493,
+      "build_seconds": 0.655569699825719,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2625,7 +2648,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6169082000851631,
+      "build_seconds": 0.8985820999369025,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2659,7 +2682,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.904064399888739,
+      "build_seconds": 1.1840484000276774,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2692,7 +2715,7 @@
       "valid_target_10d": 3575,
       "valid_target_20d": 3565,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5689254999160767,
+      "build_seconds": 0.8381310000550002,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -2733,7 +2756,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.8129481999203563,
+      "build_seconds": 1.2650837001856416,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2770,7 +2793,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47690270002931356,
+      "build_seconds": 0.6825588000938296,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2804,7 +2827,7 @@
       "valid_target_10d": 3561,
       "valid_target_20d": 3551,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6930308002047241,
+      "build_seconds": 1.0476961999665946,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -2842,7 +2865,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4630369998048991,
+      "build_seconds": 0.6972365998663008,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2881,7 +2904,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6342054000124335,
+      "build_seconds": 0.905735099921003,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2918,7 +2941,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47992089996114373,
+      "build_seconds": 0.7209232000168413,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2955,7 +2978,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4676315998658538,
+      "build_seconds": 0.6756668998859823,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -2986,7 +3009,7 @@
       "valid_target_10d": 1499,
       "valid_target_20d": 1489,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.21802060003392398,
+      "build_seconds": 0.3234240999445319,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -3024,7 +3047,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.46974430000409484,
+      "build_seconds": 0.6701990000437945,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -3060,7 +3083,7 @@
       "valid_target_10d": 2809,
       "valid_target_20d": 2799,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.34356920002028346,
+      "build_seconds": 0.5040772000793368,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -3098,7 +3121,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5911101999226958,
+      "build_seconds": 0.7056386999320239,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -3135,7 +3158,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4846390997990966,
+      "build_seconds": 0.7004540998023003,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -3174,7 +3197,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5717803998850286,
+      "build_seconds": 0.8168623999226838,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -3211,7 +3234,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4826780001167208,
+      "build_seconds": 0.7007630001753569,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -3242,7 +3265,7 @@
       "valid_target_10d": 395,
       "valid_target_20d": 385,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.12519019981846213,
+      "build_seconds": 0.1926085001323372,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history",
         "1 unexpected missing sessions"
@@ -3280,7 +3303,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.46677100006490946,
+      "build_seconds": 0.6937942998483777,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -3319,7 +3342,7 @@
       "valid_target_10d": 4203,
       "valid_target_20d": 4193,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6374014001339674,
+      "build_seconds": 0.9368608999066055,
       "warnings": [
         "1 unexpected missing sessions"
       ]
@@ -3354,7 +3377,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47817620006389916,
+      "build_seconds": 0.7313657000195235,
       "warnings": []
     },
     "TMO": {
@@ -3387,7 +3410,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4785307999700308,
+      "build_seconds": 0.720679699908942,
       "warnings": []
     },
     "TMUS": {
@@ -3422,7 +3445,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5533377001993358,
+      "build_seconds": 0.8334607998840511,
       "warnings": []
     },
     "TSLA": {
@@ -3452,7 +3475,7 @@
       "valid_target_10d": 4082,
       "valid_target_20d": 4072,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.7506891000084579,
+      "build_seconds": 1.1367798000574112,
       "warnings": [
         "history_starts_after_requested_period; review IPO/listing or ticker history"
       ]
@@ -3487,7 +3510,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4658633000217378,
+      "build_seconds": 0.67778420005925,
       "warnings": []
     },
     "UNH": {
@@ -3520,7 +3543,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.49169689998961985,
+      "build_seconds": 0.6836610999889672,
       "warnings": []
     },
     "UNP": {
@@ -3555,7 +3578,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5759895001538098,
+      "build_seconds": 0.8052768998313695,
       "warnings": []
     },
     "UPS": {
@@ -3588,7 +3611,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4802116001956165,
+      "build_seconds": 0.7367734999861568,
       "warnings": []
     },
     "USB": {
@@ -3621,7 +3644,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.47016009991057217,
+      "build_seconds": 0.681832900037989,
       "warnings": []
     },
     "V": {
@@ -3656,7 +3679,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5644012000411749,
+      "build_seconds": 0.8491605999879539,
       "warnings": []
     },
     "VZ": {
@@ -3689,7 +3712,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.4964929998386651,
+      "build_seconds": 0.7057169999461621,
       "warnings": []
     },
     "WFC": {
@@ -3722,7 +3745,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.5065552000887692,
+      "build_seconds": 0.7198614999651909,
       "warnings": []
     },
     "WMT": {
@@ -3757,7 +3780,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.6549699001479894,
+      "build_seconds": 1.0124401000794023,
       "warnings": []
     },
     "XOM": {
@@ -3790,7 +3813,7 @@
       "valid_target_10d": 4204,
       "valid_target_20d": 4194,
       "ingestion_seconds": 0.0,
-      "build_seconds": 0.46292770002037287,
+      "build_seconds": 0.6778893999289721,
       "warnings": []
     }
   },
@@ -3931,60 +3954,288 @@
     "dates_without_ranking": [
       {
         "decision_date": "2026-09-21",
-        "valid_target_return_10d_assets": 18,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 18,
+        "reason": "insufficient_training_eligible_target_10d"
       },
       {
         "decision_date": "2026-09-22",
-        "valid_target_return_10d_assets": 0,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 0,
+        "reason": "insufficient_training_eligible_target_10d"
       },
       {
         "decision_date": "2026-09-23",
-        "valid_target_return_10d_assets": 0,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 0,
+        "reason": "insufficient_training_eligible_target_10d"
       },
       {
         "decision_date": "2026-09-24",
-        "valid_target_return_10d_assets": 0,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 0,
+        "reason": "insufficient_training_eligible_target_10d"
       },
       {
         "decision_date": "2026-09-25",
-        "valid_target_return_10d_assets": 0,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 0,
+        "reason": "insufficient_training_eligible_target_10d"
       },
       {
         "decision_date": "2026-09-28",
-        "valid_target_return_10d_assets": 0,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 0,
+        "reason": "insufficient_training_eligible_target_10d"
       },
       {
         "decision_date": "2026-09-29",
-        "valid_target_return_10d_assets": 0,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 0,
+        "reason": "insufficient_training_eligible_target_10d"
       },
       {
         "decision_date": "2026-09-30",
-        "valid_target_return_10d_assets": 0,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 0,
+        "reason": "insufficient_training_eligible_target_10d"
       },
       {
         "decision_date": "2026-10-01",
-        "valid_target_return_10d_assets": 0,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 0,
+        "reason": "insufficient_training_eligible_target_10d"
       },
       {
         "decision_date": "2026-10-02",
-        "valid_target_return_10d_assets": 0,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 0,
+        "reason": "insufficient_training_eligible_target_10d"
       },
       {
         "decision_date": "2026-10-05",
-        "valid_target_return_10d_assets": 0,
-        "reason": "insufficient_valid_target_return_10d"
+        "training_eligible_target_10d_assets": 0,
+        "reason": "insufficient_training_eligible_target_10d"
       }
-    ]
+    ],
+    "by_horizon": {
+      "5d": {
+        "valid_rank_rows": 405156,
+        "rank_min": 0.0,
+        "rank_max": 1.0,
+        "dates_with_valid_ranking": 4208,
+        "percentage_dates_with_valid_ranking": 99.85761746559089,
+        "average_ranked_assets_per_valid_date": 96.28231939163499,
+        "minimum_ranked_assets_per_valid_date": 86,
+        "maximum_ranked_assets_per_valid_date": 101,
+        "dates_without_ranking": [
+          {
+            "decision_date": "2026-09-28",
+            "training_eligible_target_5d_assets": 18,
+            "reason": "insufficient_training_eligible_target_5d"
+          },
+          {
+            "decision_date": "2026-09-29",
+            "training_eligible_target_5d_assets": 0,
+            "reason": "insufficient_training_eligible_target_5d"
+          },
+          {
+            "decision_date": "2026-09-30",
+            "training_eligible_target_5d_assets": 0,
+            "reason": "insufficient_training_eligible_target_5d"
+          },
+          {
+            "decision_date": "2026-10-01",
+            "training_eligible_target_5d_assets": 0,
+            "reason": "insufficient_training_eligible_target_5d"
+          },
+          {
+            "decision_date": "2026-10-02",
+            "training_eligible_target_5d_assets": 0,
+            "reason": "insufficient_training_eligible_target_5d"
+          },
+          {
+            "decision_date": "2026-10-05",
+            "training_eligible_target_5d_assets": 0,
+            "reason": "insufficient_training_eligible_target_5d"
+          }
+        ]
+      },
+      "10d": {
+        "valid_rank_rows": 404626,
+        "rank_min": 0.0,
+        "rank_max": 1.0,
+        "dates_with_valid_ranking": 4203,
+        "percentage_dates_with_valid_ranking": 99.7389653535833,
+        "average_ranked_assets_per_valid_date": 96.27075898167975,
+        "minimum_ranked_assets_per_valid_date": 86,
+        "maximum_ranked_assets_per_valid_date": 101,
+        "dates_without_ranking": [
+          {
+            "decision_date": "2026-09-21",
+            "training_eligible_target_10d_assets": 18,
+            "reason": "insufficient_training_eligible_target_10d"
+          },
+          {
+            "decision_date": "2026-09-22",
+            "training_eligible_target_10d_assets": 0,
+            "reason": "insufficient_training_eligible_target_10d"
+          },
+          {
+            "decision_date": "2026-09-23",
+            "training_eligible_target_10d_assets": 0,
+            "reason": "insufficient_training_eligible_target_10d"
+          },
+          {
+            "decision_date": "2026-09-24",
+            "training_eligible_target_10d_assets": 0,
+            "reason": "insufficient_training_eligible_target_10d"
+          },
+          {
+            "decision_date": "2026-09-25",
+            "training_eligible_target_10d_assets": 0,
+            "reason": "insufficient_training_eligible_target_10d"
+          },
+          {
+            "decision_date": "2026-09-28",
+            "training_eligible_target_10d_assets": 0,
+            "reason": "insufficient_training_eligible_target_10d"
+          },
+          {
+            "decision_date": "2026-09-29",
+            "training_eligible_target_10d_assets": 0,
+            "reason": "insufficient_training_eligible_target_10d"
+          },
+          {
+            "decision_date": "2026-09-30",
+            "training_eligible_target_10d_assets": 0,
+            "reason": "insufficient_training_eligible_target_10d"
+          },
+          {
+            "decision_date": "2026-10-01",
+            "training_eligible_target_10d_assets": 0,
+            "reason": "insufficient_training_eligible_target_10d"
+          },
+          {
+            "decision_date": "2026-10-02",
+            "training_eligible_target_10d_assets": 0,
+            "reason": "insufficient_training_eligible_target_10d"
+          },
+          {
+            "decision_date": "2026-10-05",
+            "training_eligible_target_10d_assets": 0,
+            "reason": "insufficient_training_eligible_target_10d"
+          }
+        ]
+      },
+      "20d": {
+        "valid_rank_rows": 403566,
+        "rank_min": 0.0,
+        "rank_max": 1.0,
+        "dates_with_valid_ranking": 4193,
+        "percentage_dates_with_valid_ranking": 99.5016611295681,
+        "average_ranked_assets_per_valid_date": 96.24755544955879,
+        "minimum_ranked_assets_per_valid_date": 86,
+        "maximum_ranked_assets_per_valid_date": 101,
+        "dates_without_ranking": [
+          {
+            "decision_date": "2026-09-04",
+            "training_eligible_target_20d_assets": 18,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-08",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-09",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-10",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-11",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-14",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-15",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-16",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-17",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-18",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-21",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-22",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-23",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-24",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-25",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-28",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-29",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-09-30",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-10-01",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-10-02",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          },
+          {
+            "decision_date": "2026-10-05",
+            "training_eligible_target_20d_assets": 0,
+            "reason": "insufficient_training_eligible_target_20d"
+          }
+        ]
+      }
+    }
   },
   "unexpected_nans_eligible": {},
   "expected_warmup_nans": {
@@ -6578,7 +6829,7 @@
         "source": "heuristic",
         "confidence": 0.95,
         "known_at": "2012-10-03T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": true,
         "notes": "split_only_return=-0.341298; provider_adjusted_return=0.004386; split=False; extraordinary_distribution=True",
@@ -6592,7 +6843,7 @@
         "source": "heuristic",
         "confidence": 0.95,
         "known_at": "2013-01-03T01:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": true,
         "notes": "split_only_return=-0.510687; provider_adjusted_return=0.018316; split=False; extraordinary_distribution=True",
@@ -6606,7 +6857,7 @@
         "source": "heuristic",
         "confidence": 0.95,
         "known_at": "2013-05-02T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": true,
         "notes": "split_only_return=-0.302365; provider_adjusted_return=0.039696; split=True; extraordinary_distribution=True",
@@ -6620,7 +6871,7 @@
         "source": "heuristic",
         "confidence": 0.95,
         "known_at": "2014-04-04T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": true,
         "notes": "split_only_return=-0.496520; provider_adjusted_return=0.003851; split=False; extraordinary_distribution=True",
@@ -6634,7 +6885,7 @@
         "source": "heuristic",
         "confidence": 0.95,
         "known_at": "2020-04-04T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": true,
         "notes": "split_only_return=-0.419486; provider_adjusted_return=0.052319; split=False; extraordinary_distribution=True",
@@ -6650,7 +6901,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-03-17T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.660000; provider_adjusted_return=0.660000; split=False; extraordinary_distribution=False",
@@ -6664,7 +6915,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-03-19T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.437500; provider_adjusted_return=0.437500; split=False; extraordinary_distribution=False",
@@ -6678,7 +6929,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-08-06T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.627219; provider_adjusted_return=0.627219; split=False; extraordinary_distribution=False",
@@ -6692,7 +6943,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2016-04-23T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.522901; provider_adjusted_return=0.522901; split=False; extraordinary_distribution=False",
@@ -6706,7 +6957,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-01-22T01:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.309804; provider_adjusted_return=0.309804; split=False; extraordinary_distribution=False",
@@ -6720,7 +6971,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-04-10T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.352691; provider_adjusted_return=0.352691; split=False; extraordinary_distribution=False",
@@ -6734,7 +6985,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-01-22T01:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.310714; provider_adjusted_return=0.310714; split=False; extraordinary_distribution=False",
@@ -6748,7 +6999,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-02-28T01:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=-0.390244; provider_adjusted_return=-0.390244; split=False; extraordinary_distribution=False",
@@ -6762,7 +7013,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-03-11T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.380952; provider_adjusted_return=0.380952; split=False; extraordinary_distribution=False",
@@ -6776,7 +7027,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-03-17T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.308989; provider_adjusted_return=0.308989; split=False; extraordinary_distribution=False",
@@ -6790,7 +7041,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2024-03-02T01:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.316184; provider_adjusted_return=0.316184; split=False; extraordinary_distribution=False",
@@ -6804,7 +7055,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2026-05-30T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.327582; provider_adjusted_return=0.327582; split=False; extraordinary_distribution=False",
@@ -6818,7 +7069,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2011-10-26T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=-0.348957; provider_adjusted_return=-0.348957; split=False; extraordinary_distribution=False",
@@ -6832,7 +7083,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2013-01-25T01:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.422235; provider_adjusted_return=0.422235; split=False; extraordinary_distribution=False",
@@ -6846,7 +7097,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2022-04-21T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=-0.351166; provider_adjusted_return=-0.351166; split=False; extraordinary_distribution=False",
@@ -6860,7 +7111,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2025-09-11T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.359488; provider_adjusted_return=0.359488; split=False; extraordinary_distribution=False",
@@ -6874,7 +7125,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2024-02-07T01:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.308014; provider_adjusted_return=0.308014; split=False; extraordinary_distribution=False",
@@ -6888,7 +7139,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2011-08-03T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=-0.365884; provider_adjusted_return=-0.365884; split=False; extraordinary_distribution=False",
@@ -6902,7 +7153,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2012-07-27T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.367834; provider_adjusted_return=0.367834; split=False; extraordinary_distribution=False",
@@ -6916,7 +7167,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-01-29T01:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.308833; provider_adjusted_return=0.308833; split=False; extraordinary_distribution=False",
@@ -6930,7 +7181,7 @@
         "source": "heuristic",
         "confidence": 0.4,
         "known_at": "2009-04-10T00:00:00+00:00",
-        "detected_at": "2026-10-06T22:19:00.593751+00:00",
+        "detected_at": "2026-10-07T18:53:31.715470+00:00",
         "adjustment_supported": false,
         "training_exclusion": false,
         "notes": "split_only_return=0.316991; provider_adjusted_return=0.316991; split=False; extraordinary_distribution=False",
@@ -7051,226 +7302,226 @@
       "XOM": 0.0
     },
     "feature_build_seconds_by_ticker": {
-      "AAPL": 0.7184813998173922,
-      "ABBV": 0.40566369984298944,
-      "ABT": 0.47671200009062886,
-      "ACN": 0.469897200120613,
-      "ADBE": 0.4869263998698443,
-      "AIG": 0.47851799987256527,
-      "AMD": 0.470485599944368,
-      "AMGN": 0.5644160998053849,
-      "AMT": 0.47425090009346604,
-      "AMZN": 0.6632441999390721,
-      "ANET": 0.6320042000152171,
-      "AVGO": 0.6488370997831225,
-      "AXP": 0.46595950005576015,
-      "BA": 0.49841530015692115,
-      "BAC": 0.46992750000208616,
-      "BK": 0.47156249987892807,
-      "BKNG": 0.6957394001074135,
-      "BLK": 0.55445949989371,
-      "BMY": 0.47928400011733174,
-      "BRK.B": 0.5301230000331998,
-      "C": 0.5353991000447422,
-      "CAT": 0.4717818000353873,
-      "CHTR": 0.46706250007264316,
-      "CMCSA": 0.5919381000567228,
-      "COF": 0.4970665001310408,
-      "COP": 0.49482899997383356,
-      "COST": 0.4741811000276357,
-      "CRM": 0.552473499905318,
-      "CSCO": 0.4950959999114275,
-      "CVS": 0.4697975998278707,
-      "CVX": 0.5625675001647323,
-      "DE": 0.4739943000022322,
-      "DELL": 0.31896759988740087,
-      "DHR": 0.5311684000771493,
-      "DIS": 0.4629005999304354,
-      "DOW": 0.24804869992658496,
-      "DUK": 0.5337360000703484,
-      "EMR": 0.46307509997859597,
-      "FDX": 0.6934183998964727,
-      "GD": 0.45508309989236295,
-      "GILD": 0.5284797998610884,
-      "GM": 0.48902580002322793,
-      "GOOG": 0.4917309999000281,
-      "GOOGL": 0.6936476998962462,
-      "GS": 0.5599263999611139,
-      "HD": 0.47799509996548295,
-      "IBM": 0.6482997999992222,
-      "INTC": 0.46923879999667406,
-      "JNJ": 0.4849632999394089,
-      "JPM": 0.5385203999467194,
-      "KO": 0.5427687000483274,
-      "LIN": 0.3494333000853658,
-      "LLY": 0.4806359000504017,
-      "LMT": 0.5370836001820862,
-      "LOW": 0.5103978000115603,
-      "MA": 0.5910395998507738,
-      "MCD": 0.4940631000790745,
-      "MDLZ": 0.4804006000049412,
-      "MDT": 0.503496800083667,
-      "MET": 0.47214130009524524,
-      "META": 0.44478549994528294,
-      "MMM": 0.5161578999832273,
-      "MO": 0.49572010012343526,
-      "MRK": 0.6473502998705953,
-      "MS": 0.4977105997968465,
-      "MSFT": 0.4813914999831468,
-      "MU": 0.48263789992779493,
-      "NEE": 0.6169082000851631,
-      "NFLX": 0.904064399888739,
-      "NOW": 0.5689254999160767,
-      "NVDA": 0.8129481999203563,
-      "ORCL": 0.47690270002931356,
-      "PANW": 0.6930308002047241,
-      "PEP": 0.4630369998048991,
-      "PFE": 0.6342054000124335,
-      "PG": 0.47992089996114373,
-      "PLD": 0.4676315998658538,
-      "PLTR": 0.21802060003392398,
-      "PM": 0.46974430000409484,
-      "PYPL": 0.34356920002028346,
-      "QCOM": 0.5911101999226958,
-      "RTX": 0.4846390997990966,
-      "SBUX": 0.5717803998850286,
-      "SCHW": 0.4826780001167208,
-      "SNDK": 0.12519019981846213,
-      "SO": 0.46677100006490946,
-      "T": 0.6374014001339674,
-      "TGT": 0.47817620006389916,
-      "TMO": 0.4785307999700308,
-      "TMUS": 0.5533377001993358,
-      "TSLA": 0.7506891000084579,
-      "TXN": 0.4658633000217378,
-      "UNH": 0.49169689998961985,
-      "UNP": 0.5759895001538098,
-      "UPS": 0.4802116001956165,
-      "USB": 0.47016009991057217,
-      "V": 0.5644012000411749,
-      "VZ": 0.4964929998386651,
-      "WFC": 0.5065552000887692,
-      "WMT": 0.6549699001479894,
-      "XOM": 0.46292770002037287
+      "AAPL": 1.0294768000021577,
+      "ABBV": 0.582420599879697,
+      "ABT": 0.6658701000269502,
+      "ACN": 0.6717280000448227,
+      "ADBE": 0.5558044000063092,
+      "AIG": 0.5444030999206007,
+      "AMD": 0.6751495997887105,
+      "AMGN": 0.7544225000310689,
+      "AMT": 0.6645815998781472,
+      "AMZN": 0.914512500166893,
+      "ANET": 0.8930871998891234,
+      "AVGO": 0.9287927001714706,
+      "AXP": 0.6847204000223428,
+      "BA": 0.6912136999890208,
+      "BAC": 0.7058063000440598,
+      "BK": 0.7157142998185009,
+      "BKNG": 0.9765473001170903,
+      "BLK": 0.6162916000466794,
+      "BMY": 0.7999708000570536,
+      "BRK.B": 0.7831619998905808,
+      "C": 0.7908338999841362,
+      "CAT": 0.6788837998174131,
+      "CHTR": 0.6836917998734862,
+      "CMCSA": 0.8461039001122117,
+      "COF": 0.6941138999536633,
+      "COP": 0.6936395999509841,
+      "COST": 0.6822480999398977,
+      "CRM": 0.8118106999900192,
+      "CSCO": 0.7170346998609602,
+      "CVS": 0.6958916001021862,
+      "CVX": 0.6985764000564814,
+      "DE": 0.7323710999917239,
+      "DELL": 0.4718296998180449,
+      "DHR": 0.7858710999134928,
+      "DIS": 0.6990653998218477,
+      "DOW": 0.4051431999541819,
+      "DUK": 0.8019155999645591,
+      "EMR": 0.7038726999890059,
+      "FDX": 1.0019564998801798,
+      "GD": 0.684097700053826,
+      "GILD": 0.7887720998842269,
+      "GM": 0.691810900112614,
+      "GOOG": 0.7171672999393195,
+      "GOOGL": 0.95762600004673,
+      "GS": 0.6989673001226038,
+      "HD": 0.677639199886471,
+      "IBM": 0.9276091998908669,
+      "INTC": 0.6917997000273317,
+      "JNJ": 0.7019893999677151,
+      "JPM": 0.6969571001827717,
+      "KO": 0.7749963998794556,
+      "LIN": 0.42332010017707944,
+      "LLY": 0.7044877998996526,
+      "LMT": 0.6861274999100715,
+      "LOW": 0.6854479000903666,
+      "MA": 0.8743541999720037,
+      "MCD": 0.6829301998950541,
+      "MDLZ": 0.6821653000079095,
+      "MDT": 0.7182362000457942,
+      "MET": 0.6815691001247615,
+      "META": 0.5875421001110226,
+      "MMM": 0.6828596000559628,
+      "MO": 0.676087599946186,
+      "MRK": 0.9251852000597864,
+      "MS": 0.6801402000710368,
+      "MSFT": 0.7039506998844445,
+      "MU": 0.655569699825719,
+      "NEE": 0.8985820999369025,
+      "NFLX": 1.1840484000276774,
+      "NOW": 0.8381310000550002,
+      "NVDA": 1.2650837001856416,
+      "ORCL": 0.6825588000938296,
+      "PANW": 1.0476961999665946,
+      "PEP": 0.6972365998663008,
+      "PFE": 0.905735099921003,
+      "PG": 0.7209232000168413,
+      "PLD": 0.6756668998859823,
+      "PLTR": 0.3234240999445319,
+      "PM": 0.6701990000437945,
+      "PYPL": 0.5040772000793368,
+      "QCOM": 0.7056386999320239,
+      "RTX": 0.7004540998023003,
+      "SBUX": 0.8168623999226838,
+      "SCHW": 0.7007630001753569,
+      "SNDK": 0.1926085001323372,
+      "SO": 0.6937942998483777,
+      "T": 0.9368608999066055,
+      "TGT": 0.7313657000195235,
+      "TMO": 0.720679699908942,
+      "TMUS": 0.8334607998840511,
+      "TSLA": 1.1367798000574112,
+      "TXN": 0.67778420005925,
+      "UNH": 0.6836610999889672,
+      "UNP": 0.8052768998313695,
+      "UPS": 0.7367734999861568,
+      "USB": 0.681832900037989,
+      "V": 0.8491605999879539,
+      "VZ": 0.7057169999461621,
+      "WFC": 0.7198614999651909,
+      "WMT": 1.0124401000794023,
+      "XOM": 0.6778893999289721
     },
     "target_build_seconds_by_ticker": {
-      "AAPL": 4.983453700086102,
-      "ABBV": 3.814065899932757,
-      "ABT": 4.934670000104234,
-      "ACN": 4.906882799929008,
-      "ADBE": 4.909108499996364,
-      "AIG": 4.937476099934429,
-      "AMD": 5.004008100135252,
-      "AMGN": 5.04251049994491,
-      "AMT": 5.003675000043586,
-      "AMZN": 5.100485799834132,
-      "ANET": 3.413795900065452,
-      "AVGO": 4.787711499957368,
-      "AXP": 4.920153399929404,
-      "BA": 4.893439899897203,
-      "BAC": 4.886295099975541,
-      "BK": 4.9942776998505,
-      "BKNG": 4.892165799858049,
-      "BLK": 5.170262400060892,
-      "BMY": 4.95560109987855,
-      "BRK.B": 4.982467700028792,
-      "C": 4.928474800195545,
-      "CAT": 4.913709099870175,
-      "CHTR": 4.62416150001809,
-      "CMCSA": 4.93913139984943,
-      "COF": 4.937421899987385,
-      "COP": 4.932050299830735,
-      "COST": 4.850937100127339,
-      "CRM": 4.9447618999984115,
-      "CSCO": 4.893078000051901,
-      "CVS": 5.011996499961242,
-      "CVX": 5.349054899998009,
-      "DE": 4.747061700094491,
-      "DELL": 2.0922822998836637,
-      "DHR": 4.766522299963981,
-      "DIS": 4.737165300175548,
-      "DOW": 2.0151653999928385,
-      "DUK": 4.754553300095722,
-      "EMR": 4.72552049998194,
-      "FDX": 4.731385299935937,
-      "GD": 4.71672370005399,
-      "GILD": 4.741208499995992,
-      "GM": 4.483632700052112,
-      "GOOG": 3.4584335000254214,
-      "GOOGL": 5.147916599875316,
-      "GS": 5.131932100048289,
-      "HD": 5.115147899836302,
-      "IBM": 5.071104600094259,
-      "INTC": 4.989460399840027,
-      "JNJ": 5.020723199937493,
-      "JPM": 5.049141599796712,
-      "KO": 5.049949799897149,
-      "LIN": 2.708333499962464,
-      "LLY": 5.434642900014296,
-      "LMT": 5.143064700067043,
-      "LOW": 5.134010800160468,
-      "MA": 5.133525800192729,
-      "MCD": 5.27402100013569,
-      "MDLZ": 5.243047900032252,
-      "MDT": 5.1802944000810385,
-      "MET": 4.921712099807337,
-      "META": 4.4296399999875575,
-      "MMM": 5.134001600090414,
-      "MO": 5.482020300114527,
-      "MRK": 5.46866809995845,
-      "MS": 4.999429899966344,
-      "MSFT": 4.9514253998640925,
-      "MU": 5.093393400078639,
-      "NEE": 4.9326869999058545,
-      "NFLX": 5.005340100033209,
-      "NOW": 3.944497999968007,
-      "NVDA": 4.920722400071099,
-      "ORCL": 4.932482700096443,
-      "PANW": 3.9273534999229014,
-      "PEP": 4.927797999931499,
-      "PFE": 4.971849799854681,
-      "PG": 4.923818199895322,
-      "PLD": 4.870235699927434,
-      "PLTR": 1.6972223999910057,
-      "PM": 5.050233300076798,
-      "PYPL": 3.069817200070247,
-      "QCOM": 5.0003849000204355,
-      "RTX": 5.093419499928132,
-      "SBUX": 5.000275400001556,
-      "SCHW": 4.884960100054741,
-      "SNDK": 0.4579586999025196,
-      "SO": 4.8743644000496715,
-      "T": 4.918058200040832,
-      "TGT": 4.986480299849063,
-      "TMO": 4.91805909993127,
-      "TMUS": 4.949186400044709,
-      "TSLA": 4.53027160000056,
-      "TXN": 5.268002500059083,
-      "UNH": 5.048927800031379,
-      "UNP": 5.122301299823448,
-      "UPS": 5.290870799915865,
-      "USB": 4.981384400045499,
-      "V": 4.936732499860227,
-      "VZ": 5.13552529993467,
-      "WFC": 4.976958299987018,
-      "WMT": 4.908205999992788,
-      "XOM": 5.089050800073892
+      "AAPL": 3.386434999993071,
+      "ABBV": 2.6083333999849856,
+      "ABT": 3.3800540000665933,
+      "ACN": 3.182883300120011,
+      "ADBE": 2.6691486998461187,
+      "AIG": 3.5938907000236213,
+      "AMD": 3.660567600047216,
+      "AMGN": 3.6748760999180377,
+      "AMT": 3.477601000107825,
+      "AMZN": 3.428430699976161,
+      "ANET": 2.5011355001479387,
+      "AVGO": 3.351812700042501,
+      "AXP": 3.4361811000853777,
+      "BA": 3.414028099970892,
+      "BAC": 3.5725490001495928,
+      "BK": 3.574233900057152,
+      "BKNG": 2.6702193999662995,
+      "BLK": 3.4000063000712544,
+      "BMY": 3.586283100070432,
+      "BRK.B": 3.522722200024873,
+      "C": 3.469808500027284,
+      "CAT": 3.497284899931401,
+      "CHTR": 3.2506988998502493,
+      "CMCSA": 3.4485527998767793,
+      "COF": 3.3995739000383765,
+      "COP": 3.712826699949801,
+      "COST": 3.473570100031793,
+      "CRM": 3.555780599825084,
+      "CSCO": 3.496226300019771,
+      "CVS": 3.519628999987617,
+      "CVX": 3.4902011998929083,
+      "DE": 3.5448280998971313,
+      "DELL": 1.6149595000315458,
+      "DHR": 3.5108016000594944,
+      "DIS": 3.5272483001463115,
+      "DOW": 1.5293958999682218,
+      "DUK": 3.4895871998742223,
+      "EMR": 3.463452599942684,
+      "FDX": 3.501915200147778,
+      "GD": 3.489148100139573,
+      "GILD": 3.597744100028649,
+      "GM": 3.1199675002135336,
+      "GOOG": 2.503757300088182,
+      "GOOGL": 3.59019390004687,
+      "GS": 3.566322800004855,
+      "HD": 3.5825968000572175,
+      "IBM": 3.510653399862349,
+      "INTC": 3.5766435000114143,
+      "JNJ": 3.472402000101283,
+      "JPM": 3.509652800159529,
+      "KO": 3.6261460999958217,
+      "LIN": 1.6473127999342978,
+      "LLY": 3.5620502000674605,
+      "LMT": 3.5476659999694675,
+      "LOW": 3.519858199870214,
+      "MA": 3.5385163999162614,
+      "MCD": 3.513891600072384,
+      "MDLZ": 3.4297530001495034,
+      "MDT": 3.557776200119406,
+      "MET": 3.523112300084904,
+      "META": 2.881766599835828,
+      "MMM": 3.5265742999035865,
+      "MO": 3.5304554000031203,
+      "MRK": 3.4857356001157314,
+      "MS": 3.4281669999472797,
+      "MSFT": 3.3707278000656515,
+      "MU": 3.4898107999470085,
+      "NEE": 3.579254199983552,
+      "NFLX": 3.474249300081283,
+      "NOW": 2.881901500048116,
+      "NVDA": 3.6070244999136776,
+      "ORCL": 3.4616539999842644,
+      "PANW": 2.816639200085774,
+      "PEP": 3.4703553998842835,
+      "PFE": 3.4554719999432564,
+      "PG": 3.5024373999331146,
+      "PLD": 3.492730800062418,
+      "PLTR": 1.1788849998265505,
+      "PM": 3.458331399830058,
+      "PYPL": 2.2153908000327647,
+      "QCOM": 3.5762947001494467,
+      "RTX": 3.478906200034544,
+      "SBUX": 3.4867960000410676,
+      "SCHW": 3.558283499907702,
+      "SNDK": 0.3345474998932332,
+      "SO": 3.522418700158596,
+      "T": 3.565928200026974,
+      "TGT": 3.5187572001013905,
+      "TMO": 3.493322200141847,
+      "TMUS": 3.5320717999711633,
+      "TSLA": 3.2148108000401407,
+      "TXN": 3.4403738998807967,
+      "UNH": 3.5567185999825597,
+      "UNP": 3.5360451999586076,
+      "UPS": 3.5526354999747127,
+      "USB": 3.5241597001440823,
+      "V": 3.5378370000980794,
+      "VZ": 3.5835359001066536,
+      "WFC": 3.582815600093454,
+      "WMT": 3.654824199853465,
+      "XOM": 3.523801000090316
     },
-    "ingestion_wall_seconds": 3.0011869966983795e-07,
-    "feature_and_target_build_wall_seconds": 1.304776299977675,
-    "feature_build_seconds_sum": 52.29501629900187,
-    "target_build_seconds_sum": 478.67898339871317,
+    "ingestion_wall_seconds": 4.00003045797348e-07,
+    "feature_and_target_build_wall_seconds": 1.8056101999245584,
+    "feature_build_seconds_sum": 74.640962298261,
+    "target_build_seconds_sum": 334.65534450113773,
     "stages_skipped": {
       "download": true,
       "features": true
     },
-    "validation_report_seconds": 19.439650099957362,
-    "total_seconds": 24.441978599876165
+    "validation_report_seconds": 28.725892999907956,
+    "total_seconds": 35.278698599897325
   },
   "dataset_sizes_bytes": {
-    "raw": 43008385,
-    "processed": 15918153,
-    "features": 208206457,
-    "targets": 12792790
+    "raw": 43445774,
+    "processed": 16079394,
+    "features": 208207170,
+    "targets": 13757353
   }
 }
