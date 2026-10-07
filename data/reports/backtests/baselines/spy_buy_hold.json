@@ -1,0 +1,123 @@
+{
+  "allocation_count": 68,
+  "eligibility_summary": {
+    "average_eligible_assets": null,
+    "decision_dates": 68,
+    "eligibility_observations": 0,
+    "maximum_eligible_assets": null,
+    "minimum_eligible_assets": null
+  },
+  "metrics": {
+    "backtest_config": {
+      "allow_fractional_shares": true,
+      "benchmark_ticker": "SPY",
+      "commission_bps": 0.0,
+      "initial_cash": 100000.0,
+      "slippage_bps": 0.0
+    },
+    "benchmark": {
+      "costs": {
+        "annualized_turnover": 0.07727040917837495,
+        "average_daily_turnover": 0.00030662860785069424,
+        "cost_over_initial_nav": 0.0,
+        "cost_over_traded_notional": 0.0,
+        "gross_traded_notional": 189484.70083905163,
+        "total_commissions": 0.0,
+        "total_slippage_cost": 0.0,
+        "total_transaction_cost": 0.0,
+        "total_turnover": 1.2918263248749748
+      },
+      "excess_cagr": 0.0,
+      "excess_cumulative_return": 0.0,
+      "performance": {
+        "annualized_volatility": 0.17046447099038994,
+        "cagr": 0.14125397464925893,
+        "cumulative_return": 8.134653597681528,
+        "drawdown_peak_date": "2020-02-19",
+        "drawdown_recovery_date": "2020-08-10",
+        "drawdown_trough_date": "2020-03-23",
+        "end_date": "2026-10-02",
+        "final_nav": 913465.3597681528,
+        "initial_nav": 100000.0,
+        "max_drawdown": -0.3369883290471869,
+        "return_observation_count": 4212,
+        "session_count": 4213,
+        "sharpe_ratio": 0.8620246500484199,
+        "sortino_ratio": 1.2164730817481284,
+        "start_date": "2010-01-04"
+      },
+      "run_id": "baseline_1eb78d917d021b57c0b7:benchmark:SPY:backtest-metrics-v1",
+      "ticker": "SPY",
+      "tracking_difference": 0.0
+    },
+    "corporate_actions": {
+      "cash_in_lieu": 0.0,
+      "cash_in_lieu_count": 0,
+      "dividend_cash": 89484.70083905163,
+      "dividend_cash_flow_count": 67
+    },
+    "costs": {
+      "annualized_turnover": 0.07727040917837495,
+      "average_daily_turnover": 0.00030662860785069424,
+      "cost_over_initial_nav": 0.0,
+      "cost_over_traded_notional": 0.0,
+      "gross_traded_notional": 189484.70083905163,
+      "total_commissions": 0.0,
+      "total_slippage_cost": 0.0,
+      "total_transaction_cost": 0.0,
+      "total_turnover": 1.2918263248749748
+    },
+    "execution": {
+      "fill_rate": 0.47058823529411764,
+      "filled_orders": 32,
+      "partial_fill_rate": 0.5294117647058824,
+      "partially_filled_orders": 36,
+      "pending_orders": 0,
+      "total_execution_records": 68,
+      "total_fills": 68,
+      "total_orders": 68,
+      "unfilled_orders": 0,
+      "unfilled_rate": 0.0
+    },
+    "exposure": {
+      "average_cash_weight": 0.0003254885791600967,
+      "average_gross_exposure": 0.9996745114208399,
+      "average_net_exposure": 0.9996745114208399,
+      "average_positions": 0.9997626394493235,
+      "maximum_cash_weight": 1.0,
+      "maximum_positions": 1,
+      "minimum_cash_weight": 0.0
+    },
+    "final_unrealized_pnl": 723980.6589291012,
+    "metrics_version": "backtest-metrics-v1",
+    "performance": {
+      "annualized_volatility": 0.17046447099038994,
+      "cagr": 0.14125397464925893,
+      "cumulative_return": 8.134653597681528,
+      "drawdown_peak_date": "2020-02-19",
+      "drawdown_recovery_date": "2020-08-10",
+      "drawdown_trough_date": "2020-03-23",
+      "end_date": "2026-10-02",
+      "final_nav": 913465.3597681528,
+      "initial_nav": 100000.0,
+      "max_drawdown": -0.3369883290471869,
+      "return_observation_count": 4212,
+      "session_count": 4213,
+      "sharpe_ratio": 0.8620246500484199,
+      "sortino_ratio": 1.2164730817481284,
+      "start_date": "2010-01-04"
+    },
+    "realized_pnl": 0.0,
+    "run_id": "baseline_1eb78d917d021b57c0b7",
+    "total_trading_pnl": 723980.6589291012,
+    "warnings": [
+      "development_fixed universe is not point-in-time and contains survivorship bias"
+    ]
+  },
+  "requested_end": "2026-10-02",
+  "requested_start": "2010-01-01",
+  "run_id": "baseline_1eb78d917d021b57c0b7",
+  "status": "completed",
+  "strategy_name": "spy_buy_hold",
+  "strategy_version": "spy-buy-hold-v1"
+}

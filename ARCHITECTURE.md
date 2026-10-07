@@ -52,7 +52,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `models` | Contratos de regresión, clasificación y ranking | Stub |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
-| `backtesting` | Motor temporal, accounting, métricas y benchmark económico | Funcional Phase 2A.3 |
+| `backtesting` | Motor temporal, métricas, benchmark y baselines sistemáticos | Funcional Phase 2B; validación real parcial |
 | `execution` | Órdenes, fills y paper executor | Contrato/stub |
 | `audit` | Registro reconstruible de decisiones | Funcional básico |
 
@@ -149,6 +149,18 @@ interna de SPY con el mismo capital, rango, configuración de costos y semántic
 after-close/next-open. Usa raw prices, splits y entitlement de dividendos; el
 cash del dividendo se reinvierte mediante una decisión al cierre de ex-date y un
 fill en la apertura siguiente. No se usa `adjusted_close` ni información futura.
+
+`backtesting.strategies` genera mappings de fecha a `TargetAllocation`; no llama
+al engine ni al reporter. SPY buy-and-hold comparte con el benchmark únicamente
+el schedule causal de entrada y reinversión. Equal-weight y momentum consultan
+el Feature Store físico mediante columnas explícitas y por `decision_date`; la
+API rechaza targets. El engine sigue siendo agnóstico a la estrategia.
+
+Equal-weight rebalancea diariamente todos los activos `model_eligible` del
+`development_fixed`, sin el límite V1 de 15 posiciones. Momentum selecciona cada
+día hasta 10 activos por `momentum_20d` descendente y ticker ascendente, con 10%
+por activo y el resto en cash. Ambos excluyen SPY y heredan el survivorship bias
+del universo fijo. No existe integración con Risk Manager en Phase 2B.
 
 ## LLM Router, costos y cache
 

@@ -1,0 +1,13 @@
+{
+  "error": "unmodelled corporate action for TMUS on 2013-05-01: event_id=e653f71b02957333e821 reason=complex_recapitalization",
+  "error_type": "UnmodelledCorporateActionError",
+  "event_date": "2013-05-01",
+  "event_id": "e653f71b02957333e821",
+  "reason": "complex_recapitalization",
+  "requested_end": "2026-10-02",
+  "requested_start": "2010-01-01",
+  "status": "failed",
+  "strategy_name": "momentum_20d_top10",
+  "strategy_version": "momentum-20d-top10-v1",
+  "ticker": "TMUS"
+}

@@ -93,8 +93,10 @@ Son funcionales los schemas, validación point-in-time, adapter Tiingo EOD, actu
 
 Phase 2A.3 añade contratos, `PortfolioLedger`, loop temporal por sesiones XNYS y
 reportes económicos versionados. Performance, costos, turnover, exposición y un
-benchmark SPY interno se calculan sin mezclar reporting con simulación. Aún no
-existen las estrategias baseline de Phase 2B y no se reutiliza `PaperExecutor` ni
-se modifica la autoridad de riesgo.
+benchmark SPY interno se calculan sin mezclar reporting con simulación. Phase 2B
+añade SPY buy-and-hold, equal-weight diario y momentum 20d top-10 como generadores
+de allocations, sin ML ni targets. La implementación está completa; la validación
+real es parcial por corporate actions complejas que se conservan como errores
+explícitos. No se reutiliza `PaperExecutor` ni se modifica la autoridad de riesgo.
 
 Phases: 0 Architecture + feature store; 1 ingestión + baseline cuantitativo; 2 backtesting; 3 modelos baseline; 4 News; 5 Analyst + Earnings; 6 Fundamental + Macro + Event; 7 Portfolio + Risk; 8 paper trading; 9 live supervisado; 10 posible ejecución automática. Crypto será una expansión con schemas y predictores separados.

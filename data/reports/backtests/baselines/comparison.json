@@ -1,0 +1,36 @@
+{
+  "comparison_version": "baseline-comparison-v1",
+  "failures": {
+    "equal_weight": {
+      "error": "unmodelled corporate action for MDLZ on 2012-10-02: event_id=89f2ab472a86d18abc22 reason=complex_distribution",
+      "error_type": "UnmodelledCorporateActionError",
+      "event_date": "2012-10-02",
+      "event_id": "89f2ab472a86d18abc22",
+      "reason": "complex_distribution",
+      "ticker": "MDLZ"
+    },
+    "momentum_20d_top10": {
+      "error": "unmodelled corporate action for TMUS on 2013-05-01: event_id=e653f71b02957333e821 reason=complex_recapitalization",
+      "error_type": "UnmodelledCorporateActionError",
+      "event_date": "2013-05-01",
+      "event_id": "e653f71b02957333e821",
+      "reason": "complex_recapitalization",
+      "ticker": "TMUS"
+    }
+  },
+  "strategies": {
+    "spy_buy_hold": {
+      "annualized_volatility": 0.17046447099038994,
+      "average_cash_weight": 0.0003254885791600967,
+      "cagr": 0.14125397464925893,
+      "cumulative_return": 8.134653597681528,
+      "max_drawdown": -0.3369883290471869,
+      "run_id": "baseline_1eb78d917d021b57c0b7",
+      "sharpe_ratio": 0.8620246500484199,
+      "sortino_ratio": 1.2164730817481284,
+      "strategy_version": "spy-buy-hold-v1",
+      "total_transaction_cost": 0.0,
+      "total_turnover": 1.2918263248749748
+    }
+  }
+}

@@ -4,6 +4,8 @@ from pathlib import Path
 from typing import Any
 import pandas as pd
 
+from investment_system.data.schemas.features import TARGET_COLUMNS
+
 class QuantitativeFeatureStore:
     """Separate yearly datasets with upsert and authoritative range rebuild APIs."""
     def __init__(self, features_root: str | Path, targets_root: str | Path | None = None) -> None:
@@ -66,6 +68,35 @@ class QuantitativeFeatureStore:
     def read_features(self) -> pd.DataFrame:
         files = list(self.features.glob("year=*/data.parquet"))
         return pd.concat([pd.read_parquet(path) for path in files], ignore_index=True) if files else pd.DataFrame()
+
+    def read_feature_range(
+        self,
+        start_date: date,
+        end_date: date,
+        *,
+        columns: list[str],
+        tickers: list[str] | None = None,
+    ) -> pd.DataFrame:
+        """Read selected feature-only columns for an inclusive decision range."""
+        if start_date > end_date:
+            raise ValueError("start_date must be <= end_date")
+        requested = list(dict.fromkeys(("ticker", "decision_date", *columns)))
+        forbidden = sorted(set(requested).intersection(TARGET_COLUMNS))
+        if forbidden:
+            raise ValueError(f"target columns cannot be read as strategy features: {forbidden}")
+        frames: list[pd.DataFrame] = []
+        for year in range(start_date.year, end_date.year + 1):
+            path = self.features / f"year={year}" / "data.parquet"
+            if path.exists():
+                frames.append(pd.read_parquet(path, columns=requested))
+        if not frames:
+            return pd.DataFrame(columns=requested)
+        result = pd.concat(frames, ignore_index=True)
+        dates = pd.to_datetime(result["decision_date"]).dt.date
+        result = result[(dates >= start_date) & (dates <= end_date)]
+        if tickers is not None:
+            result = result[result["ticker"].isin(tickers)]
+        return result.sort_values(["decision_date", "ticker"]).reset_index(drop=True)
 
     def read_targets(self) -> pd.DataFrame:
         files = list(self.targets.glob("year=*/data.parquet"))

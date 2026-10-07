@@ -4,14 +4,15 @@ from __future__ import annotations
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
-import pandas as pd
-
 from investment_system.backtesting.engine import BacktestDataError, HistoricalBacktestEngine
 from investment_system.backtesting.metrics import nav_series_from_snapshots, performance_metrics
 from investment_system.backtesting.schemas import (
     BacktestMetrics, BacktestResult, BenchmarkMetrics, CashFlowType, CostMetrics,
     CorporateActionMetrics, ExecutionMetrics, ExposureMetrics, OrderStatus,
-    PerformanceMetrics, TargetAllocation,
+    PerformanceMetrics,
+)
+from investment_system.backtesting.strategies.base import (
+    buy_and_hold_allocations, sessions,
 )
 from investment_system.data.calendar import TradingCalendar
 from investment_system.data.storage.market_store import MarketDataStore
@@ -130,32 +131,6 @@ def calculate_corporate_action_metrics(result: BacktestResult) -> CorporateActio
     )
 
 
-def _sessions(start: date, end: date, calendar: TradingCalendar) -> list[date]:
-    return [
-        date.fromordinal(ordinal)
-        for ordinal in range(start.toordinal(), end.toordinal() + 1)
-        if calendar.is_session(date.fromordinal(ordinal))
-    ]
-
-
-def _dividend_dates(
-    market_store: MarketDataStore,
-    ticker: str,
-    start: date,
-    end: date,
-    calendar: TradingCalendar,
-) -> set[date]:
-    actions = market_store.read_actions(ticker)
-    if actions.empty:
-        return set()
-    action_types = actions["action_type"].astype(str).str.lower()
-    dates = pd.to_datetime(actions.loc[action_types.str.endswith("dividend"), "effective_date"])
-    return {
-        timestamp.date() for timestamp in dates
-        if start <= timestamp.date() <= end and calendar.is_session(timestamp.date())
-    }
-
-
 def simulate_benchmark(
     result: BacktestResult,
     market_store: MarketDataStore,
@@ -167,8 +142,8 @@ def simulate_benchmark(
     timezone_name = str(result.metadata.get("market_timezone", "America/New_York"))
     start = _market_date(result.snapshots[0].as_of, timezone_name)
     end = _market_date(result.snapshots[-1].as_of, timezone_name)
-    sessions = _sessions(start, end, calendar)
-    if len(sessions) < 2:
+    trading_sessions = sessions(start, end, calendar)
+    if len(trading_sessions) < 2:
         raise BenchmarkDataError("benchmark requires at least two sessions for next-open entry")
 
     cutoff = str(result.metadata.get("decision_cutoff", "20:15"))
@@ -180,17 +155,15 @@ def simulate_benchmark(
         decision_cutoff=cutoff,
     )
     ticker = result.config.benchmark_ticker
-    decision_dates = {sessions[0]} | _dividend_dates(
-        market_store, ticker, start, end, calendar,
+    allocations = buy_and_hold_allocations(
+        ticker=ticker,
+        start=start,
+        end=end,
+        calendar=calendar,
+        actions=market_store.read_actions(ticker),
+        timezone_name=timezone_name,
+        cutoff=cutoff,
     )
-    allocations = {
-        session: TargetAllocation(
-            generated_at=subject.decision_time(session),
-            weights={ticker: 1.0},
-            cash_weight=0.0,
-        )
-        for session in sorted(decision_dates)
-    }
     try:
         benchmark = subject.run(
             start,

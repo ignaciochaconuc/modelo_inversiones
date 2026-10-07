@@ -64,7 +64,7 @@ movimientos aún no explicados.
 
 ## Phase 2 — Backtesting engine
 
-**Status:** Phase 2A.3 complete; Phase 2B baselines pending
+**Status:** Phase 2B implementation complete; real-data validation partial
 
 **Objetivo:** simular decisiones after-close y ejecución next-open.  
 **Entregables:** loop temporal, fills, costos, cartera, benchmark, métricas y auditoría.  
@@ -102,11 +102,17 @@ causalmente y los mismos costos. No es una estrategia reutilizable.
 
 ### Phase 2B — Baselines
 
-**Status:** pending
+**Status:** implementation complete; real-data validation partial
 
-Implementará explícitamente, en una fase separada, los baselines reutilizables
-SPY buy-and-hold, equal-weight del development universe y momentum simple.
-Phase 2A.3 no adelanta estas estrategias.
+Implementa SPY buy-and-hold con dividendos reinvertidos causalmente, equal-weight
+diario del universo elegible y momentum 20d top-10 diario. Todos producen
+`TargetAllocation` y reutilizan engine y reporting sin acceder a targets.
+
+La validación local 2010-01-01 a 2026-10-02 completó SPY. Equal-weight se detuvo
+correctamente en `MDLZ` el 2012-10-02 por `complex_distribution`; momentum se
+detuvo en `TMUS` el 2013-05-01 por `complex_recapitalization`. No se relajó
+`UnmodelledCorporateActionError`. Por ello Phase 2 no se considera todavía
+completamente validada con datos reales.
 
 ## Phase 3 — Baseline predictive models
 

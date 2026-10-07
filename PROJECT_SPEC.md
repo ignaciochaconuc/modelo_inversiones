@@ -141,7 +141,24 @@ El benchmark de reporting simula SPY con el mismo capital y costos: decisión al
 cierre de la primera sesión, compra al raw open siguiente, splits explícitos y
 dividend entitlement post-split/pre-open. El cash se acredita post-close y se
 reinvierte causalmente en el next open. No usa precios ajustados. Esta utilidad
-interna no constituye la estrategia SPY reutilizable prevista para Phase 2B.
+interna permanece separada de `SpyBuyAndHoldStrategy`, aunque ambas comparten el
+mismo constructor causal de allocations para evitar divergencias económicas.
+
+Phase 2B implementa tres generadores deterministas de `TargetAllocation`:
+
+- SPY buy-and-hold: 100% SPY desde la primera decisión, con reinversión causal de
+  dividendos en la apertura siguiente y la misma economía que el benchmark.
+- Equal-weight: rebalanceo diario entre todas las filas `model_eligible` del
+  `development_fixed`, excluyendo SPY. No aplica max 15 posiciones ni 10% porque
+  representa el universo naïve diversificado.
+- Momentum: rebalanceo diario top 10 por `momentum_20d` descendente, desempate por
+  ticker ascendente, 10% por activo y cash no redistribuido cuando hay menos de 10.
+
+Las estrategias cross-sectional leen solo features de su `decision_date` y
+validan su `decision_time`; no cargan targets, no imputan momentum faltante y no
+reconstruyen features desde raw. El runner persiste reportes completos o fallos
+diagnósticos, pero nunca presenta un run truncado como exitoso. Phase 2B no es
+ML, no usa optimizer ni integra Risk Manager.
 
 Paper trading corresponde a Phase 8. La ejecución real supervisada y una eventual ejecución automática corresponden a Phases 9 y 10. No existe conexión con brokers ni autorización para órdenes reales.
 

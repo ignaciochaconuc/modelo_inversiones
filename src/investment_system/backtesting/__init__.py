@@ -15,15 +15,21 @@ from investment_system.backtesting.schemas import (
     OrderExecutionRecord, OrderSide, OrderStatus, PerformanceMetrics,
     PortfolioSnapshot, SimulatedFill, SimulatedOrder, TargetAllocation,
 )
+from investment_system.backtesting.strategies import (
+    BaselineStrategy, EqualWeightStrategy, SimpleMomentumStrategy,
+    SpyBuyAndHoldStrategy, StrategyPlan,
+)
 
 __all__ = [
     "BacktestConfig", "BacktestDataError", "BacktestMetrics", "BacktestPosition",
-    "BacktestResult", "BaseBacktestEngine", "BenchmarkDataError",
+    "BacktestResult", "BaselineStrategy", "BaseBacktestEngine", "BenchmarkDataError",
     "BenchmarkMetrics", "CashFlowType", "CorporateActionCashFlow",
     "CorporateActionMetrics", "CostMetrics", "ExecutionMetrics",
-    "ExposureMetrics", "HistoricalBacktestEngine", "METRICS_VERSION",
+    "EqualWeightStrategy", "ExposureMetrics", "HistoricalBacktestEngine",
+    "METRICS_VERSION",
     "OrderExecutionRecord", "OrderSide", "OrderStatus", "PerformanceMetrics",
-    "PortfolioLedger", "PortfolioSnapshot", "SimulatedFill", "SimulatedOrder",
+    "PortfolioLedger", "PortfolioSnapshot", "SimpleMomentumStrategy",
+    "SimulatedFill", "SimulatedOrder", "SpyBuyAndHoldStrategy", "StrategyPlan",
     "TargetAllocation", "UnmodelledCorporateActionError",
     "build_backtest_report", "simulate_benchmark",
 ]
