@@ -5,6 +5,9 @@ import argparse
 from datetime import date
 
 from investment_system.backtesting import BacktestConfig, HistoricalBacktestEngine
+from investment_system.backtesting.corporate_actions import (
+    load_reviewed_corporate_action_treatments,
+)
 from investment_system.backtesting.baseline_runner import (
     run_baseline_strategy, write_baseline_reports,
 )
@@ -46,6 +49,7 @@ def main() -> int:
         settings.paths.features, settings.paths.features.parent / "targets",
     )
     calendar = XNYSTradingCalendar()
+    reviewed_treatments = load_reviewed_corporate_action_treatments()
     end = args.end or market_store.latest_trading_date(universe.benchmark)
     if end is None:
         raise ValueError(f"no local market data for {universe.benchmark}")
@@ -79,6 +83,7 @@ def main() -> int:
             calendar,
             market_timezone=settings.market.timezone,
             decision_cutoff=settings.market.decision_cutoff,
+            reviewed_treatments=reviewed_treatments,
         )
         report = run_baseline_strategy(
             strategies[name], start=args.start, end=end, engine=engine,

@@ -13,11 +13,18 @@ from zoneinfo import ZoneInfo
 
 import pandas as pd
 
+from investment_system.backtesting.corporate_actions import (
+    EntitlementTiming, ProviderActionType,
+    RecapitalizationCashAndSplitTreatment,
+    ReviewedCorporateActionTreatments, ReviewedTreatment,
+    SpinOffDistributionTreatment,
+)
 from investment_system.backtesting.portfolio import PortfolioLedger
 from investment_system.backtesting.schemas import (
     BacktestConfig, BacktestResult, CashFlowType, CorporateActionCashFlow,
-    OrderExecutionRecord, OrderSide, OrderStatus, PortfolioSnapshot,
-    SimulatedFill, SimulatedOrder, TargetAllocation, VALUE_TOLERANCE,
+    CorporateActionTransformation, CostBasisStatus, OrderExecutionRecord,
+    OrderSide, OrderStatus, PortfolioSnapshot, SimulatedFill, SimulatedOrder,
+    TargetAllocation, VALUE_TOLERANCE,
 )
 from investment_system.data.calendar import TradingCalendar
 from investment_system.data.storage.market_store import MarketDataStore
@@ -75,12 +82,16 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
         *,
         market_timezone: str = "America/New_York",
         decision_cutoff: str = "20:15",
+        reviewed_treatments: ReviewedCorporateActionTreatments | None = None,
     ) -> None:
         self.config = config
         self.market_store = market_store
         self.calendar = calendar
         self.timezone = ZoneInfo(market_timezone)
         self.decision_cutoff = time.fromisoformat(decision_cutoff)
+        self.reviewed_treatments = reviewed_treatments or ReviewedCorporateActionTreatments(
+            schema_version="1",
+        )
 
     def decision_time(self, session: date) -> datetime:
         return datetime.combine(session, self.decision_cutoff, self.timezone)
@@ -106,7 +117,10 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
     def _load_inputs(
         self, allocations: Mapping[date, TargetAllocation],
     ) -> tuple[dict[str, dict[date, Any]], dict[str, dict[date, list[Any]]], dict[date, list[Any]]]:
-        tickers = sorted({ticker for allocation in allocations.values() for ticker in allocation.weights})
+        tickers = sorted(
+            {ticker for allocation in allocations.values() for ticker in allocation.weights}
+            | self.reviewed_treatments.auxiliary_tickers()
+        )
         bars: dict[str, dict[date, Any]] = {}
         actions: dict[str, dict[date, list[Any]]] = {}
         for ticker in tickers:
@@ -149,7 +163,14 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
             }
             for day, allocation in sorted(allocations.items())
         ]
-        return _stable_id("run", start, end, self.config.model_dump(mode="json"), payload)
+        return _stable_id(
+            "run",
+            start,
+            end,
+            self.config.model_dump(mode="json"),
+            self.reviewed_treatments.model_dump(mode="json"),
+            payload,
+        )
 
     @staticmethod
     def _raw_price(row: Any | None, field: str) -> float | None:
@@ -179,25 +200,49 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
         actions: dict[str, dict[date, list[Any]]],
         complex_events: list[Any],
         cash_flows: list[CorporateActionCashFlow],
-    ) -> list[_PendingOrder]:
+        transformations: list[CorporateActionTransformation],
+        reviewed_entitlements: dict[str, float],
+    ) -> tuple[list[_PendingOrder], set[tuple[str, ProviderActionType]]]:
         held = set(ledger.positions)
-        for event in complex_events:
-            if (
-                event.ticker in held
-                and bool(event.training_exclusion)
-                and not bool(event.adjustment_supported)
-            ):
-                raise UnmodelledCorporateActionError(
-                    event.ticker, session, str(event.event_id), str(event.event_type),
-                )
-
         adjusted_pending = pending
+        consumed: set[tuple[str, ProviderActionType]] = set()
+        for event in sorted(complex_events, key=lambda item: str(item.event_id)):
+            event_id = str(event.event_id)
+            treatment = self.reviewed_treatments.get(event_id)
+            entitlement = reviewed_entitlements.get(event_id, 0.0)
+            affected = event.ticker in held or entitlement > VALUE_TOLERANCE
+            if not affected:
+                continue
+            if treatment is None:
+                if not bool(event.training_exclusion) or bool(event.adjustment_supported):
+                    continue
+                raise UnmodelledCorporateActionError(
+                    event.ticker, session, event_id, str(event.event_type),
+                )
+            self._validate_reviewed_treatment(event, treatment, session)
+            adjusted_pending = self._apply_reviewed_treatment(
+                event,
+                treatment,
+                entitlement,
+                session,
+                ledger,
+                adjusted_pending,
+                bars,
+                cash_flows,
+                transformations,
+            )
+            consumed.update(
+                (treatment.ticker, action_type)
+                for action_type in treatment.provider_action_types_consumed
+            )
+
         for ticker in sorted(set(actions) | held):
             day_actions = actions.get(ticker, {}).get(session, [])
             split_factors = [
                 float(action.split_factor)
                 for action in day_actions
                 if str(action.action_type).lower().endswith("split")
+                and (ticker, ProviderActionType.SPLIT) not in consumed
             ]
             for sequence, factor in enumerate(split_factors):
                 before = ledger.positions.get(ticker)
@@ -233,7 +278,210 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
                     if item.order.ticker == ticker else item
                     for item in adjusted_pending
                 ]
-        return adjusted_pending
+        return adjusted_pending, consumed
+
+    @staticmethod
+    def _validate_reviewed_treatment(
+        event: Any, treatment: ReviewedTreatment, session: date,
+    ) -> None:
+        if treatment.processing_date != session:
+            raise BacktestDataError(
+                f"reviewed treatment processing_date mismatch for {treatment.event_id}"
+            )
+        if treatment.ticker != str(event.ticker).upper():
+            raise BacktestDataError(
+                f"reviewed treatment ticker mismatch for {treatment.event_id}"
+            )
+        if treatment.event_type != str(event.event_type):
+            raise BacktestDataError(
+                f"reviewed treatment event_type mismatch for {treatment.event_id}"
+            )
+
+    def _apply_reviewed_treatment(
+        self,
+        event: Any,
+        treatment: ReviewedTreatment,
+        entitlement_quantity: float,
+        session: date,
+        ledger: PortfolioLedger,
+        pending: list[_PendingOrder],
+        bars: dict[str, dict[date, Any]],
+        cash_flows: list[CorporateActionCashFlow],
+        transformations: list[CorporateActionTransformation],
+    ) -> list[_PendingOrder]:
+        """Transform actual holdings/cash; raw historical prices remain untouched."""
+        processed_at = self.calendar.session_open(session)
+        if entitlement_quantity <= VALUE_TOLERANCE:
+            return pending
+
+        if isinstance(treatment, SpinOffDistributionTreatment):
+            distributed_quantity = (
+                entitlement_quantity * treatment.shares_per_parent_share
+            )
+            if not self.config.allow_fractional_shares and not math.isclose(
+                distributed_quantity,
+                round(distributed_quantity),
+                abs_tol=VALUE_TOLERANCE,
+            ):
+                raise UnmodelledCorporateActionError(
+                    treatment.ticker,
+                    session,
+                    treatment.event_id,
+                    "reviewed spin-off has no actual fractional cash-in-lieu price",
+                )
+            if not self.config.allow_fractional_shares:
+                distributed_quantity = float(round(distributed_quantity))
+            initial_price = self._raw_price(
+                bars.get(treatment.distributed_ticker, {}).get(session), "open",
+            )
+            if initial_price is None:
+                raise BacktestDataError(
+                    "missing required auxiliary-security raw open for "
+                    f"{treatment.distributed_ticker} on {session}"
+                )
+            ledger.add_unallocated_distribution(
+                treatment.distributed_ticker,
+                distributed_quantity,
+                market_price=initial_price,
+            )
+            parent = ledger.positions.get(treatment.ticker)
+            transformation_id = _stable_id(
+                "transformation",
+                treatment.event_id,
+                treatment.treatment_version,
+                entitlement_quantity,
+                distributed_quantity,
+            )
+            transformations.append(CorporateActionTransformation(
+                transformation_id=transformation_id,
+                event_id=treatment.event_id,
+                ticker=treatment.ticker,
+                event_type=treatment.event_type,
+                effective_date=treatment.effective_date,
+                processed_at=processed_at,
+                treatment_type=treatment.treatment_type,
+                treatment_version=treatment.treatment_version,
+                quantity_before=entitlement_quantity,
+                quantity_after=0.0 if parent is None else parent.quantity,
+                distributed_security=treatment.distributed_ticker,
+                distributed_quantity=distributed_quantity,
+                cash_received=0.0,
+                cost_basis_status=CostBasisStatus.UNALLOCATED,
+                notes=treatment.review_notes,
+            ))
+            return pending
+
+        if isinstance(treatment, RecapitalizationCashAndSplitTreatment):
+            current = ledger.positions.get(treatment.ticker)
+            if current is None or not math.isclose(
+                current.quantity,
+                entitlement_quantity,
+                rel_tol=1e-12,
+                abs_tol=VALUE_TOLERANCE,
+            ):
+                raise BacktestDataError(
+                    f"held quantity changed after entitlement for {treatment.event_id}"
+                )
+            cash_received = ledger.apply_cash_distribution(
+                entitlement_quantity,
+                treatment.cash_per_pre_split_share,
+            )
+            cash_flows.append(CorporateActionCashFlow(
+                cash_flow_id=_stable_id(
+                    "cashflow", "recapitalization", treatment.event_id,
+                    treatment.treatment_version,
+                ),
+                event_id=treatment.event_id,
+                ticker=treatment.ticker,
+                cash_flow_type=CashFlowType.RECAPITALIZATION_CASH,
+                effective_date=treatment.effective_date,
+                quantity=entitlement_quantity,
+                amount_per_share=treatment.cash_per_pre_split_share,
+                amount=cash_received,
+                occurred_at=processed_at,
+                notes=treatment.review_notes,
+            ))
+            cash_in_lieu_price = None
+            fractional_quantity = 0.0
+            if not self.config.allow_fractional_shares:
+                exact = current.quantity * treatment.split_factor
+                fractional_quantity = exact - math.floor(exact + VALUE_TOLERANCE)
+                if fractional_quantity > VALUE_TOLERANCE:
+                    cash_in_lieu_price = self._raw_price(
+                        bars.get(treatment.ticker, {}).get(session), "open",
+                    )
+                    if cash_in_lieu_price is None:
+                        raise BacktestDataError(
+                            "missing_execution_open for recapitalization cash-in-lieu: "
+                            f"{treatment.ticker} {session}"
+                        )
+            credited = ledger.apply_split(
+                treatment.ticker,
+                treatment.split_factor,
+                cash_in_lieu_price=cash_in_lieu_price,
+            )
+            if credited > VALUE_TOLERANCE:
+                cash_flows.append(CorporateActionCashFlow(
+                    cash_flow_id=_stable_id(
+                        "cashflow", "cash_in_lieu", treatment.event_id,
+                        treatment.treatment_version,
+                    ),
+                    event_id=treatment.event_id,
+                    ticker=treatment.ticker,
+                    cash_flow_type=CashFlowType.CASH_IN_LIEU,
+                    effective_date=treatment.effective_date,
+                    quantity=fractional_quantity,
+                    amount_per_share=float(cash_in_lieu_price),
+                    amount=credited,
+                    occurred_at=processed_at,
+                    notes="fractional recapitalization settlement at raw open proxy",
+                ))
+            after = ledger.positions.get(treatment.ticker)
+            transformations.append(CorporateActionTransformation(
+                transformation_id=_stable_id(
+                    "transformation",
+                    treatment.event_id,
+                    treatment.treatment_version,
+                    entitlement_quantity,
+                    cash_received,
+                ),
+                event_id=treatment.event_id,
+                ticker=treatment.ticker,
+                event_type=treatment.event_type,
+                effective_date=treatment.effective_date,
+                processed_at=processed_at,
+                treatment_type=treatment.treatment_type,
+                treatment_version=treatment.treatment_version,
+                quantity_before=entitlement_quantity,
+                quantity_after=0.0 if after is None else after.quantity,
+                cash_received=cash_received,
+                notes=treatment.review_notes,
+            ))
+            return [
+                _PendingOrder(
+                    item.order,
+                    item.effective_quantity * treatment.split_factor,
+                )
+                if item.order.ticker == treatment.ticker else item
+                for item in pending
+            ]
+        raise TypeError(f"unsupported reviewed treatment: {type(treatment).__name__}")
+
+    def _capture_reviewed_entitlements(
+        self,
+        session: date,
+        timing: EntitlementTiming,
+        ledger: PortfolioLedger,
+        entitlements: dict[str, float],
+    ) -> None:
+        positions = ledger.positions
+        for treatment in self.reviewed_treatments.treatments_entitled_on(
+            session, timing,
+        ):
+            position = positions.get(treatment.ticker)
+            entitlements[treatment.event_id] = (
+                0.0 if position is None else position.quantity
+            )
 
     def _execute_pending(
         self,
@@ -349,11 +597,14 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
         session: date,
         ledger: PortfolioLedger,
         actions: dict[str, dict[date, list[Any]]],
+        consumed: set[tuple[str, ProviderActionType]],
     ) -> dict[str, float]:
         """Capture post-split, pre-open quantities entitled on Tiingo ex-date."""
         entitlements: dict[str, float] = {}
         positions = ledger.positions
         for ticker in sorted(actions):
+            if (ticker, ProviderActionType.DIVIDEND) in consumed:
+                continue
             if any(
                 str(action.action_type).lower().endswith("dividend")
                 for action in actions[ticker].get(session, [])
@@ -369,8 +620,11 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
         actions: dict[str, dict[date, list[Any]]],
         entitlements: dict[str, float],
         cash_flows: list[CorporateActionCashFlow],
+        consumed: set[tuple[str, ProviderActionType]],
     ) -> None:
         for ticker in sorted(actions):
+            if (ticker, ProviderActionType.DIVIDEND) in consumed:
+                continue
             for sequence, action in enumerate(actions[ticker].get(session, [])):
                 if not str(action.action_type).lower().endswith("dividend"):
                     continue
@@ -465,20 +719,36 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
         fills: list[SimulatedFill] = []
         executions: list[OrderExecutionRecord] = []
         cash_flows: list[CorporateActionCashFlow] = []
+        transformations: list[CorporateActionTransformation] = []
+        reviewed_entitlements: dict[str, float] = {}
         snapshots: list[PortfolioSnapshot] = []
 
         for session in sessions:
-            pending = self._apply_pre_open_actions(
+            self._capture_reviewed_entitlements(
+                session,
+                EntitlementTiming.PRE_OPEN,
+                ledger,
+                reviewed_entitlements,
+            )
+            pending, consumed = self._apply_pre_open_actions(
                 session, ledger, pending_by_date.pop(session, []), bars, actions,
-                complex_by_date.get(session, []), cash_flows,
+                complex_by_date.get(session, []), cash_flows, transformations,
+                reviewed_entitlements,
             )
             dividend_entitlements = self._capture_dividend_entitlements(
-                session, ledger, actions,
+                session, ledger, actions, consumed,
             )
             self._execute_pending(session, ledger, pending, bars, fills, executions)
+            self._capture_reviewed_entitlements(
+                session,
+                EntitlementTiming.POST_CLOSE,
+                ledger,
+                reviewed_entitlements,
+            )
             prices, stale = self._valuation_prices(session, ledger, bars)
             self._apply_dividends(
                 session, ledger, actions, dividend_entitlements, cash_flows,
+                consumed,
             )
             snapshot = ledger.mark_to_market(
                 prices, self.decision_time(session), stale_price_tickers=stale,
@@ -507,8 +777,11 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
             run_id=effective_run_id, config=self.config,
             allocations=result_allocations, snapshots=snapshots,
             orders=orders, fills=fills, executions=executions,
-            cash_flows=cash_flows, realized_pnl=ledger.realized_pnl,
+            cash_flows=cash_flows,
+            corporate_action_transformations=transformations,
+            realized_pnl=ledger.realized_pnl,
             final_unrealized_pnl=snapshots[-1].unrealized_pnl,
+            pnl_incomplete_tickers=sorted(ledger.pnl_incomplete_tickers),
             metadata={
                 "start": start.isoformat(), "end": end.isoformat(),
                 "market_timezone": str(self.timezone),
@@ -517,5 +790,8 @@ class HistoricalBacktestEngine(BaseBacktestEngine):
                 "valuation_timing": "raw_close_then_dividend",
                 "universe_point_in_time": False,
                 "survivorship_bias_warning": True,
+                "reviewed_corporate_action_treatment_schema_version": (
+                    self.reviewed_treatments.schema_version
+                ),
             },
         )

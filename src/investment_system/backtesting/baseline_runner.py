@@ -45,7 +45,15 @@ def run_baseline_strategy(
     try:
         plan = strategy.generate_allocations(start, end)
         run_id = _run_id(
-            strategy, start, end, engine.config.model_dump(mode="json"),
+            strategy,
+            start,
+            end,
+            {
+                "backtest": engine.config.model_dump(mode="json"),
+                "reviewed_corporate_actions": (
+                    engine.reviewed_treatments.model_dump(mode="json")
+                ),
+            },
         )
         result = engine.run(start, end, plan.allocations, run_id=run_id)
         metrics = build_backtest_report(

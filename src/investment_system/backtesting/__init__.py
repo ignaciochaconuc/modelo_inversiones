@@ -5,13 +5,20 @@ from investment_system.backtesting.engine import (
     UnmodelledCorporateActionError,
 )
 from investment_system.backtesting.portfolio import PortfolioLedger
+from investment_system.backtesting.corporate_actions import (
+    CostBasisPolicy, EntitlementTiming, FractionalDistributionPolicy,
+    ProviderActionType, RecapitalizationCashAndSplitTreatment,
+    ReviewedCorporateActionTreatments, SpinOffDistributionTreatment,
+    load_reviewed_corporate_action_treatments,
+)
 from investment_system.backtesting.reporting import (
     BenchmarkDataError, METRICS_VERSION, build_backtest_report, simulate_benchmark,
 )
 from investment_system.backtesting.schemas import (
     BacktestConfig, BacktestMetrics, BacktestPosition, BacktestResult,
     BenchmarkMetrics, CashFlowType, CorporateActionCashFlow,
-    CorporateActionMetrics, CostMetrics, ExecutionMetrics, ExposureMetrics,
+    CorporateActionMetrics, CorporateActionTransformation, CostBasisStatus,
+    CostMetrics, ExecutionMetrics, ExposureMetrics,
     OrderExecutionRecord, OrderSide, OrderStatus, PerformanceMetrics,
     PortfolioSnapshot, SimulatedFill, SimulatedOrder, TargetAllocation,
 )
@@ -24,12 +31,16 @@ __all__ = [
     "BacktestConfig", "BacktestDataError", "BacktestMetrics", "BacktestPosition",
     "BacktestResult", "BaselineStrategy", "BaseBacktestEngine", "BenchmarkDataError",
     "BenchmarkMetrics", "CashFlowType", "CorporateActionCashFlow",
-    "CorporateActionMetrics", "CostMetrics", "ExecutionMetrics",
+    "CorporateActionMetrics", "CorporateActionTransformation", "CostBasisPolicy",
+    "CostBasisStatus", "CostMetrics", "EntitlementTiming", "ExecutionMetrics",
     "EqualWeightStrategy", "ExposureMetrics", "HistoricalBacktestEngine",
     "METRICS_VERSION",
-    "OrderExecutionRecord", "OrderSide", "OrderStatus", "PerformanceMetrics",
+    "FractionalDistributionPolicy", "OrderExecutionRecord", "OrderSide",
+    "OrderStatus", "PerformanceMetrics", "ProviderActionType",
     "PortfolioLedger", "PortfolioSnapshot", "SimpleMomentumStrategy",
     "SimulatedFill", "SimulatedOrder", "SpyBuyAndHoldStrategy", "StrategyPlan",
-    "TargetAllocation", "UnmodelledCorporateActionError",
-    "build_backtest_report", "simulate_benchmark",
+    "RecapitalizationCashAndSplitTreatment", "ReviewedCorporateActionTreatments",
+    "SpinOffDistributionTreatment", "TargetAllocation",
+    "UnmodelledCorporateActionError", "build_backtest_report",
+    "load_reviewed_corporate_action_treatments", "simulate_benchmark",
 ]

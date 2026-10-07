@@ -14,3 +14,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-010: Corporate-action training contamination](ADR-010-corporate-action-training-contamination.md)
 - [ADR-011: Temporal backtesting semantics](ADR-011-temporal-backtesting-semantics.md)
 - [ADR-012: Backtest performance metrics](ADR-012-backtest-performance-metrics.md)
+- [ADR-013: Reviewed complex corporate-action treatments](ADR-013-reviewed-complex-corporate-action-treatments.md)

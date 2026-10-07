@@ -133,6 +133,20 @@ acción compleja no modelable en una posición mantenida invalida el run; nunca 
 inventa continuidad económica.
 Estas semánticas se fijan en ADR-011.
 
+ADR-013 permite una excepción estrictamente event-specific: un registro tipado y
+versionado puede transformar holdings/cash cuando existe evidencia primaria. El
+registro separa entitlement, fecha económica y procesamiento pre-open; consume
+los componentes split/dividend con que el proveedor haya representado el mismo
+evento para no duplicarlos. Sin treatment compatible, el evento sigue fallando.
+Las transformaciones nunca reescriben OHLCV raw ni precios históricos.
+
+Un spin-off puede crear un `auxiliary security` aunque no esté en
+`development_fixed`. El engine carga sus barras raw, lo mantiene y valora, y el
+target implícito cero permite venderlo en la siguiente apertura; la estrategia
+no lo selecciona ni lo incorpora a elegibilidad. KRFT usa basis no asignado: NAV
+permanece completo, pero P&L de trading se marca incompleto y su total no se
+publica. La falta de datos del security requerido bloquea la simulación.
+
 Los IDs deterministas enlazan allocation, order y fill. `risk_decision_id` deja
 preparado el vínculo futuro, pero Phase 2A.2 no integra Risk Manager: el input del
 simulador no constituye una nueva ruta de ejecución y la autoridad definida en
@@ -142,7 +156,8 @@ La evaluación vive fuera del engine. `backtesting.metrics` contiene funciones
 puras cuya fuente de performance es la curva de NAV; `backtesting.reporting`
 agrega ejecuciones, costos, turnover, exposición, P&L y corporate actions en un
 `BacktestMetrics` JSON-serializable. La metodología versionada es
-`backtest-metrics-v1` y está fijada en ADR-012.
+`backtest-metrics-v2`: conserva las fórmulas de ADR-012 y añade cash de
+recapitalización, conteo de treatments y completitud de cost basis según ADR-013.
 
 El benchmark de reporting no es una estrategia de Phase 2B. Es una simulación
 interna de SPY con el mismo capital, rango, configuración de costos y semántica

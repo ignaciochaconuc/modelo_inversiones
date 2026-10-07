@@ -18,7 +18,7 @@ from investment_system.data.calendar import TradingCalendar
 from investment_system.data.storage.market_store import MarketDataStore
 
 
-METRICS_VERSION = "backtest-metrics-v1"
+METRICS_VERSION = "backtest-metrics-v2"
 SURVIVORSHIP_WARNING = (
     "development_fixed universe is not point-in-time and contains survivorship bias"
 )
@@ -123,11 +123,18 @@ def calculate_corporate_action_metrics(result: BacktestResult) -> CorporateActio
         flow for flow in result.cash_flows
         if flow.cash_flow_type == CashFlowType.CASH_IN_LIEU
     ]
+    recapitalization = [
+        flow for flow in result.cash_flows
+        if flow.cash_flow_type == CashFlowType.RECAPITALIZATION_CASH
+    ]
     return CorporateActionMetrics(
         dividend_cash=sum(flow.amount for flow in dividends),
         dividend_cash_flow_count=len(dividends),
         cash_in_lieu=sum(flow.amount for flow in cash_in_lieu),
         cash_in_lieu_count=len(cash_in_lieu),
+        recapitalization_cash=sum(flow.amount for flow in recapitalization),
+        recapitalization_cash_flow_count=len(recapitalization),
+        reviewed_transformation_count=len(result.corporate_action_transformations),
     )
 
 
@@ -206,6 +213,11 @@ def _report_warnings(result: BacktestResult, benchmark: BacktestResult | None) -
         warnings.append("portfolio contains explicitly marked stale valuation prices")
     if benchmark and any(snapshot.stale_price_tickers for snapshot in benchmark.snapshots):
         warnings.append("benchmark contains explicitly marked stale valuation prices")
+    if result.pnl_incomplete_tickers:
+        warnings.append(
+            "trading P&L is unavailable because reviewed spin-off holdings have "
+            "unallocated cost basis; NAV performance remains complete"
+        )
     return warnings
 
 
@@ -274,7 +286,13 @@ def build_backtest_report(
         corporate_actions=calculate_corporate_action_metrics(result),
         realized_pnl=result.realized_pnl,
         final_unrealized_pnl=result.final_unrealized_pnl,
-        total_trading_pnl=result.realized_pnl + result.final_unrealized_pnl,
+        total_trading_pnl=(
+            None
+            if result.pnl_incomplete_tickers
+            else result.realized_pnl + result.final_unrealized_pnl
+        ),
+        trading_pnl_complete=not result.pnl_incomplete_tickers,
+        unknown_cost_basis_tickers=result.pnl_incomplete_tickers,
         benchmark=benchmark_metrics,
         warnings=_report_warnings(result, benchmark),
     )

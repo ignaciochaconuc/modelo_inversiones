@@ -119,6 +119,17 @@ tras el cierre como proxy conservador mientras payment date no esté disponible.
 Una acción corporativa compleja no modelable sobre una posición mantenida
 invalida el run. Allocation, order y fill poseen IDs deterministas enlazados.
 
+Phase 2B.1 agrega treatments económicos revisados, tipados y versionados sin
+relajar ese bloqueo por defecto. MDLZ 2012 distribuye 1 KRFT por cada 3 acciones
+con derecho al cierre de 2012-09-19; KRFT es auxiliar, no invertible, y conserva
+basis no asignado hasta una futura convención fiscal. TMUS 2013 aplica factor 0.5
+y acredita USD 4.0491 por acción pre-split como `RECAPITALIZATION_CASH`. Los
+treatments consumen las acciones genéricas equivalentes del proveedor para no
+duplicarlas, emiten `CorporateActionTransformation`, usan solo raw prices para
+valorar/ejecutar y nunca modifican la historia de precios. NAV sigue siendo la
+fuente de performance; si falta basis, el total de trading P&L queda explícitamente
+no disponible. Datos ausentes de un security distribuido invalidan el run.
+
 El accounting usa costo promedio y excluye comisiones del costo unitario: el
 `fill_price` determina average cost y la comisión reduce cash/NAV. Una venta
 realiza `(fill_price - average_cost) × quantity - commission`; el P&L no realizado

@@ -64,7 +64,7 @@ movimientos aún no explicados.
 
 ## Phase 2 — Backtesting engine
 
-**Status:** Phase 2B implementation complete; real-data validation partial
+**Status:** Phase 2B.1 implementation complete; real-data validation partial
 
 **Objetivo:** simular decisiones after-close y ejecución next-open.  
 **Entregables:** loop temporal, fills, costos, cartera, benchmark, métricas y auditoría.  
@@ -108,11 +108,25 @@ Implementa SPY buy-and-hold con dividendos reinvertidos causalmente, equal-weigh
 diario del universo elegible y momentum 20d top-10 diario. Todos producen
 `TargetAllocation` y reutilizan engine y reporting sin acceder a targets.
 
-La validación local 2010-01-01 a 2026-10-02 completó SPY. Equal-weight se detuvo
-correctamente en `MDLZ` el 2012-10-02 por `complex_distribution`; momentum se
-detuvo en `TMUS` el 2013-05-01 por `complex_recapitalization`. No se relajó
-`UnmodelledCorporateActionError`. Por ello Phase 2 no se considera todavía
-completamente validada con datos reales.
+La validación local 2010-01-01 a 2026-10-02 completó SPY. Tras Phase 2B.1,
+momentum también completa el rango y aplica el treatment TMUS; equal-weight
+supera MDLZ y se detiene correctamente en el siguiente evento no revisado:
+`ABT` 2013-01-02, `complex_distribution`, event ID
+`b35533b35976ca04e483`. No se creó un treatment automático. Por ello Phase 2
+sigue parcialmente validada con datos reales.
+
+### Phase 2B.1 — Reviewed complex corporate actions
+
+**Status:** implementation complete; real-data validation partial
+
+Añade contratos económicos event-specific para MDLZ/KRFT y TMUS/MetroPCS,
+entitlements fechados, securities auxiliares, cash de recapitalización y registros
+de transformación deterministas. El default para cualquier otro evento complejo
+sigue siendo `UnmodelledCorporateActionError`. KRFT se ingirió únicamente como
+dependencia auxiliar y no pertenece al universo invertible. La validación real
+debe detenerse ante el siguiente evento complejo no revisado. El rerun confirmó
+que MDLZ y TMUS ya no bloquean; momentum completó y equal-weight avanzó hasta el
+evento ABT indicado arriba, que permanece intencionalmente bloqueado.
 
 ## Phase 3 — Baseline predictive models
 

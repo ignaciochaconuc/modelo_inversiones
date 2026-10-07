@@ -5,8 +5,8 @@ from datetime import datetime
 import math
 
 from investment_system.backtesting.schemas import (
-    BacktestConfig, BacktestPosition, OrderSide, PortfolioSnapshot, SimulatedFill,
-    VALUE_TOLERANCE,
+    BacktestConfig, BacktestPosition, CostBasisStatus, OrderSide,
+    PortfolioSnapshot, SimulatedFill, VALUE_TOLERANCE,
 )
 
 
@@ -19,11 +19,17 @@ class PortfolioLedger:
         self.cash = config.initial_cash
         self._positions: dict[str, BacktestPosition] = {}
         self.realized_pnl = 0.0
+        self._pnl_incomplete_tickers: set[str] = set()
 
     @property
     def positions(self) -> dict[str, BacktestPosition]:
         """Return a shallow copy so callers cannot replace internal holdings."""
         return dict(self._positions)
+
+    @property
+    def pnl_incomplete_tickers(self) -> set[str]:
+        """Tickers whose missing basis makes realized/unrealized trading P&L partial."""
+        return set(self._pnl_incomplete_tickers)
 
     def _validate_quantity(self, quantity: float) -> None:
         if quantity <= 0 or not math.isfinite(quantity):
@@ -39,8 +45,11 @@ class PortfolioLedger:
             cash_required = fill.notional + fill.commission
             if cash_required > self.cash + VALUE_TOLERANCE:
                 raise ValueError("insufficient cash for buy fill")
+            if current and current.cost_basis_status == CostBasisStatus.UNALLOCATED:
+                raise ValueError("cannot merge a purchase into an unallocated-basis position")
             old_quantity = current.quantity if current else 0.0
             old_cost = current.average_cost if current else 0.0
+            assert old_cost is not None
             new_quantity = old_quantity + fill.quantity
             average_cost = (old_quantity * old_cost + fill.notional) / new_quantity
             new_cash = self.cash - cash_required
@@ -62,10 +71,45 @@ class PortfolioLedger:
         else:
             self._positions[fill.ticker] = BacktestPosition(
                 ticker=current.ticker, quantity=remaining, average_cost=current.average_cost,
-                market_price=fill.fill_price,
+                market_price=fill.fill_price, cost_basis_status=current.cost_basis_status,
             )
-        self.realized_pnl += (fill.fill_price - current.average_cost) * fill.quantity - fill.commission
+        if current.cost_basis_status == CostBasisStatus.KNOWN:
+            assert current.average_cost is not None
+            self.realized_pnl += (
+                (fill.fill_price - current.average_cost) * fill.quantity - fill.commission
+            )
+        else:
+            self._pnl_incomplete_tickers.add(fill.ticker)
         self.cash = 0.0 if abs(new_cash) <= VALUE_TOLERANCE else new_cash
+
+    def add_unallocated_distribution(
+        self, ticker: str, quantity: float, *, market_price: float,
+    ) -> None:
+        """Add an auxiliary holding without inventing a tax/accounting cost basis."""
+        self._validate_quantity(quantity)
+        ticker = ticker.strip().upper()
+        if ticker in self._positions:
+            raise ValueError(
+                f"cannot combine distributed {ticker} with an existing position"
+            )
+        self._positions[ticker] = BacktestPosition(
+            ticker=ticker,
+            quantity=quantity,
+            average_cost=None,
+            market_price=market_price,
+            cost_basis_status=CostBasisStatus.UNALLOCATED,
+        )
+        self._pnl_incomplete_tickers.add(ticker)
+
+    def apply_cash_distribution(self, quantity: float, amount_per_share: float) -> float:
+        """Credit an explicit non-dividend corporate-action cash distribution."""
+        if quantity < 0 or not math.isfinite(quantity):
+            raise ValueError("quantity must be finite and non-negative")
+        if amount_per_share < 0 or not math.isfinite(amount_per_share):
+            raise ValueError("amount_per_share must be finite and non-negative")
+        amount = quantity * amount_per_share
+        self.cash += amount
+        return amount
 
     def apply_split(
         self, ticker: str, split_factor: float, *, cash_in_lieu_price: float | None = None,
@@ -78,7 +122,9 @@ class PortfolioLedger:
         if current is None:
             return 0.0
         exact_quantity = current.quantity * split_factor
-        average_cost = current.average_cost / split_factor
+        average_cost = (
+            None if current.average_cost is None else current.average_cost / split_factor
+        )
         market_price = current.market_price / split_factor
         cash_credit = 0.0
         quantity = exact_quantity
@@ -89,14 +135,17 @@ class PortfolioLedger:
                 if cash_in_lieu_price is None or cash_in_lieu_price <= 0 or not math.isfinite(cash_in_lieu_price):
                     raise ValueError("valid cash-in-lieu price is required for a fractional split result")
                 cash_credit = fractional * cash_in_lieu_price
-                self.realized_pnl += fractional * (cash_in_lieu_price - average_cost)
+                if average_cost is None:
+                    self._pnl_incomplete_tickers.add(ticker)
+                else:
+                    self.realized_pnl += fractional * (cash_in_lieu_price - average_cost)
             if quantity <= VALUE_TOLERANCE:
                 del self._positions[ticker]
                 self.cash += cash_credit
                 return cash_credit
         self._positions[ticker] = BacktestPosition(
             ticker=ticker, quantity=quantity, average_cost=average_cost,
-            market_price=market_price,
+            market_price=market_price, cost_basis_status=current.cost_basis_status,
         )
         self.cash += cash_credit
         return cash_credit
@@ -158,10 +207,15 @@ class PortfolioLedger:
             weights={ticker: weights[ticker] for ticker in sorted(weights)},
             cash_weight=cash_weight,
             stale_price_tickers=sorted(stale_price_tickers or []),
+            unknown_cost_basis_tickers=sorted(
+                ticker for ticker, position in marked.items()
+                if position.cost_basis_status == CostBasisStatus.UNALLOCATED
+            ),
             realized_pnl=self.realized_pnl,
             unrealized_pnl=sum(
                 (position.market_price - position.average_cost) * position.quantity
                 for position in marked.values()
+                if position.average_cost is not None
             ),
         )
 

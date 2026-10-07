@@ -199,6 +199,9 @@ def test_corporate_action_cash_is_separate_and_defaults_to_zero() -> None:
     assert calculate_corporate_action_metrics(empty).model_dump() == {
         "dividend_cash": 0.0, "dividend_cash_flow_count": 0,
         "cash_in_lieu": 0.0, "cash_in_lieu_count": 0,
+        "recapitalization_cash": 0.0,
+        "recapitalization_cash_flow_count": 0,
+        "reviewed_transformation_count": 0,
     }
     flows = [
         CorporateActionCashFlow(

@@ -1,13 +1,13 @@
 {
-  "error": "unmodelled corporate action for MDLZ on 2012-10-02: event_id=89f2ab472a86d18abc22 reason=complex_distribution",
+  "error": "unmodelled corporate action for ABT on 2013-01-02: event_id=b35533b35976ca04e483 reason=complex_distribution",
   "error_type": "UnmodelledCorporateActionError",
-  "event_date": "2012-10-02",
-  "event_id": "89f2ab472a86d18abc22",
+  "event_date": "2013-01-02",
+  "event_id": "b35533b35976ca04e483",
   "reason": "complex_distribution",
   "requested_end": "2026-10-02",
   "requested_start": "2010-01-01",
   "status": "failed",
   "strategy_name": "equal_weight",
   "strategy_version": "equal-weight-v1",
-  "ticker": "MDLZ"
+  "ticker": "ABT"
 }

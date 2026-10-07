@@ -1,0 +1,43 @@
+schema_version: "1"
+treatments:
+  - event_id: "89f2ab472a86d18abc22"
+    ticker: "MDLZ"
+    event_type: "complex_distribution"
+    effective_date: 2012-10-01
+    processing_date: 2012-10-02
+    entitlement_date: 2012-09-19
+    entitlement_timing: "post_close"
+    treatment_type: "spin_off_distribution"
+    treatment_version: "1"
+    provider_action_types_consumed: ["dividend"]
+    distributed_ticker: "KRFT"
+    shares_per_parent_share: 0.3333333333333333
+    cost_basis_policy: "unallocated"
+    fractional_policy: "block_without_actual_settlement_price"
+    evidence:
+      - "https://www.sec.gov/Archives/edgar/data/1103982/000119312512355657/d397214d8k.htm"
+      - "https://www.sec.gov/Archives/edgar/data/1103982/000119312512411522/d418430d8k.htm"
+    review_notes: >-
+      Holders of record at the 2012-09-19 close received one KRFT share per
+      three parent shares at 17:00 ET on 2012-10-01. Regular separate trading
+      and the first post-distribution valuation are mapped to 2012-10-02.
+      Fractional shares were aggregated and sold, but the actual net settlement
+      price is absent, so whole-share mode blocks if a fraction would result.
+  - event_id: "e653f71b02957333e821"
+    ticker: "TMUS"
+    event_type: "complex_recapitalization"
+    effective_date: 2013-04-30
+    processing_date: 2013-05-01
+    entitlement_date: 2013-04-30
+    entitlement_timing: "post_close"
+    treatment_type: "recapitalization_cash_and_split"
+    treatment_version: "1"
+    provider_action_types_consumed: ["dividend", "split"]
+    split_factor: 0.5
+    cash_per_pre_split_share: 4.0491
+    evidence:
+      - "https://www.sec.gov/Archives/edgar/data/1283699/000119312513193449/d527693d8k.htm"
+    review_notes: >-
+      The 2013-04-30 closing recapitalization converted each pre-event share
+      into 0.5 post-event share and paid exactly USD 4.0491 per pre-split share.
+      The transformation is applied before the 2013-05-01 regular-session open.

@@ -1,13 +1,128 @@
 {
-  "error": "unmodelled corporate action for TMUS on 2013-05-01: event_id=e653f71b02957333e821 reason=complex_recapitalization",
-  "error_type": "UnmodelledCorporateActionError",
-  "event_date": "2013-05-01",
-  "event_id": "e653f71b02957333e821",
-  "reason": "complex_recapitalization",
+  "allocation_count": 4213,
+  "eligibility_summary": {
+    "average_eligible_assets": 95.3612627581296,
+    "decision_dates": 4213,
+    "eligibility_observations": 4213,
+    "maximum_eligible_assets": 101,
+    "minimum_eligible_assets": 85
+  },
+  "metrics": {
+    "backtest_config": {
+      "allow_fractional_shares": true,
+      "benchmark_ticker": "SPY",
+      "commission_bps": 0.0,
+      "initial_cash": 100000.0,
+      "slippage_bps": 0.0
+    },
+    "benchmark": {
+      "costs": {
+        "annualized_turnover": 0.07727040917837495,
+        "average_daily_turnover": 0.00030662860785069424,
+        "cost_over_initial_nav": 0.0,
+        "cost_over_traded_notional": 0.0,
+        "gross_traded_notional": 189484.70083905163,
+        "total_commissions": 0.0,
+        "total_slippage_cost": 0.0,
+        "total_transaction_cost": 0.0,
+        "total_turnover": 1.2918263248749748
+      },
+      "excess_cagr": 0.10594612588850083,
+      "excess_cumulative_return": 31.24464191205113,
+      "performance": {
+        "annualized_volatility": 0.17046447099038994,
+        "cagr": 0.14125397464925893,
+        "cumulative_return": 8.134653597681528,
+        "drawdown_peak_date": "2020-02-19",
+        "drawdown_recovery_date": "2020-08-10",
+        "drawdown_trough_date": "2020-03-23",
+        "end_date": "2026-10-02",
+        "final_nav": 913465.3597681528,
+        "initial_nav": 100000.0,
+        "max_drawdown": -0.3369883290471869,
+        "return_observation_count": 4212,
+        "session_count": 4213,
+        "sharpe_ratio": 0.8620246500484199,
+        "sortino_ratio": 1.2164730817481284,
+        "start_date": "2010-01-04"
+      },
+      "run_id": "baseline_cd340e174104a83b7b87:benchmark:SPY:backtest-metrics-v2",
+      "ticker": "SPY",
+      "tracking_difference": 31.24464191205113
+    },
+    "corporate_actions": {
+      "cash_in_lieu": 0.0,
+      "cash_in_lieu_count": 0,
+      "dividend_cash": 264877.02612649195,
+      "dividend_cash_flow_count": 501,
+      "recapitalization_cash": 5923.605528466936,
+      "recapitalization_cash_flow_count": 1,
+      "reviewed_transformation_count": 1
+    },
+    "costs": {
+      "annualized_turnover": 104.82460726825184,
+      "average_daily_turnover": 0.41597066376290415,
+      "cost_over_initial_nav": 0.0,
+      "cost_over_traded_notional": 0.0,
+      "gross_traded_notional": 1459177274.5871968,
+      "total_commissions": 0.0,
+      "total_slippage_cost": 0.0,
+      "total_transaction_cost": 0.0,
+      "total_turnover": 1752.4844064331153
+    },
+    "execution": {
+      "fill_rate": 0.9451987309594656,
+      "filled_orders": 47966,
+      "partial_fill_rate": 0.039470313516069916,
+      "partially_filled_orders": 2003,
+      "pending_orders": 12,
+      "total_execution_records": 50747,
+      "total_fills": 49969,
+      "total_orders": 50759,
+      "unfilled_orders": 778,
+      "unfilled_rate": 0.0153309555244645
+    },
+    "exposure": {
+      "average_cash_weight": 0.000987439235878538,
+      "average_gross_exposure": 0.9990125607641216,
+      "average_net_exposure": 0.9990125607641216,
+      "average_positions": 9.997626394493235,
+      "maximum_cash_weight": 1.0,
+      "maximum_positions": 10,
+      "minimum_cash_weight": 0.0
+    },
+    "final_unrealized_pnl": 122913.98603478193,
+    "metrics_version": "backtest-metrics-v2",
+    "performance": {
+      "annualized_volatility": 0.209366156854553,
+      "cagr": 0.24720010053775976,
+      "cumulative_return": 39.37929550973266,
+      "drawdown_peak_date": "2021-12-29",
+      "drawdown_recovery_date": "2023-02-02",
+      "drawdown_trough_date": "2022-09-30",
+      "end_date": "2026-10-02",
+      "final_nav": 4037929.550973266,
+      "initial_nav": 100000.0,
+      "max_drawdown": -0.2935245628841645,
+      "return_observation_count": 4212,
+      "session_count": 4213,
+      "sharpe_ratio": 1.162194905934589,
+      "sortino_ratio": 1.6796557761765252,
+      "start_date": "2010-01-04"
+    },
+    "realized_pnl": 3544214.933283523,
+    "run_id": "baseline_cd340e174104a83b7b87",
+    "total_trading_pnl": 3667128.9193183053,
+    "trading_pnl_complete": true,
+    "unknown_cost_basis_tickers": [],
+    "warnings": [
+      "development_fixed universe is not point-in-time and contains survivorship bias"
+    ]
+  },
   "requested_end": "2026-10-02",
   "requested_start": "2010-01-01",
-  "status": "failed",
+  "run_id": "baseline_cd340e174104a83b7b87",
+  "status": "completed",
   "strategy_name": "momentum_20d_top10",
-  "strategy_version": "momentum-20d-top10-v1",
-  "ticker": "TMUS"
+  "strategy_version": "momentum-20d-top10-v1"
 }

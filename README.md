@@ -96,7 +96,14 @@ reportes económicos versionados. Performance, costos, turnover, exposición y u
 benchmark SPY interno se calculan sin mezclar reporting con simulación. Phase 2B
 añade SPY buy-and-hold, equal-weight diario y momentum 20d top-10 como generadores
 de allocations, sin ML ni targets. La implementación está completa; la validación
-real es parcial por corporate actions complejas que se conservan como errores
-explícitos. No se reutiliza `PaperExecutor` ni se modifica la autoridad de riesgo.
+real se amplía en Phase 2B.1 con treatments revisados para MDLZ/KRFT y
+TMUS/MetroPCS. Estos transforman holdings/cash sin reescribir precios; cualquier
+otro evento complejo conserva el error explícito. KRFT es un security auxiliar,
+no un miembro del universo invertible. No se reutiliza `PaperExecutor` ni se
+modifica la autoridad de riesgo.
+
+La validación real 2010-01-01 a 2026-10-02 ya completa Momentum después de
+aplicar TMUS. Equal Weight supera MDLZ y se detiene en el siguiente evento no
+revisado, ABT 2013-01-02; por eso Phase 2 continúa validada solo parcialmente.
 
 Phases: 0 Architecture + feature store; 1 ingestión + baseline cuantitativo; 2 backtesting; 3 modelos baseline; 4 News; 5 Analyst + Earnings; 6 Fundamental + Macro + Event; 7 Portfolio + Risk; 8 paper trading; 9 live supervisado; 10 posible ejecución automática. Crypto será una expansión con schemas y predictores separados.

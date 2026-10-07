@@ -40,6 +40,14 @@ class OrderStatus(StrEnum):
 class CashFlowType(StrEnum):
     DIVIDEND = "DIVIDEND"
     CASH_IN_LIEU = "CASH_IN_LIEU"
+    RECAPITALIZATION_CASH = "RECAPITALIZATION_CASH"
+
+
+class CostBasisStatus(StrEnum):
+    """Whether average cost is known for trading-P&L accounting."""
+
+    KNOWN = "KNOWN"
+    UNALLOCATED = "UNALLOCATED"
 
 
 class BacktestConfig(BaseModel):
@@ -61,8 +69,9 @@ class BacktestPosition(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
     ticker: str
     quantity: float = Field(gt=0)
-    average_cost: float = Field(gt=0)
+    average_cost: float | None = Field(default=None, gt=0)
     market_price: float = Field(gt=0)
+    cost_basis_status: CostBasisStatus = CostBasisStatus.KNOWN
 
     _normalize_ticker = field_validator("ticker")(_ticker)
 
@@ -70,6 +79,14 @@ class BacktestPosition(BaseModel):
     @property
     def market_value(self) -> float:
         return self.quantity * self.market_price
+
+    @model_validator(mode="after")
+    def validate_cost_basis(self) -> "BacktestPosition":
+        if self.cost_basis_status == CostBasisStatus.KNOWN and self.average_cost is None:
+            raise ValueError("KNOWN cost basis requires average_cost")
+        if self.cost_basis_status == CostBasisStatus.UNALLOCATED and self.average_cost is not None:
+            raise ValueError("UNALLOCATED cost basis must not invent average_cost")
+        return self
 
 
 class TargetAllocation(BaseModel):
@@ -168,6 +185,7 @@ class PortfolioSnapshot(BaseModel):
     weights: dict[str, float] = Field(default_factory=dict)
     cash_weight: float = Field(ge=0, le=1)
     stale_price_tickers: list[str] = Field(default_factory=list)
+    unknown_cost_basis_tickers: list[str] = Field(default_factory=list)
     realized_pnl: float = 0
     unrealized_pnl: float = 0
 
@@ -180,6 +198,12 @@ class PortfolioSnapshot(BaseModel):
             raise ValueError("snapshot contains duplicate positions")
         if not set(self.stale_price_tickers).issubset(tickers):
             raise ValueError("stale prices may reference only held positions")
+        expected_unknown = sorted(
+            position.ticker for position in self.positions
+            if position.cost_basis_status == CostBasisStatus.UNALLOCATED
+        )
+        if sorted(self.unknown_cost_basis_tickers) != expected_unknown:
+            raise ValueError("unknown cost-basis tickers must match held positions")
         expected_market_value = sum(position.market_value for position in self.positions)
         if not math.isclose(self.market_value, expected_market_value, abs_tol=VALUE_TOLERANCE):
             raise ValueError("market_value must equal the sum of position values")
@@ -266,6 +290,45 @@ class CorporateActionCashFlow(BaseModel):
         return self
 
 
+class CorporateActionTransformation(BaseModel):
+    """Auditable holding/cash transformation from one reviewed complex event."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid", allow_inf_nan=False)
+    transformation_id: str = Field(min_length=1)
+    event_id: str = Field(min_length=1)
+    ticker: str
+    event_type: str = Field(min_length=1)
+    effective_date: date
+    processed_at: datetime
+    treatment_type: str = Field(min_length=1)
+    treatment_version: str = Field(min_length=1)
+    quantity_before: float = Field(ge=0)
+    quantity_after: float = Field(ge=0)
+    distributed_security: str | None = None
+    distributed_quantity: float = Field(default=0, ge=0)
+    cash_received: float = Field(default=0, ge=0)
+    cost_basis_status: CostBasisStatus | None = None
+    notes: str = ""
+
+    _normalize_ticker = field_validator("ticker")(_ticker)
+    _validate_processed_at = field_validator("processed_at")(_aware)
+
+    @field_validator("distributed_security")
+    @classmethod
+    def normalize_optional_ticker(cls, value: str | None) -> str | None:
+        return None if value is None else _ticker(value)
+
+    @model_validator(mode="after")
+    def validate_distribution(self) -> "CorporateActionTransformation":
+        if (self.distributed_security is None) != (
+            self.distributed_quantity <= VALUE_TOLERANCE
+        ):
+            raise ValueError(
+                "distributed_security and positive distributed_quantity must appear together"
+            )
+        return self
+
+
 class BacktestResult(BaseModel):
     """Complete, auditable output of one deterministic historical run."""
 
@@ -278,8 +341,12 @@ class BacktestResult(BaseModel):
     fills: list[SimulatedFill] = Field(default_factory=list)
     executions: list[OrderExecutionRecord] = Field(default_factory=list)
     cash_flows: list[CorporateActionCashFlow] = Field(default_factory=list)
+    corporate_action_transformations: list[CorporateActionTransformation] = Field(
+        default_factory=list,
+    )
     realized_pnl: float = 0
     final_unrealized_pnl: float = 0
+    pnl_incomplete_tickers: list[str] = Field(default_factory=list)
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 
@@ -356,6 +423,9 @@ class CorporateActionMetrics(BaseModel):
     dividend_cash_flow_count: int = Field(ge=0)
     cash_in_lieu: float = Field(ge=0)
     cash_in_lieu_count: int = Field(ge=0)
+    recapitalization_cash: float = Field(default=0, ge=0)
+    recapitalization_cash_flow_count: int = Field(default=0, ge=0)
+    reviewed_transformation_count: int = Field(default=0, ge=0)
 
 
 class BenchmarkMetrics(BaseModel):
@@ -387,6 +457,8 @@ class BacktestMetrics(BaseModel):
     corporate_actions: CorporateActionMetrics
     realized_pnl: float
     final_unrealized_pnl: float
-    total_trading_pnl: float
+    total_trading_pnl: float | None
+    trading_pnl_complete: bool = True
+    unknown_cost_basis_tickers: list[str] = Field(default_factory=list)
     benchmark: BenchmarkMetrics | None = None
     warnings: list[str] = Field(default_factory=list)
