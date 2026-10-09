@@ -225,7 +225,26 @@ Regression y ranking mejoraron materialmente los mean IC de 3B en 5/10/20d;
 classification no mejoró ROC-AUC en ningún horizonte. 20d conserva la señal
 predictiva más fuerte, pero no se declaró modelo final ni se hizo portfolio
 backtest. Los artefactos viven en `data/reports/models/phase3c`; TEST 2022+
-permanece sellado (`test_used=false`). No se inició Phase 3D.
+permanece sellado (`test_used=false`). Esta subfase no abrió TEST ni ejecutó
+portfolio/backtesting.
+
+### Phase 3D — Walk-Forward Robustness
+
+**Status:** 3D.1–3D.4 complete; later 3D subphases remain pending; TEST remains sealed
+
+Phase 3D.1–3D.4 implementan infraestructura expanding-window causal, purge
+dinámico por `target_end_date_20d`, comparación de frecuencias monthly,
+quarterly, semiannual y annual, control Ridge alpha=100 frente a RF-Small 20d y
+diagnóstico de model age. El período 2016–2021 es pseudo-out-of-sample
+walk-forward, no un holdout externo; los labels que cruzan 2022 se excluyen.
+
+La corrida real produjo 228 retrainings y 1.155.952 predicciones. Annual fue la
+frecuencia raw-best y operacional para ambos modelos. RF-Small mantuvo una
+ventaja material y más estable sobre Ridge bajo las cuatro frecuencias. Los
+buckets de model age fueron no monotónicos y no justifican retraining mensual.
+Los artefactos viven en `data/reports/models/phase3d`. Permanecen pendientes
+window sensitivity, feature-family ablations y final candidate selection; no se
+implementó 3D.5+ ni Phase 3E.
 
 ## Phase 4 — News Agent
 

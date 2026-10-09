@@ -1,0 +1,38 @@
+{
+  "phase": "3D-walk-forward-robustness",
+  "scope": "3D.1-3D.4",
+  "mode": "robustness-selection",
+  "feature_set_version": "quantitative-baseline-v1",
+  "rf_preprocessing_version": "tree-preprocessing-v1",
+  "ridge_preprocessing_version": "baseline-standard-v1",
+  "target": "target_return_20d",
+  "ranking_target": "target_rank_20d",
+  "horizon": 20,
+  "initial_training_dates": [
+    "2010-01-04",
+    "2015-12-31"
+  ],
+  "walk_forward_dates": [
+    "2016-01-01",
+    "2021-12-31"
+  ],
+  "effective_label_safe_prediction_end": "2021-12-02",
+  "frequencies": [
+    "monthly",
+    "quarterly",
+    "semiannual",
+    "annual"
+  ],
+  "window_type": "expanding",
+  "purge_rule": "target_end_date_20d < prediction_period_start",
+  "purge_rule_version": "dynamic-target-end-date-strict-v1",
+  "retrain_ic_tolerance": 0.003,
+  "feature_schema_version": "4",
+  "target_schema_version": "corporate-action-safe-target-v3",
+  "sklearn_version": "1.8.0",
+  "random_state": 42,
+  "generated_at": "2026-10-09T18:26:20.643618+00:00",
+  "git_commit": null,
+  "dirty_worktree": null,
+  "test_used": false
+}

@@ -47,6 +47,11 @@ Forest, XGBoost y LightGBM con `tree-preprocessing-v1`. Sus 81 fits y 108
 evaluaciones reales están bajo `data/reports/models/phase3c`; la importancia de
 features es diagnóstica y no alteró ningún fit. TEST continúa sellado.
 
+Phase 3D.1–3D.4 evalúa RF-Small 20d frente a Ridge-100 mediante walk-forward
+expanding 2016–2021 y cuatro frecuencias XNYS. Cada fit aplica purge dinámico y
+preprocessing causal. Los resultados viven en `data/reports/models/phase3d`;
+este período es pseudo-OOS y TEST 2022+ continúa sellado.
+
 ## Instalación
 
 Requiere Python 3.11 o posterior.

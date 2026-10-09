@@ -49,7 +49,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
-| `models` | Datasets temporales, preprocessing, métricas y modelos predictivos lineales/no lineales | Funcional Phase 3C; TEST sellado |
+| `models` | Datasets temporales, preprocessing, métricas, selección y robustez walk-forward | Funcional Phase 3D.1–3D.4; TEST sellado |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
 | `backtesting` | Motor temporal, métricas, benchmark y baselines sistemáticos | Funcional Phase 2B; validación real completa en el universo fijo actual |
@@ -110,6 +110,16 @@ tolerancias predeclaradas, métricas por año y desempate por complejidad. Los
 rankings derivados reutilizan predicciones de regresión; no son fits nuevos.
 Las importancias nativas y por permutación son diagnósticas sobre VALIDATION y
 no retroalimentan features ni modelos. ADR-016 fija estas decisiones.
+
+Phase 3D.1–3D.4 añade un runner `robustness-selection` que sólo recibe datos
+label-safe hasta 2021. Cada período reconstruye un expanding TRAIN desde
+2010-01-04, purga toda fila con `target_end_date_20d >= prediction_start` y crea
+un preprocessor nuevo. Los schedules monthly/quarterly/semiannual/annual se
+derivan de sesiones XNYS y congelan modelo/preprocessing entre activaciones.
+Las políticas generan predicted-return ranking continuo, métricas anuales,
+coste de fit y diagnóstico de edad sin mezclar políticas como observaciones
+independientes. ADR-017 fija estas decisiones. No existe integración con
+portfolio, risk, execution ni TEST.
 
 El builder agrupa fechas consecutivas cuyo conjunto de splits elegibles no cambia. También abre un nuevo segmento cuando una barra histórica retrasada del activo o SPY pasa a estar disponible. Para cada segmento construye una sola vista as-of hasta su fecha final, calcula rolling features vectorizadas y conserva únicamente sus filas. Barras futuras con fecha posterior son causalmente inocuas; una barra retrasada con fecha histórica no lo es y por eso constituye un límite.
 
