@@ -242,8 +242,8 @@ La corrida real produjo 228 retrainings y 1.155.952 predicciones. Annual fue la
 frecuencia raw-best y operacional para ambos modelos. RF-Small mantuvo una
 ventaja material y más estable sobre Ridge bajo las cuatro frecuencias. Los
 buckets de model age fueron no monotónicos y no justifican retraining mensual.
-Los artefactos viven en `data/reports/models/phase3d`. Permanece pendiente la
-selección final del candidato de desarrollo.
+Los artefactos viven en `data/reports/models/phase3d`. En ese punto permanecía
+pendiente la selección final del candidato de desarrollo, completada posteriormente en Phase 3D.7.
 
 Phase 3D.5 mantuvo congelados RF-Small, las 52 features, preprocessing y
 frecuencia annual, variando únicamente la ventana TRAIN. En 18 fits reales,
