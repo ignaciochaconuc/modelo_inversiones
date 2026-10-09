@@ -49,7 +49,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
-| `models` | Datasets temporales, preprocessing, métricas, selección y robustez walk-forward | Funcional Phase 3D.1–3D.5; TEST sellado |
+| `models` | Datasets temporales, preprocessing, métricas, selección y robustez walk-forward | Funcional Phase 3D.1–3D.6; TEST sellado |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
 | `backtesting` | Motor temporal, métricas, benchmark y baselines sistemáticos | Funcional Phase 2B; validación real completa en el universo fijo actual |
@@ -129,6 +129,14 @@ predicciones como observaciones económicas independientes. La reproducción del
 expanding previo es una compuerta obligatoria antes de seleccionar o interpretar.
 ADR-018 fija expanding como política de desarrollo actual; TEST sigue fuera del
 runner y de los artefactos.
+
+Phase 3D.6 añade una taxonomía auditable y disjunta de diez familias sobre las
+52 features canónicas. Cada política elimina exactamente una familia, reconstruye
+un `TreePreprocessor` sobre el subset y reutiliza annual/expanding con el mismo
+purge. Las series de políticas no se apilan como observaciones independientes.
+La clasificación es diagnóstica: no muta `quantitative-baseline-v1`, no dispara
+una segunda ronda y no selecciona el candidato final. ADR-019 registra la
+taxonomía y la conclusión actual; TEST permanece fuera del runner.
 
 El builder agrupa fechas consecutivas cuyo conjunto de splits elegibles no cambia. También abre un nuevo segmento cuando una barra histórica retrasada del activo o SPY pasa a estar disponible. Para cada segmento construye una sola vista as-of hasta su fecha final, calcula rolling features vectorizadas y conserva únicamente sus filas. Barras futuras con fecha posterior son causalmente inocuas; una barra retrasada con fecha histórica no lo es y por eso constituye un límite.
 

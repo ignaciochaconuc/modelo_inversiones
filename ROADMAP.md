@@ -230,7 +230,7 @@ portfolio/backtesting.
 
 ### Phase 3D — Walk-Forward Robustness
 
-**Status:** 3D.1–3D.5 complete; feature ablations and final selection remain pending; TEST remains sealed
+**Status:** 3D.1–3D.6 complete; final development candidate selection pending; TEST remains sealed
 
 Phase 3D.1–3D.4 implementan infraestructura expanding-window causal, purge
 dinámico por `target_end_date_20d`, comparación de frecuencias monthly,
@@ -242,8 +242,8 @@ La corrida real produjo 228 retrainings y 1.155.952 predicciones. Annual fue la
 frecuencia raw-best y operacional para ambos modelos. RF-Small mantuvo una
 ventaja material y más estable sobre Ridge bajo las cuatro frecuencias. Los
 buckets de model age fueron no monotónicos y no justifican retraining mensual.
-Los artefactos viven en `data/reports/models/phase3d`. Permanecen pendientes
-feature-family ablations y final candidate selection.
+Los artefactos viven en `data/reports/models/phase3d`. Permanece pendiente la
+selección final del candidato de desarrollo.
 
 Phase 3D.5 mantuvo congelados RF-Small, las 52 features, preprocessing y
 frecuencia annual, variando únicamente la ventana TRAIN. En 18 fits reales,
@@ -253,6 +253,15 @@ raw-best como seleccionada bajo tolerancia 0.003. No hay evidencia material y
 estable de concept drift que justifique eliminar historia antigua. Los nuevos
 artefactos viven en `data/reports/models/phase3d/window_sensitivity`. TEST 2022+
 sigue sellado; no se implementaron ablations, candidato final ni Phase 3E.
+
+Phase 3D.6 ejecutó 66 fits RF-Small annual/expanding para `full` y diez
+ablations leave-one-family-out. `full` reprodujo exactamente las cuatro métricas
+de 3D.5. Volatilidad fue el único strong contributor y liquidez/volumen resultó
+moderadamente útil. Ninguna familia cumplió las condiciones completas de
+`harmful_candidate`; por tanto no se justifica 3D.6.1 y el candidato oficial de
+52 features permanece intacto rumbo a 3D.7. Los artefactos están en
+`data/reports/models/phase3d/feature_ablations`. TEST continúa sellado y no se
+inició selección final ni Phase 3E.
 
 ## Phase 4 — News Agent
 

@@ -6,6 +6,7 @@ import pytest
 
 from investment_system.data.calendar import XNYSTradingCalendar
 from investment_system.models.feature_sets import QUANTITATIVE_BASELINE_FEATURES
+from investment_system.models.feature_ablations import Phase3DFeatureAblationRunner
 from investment_system.models.walkforward import (
     INITIAL_TRAIN_START,
     Phase3DWalkForwardRunner,
@@ -102,3 +103,33 @@ def test_repeated_expanding_rf_window_run_is_deterministic_and_train_only(tmp_pa
         pd.to_datetime(first_fits["max_train_target_end_date"])
         < pd.to_datetime(first_fits["prediction_start"])
     ).all()
+
+
+def test_repeated_full_feature_ablation_run_is_equivalent_and_sealed(tmp_path) -> None:
+    frame = _synthetic_frame()
+    runner = Phase3DFeatureAblationRunner(tmp_path, XNYSTradingCalendar())
+    first_predictions, first_fits, first_preprocessing, first_metrics = runner.run_policy(
+        frame, "full",
+    )
+    second_predictions, second_fits, _, second_metrics = runner.run_policy(frame, "full")
+    np.testing.assert_allclose(
+        first_predictions["predicted_return"], second_predictions["predicted_return"],
+        rtol=0.0, atol=1e-15,
+    )
+    assert first_metrics["overall"]["ranking"]["rank_ic"]["mean"] == pytest.approx(
+        second_metrics["overall"]["ranking"]["rank_ic"]["mean"], abs=1e-12,
+    )
+    assert first_fits["feature_count_requested"].eq(52).all()
+    assert first_preprocessing.groupby("fit_id").size().eq(52).all()
+    assert first_predictions["test_used"].eq(False).all()
+    assert first_fits["test_used"].eq(False).all()
+    assert (
+        pd.to_datetime(first_fits["max_train_target_end_date"])
+        < pd.to_datetime(first_fits["prediction_start"])
+    ).all()
+
+    leaked = frame.iloc[[0]].copy()
+    leaked["decision_date"] = date(2022, 1, 3)
+    leaked["target_end_date_20d"] = date(2022, 2, 1)
+    with pytest.raises(ValueError, match="must not receive TEST"):
+        runner.run_policy(pd.concat([frame, leaked], ignore_index=True), "full")
