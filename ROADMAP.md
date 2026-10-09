@@ -274,6 +274,29 @@ ni aprobado para trading. TEST no fue abierto ni se entrenó todavía un modelo
 final 2010–2021. Phase 3 continúa incompleta: cualquier evaluación holdout exige
 autorización explícita y una fase posterior.
 
+## Phase 3E — Final Holdout Evaluation
+
+**Status:** in progress — protocol frozen; holdout not executed
+
+### Phase 3E.1 — Protocol Freeze
+
+**Status:** complete — holdout protocol frozen; TEST remains sealed
+
+`holdout-protocol-v1` fija antes de abrir TEST el candidato autorizado, snapshot
+nominal hasta 2026-10-05, walk-forward XNYS annual/expanding, purge dinámico,
+métricas, controles Ridge-100 y `momentum_20d`, umbrales y política one-shot.
+Los checks de consistencia pasaron y el protocolo está `frozen_pending_execution`.
+No se cargaron filas TEST ni se produjeron predicciones o métricas holdout.
+
+### Phase 3E.2 — One-Time Holdout Execution
+
+**Status:** pending explicit authorization
+
+TEST 2022+ continúa sellado (`test_used=false`, `test_opened=false`,
+`holdout_executed=false`). Phase 3 sigue incompleta hasta ejecutar y registrar
+la evaluación final autorizada. El candidato no es production-ready ni está
+aprobado para trading.
+
 ## Phase 4 — News Agent
 
 **Objetivo:** convertir noticias point-in-time en análisis explicable y features estructuradas.  

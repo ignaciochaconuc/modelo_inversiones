@@ -1,0 +1,117 @@
+{
+  "phase": "3E.1",
+  "protocol_id": "holdout-protocol-v1",
+  "protocol_status": "frozen_pending_execution",
+  "candidate_id": "development-candidate-v1",
+  "candidate_fingerprint": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+  "holdout_protocol_fingerprint": "7b9c9fbef617ede2bc1e78cec3fb35ddfc5b2b13d049f189e088c03fa37032e6",
+  "data_snapshot_fingerprint": "2fa2ccc185c11d734aaf8e2ffbe0ee149425651a804200022b7aac734b3b3b6f",
+  "primary_metric": {
+    "metric_id": "mean_daily_cross_sectional_rank_ic",
+    "definition": "mean of daily cross-sectional Spearman rank correlations",
+    "prediction": "predicted target_return_20d",
+    "actual": "target_return_20d"
+  },
+  "thresholds": {
+    "thresholds": {
+      "pass_ic_threshold": 0.03,
+      "marginal_ic_threshold": 0.01,
+      "worst_year_pass_floor": -0.01,
+      "positive_year_share_floor": 0.5,
+      "rf_ridge_ic_equivalence_tolerance": 0.003
+    },
+    "absolute_classification": {
+      "precedence": [
+        "hard_fail",
+        "fail",
+        "pass",
+        "marginal"
+      ],
+      "hard_fail": "mean_rank_ic <= 0",
+      "fail": "0 < mean_rank_ic < 0.01, or top10_uplift <= 0 and mean_rank_ic < 0.03",
+      "pass": "mean_rank_ic >= 0.03 and worst_year_ic > -0.01 and positive_years / evaluable_years >= 0.50 and top10_uplift > 0",
+      "marginal": "not hard_fail, fail, or pass",
+      "evaluable_years": "years with an evaluable sample only"
+    },
+    "relative_classification": {
+      "delta": "rf_mean_rank_ic - ridge_mean_rank_ic",
+      "rf_outperforms_ridge": "delta > 0.003",
+      "ridge_outperforms_rf": "delta < -0.003",
+      "approximately_equal": "-0.003 <= delta <= 0.003",
+      "changes_absolute_status": false
+    },
+    "boundary_semantics": {
+      "mean_rank_ic_equal_0": "hard_fail",
+      "mean_rank_ic_equal_0_01": "not_fail_by_ic_alone; eligible_for_marginal",
+      "mean_rank_ic_equal_0_03": "eligible_for_pass",
+      "worst_year_ic_equal_minus_0_01": "not_pass; pass comparison is strict",
+      "positive_year_share_equal_0_50": "satisfies_pass_share_condition",
+      "top10_uplift_equal_0": "not_pass",
+      "rf_ridge_delta_equal_plus_or_minus_0_003": "approximately_equal"
+    }
+  },
+  "controls": {
+    "ridge_100": {
+      "role": "primary_linear_diagnostic_control_not_candidate",
+      "task": "regression",
+      "target": "target_return_20d",
+      "horizon": 20,
+      "model": "sklearn.linear_model.Ridge",
+      "hyperparameters": {
+        "alpha": 100.0
+      },
+      "feature_set_version": "quantitative-baseline-v1",
+      "preprocessing_version": "baseline-standard-v1",
+      "test_range": "same_as_authorized_candidate",
+      "retraining_frequency": "annual",
+      "training_window_policy": "expanding",
+      "training_history_start": "2010-01-04",
+      "purge_rule": "decision_date < prediction_start and target_end_date_20d < prediction_start",
+      "purge_equality_behavior": "purge"
+    },
+    "momentum_20d": {
+      "role": "naive_ranking_diagnostic_not_candidate",
+      "source_definition": "Phase 3B momentum20-ranking-20d-qbaselinev1-prepv1",
+      "score": "momentum_20d",
+      "direction": "higher_score_ranks_higher",
+      "fit_required": false,
+      "retuning_allowed": false,
+      "test_range": "same_as_authorized_candidate"
+    },
+    "only_authorized_evaluation_identities": [
+      "development-candidate-v1",
+      "ridge_100",
+      "momentum_20d"
+    ]
+  },
+  "one_shot_policy": {
+    "holdout_opened": false,
+    "holdout_executed": false,
+    "first_execution_must_persist": [
+      "candidate_fingerprint",
+      "holdout_protocol_fingerprint",
+      "data_snapshot_fingerprint",
+      "test_start",
+      "nominal_test_end",
+      "effective_test_end",
+      "opened_at",
+      "evaluation_id"
+    ],
+    "opening_timestamp_has_not_been_written": true,
+    "after_first_open_only_reproduction_is_allowed": true,
+    "reproduction_requires_exact_match": [
+      "candidate_fingerprint",
+      "holdout_protocol_fingerprint",
+      "data_snapshot_fingerprint",
+      "test_start",
+      "nominal_test_end",
+      "effective_test_end"
+    ],
+    "reproduction_is_new_statistical_evaluation": false
+  },
+  "ready_to_open_test": true,
+  "test_used": false,
+  "test_opened": false,
+  "holdout_executed": false,
+  "phase3e2_started": false
+}

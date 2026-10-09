@@ -19,3 +19,7 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-015: Sealed-test simple predictive baselines](ADR-015-sealed-test-simple-predictive-baselines.md)
 - [ADR-016: Sealed-test nonlinear model selection](ADR-016-sealed-test-nonlinear-model-selection.md)
 - [ADR-017: Causal walk-forward retraining robustness](ADR-017-causal-walk-forward-retraining.md)
+- [ADR-018: Training-window policy](ADR-018-training-window-policy.md)
+- [ADR-019: Feature-family ablation taxonomy](ADR-019-feature-family-ablation-taxonomy.md)
+- [ADR-020: Frozen final development candidate](ADR-020-final-development-candidate.md)
+- [ADR-021: Frozen final holdout protocol](ADR-021-final-holdout-protocol.md)

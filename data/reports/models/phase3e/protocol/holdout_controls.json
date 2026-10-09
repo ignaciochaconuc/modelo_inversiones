@@ -1,0 +1,34 @@
+{
+  "ridge_100": {
+    "role": "primary_linear_diagnostic_control_not_candidate",
+    "task": "regression",
+    "target": "target_return_20d",
+    "horizon": 20,
+    "model": "sklearn.linear_model.Ridge",
+    "hyperparameters": {
+      "alpha": 100.0
+    },
+    "feature_set_version": "quantitative-baseline-v1",
+    "preprocessing_version": "baseline-standard-v1",
+    "test_range": "same_as_authorized_candidate",
+    "retraining_frequency": "annual",
+    "training_window_policy": "expanding",
+    "training_history_start": "2010-01-04",
+    "purge_rule": "decision_date < prediction_start and target_end_date_20d < prediction_start",
+    "purge_equality_behavior": "purge"
+  },
+  "momentum_20d": {
+    "role": "naive_ranking_diagnostic_not_candidate",
+    "source_definition": "Phase 3B momentum20-ranking-20d-qbaselinev1-prepv1",
+    "score": "momentum_20d",
+    "direction": "higher_score_ranks_higher",
+    "fit_required": false,
+    "retuning_allowed": false,
+    "test_range": "same_as_authorized_candidate"
+  },
+  "only_authorized_evaluation_identities": [
+    "development-candidate-v1",
+    "ridge_100",
+    "momentum_20d"
+  ]
+}

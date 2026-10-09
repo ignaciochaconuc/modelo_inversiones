@@ -1,0 +1,38 @@
+{
+  "thresholds": {
+    "pass_ic_threshold": 0.03,
+    "marginal_ic_threshold": 0.01,
+    "worst_year_pass_floor": -0.01,
+    "positive_year_share_floor": 0.5,
+    "rf_ridge_ic_equivalence_tolerance": 0.003
+  },
+  "absolute_classification": {
+    "precedence": [
+      "hard_fail",
+      "fail",
+      "pass",
+      "marginal"
+    ],
+    "hard_fail": "mean_rank_ic <= 0",
+    "fail": "0 < mean_rank_ic < 0.01, or top10_uplift <= 0 and mean_rank_ic < 0.03",
+    "pass": "mean_rank_ic >= 0.03 and worst_year_ic > -0.01 and positive_years / evaluable_years >= 0.50 and top10_uplift > 0",
+    "marginal": "not hard_fail, fail, or pass",
+    "evaluable_years": "years with an evaluable sample only"
+  },
+  "relative_classification": {
+    "delta": "rf_mean_rank_ic - ridge_mean_rank_ic",
+    "rf_outperforms_ridge": "delta > 0.003",
+    "ridge_outperforms_rf": "delta < -0.003",
+    "approximately_equal": "-0.003 <= delta <= 0.003",
+    "changes_absolute_status": false
+  },
+  "boundary_semantics": {
+    "mean_rank_ic_equal_0": "hard_fail",
+    "mean_rank_ic_equal_0_01": "not_fail_by_ic_alone; eligible_for_marginal",
+    "mean_rank_ic_equal_0_03": "eligible_for_pass",
+    "worst_year_ic_equal_minus_0_01": "not_pass; pass comparison is strict",
+    "positive_year_share_equal_0_50": "satisfies_pass_share_condition",
+    "top10_uplift_equal_0": "not_pass",
+    "rf_ridge_delta_equal_plus_or_minus_0_003": "approximately_equal"
+  }
+}

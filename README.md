@@ -56,6 +56,12 @@ annual/expanding y las 52 features para una futura evaluación final. Esto no es
 aprobación de producción o trading. Los resultados viven en
 `data/reports/models/phase3d`; TEST 2022+ continúa sellado.
 
+Phase 3E.1 congela `holdout-protocol-v1` antes de abrir TEST: evaluación causal
+annual/expanding, snapshot nominal hasta 2026-10-05, métricas, controles,
+umbrales y política one-shot. El protocolo está listo para una futura ejecución
+explícitamente autorizada, pero no contiene predicciones ni resultados TEST;
+Phase 3E.2 no fue iniciada y Phase 3 continúa incompleta.
+
 ## Instalación
 
 Requiere Python 3.11 o posterior.

@@ -88,7 +88,7 @@ No modificar decisiones arquitectónicas silenciosamente.
 
 ## Fuera de alcance actual
 
-No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 3D.1–3D.7 está completa y `development-candidate-v1` está congelado con TEST sellado; no entrenar el modelo final 2010–2021, abrir TEST, iniciar Phase 3E o fases posteriores por iniciativa propia.
+No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 3D.1–3D.7 y Phase 3E.1 están completas: `development-candidate-v1` y `holdout-protocol-v1` están congelados con TEST sellado. No abrir TEST, ejecutar Phase 3E.2 ni iniciar fases posteriores por iniciativa propia.
 
 ## Verificación mínima
 

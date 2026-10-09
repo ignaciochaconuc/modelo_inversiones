@@ -1,0 +1,22 @@
+{
+  "snapshot_contract_version": "data-snapshot-contract-v1",
+  "universe_version": "development_fixed:sp100_development:2026-10-05",
+  "feature_schema_version": "4",
+  "target_schema_version": "corporate-action-safe-target-v3",
+  "market_data_snapshot": {
+    "identifier": "configured-tiingo-eod-through-2026-10-05",
+    "provider": "tiingo_eod",
+    "identity_basis": "configuration_metadata_and_file_hashes_only",
+    "dataset_rows_inspected": false
+  },
+  "nominal_date_cutoff": "2026-10-05",
+  "relevant_config_hashes": {
+    "config/corporate_action_overrides.yaml": "6f1dc6653cd8dbc689fd3d384f388f4c887282771e5017c0bbd5d0724b073ac4",
+    "config/provider_symbols.yaml": "e8f8c047392c0e4ea18c1094880f024e1351c26e2a6b131dfb607f16bf2d391d",
+    "config/settings.yaml": "972e9a85537592387e5580294e1f602d4c8b5f105dbc4e6466ce5b99c3495d69",
+    "config/universe.yaml": "b66702dd3e8e3de9bfa139571e46d2174b4d2ad35d1dc8bac2958b38bc4a355f"
+  },
+  "candidate_fingerprint": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+  "test_values_inspected": false,
+  "data_snapshot_fingerprint": "2fa2ccc185c11d734aaf8e2ffbe0ee149425651a804200022b7aac734b3b3b6f"
+}

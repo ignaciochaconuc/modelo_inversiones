@@ -1,0 +1,545 @@
+{
+  "checks": [
+    {
+      "check": "candidate_id",
+      "expected": "development-candidate-v1",
+      "observed": "development-candidate-v1",
+      "passed": true
+    },
+    {
+      "check": "candidate_status",
+      "expected": "selected_for_final_holdout_evaluation",
+      "observed": "selected_for_final_holdout_evaluation",
+      "passed": true
+    },
+    {
+      "check": "candidate_fingerprint_authorized",
+      "expected": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+      "observed": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+      "passed": true
+    },
+    {
+      "check": "candidate_fingerprint_reproducible",
+      "expected": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+      "observed": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+      "passed": true
+    },
+    {
+      "check": "candidate_task",
+      "expected": "regression",
+      "observed": "regression",
+      "passed": true
+    },
+    {
+      "check": "candidate_target",
+      "expected": "target_return_20d",
+      "observed": "target_return_20d",
+      "passed": true
+    },
+    {
+      "check": "candidate_horizon",
+      "expected": 20,
+      "observed": 20,
+      "passed": true
+    },
+    {
+      "check": "candidate_model_family",
+      "expected": "random_forest",
+      "observed": "random_forest",
+      "passed": true
+    },
+    {
+      "check": "candidate_model_profile",
+      "expected": "rf-small",
+      "observed": "rf-small",
+      "passed": true
+    },
+    {
+      "check": "candidate_hyperparameters",
+      "expected": {
+        "n_estimators": 300,
+        "max_depth": 4,
+        "min_samples_leaf": 100,
+        "max_features": "sqrt",
+        "bootstrap": true,
+        "random_state": 42,
+        "n_jobs": -1
+      },
+      "observed": {
+        "n_estimators": 300,
+        "max_depth": 4,
+        "min_samples_leaf": 100,
+        "max_features": "sqrt",
+        "bootstrap": true,
+        "random_state": 42,
+        "n_jobs": -1
+      },
+      "passed": true
+    },
+    {
+      "check": "candidate_feature_count",
+      "expected": 52,
+      "observed": 52,
+      "passed": true
+    },
+    {
+      "check": "candidate_features",
+      "expected": [
+        "return_1d",
+        "return_2d",
+        "return_5d",
+        "return_10d",
+        "return_20d",
+        "return_60d",
+        "gap_open",
+        "intraday_return",
+        "overnight_return",
+        "momentum_5d",
+        "momentum_10d",
+        "momentum_20d",
+        "momentum_60d",
+        "momentum_120d",
+        "relative_momentum_spy_5d",
+        "relative_momentum_spy_20d",
+        "relative_momentum_spy_60d",
+        "volatility_5d",
+        "volatility_10d",
+        "volatility_20d",
+        "volatility_60d",
+        "downside_volatility",
+        "atr_pct",
+        "rsi_14",
+        "macd_pct",
+        "macd_signal_pct",
+        "macd_histogram_pct",
+        "distance_ma10",
+        "distance_ma20",
+        "distance_ma50",
+        "distance_ma200",
+        "volume_ratio_5d",
+        "volume_ratio_20d",
+        "volume_change_1d",
+        "avg_dollar_volume_20d",
+        "avg_dollar_volume_60d",
+        "max_drawdown_20d",
+        "max_drawdown_60d",
+        "spy_return_1d",
+        "spy_return_5d",
+        "spy_return_20d",
+        "excess_return_5d",
+        "excess_return_20d",
+        "beta_20d",
+        "beta_60d",
+        "correlation_spy_20d",
+        "correlation_spy_60d",
+        "distance_52w_high",
+        "distance_52w_low",
+        "percentile_price_252d",
+        "percentile_volume_252d",
+        "percentile_volatility_252d"
+      ],
+      "observed": [
+        "return_1d",
+        "return_2d",
+        "return_5d",
+        "return_10d",
+        "return_20d",
+        "return_60d",
+        "gap_open",
+        "intraday_return",
+        "overnight_return",
+        "momentum_5d",
+        "momentum_10d",
+        "momentum_20d",
+        "momentum_60d",
+        "momentum_120d",
+        "relative_momentum_spy_5d",
+        "relative_momentum_spy_20d",
+        "relative_momentum_spy_60d",
+        "volatility_5d",
+        "volatility_10d",
+        "volatility_20d",
+        "volatility_60d",
+        "downside_volatility",
+        "atr_pct",
+        "rsi_14",
+        "macd_pct",
+        "macd_signal_pct",
+        "macd_histogram_pct",
+        "distance_ma10",
+        "distance_ma20",
+        "distance_ma50",
+        "distance_ma200",
+        "volume_ratio_5d",
+        "volume_ratio_20d",
+        "volume_change_1d",
+        "avg_dollar_volume_20d",
+        "avg_dollar_volume_60d",
+        "max_drawdown_20d",
+        "max_drawdown_60d",
+        "spy_return_1d",
+        "spy_return_5d",
+        "spy_return_20d",
+        "excess_return_5d",
+        "excess_return_20d",
+        "beta_20d",
+        "beta_60d",
+        "correlation_spy_20d",
+        "correlation_spy_60d",
+        "distance_52w_high",
+        "distance_52w_low",
+        "percentile_price_252d",
+        "percentile_volume_252d",
+        "percentile_volatility_252d"
+      ],
+      "passed": true
+    },
+    {
+      "check": "candidate_feature_hash",
+      "expected": "55f32fa21661f33134746a577aef3e7da7816d8a33d02f52f8b1ee2d0a87501c",
+      "observed": "55f32fa21661f33134746a577aef3e7da7816d8a33d02f52f8b1ee2d0a87501c",
+      "passed": true
+    },
+    {
+      "check": "candidate_feature_set",
+      "expected": "quantitative-baseline-v1",
+      "observed": "quantitative-baseline-v1",
+      "passed": true
+    },
+    {
+      "check": "candidate_preprocessing",
+      "expected": "tree-preprocessing-v1",
+      "observed": "tree-preprocessing-v1",
+      "passed": true
+    },
+    {
+      "check": "candidate_frequency",
+      "expected": "annual",
+      "observed": "annual",
+      "passed": true
+    },
+    {
+      "check": "candidate_window",
+      "expected": "expanding",
+      "observed": "expanding",
+      "passed": true
+    },
+    {
+      "check": "candidate_history_start",
+      "expected": "2010-01-04",
+      "observed": "2010-01-04",
+      "passed": true
+    },
+    {
+      "check": "candidate_purge",
+      "expected": "decision_date < prediction_start and target_end_date_20d < prediction_start",
+      "observed": "decision_date < prediction_start and target_end_date_20d < prediction_start",
+      "passed": true
+    },
+    {
+      "check": "candidate_purge_equality",
+      "expected": "purge",
+      "observed": "purge",
+      "passed": true
+    },
+    {
+      "check": "candidate_sealed_test_start",
+      "expected": "2022-01-03",
+      "observed": "2022-01-03",
+      "passed": true
+    },
+    {
+      "check": "candidate_test_used",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "check": "candidate_test_opened",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "check": "candidate_final_model_fitted",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "check": "snapshot_candidate",
+      "expected": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+      "observed": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+      "passed": true
+    },
+    {
+      "check": "snapshot_fingerprint",
+      "expected": "2fa2ccc185c11d734aaf8e2ffbe0ee149425651a804200022b7aac734b3b3b6f",
+      "observed": "2fa2ccc185c11d734aaf8e2ffbe0ee149425651a804200022b7aac734b3b3b6f",
+      "passed": true
+    },
+    {
+      "check": "snapshot_frozen_identity",
+      "expected": "2fa2ccc185c11d734aaf8e2ffbe0ee149425651a804200022b7aac734b3b3b6f",
+      "observed": "2fa2ccc185c11d734aaf8e2ffbe0ee149425651a804200022b7aac734b3b3b6f",
+      "passed": true
+    },
+    {
+      "check": "snapshot_rows_inspected",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "check": "protocol_id",
+      "expected": "holdout-protocol-v1",
+      "observed": "holdout-protocol-v1",
+      "passed": true
+    },
+    {
+      "check": "protocol_status",
+      "expected": "frozen_pending_execution",
+      "observed": "frozen_pending_execution",
+      "passed": true
+    },
+    {
+      "check": "protocol_candidate",
+      "expected": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+      "observed": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+      "passed": true
+    },
+    {
+      "check": "protocol_snapshot",
+      "expected": "2fa2ccc185c11d734aaf8e2ffbe0ee149425651a804200022b7aac734b3b3b6f",
+      "observed": "2fa2ccc185c11d734aaf8e2ffbe0ee149425651a804200022b7aac734b3b3b6f",
+      "passed": true
+    },
+    {
+      "check": "protocol_fingerprint",
+      "expected": "7b9c9fbef617ede2bc1e78cec3fb35ddfc5b2b13d049f189e088c03fa37032e6",
+      "observed": "7b9c9fbef617ede2bc1e78cec3fb35ddfc5b2b13d049f189e088c03fa37032e6",
+      "passed": true
+    },
+    {
+      "check": "protocol_frozen_identity",
+      "expected": "7b9c9fbef617ede2bc1e78cec3fb35ddfc5b2b13d049f189e088c03fa37032e6",
+      "observed": "7b9c9fbef617ede2bc1e78cec3fb35ddfc5b2b13d049f189e088c03fa37032e6",
+      "passed": true
+    },
+    {
+      "check": "protocol_test_start",
+      "expected": "2022-01-03",
+      "observed": "2022-01-03",
+      "passed": true
+    },
+    {
+      "check": "protocol_annual",
+      "expected": "annual",
+      "observed": "annual",
+      "passed": true
+    },
+    {
+      "check": "protocol_expanding",
+      "expected": "expanding",
+      "observed": "expanding",
+      "passed": true
+    },
+    {
+      "check": "protocol_purge",
+      "expected": "decision_date < prediction_start and target_end_date_20d < prediction_start",
+      "observed": "decision_date < prediction_start and target_end_date_20d < prediction_start",
+      "passed": true
+    },
+    {
+      "check": "protocol_primary_metric",
+      "expected": {
+        "metric_id": "mean_daily_cross_sectional_rank_ic",
+        "definition": "mean of daily cross-sectional Spearman rank correlations",
+        "prediction": "predicted target_return_20d",
+        "actual": "target_return_20d"
+      },
+      "observed": {
+        "metric_id": "mean_daily_cross_sectional_rank_ic",
+        "definition": "mean of daily cross-sectional Spearman rank correlations",
+        "prediction": "predicted target_return_20d",
+        "actual": "target_return_20d"
+      },
+      "passed": true
+    },
+    {
+      "check": "protocol_thresholds",
+      "expected": {
+        "thresholds": {
+          "pass_ic_threshold": 0.03,
+          "marginal_ic_threshold": 0.01,
+          "worst_year_pass_floor": -0.01,
+          "positive_year_share_floor": 0.5,
+          "rf_ridge_ic_equivalence_tolerance": 0.003
+        },
+        "absolute_classification": {
+          "precedence": [
+            "hard_fail",
+            "fail",
+            "pass",
+            "marginal"
+          ],
+          "hard_fail": "mean_rank_ic <= 0",
+          "fail": "0 < mean_rank_ic < 0.01, or top10_uplift <= 0 and mean_rank_ic < 0.03",
+          "pass": "mean_rank_ic >= 0.03 and worst_year_ic > -0.01 and positive_years / evaluable_years >= 0.50 and top10_uplift > 0",
+          "marginal": "not hard_fail, fail, or pass",
+          "evaluable_years": "years with an evaluable sample only"
+        },
+        "relative_classification": {
+          "delta": "rf_mean_rank_ic - ridge_mean_rank_ic",
+          "rf_outperforms_ridge": "delta > 0.003",
+          "ridge_outperforms_rf": "delta < -0.003",
+          "approximately_equal": "-0.003 <= delta <= 0.003",
+          "changes_absolute_status": false
+        },
+        "boundary_semantics": {
+          "mean_rank_ic_equal_0": "hard_fail",
+          "mean_rank_ic_equal_0_01": "not_fail_by_ic_alone; eligible_for_marginal",
+          "mean_rank_ic_equal_0_03": "eligible_for_pass",
+          "worst_year_ic_equal_minus_0_01": "not_pass; pass comparison is strict",
+          "positive_year_share_equal_0_50": "satisfies_pass_share_condition",
+          "top10_uplift_equal_0": "not_pass",
+          "rf_ridge_delta_equal_plus_or_minus_0_003": "approximately_equal"
+        }
+      },
+      "observed": {
+        "thresholds": {
+          "pass_ic_threshold": 0.03,
+          "marginal_ic_threshold": 0.01,
+          "worst_year_pass_floor": -0.01,
+          "positive_year_share_floor": 0.5,
+          "rf_ridge_ic_equivalence_tolerance": 0.003
+        },
+        "absolute_classification": {
+          "precedence": [
+            "hard_fail",
+            "fail",
+            "pass",
+            "marginal"
+          ],
+          "hard_fail": "mean_rank_ic <= 0",
+          "fail": "0 < mean_rank_ic < 0.01, or top10_uplift <= 0 and mean_rank_ic < 0.03",
+          "pass": "mean_rank_ic >= 0.03 and worst_year_ic > -0.01 and positive_years / evaluable_years >= 0.50 and top10_uplift > 0",
+          "marginal": "not hard_fail, fail, or pass",
+          "evaluable_years": "years with an evaluable sample only"
+        },
+        "relative_classification": {
+          "delta": "rf_mean_rank_ic - ridge_mean_rank_ic",
+          "rf_outperforms_ridge": "delta > 0.003",
+          "ridge_outperforms_rf": "delta < -0.003",
+          "approximately_equal": "-0.003 <= delta <= 0.003",
+          "changes_absolute_status": false
+        },
+        "boundary_semantics": {
+          "mean_rank_ic_equal_0": "hard_fail",
+          "mean_rank_ic_equal_0_01": "not_fail_by_ic_alone; eligible_for_marginal",
+          "mean_rank_ic_equal_0_03": "eligible_for_pass",
+          "worst_year_ic_equal_minus_0_01": "not_pass; pass comparison is strict",
+          "positive_year_share_equal_0_50": "satisfies_pass_share_condition",
+          "top10_uplift_equal_0": "not_pass",
+          "rf_ridge_delta_equal_plus_or_minus_0_003": "approximately_equal"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "protocol_controls",
+      "expected": {
+        "ridge_100": {
+          "role": "primary_linear_diagnostic_control_not_candidate",
+          "task": "regression",
+          "target": "target_return_20d",
+          "horizon": 20,
+          "model": "sklearn.linear_model.Ridge",
+          "hyperparameters": {
+            "alpha": 100.0
+          },
+          "feature_set_version": "quantitative-baseline-v1",
+          "preprocessing_version": "baseline-standard-v1",
+          "test_range": "same_as_authorized_candidate",
+          "retraining_frequency": "annual",
+          "training_window_policy": "expanding",
+          "training_history_start": "2010-01-04",
+          "purge_rule": "decision_date < prediction_start and target_end_date_20d < prediction_start",
+          "purge_equality_behavior": "purge"
+        },
+        "momentum_20d": {
+          "role": "naive_ranking_diagnostic_not_candidate",
+          "source_definition": "Phase 3B momentum20-ranking-20d-qbaselinev1-prepv1",
+          "score": "momentum_20d",
+          "direction": "higher_score_ranks_higher",
+          "fit_required": false,
+          "retuning_allowed": false,
+          "test_range": "same_as_authorized_candidate"
+        },
+        "only_authorized_evaluation_identities": [
+          "development-candidate-v1",
+          "ridge_100",
+          "momentum_20d"
+        ]
+      },
+      "observed": {
+        "ridge_100": {
+          "role": "primary_linear_diagnostic_control_not_candidate",
+          "task": "regression",
+          "target": "target_return_20d",
+          "horizon": 20,
+          "model": "sklearn.linear_model.Ridge",
+          "hyperparameters": {
+            "alpha": 100.0
+          },
+          "feature_set_version": "quantitative-baseline-v1",
+          "preprocessing_version": "baseline-standard-v1",
+          "test_range": "same_as_authorized_candidate",
+          "retraining_frequency": "annual",
+          "training_window_policy": "expanding",
+          "training_history_start": "2010-01-04",
+          "purge_rule": "decision_date < prediction_start and target_end_date_20d < prediction_start",
+          "purge_equality_behavior": "purge"
+        },
+        "momentum_20d": {
+          "role": "naive_ranking_diagnostic_not_candidate",
+          "source_definition": "Phase 3B momentum20-ranking-20d-qbaselinev1-prepv1",
+          "score": "momentum_20d",
+          "direction": "higher_score_ranks_higher",
+          "fit_required": false,
+          "retuning_allowed": false,
+          "test_range": "same_as_authorized_candidate"
+        },
+        "only_authorized_evaluation_identities": [
+          "development-candidate-v1",
+          "ridge_100",
+          "momentum_20d"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "check": "protocol_test_used",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "check": "protocol_test_opened",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "check": "protocol_holdout_executed",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "failed_checks": [],
+  "test_used": false,
+  "test_opened": false,
+  "holdout_executed": false
+}
