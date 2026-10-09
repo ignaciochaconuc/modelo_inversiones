@@ -230,7 +230,7 @@ portfolio/backtesting.
 
 ### Phase 3D — Walk-Forward Robustness
 
-**Status:** 3D.1–3D.6 complete; final development candidate selection pending; TEST remains sealed
+**Status:** complete — final development candidate frozen; TEST remains sealed
 
 Phase 3D.1–3D.4 implementan infraestructura expanding-window causal, purge
 dinámico por `target_end_date_20d`, comparación de frecuencias monthly,
@@ -262,6 +262,17 @@ moderadamente útil. Ninguna familia cumplió las condiciones completas de
 52 features permanece intacto rumbo a 3D.7. Los artefactos están en
 `data/reports/models/phase3d/feature_ablations`. TEST continúa sellado y no se
 inició selección final ni Phase 3E.
+
+Phase 3D.7 consolidó exclusivamente evidencia persistida de 3B–3D.6 y congeló
+`development-candidate-v1`: regression `target_return_20d`, RF-Small,
+`quantitative-baseline-v1` completo, `tree-preprocessing-v1`, retraining annual
+y ventana expanding desde 2010-01-04. Los 50 checks de identidad, schemas,
+features y reproducción cruzada pasaron; el fingerprint es
+`65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467`.
+El candidato está `selected_for_final_holdout_evaluation`, no production-ready
+ni aprobado para trading. TEST no fue abierto ni se entrenó todavía un modelo
+final 2010–2021. Phase 3 continúa incompleta: cualquier evaluación holdout exige
+autorización explícita y una fase posterior.
 
 ## Phase 4 — News Agent
 

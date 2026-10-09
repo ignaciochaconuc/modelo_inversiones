@@ -1,0 +1,19 @@
+{
+  "source": "Phase 3D.5 expanding; exactly reproduced by Phase 3D.6 full",
+  "pseudo_oos_start": "2016-01-01",
+  "pseudo_oos_nominal_end": "2021-12-31",
+  "effective_label_safe_end": "2021-12-02",
+  "mean_rank_ic": 0.06382512021589799,
+  "median_rank_ic": 0.0596581660336408,
+  "rank_ic_std": 0.22156037143750032,
+  "icir": 0.2880710110828747,
+  "pct_positive_ic": 0.5895372233400402,
+  "worst_year_ic": 0.0297656443444988,
+  "best_year_ic": 0.1318479348656976,
+  "year_ic_std": 0.03775412464375392,
+  "positive_years": 6,
+  "negative_years": 0,
+  "top10_uplift": 0.01503195044409247,
+  "pct_positive_top10_uplift": 0.6639839034205232,
+  "test_used": false
+}

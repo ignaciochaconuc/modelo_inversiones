@@ -47,13 +47,14 @@ Forest, XGBoost y LightGBM con `tree-preprocessing-v1`. Sus 81 fits y 108
 evaluaciones reales están bajo `data/reports/models/phase3c`; la importancia de
 features es diagnóstica y no alteró ningún fit. TEST continúa sellado.
 
-Phase 3D.1–3D.6 evalúa RF-Small 20d frente a Ridge-100 mediante walk-forward
+Phase 3D.1–3D.7 evalúa RF-Small 20d frente a Ridge-100 mediante walk-forward
 2016–2021, selecciona frecuencia annual y contrasta ventanas expanding,
 trailing-8y y trailing-5y. También ejecuta ablations diagnósticas leave-one-family-out
 manteniendo el candidato de 52 features intacto. Cada fit aplica purge dinámico
-y preprocessing causal. Expanding fue seleccionada y volatilidad fue la única
-familia con contribución material; los resultados viven en
-`data/reports/models/phase3d`. El período es pseudo-OOS y TEST 2022+ continúa sellado.
+y preprocessing causal. `development-candidate-v1` congela RF-Small 20d,
+annual/expanding y las 52 features para una futura evaluación final. Esto no es
+aprobación de producción o trading. Los resultados viven en
+`data/reports/models/phase3d`; TEST 2022+ continúa sellado.
 
 ## Instalación
 
