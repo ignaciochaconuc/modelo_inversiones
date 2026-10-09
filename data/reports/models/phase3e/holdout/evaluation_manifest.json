@@ -1,0 +1,23 @@
+{
+  "evaluation_id": "final-holdout-evaluation-v1",
+  "execution_type": "first_official_evaluation",
+  "candidate_fingerprint": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+  "holdout_protocol_fingerprint": "7b9c9fbef617ede2bc1e78cec3fb35ddfc5b2b13d049f189e088c03fa37032e6",
+  "data_snapshot_fingerprint": "2fa2ccc185c11d734aaf8e2ffbe0ee149425651a804200022b7aac734b3b3b6f",
+  "opened_at": "2026-10-09T23:06:37.925550+00:00",
+  "executed_at": "2026-10-09T23:08:39.585605+00:00",
+  "nominal_test_start": "2022-01-03",
+  "nominal_test_end": "2026-10-05",
+  "effective_test_end": "2026-09-03",
+  "calendar": "XNYS",
+  "model_identities": [
+    "development-candidate-v1",
+    "ridge_100",
+    "momentum_20d"
+  ],
+  "test_used": true,
+  "test_opened": true,
+  "holdout_executed": true,
+  "portfolio_backtest_run": false,
+  "adaptive_reruns": false
+}

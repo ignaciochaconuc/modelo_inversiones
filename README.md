@@ -56,11 +56,17 @@ annual/expanding y las 52 features para una futura evaluación final. Esto no es
 aprobación de producción o trading. Los resultados viven en
 `data/reports/models/phase3d`; TEST 2022+ continúa sellado.
 
-Phase 3E.1 congela `holdout-protocol-v1` antes de abrir TEST: evaluación causal
+Phase 3E.1 congeló `holdout-protocol-v1` antes de abrir TEST: evaluación causal
 annual/expanding, snapshot nominal hasta 2026-10-05, métricas, controles,
-umbrales y política one-shot. El protocolo está listo para una futura ejecución
-explícitamente autorizada, pero no contiene predicciones ni resultados TEST;
-Phase 3E.2 no fue iniciada y Phase 3 continúa incompleta.
+umbrales y política one-shot. Esa subfase no contenía predicciones ni resultados
+TEST y dejó la ejecución pendiente de autorización explícita.
+
+Phase 3E.2 abrió posteriormente TEST mediante un registro one-shot durable y
+ejecutó exactamente el protocolo congelado. RF-Small obtuvo mean Rank IC
+0.056579 y superó a Ridge-100, pero el worst-year IC 2022 incumplió el piso
+predeclarado; el resultado final automático es `marginal`. Phase 3 está completa
+con ese resultado registrado. No hubo reoptimización ni portfolio backtest, y
+el candidato no es production-ready ni está aprobado para trading.
 
 ## Instalación
 

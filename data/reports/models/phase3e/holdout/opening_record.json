@@ -1,0 +1,13 @@
+{
+  "evaluation_id": "final-holdout-evaluation-v1",
+  "candidate_id": "development-candidate-v1",
+  "candidate_fingerprint": "65bbec61f8fda0df24097267b777c882fec4410cecbeb89ff909622a1f8ef467",
+  "protocol_id": "holdout-protocol-v1",
+  "holdout_protocol_fingerprint": "7b9c9fbef617ede2bc1e78cec3fb35ddfc5b2b13d049f189e088c03fa37032e6",
+  "data_snapshot_fingerprint": "2fa2ccc185c11d734aaf8e2ffbe0ee149425651a804200022b7aac734b3b3b6f",
+  "nominal_test_start": "2022-01-03",
+  "nominal_test_end": "2026-10-05",
+  "opened_at": "2026-10-09T23:06:37.925550+00:00",
+  "execution_type": "first_official_evaluation",
+  "test_opened": true
+}

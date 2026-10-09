@@ -1,0 +1,37 @@
+{
+  "absolute_status": "marginal",
+  "exact_unrounded_inputs": {
+    "mean_rank_ic": 0.05657902409360866,
+    "worst_year_ic": -0.046738500043283254,
+    "positive_year_share": 0.8,
+    "top10_uplift": 0.02357107254703597
+  },
+  "rule_evaluations": {
+    "hard_fail_mean_ic_le_0": false,
+    "fail_mean_ic_between_0_and_0_01": false,
+    "fail_nonpositive_top10_and_mean_ic_below_0_03": false,
+    "pass_mean_ic_ge_0_03": true,
+    "pass_worst_year_gt_minus_0_01": false,
+    "pass_positive_year_share_ge_0_50": true,
+    "pass_top10_uplift_gt_0": true
+  },
+  "rf_vs_ridge": {
+    "rf_mean_ic": 0.05657902409360866,
+    "ridge_mean_ic": 0.01755166285414075,
+    "delta_rf_vs_ridge_ic": 0.039027361239467914,
+    "relative_classification": "rf_outperforms_ridge"
+  },
+  "momentum_comparison": {
+    "rf_mean_ic": 0.05657902409360866,
+    "momentum_mean_ic": 0.004410924861788064,
+    "delta_rf_vs_momentum_ic": 0.0521680992318206,
+    "changes_absolute_status": false
+  },
+  "development_comparison": {
+    "development_mean_ic": 0.06382512021589799,
+    "delta_holdout_vs_development": -0.007246096122289332,
+    "holdout_mean_ic_divided_by_development_mean_ic": 0.8864695264532471,
+    "diagnostic_only": true
+  },
+  "no_post_hoc_threshold_change": true
+}

@@ -88,7 +88,7 @@ No modificar decisiones arquitectónicas silenciosamente.
 
 ## Fuera de alcance actual
 
-No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 3D.1–3D.7 y Phase 3E.1 están completas: `development-candidate-v1` y `holdout-protocol-v1` están congelados con TEST sellado. No abrir TEST, ejecutar Phase 3E.2 ni iniciar fases posteriores por iniciativa propia.
+No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 3D.1–3D.7 y Phase 3E.1–3E.2 están completas. TEST fue abierto una sola vez bajo `holdout-protocol-v1` y el candidato produjo resultado final `marginal`; solo se permiten reproducciones exactas bajo las mismas identidades. No reoptimizar contra TEST ni iniciar fases posteriores por iniciativa propia.
 
 ## Verificación mínima
 

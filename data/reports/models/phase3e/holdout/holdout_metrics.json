@@ -1,0 +1,299 @@
+{
+  "development-candidate-v1": {
+    "model_identity": "development-candidate-v1",
+    "rows": 117333,
+    "decision_dates": 1172,
+    "ranking": {
+      "rank_ic": {
+        "days": 1172,
+        "mean": 0.05657902409360866,
+        "median": 0.05938193819381937,
+        "std": 0.2622611045685684,
+        "icir": 0.2157354754784693,
+        "pct_positive": 0.5895904436860068
+      },
+      "top10": {
+        "dates": 1172,
+        "average_top10_actual_return": 0.034289714485741245,
+        "average_universe_actual_return": 0.010718641938705272,
+        "average_top10_uplift": 0.02357107254703597,
+        "pct_dates_positive_uplift": 0.6160409556313993
+      }
+    },
+    "regression": {
+      "pooled": {
+        "mae": 0.06720292038647492,
+        "rmse": 0.0930045205309072,
+        "pearson_correlation": 0.09150738091704119,
+        "spearman_correlation": 0.04794488244976938
+      },
+      "daily_pearson": {
+        "days": 1172,
+        "mean": 0.09043574999315138,
+        "median": 0.11639496013799905,
+        "std": 0.29130418906199557,
+        "icir": 0.31045125126540757,
+        "pct_positive": 0.6305460750853242
+      },
+      "daily_spearman": {
+        "days": 1172,
+        "mean": 0.05657902409360866,
+        "median": 0.05938193819381937,
+        "std": 0.2622611045685684,
+        "icir": 0.2157354754784693,
+        "pct_positive": 0.5895904436860068
+      },
+      "top10": {
+        "dates": 1172,
+        "average_top10_actual_return": 0.034289714485741245,
+        "average_universe_actual_return": 0.010718641938705272,
+        "average_top10_uplift": 0.02357107254703597,
+        "pct_dates_positive_uplift": 0.6160409556313993
+      }
+    },
+    "annual": {
+      "2022": {
+        "mean_rank_ic": -0.046738500043283254,
+        "median_rank_ic": -0.12133213321332131,
+        "icir": -0.13708292024999807,
+        "pct_positive_ic": 0.38247011952191234,
+        "top10_uplift": -0.0022042059292762908,
+        "decision_date_count": 251,
+        "partial_year": false
+      },
+      "2023": {
+        "mean_rank_ic": 0.13090433225338913,
+        "median_rank_ic": 0.11007217266355548,
+        "icir": 0.5708717320389542,
+        "pct_positive_ic": 0.712,
+        "top10_uplift": 0.03470595010755724,
+        "decision_date_count": 250,
+        "partial_year": false
+      },
+      "2024": {
+        "mean_rank_ic": 0.04111386326862704,
+        "median_rank_ic": 0.06030603060306029,
+        "icir": 0.20138303518451006,
+        "pct_positive_ic": 0.5912698412698413,
+        "top10_uplift": 0.022185924258316343,
+        "decision_date_count": 252,
+        "partial_year": false
+      },
+      "2025": {
+        "mean_rank_ic": 0.08113335950819735,
+        "median_rank_ic": 0.09360336033603359,
+        "icir": 0.34846843476762396,
+        "pct_positive_ic": 0.624,
+        "top10_uplift": 0.024116395542569873,
+        "decision_date_count": 250,
+        "partial_year": false
+      },
+      "2026": {
+        "mean_rank_ic": 0.08681575896143681,
+        "median_rank_ic": 0.1038672102504368,
+        "icir": 0.35580008147960335,
+        "pct_positive_ic": 0.6627218934911243,
+        "top10_uplift": 0.046639724187852116,
+        "decision_date_count": 169,
+        "partial_year": true
+      }
+    },
+    "stability": {
+      "worst_year_ic": -0.046738500043283254,
+      "best_year_ic": 0.13090433225338913,
+      "year_ic_std": 0.06695847949493873,
+      "positive_years": 4,
+      "negative_years": 1,
+      "evaluable_years": 5,
+      "positive_year_share": 0.8
+    }
+  },
+  "ridge_100": {
+    "model_identity": "ridge_100",
+    "rows": 117333,
+    "decision_dates": 1172,
+    "ranking": {
+      "rank_ic": {
+        "days": 1172,
+        "mean": 0.01755166285414075,
+        "median": 0.004272427242724272,
+        "std": 0.1854750308154232,
+        "icir": 0.0946308663596202,
+        "pct_positive": 0.5102389078498294
+      },
+      "top10": {
+        "dates": 1172,
+        "average_top10_actual_return": 0.0275731725384269,
+        "average_universe_actual_return": 0.010718641938705272,
+        "average_top10_uplift": 0.016854530599721623,
+        "pct_dates_positive_uplift": 0.5716723549488054
+      }
+    },
+    "regression": {
+      "pooled": {
+        "mae": 0.06792392976331733,
+        "rmse": 0.09395663675685301,
+        "pearson_correlation": 0.08704248074388433,
+        "spearman_correlation": 0.02334528856981428
+      },
+      "daily_pearson": {
+        "days": 1172,
+        "mean": 0.054516777124253485,
+        "median": 0.04297954950661222,
+        "std": 0.23030096533399455,
+        "icir": 0.23671970738459733,
+        "pct_positive": 0.5750853242320819
+      },
+      "daily_spearman": {
+        "days": 1172,
+        "mean": 0.01755166285414075,
+        "median": 0.004272427242724272,
+        "std": 0.1854750308154232,
+        "icir": 0.0946308663596202,
+        "pct_positive": 0.5102389078498294
+      },
+      "top10": {
+        "dates": 1172,
+        "average_top10_actual_return": 0.0275731725384269,
+        "average_universe_actual_return": 0.010718641938705272,
+        "average_top10_uplift": 0.016854530599721623,
+        "pct_dates_positive_uplift": 0.5716723549488054
+      }
+    },
+    "annual": {
+      "2022": {
+        "mean_rank_ic": -0.007371464677829474,
+        "median_rank_ic": -0.06569456945694568,
+        "icir": -0.02981566822872772,
+        "pct_positive_ic": 0.3386454183266932,
+        "top10_uplift": -0.00759439396812283,
+        "decision_date_count": 251,
+        "partial_year": false
+      },
+      "2023": {
+        "mean_rank_ic": 0.025425214521452143,
+        "median_rank_ic": 0.018979897989798978,
+        "icir": 0.1736483781069277,
+        "pct_positive_ic": 0.568,
+        "top10_uplift": 0.01551854298894794,
+        "decision_date_count": 250,
+        "partial_year": false
+      },
+      "2024": {
+        "mean_rank_ic": 0.021028745999985173,
+        "median_rank_ic": 0.024170417041704167,
+        "icir": 0.17828991666849123,
+        "pct_positive_ic": 0.5714285714285714,
+        "top10_uplift": 0.008527606724648813,
+        "decision_date_count": 252,
+        "partial_year": false
+      },
+      "2025": {
+        "mean_rank_ic": 0.0190638103810381,
+        "median_rank_ic": 0.006546654665466546,
+        "icir": 0.08744297893237435,
+        "pct_positive_ic": 0.516,
+        "top10_uplift": 0.022097887589705118,
+        "decision_date_count": 250,
+        "partial_year": false
+      },
+      "2026": {
+        "mean_rank_ic": 0.03549873539390137,
+        "median_rank_ic": 0.03933605125218404,
+        "icir": 0.22701508397541423,
+        "pct_positive_ic": 0.5798816568047337,
+        "top10_uplift": 0.05980259295620004,
+        "decision_date_count": 169,
+        "partial_year": true
+      }
+    },
+    "stability": {
+      "worst_year_ic": -0.007371464677829474,
+      "best_year_ic": 0.03549873539390137,
+      "year_ic_std": 0.015911462064756583,
+      "positive_years": 4,
+      "negative_years": 1,
+      "evaluable_years": 5,
+      "positive_year_share": 0.8
+    }
+  },
+  "momentum_20d": {
+    "model_identity": "momentum_20d",
+    "rows": 117333,
+    "decision_dates": 1172,
+    "ranking": {
+      "rank_ic": {
+        "days": 1172,
+        "mean": 0.004410924861788064,
+        "median": 0.004998499849984997,
+        "std": 0.19173276124186414,
+        "icir": 0.023005587742116942,
+        "pct_positive": 0.5093856655290102
+      },
+      "top10": {
+        "dates": 1172,
+        "average_top10_actual_return": 0.020781509323581495,
+        "average_universe_actual_return": 0.010718641938705272,
+        "average_top10_uplift": 0.010062867384876223,
+        "pct_dates_positive_uplift": 0.560580204778157
+      }
+    },
+    "regression": null,
+    "annual": {
+      "2022": {
+        "mean_rank_ic": -0.026559780539399284,
+        "median_rank_ic": -0.029966996699669964,
+        "icir": -0.12013914070977043,
+        "pct_positive_ic": 0.46215139442231074,
+        "top10_uplift": -0.007881961501365792,
+        "decision_date_count": 251,
+        "partial_year": false
+      },
+      "2023": {
+        "mean_rank_ic": -0.014676891689168919,
+        "median_rank_ic": -0.023126312631263125,
+        "icir": -0.10136953185955752,
+        "pct_positive_ic": 0.436,
+        "top10_uplift": 0.007030182041156268,
+        "decision_date_count": 250,
+        "partial_year": false
+      },
+      "2024": {
+        "mean_rank_ic": 0.015672781825995703,
+        "median_rank_ic": 0.03125112511251125,
+        "icir": 0.08138931996102726,
+        "pct_positive_ic": 0.5634920634920635,
+        "top10_uplift": 0.0076345926418487815,
+        "decision_date_count": 252,
+        "partial_year": false
+      },
+      "2025": {
+        "mean_rank_ic": 0.03892363636363636,
+        "median_rank_ic": 0.02804680468046804,
+        "icir": 0.18955472417577873,
+        "pct_positive_ic": 0.556,
+        "top10_uplift": 0.013627540363558047,
+        "decision_date_count": 250,
+        "partial_year": false
+      },
+      "2026": {
+        "mean_rank_ic": 0.010798116358799124,
+        "median_rank_ic": 0.02292229222922292,
+        "icir": 0.061768605857384085,
+        "pct_positive_ic": 0.5384615384615384,
+        "top10_uplift": 0.039548550088717625,
+        "decision_date_count": 169,
+        "partial_year": true
+      }
+    },
+    "stability": {
+      "worst_year_ic": -0.026559780539399284,
+      "best_year_ic": 0.03892363636363636,
+      "year_ic_std": 0.025891106119744958,
+      "positive_years": 3,
+      "negative_years": 2,
+      "evaluable_years": 5,
+      "positive_year_share": 0.6
+    }
+  }
+}

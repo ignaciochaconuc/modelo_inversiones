@@ -49,7 +49,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
-| `models` | Datasets temporales, preprocessing, métricas, selección, robustez y contratos congelados | Funcional hasta Phase 3E.1 protocol freeze; TEST sellado |
+| `models` | Datasets temporales, preprocessing, métricas, selección, robustez y holdout one-shot | Funcional hasta Phase 3E.2; resultado final marginal registrado |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
 | `backtesting` | Motor temporal, métricas, benchmark y baselines sistemáticos | Funcional Phase 2B; validación real completa en el universo fijo actual |
@@ -150,9 +150,17 @@ Phase 3E.1 tampoco carga datasets ni ejecuta modelos. Lee únicamente el contrat
 congelado y metadata/configuración, fija cutoff nominal 2026-10-05 y fingerprints
 de snapshot/protocolo. ADR-021 predeclara walk-forward XNYS annual/expanding,
 purge dinámico estricto, métricas, controles Ridge-100 y `momentum_20d`, umbrales
-y semántica one-shot. La fecha efectiva label-safe se resolverá solo al ejecutar
-3E.2 con autorización explícita. Hasta entonces `test_used=false`,
+y semántica one-shot. La fecha efectiva label-safe quedó reservada para la
+ejecución explícita de 3E.2; en ese punto todavía regían `test_used=false`,
 `test_opened=false` y `holdout_executed=false`.
+
+Phase 3E.2 persistió el opening record antes de leer TEST y ejecutó cinco fits
+annual/expanding de RF-Small y cinco de Ridge-100 hasta la fecha efectiva
+2026-09-03. RF obtuvo mean Rank IC 0.056579, pero el worst-year IC 2022 de
+-0.046739 impidió PASS y produjo status `marginal`. ADR-022 registra el resultado
+sin alterar candidato, protocolo ni thresholds. TEST está abierto y cualquier
+rerun futuro solo puede ser una reproducción exacta; no puede alimentar nueva
+selección bajo la misma generación.
 
 El builder agrupa fechas consecutivas cuyo conjunto de splits elegibles no cambia. También abre un nuevo segmento cuando una barra histórica retrasada del activo o SPY pasa a estar disponible. Para cada segmento construye una sola vista as-of hasta su fecha final, calcula rolling features vectorizadas y conserva únicamente sus filas. Barras futuras con fecha posterior son causalmente inocuas; una barra retrasada con fecha histórica no lo es y por eso constituye un límite.
 

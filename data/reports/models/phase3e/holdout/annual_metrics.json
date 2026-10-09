@@ -1,0 +1,143 @@
+{
+  "development-candidate-v1": {
+    "2022": {
+      "mean_rank_ic": -0.046738500043283254,
+      "median_rank_ic": -0.12133213321332131,
+      "icir": -0.13708292024999807,
+      "pct_positive_ic": 0.38247011952191234,
+      "top10_uplift": -0.0022042059292762908,
+      "decision_date_count": 251,
+      "partial_year": false
+    },
+    "2023": {
+      "mean_rank_ic": 0.13090433225338913,
+      "median_rank_ic": 0.11007217266355548,
+      "icir": 0.5708717320389542,
+      "pct_positive_ic": 0.712,
+      "top10_uplift": 0.03470595010755724,
+      "decision_date_count": 250,
+      "partial_year": false
+    },
+    "2024": {
+      "mean_rank_ic": 0.04111386326862704,
+      "median_rank_ic": 0.06030603060306029,
+      "icir": 0.20138303518451006,
+      "pct_positive_ic": 0.5912698412698413,
+      "top10_uplift": 0.022185924258316343,
+      "decision_date_count": 252,
+      "partial_year": false
+    },
+    "2025": {
+      "mean_rank_ic": 0.08113335950819735,
+      "median_rank_ic": 0.09360336033603359,
+      "icir": 0.34846843476762396,
+      "pct_positive_ic": 0.624,
+      "top10_uplift": 0.024116395542569873,
+      "decision_date_count": 250,
+      "partial_year": false
+    },
+    "2026": {
+      "mean_rank_ic": 0.08681575896143681,
+      "median_rank_ic": 0.1038672102504368,
+      "icir": 0.35580008147960335,
+      "pct_positive_ic": 0.6627218934911243,
+      "top10_uplift": 0.046639724187852116,
+      "decision_date_count": 169,
+      "partial_year": true
+    }
+  },
+  "ridge_100": {
+    "2022": {
+      "mean_rank_ic": -0.007371464677829474,
+      "median_rank_ic": -0.06569456945694568,
+      "icir": -0.02981566822872772,
+      "pct_positive_ic": 0.3386454183266932,
+      "top10_uplift": -0.00759439396812283,
+      "decision_date_count": 251,
+      "partial_year": false
+    },
+    "2023": {
+      "mean_rank_ic": 0.025425214521452143,
+      "median_rank_ic": 0.018979897989798978,
+      "icir": 0.1736483781069277,
+      "pct_positive_ic": 0.568,
+      "top10_uplift": 0.01551854298894794,
+      "decision_date_count": 250,
+      "partial_year": false
+    },
+    "2024": {
+      "mean_rank_ic": 0.021028745999985173,
+      "median_rank_ic": 0.024170417041704167,
+      "icir": 0.17828991666849123,
+      "pct_positive_ic": 0.5714285714285714,
+      "top10_uplift": 0.008527606724648813,
+      "decision_date_count": 252,
+      "partial_year": false
+    },
+    "2025": {
+      "mean_rank_ic": 0.0190638103810381,
+      "median_rank_ic": 0.006546654665466546,
+      "icir": 0.08744297893237435,
+      "pct_positive_ic": 0.516,
+      "top10_uplift": 0.022097887589705118,
+      "decision_date_count": 250,
+      "partial_year": false
+    },
+    "2026": {
+      "mean_rank_ic": 0.03549873539390137,
+      "median_rank_ic": 0.03933605125218404,
+      "icir": 0.22701508397541423,
+      "pct_positive_ic": 0.5798816568047337,
+      "top10_uplift": 0.05980259295620004,
+      "decision_date_count": 169,
+      "partial_year": true
+    }
+  },
+  "momentum_20d": {
+    "2022": {
+      "mean_rank_ic": -0.026559780539399284,
+      "median_rank_ic": -0.029966996699669964,
+      "icir": -0.12013914070977043,
+      "pct_positive_ic": 0.46215139442231074,
+      "top10_uplift": -0.007881961501365792,
+      "decision_date_count": 251,
+      "partial_year": false
+    },
+    "2023": {
+      "mean_rank_ic": -0.014676891689168919,
+      "median_rank_ic": -0.023126312631263125,
+      "icir": -0.10136953185955752,
+      "pct_positive_ic": 0.436,
+      "top10_uplift": 0.007030182041156268,
+      "decision_date_count": 250,
+      "partial_year": false
+    },
+    "2024": {
+      "mean_rank_ic": 0.015672781825995703,
+      "median_rank_ic": 0.03125112511251125,
+      "icir": 0.08138931996102726,
+      "pct_positive_ic": 0.5634920634920635,
+      "top10_uplift": 0.0076345926418487815,
+      "decision_date_count": 252,
+      "partial_year": false
+    },
+    "2025": {
+      "mean_rank_ic": 0.03892363636363636,
+      "median_rank_ic": 0.02804680468046804,
+      "icir": 0.18955472417577873,
+      "pct_positive_ic": 0.556,
+      "top10_uplift": 0.013627540363558047,
+      "decision_date_count": 250,
+      "partial_year": false
+    },
+    "2026": {
+      "mean_rank_ic": 0.010798116358799124,
+      "median_rank_ic": 0.02292229222922292,
+      "icir": 0.061768605857384085,
+      "pct_positive_ic": 0.5384615384615384,
+      "top10_uplift": 0.039548550088717625,
+      "decision_date_count": 169,
+      "partial_year": true
+    }
+  }
+}

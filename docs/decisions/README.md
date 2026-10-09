@@ -23,3 +23,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-019: Feature-family ablation taxonomy](ADR-019-feature-family-ablation-taxonomy.md)
 - [ADR-020: Frozen final development candidate](ADR-020-final-development-candidate.md)
 - [ADR-021: Frozen final holdout protocol](ADR-021-final-holdout-protocol.md)
+- [ADR-022: One-time final holdout result](ADR-022-final-holdout-result.md)

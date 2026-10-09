@@ -167,6 +167,8 @@ el alcance real actual.
 
 ## Phase 3 — Baseline predictive models
 
+**Status:** complete — frozen predictive candidate produced marginal final holdout result
+
 **Objetivo:** establecer benchmarks simples para regresión, clasificación y ranking.  
 **Entregables:** splits temporales, pipelines, métricas, versionado y baselines lineal/logístico antes de modelos complejos.  
 **Finalización aproximada:** evaluación out-of-sample reproducible y comparación contra baselines ingenuos.
@@ -276,11 +278,11 @@ autorización explícita y una fase posterior.
 
 ## Phase 3E — Final Holdout Evaluation
 
-**Status:** in progress — protocol frozen; holdout not executed
+**Status:** complete
 
 ### Phase 3E.1 — Protocol Freeze
 
-**Status:** complete — holdout protocol frozen; TEST remains sealed
+**Status:** complete — holdout protocol frozen before TEST opening
 
 `holdout-protocol-v1` fija antes de abrir TEST el candidato autorizado, snapshot
 nominal hasta 2026-10-05, walk-forward XNYS annual/expanding, purge dinámico,
@@ -290,12 +292,15 @@ No se cargaron filas TEST ni se produjeron predicciones o métricas holdout.
 
 ### Phase 3E.2 — One-Time Holdout Execution
 
-**Status:** pending explicit authorization
+**Status:** complete — one-time holdout executed
 
-TEST 2022+ continúa sellado (`test_used=false`, `test_opened=false`,
-`holdout_executed=false`). Phase 3 sigue incompleta hasta ejecutar y registrar
-la evaluación final autorizada. El candidato no es production-ready ni está
-aprobado para trading.
+La evaluación oficial abrió TEST una sola vez bajo los fingerprints congelados
+y produjo mean Rank IC 0.056579. El status automático fue `marginal` porque el
+worst-year IC de 2022 (-0.046739) no superó el piso estricto -0.01, aunque RF
+superó a Ridge por 0.039027 de mean IC. Phase 3 queda completa con ese resultado
+registrado, sin reoptimización. `test_used=true`, `test_opened=true` y
+`holdout_executed=true`. El candidato no es production-ready, no demuestra
+rentabilidad de portfolio y no está aprobado para trading.
 
 ## Phase 4 — News Agent
 
