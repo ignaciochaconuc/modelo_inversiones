@@ -2,6 +2,7 @@ from datetime import date, timedelta
 
 import numpy as np
 import pandas as pd
+import pytest
 
 from investment_system.data.calendar import XNYSTradingCalendar
 from investment_system.models.feature_sets import QUANTITATIVE_BASELINE_FEATURES
@@ -9,6 +10,7 @@ from investment_system.models.walkforward import (
     INITIAL_TRAIN_START,
     Phase3DWalkForwardRunner,
 )
+from investment_system.models.window_sensitivity import Phase3DWindowSensitivityRunner
 
 
 def _synthetic_frame() -> pd.DataFrame:
@@ -63,6 +65,39 @@ def test_repeated_ridge_walkforward_is_deterministic_and_validation_only(tmp_pat
         pd.to_datetime(first_predictions["decision_date"])
         <= pd.to_datetime(first_predictions["prediction_period_end"])
     ).all()
+    assert (
+        pd.to_datetime(first_fits["max_train_target_end_date"])
+        < pd.to_datetime(first_fits["prediction_start"])
+    ).all()
+
+
+def test_repeated_expanding_rf_window_run_is_deterministic_and_train_only(tmp_path) -> None:
+    frame = _synthetic_frame()
+    runner = Phase3DWindowSensitivityRunner(tmp_path, XNYSTradingCalendar())
+    first_predictions, first_fits, first_preprocessing, first_metrics = runner.run_policy(
+        frame, "expanding",
+    )
+    second_predictions, second_fits, second_preprocessing, second_metrics = runner.run_policy(
+        frame, "expanding",
+    )
+    np.testing.assert_allclose(
+        first_predictions["predicted_return"], second_predictions["predicted_return"],
+        rtol=0.0, atol=1e-15,
+    )
+    assert (
+        first_metrics["overall"]["ranking"]["rank_ic"]["mean"]
+        == pytest.approx(
+            second_metrics["overall"]["ranking"]["rank_ic"]["mean"], abs=1e-12,
+        )
+    )
+    assert first_fits[["fit_id", "prediction_start", "prediction_end"]].equals(
+        second_fits[["fit_id", "prediction_start", "prediction_end"]]
+    )
+    assert first_preprocessing.shape == second_preprocessing.shape
+    assert first_preprocessing["fit_partition"].eq("train").all()
+    assert first_preprocessing.groupby("fit_id").size().eq(52).all()
+    assert first_predictions["test_used"].eq(False).all()
+    assert first_fits["test_used"].eq(False).all()
     assert (
         pd.to_datetime(first_fits["max_train_target_end_date"])
         < pd.to_datetime(first_fits["prediction_start"])

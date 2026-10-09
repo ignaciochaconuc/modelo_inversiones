@@ -49,7 +49,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
-| `models` | Datasets temporales, preprocessing, métricas, selección y robustez walk-forward | Funcional Phase 3D.1–3D.4; TEST sellado |
+| `models` | Datasets temporales, preprocessing, métricas, selección y robustez walk-forward | Funcional Phase 3D.1–3D.5; TEST sellado |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
 | `backtesting` | Motor temporal, métricas, benchmark y baselines sistemáticos | Funcional Phase 2B; validación real completa en el universo fijo actual |
@@ -120,6 +120,15 @@ Las políticas generan predicted-return ranking continuo, métricas anuales,
 coste de fit y diagnóstico de edad sin mezclar políticas como observaciones
 independientes. ADR-017 fija estas decisiones. No existe integración con
 portfolio, risk, execution ni TEST.
+
+Phase 3D.5 reutiliza ese contrato con RF-Small y annual congelados. El módulo de
+sensibilidad calcula por activación un inicio expanding o trailing de 8/5 años
+calendario, con floor 2010-01-04, y aplica después el mismo purge estricto. Cada
+política conserva métricas y preprocessing separados; nunca se apilan sus
+predicciones como observaciones económicas independientes. La reproducción del
+expanding previo es una compuerta obligatoria antes de seleccionar o interpretar.
+ADR-018 fija expanding como política de desarrollo actual; TEST sigue fuera del
+runner y de los artefactos.
 
 El builder agrupa fechas consecutivas cuyo conjunto de splits elegibles no cambia. También abre un nuevo segmento cuando una barra histórica retrasada del activo o SPY pasa a estar disponible. Para cada segmento construye una sola vista as-of hasta su fecha final, calcula rolling features vectorizadas y conserva únicamente sus filas. Barras futuras con fecha posterior son causalmente inocuas; una barra retrasada con fecha histórica no lo es y por eso constituye un límite.
 

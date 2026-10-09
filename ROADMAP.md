@@ -230,7 +230,7 @@ portfolio/backtesting.
 
 ### Phase 3D — Walk-Forward Robustness
 
-**Status:** 3D.1–3D.4 complete; later 3D subphases remain pending; TEST remains sealed
+**Status:** 3D.1–3D.5 complete; feature ablations and final selection remain pending; TEST remains sealed
 
 Phase 3D.1–3D.4 implementan infraestructura expanding-window causal, purge
 dinámico por `target_end_date_20d`, comparación de frecuencias monthly,
@@ -243,8 +243,16 @@ frecuencia raw-best y operacional para ambos modelos. RF-Small mantuvo una
 ventaja material y más estable sobre Ridge bajo las cuatro frecuencias. Los
 buckets de model age fueron no monotónicos y no justifican retraining mensual.
 Los artefactos viven en `data/reports/models/phase3d`. Permanecen pendientes
-window sensitivity, feature-family ablations y final candidate selection; no se
-implementó 3D.5+ ni Phase 3E.
+feature-family ablations y final candidate selection.
+
+Phase 3D.5 mantuvo congelados RF-Small, las 52 features, preprocessing y
+frecuencia annual, variando únicamente la ventana TRAIN. En 18 fits reales,
+expanding obtuvo mean Rank IC 0.063825 frente a 0.061038 para trailing-8y y
+0.058946 para trailing-5y; reprodujo exactamente el artifact previo y fue tanto
+raw-best como seleccionada bajo tolerancia 0.003. No hay evidencia material y
+estable de concept drift que justifique eliminar historia antigua. Los nuevos
+artefactos viven en `data/reports/models/phase3d/window_sensitivity`. TEST 2022+
+sigue sellado; no se implementaron ablations, candidato final ni Phase 3E.
 
 ## Phase 4 — News Agent
 

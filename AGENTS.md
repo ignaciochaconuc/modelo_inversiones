@@ -88,7 +88,7 @@ No modificar decisiones arquitectónicas silenciosamente.
 
 ## Fuera de alcance actual
 
-No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 3D.1–3D.4 está implementada para robustez walk-forward con TEST sellado; no iniciar 3D.5+, Phase 3E o posteriores por iniciativa propia.
+No implementar sin instrucción explícita: trading o brokers reales, API keys reales, órdenes automáticas, modelos ML definitivos, scraping agresivo, almacenamiento de secretos ni crypto trading. Phase 3D.1–3D.5 está implementada para robustez walk-forward y sensibilidad de ventana con TEST sellado; no iniciar feature ablations, selección final, Phase 3E o posteriores por iniciativa propia.
 
 ## Verificación mínima
 
