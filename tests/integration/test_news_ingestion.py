@@ -2,7 +2,9 @@ from datetime import datetime, timedelta, timezone
 
 from investment_system.data.news_hashing import canonical_json_bytes, raw_capture_id, sha256_hex
 from investment_system.data.news_ingestion import NewsIngestionService
-from investment_system.data.schemas.news import NewsQueryMode, RawNewsItem, RawPayloadFormat
+from investment_system.data.schemas.news import (
+    AvailableAtSource, NewsQueryMode, RawNewsItem, RawPayloadFormat,
+)
 from investment_system.data.sources.finnhub_news import FinnhubNewsProvider
 from investment_system.data.sources.news import NewsIngestionPolicy
 from investment_system.data.sources.news import NewsFetchRequest
@@ -12,6 +14,7 @@ from investment_system.data.storage.news_store import NewsStore
 def item(
     provider_id: int, headline: str, captured_at: datetime, *, published_at: datetime | None,
     related: str = "AAPL", request_tickers: tuple[str, ...] = ("AAPL",),
+    provider_revision_at: datetime | None = None,
 ) -> RawNewsItem:
     payload = {
         "id": provider_id, "headline": headline, "summary": f"summary {headline}",
@@ -27,6 +30,7 @@ def item(
         payload_hash=digest,
         raw_capture_id=raw_capture_id("finnhub", str(provider_id), digest, captured_at, request_tickers),
         request_tickers=request_tickers,
+        provider_revision_at=provider_revision_at,
     )
 
 
@@ -125,6 +129,11 @@ def test_proxy_is_excluded_from_strict_and_requires_explicit_research_opt_in(tmp
     assert len(store.query_as_of(
         cutoff, mode=NewsQueryMode.HISTORICAL_RESEARCH, allow_historical_proxy=True,
     )) == 1
+    record = store.read_records()[0]
+    assert record.available_at == captured
+    assert record.available_at_source == AvailableAtSource.LOCAL_FIRST_SEEN
+    assert record.historical_proxy_at == published
+    assert record.historical_proxy_source == AvailableAtSource.PUBLISHED_AT_PROXY
 
 
 def test_missing_publication_is_conservatively_available_at_first_seen(tmp_path) -> None:
@@ -154,3 +163,87 @@ def test_query_is_order_independent_and_handles_ticker_shapes(tmp_path) -> None:
         "logical_articles": 2, "bad_raw_hashes": 0, "missing_lineage": 0,
         "duplicate_records": 0,
     }
+
+
+def test_historical_correction_never_gains_verified_revision_time_from_publication(tmp_path) -> None:
+    store, service = setup(
+        tmp_path, NewsIngestionPolicy(mode="historical_backfill", allow_published_at_proxy=True),
+    )
+    published = datetime(2021, 3, 15, 14, tzinfo=timezone.utc)
+    captured = datetime(2026, 10, 11, 20, tzinfo=timezone.utc)
+    service.ingest_items([item(1, "2023 correction downloaded in 2026", captured, published_at=published)])
+    record = store.read_records()[0]
+    assert record.available_at == captured
+    assert record.historical_proxy_at == published
+    assert store.query_as_of(datetime(2021, 3, 16, tzinfo=timezone.utc)) == []
+    research = store.query_as_of(
+        datetime(2021, 3, 16, tzinfo=timezone.utc),
+        mode=NewsQueryMode.HISTORICAL_RESEARCH, allow_historical_proxy=True,
+    )
+    assert research == [record]
+    assert research[0].historical_proxy_source == AvailableAtSource.PUBLISHED_AT_PROXY
+
+
+def test_unknown_historical_revision_does_not_hide_verified_prior_revision_in_strict_pit(tmp_path) -> None:
+    store, service = setup(
+        tmp_path, NewsIngestionPolicy(mode="historical_backfill", allow_published_at_proxy=True),
+    )
+    published = datetime(2021, 3, 15, 14, tzinfo=timezone.utc)
+    verified_at = datetime(2021, 3, 15, 14, 5, tzinfo=timezone.utc)
+    original = item(
+        1, "original", verified_at, published_at=published,
+        provider_revision_at=verified_at,
+    )
+    correction_seen = datetime(2026, 10, 11, 20, tzinfo=timezone.utc)
+    correction = item(1, "unknown correction", correction_seen, published_at=published)
+    service.ingest_items([correction, original])
+    strict_2023 = store.query_as_of(datetime(2023, 6, 20, tzinfo=timezone.utc))
+    assert [record.headline for record in strict_2023] == ["original"]
+    strict_2027 = store.query_as_of(datetime(2027, 1, 1, tzinfo=timezone.utc))
+    assert [record.headline for record in strict_2027] == ["unknown correction"]
+
+
+def test_ticker_filter_applies_after_current_revision_selection_in_all_safe_modes(tmp_path) -> None:
+    cutoff = datetime(2026, 1, 2, 14, 15, tzinfo=timezone.utc)
+    original = item(1, "original", cutoff - timedelta(minutes=15), published_at=cutoff - timedelta(hours=1), related="AAPL")
+    correction = item(1, "corrected", cutoff + timedelta(minutes=15), published_at=cutoff - timedelta(hours=1), related="MSFT")
+    first_store, first_service = setup(tmp_path / "first")
+    second_store, second_service = setup(tmp_path / "second")
+    first_service.ingest_items([original, correction])
+    second_service.ingest_items([correction, original])
+
+    for store in (first_store, second_store):
+        assert [record.headline for record in store.query_as_of(cutoff, tickers=("AAPL",))] == ["original"]
+        after = cutoff + timedelta(minutes=30)
+        for mode in (NewsQueryMode.STRICT, NewsQueryMode.HISTORICAL_RESEARCH):
+            assert store.query_as_of(after, mode=mode, tickers=("AAPL",)) == []
+            assert [record.headline for record in store.query_as_of(
+                after, mode=mode, tickers=("MSFT",),
+            )] == ["corrected"]
+        assert [record.headline for record in store.audit_revisions("finnhub", "1")] == ["original", "corrected"]
+
+
+def test_request_context_never_becomes_provider_ticker_evidence_and_survives_rebuild(tmp_path) -> None:
+    store, service = setup(tmp_path)
+    seen = datetime(2026, 1, 2, 20, tzinfo=timezone.utc)
+    from_aapl = item(1, "shared", seen, published_at=seen, related="", request_tickers=("AAPL",))
+    from_msft = item(1, "shared", seen, published_at=seen, related="", request_tickers=("MSFT",))
+    summary = service.ingest_items([from_aapl, from_msft])
+    assert summary.new_raw_captures == 2
+    assert summary.new_normalized_revisions == 1
+    assert store.read_records()[0].direct_tickers == ()
+    contexts = {capture.request_tickers for capture in store.lineage(store.read_records()[0])["captures"]}
+    assert contexts == {("AAPL",), ("MSFT",)}
+    assert service.ingest_items([from_aapl, from_msft]).new_normalized_revisions == 0
+    before = [(record.revision_id, record.direct_tickers) for record in store.read_records()]
+    service.rebuild_from_raw()
+    assert [(record.revision_id, record.direct_tickers) for record in store.read_records()] == before
+
+
+def test_provider_related_ticker_is_not_replaced_by_requested_ticker(tmp_path) -> None:
+    store, service = setup(tmp_path)
+    seen = datetime(2026, 1, 2, 20, tzinfo=timezone.utc)
+    service.ingest_items([
+        item(1, "cross company", seen, published_at=seen, related="MSFT", request_tickers=("AAPL",)),
+    ])
+    assert store.read_records()[0].direct_tickers == ("MSFT",)

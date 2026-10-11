@@ -131,8 +131,11 @@ optimización y ejecución futura.
 Phase 4A almacena evidencia en `data/raw/news`, revisiones normalizadas en
 `data/processed/news/news-schema-v1` y su reporte en
 `data/reports/news/phase4a_pilot.json`. El modo PIT estricto nunca incluye
-`published_at_proxy`. No hay interpretación LLM, sentiment, news features ni
-conexión con modelos o ejecución.
+un proxy de publicación como disponibilidad verificada de una revisión. Primero
+resuelve la revisión vigente y luego aplica filtros por ticker. Las etiquetas
+`direct_tickers` son evidencia del proveedor; el contexto `request_tickers`
+permanece solamente en raw/lineage. No hay interpretación LLM, sentiment, news
+features ni conexión con modelos o ejecución.
 La configuración no sensible vive en `config/news.yaml`; el piloto requiere
 `FINNHUB_API_KEY` en el entorno y, si falta, escribe un reporte bloqueado sin
 hacer solicitudes externas.

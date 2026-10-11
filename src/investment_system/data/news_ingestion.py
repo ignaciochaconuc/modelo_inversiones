@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from investment_system.data.news_hashing import raw_capture_id
 from investment_system.data.schemas.news import NewsRecord, RawNewsItem
 from investment_system.data.sources.news import NewsFetchRequest, NewsIngestionPolicy, NewsProvider
 from investment_system.data.storage.news_store import NewsStore
@@ -31,8 +30,7 @@ class NewsIngestionService:
         if any(item.provider != self.provider.provider_name for item in items):
             raise ValueError("raw item provider does not match ingestion provider")
         new_raw = sum(self.store.write_raw(item) for item in items)
-        grouped = self._merge_request_context(items)
-        records = [self.provider.normalize(item, self.policy) for item in grouped]
+        records = [self.provider.normalize(item, self.policy) for item in items]
         inserted = self.store.write_records(records)
         return NewsIngestionSummary(
             provider=self.provider.provider_name,
@@ -44,8 +42,7 @@ class NewsIngestionService:
 
     def rebuild_from_raw(self) -> NewsIngestionSummary:
         items = self.store.read_raw_items(self.provider.provider_name)
-        grouped = self._merge_request_context(items)
-        records = [self.provider.normalize(item, self.policy) for item in grouped]
+        records = [self.provider.normalize(item, self.policy) for item in items]
         self.store.replace_provider_records(self.provider.provider_name, records)
         return NewsIngestionSummary(
             provider=self.provider.provider_name,
@@ -55,26 +52,3 @@ class NewsIngestionService:
             new_normalized_revisions=len(records),
         )
 
-    @staticmethod
-    def _merge_request_context(items: list[RawNewsItem]) -> list[RawNewsItem]:
-        """Merge only byte-identical provider items returned for multiple symbols."""
-        grouped: dict[tuple[str, str, str], RawNewsItem] = {}
-        for item in sorted(items, key=lambda value: (value.captured_at, value.raw_capture_id)):
-            key = (item.provider, item.provider_news_id, item.payload_hash)
-            current = grouped.get(key)
-            if current is None:
-                grouped[key] = item
-                continue
-            tickers = tuple(sorted(set(current.request_tickers) | set(item.request_tickers)))
-            if tickers != current.request_tickers:
-                # The capture identity describes the original request. The merged
-                # view is normalization-only and keeps the earliest capture ID.
-                grouped[key] = RawNewsItem.model_validate({
-                    **current.model_dump(mode="python"),
-                    "request_tickers": tickers,
-                    "raw_capture_id": raw_capture_id(
-                        current.provider, current.provider_news_id, current.payload_hash,
-                        current.captured_at, tickers,
-                    ),
-                })
-        return list(grouped.values())

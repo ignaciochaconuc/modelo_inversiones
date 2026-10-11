@@ -320,6 +320,12 @@ El reporte `data/reports/news/phase4a_pilot.json` registra que no existía
 infraestructura fue validada con proveedor simulado; Phase 4A espera revisión
 externa y un piloto real cuando exista acceso legítimo.
 
+Phase 4A.1 incorporó correcciones de integridad posteriores a revisión externa:
+la publicación ya no puede convertirse en disponibilidad verificada de una
+revisión histórica, la revisión vigente se resuelve antes del filtro por ticker
+y el contexto de request no se transforma en etiquetas del proveedor. El estado
+permanece `implemented_pending_external_review`.
+
 Subfases 4B–4F permanecen no iniciadas. 4B cubrirá deduplicación semántica,
 clustering y entity resolution; 4C interpretación LLM; 4D agregación/features;
 4E evaluación incremental; y 4F freeze/decision.

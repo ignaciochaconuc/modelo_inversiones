@@ -90,8 +90,12 @@ inmutables bajo `data/raw/news`, metadata de capturas separada y revisiones
 normalizadas en `data/processed/news/news-schema-v1/data.parquet`. `news_id`
 identifica `provider + provider_news_id`; `revision_id` identifica una versión
 de contenido y la clave física agrega schema/normalizer. Una consulta estricta
-excluye `published_at_proxy`; una consulta histórica solo lo admite con opt-in
-explícito. ADR-023 fija hashes, timestamps, lineage y rebuild.
+usa exclusivamente disponibilidad respaldada de la revisión. Una consulta
+histórica solo puede usar `historical_proxy_at` con opt-in explícito y el proxy
+permanece marcado como no verificado. La revisión vigente se selecciona antes de
+aplicar filtros por ticker. `direct_tickers` proviene solo del proveedor;
+`request_tickers` permanece en el lineage raw. ADR-023 fija hashes, timestamps,
+lineage y rebuild.
 
 `MarketDataIngestionService` consulta el último dato local, aplica overlap, obtiene barras desde el adapter, valida, extrae acciones, hace upsert y reconstruye la serie latest-basis. La estructura física es `raw/tiingo/daily`, `raw/tiingo/corporate_actions` y `processed/market/split_adjusted_latest`. Los archivos permiten reconstruir provider, ingestión, schema, normalización, ticker y rango.
 

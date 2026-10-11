@@ -103,6 +103,16 @@ class NewsStore:
                 key: (None if self._is_missing(item) else self._normalize_container(item))
                 for key, item in value.items()
             }
+            # Phase 4A.1 migrates legacy proxy rows in memory: publication was
+            # never verified revision availability, so strict availability
+            # becomes the real local first-seen timestamp.
+            if cleaned.get("available_at_source") == AvailableAtSource.PUBLISHED_AT_PROXY.value:
+                cleaned["historical_proxy_at"] = cleaned.get("available_at")
+                cleaned["historical_proxy_source"] = AvailableAtSource.PUBLISHED_AT_PROXY.value
+                cleaned["available_at"] = cleaned.get("first_seen_at")
+                cleaned["available_at_source"] = AvailableAtSource.LOCAL_FIRST_SEEN.value
+            cleaned.setdefault("historical_proxy_at", None)
+            cleaned.setdefault("historical_proxy_source", None)
             records.append(NewsRecord.model_validate(cleaned))
         return records
 
@@ -188,30 +198,46 @@ class NewsStore:
         if mode == NewsQueryMode.STRICT and allow_historical_proxy:
             raise ValueError("strict mode cannot enable published_at_proxy")
         wanted = {ticker.strip().upper() for ticker in tickers or () if ticker.strip()}
-        eligible: list[NewsRecord] = []
+        eligible: list[tuple[NewsRecord, datetime]] = []
         for record in self.read_records():
             if record.schema_version != self.schema_version or record.normalizer_version != self.normalizer_version:
                 continue
             if provider and record.provider != provider:
                 continue
-            if wanted and not wanted.intersection(record.direct_tickers):
-                continue
-            if record.available_at > cutoff:
-                continue
-            if record.available_at_source == AvailableAtSource.PUBLISHED_AT_PROXY:
-                if mode == NewsQueryMode.STRICT or not allow_historical_proxy:
-                    continue
-            eligible.append(record)
-        eligible.sort(key=lambda record: (
-            record.provider, record.provider_news_id, record.available_at,
-            record.published_at or record.available_at, record.revision_id,
+            effective_at = record.available_at
+            if (
+                mode == NewsQueryMode.HISTORICAL_RESEARCH
+                and allow_historical_proxy
+                and record.historical_proxy_at is not None
+            ):
+                effective_at = record.historical_proxy_at
+            if effective_at <= cutoff:
+                eligible.append((record, effective_at))
+        eligible.sort(key=lambda item: (
+            item[0].provider, item[0].provider_news_id, item[1],
+            item[0].first_seen_at, item[0].published_at or item[1], item[0].revision_id,
         ))
-        latest: dict[tuple[str, str], NewsRecord] = {}
-        for record in eligible:
-            latest[(record.provider, record.provider_news_id)] = record
-        return sorted(latest.values(), key=lambda record: (
-            record.available_at, record.provider, record.provider_news_id, record.revision_id,
+        latest: dict[tuple[str, str], tuple[NewsRecord, datetime]] = {}
+        for record, effective_at in eligible:
+            latest[(record.provider, record.provider_news_id)] = (record, effective_at)
+        selected = [
+            item for item in latest.values()
+            if not wanted or wanted.intersection(item[0].direct_tickers)
+        ]
+        selected.sort(key=lambda item: (
+            item[1], item[0].provider, item[0].provider_news_id, item[0].revision_id,
         ))
+        return [record for record, _ in selected]
+
+    def audit_revisions(self, provider: str, provider_news_id: str) -> list[NewsRecord]:
+        """Return all stored revisions for one logical article in deterministic order."""
+        return sorted(
+            (
+                record for record in self.read_records()
+                if record.provider == provider and record.provider_news_id == provider_news_id
+            ),
+            key=lambda record: (record.available_at, record.first_seen_at, record.revision_id),
+        )
 
     def lineage(self, record: NewsRecord) -> dict[str, Any]:
         captures = [

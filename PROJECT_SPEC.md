@@ -87,9 +87,12 @@ Phase 4A implementa solamente Information Gathering. `news-schema-v1` separa
 capturas raw inmutables de revisiones normalizadas y conserva identidad de
 proveedor, hashes, timestamps UTC y lineage. En vivo, disponibilidad usa
 `max(published_at, first_seen_at)`; en backfill, `published_at` solo puede actuar
-como proxy bajo una política explícita y queda excluido de consultas PIT
-estrictas. Cada consulta aplica `available_at <= decision_time` y selecciona la
-última revisión elegible sin exponer correcciones futuras.
+como proxy no verificado, separado de la disponibilidad respaldada de la
+revisión, bajo una política explícita. Cada consulta estricta aplica
+`available_at <= decision_time`, selecciona primero la última revisión elegible
+y después filtra sus etiquetas de ticker, sin reactivar revisiones obsoletas.
+`direct_tickers` contiene solo etiquetas entregadas por el proveedor;
+`request_tickers` conserva por separado el contexto de captura.
 
 Finnhub company-news es un adapter opcional para el piloto reducido y requiere
 `FINNHUB_API_KEY`. No se asume que sus timestamps de publicación prueben

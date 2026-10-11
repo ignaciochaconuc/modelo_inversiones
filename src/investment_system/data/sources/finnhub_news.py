@@ -104,7 +104,8 @@ class FinnhubNewsProvider:
         related = tuple(
             sorted({part.strip().upper() for part in str(value.get("related") or "").split(",") if part.strip()})
         )
-        direct_tickers = related or item.request_tickers
+        # Request context is capture lineage, not provider evidence about content.
+        direct_tickers = related
         content = {
             "headline": headline,
             "summary": self._optional(value.get("summary")),
@@ -119,7 +120,9 @@ class FinnhubNewsProvider:
         }
         content_hash = normalized_content_hash(content)
         news_id = logical_news_id(item.provider, item.provider_news_id)
-        available_at, available_source = self._availability(item, published_at, policy)
+        available_at, available_source, proxy_at, proxy_source = self._availability(
+            item, published_at, policy,
+        )
         return NewsRecord(
             news_id=news_id,
             revision_id=revision_id(news_id, content_hash),
@@ -131,6 +134,8 @@ class FinnhubNewsProvider:
             first_seen_at=item.captured_at,
             available_at=available_at,
             available_at_source=available_source,
+            historical_proxy_at=proxy_at,
+            historical_proxy_source=proxy_source,
             ingested_at=item.captured_at,
             raw_payload_hash=item.payload_hash,
             content_hash=content_hash,
@@ -153,14 +158,17 @@ class FinnhubNewsProvider:
     @staticmethod
     def _availability(
         item: RawNewsItem, published_at: datetime | None, policy: NewsIngestionPolicy,
-    ) -> tuple[datetime, AvailableAtSource]:
+    ) -> tuple[datetime, AvailableAtSource, datetime | None, AvailableAtSource | None]:
         if policy.mode == "live":
-            return max(filter(None, (published_at, item.captured_at))), AvailableAtSource.LOCAL_FIRST_SEEN
-        if item.provider_available_at is not None:
-            return item.provider_available_at, AvailableAtSource.PROVIDER_TIMESTAMP
-        if policy.allow_published_at_proxy and published_at is not None:
-            return published_at, AvailableAtSource.PUBLISHED_AT_PROXY
-        return item.captured_at, AvailableAtSource.LOCAL_FIRST_SEEN
+            available_at = max(filter(None, (published_at, item.captured_at)))
+            return available_at, AvailableAtSource.LOCAL_FIRST_SEEN, None, None
+        proxy_at = published_at if policy.allow_published_at_proxy else None
+        proxy_source = AvailableAtSource.PUBLISHED_AT_PROXY if proxy_at is not None else None
+        if item.provider_revision_at is not None:
+            return item.provider_revision_at, AvailableAtSource.PROVIDER_TIMESTAMP, proxy_at, proxy_source
+        # A provider publication time describes the article, not an unknown
+        # content revision. Local capture is the conservative revision evidence.
+        return item.captured_at, AvailableAtSource.LOCAL_FIRST_SEEN, proxy_at, proxy_source
 
     def _request(self, path: str, params: dict[str, str]) -> httpx.Response:
         for attempt in range(self._max_retries + 1):
