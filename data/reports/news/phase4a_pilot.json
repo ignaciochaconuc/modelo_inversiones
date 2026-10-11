@@ -1,0 +1,30 @@
+{
+  "blocker": "FINNHUB_API_KEY is not configured",
+  "generated_at": "2026-10-11T22:19:42.252601+00:00",
+  "git": {
+    "dirty_worktree": null,
+    "git_commit": null
+  },
+  "limitations": [
+    "No FINNHUB_API_KEY was available; no live or historical provider evidence was fabricated.",
+    "Historical depth, timestamp quality, plan entitlements and retention/redistribution rights remain unverified.",
+    "Finnhub publication timestamps are not treated as observed availability in strict PIT mode."
+  ],
+  "news_captured": 0,
+  "provider": "finnhub",
+  "real_requests_made": 0,
+  "real_responses_received": 0,
+  "report_version": "phase4a-news-pilot-v1",
+  "requested_tickers": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "JPM",
+    "XOM"
+  ],
+  "requested_window": {
+    "end": "2026-10-10",
+    "start": "2026-10-06"
+  },
+  "status": "blocked_no_provider_credentials"
+}

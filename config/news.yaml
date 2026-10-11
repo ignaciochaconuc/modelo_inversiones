@@ -1,0 +1,9 @@
+schema_version: news-schema-v1
+normalizer_version: news-normalizer-v1
+historical_availability_policy: strict_first_seen
+provider:
+  name: finnhub
+  base_url: https://finnhub.io/api/v1
+  timeout_seconds: 20
+  max_retries: 2
+  retry_backoff_seconds: 0.5

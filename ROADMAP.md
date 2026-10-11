@@ -308,6 +308,22 @@ rentabilidad de portfolio y no está aprobado para trading.
 **Entregables:** fuente, deduplicación/cache, scoring, citas, router y costos.  
 **Finalización aproximada:** resultados validados, trazables y sin acceso a ejecución.
 
+### Phase 4A — News Contracts + Point-in-Time Ingestion
+
+**Status:** implemented_pending_external_review — real provider pilot blocked by missing credentials
+
+`news-schema-v1` implementa raw content-addressed inmutable, revisiones Parquet,
+lineage, hashes deterministas, policies live/backfill, rebuild y consultas PIT
+strict/research. Finnhub company-news queda disponible como adapter opcional.
+El reporte `data/reports/news/phase4a_pilot.json` registra que no existía
+`FINNHUB_API_KEY`: no se hicieron requests ni se fabricó evidencia. La
+infraestructura fue validada con proveedor simulado; Phase 4A espera revisión
+externa y un piloto real cuando exista acceso legítimo.
+
+Subfases 4B–4F permanecen no iniciadas. 4B cubrirá deduplicación semántica,
+clustering y entity resolution; 4C interpretación LLM; 4D agregación/features;
+4E evaluación incremental; y 4F freeze/decision.
+
 ## Phase 5 — Analyst + Earnings Agents
 
 **Objetivo:** incorporar cambios de consenso y análisis pre/post earnings.  

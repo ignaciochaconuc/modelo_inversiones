@@ -40,6 +40,19 @@ class FeatureSettings(BaseModel):
     target_version: str = "corporate-action-safe-target-v3"
     minimum_rank_assets: int = Field(default=20, ge=2)
 
+class NewsProviderSettings(BaseModel):
+    name: str = "finnhub"
+    base_url: str = "https://finnhub.io/api/v1"
+    timeout_seconds: float = Field(default=20, gt=0)
+    max_retries: int = Field(default=2, ge=0)
+    retry_backoff_seconds: float = Field(default=0.5, ge=0)
+
+class NewsSettings(BaseModel):
+    schema_version: str = "news-schema-v1"
+    normalizer_version: str = "news-normalizer-v1"
+    historical_availability_policy: str = "strict_first_seen"
+    provider: NewsProviderSettings = NewsProviderSettings()
+
 class Settings(BaseModel):
     decision_timing: str = "after_close"
     prediction_horizon_days: int = Field(default=10, gt=0)
@@ -66,3 +79,9 @@ def load_settings(config_dir: str | Path | None = None) -> Settings:
     load_dotenv()
     root = Path(config_dir or os.getenv("INVESTMENT_CONFIG_DIR", "config"))
     return Settings.model_validate(load_yaml(root / "settings.yaml"))
+
+def load_news_settings(config_dir: str | Path | None = None) -> NewsSettings:
+    """Load Phase 4A config separately so Phase 3 frozen config hashes stay unchanged."""
+    load_dotenv()
+    root = Path(config_dir or os.getenv("INVESTMENT_CONFIG_DIR", "config"))
+    return NewsSettings.model_validate(load_yaml(root / "news.yaml"))

@@ -5,6 +5,9 @@
 ```mermaid
 flowchart TD
     TG[Tiingo EOD] --> IN[MarketDataIngestionService]
+    NP[News Provider] --> NR[Immutable Raw News]
+    NR --> NN[Versioned Normalized News]
+    NN --> NQ[Strict / Research PIT Query]
     IN --> RAW[Raw OHLCV]
     IN --> CA[Corporate Actions]
     RAW --> SA[Split-adjusted Series]
@@ -46,6 +49,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `data.storage` | Persistencia idempotente Parquet y consulta DuckDB | Funcional básico |
 | `data.validation` | Invariantes temporales y feature/target | Funcional |
 | `data.pilot` | Orquestación y diagnóstico no destructivo del piloto real | Funcional Phase 1C |
+| `data.news_ingestion` | Captura raw, normalización versionada y rebuild de noticias | Implementado Phase 4A; piloto real bloqueado por credenciales |
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
@@ -80,6 +84,14 @@ retornan al flujo de inferencia.
 ## Almacenamiento
 
 Parquet es el formato durable inicial para raw, processed y features. DuckDB consulta estos archivos localmente sin introducir un servicio de base de datos. El cache de análisis usa archivos JSON identificados por `source_id`, hash de contenido y versión de análisis. La auditoría inicial usa JSON Lines. Esta elección es adecuada para una fase local y testeable; escalar infraestructura requiere una necesidad demostrada y un ADR.
+
+Phase 4A mantiene noticias fuera del Feature Store: payloads content-addressed e
+inmutables bajo `data/raw/news`, metadata de capturas separada y revisiones
+normalizadas en `data/processed/news/news-schema-v1/data.parquet`. `news_id`
+identifica `provider + provider_news_id`; `revision_id` identifica una versión
+de contenido y la clave física agrega schema/normalizer. Una consulta estricta
+excluye `published_at_proxy`; una consulta histórica solo lo admite con opt-in
+explícito. ADR-023 fija hashes, timestamps, lineage y rebuild.
 
 `MarketDataIngestionService` consulta el último dato local, aplica overlap, obtiene barras desde el adapter, valida, extrae acciones, hace upsert y reconstruye la serie latest-basis. La estructura física es `raw/tiingo/daily`, `raw/tiingo/corporate_actions` y `processed/market/split_adjusted_latest`. Los archivos permiten reconstruir provider, ingestión, schema, normalización, ticker y rango.
 

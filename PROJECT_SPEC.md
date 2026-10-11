@@ -81,6 +81,21 @@ solo al unir features y targets y permanece separado de `model_eligible`.
 
 Cada agente entrega simultáneamente una explicación humana y features estructuradas, junto con confianza, fuentes y timestamps. Actualmente todos son stubs sin búsquedas ni APIs.
 
+## Noticias point-in-time — Phase 4A
+
+Phase 4A implementa solamente Information Gathering. `news-schema-v1` separa
+capturas raw inmutables de revisiones normalizadas y conserva identidad de
+proveedor, hashes, timestamps UTC y lineage. En vivo, disponibilidad usa
+`max(published_at, first_seen_at)`; en backfill, `published_at` solo puede actuar
+como proxy bajo una política explícita y queda excluido de consultas PIT
+estrictas. Cada consulta aplica `available_at <= decision_time` y selecciona la
+última revisión elegible sin exponer correcciones futuras.
+
+Finnhub company-news es un adapter opcional para el piloto reducido y requiere
+`FINNHUB_API_KEY`. No se asume que sus timestamps de publicación prueben
+disponibilidad histórica. Phase 4A no implementa clustering, entity resolution,
+LLM, sentiment, features, entrenamiento ni conexiones a portfolio/risk/execution.
+
 ## LLM y control de costos
 
 `LLMRouter` selecciona proveedor/modelo por agente y tarea, usando `config/models.yaml`. Los clientes de OpenAI y Ollama son stubs deliberados. El pricing es configurable y no incluye precios reales hardcodeados.

@@ -24,3 +24,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-020: Frozen final development candidate](ADR-020-final-development-candidate.md)
 - [ADR-021: Frozen final holdout protocol](ADR-021-final-holdout-protocol.md)
 - [ADR-022: One-time final holdout result](ADR-022-final-holdout-result.md)
+- [ADR-023: Versioned point-in-time news ingestion](ADR-023-news-point-in-time-ingestion.md)

@@ -1,6 +1,6 @@
 # AI Investment System
 
-Base modular para un sistema multiagente de análisis de acciones estadounidenses a frecuencia diaria. Phase 1A incorpora ingestión EOD desde Tiingo, corporate actions explícitas, calendario XNYS y series split-adjusted; no realiza entrenamiento ni trading.
+Base modular para un sistema multiagente de análisis de acciones estadounidenses a frecuencia diaria. Las Phases 1–3 cubren datos de mercado, backtesting y evaluación predictiva; Phase 4A incorpora infraestructura point-in-time de noticias. El sistema no está aprobado para trading.
 
 ## Documentación
 
@@ -27,6 +27,7 @@ El código vive bajo `src/investment_system` para evitar colisiones con paquetes
 
 - `core`: configuración YAML/env, enums, tiempo, excepciones y logging JSON.
 - `data`: schemas point-in-time, validadores, fuentes y almacenamiento Parquet/DuckDB.
+- `data.news_ingestion`: captura raw inmutable, revisiones normalizadas y consultas PIT de noticias.
 - `features`: cálculos puros con pandas/numpy, builder y registro de columnas.
 - `agents`: contrato común y stubs para News, Analyst, Earnings, Fundamental, Macro y Event.
 - `llm`: contratos de cliente/router, pricing configurable, tracking y cache local por hash.
@@ -82,6 +83,7 @@ Copie `.env.example` a `.env` si necesita configurar proveedores en fases futura
 
 ```bash
 python scripts/validate_data.py
+python scripts/run_phase4a_news_pilot.py --start 2026-10-06 --end 2026-10-10
 python scripts/build_feature_store.py
 python scripts/ingest_market_data.py --ticker AAPL --start 2020-01-01 --dry-run
 python scripts/build_quantitative_feature_store.py --ticker AAPL --start 2010-01-01 --dry-run
@@ -120,7 +122,20 @@ features y targets conservan el ticker interno.
 
 ## Estado y roadmap
 
-Son funcionales los schemas, validación point-in-time, adapter Tiingo EOD, actualización incremental, calendario XNYS, normalización as-of, Feature Store cuantitativo, targets separados, cache y reglas básicas de riesgo. Son contratos/stubs: clientes OpenAI/Ollama, modelos predictivos, optimización, backtesting completo y ejecución.
+Son funcionales los schemas, validación point-in-time, datos de mercado,
+Feature Store, targets, backtesting, modelos de Phase 3 y la infraestructura de
+ingesta News de Phase 4A. El piloto real News requiere `FINNHUB_API_KEY` y sigue
+pendiente. Son contratos/stubs los clientes OpenAI/Ollama, los agentes,
+optimización y ejecución futura.
+
+Phase 4A almacena evidencia en `data/raw/news`, revisiones normalizadas en
+`data/processed/news/news-schema-v1` y su reporte en
+`data/reports/news/phase4a_pilot.json`. El modo PIT estricto nunca incluye
+`published_at_proxy`. No hay interpretación LLM, sentiment, news features ni
+conexión con modelos o ejecución.
+La configuración no sensible vive en `config/news.yaml`; el piloto requiere
+`FINNHUB_API_KEY` en el entorno y, si falta, escribe un reporte bloqueado sin
+hacer solicitudes externas.
 
 Phase 2A.3 añade contratos, `PortfolioLedger`, loop temporal por sesiones XNYS y
 reportes económicos versionados. Performance, costos, turnover, exposición y un
