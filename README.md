@@ -164,11 +164,18 @@ Los reportes conservan sus estados históricos; clusters no certifican exhaustiv
 ni sustituyen artículos individuales (ADR-026). El cierre de 4B no inició 4C.
 
 La autorización posterior de [Phase 4C.1](docs/phase4c1-review.md) implementa
-exclusivamente contratos y evaluación (`implemented_pending_external_review`):
+inicialmente contratos y evaluación (entrega histórica `implemented_pending_external_review`):
 revisión individual, eventos múltiples, evidencia/abstención y replay simulado.
 No ejecuta LLMs reales ni produce señales; resultados experimentales no operativos.
 El [protocolo externo](docs/phase4c1-evaluation.md) precede cualquier modelo.
-4C.2/4C.3 siguen `not_started`. No hay cambios a defaults/contratos de 4B.
+4C.1 queda aceptada técnicamente como `completed_with_documented_limitations`;
+su documentación/evidencia histórica se conserva. La autorización posterior de
+[4C.2](docs/phase4c2-review.md) integra Responses de OpenAI opt-in por el router,
+presupuestos durables, precios explícitos, caché/replay y persistencia local
+restringida; estado `implemented_pending_external_review`. El smoke de una noticia
+requiere flag, modelo/precios/configuración y presupuesto: está preparado, no
+ejecutado. No hay modelo universal ni precio desconocido tratado como gratuito.
+4C.3 sigue `not_started`. Ninguna salida es operativa; defaults/contratos 4B intactos.
 La configuración no sensible vive en `config/news.yaml`; el piloto requiere
 `FINNHUB_API_KEY` en el entorno y, si falta, escribe un reporte bloqueado sin
 hacer solicitudes externas.

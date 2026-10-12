@@ -10,6 +10,8 @@ class LLMRequest(BaseModel):
     complexity: str = "standard"
     importance: float = Field(default=0.5, ge=0, le=1)
     max_estimated_cost_usd: float | None = Field(default=None, ge=0)
+    # In-memory transport hint; exclude to preserve all legacy request hashes.
+    response_schema: dict[str, Any] | None = Field(default=None, exclude=True)
 
 class LLMResponse(BaseModel):
     provider: str

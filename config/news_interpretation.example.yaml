@@ -1,0 +1,35 @@
+# Fill verified model/capabilities/prices locally; never put an API key here.
+# CLI also requires --model, --budget-usd, --revision-id, --as-of and confirmation.
+settings_version: news-inference-settings-v1
+adapter:
+  provider: openai
+  model: null
+  endpoint: https://api.openai.com/v1/responses
+  response_mode: json_schema_strict
+  max_output_tokens: 1024
+  timeout_seconds: 30
+  temperature: null
+  reasoning_effort: null
+  capabilities_model: null
+  structured_outputs_supported: null
+  capability_max_output_tokens: null
+  context_window_tokens: null
+  supported_parameters: []
+  capability_source: null
+  capabilities_verified_at: null
+pricing:
+  provider: openai
+  model: null
+  input_per_million: null
+  cached_input_per_million: null
+  output_per_million: null
+  valid_from: null
+  valid_until: null
+  source: null
+request_budget_usd: null
+run_budget_usd: null
+max_attempts: 1
+retry_invalid_response: false
+retry_delay_seconds: 0
+local_content_retention_hours: 24
+local_restricted_storage_acknowledged: false

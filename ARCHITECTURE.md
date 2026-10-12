@@ -55,7 +55,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `data.news_grouping` | Entidades temporales, grupos editoriales y snapshots complete-link | Phase 4B completed_with_documented_limitations; v1.1 opt-in candidata |
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
-| `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
+| `llm` | Router, clientes, pricing, costos y cache | OpenAI Responses opt-in; otros clientes stub; presupuestos/telemetría explícitos |
 | `models` | Datasets temporales, preprocessing, métricas, selección, robustez y holdout one-shot | Funcional hasta Phase 3E.2; resultado final marginal registrado |
 | `portfolio` | Estado, forecasts, propuestas y optimizador | Contrato |
 | `risk` | Límites y decisión independiente | Funcional básico |
@@ -148,7 +148,17 @@ El resultado separa disponibilidad de evidencia, generación, validación y
 disponibilidad derivada; todo replay 4C.1 es experimental, nunca operativo.
 ADR-027 y `docs/phase4c1-review.md` documentan versiones/fingerprints,
 abstención, límites de validación semántica y evaluación externa previa a modelos.
-4C.1: `implemented_pending_external_review`; 4C.2/4C.3: `not_started`.
+4C.1 fue aceptada como `completed_with_documented_limitations`; sus contratos,
+protocolo y evidencias históricas se preservan. La autorización posterior de
+4C.2 añade OpenAIClient opt-in/Responses vía el mismo router, reservas SQLite
+durables de presupuesto, telemetría con desconocidos explícitos y wrapper de
+intentos inmutables bajo `data/cache/news_interpretation`. AnalysisCache es un
+índice, no evidencia mutable. Strict JSON de transporte no sustituye validación
+Pydantic/citas/PIT. LLMRequest conserva hashes históricos excluyendo su hint
+opcional de schema de serialización; el wire efectivo se registra por separado.
+ADR-028 fija parámetros/modelos/precios explícitos, TTL/reintentos/secretos.
+4C.2: `implemented_pending_external_review`; smoke no ejecutado; 4C.3 `not_started`.
+Sin Feature Store ni señales operativas; no se modifican algoritmos 4B.
 
 ## Point-in-time y Feature Store
 
@@ -346,7 +356,9 @@ del universo fijo. No existe integración con Risk Manager en Phase 2B.
 
 Los agentes envían `LLMRequest` al router, que selecciona cliente y modelo desde configuración. Esto centraliza proveedores, políticas, observabilidad y futuros límites de presupuesto. Cada respuesta debe producir un `LLMCallRecord`, cuyo costo se calcula mediante `PricingRegistry`. El cache permite reutilizar análisis únicamente cuando coinciden contenido y versión.
 
-Los clientes actuales lanzan `ExternalCallDisabled`: no existen llamadas reales ni secrets incorporados.
+Los clientes siguen deshabilitados por defecto. OpenAI Responses solo puede
+ejecutarse con configuración explícita/opt-in por el router; Ollama permanece
+stub. No se ejecutó el smoke real ni se incorporan secrets al repositorio.
 
 ## Auditoría
 

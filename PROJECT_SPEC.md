@@ -134,7 +134,7 @@ admitir artículos individuales. En el cierre de 4B, Phase 4C quedó `not_starte
 No modifica PIT, targets, Phase 3 ni interpretación LLM; véase
 `docs/phase4b-closure.md` y ADR-026. No se reescriben ADR-024/025 ni evidencias.
 
-Una autorización posterior implementa solo Phase 4C.1, estado
+Una autorización posterior implementó inicialmente solo Phase 4C.1, estado histórico
 `implemented_pending_external_review`: contratos de interpretación por revisión,
 eventos múltiples, evidencia citada, desconocidos/abstenciones y consecuencias
 económicas cualitativas, no retornos esperados ni señales. Preparación del contrato
@@ -143,7 +143,16 @@ simuladas/reconstruidas son experimentales y no operativas; cálculo actual no
 puede declarar disponibilidad histórica. No modifica NewsAgent, Feature Store,
 modelos ni Phase 4B. Protocolo externo separa desarrollo/calibración/evaluación
 y no fabrica etiquetas humanas. Véanse ADR-027 y `docs/phase4c1-review.md`.
-4C.2 y 4C.3 permanecen `not_started`, sin autorización implícita para continuarlas.
+Una autorización posterior acepta 4C.1 como `completed_with_documented_limitations`
+e implementa solo 4C.2 (`implemented_pending_external_review`): proveedor OpenAI
+opt-in mediante router, transporte estructurado, validación posterior, presupuesto
+durable por solicitud/corrida, costes desconocidos explícitos, caché/replay y
+persistencia restringida con TTL. Sin modelo/precio universal ni fallback.
+La CLI para una noticia está preparada, pero no se ejecuta en implementación.
+Se preservan protocolo 4C.1 y artefactos previos; ni TEST oficial ni comparaciones
+reales se ejecutan. Véanse ADR-028 y `docs/phase4c2-review.md`.
+4C.3 permanece `not_started`; interpretaciones experimentales no operativas,
+sin Feature Store, modelos predictivos, portfolio, riesgo o ejecución.
 
 ## LLM y control de costos
 

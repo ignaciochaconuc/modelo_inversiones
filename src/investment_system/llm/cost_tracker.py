@@ -10,24 +10,31 @@ class LLMCallRecord(BaseModel):
     ticker: str | None = None
     analysis_id: str | None = None
     trade_id: str | None = None
-    input_tokens: int = Field(ge=0)
-    cached_input_tokens: int = Field(ge=0)
-    output_tokens: int = Field(ge=0)
-    total_tokens: int = Field(ge=0)
-    estimated_cost_usd: float = Field(ge=0)
+    input_tokens: int | None = Field(ge=0)
+    cached_input_tokens: int | None = Field(ge=0)
+    output_tokens: int | None = Field(ge=0)
+    total_tokens: int | None = Field(ge=0)
+    estimated_cost_usd: float | None = Field(ge=0)
     latency_ms: float = Field(ge=0)
     success: bool
     error_type: str | None = None
+    requested_model: str | None = None
+    actual_model: str | None = None
+    cost_quality: str = "legacy_estimate"
 
 class CostTracker:
     def __init__(self) -> None:
         self.records: list[LLMCallRecord] = []
     def add(self, record: LLMCallRecord) -> None:
-        if record.total_tokens != record.input_tokens + record.output_tokens:
+        expected = record.input_tokens + record.output_tokens if record.input_tokens is not None and record.output_tokens is not None else None
+        if record.total_tokens != expected:
             raise ValueError("total_tokens must equal input_tokens + output_tokens")
         self.records.append(record)
     def _sum(self, predicate=lambda _: True) -> float:
-        return sum(r.estimated_cost_usd for r in self.records if predicate(r))
+        return sum(r.estimated_cost_usd for r in self.records if predicate(r) and r.estimated_cost_usd is not None)
+    def unknown_cost_count(self) -> int:
+        """Present this count alongside any known-only subtotal."""
+        return sum(r.estimated_cost_usd is None for r in self.records)
     def by_agent(self, agent: str) -> float: return self._sum(lambda r: r.agent == agent)
     def by_ticker(self, ticker: str) -> float: return self._sum(lambda r: r.ticker == ticker)
     def daily(self, day: date) -> float: return self._sum(lambda r: r.timestamp.date() == day)

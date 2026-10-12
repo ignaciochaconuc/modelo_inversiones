@@ -26,3 +26,7 @@ class PricingRegistry:
             return 0.0
         uncached = max(0, input_tokens - cached_input_tokens)
         return (uncached * price.input_per_million + cached_input_tokens * price.cached_input_per_million + output_tokens * price.output_per_million) / 1_000_000
+
+    def get_price(self, provider: str, model: str) -> TokenPrice | None:
+        """Explicit unknown lookup; legacy estimate() behavior is unchanged."""
+        return self._prices.get((provider, model))

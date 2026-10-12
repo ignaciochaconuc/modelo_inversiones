@@ -379,7 +379,7 @@ Véase `docs/phase4b2-review.md` y ADR-025. No iniciar 4C.
 
 ### Phase 4C — LLM News Interpretation
 
-**Status:** in progress — contracts only; no real inference
+**Status:** in progress — experimental integration; real smoke not executed
 
 El cierre de 4B no inició 4C; una autorización posterior habilita exclusivamente
 4C.1. Se conservan limitaciones de recall, registry y disponibilidad, artículos
@@ -387,7 +387,7 @@ individuales y relaciones parciales sin agrupación automática (ADR-026).
 
 ### Phase 4C.1 — LLM News Interpretation Contracts & Evaluation Design
 
-**Status:** implemented_pending_external_review
+**Status:** completed_with_documented_limitations
 
 Contratos versionados, evidencia por offsets, cero/uno/varios eventos, categorías
 fact/inference/unknown, abstención y reconstrucción de respuestas simuladas.
@@ -396,8 +396,22 @@ quedan separadas; todas las salidas son experimentales y no operativas.
 Preparación de LLMRequest existente, sin inferencia ni segundo router; protocolo
 externo antes de modelos y fixtures ficticios sin ground truth humano inventado.
 Véanse ADR-027, `docs/phase4c1-review.md` y `docs/phase4c1-evaluation.md`.
-Phase 4C.2/4C.3: `not_started`; requieren nueva autorización. Sin APIs, TEST,
-Feature Store, modelos, portfolio, riesgo ni ejecución.
+La autorización posterior acepta técnicamente 4C.1 sin reescribir su evidencia
+histórica y habilita exclusivamente 4C.2. Sus límites semánticos/evaluación
+independiente pendiente se conservan; no hay integración a inversiones.
+
+### Phase 4C.2 — Real LLM Integration, Budgeting & Persistence
+
+**Status:** implemented_pending_external_review
+
+OpenAI Responses opt-in mediante router existente, JSON Schema estricto y
+validación Pydantic/PIT posterior. Modelos/capacidades/precios explícitos,
+reservas durables por solicitud/corrida, costes desconocidos no asumidos cero,
+reintentos limitados, caché autorizada y registros inmutables con retención local.
+CLI de una noticia preparada pero no ejecutada. Protocolo 4C.1 congelado;
+comparaciones reales no ejecutadas. Véanse ADR-028 y `docs/phase4c2-review.md`.
+Phase 4C.3: `not_started`; ninguna interpretación se promueve a operativa ni
+se conecta a Feature Store, modelos, portfolio, riesgo o ejecución.
 
 ## Phase 5 — Analyst + Earnings Agents
 
