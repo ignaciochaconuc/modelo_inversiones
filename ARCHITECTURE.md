@@ -119,6 +119,12 @@ sanitizados. No cambia algoritmos, thresholds, registry ni contratos de 4B.
 
 La capa processed no usa los campos `adj*` del proveedor como fuente de verdad. Los conserva en raw para comparación, pero deriva su propia serie reproducible solo con splits. Latest-basis sirve para exploración y auditoría; decisiones históricas deben construir una vista as-of que filtre barras y acciones por disponibilidad. Véanse ADR-007 y ADR-008.
 
+Phase 4B.2 agrega dispatch versionado v1/v1.1 para equivalencias editoriales
+acotadas (ADR-025). Conserva contratos/PIT, blocking y complete-link. Snapshots
+y nueva evidencia ciega quedan en un árbol local separado e ignorado;
+los 36 casos anteriores pasan a desarrollo sin alterar archivos originales.
+Véase `docs/phase4b2-review.md`; revisión externa pendiente, 4C no iniciada.
+
 ## Point-in-time y Feature Store
 
 Los schemas preservan cuatro timestamps con semánticas distintas. `available_at <= decision_time` se valida antes de usar registros. El Feature Store tiene granularidad `ticker + decision_date`; los joins deben respetar disponibilidad y nunca usar la última revisión conocida hoy para simular una decisión pasada.

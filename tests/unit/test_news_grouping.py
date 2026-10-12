@@ -5,7 +5,7 @@ import pytest
 
 from investment_system.data.news_entities import eligible_registry_entries, resolve_entities
 from investment_system.data.news_evaluation import FIXTURE_TIME, evaluate_entity_examples, evaluate_labelled_pairs, fixture_registry, synthetic_record
-from investment_system.data.news_grouping import canonical_url, classify_pair, complete_link_groups
+from investment_system.data.news_grouping import canonical_url, classify_pair, complete_link_groups, load_grouping_parameters
 from investment_system.data.schemas.news_enrichment import EntityRegistryEntry, NewsEntityRegistry, NewsGroupingParameters
 
 
@@ -31,12 +31,13 @@ def test_url_alone_cannot_merge_different_revisions():
     assert canonical_url("https://example.test/a?utm_source=x&id=3#top") == "https://example.test/a?id=3"
 
 
-def test_complete_link_does_not_infer_transitive_event():
+@pytest.mark.parametrize("parameters", [NewsGroupingParameters(), load_grouping_parameters("config/news_grouping_v1_1.yaml")])
+def test_complete_link_does_not_infer_transitive_event(parameters):
     a = synthetic_record("a", "Apple announces quarterly earnings results and revenue for third quarter today")
     b = synthetic_record("b", a.headline)
     c = synthetic_record("c", a.headline)
     ids = ["a", "b", "c"]
-    pair = classify_pair(a, b, ("apple",), FIXTURE_TIME, NewsGroupingParameters())
+    pair = classify_pair(a, b, ("apple",), FIXTURE_TIME, parameters)
     pairs = {("a", "b"): pair, ("b", "c"): pair, ("a", "c"): pair.model_copy(update={"relationship": "different"})}
     assert complete_link_groups(ids, pairs, {"exact_duplicate"}) == [("a", "b"), ("c",)]
 

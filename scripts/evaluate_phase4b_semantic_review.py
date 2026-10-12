@@ -15,6 +15,11 @@ def main() -> int:
     target = args.review_dir.resolve()
     if not target.is_relative_to(DEFAULT_LOCAL_ROOT.resolve()):
         raise ValueError("review directory must remain in the ignored local evidence tree")
+    role_file = Path("data/reports/news/phase4b2_local/prior_review_role.json")
+    if role_file.exists():
+        role = json.loads(role_file.read_text(encoding="utf-8"))
+        if role.get("prior_review_id") == target.name and role.get("dataset_role") == "development_diagnostic":
+            raise ValueError("this review is now AI-assisted development material, not independent evaluation; original results are preserved")
     inputs = {name: json.loads((target / f"{name}.json").read_text(encoding="utf-8"))
               for name in ("blind", "technical", "manifest")}
     result = evaluate_adjudications(inputs["blind"], inputs["technical"], inputs["manifest"])

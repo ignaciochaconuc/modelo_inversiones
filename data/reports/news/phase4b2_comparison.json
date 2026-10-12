@@ -1,0 +1,141 @@
+{
+  "comparisons": [
+    {
+      "changed_pairs": 0,
+      "new": {
+        "algorithm_version": "news-groups-v1.1",
+        "articles": 200,
+        "candidate_pairs": 3789,
+        "cluster_size_distribution": {
+          "1": 200
+        },
+        "editorial_groups": 0,
+        "exact_groups": 0,
+        "input_fingerprint": "3aeb2859d805d5b63425a3d6d31731fbb6527f10bb7409f5ffb8981e19099aaf",
+        "multinews_clusters": 0,
+        "pair_relationship_counts": {
+          "different": 3789
+        },
+        "parameters_fingerprint": "361ef0d3b5cdcfc0909ddf0a5f2c12e8b07952c454b3cb55fd0c776218ca3cd9",
+        "registry_fingerprint": "bca49c249e61d160b400cde92ef266ff080ea6388ca6b4df68d9624341a2a7d3",
+        "snapshot_id": "e06acb63944f9997bef052cbb2a535dbba406008b0782a2e830c5cd1d7e93a9a",
+        "text_version": "unicode-word-bigram-v1.1"
+      },
+      "old": {
+        "algorithm_version": "news-groups-v1",
+        "articles": 200,
+        "candidate_pairs": 3789,
+        "cluster_size_distribution": {
+          "1": 200
+        },
+        "editorial_groups": 0,
+        "exact_groups": 0,
+        "input_fingerprint": "3aeb2859d805d5b63425a3d6d31731fbb6527f10bb7409f5ffb8981e19099aaf",
+        "multinews_clusters": 0,
+        "pair_relationship_counts": {
+          "different": 3789
+        },
+        "parameters_fingerprint": "2bd98c953d60029e9af50d401a346aa1ce57772047a4af444c525881f8a7e978",
+        "registry_fingerprint": "bca49c249e61d160b400cde92ef266ff080ea6388ca6b4df68d9624341a2a7d3",
+        "snapshot_id": "00898f1ea1baad745335213906be0478f3788618891d463e61c6d242805924ae",
+        "text_version": "unicode-word-bigram-v1"
+      },
+      "old_identity_reproduced": true,
+      "possible_new_false_positives": "pending_external_review"
+    },
+    {
+      "changed_pairs": 1,
+      "new": {
+        "algorithm_version": "news-groups-v1.1",
+        "articles": 500,
+        "candidate_pairs": 26552,
+        "cluster_size_distribution": {
+          "1": 498,
+          "2": 1
+        },
+        "editorial_groups": 1,
+        "exact_groups": 0,
+        "input_fingerprint": "adfd6780d972bc5ddeae37cdc9634d33112215d93b589b5a57c8ea76589ea06a",
+        "multinews_clusters": 1,
+        "pair_relationship_counts": {
+          "different": 26551,
+          "editorial_duplicate": 1
+        },
+        "parameters_fingerprint": "361ef0d3b5cdcfc0909ddf0a5f2c12e8b07952c454b3cb55fd0c776218ca3cd9",
+        "registry_fingerprint": "bca49c249e61d160b400cde92ef266ff080ea6388ca6b4df68d9624341a2a7d3",
+        "snapshot_id": "cc807dba9bb86452c534b195dacc26ad4c6e940862c3801201b760d963f7a49b",
+        "text_version": "unicode-word-bigram-v1.1"
+      },
+      "old": {
+        "algorithm_version": "news-groups-v1",
+        "articles": 500,
+        "candidate_pairs": 26552,
+        "cluster_size_distribution": {
+          "1": 500
+        },
+        "editorial_groups": 0,
+        "exact_groups": 0,
+        "input_fingerprint": "adfd6780d972bc5ddeae37cdc9634d33112215d93b589b5a57c8ea76589ea06a",
+        "multinews_clusters": 0,
+        "pair_relationship_counts": {
+          "different": 26552
+        },
+        "parameters_fingerprint": "2bd98c953d60029e9af50d401a346aa1ce57772047a4af444c525881f8a7e978",
+        "registry_fingerprint": "bca49c249e61d160b400cde92ef266ff080ea6388ca6b4df68d9624341a2a7d3",
+        "snapshot_id": "85072aca40381289e0109b6e28769bc31886b2fc54442dbcc0511569360118d2",
+        "text_version": "unicode-word-bigram-v1"
+      },
+      "old_identity_reproduced": true,
+      "possible_new_false_positives": "pending_external_review"
+    }
+  ],
+  "evaluation_disjoint_from_prior_36": true,
+  "excluded_prior_provider_pairs": 68,
+  "limitations": [
+    "AI-assisted old adjudications are development, not human ground truth.",
+    "More groups does not imply higher quality; new memberships require external review.",
+    "Small enriched local evidence cannot estimate population precision/recall.",
+    "No justified change to shared-event vocabulary or candidate generation."
+  ],
+  "network_requests": 0,
+  "new_review_categories_without_candidates": [
+    "high_similarity_rejected",
+    "near_editorial_threshold",
+    "candidate_exact",
+    "candidate_editorial",
+    "candidate_shared_event",
+    "financial_similar"
+  ],
+  "new_review_category_counts": {
+    "ambiguous_entity": 5,
+    "candidate_editorial": 0,
+    "candidate_exact": 0,
+    "candidate_shared_event": 0,
+    "different_entities_similar_text": 4,
+    "earnings": 4,
+    "factual_anchor_conflict": 21,
+    "financial_similar": 0,
+    "high_similarity_rejected": 0,
+    "near_editorial_threshold": 0,
+    "near_event_threshold": 5,
+    "other_corporate_event": 4,
+    "product_generation": 7,
+    "random_eligible": 4,
+    "same_entity_nearby": 19,
+    "state_transition": 8
+  },
+  "new_review_id": "1f954cabead53b8a1af255ef53aa0f07eb12bd8a9f65c073077a21f835465cf2",
+  "new_review_pairs": 40,
+  "new_snapshot_integrity": {
+    "snapshots": 2
+  },
+  "phase4b_status": "implemented_pending_external_review",
+  "protected_file_count": 2777,
+  "protected_files_fingerprint": "42fde87be6765ddb2c1269360d8f16dc1a5d8ace2b9451208efa507a3b91c383",
+  "protected_files_unchanged": true,
+  "reference_metrics": null,
+  "report_version": "phase4b2-comparison-v1",
+  "review_status": "pending_external_review",
+  "synthetic_supplement_cases": 9,
+  "synthetic_supplement_provenance": "New fictional evidence authored after v1.1 rule freeze; not used for algorithm design, not human ground truth, not a population evaluation. Cues describe intended review coverage, not reference labels."
+}

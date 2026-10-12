@@ -6,6 +6,12 @@ semantic quality. Phase 4C is not started.
 
 ## Sampling and immutable prediction evidence
 
+Phase 4B.2 provenance update: the original 36 cases were inspected in an
+AI-assisted adjudication and now constitute development/diagnostic material,
+not independent human ground truth. Original evidence and labels remain
+unchanged; the new ignored role sidecar records this status. Use the disjoint
+review described in `phase4b2-review.md` for new external adjudication.
+
 `scripts/prepare_phase4b_semantic_review.py` reads the existing strict pilot
 snapshot and can reconstruct a bounded, balanced snapshot with up to 500
 eligible articles under the **unchanged** 4B contracts, registry, thresholds and

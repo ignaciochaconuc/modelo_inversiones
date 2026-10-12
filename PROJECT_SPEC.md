@@ -113,6 +113,12 @@ Los pares utilizados posteriormente para mejorar el algoritmo deben pasar a
 desarrollo y no conservar la denominación de evaluación independiente. Hasta
 recibir etiquetas externas no se emiten métricas de calidad humana.
 
+Phase 4B.2 introduce normalización editorial conservadora versionada v1.1;
+v1 y sus snapshots siguen reproducibles. La adjudicación asistida por IA de
+los 36 pares anteriores es material de desarrollo, no ground truth humano.
+Una muestra ciega disjunta requiere nueva revisión externa. No modifica PIT,
+targets, Phase 3, interpretación LLM ni inicia 4C (ADR-025).
+
 ## LLM y control de costos
 
 `LLMRouter` selecciona proveedor/modelo por agente y tarea, usando `config/models.yaml`. Los clientes de OpenAI y Ollama son stubs deliberados. El pricing es configurable y no incluye precios reales hardcodeados.

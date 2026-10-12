@@ -1,0 +1,9 @@
+algorithm_version: news-groups-v1.1
+resolver_version: entity-resolver-v1
+text_version: unicode-word-bigram-v1.1
+editorial_threshold: 0.90
+event_threshold: 0.55
+headline_threshold: 0.65
+max_hours: 48
+minimum_tokens: 8
+max_candidates: 100000

@@ -1,0 +1,15 @@
+{
+  "dataset_role": "synthetic_complement_external_review_pending",
+  "provenance": "New fictional evidence authored after v1.1 rule freeze; not used for algorithm design, not human ground truth, not a population evaluation. Cues describe intended review coverage, not reference labels.",
+  "cases": [
+    {"case_id": "new-synthetic-01", "cue": "exact_duplicate", "left": "Orion declares annual dividend distribution of 7 cents per share", "right": "Orion declares annual dividend distribution of 7 cents per share", "human_label": ""},
+    {"case_id": "new-synthetic-02", "cue": "editorial_near_duplicate", "left": "Orion declares annual dividend distribution of 7 cents per share today", "right": "Orion declares annual dividend distribution of 7 cents per share now", "human_label": ""},
+    {"case_id": "new-synthetic-03", "cue": "shared_event", "left": "Vega quarterly earnings results show revenue expansion for second quarter", "right": "Vega quarterly earnings results detail revenue margins for second quarter", "human_label": ""},
+    {"case_id": "new-synthetic-04", "cue": "distinct_events_same_company", "left": "Polaris launches satellite navigation product for commercial shipping customers today", "right": "Polaris announces acquisition of logistics software company for shipping customers", "human_label": ""},
+    {"case_id": "new-synthetic-05", "cue": "different_numbers", "left": "Altair announces acquisition of 14 regional warehouses for commercial operations", "right": "Altair announces acquisition of 19 regional warehouses for commercial operations", "human_label": ""},
+    {"case_id": "new-synthetic-06", "cue": "state_transition", "left": "Deneb announced merger with private aviation operator after regulatory review", "right": "Deneb completed merger with private aviation operator after regulatory review", "human_label": ""},
+    {"case_id": "new-synthetic-07", "cue": "different_products_generations", "left": "Rigel launches Beacon 6 navigation product for maritime safety customers", "right": "Rigel launches Beacon 9 navigation product for maritime safety customers", "human_label": ""},
+    {"case_id": "new-synthetic-08", "cue": "financial_similar_vocabulary", "left": "Sirius quarterly earnings results show revenue growth with lower margins", "right": "Capella quarterly earnings results show revenue growth with lower margins", "human_label": ""},
+    {"case_id": "new-synthetic-09", "cue": "ambiguous_entity", "left": "Atlas reports quarterly revenue growth as regional airline demand increases", "right": "Atlas reports quarterly revenue growth as construction equipment demand increases", "human_label": ""}
+  ]
+}

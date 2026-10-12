@@ -360,6 +360,17 @@ contenido se conservan en una carpeta local ignorada; solo se prepara un reporte
 sanitizado publicable. Véase `docs/phase4b-semantic-review.md`. Phase 4B sigue
 `implemented_pending_external_review`; no hay métricas humanas hasta adjudicación.
 
+### Phase 4B.2 — Targeted Semantic Improvements
+
+**Status:** implemented_pending_external_review
+
+Diagnóstico reproducible del falso negativo Apple, equivalencias editoriales
+opt-in v1.1 y regresiones adversariales/PIT. v1 permanece reproducible.
+Los 36 casos anteriores pasan a desarrollo con procedencia asistida por IA;
+40 pares ciegos disjuntos y 9 casos sintéticos sin etiquetas esperan revisión.
+Pilotos offline 200/500: cero cambios en 200; un grupo editorial en 500.
+Véase `docs/phase4b2-review.md` y ADR-025. No iniciar 4C.
+
 ## Phase 5 — Analyst + Earnings Agents
 
 **Objetivo:** incorporar cambios de consenso y análisis pre/post earnings.  

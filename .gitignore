@@ -19,3 +19,6 @@ logs/*
 
 # Licensed local evidence and external human adjudications (Phase 4B.1).
 /data/reports/news/phase4b_semantic_review/
+
+# Local licensed evidence, new snapshots and blind review (Phase 4B.2).
+/data/reports/news/phase4b2_local/

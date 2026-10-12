@@ -75,7 +75,7 @@ def anchors(words: tuple[str, ...]) -> tuple[set[str], set[str], set[str]]:
     return kinds, numbers, actions
 
 
-def classify_pair(
+def classify_pair_v1(
     left: NewsRecord, right: NewsRecord, common_entities: tuple[str, ...],
     available_at: datetime, parameters: NewsGroupingParameters,
 ) -> NewsPairEvidence:
@@ -135,6 +135,74 @@ def classify_pair(
     )
 
 
+def validate_grouping_versions(parameters: NewsGroupingParameters) -> None:
+    """Reject mislabeled computations, including empty/unknown future versions."""
+    supported = {
+        ("news-groups-v1", "unicode-word-bigram-v1"),
+        ("news-groups-v1.1", "unicode-word-bigram-v1.1"),
+    }
+    if (parameters.algorithm_version, parameters.text_version) not in supported:
+        raise ValueError("unsupported grouping/text version combination")
+
+
+def classify_pair(
+    left: NewsRecord, right: NewsRecord, common_entities: tuple[str, ...],
+    available_at: datetime, parameters: NewsGroupingParameters,
+) -> NewsPairEvidence:
+    """Versioned dispatch: legacy output remains byte-reproducible.
+
+    v1.1 adds exact canonical headline evidence, NOT a lowered cosine gate.
+    Global cosine retains its original definition; headline cosine is canonical
+    only on the additional editorial route. Raw inputs/identities never change.
+    """
+    validate_grouping_versions(parameters)
+    original = classify_pair_v1(left, right, common_entities, available_at, parameters)
+    if parameters.algorithm_version == "news-groups-v1":
+        return original
+    from investment_system.data.news_editorial_normalization import (
+        normalize_editorial_headline, normalize_product_spacing,
+    )
+    full_left = tokens(normalize_product_spacing(left.headline + " " + (left.summary or "")))
+    full_right = tokens(normalize_product_spacing(right.headline + " " + (right.summary or "")))
+    _, numbers_left, actions_left = anchors(full_left)
+    _, numbers_right, actions_right = anchors(full_right)
+    # Extend compatibility for the new route: no hidden generation/state
+    # updates in summaries. Conservative abstention is preferable to merging.
+    states = {
+        "increase", "increases", "increased", "decrease", "decreases", "decreased",
+        "approve", "approves", "reject", "rejects", "announce", "announces",
+        "complete", "completes", "rumor", "rumour", "confirmed", "confirmation",
+        "raised", "lowered", "denied", "no", "without",
+    }
+    incompatible = (
+        numbers_left != numbers_right
+        or actions_left != actions_right
+        or set(full_left) & states != set(full_right) & states
+    )
+    if incompatible:
+        return original.model_copy(update={
+            "relationship": "different",
+            "reasons": (*original.reasons, "v1_1_product_numeric_or_state_conflict"),
+        })
+    # The original factual/time/minimum-text rejection is authoritative.
+    if original.relationship != "different" or "insufficient_event_or_editorial_evidence" not in original.reasons:
+        return original
+    left_head = tokens(normalize_editorial_headline(left.headline))
+    right_head = tokens(normalize_editorial_headline(right.headline))
+    core_left = tuple(word for word in left_head if word not in {"a", "an", "the", "today", "now"})
+    core_right = tuple(word for word in right_head if word not in {"a", "an", "the", "today", "now"})
+    changed = left_head != tokens(left.headline) or right_head != tokens(right.headline)
+    roundup = any("roundup" in head or {"dow", "jones"}.issubset(head)
+                  or {"stocks", "watch"}.issubset(head) for head in (left_head, right_head))
+    if changed and not roundup and common_entities and core_left == core_right and min(len(core_left), len(core_right)) >= parameters.minimum_tokens:
+        return original.model_copy(update={
+            "relationship": "editorial_duplicate", "headline_similarity": cosine(left_head, right_head),
+            "reasons": ("v1_1_exact_editorial_headline_with_entity_and_fact_compatibility",
+                        "global_cosine_reported_not_editorial_gate", *original.reasons[1:]),
+        })
+    return original
+
+
 def complete_link_groups(ids: list[str], pairs: dict, accepted: set[str]) -> list[tuple[str, ...]]:
     """Deterministic greedy partition; a member must match every existing member."""
     groups: list[list[str]] = []
@@ -175,6 +243,7 @@ def build_news_groups_as_of(
     if sample_strategy not in {"prefix", "provider_ticker_round_robin"}:
         raise ValueError("unknown deterministic sampling strategy")
     parameters = parameters or NewsGroupingParameters()
+    validate_grouping_versions(parameters)
     records = store.query_as_of(cutoff, mode=mode, allow_historical_proxy=allow_historical_proxy)
     records = sorted(records, key=lambda record: (record.available_at, record.news_id, record.revision_id))
     if max_articles:

@@ -4,14 +4,20 @@ from zoneinfo import ZoneInfo
 import pytest
 
 from investment_system.data.news_evaluation import FIXTURE_TIME, fixture_registry, synthetic_record
-from investment_system.data.news_grouping import build_news_groups_as_of
+from investment_system.data.news_grouping import build_news_groups_as_of, load_grouping_parameters
 from investment_system.data.schemas.news import AvailableAtSource, NewsQueryMode
 from investment_system.data.schemas.news_enrichment import NewsEntityRegistry, NewsGroupingParameters
 from investment_system.data.storage.news_enrichment_store import NewsEnrichmentStore
 from investment_system.data.storage.news_store import NewsStore
 
 
+@pytest.fixture(params=[NewsGroupingParameters(), load_grouping_parameters("config/news_grouping_v1_1.yaml")], autouse=True)
+def grouping_version(request, monkeypatch):
+    monkeypatch.setitem(build.__globals__, "_TEST_PARAMETERS", request.param)
+
+
 def build(store, cutoff=FIXTURE_TIME, registry=None, **kwargs):
+    kwargs.setdefault("parameters", _TEST_PARAMETERS)
     return build_news_groups_as_of(store, cutoff, registry or fixture_registry(),
         reconstruction_policy="deterministic_reconstruction_v1", **kwargs)
 
@@ -131,3 +137,14 @@ def test_lineage_through_real_phase4a_contracts(tmp_path):
     result = enrichment.lineage(snapshot.snapshot_id, snapshot.inputs[0].revision_id, store)
     assert result["news"]["captures"][0].raw_capture_id == raw.raw_capture_id
     assert result["clusters"] and result["entity_links"]
+
+
+def test_candidate_budget_and_repeatable_candidate_order(tmp_path):
+    store, a, b = populated(tmp_path)
+    store.write_records([synthetic_record("c", a.headline)])
+    first, second = build(store), build(store)
+    assert first.snapshot_id == second.snapshot_id
+    assert first.pair_evidence == second.pair_evidence
+    assert first.manifest.candidate_pairs == 3
+    with pytest.raises(ValueError, match="candidate budget exceeded"):
+        build(store, parameters=_TEST_PARAMETERS.model_copy(update={"max_candidates": 1}))

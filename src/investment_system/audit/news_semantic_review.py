@@ -40,12 +40,17 @@ def _evidence(record, include_summaries: bool) -> dict[str, Any]:
 def select_review_pairs(
     snapshot: NewsClusterSnapshot, *, size: int = 36, seed: int = 42,
     include_summaries: bool = False, excluded_provider_pairs: tuple[tuple[str, str], ...] = (),
+    targeted_semantic_strata: bool = False,
 ) -> dict[str, Any]:
     """Stratify a bounded PIT snapshot without assigning semantic ground truth.
 
     Pair scoring reuses the unchanged classifier. Additional cross-block pairs
     are marked audit-only; their scores are not claimed as stored pipeline output.
     """
+    sampling_categories = CATEGORIES + ((
+        "candidate_exact", "candidate_editorial", "candidate_shared_event",
+        "product_generation", "state_transition", "financial_similar",
+    ) if targeted_semantic_strata else ())
     manifest = snapshot.manifest
     if manifest.query_mode != "strict" or manifest.allow_historical_proxy or manifest.allow_retrospective_registry:
         raise ValueError("semantic review requires a strict snapshot without proxy/registry opt-ins")
@@ -117,6 +122,17 @@ def select_review_pairs(
             categories.append("factual_anchor_conflict")
         if any(link.status.startswith("ambiguous") for record in (left, right) for link in links[record.revision_id]):
             categories.append("ambiguous_entity")
+        if targeted_semantic_strata:
+            proposed = {"exact_duplicate": "candidate_exact", "editorial_duplicate": "candidate_editorial",
+                        "shared_event": "candidate_shared_event"}.get(pair.relationship)
+            if proposed:
+                categories.append(proposed)
+            if any(word.startswith("iphone") for word in (*words_left, *words_right)):
+                categories.append("product_generation")
+            if actions_left != actions_right and (actions_left or actions_right):
+                categories.append("state_transition")
+            if "earnings" in categories and pair.similarity >= 0.4:
+                categories.append("financial_similar")
         identity = case_id(*key)
         pool.append({
             "case_id": identity, "left": _evidence(left, include_summaries),
@@ -132,7 +148,7 @@ def select_review_pairs(
     for row in random_order[:min(8, len(pool))]:
         row["sampling_categories"].append("random_eligible")
     by_category = {}
-    for category in CATEGORIES:
+    for category in sampling_categories:
         candidates = [row for row in pool if category in row["sampling_categories"]]
         by_category[category] = sorted(candidates, key=lambda row: fingerprint([seed, category, row["case_id"]]))
     # Round-robin gives rare strata a chance; it never forces nonexistent quotas.
@@ -140,7 +156,7 @@ def select_review_pairs(
     pointers = Counter()
     while len(selected) < min(size, len(pool)):
         progress = False
-        for category in CATEGORIES:
+        for category in sampling_categories:
             candidates = by_category[category]
             while pointers[category] < len(candidates):
                 row = candidates[pointers[category]]
@@ -179,9 +195,9 @@ def select_review_pairs(
         "seed": seed, "requested_pairs": size, "selected_pairs": len(rows),
         "eligible_pool_pairs": len(pool), "input_articles": len(records),
         "prior_development_pairs_excluded": omitted_prior,
-        "category_pool_counts": {category: len(by_category[category]) for category in CATEGORIES},
-        "category_selected_counts": {category: sum(category in row["sampling_categories"] for row in rows) for category in CATEGORIES},
-        "categories_without_candidates": [category for category in CATEGORIES if not by_category[category]],
+        "category_pool_counts": {category: len(by_category[category]) for category in sampling_categories},
+        "category_selected_counts": {category: sum(category in row["sampling_categories"] for row in rows) for category in sampling_categories},
+        "categories_without_candidates": [category for category in sampling_categories if not by_category[category]],
         "selection_fingerprint": selection_fingerprint, "blind_evidence_fingerprint": evidence_fingerprint,
         "technical_fingerprint": fingerprint(technical),
         "input_fingerprint": manifest.input_fingerprint, "registry_fingerprint": manifest.registry_fingerprint,
@@ -300,5 +316,5 @@ def evaluate_adjudications(blind: dict, technical: dict, manifest: dict) -> dict
                   per_label_metrics={label: binary(certain, {label}) for label in LABELS[:-1]},
                   metrics=metrics(certain), by_sampling_category={category: metrics([
                       row for row in certain if category in predicted[row["case_id"]]["sampling_categories"]
-                  ]) for category in CATEGORIES})
+                  ]) for category in manifest.get("category_pool_counts", dict.fromkeys(CATEGORIES))})
     return result
