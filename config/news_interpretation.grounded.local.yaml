@@ -1,0 +1,47 @@
+# Opt-in Phase 4C.2.1; previous local profile remains unchanged.
+# Reuses the previous capability/price attestation, NOT a fresh online check.
+# After expiration reverify separately; never extend dates to bypass a guard.
+settings_version: news-inference-settings-v3
+model_output_version: news-quote-selection-v2
+prompt_version: news-interpretation-prompt-v2
+resolver_version: news-exact-quote-resolver-v1
+adapter:
+  transport_version: openai-responses-settings-v2
+  provider: openai
+  model: gpt-5.6-luna
+  endpoint: https://api.openai.com/v1/responses
+  response_mode: json_schema_strict
+  max_output_tokens: 2048
+  timeout_seconds: 60
+  temperature: null
+  reasoning_effort: none
+  service_tier: default
+  prompt_cache_mode: implicit
+  prompt_cache_ttl: 30m
+  capabilities_model: gpt-5.6-luna
+  structured_outputs_supported: true
+  capability_max_output_tokens: 128000
+  capability_max_input_tokens: 922000
+  context_window_tokens: 1050000
+  supported_parameters: [reasoning_effort]
+  capability_source: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+  capabilities_verified_at: '2026-10-12T19:23:26Z'
+pricing:
+  pricing_version: news-token-prices-v2
+  provider: openai
+  model: gpt-5.6-luna
+  input_per_million: 0.20
+  cached_input_per_million: 0.02
+  cache_write_per_million: 0.25
+  output_per_million: 1.20
+  short_context_max_input_tokens: 272000
+  valid_from: '2026-10-12T19:23:26Z'
+  valid_until: '2026-10-13T00:00:00Z'
+  source: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+request_budget_usd: 0.05
+run_budget_usd: 0.05
+max_attempts: 1
+retry_invalid_response: false
+retry_delay_seconds: 0
+local_content_retention_hours: 24
+local_restricted_storage_acknowledged: true

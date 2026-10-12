@@ -153,10 +153,16 @@ La preparación posterior del primer smoke usa `gpt-5.6-luna`, perfil opt-in v2,
 contabilidad separada de lecturas/escrituras de caché, un intento y US$0,05
 como máximo. Preflight offline comparte transporte/reserva; preserva contratos
 anteriores y bloquea tarifas caducadas o fuera de banda. Véanse ADR-029 y
-`docs/phase4c2-smoke-preparation.md`. No se ha ejecutado inferencia real.
+`docs/phase4c2-smoke-preparation.md`. Esa preparación no ejecutó inferencia real.
 ADR-030 permite bootstrap CLI explícito de `.env` desde la raíz del repositorio,
 sin sobrescribir el entorno. Configuración e imports siguen libres de carga
 de secrets; `--validate-only`, `--dry-run` y `--skip-download` no la realizan.
+El primer smoke ejecutado posteriormente por el propietario quedó rechazado y
+preservado como diagnóstico de desarrollo. 4C.2.1 añade selección textual exacta
+v2 y offsets deterministas, mediante runtime v3 opt-in y ADR-031; todos los
+validadores v1 siguen ejecutándose, sin ampliar fechas ni entity registry.
+Estado `implemented_pending_external_review`, sin inferencia real en esta tarea.
+Véase `docs/phase4c2-1-grounding-review.md`; 4C.3 continúa sin iniciar.
 Se preservan protocolo 4C.1 y artefactos previos; ni TEST oficial ni comparaciones
 reales se ejecutan. Véanse ADR-028 y `docs/phase4c2-review.md`.
 4C.3 permanece `not_started`; interpretaciones experimentales no operativas,

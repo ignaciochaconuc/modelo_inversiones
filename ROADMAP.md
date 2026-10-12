@@ -408,12 +408,27 @@ OpenAI Responses opt-in mediante router existente, JSON Schema estricto y
 validación Pydantic/PIT posterior. Modelos/capacidades/precios explícitos,
 reservas durables por solicitud/corrida, costes desconocidos no asumidos cero,
 reintentos limitados, caché autorizada y registros inmutables con retención local.
-CLI de una noticia preparada pero no ejecutada. Protocolo 4C.1 congelado;
+La implementación preparó una CLI sin ejecutarla. Posteriormente el propietario
+ejecutó el primer smoke: `invalid_response`, conservado como diagnóstico de
+desarrollo (`docs/phase4c2-first-smoke-diagnosis.md`). Protocolo 4C.1 congelado;
 comparaciones reales no ejecutadas. Véanse ADR-028 y `docs/phase4c2-review.md`.
-Primer smoke `prepared_offline_not_executed`: perfil local `gpt-5.6-luna`,
+Preparación histórica del primer smoke `prepared_offline_not_executed`: perfil local `gpt-5.6-luna`,
 cuatro tarifas versionadas, un intento, presupuesto US$0,05 y preflight sin
 proveedor/persistencia. ADR-029 documenta la corrección mínima y compatibilidad;
 `docs/phase4c2-smoke-preparation.md` conserva configuración, cutoff y limpieza.
+
+### Phase 4C.2.1 — Evidence Grounding Hardening
+
+**Status:** implemented_pending_external_review
+
+Output/prompt v2 opt-in: selección de evidence_id + cita exacta, resolución
+determinista única por campo/revisión y validadores originales completos.
+Runtime/attempt v3 distingue original, transformación auditada e interpretación;
+replay/hashes históricos permanecen. Fechas ISO y entity registry sin ampliar.
+Diagnósticos sanitizados, regresiones sintéticas y segundo smoke preparado
+solo offline; no inferencias ni solicitudes externas. ADR-031 y
+`docs/phase4c2-1-grounding-review.md`; primer smoke sigue rechazado/desarrollo.
+
 Phase 4C.3: `not_started`; ninguna interpretación se promueve a operativa ni
 se conecta a Feature Store, modelos, portfolio, riesgo o ejecución.
 

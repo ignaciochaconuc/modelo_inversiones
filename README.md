@@ -188,6 +188,11 @@ La [preparación del primer smoke](docs/phase4c2-smoke-preparation.md) verifica
 `--validate-only` sin API ni persistencia. Un intento, máximo US$0,05;
 precios con caducidad y limpieza de contenido explícitas (ADR-029).
 4C.3 sigue `not_started`. Ninguna salida es operativa; defaults/contratos 4B intactos.
+El propietario ejecutó posteriormente el primer smoke, rechazado y preservado
+como diagnóstico de desarrollo. [4C.2.1](docs/phase4c2-1-grounding-review.md)
+endurece citas mediante selección exacta v2 y offsets deterministas, con perfil
+v3 opt-in, trazas/replay y diagnósticos seguros (ADR-031). Estado
+`implemented_pending_external_review`; segundo smoke preparado, no ejecutado.
 La configuración no sensible vive en `config/news.yaml`; el piloto requiere
 `FINNHUB_API_KEY` en el entorno y, si falta, escribe un reporte bloqueado sin
 hacer solicitudes externas.

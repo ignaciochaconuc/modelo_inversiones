@@ -22,6 +22,11 @@ from investment_system.agents.news_interpretation.persistence import LocalInterp
 from investment_system.agents.news_interpretation.runtime_schemas import (
     InterpretationRuntimeSettings, StoredInterpretationAttempt, InterpretationDelivery,
     StoredInterpretationAttemptV2, CacheWritePriceSchedule,
+    GroundedRuntimeSettings, StoredGroundedAttempt,
+)
+from investment_system.agents.news_interpretation.grounding import (
+    prepare_quote_request, evaluate_quote_response, GroundedReplayEnvelope, RejectionDiagnostic,
+    VALIDATION_VERSION as GROUNDED_VALIDATION_VERSION,
 )
 
 
@@ -30,11 +35,15 @@ def prepare_invocation(request: NewsInterpretationRequest, settings: Interpretat
     a = settings.adapter
     configuration = ModelConfiguration(provider="openai", model=a.model, temperature=a.temperature,
         max_output_tokens=a.max_output_tokens, max_estimated_cost_usd=settings.request_budget_usd)
-    llm = prepare_llm_request(request, configuration)
-    llm.response_schema = InterpretationPayload.model_json_schema()
+    if isinstance(settings, GroundedRuntimeSettings):
+        llm = prepare_quote_request(request, configuration)
+    else:
+        llm = prepare_llm_request(request, configuration)
+        llm.response_schema = InterpretationPayload.model_json_schema()
     wire = OpenAIClient(a).wire_payload(llm, a.model)
+    validation_version = GROUNDED_VALIDATION_VERSION if isinstance(settings, GroundedRuntimeSettings) else VALIDATION_VERSION
     key = fingerprint({"request": request.request_id, "evidence": request.evidence_fingerprint,
-        "validation_version": VALIDATION_VERSION, "settings": settings.model_dump(mode="json"), "wire": wire})
+        "validation_version": validation_version, "settings": settings.model_dump(mode="json"), "wire": wire})
     return llm, wire, key
 
 
@@ -138,7 +147,7 @@ class NewsInterpretationService:
                 attempt_id=self.budget.reserve(key,maximum)
             except BudgetExceeded:
                 return InterpretationDelivery(retrieval_mode="new_inference",cache_key=key,error_code="request_or_run_budget_insufficient",attempt_record_ids=tuple(ids),record=last,record_id=last.record_id if last else None,additional_attempts=len(ids),additional_provider_cost_usd=None if unknown else known_total)
-            response=None;error=None;retryable=False;envelope=None
+            response=None;error=None;retryable=False;envelope=None;diagnostics=()
             try:
                 response=self.router.complete(llm)
                 if response.provider != "openai" or response.model != model:
@@ -181,14 +190,24 @@ class NewsInterpretationService:
                 error="observed_cost_exceeds_reservation";retryable=False
             if response and error is None:
                 try:
-                    result=replay_response(request,response,self._configuration(),validated_at=ensure_utc(self.clock()),
-                        execution_mode="retrospective_reconstruction",estimated_cost_usd=cost,
-                        tokens_reported=known_usage,latency_reported="latency_ms" in response.model_fields_set)
-                    envelope=ReplayEnvelope(request=request,result=result)
+                    options=dict(validated_at=ensure_utc(self.clock()), execution_mode="retrospective_reconstruction",
+                        estimated_cost_usd=cost, tokens_reported=known_usage, latency_reported="latency_ms" in response.model_fields_set)
+                    if isinstance(self.settings, GroundedRuntimeSettings):
+                        resolution,result=evaluate_quote_response(request,response,self._configuration(),**options)
+                        finished=ensure_utc(self.clock())
+                        resolution=resolution.model_copy(update={"resolved_at":finished})
+                        result=result.model_copy(update={"validated_at":finished,
+                            "available_at":max(result.generated_at,finished,request.inputs_available_at)})
+                        envelope=GroundedReplayEnvelope(request=request,resolution=resolution,result=result)
+                        diagnostics=result.diagnostics
+                    else:
+                        result=replay_response(request,response,self._configuration(),**options)
+                        envelope=ReplayEnvelope(request=request,result=result)
                     if result.status == "invalid_response":
                         error="invalid_structured_evidence";retryable=self.settings.retry_invalid_response
                 except ValueError:
                     error="invalid_result_provenance";retryable=False
+                    diagnostics=(RejectionDiagnostic(stage="provenance",field_path=(),rule="invalid_result_provenance"),)
             outcome=envelope.result.status if envelope else (error or "unexpected_client_error")
             fields=response.model_fields_set if response else set()
             input_tokens=response.input_tokens if response and "input_tokens" in fields else None
@@ -204,8 +223,20 @@ class NewsInterpretationService:
             persisted=ensure_utc(self.clock())
             # Copy only typed standard response fields; raw headers/error bodies excluded.
             durable=response.model_copy(update={"raw":{}}) if response else None
-            record_type = StoredInterpretationAttemptV2 if v2 else StoredInterpretationAttempt
-            record=record_type(**({"cache_write_tokens":write_tokens} if v2 else {}),attempt_id=attempt_id,cache_key=key,run_id=self.run_id,attempt_number=number,
+            grounded=isinstance(self.settings, GroundedRuntimeSettings)
+            if grounded and error and not diagnostics and envelope is None:
+                stage,rule="transport","provider_transport_failure"
+                if error in {"invalid_usage_telemetry","usage_outside_verified_price_band"}:
+                    stage,rule="telemetry","invalid_usage_telemetry"
+                elif error=="observed_cost_exceeds_reservation":
+                    stage,rule="telemetry","cost_reservation_exceeded"
+                elif error in {"model_identity_mismatch","effective_parameters_mismatch"}:
+                    stage,rule="provenance","invalid_result_provenance"
+                diagnostics=(RejectionDiagnostic(stage=stage,field_path=(),rule=rule),)
+            record_type = StoredGroundedAttempt if grounded else StoredInterpretationAttemptV2 if v2 else StoredInterpretationAttempt
+            extra={"cache_write_tokens":write_tokens} if v2 else {}
+            if grounded: extra["rejection_diagnostics"]=diagnostics
+            record=record_type(**extra,attempt_id=attempt_id,cache_key=key,run_id=self.run_id,attempt_number=number,
                 request=request,settings=self.settings,started_at=started,received_at=received,persisted_at=persisted,
                 expires_at=persisted+timedelta(hours=self.settings.local_content_retention_hours),requested_provider="openai",requested_model=model,
                 actual_model=response.model if response else None,effective_parameters=self.settings.adapter.effective_parameters,
@@ -233,11 +264,7 @@ def plan_model_comparison(request: NewsInterpretationRequest,configurations: tup
     candidates=[]
     for settings in configurations:
         a=settings.adapter
-        config=ModelConfiguration(provider="openai",model=a.model,temperature=a.temperature,
-            max_output_tokens=a.max_output_tokens,max_estimated_cost_usd=settings.request_budget_usd)
-        llm=prepare_llm_request(request,config)
-        llm.response_schema=InterpretationPayload.model_json_schema()
-        wire=OpenAIClient(a).wire_payload(llm,a.model)
+        _,wire,_=prepare_invocation(request,settings)
         candidates.append({"requested_model":a.model,"settings_fingerprint":fingerprint(settings.model_dump(mode="json")),
                            "wire_fingerprint":fingerprint(wire)})
     return {"request_id":request.request_id,"evidence_fingerprint":request.evidence_fingerprint,

@@ -11,6 +11,10 @@ from investment_system.llm.cost_tracker import LLMCallRecord
 from investment_system.agents.news_interpretation.schemas import InterpretationModel, NewsInterpretationRequest, VALIDATION_VERSION
 from investment_system.agents.news_interpretation.replay import ReplayEnvelope
 from investment_system.llm.schemas import LLMResponse
+from investment_system.agents.news_interpretation.grounding import (
+    GroundedReplayEnvelope, RejectionDiagnostic, MODEL_OUTPUT_VERSION, PROMPT_VERSION, RESOLVER_VERSION,
+    VALIDATION_VERSION as GROUNDED_VALIDATION_VERSION,
+)
 
 
 class PriceSchedule(InterpretationModel):
@@ -68,7 +72,7 @@ class InterpretationRuntimeSettings(InterpretationModel):
 
     @model_validator(mode="after")
     def explicit_policy(self):
-        v2 = self.settings_version == "news-inference-settings-v2"
+        v2 = self.settings_version != "news-inference-settings-v1"
         if v2 != isinstance(self.adapter, OpenAISettingsV2) or v2 != isinstance(self.pricing, CacheWritePriceSchedule):
             raise ValueError("runtime/transport/pricing versions must agree")
         if self.pricing.model != self.adapter.model or self.pricing.provider != self.adapter.provider:
@@ -78,6 +82,14 @@ class InterpretationRuntimeSettings(InterpretationModel):
         if self.request_budget_usd > self.run_budget_usd:
             raise ValueError("request budget exceeds run budget")
         return self
+
+
+class GroundedRuntimeSettings(InterpretationRuntimeSettings):
+    """Opt-in semantic selection v2 with existing transport/pricing v2."""
+    settings_version: Literal["news-inference-settings-v3"] = "news-inference-settings-v3"
+    model_output_version: Literal["news-quote-selection-v2"] = MODEL_OUTPUT_VERSION
+    prompt_version: Literal["news-interpretation-prompt-v2"] = PROMPT_VERSION
+    resolver_version: Literal["news-exact-quote-resolver-v1"] = RESOLVER_VERSION
 
 
 class StoredInterpretationAttempt(InterpretationModel):
@@ -121,7 +133,7 @@ class StoredInterpretationAttempt(InterpretationModel):
         if fingerprint(self.wire_payload) != self.wire_fingerprint:
             raise ValueError("stored wire payload hash mismatch")
         expected_key=fingerprint({"request":self.request.request_id,"evidence":self.request.evidence_fingerprint,
-            "validation_version":VALIDATION_VERSION,"settings":self.settings.model_dump(mode="json"),"wire":self.wire_payload})
+            "validation_version":self._cache_validation_version(),"settings":self.settings.model_dump(mode="json"),"wire":self.wire_payload})
         if self.cache_key != expected_key:
             raise ValueError("stored cache identity does not bind its exact request/settings")
         if self.wire_payload.get("model") != self.requested_model or self.wire_payload.get("tools") != [] or self.wire_payload.get("store") is not False:
@@ -151,6 +163,9 @@ class StoredInterpretationAttempt(InterpretationModel):
     def record_id(self) -> str:
         return fingerprint(self.model_dump(mode="json"))
 
+    def _cache_validation_version(self) -> str:
+        return VALIDATION_VERSION
+
 
 class StoredInterpretationAttemptV2(StoredInterpretationAttempt):
     """Cache-write provenance outside the unchanged 4C.1 replay response."""
@@ -159,7 +174,8 @@ class StoredInterpretationAttemptV2(StoredInterpretationAttempt):
 
     @model_validator(mode="after")
     def cache_write_consistency(self):
-        if self.settings.settings_version != "news-inference-settings-v2":
+        expected = "news-inference-settings-v3" if self.schema_version == "news-inference-attempt-v3" else "news-inference-settings-v2"
+        if self.settings.settings_version != expected:
             raise ValueError("v2 attempt requires v2 pricing/settings")
         if self.observed_usage_cost_usd is not None:
             response = self.provider_response
@@ -172,12 +188,40 @@ class StoredInterpretationAttemptV2(StoredInterpretationAttempt):
         return self
 
 
+class StoredGroundedAttempt(StoredInterpretationAttemptV2):
+    schema_version: Literal["news-inference-attempt-v3"] = "news-inference-attempt-v3"
+    settings: GroundedRuntimeSettings
+    interpretation: GroundedReplayEnvelope | None = None
+    rejection_diagnostics: tuple[RejectionDiagnostic, ...] = ()
+
+    def _cache_validation_version(self) -> str:
+        return GROUNDED_VALIDATION_VERSION
+
+    @model_validator(mode="after")
+    def grounded_consistency(self):
+        from investment_system.llm.openai_client import OpenAIClient
+        from investment_system.agents.news_interpretation.schemas import ModelConfiguration
+        from investment_system.agents.news_interpretation.grounding import prepare_quote_request
+        a = self.settings.adapter
+        config = ModelConfiguration(provider="openai", model=a.model, temperature=a.temperature,
+            max_output_tokens=a.max_output_tokens, max_estimated_cost_usd=self.settings.request_budget_usd)
+        expected_wire = OpenAIClient(a).wire_payload(prepare_quote_request(self.request, config), a.model)
+        if expected_wire != self.wire_payload:
+            raise ValueError("grounded transport/request binding mismatch")
+        if self.interpretation and (self.interpretation.result.model_configuration != config
+                or self.rejection_diagnostics != self.interpretation.result.diagnostics):
+            raise ValueError("grounded diagnostics/configuration provenance mismatch")
+        if not self.interpretation and self.outcome in {"interpreted", "abstained"}:
+            raise ValueError("grounded success requires validated resolution")
+        return self
+
+
 class InterpretationDelivery(InterpretationModel):
     retrieval_mode: Literal["new_inference", "exact_cache_recovery", "offline_reconstruction"]
     cache_key: str
     record_id: str | None = None
     attempt_record_ids: tuple[str,...] = ()
-    record: StoredInterpretationAttempt | StoredInterpretationAttemptV2 | None = None
+    record: StoredInterpretationAttempt | StoredInterpretationAttemptV2 | StoredGroundedAttempt | None = None
     error_code: str | None = None
     additional_provider_cost_usd: float | None = None
     additional_attempts: int = 0

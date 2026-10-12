@@ -161,11 +161,16 @@ ADR-029 añade un perfil opt-in v2 con escrituras de caché separadas y
 `reasoning.effort` anidado; conserva manifest/attempt v1 y replay 4C.1.
 La CLI de smoke exige cuatro tarifas y un intento; `--validate-only` comparte
 preparación/reserva sin llamadas ni persistencia. Véase
-`docs/phase4c2-smoke-preparation.md`; el primer smoke continúa sin ejecutar.
+`docs/phase4c2-smoke-preparation.md`; esa preparación no ejecutó el smoke.
 ADR-030 centraliza `.env` de la raíz del repositorio tras autorización real,
 sin override ni carga en imports, loaders YAML, tests o modos offline. Los
 clientes/agentes/router no cargan credenciales; presupuestos y PIT se conservan.
-4C.2: `implemented_pending_external_review`; smoke no ejecutado; 4C.3 `not_started`.
+El propietario ejecutó después un primer smoke rechazado, preservado como
+desarrollo. ADR-031 añade 4C.2.1 opt-in: quote selection/prompt v2, resolver
+exacto único por campo/revisión, payload interno v1 y validadores sin relajar.
+Runtime/attempt v3 conserva original, trazas y resultado, con replay determinista
+y diagnósticos sanitizados. Fechas/registry/PIT y contratos históricos intactos.
+4C.2/4C.2.1: `implemented_pending_external_review`; 4C.3 `not_started`.
 Sin Feature Store ni señales operativas; no se modifican algoritmos 4B.
 
 ## Point-in-time y Feature Store

@@ -10,6 +10,7 @@ import yaml
 
 from investment_system.agents.news_interpretation.inputs import build_interpretation_request
 from investment_system.agents.news_interpretation.runtime_schemas import InterpretationRuntimeSettings
+from investment_system.agents.news_interpretation.runtime_schemas import GroundedRuntimeSettings
 from investment_system.agents.news_interpretation.persistence import LocalInterpretationStore
 from investment_system.agents.news_interpretation.service import NewsInterpretationService, prepare_invocation, reservation_bound
 from investment_system.data.news_entities import load_entity_registry
@@ -53,10 +54,11 @@ def main() -> int:
             raise ValueError("secrets are not configuration")
         if raw["adapter"]["model"] != args.model:
             raise ValueError("model flag must match the explicit profile")
-        settings=InterpretationRuntimeSettings.model_validate(raw)
+        settings_type=GroundedRuntimeSettings if raw.get("settings_version")=="news-inference-settings-v3" else InterpretationRuntimeSettings
+        settings=settings_type.model_validate(raw)
         if args.budget_usd <= 0 or args.budget_usd > settings.run_budget_usd:
             raise ValueError("flag cannot expand the configured budget")
-        settings=InterpretationRuntimeSettings.model_validate({**settings.model_dump(mode="json"),
+        settings=settings_type.model_validate({**settings.model_dump(mode="json"),
             "run_budget_usd":args.budget_usd,"request_budget_usd":min(settings.request_budget_usd,args.budget_usd)})
         cutoff=datetime.fromisoformat(args.as_of.replace("Z","+00:00"))
         request=build_interpretation_request(NewsStore("data/raw","data/processed"),args.revision_id,cutoff,registry=load_entity_registry())
@@ -69,7 +71,7 @@ def main() -> int:
             raise ValueError("secret in source content")
         # This single-article CLI now requires fully accounted four-lane pricing.
         # Original v1 manifests/records remain available for offline replay.
-        if settings.settings_version != "news-inference-settings-v2" or settings.max_attempts != 1:
+        if settings.settings_version not in {"news-inference-settings-v2","news-inference-settings-v3"} or settings.max_attempts != 1:
             raise ValueError("smoke requires v2 pricing and one attempt")
         _, wire, key = prepare_invocation(request, settings)
         input_bound, maximum = reservation_bound(wire, settings)
@@ -86,6 +88,7 @@ def main() -> int:
             "strict_structured_output":wire["text"]["format"]["strict"],
             "input_token_upper_bound":input_bound,"maximum_reserved_usd":maximum,
             "run_budget_usd":settings.run_budget_usd,"max_attempts":settings.max_attempts,
+            "model_output_version":getattr(settings,"model_output_version","news-interpretation-v1"),
             "api_key_present":bool(secret),"experimental":True,"operational":False}))
         return 0
     client=OpenAIClient(settings.adapter,enabled=True)
@@ -105,6 +108,7 @@ def main() -> int:
         "tokens": [{"input":r.input_tokens,"cached":r.cached_input_tokens,"output":r.output_tokens} for r in service.tracker.records],
         "record_id":delivery.record_id,"cache_key":delivery.cache_key,
         "cache_write_tokens":getattr(record,"cache_write_tokens",None),
+        "rejection_diagnostics":[d.model_dump(mode="json") for d in getattr(record,"rejection_diagnostics",())],
         "requested_model":args.model,"actual_model":record.actual_model if record else None,
         "experimental":True,"operational":False,"articles":1}))
     return 0 if record and record.outcome in {"interpreted","abstained"} else 1
