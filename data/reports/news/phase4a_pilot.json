@@ -1,30 +1,71 @@
 {
-  "blocker": "FINNHUB_API_KEY is not configured",
-  "generated_at": "2026-10-11T23:05:00.134846+00:00",
+  "direct_ticker_coverage": {
+    "ratio": 1.0,
+    "records_with_direct_tickers": 905
+  },
+  "errors": [],
+  "generated_at": "2026-10-12T12:55:07.692491+00:00",
   "git": {
     "dirty_worktree": null,
     "git_commit": null
   },
+  "hash_validation_passed": true,
+  "historical_research_records_at_report_time": 811,
+  "idempotency_second_pass_new_revisions": 0,
+  "integrity": {
+    "bad_raw_hashes": 0,
+    "duplicate_records": 0,
+    "logical_articles": 811,
+    "missing_lineage": 0,
+    "normalized_records": 905,
+    "raw_captures": 905,
+    "raw_payloads": 905
+  },
   "limitations": [
-    "No FINNHUB_API_KEY was available; no live or historical provider evidence was fabricated.",
-    "Historical depth, timestamp quality, plan entitlements and retention/redistribution rights remain unverified.",
-    "Finnhub publication timestamps are not treated as observed availability in strict PIT mode."
+    "The provider's published timestamp is not proof of local availability.",
+    "Historical availability proxies are research-only and excluded from strict PIT queries.",
+    "Plan-specific historical coverage and retention/redistribution rights require external review.",
+    "The pilot validates ingestion infrastructure, not predictive utility or alpha."
   ],
-  "news_captured": 0,
+  "lineage_validation_passed": true,
+  "new_raw_captures": 905,
+  "news_captured": 905,
+  "normalized_revisions": 905,
+  "pit_validation_passed": true,
   "provider": "finnhub",
-  "real_requests_made": 0,
-  "real_responses_received": 0,
+  "provider_configuration": {
+    "base_url": "https://finnhub.io/api/v1",
+    "credentials_present": true,
+    "max_retries": 2,
+    "timeout_seconds": 20.0
+  },
   "report_version": "phase4a-news-pilot-v1",
-  "requested_tickers": [
+  "requests_made": 5,
+  "responses_received": 5,
+  "status": "completed_pending_external_review",
+  "strict_pit_records_at_report_time": 811,
+  "temporal_distribution": {
+    "earliest_first_seen_at": "2026-10-12 12:54:54.315247+00:00",
+    "earliest_published_at": "2026-10-06 02:01:03+00:00",
+    "latest_first_seen_at": "2026-10-12 12:54:55.198172+00:00",
+    "latest_published_at": "2026-10-10 23:30:00+00:00"
+  },
+  "tickers": [
     "AAPL",
     "MSFT",
     "NVDA",
     "JPM",
     "XOM"
   ],
-  "requested_window": {
+  "timestamp_coverage": {
+    "available_at": 905,
+    "first_seen_at": 905,
+    "published_at": 905,
+    "published_at_ratio": 1.0
+  },
+  "unique_logical_articles": 811,
+  "window": {
     "end": "2026-10-10",
     "start": "2026-10-06"
-  },
-  "status": "blocked_no_provider_credentials"
+  }
 }
