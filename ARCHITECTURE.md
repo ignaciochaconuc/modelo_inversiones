@@ -52,7 +52,7 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `data.validation` | Invariantes temporales y feature/target | Funcional |
 | `data.pilot` | Orquestación y diagnóstico no destructivo del piloto real | Funcional Phase 1C |
 | `data.news_ingestion` | Captura raw, normalización versionada y rebuild de noticias | Implementado Phase 4A; piloto real local disponible (905 revisiones, 811 artículos) |
-| `data.news_grouping` | Entidades temporales, grupos editoriales y snapshots complete-link | Implementado Phase 4B; pendiente revisión externa |
+| `data.news_grouping` | Entidades temporales, grupos editoriales y snapshots complete-link | Phase 4B completed_with_documented_limitations; v1.1 opt-in candidata |
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
@@ -123,7 +123,18 @@ Phase 4B.2 agrega dispatch versionado v1/v1.1 para equivalencias editoriales
 acotadas (ADR-025). Conserva contratos/PIT, blocking y complete-link. Snapshots
 y nueva evidencia ciega quedan en un árbol local separado e ignorado;
 los 36 casos anteriores pasan a desarrollo sin alterar archivos originales.
-Véase `docs/phase4b2-review.md`; revisión externa pendiente, 4C no iniciada.
+Véase `docs/phase4b2-review.md` y `docs/phase4b-closure.md`: cierre técnico
+autorizado con limitaciones; 4B `completed_with_documented_limitations`,
+4B.1 `completed_ai_assisted_semantic_review`, 4B.2 `completed_targeted_improvement`.
+v1 conserva defaults/snapshots y v1.1 sigue candidata opt-in, sin promoción
+automática. ADR-024/025 y evidencia histórica no se reescriben.
+
+ADR-026 fija la interpretación para futuros consumidores: compartir ticker,
+empresa, tema o fecha no prueba compartir acontecimiento; clusters no certifican
+semántica exhaustiva. Recopilaciones multievento pueden relacionarse parcialmente
+con artículos sin justificar deduplicación/agrupación automática. Una futura
+4C deberá aceptar artículos individuales, preservar lineage/incertidumbre/PIT
+y no asumir recall completo. Phase 4C sigue `not_started`; no se implementa aquí.
 
 ## Point-in-time y Feature Store
 

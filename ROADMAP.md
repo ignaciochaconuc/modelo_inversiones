@@ -333,7 +333,7 @@ permanece `implemented_pending_external_review`.
 
 ### Phase 4B — Deduplication, Event Clustering & Entity Resolution
 
-**Status:** implemented_pending_external_review
+**Status:** completed_with_documented_limitations
 
 Contratos `news-enrichment-v1`, registro parcial `news-entities-v1`, resolución
 causal de entidades, deduplicación editorial conservadora y agrupación
@@ -343,33 +343,48 @@ revisiones de `direct_tickers`, no cambios editoriales. La muestra real controla
 usa 200 artículos vigentes; no hubo nuevas descargas. Los resultados y
 fingerprints están en `data/reports/news/phase4b_pilot.json`. Ocho pares sintéticos
 por partición y dos revisiones cualitativas reales no permiten inferir exactitud
-poblacional; la adjudicación humana y la revisión externa siguen pendientes.
+poblacional. La revisión externa autoriza cierre técnico con limitaciones,
+no certificación semántica exhaustiva. Véase `docs/phase4b-closure.md` y ADR-026.
+v1 permanece default/reproducible; v1.1 es candidata conservadora opt-in.
 
 4C–4F permanecen no iniciadas: 4C interpretación LLM; 4D agregación/features;
 4E evaluación incremental; 4F freeze/decision.
 
 ### Phase 4B.1 — Independent Semantic Quality Review
 
-**Status:** audit tooling implemented; external human adjudication pending
+**Status:** completed_ai_assisted_semantic_review
 
 La herramienta de auditoría prepara 36 pares reales, sin etiquetas humanas,
 con evidencia ciega separada de predicciones/puntuaciones. La selección causal
 y determinista incluye casos difíciles y comparaciones entre entidades; algoritmos,
 umbrales, registry y contratos de 4B permanecen intactos. Los archivos con
 contenido se conservan en una carpeta local ignorada; solo se prepara un reporte
-sanitizado publicable. Véase `docs/phase4b-semantic-review.md`. Phase 4B sigue
-`implemented_pending_external_review`; no hay métricas humanas hasta adjudicación.
+sanitizado publicable. Adjudicación asistida por ChatGPT: 36 casos, 34
+diferentes, 1 duplicado editorial, 1 incierto; un FN después usado para
+desarrollo. No es ground truth humano independiente. Archivos originales
+y estados históricos se preservan; véase `docs/phase4b-semantic-review.md`.
 
 ### Phase 4B.2 — Targeted Semantic Improvements
 
-**Status:** implemented_pending_external_review
+**Status:** completed_targeted_improvement
 
 Diagnóstico reproducible del falso negativo Apple, equivalencias editoriales
 opt-in v1.1 y regresiones adversariales/PIT. v1 permanece reproducible.
 Los 36 casos anteriores pasan a desarrollo con procedencia asistida por IA;
-40 pares ciegos disjuntos y 9 casos sintéticos sin etiquetas esperan revisión.
+40 pares disjuntos adjudicados con asistencia de ChatGPT: 37 diferentes,
+1 shared_event, 2 inciertos; un FN de evento, cero FP observados en 38
+concluyentes. Los 9 prompts sintéticos siguen separados, sin nuevas etiquetas.
 Pilotos offline 200/500: cero cambios en 200; un grupo editorial en 500.
 Véase `docs/phase4b2-review.md` y ADR-025. No iniciar 4C.
+
+### Phase 4C — LLM News Interpretation
+
+**Status:** not_started
+
+El cierre no inicia diseño ni implementación. Una futura autorización deberá
+respetar limitaciones de recall, registry y disponibilidad, admitir artículos
+individuales y no asumir semántica exhaustiva ni fusionar recopilaciones
+automáticamente con todos sus acontecimientos (ADR-026).
 
 ## Phase 5 — Analyst + Earnings Agents
 

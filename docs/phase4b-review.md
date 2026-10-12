@@ -1,6 +1,12 @@
 # Phase 4B implementation evidence
 
-Status: `implemented_pending_external_review`. No Phase 4C implementation.
+Final status: `completed_with_documented_limitations`. No Phase 4C implementation.
+
+External review authorizes technical closure, not exhaustive semantic
+certification. See [formal closure](phase4b-closure.md) for separate AI-assisted
+results, limitations and final states. v1 stays reproducible/default; v1.1 is
+an opt-in future-integration candidate. Evidence below records the original
+implementation, not a newly executed pilot.
 
 ## Artifacts and versions
 

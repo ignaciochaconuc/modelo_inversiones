@@ -26,3 +26,5 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-022: One-time final holdout result](ADR-022-final-holdout-result.md)
 - [ADR-023: Versioned point-in-time news ingestion](ADR-023-news-point-in-time-ingestion.md)
 - [ADR-024: Deterministic news groups and temporal corporate identity](ADR-024-news-groups-and-temporal-entity-resolution.md)
+- [ADR-025: Targeted editorial equivalence, opt-in v1.1](ADR-025-targeted-editorial-equivalence.md)
+- [ADR-026: Technical closure and partial event relationships](ADR-026-news-closure-and-partial-event-relations.md)

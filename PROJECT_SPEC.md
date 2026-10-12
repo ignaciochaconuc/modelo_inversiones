@@ -116,8 +116,23 @@ recibir etiquetas externas no se emiten métricas de calidad humana.
 Phase 4B.2 introduce normalización editorial conservadora versionada v1.1;
 v1 y sus snapshots siguen reproducibles. La adjudicación asistida por IA de
 los 36 pares anteriores es material de desarrollo, no ground truth humano.
-Una muestra ciega disjunta requiere nueva revisión externa. No modifica PIT,
-targets, Phase 3, interpretación LLM ni inicia 4C (ADR-025).
+La muestra disjunta de 40 casos fue adjudicada con asistencia de ChatGPT:
+37 diferentes, 1 shared_event y 2 inciertos, un FN de evento y cero FP
+observados en casos concluyentes. No combinar con los 36 de 4B.1 (34 diferentes,
+1 editorial, 1 incierto); ninguna revisión es ground truth humano independiente
+ni estima métricas poblacionales. La regresión Apple sigue siendo desarrollo.
+
+El cierre técnico autorizado registra 4B `completed_with_documented_limitations`,
+4B.1 `completed_ai_assisted_semantic_review`, 4B.2 `completed_targeted_improvement`.
+`news-groups-v1.1` es candidata conservadora opt-in, sin cambiar default/config v1.
+Recall editorial/evento insuficientemente validado, positivos escasos, registry
+parcial, disponibilidad histórica y restricciones de texto Finnhub condicionan
+futuros contratos. Clusters no certifican exhaustividad; ticker/empresa/tema/fecha
+no bastan, recopilaciones no se fusionan automáticamente con cada acontecimiento
+y relaciones parciales no necesariamente justifican agrupación. Futura 4C deberá
+admitir artículos individuales. Phase 4C permanece `not_started`.
+No modifica PIT, targets, Phase 3 ni interpretación LLM; véase
+`docs/phase4b-closure.md` y ADR-026. No se reescriben ADR-024/025 ni evidencias.
 
 ## LLM y control de costos
 

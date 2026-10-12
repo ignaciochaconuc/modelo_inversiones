@@ -1,6 +1,23 @@
 # Phase 4B.2 — Targeted Semantic Improvements
 
-Status: `implemented_pending_external_review`. Phase 4C remains not started.
+Final status: `completed_targeted_improvement`; Phase 4B
+`completed_with_documented_limitations`; Phase 4C `not_started`.
+
+## Formal closure update
+
+External review communicated by the owner authorizes technical closure with
+limitations. Forty ChatGPT-assisted cases: 37 different, one shared_event,
+two uncertain; one shared-event FN and zero FPs observed in 38 conclusive
+cases. This is not independent human ground truth or population precision/
+recall evidence. Apple is a development regression, not generalization.
+Do not combine reviews. v1.1 is the conservative opt-in future candidate;
+v1 stays default/reproducible. See [formal closure](phase4b-closure.md), ADR-026.
+
+Pending statements/validations below describe the original delivery. The local
+aggregate now records completion while blind human fields remain blank; no
+evidence is rewritten or individual label invented. Synthetic prompts stay
+separate and unlabeled. Sufficient independent human validation remains an
+accepted limitation, not a condition blocking authorized technical closure.
 
 ## Diagnosis and implementation
 

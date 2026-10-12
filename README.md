@@ -138,7 +138,8 @@ permanece solamente en raw/lineage. No hay interpretación LLM, sentiment, news
 features ni conexión con modelos o ejecución.
 
 Phase 4B incorpora deduplicación editorial, entidades/security/aliases y clusters
-de eventos con snapshots causales; permanece `implemented_pending_external_review`.
+de eventos con snapshots causales; su estado final es
+`completed_with_documented_limitations` ([cierre formal](docs/phase4b-closure.md)).
 La configuración vive en `config/news_grouping.yaml` y `config/news_entities.yaml`.
 El piloto offline reutiliza Phase 4A sin downloads y escribe
 `data/reports/news/phase4b_pilot.json`; los snapshots están bajo
@@ -151,7 +152,16 @@ python scripts/run_phase4b_news_pilot.py --as-of 2026-10-12T13:17:53+00:00 --max
 Phase 4B.1 prepara una [revisión semántica externa](docs/phase4b-semantic-review.md)
 con 36 pares reales y etiquetas humanas inicialmente vacías. Los archivos ciegos
 y técnicos se mantienen localmente fuera de Git; los algoritmos y umbrales de 4B
-no cambian. El reporte sanitizado registra que la adjudicación está pendiente.
+no cambiaron en esa subfase. Estado final:
+`completed_ai_assisted_semantic_review` (34 diferentes, 1 duplicado editorial,
+1 incierto). Phase 4B.2: `completed_targeted_improvement` (40 casos: 37
+diferentes, 1 shared_event, 2 inciertos; un FN de evento, cero FP observados).
+Ambas revisiones fueron asistidas por ChatGPT, no ground truth humano
+independiente ni métricas poblacionales; el caso Apple es desarrollo.
+`news-groups-v1.1` es candidata conservadora opt-in para integración futura
+(`config/news_grouping_v1_1.yaml`); v1 permanece default y reproducible.
+Los reportes conservan sus estados históricos. Phase 4C sigue `not_started`;
+clusters no certifican exhaustividad ni sustituyen artículos individuales (ADR-026).
 La configuración no sensible vive en `config/news.yaml`; el piloto requiere
 `FINNHUB_API_KEY` en el entorno y, si falta, escribe un reporte bloqueado sin
 hacer solicitudes externas.

@@ -1,8 +1,23 @@
 # Phase 4B.1 independent semantic review protocol
 
-Phase 4B remains `implemented_pending_external_review`. This phase prepares
-external human adjudication; it does not assign reference labels or approve
-semantic quality. Phase 4C is not started.
+Original preparation status: `implemented_pending_external_review`. The tool
+prepared external adjudication without assigning reference labels or approving
+semantic quality. Final governance states are recorded below; 4C is not started.
+
+## Formal closure update
+
+Final 4B.1 status: `completed_ai_assisted_semantic_review`; 4B:
+`completed_with_documented_limitations`; 4C: `not_started`.
+The project owner's external review records 36 ChatGPT-assisted adjudications:
+34 different, one editorial duplicate, one uncertain and one duplicate FN
+subsequently used for development. This is not independent human ground truth
+or population evaluation. Do not pool with the separate 40-case 4B.2 review.
+The original 36 cases now have development/diagnostic provenance.
+See [formal closure](phase4b-closure.md) for limitations and governance approval.
+
+Pending-state observations and validations below are historical implementation
+records, not the final governance state. Blank human fields and previous
+reports are preserved; no reviewer or label is invented.
 
 ## Sampling and immutable prediction evidence
 
@@ -10,7 +25,7 @@ Phase 4B.2 provenance update: the original 36 cases were inspected in an
 AI-assisted adjudication and now constitute development/diagnostic material,
 not independent human ground truth. Original evidence and labels remain
 unchanged; the new ignored role sidecar records this status. Use the disjoint
-review described in `phase4b2-review.md` for new external adjudication.
+review described in `phase4b2-review.md` for the separate follow-up adjudication.
 
 `scripts/prepare_phase4b_semantic_review.py` reads the existing strict pilot
 snapshot and can reconstruct a bounded, balanced snapshot with up to 500

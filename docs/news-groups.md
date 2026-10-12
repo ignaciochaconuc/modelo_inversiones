@@ -1,6 +1,16 @@
 # Phase 4B usage and review
 
-Status: `implemented_pending_external_review`.
+Final status: `completed_with_documented_limitations`; Phase 4C `not_started`.
+See [formal closure](phase4b-closure.md) and ADR-026. v1 stays default and
+reproducible; `config/news_grouping_v1_1.yaml` explicitly opts into the
+conservative v1.1 candidate. No automatic production promotion.
+
+Clusters are compatibility evidence, not exhaustive semantic certification.
+Common ticker/company/topic/date is insufficient. A multi-event roundup can
+partially relate to a story without justifying deduplication or automatic
+clustering. Future consumers must accept individual articles and cannot assume
+all relationships are found. Recall/registry/text/historical-availability
+limitations remain accepted; no algorithm changes here.
 
 Configuration is separate from frozen Phase 3 configuration:
 `config/news_grouping.yaml` and `config/news_entities.yaml`. The registry is
