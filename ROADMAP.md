@@ -348,6 +348,18 @@ poblacional; la adjudicación humana y la revisión externa siguen pendientes.
 4C–4F permanecen no iniciadas: 4C interpretación LLM; 4D agregación/features;
 4E evaluación incremental; 4F freeze/decision.
 
+### Phase 4B.1 — Independent Semantic Quality Review
+
+**Status:** audit tooling implemented; external human adjudication pending
+
+La herramienta de auditoría prepara 36 pares reales, sin etiquetas humanas,
+con evidencia ciega separada de predicciones/puntuaciones. La selección causal
+y determinista incluye casos difíciles y comparaciones entre entidades; algoritmos,
+umbrales, registry y contratos de 4B permanecen intactos. Los archivos con
+contenido se conservan en una carpeta local ignorada; solo se prepara un reporte
+sanitizado publicable. Véase `docs/phase4b-semantic-review.md`. Phase 4B sigue
+`implemented_pending_external_review`; no hay métricas humanas hasta adjudicación.
+
 ## Phase 5 — Analyst + Earnings Agents
 
 **Objetivo:** incorporar cambios de consenso y análisis pre/post earnings.  

@@ -16,3 +16,6 @@ data/cache/*
 logs/*
 !data/**/.gitkeep
 !logs/.gitkeep
+
+# Licensed local evidence and external human adjudications (Phase 4B.1).
+/data/reports/news/phase4b_semantic_review/

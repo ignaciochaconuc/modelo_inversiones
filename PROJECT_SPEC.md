@@ -107,6 +107,12 @@ con noticias futuras. La investigación retrospectiva queda explícitamente
 marcada. El conjunto etiquetado sintético y el piloto local son diagnósticos de
 infraestructura/calidad y requieren revisión externa, no evalúan alpha.
 
+Phase 4B.1 prepara 36 pares reales para adjudicación humana independiente,
+con campos vacíos y evidencia ciega separada del diagnóstico algorítmico.
+Los pares utilizados posteriormente para mejorar el algoritmo deben pasar a
+desarrollo y no conservar la denominación de evaluación independiente. Hasta
+recibir etiquetas externas no se emiten métricas de calidad humana.
+
 ## LLM y control de costos
 
 `LLMRouter` selecciona proveedor/modelo por agente y tarea, usando `config/models.yaml`. Los clientes de OpenAI y Ollama son stubs deliberados. El pricing es configurable y no incluye precios reales hardcodeados.

@@ -147,6 +147,11 @@ El piloto offline reutiliza Phase 4A sin downloads y escribe
 ```powershell
 python scripts/run_phase4b_news_pilot.py --as-of 2026-10-12T13:17:53+00:00 --max-articles 200
 ```
+
+Phase 4B.1 prepara una [revisión semántica externa](docs/phase4b-semantic-review.md)
+con 36 pares reales y etiquetas humanas inicialmente vacías. Los archivos ciegos
+y técnicos se mantienen localmente fuera de Git; los algoritmos y umbrales de 4B
+no cambian. El reporte sanitizado registra que la adjudicación está pendiente.
 La configuración no sensible vive en `config/news.yaml`; el piloto requiere
 `FINNHUB_API_KEY` en el entorno y, si falta, escribe un reporte bloqueado sin
 hacer solicitudes externas.

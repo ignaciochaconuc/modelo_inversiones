@@ -108,6 +108,13 @@ exige compatibilidad entre todos los miembros. Cada snapshot identifica inputs,
 registry y configuración por SHA-256 y separa `computed_at` de disponibilidad.
 ADR-024 y `docs/news-groups.md` describen la reconstrucción strict/research.
 
+Phase 4B.1 añade una herramienta de auditoría bajo `audit.news_semantic_review`.
+Lee/reconstruye snapshots usando los contratos existentes, prepara evidencia
+ciega y predicciones por separado y calcula métricas solo tras adjudicación
+externa completa. Los archivos con contenido viven en una carpeta local
+explícitamente ignorada; el reporte publicable contiene solo metadatos
+sanitizados. No cambia algoritmos, thresholds, registry ni contratos de 4B.
+
 `MarketDataIngestionService` consulta el último dato local, aplica overlap, obtiene barras desde el adapter, valida, extrae acciones, hace upsert y reconstruye la serie latest-basis. La estructura física es `raw/tiingo/daily`, `raw/tiingo/corporate_actions` y `processed/market/split_adjusted_latest`. Los archivos permiten reconstruir provider, ingestión, schema, normalización, ticker y rango.
 
 La capa processed no usa los campos `adj*` del proveedor como fuente de verdad. Los conserva en raw para comparación, pero deriva su propia serie reproducible solo con splits. Latest-basis sirve para exploración y auditoría; decisiones históricas deben construir una vista as-of que filtre barras y acciones por disponibilidad. Véanse ADR-007 y ADR-008.
