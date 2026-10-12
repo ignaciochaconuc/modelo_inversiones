@@ -2,7 +2,6 @@ from pathlib import Path
 from typing import Any
 import os
 import yaml
-from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 from investment_system.core.exceptions import ConfigurationError
 
@@ -76,12 +75,10 @@ def load_yaml(path: str | Path) -> dict[str, Any]:
         return yaml.safe_load(stream) or {}
 
 def load_settings(config_dir: str | Path | None = None) -> Settings:
-    load_dotenv()
     root = Path(config_dir or os.getenv("INVESTMENT_CONFIG_DIR", "config"))
     return Settings.model_validate(load_yaml(root / "settings.yaml"))
 
 def load_news_settings(config_dir: str | Path | None = None) -> NewsSettings:
     """Load Phase 4A config separately so Phase 3 frozen config hashes stay unchanged."""
-    load_dotenv()
     root = Path(config_dir or os.getenv("INVESTMENT_CONFIG_DIR", "config"))
     return NewsSettings.model_validate(load_yaml(root / "news.yaml"))

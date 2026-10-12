@@ -5,6 +5,7 @@ import json
 import os
 
 from investment_system.core.config import load_settings
+from investment_system.core.environment import load_repository_environment, safe_cli_errors
 from investment_system.core.logging import configure_logging
 from investment_system.data.calendar import XNYSTradingCalendar
 from investment_system.data.ingestion import MarketDataIngestionService
@@ -27,12 +28,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--start", required=True, type=parse_date)
     parser.add_argument("--end", type=parse_date, default=date.today())
     parser.add_argument("--dry-run", action="store_true", help="show effective ranges without HTTP calls")
+    parser.add_argument("--confirm-real-requests", action="store_true")
     parser.add_argument("--force-full-refresh", action="store_true",
                         help="request the complete range, for example after a reviewed symbol alias change")
     return parser
 
+@safe_cli_errors
 def main() -> int:
     args = build_parser().parse_args()
+    if not args.dry_run:
+        load_repository_environment(real_operation_authorized=args.confirm_real_requests)
     configure_logging()
     settings = load_settings()
     universe = load_universe()

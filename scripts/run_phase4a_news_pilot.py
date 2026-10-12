@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 from typing import Any
 
-from dotenv import load_dotenv
+from investment_system.core.environment import load_repository_environment, safe_cli_errors
 
 from investment_system.core.config import load_news_settings, load_settings
 from investment_system.core.reproducibility import git_metadata
@@ -22,9 +22,9 @@ PILOT_TICKERS = ("AAPL", "MSFT", "NVDA", "JPM", "XOM")
 DEFAULT_REPORT = Path("data/reports/news/phase4a_pilot.json")
 
 
-def load_finnhub_api_key(dotenv_path: str | Path | None = None) -> str | None:
-    """Load local dotenv values without replacing process environment variables."""
-    load_dotenv(dotenv_path=dotenv_path, override=False)
+def load_finnhub_api_key(*, real_operation_authorized: bool = False) -> str | None:
+    """CLI-only credential bootstrap, explicitly authorized and repository-bound."""
+    load_repository_environment(real_operation_authorized=real_operation_authorized)
     return os.getenv("FINNHUB_API_KEY")
 
 
@@ -41,6 +41,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--end", type=parse_date)
     result.add_argument("--tickers", nargs="+", default=list(PILOT_TICKERS))
     result.add_argument("--report", type=Path, default=DEFAULT_REPORT)
+    result.add_argument("--confirm-real-requests", action="store_true")
     result.add_argument(
         "--allow-published-at-proxy", action="store_true",
         help="historical research only; strict PIT still excludes proxy records",
@@ -76,12 +77,13 @@ def blocked_report(args: argparse.Namespace, reason: str) -> dict[str, Any]:
     }
 
 
+@safe_cli_errors
 def main() -> int:
     args = parser().parse_args()
     today = datetime.now(timezone.utc).date()
     args.end = args.end or (today - timedelta(days=1))
     args.start = args.start or (args.end - timedelta(days=4))
-    api_key = load_finnhub_api_key()
+    api_key = load_finnhub_api_key(real_operation_authorized=args.confirm_real_requests)
     if not api_key:
         report = blocked_report(args, "FINNHUB_API_KEY is not configured")
         write_report(args.report, report)
@@ -114,7 +116,7 @@ def main() -> int:
         first = service.ingest_items(items)
         second = service.ingest_items(items)
     except Exception as error:  # report provider/runtime failures without hiding their type
-        errors.append(f"{type(error).__name__}: {error}")
+        errors.append("provider_operation_failed")  # Never retain exception bodies/keys.
         report = blocked_report(args, errors[0])
         report["status"] = "blocked_provider_error"
         write_report(args.report, report)

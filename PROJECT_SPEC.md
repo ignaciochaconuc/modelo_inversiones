@@ -154,6 +154,9 @@ contabilidad separada de lecturas/escrituras de caché, un intento y US$0,05
 como máximo. Preflight offline comparte transporte/reserva; preserva contratos
 anteriores y bloquea tarifas caducadas o fuera de banda. Véanse ADR-029 y
 `docs/phase4c2-smoke-preparation.md`. No se ha ejecutado inferencia real.
+ADR-030 permite bootstrap CLI explícito de `.env` desde la raíz del repositorio,
+sin sobrescribir el entorno. Configuración e imports siguen libres de carga
+de secrets; `--validate-only`, `--dry-run` y `--skip-download` no la realizan.
 Se preservan protocolo 4C.1 y artefactos previos; ni TEST oficial ni comparaciones
 reales se ejecutan. Véanse ADR-028 y `docs/phase4c2-review.md`.
 4C.3 permanece `not_started`; interpretaciones experimentales no operativas,

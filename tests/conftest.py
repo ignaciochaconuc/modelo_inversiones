@@ -4,6 +4,13 @@ import pytest
 
 
 @pytest.fixture(autouse=True)
+def isolate_repository_environment(tmp_path, monkeypatch):
+    """Offline tests can only bootstrap synthetic .env files, never real secrets."""
+    from investment_system.core import environment
+    monkeypatch.setattr(environment, "REPOSITORY_ROOT", tmp_path)
+
+
+@pytest.fixture(autouse=True)
 def forbid_real_network(monkeypatch):
     original_connect=socket.socket.connect
     def blocked_connect(sock,*args,**kwargs):

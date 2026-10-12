@@ -16,8 +16,10 @@ from investment_system.data.news_entities import load_entity_registry
 from investment_system.data.storage.news_store import NewsStore
 from investment_system.llm.openai_client import OpenAIClient
 from investment_system.llm.router import LLMRouter
+from investment_system.core.environment import load_repository_environment, EnvironmentBootstrapError, safe_cli_errors
 
 
+@safe_cli_errors
 def main() -> int:
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--confirm-real-inference",action="store_true")
@@ -34,7 +36,13 @@ def main() -> int:
     if not args.confirm_real_inference and not args.validate_only:
         print(json.dumps({"status":"disabled","error":"explicit_confirmation_required","provider_calls":0}))
         return 2
-    # Environment ONLY; do not load dotenv or config-based credentials.
+    # Credential bootstrap is forbidden for offline validation, even with a key.
+    if not args.validate_only:
+        try:
+            load_repository_environment(real_operation_authorized=args.confirm_real_inference)
+        except EnvironmentBootstrapError:
+            print(json.dumps({"status":"blocked","error":"repository_environment_load_failed","provider_calls":0}))
+            return 2
     if not args.validate_only and not os.getenv("OPENAI_API_KEY"):
         print(json.dumps({"status":"blocked","error":"missing_api_key","provider_calls":0}))
         return 2

@@ -5,6 +5,7 @@ import json
 import os
 
 from investment_system.core.config import load_settings
+from investment_system.core.environment import load_repository_environment, safe_cli_errors
 from investment_system.core.logging import configure_logging
 from investment_system.data.calendar import XNYSTradingCalendar
 from investment_system.data.full_universe import FullUniverseBuild, FullUniverseRequest
@@ -31,14 +32,18 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--end", type=parse_date, default=date.today())
     parser.add_argument("--with-targets", action="store_true")
     parser.add_argument("--skip-download", action="store_true", help="use only locally stored raw data")
+    parser.add_argument("--confirm-real-requests", action="store_true")
     parser.add_argument("--skip-features", action="store_true", help="resume ingestion without rebuilding features")
     parser.add_argument("--skip-provider-ticker", action="append", default=[],
                         help="explicitly skip a reviewed provider symbol without inventing a mapping")
     return parser
 
 
+@safe_cli_errors
 def main() -> int:
     args = build_parser().parse_args()
+    if not args.skip_download:
+        load_repository_environment(real_operation_authorized=args.confirm_real_requests)
     configure_logging()
     settings, universe = load_settings(), load_universe()
     calendar = XNYSTradingCalendar()

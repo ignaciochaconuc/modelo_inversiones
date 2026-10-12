@@ -5,6 +5,7 @@ import json
 import os
 
 from investment_system.core.config import load_settings
+from investment_system.core.environment import load_repository_environment, safe_cli_errors
 from investment_system.core.logging import configure_logging
 from investment_system.data.calendar import XNYSTradingCalendar
 from investment_system.data.ingestion import MarketDataIngestionService
@@ -32,13 +33,17 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--tickers", nargs="+", default=["AAPL", "MSFT", "NVDA"])
     parser.add_argument("--benchmark", default="SPY")
     parser.add_argument("--skip-download", action="store_true")
+    parser.add_argument("--confirm-real-requests", action="store_true")
     parser.add_argument("--skip-features", action="store_true")
     parser.add_argument("--with-targets", action="store_true")
     return parser
 
 
+@safe_cli_errors
 def main() -> int:
     args = build_parser().parse_args()
+    if not args.skip_download:
+        load_repository_environment(real_operation_authorized=args.confirm_real_requests)
     configure_logging()
     settings, universe = load_settings(), load_universe()
     benchmark = args.benchmark.strip().upper()

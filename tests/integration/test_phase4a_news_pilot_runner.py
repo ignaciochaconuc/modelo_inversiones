@@ -6,7 +6,7 @@ def test_runner_loads_finnhub_key_from_dotenv(tmp_path, monkeypatch) -> None:
     monkeypatch.delenv("FINNHUB_API_KEY", raising=False)
     (tmp_path / ".env").write_text("FINNHUB_API_KEY=dotenv-test-value\n", encoding="utf-8")
 
-    assert load_finnhub_api_key(tmp_path / ".env") == "dotenv-test-value"
+    assert load_finnhub_api_key(real_operation_authorized=True) == "dotenv-test-value"
 
 
 def test_system_environment_takes_precedence_over_dotenv(tmp_path, monkeypatch) -> None:
@@ -14,4 +14,4 @@ def test_system_environment_takes_precedence_over_dotenv(tmp_path, monkeypatch) 
     monkeypatch.setenv("FINNHUB_API_KEY", "system-test-value")
     (tmp_path / ".env").write_text("FINNHUB_API_KEY=dotenv-test-value\n", encoding="utf-8")
 
-    assert load_finnhub_api_key(tmp_path / ".env") == "system-test-value"
+    assert load_finnhub_api_key(real_operation_authorized=True) == "system-test-value"

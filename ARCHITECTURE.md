@@ -162,6 +162,9 @@ ADR-029 añade un perfil opt-in v2 con escrituras de caché separadas y
 La CLI de smoke exige cuatro tarifas y un intento; `--validate-only` comparte
 preparación/reserva sin llamadas ni persistencia. Véase
 `docs/phase4c2-smoke-preparation.md`; el primer smoke continúa sin ejecutar.
+ADR-030 centraliza `.env` de la raíz del repositorio tras autorización real,
+sin override ni carga en imports, loaders YAML, tests o modos offline. Los
+clientes/agentes/router no cargan credenciales; presupuestos y PIT se conservan.
 4C.2: `implemented_pending_external_review`; smoke no ejecutado; 4C.3 `not_started`.
 Sin Feature Store ni señales operativas; no se modifican algoritmos 4B.
 

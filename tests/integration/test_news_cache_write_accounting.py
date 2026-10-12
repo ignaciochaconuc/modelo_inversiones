@@ -152,6 +152,7 @@ def test_offline_cli_preflight_never_initializes_live_runtime(tmp_path, monkeypa
     def forbidden(*args, **kwargs):
         pytest.fail("offline preflight must not initialize runtime or call a provider")
     monkeypatch.setattr(cli, "LocalInterpretationStore", forbidden)
+    monkeypatch.setattr(cli, "load_repository_environment", forbidden)
     monkeypatch.setattr(OpenAIClient, "complete", forbidden)
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     monkeypatch.setattr("sys.argv", ["smoke", "--config", str(path), "--model", MODEL,

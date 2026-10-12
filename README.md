@@ -83,15 +83,23 @@ Copie `.env.example` a `.env` si necesita configurar proveedores en fases futura
 
 ```bash
 python scripts/validate_data.py
-python scripts/run_phase4a_news_pilot.py --start 2026-10-06 --end 2026-10-10
+python scripts/run_phase4a_news_pilot.py --start 2026-10-06 --end 2026-10-10 --confirm-real-requests
 python scripts/build_feature_store.py
 python scripts/ingest_market_data.py --ticker AAPL --start 2020-01-01 --dry-run
 python scripts/build_quantitative_feature_store.py --ticker AAPL --start 2010-01-01 --dry-run
-python scripts/run_real_data_pilot.py --end 2026-10-05 --with-targets
-python scripts/build_full_universe.py --raw-start 2009-01-01 --feature-start 2010-01-01 --end 2026-10-05 --with-targets
+python scripts/run_real_data_pilot.py --end 2026-10-05 --with-targets --confirm-real-requests
+python scripts/build_full_universe.py --raw-start 2009-01-01 --feature-start 2010-01-01 --end 2026-10-05 --with-targets --confirm-real-requests
 ```
 
-Para una descarga real, defina `TIINGO_API_KEY` solo en el `.env` local y quite `--dry-run`. También puede usar `--universe`; el procesamiento es secuencial y respeta el throttling configurado.
+Para una descarga real, configure `TIINGO_API_KEY` en el `.env` de la raíz del
+repositorio o en el entorno, quite `--dry-run` y añada `--confirm-real-requests`.
+El mismo flag autoriza Finnhub y diagnóstico de símbolos. El smoke LLM conserva
+`--confirm-real-inference`. El bootstrap centralizado usa `override=False`,
+sin búsqueda por cwd ni interpolación; imports, tests, loaders YAML,
+`--validate-only`, `--dry-run` y `--skip-download` no cargan `.env`.
+No coloque claves en YAML, argumentos, reportes o Git. Véase
+[ADR-030](docs/decisions/ADR-030-explicit-cli-environment-bootstrap.md).
+También puede usar `--universe`; el procesamiento sigue secuencial y con throttling.
 
 Los datasets quedan separados en `data/raw/tiingo/daily`, `data/raw/tiingo/corporate_actions` y `data/processed/market/split_adjusted_latest`. Este último usa la base accionaria más reciente y no debe utilizarse ciegamente en backtests; las decisiones históricas requieren la vista split-adjusted as-of. El universo versionado es fijo: no es point-in-time e introduce survivorship bias.
 

@@ -67,9 +67,11 @@ python scripts/run_phase4c2_news_smoke.py --config config/news_interpretation.lo
 Expected: `validated_offline`, zero provider calls, zero persistence writes,
 one attempt maximum, strict structured output and the reservation above.
 Preparation found `OPENAI_API_KEY` absent from the process environment. This
-does not inspect `.env` or invalidate any locally stored credential. Real CLI
-reads environment only, does not load `.env`, and never prints the key. Before
-later execution, securely supply it in the shell environment. Never paste it
+does not inspect `.env` or invalidate any locally stored credential. Subsequent
+ADR-030 adds centralized loading of the repository-root `.env` ONLY after
+`--confirm-real-inference`, with `override=False`; existing shell values win.
+Imports and `--validate-only` never load it. The provider client still reads
+only the initialized environment and never prints the key. Never paste it
 into YAML, CLI arguments, reports or a tracked file. Account model access,
 billing balance and remote retention entitlements were NOT checked offline.
 

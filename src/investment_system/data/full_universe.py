@@ -64,7 +64,8 @@ def _json_default(value: Any) -> Any:
 
 
 def _safe_error(error: BaseException) -> str:
-    message = str(error).replace("\r", " ").replace("\n", " ")[:500]
+    from investment_system.core.environment import redact_external_credentials
+    message = redact_external_credentials(str(error)).replace("\r", " ").replace("\n", " ")[:500]
     return re.sub(
         r"(?i)(authorization|token|api[_-]?key)(\s*[:=]\s*|\s+)[^\s,;]+",
         r"\1\2[REDACTED]", message,
