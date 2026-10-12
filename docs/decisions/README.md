@@ -28,3 +28,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-024: Deterministic news groups and temporal corporate identity](ADR-024-news-groups-and-temporal-entity-resolution.md)
 - [ADR-025: Targeted editorial equivalence, opt-in v1.1](ADR-025-targeted-editorial-equivalence.md)
 - [ADR-026: Technical closure and partial event relationships](ADR-026-news-closure-and-partial-event-relations.md)
+- [ADR-027: News interpretation contracts and derived-result PIT](ADR-027-news-interpretation-contracts-and-derived-pit.md)

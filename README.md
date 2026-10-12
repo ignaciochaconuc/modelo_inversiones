@@ -160,8 +160,15 @@ Ambas revisiones fueron asistidas por ChatGPT, no ground truth humano
 independiente ni métricas poblacionales; el caso Apple es desarrollo.
 `news-groups-v1.1` es candidata conservadora opt-in para integración futura
 (`config/news_grouping_v1_1.yaml`); v1 permanece default y reproducible.
-Los reportes conservan sus estados históricos. Phase 4C sigue `not_started`;
-clusters no certifican exhaustividad ni sustituyen artículos individuales (ADR-026).
+Los reportes conservan sus estados históricos; clusters no certifican exhaustividad
+ni sustituyen artículos individuales (ADR-026). El cierre de 4B no inició 4C.
+
+La autorización posterior de [Phase 4C.1](docs/phase4c1-review.md) implementa
+exclusivamente contratos y evaluación (`implemented_pending_external_review`):
+revisión individual, eventos múltiples, evidencia/abstención y replay simulado.
+No ejecuta LLMs reales ni produce señales; resultados experimentales no operativos.
+El [protocolo externo](docs/phase4c1-evaluation.md) precede cualquier modelo.
+4C.2/4C.3 siguen `not_started`. No hay cambios a defaults/contratos de 4B.
 La configuración no sensible vive en `config/news.yaml`; el piloto requiere
 `FINNHUB_API_KEY` en el entorno y, si falta, escribe un reporte bloqueado sin
 hacer solicitudes externas.

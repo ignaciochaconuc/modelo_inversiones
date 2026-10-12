@@ -130,9 +130,20 @@ parcial, disponibilidad histórica y restricciones de texto Finnhub condicionan
 futuros contratos. Clusters no certifican exhaustividad; ticker/empresa/tema/fecha
 no bastan, recopilaciones no se fusionan automáticamente con cada acontecimiento
 y relaciones parciales no necesariamente justifican agrupación. Futura 4C deberá
-admitir artículos individuales. Phase 4C permanece `not_started`.
+admitir artículos individuales. En el cierre de 4B, Phase 4C quedó `not_started`.
 No modifica PIT, targets, Phase 3 ni interpretación LLM; véase
 `docs/phase4b-closure.md` y ADR-026. No se reescriben ADR-024/025 ni evidencias.
+
+Una autorización posterior implementa solo Phase 4C.1, estado
+`implemented_pending_external_review`: contratos de interpretación por revisión,
+eventos múltiples, evidencia citada, desconocidos/abstenciones y consecuencias
+económicas cualitativas, no retornos esperados ni señales. Preparación del contrato
+LLM existente y validación/replay offline, sin proveedor real. Todas las salidas
+simuladas/reconstruidas son experimentales y no operativas; cálculo actual no
+puede declarar disponibilidad histórica. No modifica NewsAgent, Feature Store,
+modelos ni Phase 4B. Protocolo externo separa desarrollo/calibración/evaluación
+y no fabrica etiquetas humanas. Véanse ADR-027 y `docs/phase4c1-review.md`.
+4C.2 y 4C.3 permanecen `not_started`, sin autorización implícita para continuarlas.
 
 ## LLM y control de costos
 

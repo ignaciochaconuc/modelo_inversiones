@@ -134,7 +134,21 @@ empresa, tema o fecha no prueba compartir acontecimiento; clusters no certifican
 semántica exhaustiva. Recopilaciones multievento pueden relacionarse parcialmente
 con artículos sin justificar deduplicación/agrupación automática. Una futura
 4C deberá aceptar artículos individuales, preservar lineage/incertidumbre/PIT
-y no asumir recall completo. Phase 4C sigue `not_started`; no se implementa aquí.
+y no asumir recall completo. Ese cierre no inició Phase 4C.
+
+La autorización posterior de 4C.1 añade exclusivamente contratos bajo
+`agents.news_interpretation`: request individual as-of, eventos múltiples,
+interpretación económica con fact/inference/unknown y replay de LLMResponse
+simulada. Reutiliza LLMRequest sin cambiar router/clientes/NewsAgent ni Phase 4B.
+No hay llamada de inferencia ni conexión a features. Las citas usan offsets
+exactos; el texto es dato no confiable, no instrucción. Snapshot de contexto
+computado después del corte no es conocimiento histórico estricto.
+
+El resultado separa disponibilidad de evidencia, generación, validación y
+disponibilidad derivada; todo replay 4C.1 es experimental, nunca operativo.
+ADR-027 y `docs/phase4c1-review.md` documentan versiones/fingerprints,
+abstención, límites de validación semántica y evaluación externa previa a modelos.
+4C.1: `implemented_pending_external_review`; 4C.2/4C.3: `not_started`.
 
 ## Point-in-time y Feature Store
 

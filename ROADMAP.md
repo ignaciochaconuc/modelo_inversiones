@@ -347,8 +347,8 @@ poblacional. La revisión externa autoriza cierre técnico con limitaciones,
 no certificación semántica exhaustiva. Véase `docs/phase4b-closure.md` y ADR-026.
 v1 permanece default/reproducible; v1.1 es candidata conservadora opt-in.
 
-4C–4F permanecen no iniciadas: 4C interpretación LLM; 4D agregación/features;
-4E evaluación incremental; 4F freeze/decision.
+En el cierre de 4B, 4C–4F estaban no iniciadas. La autorización posterior
+se limita a contratos/evaluación 4C.1; 4C.2/4C.3 y 4D–4F siguen no iniciadas.
 
 ### Phase 4B.1 — Independent Semantic Quality Review
 
@@ -379,12 +379,25 @@ Véase `docs/phase4b2-review.md` y ADR-025. No iniciar 4C.
 
 ### Phase 4C — LLM News Interpretation
 
-**Status:** not_started
+**Status:** in progress — contracts only; no real inference
 
-El cierre no inicia diseño ni implementación. Una futura autorización deberá
-respetar limitaciones de recall, registry y disponibilidad, admitir artículos
-individuales y no asumir semántica exhaustiva ni fusionar recopilaciones
-automáticamente con todos sus acontecimientos (ADR-026).
+El cierre de 4B no inició 4C; una autorización posterior habilita exclusivamente
+4C.1. Se conservan limitaciones de recall, registry y disponibilidad, artículos
+individuales y relaciones parciales sin agrupación automática (ADR-026).
+
+### Phase 4C.1 — LLM News Interpretation Contracts & Evaluation Design
+
+**Status:** implemented_pending_external_review
+
+Contratos versionados, evidencia por offsets, cero/uno/varios eventos, categorías
+fact/inference/unknown, abstención y reconstrucción de respuestas simuladas.
+Disponibilidad del texto, generación/validación real y elegibilidad derivada
+quedan separadas; todas las salidas son experimentales y no operativas.
+Preparación de LLMRequest existente, sin inferencia ni segundo router; protocolo
+externo antes de modelos y fixtures ficticios sin ground truth humano inventado.
+Véanse ADR-027, `docs/phase4c1-review.md` y `docs/phase4c1-evaluation.md`.
+Phase 4C.2/4C.3: `not_started`; requieren nueva autorización. Sin APIs, TEST,
+Feature Store, modelos, portfolio, riesgo ni ejecución.
 
 ## Phase 5 — Analyst + Earnings Agents
 
