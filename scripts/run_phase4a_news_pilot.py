@@ -8,6 +8,8 @@ import os
 from pathlib import Path
 from typing import Any
 
+from dotenv import load_dotenv
+
 from investment_system.core.config import load_news_settings, load_settings
 from investment_system.core.reproducibility import git_metadata
 from investment_system.data.news_ingestion import NewsIngestionService
@@ -18,6 +20,12 @@ from investment_system.data.storage.news_store import NewsStore
 
 PILOT_TICKERS = ("AAPL", "MSFT", "NVDA", "JPM", "XOM")
 DEFAULT_REPORT = Path("data/reports/news/phase4a_pilot.json")
+
+
+def load_finnhub_api_key(dotenv_path: str | Path | None = None) -> str | None:
+    """Load local dotenv values without replacing process environment variables."""
+    load_dotenv(dotenv_path=dotenv_path, override=False)
+    return os.getenv("FINNHUB_API_KEY")
 
 
 def parse_date(value: str) -> date:
@@ -73,7 +81,7 @@ def main() -> int:
     today = datetime.now(timezone.utc).date()
     args.end = args.end or (today - timedelta(days=1))
     args.start = args.start or (args.end - timedelta(days=4))
-    api_key = os.getenv("FINNHUB_API_KEY")
+    api_key = load_finnhub_api_key()
     if not api_key:
         report = blocked_report(args, "FINNHUB_API_KEY is not configured")
         write_report(args.report, report)
