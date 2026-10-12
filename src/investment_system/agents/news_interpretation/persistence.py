@@ -3,11 +3,14 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
+from pydantic import TypeAdapter
 
 from investment_system.core.time_utils import ensure_utc
 from investment_system.data.storage.news_store import NewsStore
 from investment_system.llm.cache import AnalysisCache
-from investment_system.agents.news_interpretation.runtime_schemas import StoredInterpretationAttempt
+from investment_system.agents.news_interpretation.runtime_schemas import StoredInterpretationAttempt, StoredInterpretationAttemptV2
+
+ATTEMPT_ADAPTER = TypeAdapter(StoredInterpretationAttempt | StoredInterpretationAttemptV2)
 
 
 LOCAL_ROOT=Path("data/cache/news_interpretation")
@@ -26,7 +29,7 @@ class LocalInterpretationStore:
         return self.root/"attempts"/(record_id+".json")
 
     def write(self,record: StoredInterpretationAttempt) -> str:
-        record=StoredInterpretationAttempt.model_validate(record.model_dump(mode="json"))
+        record=ATTEMPT_ADAPTER.validate_python(record.model_dump(mode="json"))
         path=self.record_path(record.record_id)
         if path.exists():
             if json.loads(path.read_text(encoding="utf-8")) != record.model_dump(mode="json"):
@@ -36,7 +39,7 @@ class LocalInterpretationStore:
         return record.record_id
 
     def read(self,record_id: str,*,now: datetime | None=None) -> StoredInterpretationAttempt:
-        record=StoredInterpretationAttempt.model_validate_json(self.record_path(record_id).read_text(encoding="utf-8"))
+        record=ATTEMPT_ADAPTER.validate_json(self.record_path(record_id).read_text(encoding="utf-8"))
         if record.record_id != record_id:
             raise ValueError("stored record hash mismatch")
         if ensure_utc(now or datetime.now(timezone.utc)) >= record.expires_at:

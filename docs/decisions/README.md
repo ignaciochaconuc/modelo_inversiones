@@ -30,3 +30,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-026: Technical closure and partial event relationships](ADR-026-news-closure-and-partial-event-relations.md)
 - [ADR-027: News interpretation contracts and derived-result PIT](ADR-027-news-interpretation-contracts-and-derived-pit.md)
 - [ADR-028: Real news inference and cost governance](ADR-028-real-news-inference-and-cost-governance.md)
+- [ADR-029: Cache-write pricing and offline smoke preflight](ADR-029-cache-write-pricing-and-smoke-preflight.md)

@@ -175,6 +175,10 @@ presupuestos durables, precios explícitos, caché/replay y persistencia local
 restringida; estado `implemented_pending_external_review`. El smoke de una noticia
 requiere flag, modelo/precios/configuración y presupuesto: está preparado, no
 ejecutado. No hay modelo universal ni precio desconocido tratado como gratuito.
+La [preparación del primer smoke](docs/phase4c2-smoke-preparation.md) verifica
+`gpt-5.6-luna`, corrige escrituras de caché con contratos v2 opt-in y permite
+`--validate-only` sin API ni persistencia. Un intento, máximo US$0,05;
+precios con caducidad y limpieza de contenido explícitas (ADR-029).
 4C.3 sigue `not_started`. Ninguna salida es operativa; defaults/contratos 4B intactos.
 La configuración no sensible vive en `config/news.yaml`; el piloto requiere
 `FINNHUB_API_KEY` en el entorno y, si falta, escribe un reporte bloqueado sin

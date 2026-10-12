@@ -21,7 +21,35 @@ from investment_system.agents.news_interpretation.budget import RunBudget, Budge
 from investment_system.agents.news_interpretation.persistence import LocalInterpretationStore
 from investment_system.agents.news_interpretation.runtime_schemas import (
     InterpretationRuntimeSettings, StoredInterpretationAttempt, InterpretationDelivery,
+    StoredInterpretationAttemptV2, CacheWritePriceSchedule,
 )
+
+
+def prepare_invocation(request: NewsInterpretationRequest, settings: InterpretationRuntimeSettings):
+    """Pure preparation shared by offline preflight and actual execution."""
+    a = settings.adapter
+    configuration = ModelConfiguration(provider="openai", model=a.model, temperature=a.temperature,
+        max_output_tokens=a.max_output_tokens, max_estimated_cost_usd=settings.request_budget_usd)
+    llm = prepare_llm_request(request, configuration)
+    llm.response_schema = InterpretationPayload.model_json_schema()
+    wire = OpenAIClient(a).wire_payload(llm, a.model)
+    key = fingerprint({"request": request.request_id, "evidence": request.evidence_fingerprint,
+        "validation_version": VALIDATION_VERSION, "settings": settings.model_dump(mode="json"), "wire": wire})
+    return llm, wire, key
+
+
+def reservation_bound(wire: dict, settings: InterpretationRuntimeSettings) -> tuple[int, float]:
+    """Conservative UTF-8 bound, never a remote token-counting request."""
+    input_bound = len(json.dumps(wire, ensure_ascii=False, sort_keys=True).encode("utf-8")) + 256
+    a, price = settings.adapter, settings.pricing
+    if input_bound + a.max_output_tokens > a.context_window_tokens:
+        raise ValueError("estimated_input_exceeds_model_context")
+    rates = [price.input_per_million, price.cached_input_per_million]
+    if isinstance(price, CacheWritePriceSchedule):
+        if input_bound > min(price.short_context_max_input_tokens, a.capability_max_input_tokens):
+            raise ValueError("estimated_input_exceeds_verified_price_band")
+        rates.append(price.cache_write_per_million)
+    return input_bound, (input_bound * max(rates) + a.max_output_tokens * price.output_per_million) / 1_000_000
 
 
 class NewsInterpretationService:
@@ -46,14 +74,7 @@ class NewsInterpretationService:
                                   max_output_tokens=a.max_output_tokens,max_estimated_cost_usd=self.settings.request_budget_usd)
 
     def invocation(self,request: NewsInterpretationRequest):
-        llm=prepare_llm_request(request,self._configuration())
-        llm.response_schema=InterpretationPayload.model_json_schema()
-        # Same transport preparation is used for real and simulated clients.
-        wire=OpenAIClient(self.settings.adapter).wire_payload(llm,self.settings.adapter.model)
-        key=fingerprint({"request":request.request_id,"evidence":request.evidence_fingerprint,
-                         "validation_version":VALIDATION_VERSION,"settings":self.settings.model_dump(mode="json"),
-                         "wire":wire})
-        return llm,wire,key
+        return prepare_invocation(request, self.settings)
 
     def _price(self,now):
         schedule=self.settings.pricing
@@ -109,10 +130,10 @@ class NewsInterpretationService:
                 price=self._price(started)
             except ValueError as exc:
                 return InterpretationDelivery(retrieval_mode="new_inference",cache_key=key,error_code=str(exc),attempt_record_ids=tuple(ids),record=last,record_id=last.record_id if last else None,additional_attempts=len(ids),additional_provider_cost_usd=None if unknown else known_total)
-            input_bound=len(json.dumps(wire,ensure_ascii=False,sort_keys=True).encode("utf-8"))+256
-            if input_bound+self.settings.adapter.max_output_tokens > self.settings.adapter.context_window_tokens:
-                return InterpretationDelivery(retrieval_mode="new_inference",cache_key=key,error_code="estimated_input_exceeds_model_context",attempt_record_ids=tuple(ids),record=last,record_id=last.record_id if last else None,additional_attempts=len(ids),additional_provider_cost_usd=None if unknown else known_total)
-            maximum=(input_bound*max(price.input_per_million,price.cached_input_per_million)+self.settings.adapter.max_output_tokens*price.output_per_million)/1_000_000
+            try:
+                _, maximum = reservation_bound(wire, self.settings)
+            except ValueError as exc:
+                return InterpretationDelivery(retrieval_mode="new_inference",cache_key=key,error_code=str(exc),attempt_record_ids=tuple(ids),record=last,record_id=last.record_id if last else None,additional_attempts=len(ids),additional_provider_cost_usd=None if unknown else known_total)
             try:
                 attempt_id=self.budget.reserve(key,maximum)
             except BudgetExceeded:
@@ -140,6 +161,19 @@ class NewsInterpretationService:
                 known_usage=False;error="invalid_usage_telemetry";retryable=False
             attempt_prices=PricingRegistry({("openai",model):price})
             cost=attempt_prices.estimate("openai",model,response.input_tokens,response.cached_input_tokens,response.output_tokens) if known_usage and response.provider=="openai" and response.model==model else None
+            write_tokens = None
+            v2 = isinstance(self.settings.pricing, CacheWritePriceSchedule)
+            if v2:
+                written = response.raw.get("cache_write_tokens") if response else None
+                write_tokens = written if type(written) is int and written >= 0 else None
+                known_usage = bool(known_usage and write_tokens is not None)
+                cost = None
+                if known_usage and response.provider == "openai" and response.model == model:
+                    try:
+                        cost = self.settings.pricing.estimate_usage(response.input_tokens,
+                            response.cached_input_tokens, write_tokens, response.output_tokens)
+                    except ValueError as exc:
+                        known_usage = False; error = str(exc); retryable = False
             accounted=self.budget.settle(attempt_id,cost)
             unknown=unknown or cost is None
             if cost is not None:known_total+=cost
@@ -170,7 +204,8 @@ class NewsInterpretationService:
             persisted=ensure_utc(self.clock())
             # Copy only typed standard response fields; raw headers/error bodies excluded.
             durable=response.model_copy(update={"raw":{}}) if response else None
-            record=StoredInterpretationAttempt(attempt_id=attempt_id,cache_key=key,run_id=self.run_id,attempt_number=number,
+            record_type = StoredInterpretationAttemptV2 if v2 else StoredInterpretationAttempt
+            record=record_type(**({"cache_write_tokens":write_tokens} if v2 else {}),attempt_id=attempt_id,cache_key=key,run_id=self.run_id,attempt_number=number,
                 request=request,settings=self.settings,started_at=started,received_at=received,persisted_at=persisted,
                 expires_at=persisted+timedelta(hours=self.settings.local_content_retention_hours),requested_provider="openai",requested_model=model,
                 actual_model=response.model if response else None,effective_parameters=self.settings.adapter.effective_parameters,

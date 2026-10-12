@@ -46,6 +46,27 @@ class OpenAISettings(BaseModel):
                 **{name: getattr(self, name) for name in ("temperature", "reasoning_effort") if getattr(self, name) is not None}}
 
 
+class OpenAISettingsV2(OpenAISettings):
+    """Explicit Responses wire profile; legacy manifests remain byte-compatible."""
+    transport_version: Literal["openai-responses-settings-v2"]
+    reasoning_effort: Literal["none", "minimal", "low", "medium", "high", "xhigh", "max"] | None = None
+    capability_max_output_tokens: int = Field(gt=0, le=128000)
+    capability_max_input_tokens: int = Field(gt=0)
+    service_tier: Literal["default"]
+    prompt_cache_mode: Literal["implicit", "explicit"]
+    prompt_cache_ttl: Literal["30m"]
+
+    @property
+    def effective_parameters(self) -> dict:
+        parameters = super().effective_parameters
+        effort = parameters.pop("reasoning_effort", None)
+        if effort is not None:
+            parameters["reasoning"] = {"effort": effort}
+        parameters.update(service_tier=self.service_tier,
+                          prompt_cache_options={"mode": self.prompt_cache_mode, "ttl": self.prompt_cache_ttl})
+        return parameters
+
+
 class LLMProviderError(RuntimeError):
     """Only safe codes, never provider messages/headers or secret chaining."""
     def __init__(self, code: str, *, retryable: bool = False, response=None):

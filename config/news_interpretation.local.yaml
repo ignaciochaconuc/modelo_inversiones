@@ -1,0 +1,45 @@
+# Verified against official OpenAI Docs on 2026-10-12. No credentials.
+# Local validity is a conservative re-verification deadline, not a price guarantee.
+settings_version: news-inference-settings-v2
+adapter:
+  transport_version: openai-responses-settings-v2
+  provider: openai
+  model: gpt-5.6-luna
+  endpoint: https://api.openai.com/v1/responses
+  response_mode: json_schema_strict
+  max_output_tokens: 2048
+  timeout_seconds: 60
+  temperature: null
+  reasoning_effort: none
+  service_tier: default
+  prompt_cache_mode: implicit
+  prompt_cache_ttl: 30m
+  capabilities_model: gpt-5.6-luna
+  structured_outputs_supported: true
+  capability_max_output_tokens: 128000
+  capability_max_input_tokens: 922000
+  context_window_tokens: 1050000
+  supported_parameters: [reasoning_effort]
+  capability_source: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+  capabilities_verified_at: '2026-10-12T19:23:26Z'
+pricing:
+  pricing_version: news-token-prices-v2
+  provider: openai
+  model: gpt-5.6-luna
+  input_per_million: 0.20
+  cached_input_per_million: 0.02
+  cache_write_per_million: 0.25
+  output_per_million: 1.20
+  # Larger inputs are blocked, not charged using these short-context rates.
+  short_context_max_input_tokens: 272000
+  valid_from: '2026-10-12T19:23:26Z'
+  valid_until: '2026-10-13T00:00:00Z'
+  source: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+request_budget_usd: 0.05
+run_budget_usd: 0.05
+max_attempts: 1
+retry_invalid_response: false
+retry_delay_seconds: 0
+# TTL rejects replay; physical purge remains a separate authorized operation.
+local_content_retention_hours: 24
+local_restricted_storage_acknowledged: true

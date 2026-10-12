@@ -410,6 +410,10 @@ reservas durables por solicitud/corrida, costes desconocidos no asumidos cero,
 reintentos limitados, caché autorizada y registros inmutables con retención local.
 CLI de una noticia preparada pero no ejecutada. Protocolo 4C.1 congelado;
 comparaciones reales no ejecutadas. Véanse ADR-028 y `docs/phase4c2-review.md`.
+Primer smoke `prepared_offline_not_executed`: perfil local `gpt-5.6-luna`,
+cuatro tarifas versionadas, un intento, presupuesto US$0,05 y preflight sin
+proveedor/persistencia. ADR-029 documenta la corrección mínima y compatibilidad;
+`docs/phase4c2-smoke-preparation.md` conserva configuración, cutoff y limpieza.
 Phase 4C.3: `not_started`; ninguna interpretación se promueve a operativa ni
 se conecta a Feature Store, modelos, portfolio, riesgo o ejecución.
 

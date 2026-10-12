@@ -157,6 +157,11 @@ intentos inmutables bajo `data/cache/news_interpretation`. AnalysisCache es un
 Pydantic/citas/PIT. LLMRequest conserva hashes históricos excluyendo su hint
 opcional de schema de serialización; el wire efectivo se registra por separado.
 ADR-028 fija parámetros/modelos/precios explícitos, TTL/reintentos/secretos.
+ADR-029 añade un perfil opt-in v2 con escrituras de caché separadas y
+`reasoning.effort` anidado; conserva manifest/attempt v1 y replay 4C.1.
+La CLI de smoke exige cuatro tarifas y un intento; `--validate-only` comparte
+preparación/reserva sin llamadas ni persistencia. Véase
+`docs/phase4c2-smoke-preparation.md`; el primer smoke continúa sin ejecutar.
 4C.2: `implemented_pending_external_review`; smoke no ejecutado; 4C.3 `not_started`.
 Sin Feature Store ni señales operativas; no se modifican algoritmos 4B.
 

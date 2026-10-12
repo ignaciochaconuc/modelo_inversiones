@@ -5,7 +5,7 @@ from typing import Literal
 from pydantic import Field, model_validator
 
 from investment_system.data.news_entities import fingerprint
-from investment_system.llm.openai_settings import OpenAISettings
+from investment_system.llm.openai_settings import OpenAISettings, OpenAISettingsV2
 from investment_system.llm.pricing import TokenPrice
 from investment_system.llm.cost_tracker import LLMCallRecord
 from investment_system.agents.news_interpretation.schemas import InterpretationModel, NewsInterpretationRequest, VALIDATION_VERSION
@@ -33,10 +33,31 @@ class PriceSchedule(InterpretationModel):
         return TokenPrice(self.input_per_million,self.cached_input_per_million,self.output_per_million)
 
 
+class CacheWritePriceSchedule(PriceSchedule):
+    """Four disjoint token lanes, explicitly restricted to short-context rates."""
+    pricing_version: Literal["news-token-prices-v2"]
+    cache_write_per_million: float = Field(ge=0)
+    short_context_max_input_tokens: int = Field(gt=0)
+
+    def estimate_usage(self, input_tokens: int, cached_tokens: int,
+                       cache_write_tokens: int, output_tokens: int) -> float:
+        counts = (input_tokens, cached_tokens, cache_write_tokens, output_tokens)
+        if any(type(n) is not int or n < 0 for n in counts):
+            raise ValueError("invalid_usage_telemetry")
+        if cached_tokens + cache_write_tokens > input_tokens:
+            raise ValueError("invalid_usage_telemetry")
+        if input_tokens > self.short_context_max_input_tokens:
+            raise ValueError("usage_outside_verified_price_band")
+        ordinary = input_tokens - cached_tokens - cache_write_tokens
+        return (ordinary * self.input_per_million + cached_tokens * self.cached_input_per_million
+                + cache_write_tokens * self.cache_write_per_million
+                + output_tokens * self.output_per_million) / 1_000_000
+
+
 class InterpretationRuntimeSettings(InterpretationModel):
-    settings_version: Literal["news-inference-settings-v1"] = "news-inference-settings-v1"
-    adapter: OpenAISettings
-    pricing: PriceSchedule
+    settings_version: Literal["news-inference-settings-v1", "news-inference-settings-v2"] = "news-inference-settings-v1"
+    adapter: OpenAISettings | OpenAISettingsV2
+    pricing: PriceSchedule | CacheWritePriceSchedule
     request_budget_usd: float = Field(gt=0)
     run_budget_usd: float = Field(gt=0)
     max_attempts: int = Field(ge=1, le=4)
@@ -47,6 +68,9 @@ class InterpretationRuntimeSettings(InterpretationModel):
 
     @model_validator(mode="after")
     def explicit_policy(self):
+        v2 = self.settings_version == "news-inference-settings-v2"
+        if v2 != isinstance(self.adapter, OpenAISettingsV2) or v2 != isinstance(self.pricing, CacheWritePriceSchedule):
+            raise ValueError("runtime/transport/pricing versions must agree")
         if self.pricing.model != self.adapter.model or self.pricing.provider != self.adapter.provider:
             raise ValueError("pricing/model identity mismatch")
         if not self.local_restricted_storage_acknowledged:
@@ -86,6 +110,8 @@ class StoredInterpretationAttempt(InterpretationModel):
 
     @model_validator(mode="after")
     def consistency(self):
+        if self.schema_version == "news-inference-attempt-v1" and self.settings.settings_version != "news-inference-settings-v1":
+            raise ValueError("legacy attempt requires legacy settings")
         if not self.started_at <= self.received_at <= self.persisted_at < self.expires_at:
             raise ValueError("invalid attempt chronology/retention")
         if self.requested_model != self.settings.adapter.model or self.requested_provider != "openai":
@@ -126,12 +152,32 @@ class StoredInterpretationAttempt(InterpretationModel):
         return fingerprint(self.model_dump(mode="json"))
 
 
+class StoredInterpretationAttemptV2(StoredInterpretationAttempt):
+    """Cache-write provenance outside the unchanged 4C.1 replay response."""
+    schema_version: Literal["news-inference-attempt-v2"] = "news-inference-attempt-v2"
+    cache_write_tokens: int | None = Field(default=None, ge=0)
+
+    @model_validator(mode="after")
+    def cache_write_consistency(self):
+        if self.settings.settings_version != "news-inference-settings-v2":
+            raise ValueError("v2 attempt requires v2 pricing/settings")
+        if self.observed_usage_cost_usd is not None:
+            response = self.provider_response
+            if response is None or self.cache_write_tokens is None:
+                raise ValueError("known v2 cost requires cache-write telemetry")
+            expected = self.settings.pricing.estimate_usage(response.input_tokens,
+                response.cached_input_tokens, self.cache_write_tokens, response.output_tokens)
+            if self.observed_usage_cost_usd != expected:
+                raise ValueError("cache-write cost provenance mismatch")
+        return self
+
+
 class InterpretationDelivery(InterpretationModel):
     retrieval_mode: Literal["new_inference", "exact_cache_recovery", "offline_reconstruction"]
     cache_key: str
     record_id: str | None = None
     attempt_record_ids: tuple[str,...] = ()
-    record: StoredInterpretationAttempt | None = None
+    record: StoredInterpretationAttempt | StoredInterpretationAttemptV2 | None = None
     error_code: str | None = None
     additional_provider_cost_usd: float | None = None
     additional_attempts: int = 0

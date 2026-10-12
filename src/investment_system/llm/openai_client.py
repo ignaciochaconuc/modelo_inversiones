@@ -69,6 +69,11 @@ class OpenAIClient(BaseLLMClient):
                 raw={"status": body.get("status"), "received_at": datetime.now(timezone.utc).isoformat(),
                      "effective_parameters": self.settings.effective_parameters,
                      "usage_reported": len(counts) == 3 and body.get("status") not in {"queued","in_progress"}, "requested_model": model})
+            # Kept outside LLMResponse's legacy serialized contract and persisted
+            # by the v2 attempt wrapper. Missing is unknown, never implicit zero.
+            written = usage.get("input_tokens_details", {}).get("cache_write_tokens")
+            if type(written) is int and written >= 0:
+                response.raw["cache_write_tokens"] = written
         except (ValueError, KeyError, TypeError, AttributeError, OverflowError):
             raise LLMProviderError("invalid_provider_envelope", retryable=True) from None
         if key in content or key in actual_model:

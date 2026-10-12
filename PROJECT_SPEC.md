@@ -149,6 +149,11 @@ opt-in mediante router, transporte estructurado, validación posterior, presupue
 durable por solicitud/corrida, costes desconocidos explícitos, caché/replay y
 persistencia restringida con TTL. Sin modelo/precio universal ni fallback.
 La CLI para una noticia está preparada, pero no se ejecuta en implementación.
+La preparación posterior del primer smoke usa `gpt-5.6-luna`, perfil opt-in v2,
+contabilidad separada de lecturas/escrituras de caché, un intento y US$0,05
+como máximo. Preflight offline comparte transporte/reserva; preserva contratos
+anteriores y bloquea tarifas caducadas o fuera de banda. Véanse ADR-029 y
+`docs/phase4c2-smoke-preparation.md`. No se ha ejecutado inferencia real.
 Se preservan protocolo 4C.1 y artefactos previos; ni TEST oficial ni comparaciones
 reales se ejecutan. Véanse ADR-028 y `docs/phase4c2-review.md`.
 4C.3 permanece `not_started`; interpretaciones experimentales no operativas,
