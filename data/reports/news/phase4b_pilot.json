@@ -1,0 +1,1568 @@
+{
+  "decision_time": "2026-10-12T13:17:53+00:00",
+  "development_threshold_comparison": [
+    {
+      "development_metrics": {
+        "cases": 8,
+        "duplicates": {
+          "f1": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "errors": [
+          {
+            "expected": "shared_event",
+            "headline_similarity": 0.4005009394574071,
+            "id": "dev-event",
+            "predicted": "different",
+            "rationale": "Independent descriptions of the same specified quarterly earnings release.",
+            "similarity": 0.4005009394574071,
+            "split": "development"
+          }
+        ],
+        "same_event": {
+          "f1": 0.8,
+          "fn": 1,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "tp": 2
+        }
+      },
+      "editorial": 0.9,
+      "event": 0.55
+    },
+    {
+      "development_metrics": {
+        "cases": 8,
+        "duplicates": {
+          "f1": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "errors": [
+          {
+            "expected": "shared_event",
+            "headline_similarity": 0.4005009394574071,
+            "id": "dev-event",
+            "predicted": "different",
+            "rationale": "Independent descriptions of the same specified quarterly earnings release.",
+            "similarity": 0.4005009394574071,
+            "split": "development"
+          }
+        ],
+        "same_event": {
+          "f1": 0.8,
+          "fn": 1,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "tp": 2
+        }
+      },
+      "editorial": 0.9,
+      "event": 0.65
+    },
+    {
+      "development_metrics": {
+        "cases": 8,
+        "duplicates": {
+          "f1": 0.6666666666666666,
+          "fn": 1,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 0.5,
+          "tp": 1
+        },
+        "errors": [
+          {
+            "expected": "editorial_duplicate",
+            "headline_similarity": 0.9130434782608695,
+            "id": "dev-near",
+            "predicted": "shared_event",
+            "rationale": "Same statement with only the final time adverb changed.",
+            "similarity": 0.9130434782608695,
+            "split": "development"
+          },
+          {
+            "expected": "shared_event",
+            "headline_similarity": 0.4005009394574071,
+            "id": "dev-event",
+            "predicted": "different",
+            "rationale": "Independent descriptions of the same specified quarterly earnings release.",
+            "similarity": 0.4005009394574071,
+            "split": "development"
+          }
+        ],
+        "same_event": {
+          "f1": 0.8,
+          "fn": 1,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "tp": 2
+        }
+      },
+      "editorial": 0.95,
+      "event": 0.55
+    },
+    {
+      "development_metrics": {
+        "cases": 8,
+        "duplicates": {
+          "f1": 0.6666666666666666,
+          "fn": 1,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 0.5,
+          "tp": 1
+        },
+        "errors": [
+          {
+            "expected": "editorial_duplicate",
+            "headline_similarity": 0.9130434782608695,
+            "id": "dev-near",
+            "predicted": "shared_event",
+            "rationale": "Same statement with only the final time adverb changed.",
+            "similarity": 0.9130434782608695,
+            "split": "development"
+          },
+          {
+            "expected": "shared_event",
+            "headline_similarity": 0.4005009394574071,
+            "id": "dev-event",
+            "predicted": "different",
+            "rationale": "Independent descriptions of the same specified quarterly earnings release.",
+            "similarity": 0.4005009394574071,
+            "split": "development"
+          }
+        ],
+        "same_event": {
+          "f1": 0.8,
+          "fn": 1,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "tp": 2
+        }
+      },
+      "editorial": 0.95,
+      "event": 0.65
+    }
+  ],
+  "enrichment_integrity": {
+    "snapshots": 4
+  },
+  "entity_labelled_diagnostics": {
+    "abstentions": 3,
+    "cases": 8,
+    "coverage": 0.625,
+    "dataset_fingerprint": "7c7c81c3e5949cda793b4e6227d46237db5ef2d15b252a71eb306d68ed4b5de2",
+    "errors": [],
+    "limitations": [
+      "Eight synthetic examples do not estimate real entity-link accuracy."
+    ],
+    "outcomes": [
+      {
+        "ambiguous_security": false,
+        "correct": true,
+        "expected_entities": [
+          "apple"
+        ],
+        "id": "company-name",
+        "predicted_entities": [
+          "apple"
+        ],
+        "rationale": "Explicit whole-name alias identifies Apple in this authored corporate scenario."
+      },
+      {
+        "ambiguous_security": false,
+        "correct": true,
+        "expected_entities": [
+          "apple",
+          "microsoft"
+        ],
+        "id": "two-companies",
+        "predicted_entities": [
+          "apple",
+          "microsoft"
+        ],
+        "rationale": "Two independently named companies; retain both links."
+      },
+      {
+        "ambiguous_security": false,
+        "correct": true,
+        "expected_entities": [],
+        "id": "no-substring",
+        "predicted_entities": [],
+        "rationale": "Pineapple is not a boundary-aware Apple mention."
+      },
+      {
+        "ambiguous_security": false,
+        "correct": true,
+        "expected_entities": [],
+        "id": "bare-symbols",
+        "predicted_entities": [],
+        "rationale": "Bare single-letter symbols are not ticker evidence."
+      },
+      {
+        "ambiguous_security": false,
+        "correct": true,
+        "expected_entities": [
+          "microsoft"
+        ],
+        "id": "provider-label",
+        "predicted_entities": [
+          "microsoft"
+        ],
+        "rationale": "Provider ticker is distinct explicit security evidence."
+      },
+      {
+        "ambiguous_security": false,
+        "correct": true,
+        "expected_entities": [],
+        "id": "unknown-symbol",
+        "predicted_entities": [],
+        "rationale": "No registry entry; abstain rather than invent a mapping."
+      },
+      {
+        "ambiguous_security": true,
+        "correct": true,
+        "expected_entities": [
+          "alphabet"
+        ],
+        "id": "google-class",
+        "predicted_entities": [
+          "alphabet"
+        ],
+        "rationale": "Corporate alias identifies parent but does not distinguish Class A/C."
+      },
+      {
+        "ambiguous_security": false,
+        "correct": true,
+        "expected_entities": [
+          "alphabet"
+        ],
+        "id": "direct-class",
+        "predicted_entities": [
+          "alphabet"
+        ],
+        "rationale": "Explicit GOOG provider label distinguishes Class C."
+      }
+    ],
+    "provenance": "Agent-authored synthetic entity labels and rationales; independent human adjudication pending.",
+    "scenario_accuracy": 1.0,
+    "security_ambiguities": 1
+  },
+  "errors": [],
+  "generated_at": "2026-10-12T13:38:03.001903+00:00",
+  "labelled_diagnostics": {
+    "dataset_fingerprint": "045cde684a7d2c981e85ebe84fce1c62f9966b76e26a28269cf490c42872ed7a",
+    "dataset_version": "news-pairs-v1",
+    "limitations": [
+      "Eight pairs per split; no reliable statistical precision/recall estimate.",
+      "Labels were authored before algorithm evaluation, require independent human adjudication.",
+      "Frozen synthetic evaluation is not the investment model TEST."
+    ],
+    "metrics": {
+      "development": {
+        "cases": 8,
+        "duplicates": {
+          "f1": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "errors": [
+          {
+            "expected": "shared_event",
+            "headline_similarity": 0.4005009394574071,
+            "id": "dev-event",
+            "predicted": "different",
+            "rationale": "Independent descriptions of the same specified quarterly earnings release.",
+            "similarity": 0.4005009394574071,
+            "split": "development"
+          }
+        ],
+        "same_event": {
+          "f1": 0.8,
+          "fn": 1,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "tp": 2
+        }
+      },
+      "frozen_evaluation": {
+        "cases": 8,
+        "duplicates": {
+          "f1": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "errors": [
+          {
+            "expected": "shared_event",
+            "headline_similarity": 0.4005009394574071,
+            "id": "eval-event",
+            "predicted": "different",
+            "rationale": "Two different descriptions of the same second-quarter announcement.",
+            "similarity": 0.4005009394574071,
+            "split": "frozen_evaluation"
+          }
+        ],
+        "same_event": {
+          "f1": 0.8,
+          "fn": 1,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "tp": 2
+        }
+      }
+    },
+    "outcomes": [
+      {
+        "expected": "exact_duplicate",
+        "headline_similarity": 1.0,
+        "id": "dev-exact",
+        "predicted": "exact_duplicate",
+        "rationale": "Identical editorial wording; distinct publisher IDs.",
+        "similarity": 1.0,
+        "split": "development"
+      },
+      {
+        "expected": "editorial_duplicate",
+        "headline_similarity": 0.9130434782608695,
+        "id": "dev-near",
+        "predicted": "editorial_duplicate",
+        "rationale": "Same statement with only the final time adverb changed.",
+        "similarity": 0.9130434782608695,
+        "split": "development"
+      },
+      {
+        "expected": "shared_event",
+        "headline_similarity": 0.4005009394574071,
+        "id": "dev-event",
+        "predicted": "different",
+        "rationale": "Independent descriptions of the same specified quarterly earnings release.",
+        "similarity": 0.4005009394574071,
+        "split": "development"
+      },
+      {
+        "expected": "different",
+        "headline_similarity": 0.19047619047619047,
+        "id": "dev-event-type",
+        "predicted": "different",
+        "rationale": "Earnings release and product launch are distinct events despite same company/date.",
+        "similarity": 0.19047619047619047,
+        "split": "development"
+      },
+      {
+        "expected": "different",
+        "headline_similarity": 0.9047619047619048,
+        "id": "dev-company",
+        "predicted": "different",
+        "rationale": "Parallel vocabulary does not connect different companies' earnings.",
+        "similarity": 0.9047619047619048,
+        "split": "development"
+      },
+      {
+        "expected": "different",
+        "headline_similarity": 0.8571428571428571,
+        "id": "dev-number",
+        "predicted": "different",
+        "rationale": "Different figures could be different updates; conservatively do not merge.",
+        "similarity": 0.8571428571428571,
+        "split": "development"
+      },
+      {
+        "expected": "different",
+        "headline_similarity": 0.8571428571428571,
+        "id": "dev-negation",
+        "predicted": "different",
+        "rationale": "An announcement and denial cannot be treated as one equivalent report.",
+        "similarity": 0.8571428571428571,
+        "split": "development"
+      },
+      {
+        "expected": "different",
+        "headline_similarity": 0.8695652173913043,
+        "id": "dev-ambiguous",
+        "predicted": "different",
+        "rationale": "Bare letters are not reliable corporate identity evidence.",
+        "similarity": 0.8695652173913043,
+        "split": "development"
+      },
+      {
+        "expected": "exact_duplicate",
+        "headline_similarity": 1.0,
+        "id": "eval-exact",
+        "predicted": "exact_duplicate",
+        "rationale": "Same wording under independent IDs; editorial exactness.",
+        "similarity": 1.0,
+        "split": "frozen_evaluation"
+      },
+      {
+        "expected": "editorial_duplicate",
+        "headline_similarity": 0.9130434782608695,
+        "id": "eval-near",
+        "predicted": "editorial_duplicate",
+        "rationale": "Time adverb changed; same editorial report.",
+        "similarity": 0.9130434782608695,
+        "split": "frozen_evaluation"
+      },
+      {
+        "expected": "shared_event",
+        "headline_similarity": 0.4005009394574071,
+        "id": "eval-event",
+        "predicted": "different",
+        "rationale": "Two different descriptions of the same second-quarter announcement.",
+        "similarity": 0.4005009394574071,
+        "split": "frozen_evaluation"
+      },
+      {
+        "expected": "different",
+        "headline_similarity": 0.8421052631578947,
+        "id": "eval-quarter",
+        "predicted": "different",
+        "rationale": "Different reporting quarters, even if downloaded on same day.",
+        "similarity": 0.8421052631578947,
+        "split": "frozen_evaluation"
+      },
+      {
+        "expected": "different",
+        "headline_similarity": 0.8571428571428571,
+        "id": "eval-legal",
+        "predicted": "different",
+        "rationale": "Filing versus settlement are different stages/events.",
+        "similarity": 0.8571428571428571,
+        "split": "frozen_evaluation"
+      },
+      {
+        "expected": "different",
+        "headline_similarity": 0.9047619047619048,
+        "id": "eval-company",
+        "predicted": "different",
+        "rationale": "Similar launches by different companies are different events.",
+        "similarity": 0.9047619047619048,
+        "split": "frozen_evaluation"
+      },
+      {
+        "expected": "different",
+        "headline_similarity": 0.6,
+        "id": "eval-short",
+        "predicted": "different",
+        "rationale": "Insufficient content; preview and report are not equivalent evidence.",
+        "similarity": 0.6,
+        "split": "frozen_evaluation"
+      },
+      {
+        "expected": "different",
+        "headline_similarity": 0.8571428571428571,
+        "id": "eval-url-update",
+        "predicted": "different",
+        "rationale": "The same URL may host an updated story; identity alone cannot merge different stages.",
+        "similarity": 0.8571428571428571,
+        "split": "frozen_evaluation"
+      }
+    ],
+    "provenance": "Agent-authored synthetic examples with independent explicit semantic labels and rationales. Not externally adjudicated human ground truth; pending external review."
+  },
+  "limitations": [
+    "Registry is partial and locally curated; historical knowledge is not inferred from effective dates.",
+    "Finnhub article labels vary by response; additional Phase 4A metadata revisions remain intact.",
+    "Only headlines and summaries; independent event coverage with different wording may be missed.",
+    "Synthetic labels require independent human review and cannot establish population accuracy.",
+    "Locally captured October 2026 news was not historically observed on its publication date.",
+    "Greedy complete-link partition is deterministic, not guaranteed globally optimal.",
+    "No source content is copied into the public pilot report."
+  ],
+  "lineage_checked_articles": 200,
+  "network_requests": 0,
+  "phase4a_audit": {
+    "additional_revision_rows": 94,
+    "article_revision_count_distribution": {
+      "1": 727,
+      "2": 74,
+      "3": 10
+    },
+    "changed_field_combinations": {
+      "direct_tickers": 84
+    },
+    "interpretation": "Additional rows are Phase 4A content-contract revisions, not independent editorial duplicate evidence.",
+    "logical_articles": 811,
+    "multi_revision_articles": [
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142666224",
+        "revision_ids": [
+          "6e09347e2d3d12279dbf08ede4ac5d4c3c3446e65f1fe237d6f66cfd957a3f22",
+          "8f0ef1ffd70e86610233ade5ee6b4f7103cda2dd4bcd898dfbe9a560cfffc702"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142694423",
+        "revision_ids": [
+          "7fd6149556fa6ee07be319141cefe55ee09456c802b89fd5146c30368f64fd45",
+          "b6c11a546214711d1c7c70d0343c23da910c1078715e02f73c591a65771d496c"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142696945",
+        "revision_ids": [
+          "c189660b3db13ace8dd543db06c7e1d94a5aa392814d5791ff02a986e79d5e7f",
+          "cfbf705e1e01465bcb1caa0ad1849f00b47792649c65317b636d35ff6a6f3232"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142696948",
+        "revision_ids": [
+          "08d07e5ed01ec0cb7234de0e505752b0d234f8d9f1a4dfd995af03cbc6d23079",
+          "264d338dc4f2fbcf4d3e8b3143ec80c57353bb182f8a2479fe496dbd07e57494"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142696963",
+        "revision_ids": [
+          "61f7fb9a86c4ac0788cfbe02471e26b78ffed5a47ad906f15b953bce9f0d9b3b",
+          "6b22088dae750e341d4f2e12ea786af7f77ffed32f116672a2ef861b05642dd8"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142697832",
+        "revision_ids": [
+          "699ae50e4d362d182dcee8aeb0dc376e71b5d398cdd16449788ff922f574dd68",
+          "abca2db6bff7ba4e3fd77ae009750e801f6c8c7d787a1a1447b2808e93697182"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142698317",
+        "revision_ids": [
+          "be1150ead0e1a1ce1f92b696b41ecc2219abccc01d3d1c5905b6d4af6965bcdd",
+          "df0f895981470db7748f52d9e8c0289d911ca560688b1701f2feaafd46451301"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142699052",
+        "revision_ids": [
+          "015ebfc8a6438668590bd2acd6bcd4e2c87d3c29b1cabe57a4bffc60de03fc9b",
+          "f1260eed3a5b9bb3c1f1d8b6d22ff442a84b334d2659be0b4f2b09ba932aab65"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142699234",
+        "revision_ids": [
+          "33c48c29bee61eac0df8bbd020916aa9d43d9b9132eceb290db92ab60f53ce4a",
+          "db6f91ad58388684f60b1d3f0c0b4b97a487c4c3fea45c6057268428c1e060fe"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142699236",
+        "revision_ids": [
+          "6b32e2fc3243c46c5e109c7299e70bf538deab4bcf7988c0538e3edaf74e691c",
+          "f8c71db959704a62cce9498d7c62709ce137ef7389c5bea50cde88dded0be576"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142699240",
+        "revision_ids": [
+          "c8677bd6d2884597f749c58cf7ed8064311592b7fdf038297ca98ed167ca3b73",
+          "e27a05830e5942103d239c3a49ae99a7dd9d44cf2f8d04595c3f0a7ac31537ed"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142704504",
+        "revision_ids": [
+          "9d36394b08c1a7e39022f9b0cc4c16d9bd7f2ed03e1a4d97d0f0a4f040582f8b",
+          "c8304672b9002c0d5aeac89273be44b10908fde926d4ca65dc4079f75b8b8f94"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142708202",
+        "revision_ids": [
+          "36272228b865f0f5e68f5eb22c87d0a00cbbda4d161f9e7b6c4ca1c721a4bb8d",
+          "a5a9a2b514cf6026080417ceab65fba7da27579a176c603bf9104fd94e318c51"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142708312",
+        "revision_ids": [
+          "833f26513d2f865d4ae4edab4dc32a109b87c6c7336abe0b03aae2dd9db8d151",
+          "8975308e4f80f4984dfec4ed7f7686e520ba4ed4c7b01147479345c99fe36016"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142712623",
+        "revision_ids": [
+          "0b1e3f56005ca8d1b15d1f384acd3c759dc009ca6cc7f75f8b2ce4d6cd874ad3",
+          "af9484fb4c2b384093cff2beb6de35f88e9205a3026e9a63e42784a4db2c01fd"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142726819",
+        "revision_ids": [
+          "5829593e1d738f7b0cc27b0408d4fae7d945d9cb66ece2e9a19ced69c79a91b9",
+          "f5249e428f23a6497299c880f1d67ff18698f4e6e26482842585f942908cbc4f"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142727278",
+        "revision_ids": [
+          "8b97345a5f1a87f3aedf51bcf76aa1ba77a0c1c099b504fdc687e69c5207d602",
+          "b3d4e7f7ce4be0e64723f2e4923cc6fbb1758bdf34e1e11cfd5548b98337f840"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142727280",
+        "revision_ids": [
+          "191939d19e1d6ac3f71af15e303cead9d037df88232a70adc26bc9931da4720e",
+          "c499a17c47d67ffea7072fbee27b7d069bb06f35e2a1e4ee505f8fd2480e9b85"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142729663",
+        "revision_ids": [
+          "ae779a584b8a950a83521ebfd09e19da40b2a574426a679b70dc92c0baae3829",
+          "cf906375773b66cfbd6836cfa074713df819b941f0a1a0cae59a24f1d3996d51"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142729667",
+        "revision_ids": [
+          "626285bd51575491a6076a8f72007bb236e9307af58ca839930a4e8458eebbbc",
+          "c33b27e4291819b4472c84d0f3f8dc12aadfa218b00e93f1ce9398bf72e221f5"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142729688",
+        "revision_ids": [
+          "535baaa8b07bec966df6ee8e4a4b16769ad2504384f5f6cb9bcecc8bfae6b5b8",
+          "6dc0786ad77cfa3559b5d9ce2d0e2b9e42978c52944721ddf97cf65807751caf"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142730896",
+        "revision_ids": [
+          "3080a9e7dd96e40eb03a75910ce789d5f9a1a8adafffd41b6d67001798516460",
+          "736a8e5ac4f4526ad1b9eca3bc7d0a2a30cba8556e9ba9d07d56fa6bc1a02605"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142730897",
+        "revision_ids": [
+          "0df0f89523ccd27bbaa02feaa0ff4aeb8a593b7c2dd46416be51040ec3f03d7b",
+          "21fe721a7714eba83550523f692d6581fcdf3ad3cc33ca0dd478e5d4c0f6db3b"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142730900",
+        "revision_ids": [
+          "b2c126a336cfa71ee1fbf4053f2bcbcb8072687aba100936298446e5c37711c9",
+          "f98c48c2500df5b672932768c61563f9e76fddfc46e39586f976fe591760d1a1"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142730902",
+        "revision_ids": [
+          "2dc352e3715cb50be45f71f7d842e77778e2515b65c7bbe07237e1c157220a2e",
+          "a8e558d6e75d97bd76d4a2d4e3f05b80eea7e34c2fa55e37698649853d340b97"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142732052",
+        "revision_ids": [
+          "50d06c8e2dc267c4d164677ba5c6dd3b70c70dadb25cf8d956c4a72741b6965c",
+          "9f331b63c6c913298df11128bc2480a0dfe7ef7885d2b1a8ba760220a94e7870"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142732082",
+        "revision_ids": [
+          "d7cc45a45c2c94d1ce66e01c2a8d15f3db961febce994f476dd60a94d62fdc30",
+          "f80590bad6070faebe969bd47a7f165bea5d84ebd1f29dd2f7106242e74a44f3"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142733843",
+        "revision_ids": [
+          "c251838367419de07bc92a52c562abcead65c202421deff24a6d75c7cf2f1ee0",
+          "e61324d33c6cf142fbf2ef1b8b1c40030cf3e8a16394367d6f0c53927fa4d10b",
+          "fab605ed1bb9e383e526b2bcbe3e420a4f415e9c468d55dabc86febbf96a2abb"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142733852",
+        "revision_ids": [
+          "021ef53013d516dbc55ca370d7101fd3eef1c517979e94c37f258d5079594168",
+          "bd90617f2ddb3382600f59fff77008632ef1011d4bc702ebb3b233bdafcd4fea"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142733866",
+        "revision_ids": [
+          "0b54f9d574e1179d91b67ff08568d3266db237fdab93ae0d49d052eacab4a1e4",
+          "d844368cf5eeb7b4321a2d0d76839b070d0c0b27a33dbf3ebc489fbd8bb4ae45"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142757494",
+        "revision_ids": [
+          "17c18a8cbd5b71d5911d2705bfbeb5235e486cec3827cf0f6a76e5b301775ef7",
+          "c8b656e414c6b3827d8f7e938b89a963ae019b88ef8b240bcea8064b5a4a99ba"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142758421",
+        "revision_ids": [
+          "8112a018043faa6391a565c5f569cee28d80f687cbee0608ff32b98c870a8663",
+          "8658ccd83c320d80b69d8e42b94e0868a4bea65e83bfea73c11a784348a93f99"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142760278",
+        "revision_ids": [
+          "3419885b4723c9faff8dce4c6f53799ad4834bbaf0740a983686279859325b66",
+          "a556373b9ec74f556c702d4b452224e909f1a0551abed4b39654b9899a43a811"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142760492",
+        "revision_ids": [
+          "311f63ee28c231d9f6e09f46dcb8de9032b5d4999bc3442c895d3325a3b4b2f5",
+          "50e7992fb5c5fbc52844fbe5a7e5fc33dc0212fa6dfafff80103fb55e8c68e02"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142760496",
+        "revision_ids": [
+          "a4a496169ba781737fe26081d1fb30ef2e32c311fde3da5157f47ffbaa7e3aa5",
+          "ceb62f1671bd5e573c16de9866e5aec3b5ed332f00b58ed45641028134dc5431"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142760834",
+        "revision_ids": [
+          "0a0d556c910a27b8f50894a97fa9538837cc6360f8ad4a475a6d0ef7e30ab976",
+          "db6ec300c7998ad799f6b371e05768d23a53133636833c8e584c64851208be7a"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142761260",
+        "revision_ids": [
+          "a3167be8a4d23d475fb146748b00df0daa2cda14103bb49fb46b92c9f0c529e2",
+          "a3f4c825e676acee8b1218a3fac292fe23923b4c87969e3ad73861c4ec0e7677"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142761265",
+        "revision_ids": [
+          "67477b7d3f56c3cf94522a0c4b8a66d6d76a1764459603d280b97982e5b13fc6",
+          "a0b9c3c760d79e5d74f9e27f937de0bfbd041e82dff29d969ed58a1691b7c500"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142761268",
+        "revision_ids": [
+          "8893533e43efd088ebbe849ebb5f935f8e26b9458258a06c7b0a5bf0a1abba05",
+          "e3fa4b50961e66e41ef8b0bd81e39015566ba67a78dc04cddca528541a55d4c4"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142761273",
+        "revision_ids": [
+          "95ae6b0ea66ca296b273792ce0eb6350cb6c671a3f88bd78ce227366f01ebfbb",
+          "fe08bc8e3f5ea2840ad450dd9e1be101da4a166e217cc3c16235a1ca9728c3c5"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142761279",
+        "revision_ids": [
+          "61d01aacf2573a6557b289cb7a337fac33dc4cd535f87ce29335c8304546cc8d",
+          "8bba6eecc26e683581f79aa4c04c1ec9b8250c291108314eb1ce3cd13ded2c56"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142761475",
+        "revision_ids": [
+          "8bd4877cbf72f73f4558481cd64d9f8d35e0d9494d106b49e4f08ff079863e5c",
+          "b02597fdc7a77a7269454e28b1b8998c0f3e6c108873b9848fa7b26cd4a4d9d0"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142761480",
+        "revision_ids": [
+          "9a9f3ee81dcad0444cd12efc96ed32b50c712351b1ffd497e3e81d2aa5212608",
+          "f1b0c45fb7c9d6b82e6c7011d8a445b07ae37ccf68d59415fd20db82ec6a4222"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142761484",
+        "revision_ids": [
+          "0d9b1c28906be25ec090301d40d477e88f056755dfd4d5b1bd518e0d3cbe785d",
+          "9c04555a4556fbed0bbdebd3436dedb46410ad08ba19fed6d456f9caa73f4b35"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142761487",
+        "revision_ids": [
+          "24be641102c0182d7a5c2144b50a4fe957b062befa3c3c7daeff28a84c46d53a",
+          "994cca9b3b1bbc0845da984d9cf7108eb3612fc642eeb59523037f11ee7aba26"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142761492",
+        "revision_ids": [
+          "04724cc2ca6d043b23de51006645b4c1a3bfa1c6308c118ef4387216f9a4c484",
+          "58450cd6ef07d3cbd3cdc61f256f3fce1eaba358d492cefd14f380bcd9f6ad59"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142762685",
+        "revision_ids": [
+          "39feb907b3b46cd4d493a59662956dd737dd0bb4f38bd72d9fc10eb54614d0c3",
+          "4bd7acfff527370e2a7abccc520262b77f9eb6a7ffb428a42f1c74dad3b1328e"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142763960",
+        "revision_ids": [
+          "2f9665adfb3a3bfeee0ac18f7a9cfb9dc0b3614c67549c828e264becae4c15a0",
+          "57bcf9634ab08532b7e454a7f671bdf58c52a0e9da1ba00830b91cac5a6ea917"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142763963",
+        "revision_ids": [
+          "0398e6d7de148df4185472e3c7911bdab0d171ca8a685fc6cc37cb31ff6fb40c",
+          "f3694800a07ea770b1c1e98bbee8ccf35a75b8d9865df15d574eae71b1c29a7b"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142763964",
+        "revision_ids": [
+          "1fc6f624da829a414a77ecab9178546ea62de096959a49b5639ff1a28aa0566b",
+          "6fc8d12f45c2d7096fa435fcece845f12e214277e69464a80baa0dc940f476ac"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142763968",
+        "revision_ids": [
+          "05add5c859922af07d4c9a84313b20396b85e3b3574c15c49b184fcc01f7a2ca",
+          "ad55863d3f88ee8ee08c79e9c7f1215079964c4268263fa182040e394bea2f45",
+          "cc80ab55bb5c691722eb2d7d5557adfb47f5a1318ae5d76b2b6e5914111919bc"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142763970",
+        "revision_ids": [
+          "19b174067a719077bcefa55034142533f05ac85709ae7053d78af147a28f9730",
+          "26b499afaf3898f574e9f739a9c6d20594393b88b944de19b0b0a79432f4921b"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142763971",
+        "revision_ids": [
+          "ab7237ae0a9e42243b4e3c4d4806fb2070a6f59876752e76a9822a9ecc42fae4",
+          "d0cc990b031d9a7609d185e7a263c6f2bcf87488a6efcc86897cb7eea9585475"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142763973",
+        "revision_ids": [
+          "8cbc5208dd1428d756511b5027537bffe010c2d06108da099b4f319df21a3954",
+          "a7c6d1c88630fd65240b861b67ecf737bdeb09d223e448df468d7f5fd2d1a333"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142763974",
+        "revision_ids": [
+          "913d53f2294c64305e263183fd6f13de316004c3b1b6e71adeeb26cb5710f909",
+          "ba51d1655463571ea9ea8e58773c77d3f18da398759f8eea979676826a3d7874"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142764645",
+        "revision_ids": [
+          "a09ef24d30d3891ab17a579457f869b46ccbabb39f8d71aca90e596918a86364",
+          "c5d7d7e5b7d61d7fc94cc766a3a6b9074880a018b1e4120522d1b32bfc21f925",
+          "d89ef264da68d84eadd3faa1bc9f52a2d0c7728386b0839b0bd9261d1bef8392"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142765145",
+        "revision_ids": [
+          "6697039d005cdd943f905fefafe4e6e1fe8366adbc595e2378715977e44f18c3",
+          "9f5c5ac9826c48ccf97a92476d93e8459bf23c8a0aad3792a176c0d5951090df"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142765170",
+        "revision_ids": [
+          "658124b20ed71b3b78644451d8d82e48c4f2205c6d9146ad9cc1eb987d4f2c43",
+          "838c203741083aba4fc5767addcc81b853ec6221b87c139c87c3d165cc8b0ca7"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142765172",
+        "revision_ids": [
+          "56eac56676d1c483ae195455b425c9adc49972f4c70be3d00ef1227fb5ea0a5f",
+          "f4ec8dba7d6c8a8b7b4ba915c537dafbb282ab83a87653b804db182c8117abda"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142765176",
+        "revision_ids": [
+          "19f9d7bc1835578ed809d7abe692f72efdedbe9374dfa8461b29c4fa6be0219b",
+          "e9ce7ef3da5b083cb76c2a319fd9b31860e9d5e1b057db3cee8906399a15733a"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142765183",
+        "revision_ids": [
+          "289e7a479b9d989172bd1dfd7031cd73a368a547d93385141ad8e85feb954929",
+          "48809e53035c8aba128566a60b1bf8ce6bc1c19bc4fb0df1d148e594d65c689b",
+          "ff840fad50228623107ba14ee1e5b294216cd1cabe35dc88f3e58185123d1d4e"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142765621",
+        "revision_ids": [
+          "79b586da915e5ff1bc96b33f76112b51c5c6b77f8388f763a546be92fd3b4669",
+          "7a0a32b44a43cec9619c9205bcb374b2b97aeae522e4efcfaf9a1bd027ebd76a"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142765954",
+        "revision_ids": [
+          "039c90b066975362761a098232324df86edb1a7fc599932ed269e0c5aeed8545",
+          "2dc222baf51ae5ceb81ac48df49f0f09960b0cc83f5707cd88fa2107d3d8ba6b",
+          "c4f6c7ee4627af531e660f2c9c353f5f73267ce604edff6bd99649fef916c808"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142766184",
+        "revision_ids": [
+          "2157c51962c4056c0947733c5a42d1bf7eab88bfa6340ec6500c51224ae280b9",
+          "7f98e162bf80c74fb7008218ab24effb2637b7cf21acf52286d8539dd029832d"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142766185",
+        "revision_ids": [
+          "989150b486085233a7ee5391a902f54543df81ef0b8602e411e357c03b284c0a",
+          "be743735edb02ac272680b529521a71d3f6e1995829b27e137397a803d306206",
+          "cf2e6581f282fa29c3b63f93656bc947d40ca6d72d4ea19b942b96adbc80405e"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142766191",
+        "revision_ids": [
+          "24adebca7656e6f0137c9e39e4c41ffba0c903c7235999adbecbe0e8fdbc753a",
+          "951c5d4f8bac2856df1f520b701bd30f1ee2a960f9b77ca9fe999d4c792573a4"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142766195",
+        "revision_ids": [
+          "433fe45860d84063f0e514d6a8687eab6d48d316c6c2e4032273390058fb0af4",
+          "a13a2eb8d3363467aa2005ae5852e8b30d297306d7190ed36044b50dc31a186f"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142766200",
+        "revision_ids": [
+          "524ae8aa2f216bc40df0d68e1ea7980157fb18cf6094aa921220b9337ac54e90",
+          "894dae8f08997099c382b9b47412bbb1b6f0c1cabc532f5d2cc41580e4aac855"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142766217",
+        "revision_ids": [
+          "56e9a3ae962eec6bafdbbfe794f2b4397a137092c017e43f31979bf71ae524f9",
+          "5ce7c8c982b987d9ba98cb84997ac27e92afb54cf21a7ad6a5132f79e1fbb443"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142766765",
+        "revision_ids": [
+          "0b5f4fc5984399705ce46a1e2f66cf0df3b51f43c2d0528bcd262330e7cb38b4",
+          "b0fd8b68198f076b4dfb94f38096e67bbb2aa3d4917113c310f33465453a7e5a",
+          "edcc4ab1d8d025e2593a9de0b8f8cfce2edcf1eb4658c2a71ace3c28b4ff2f17"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142767067",
+        "revision_ids": [
+          "a233167357d0f39c112ad93930cbe0cdd3332e69c9fd3cb906c64afa6abd5091",
+          "c496462cdfd21fc618bb49bd2558a1e18b820a9d057f17474128485ba200fc30"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142767842",
+        "revision_ids": [
+          "a8ad1d805d062134f53abfaaac29dae7814e161e5b1a4a928cedd29db1b3af14",
+          "ee90665bd804b3f06f9a5f73b64cef264df5ffc4806a75b45c8526fe7cf7e577"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142767843",
+        "revision_ids": [
+          "deab5631b52e2e0202bf970e6289ea226aa079ec8cf76ae6205c873e33fc8be8",
+          "fc23e21825f21ba6814cb73acfc15d2d11e37d4366165913d0a9e2d6d1da73b9"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142767845",
+        "revision_ids": [
+          "38bd3247879f63ea93acc6830345bd2619fe720c12753bcc25915c1981100b24",
+          "42136797cd6635480a7176e7cf38fb8bf882345b994b01d9bfdbea6e71378380"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142774652",
+        "revision_ids": [
+          "bb41f337120b8d340537ccac1bdc7ecf516296163dfc2120523b60926e72ac22",
+          "c0d47bb96cf7e9642ab44108b7768ff6e65c7bdf99e2283a19155b6592c0afd7"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142780335",
+        "revision_ids": [
+          "57309f2bf250d6a251128404e91aec9af714e231b5bc3a23b5ae8d72e8eabbcc",
+          "ed124ab9716eb5e5c8018fc81c8b9b013b0bf45028b242cf1f1647fd3d3644dd",
+          "f369ce372a0f01293d662191900e0a325b8ccb153c6c096ccc623dd75d6fed79"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142782927",
+        "revision_ids": [
+          "1f05a88096c619858376b15cafdde2f4845e45a7869ad57f62c1efe12b6bf870",
+          "9338287290b197264925fb5e645f2c413ea0a8356ce6e642538d13aacc5c3171",
+          "c6bd7ee7cef1fbdd1c87f1bf7b6cff2aa1a4ed9bdfc3cec43f1ff74252395f89"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142790077",
+        "revision_ids": [
+          "5c81c19ca8e325b51f9c6e277894ad5100ff2aa1588e61cc55d63a015c1d0b1c",
+          "8ccdf19a64bdb14c27449e94f86ebfb565c097bb7f95c1cbdb882f7919b42243"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142791247",
+        "revision_ids": [
+          "3da57fb0ae116b59cee3ffb30b03c46ae0cecf294b686960312f280064ad4230",
+          "6808da96fb3d448ae0adf9e381e3adb07514f830cb649a812f5c885535616092",
+          "cb395214c8efb033f73cc25aa9cfbbe53673f111acc86fb461d87e528401197e"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142791541",
+        "revision_ids": [
+          "1ca6a3c80a2d91d3643bb194b2304c8f7243e7886ca2d9f10e8402bd5896c70a",
+          "7566e18234689c8ae0f27125b55f692e93ccb7246a7ffe59f17f82c9b8992ae8"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142792822",
+        "revision_ids": [
+          "38dc1a0bda1a69e987e9259a05482850e328f5a60ff0d58a2ddcdb8d7f4e4266",
+          "bc338de08dbf784ef4495ee4365279238f02e810d7217a447f81fe25edc27f72"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142792829",
+        "revision_ids": [
+          "9e0d8c3d0d1c52d8d0d47df2cff7e20a81685d9b9b7d31bf4f0c35140c019b93",
+          "9f8dc286ad975010f28f77724a2dd8b4d132d36ff8c6337e574ea10973fef379"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142793566",
+        "revision_ids": [
+          "3362d42d4d5190e54647f35154918f4e778e6ef0da144cd75d3137db12b9e9b3",
+          "d4e88c0dd0de0e79c5a00054bd6b789d19aca6daf5d219aa42ff25c80c761598"
+        ]
+      },
+      {
+        "changed_fields": [
+          "direct_tickers"
+        ],
+        "provider": "finnhub",
+        "provider_news_id": "142793567",
+        "revision_ids": [
+          "18efa3ad9ea70b01a4aecfcc369b2fc9593a8b7a1ab816f747b5464907c744af",
+          "217b41dded5f4b3493485dfc5678b23a9024616a83150eac2176a317fc461b87"
+        ]
+      }
+    ],
+    "normalized_records": 905
+  },
+  "phase4a_integrity": {
+    "bad_raw_hashes": 0,
+    "duplicate_records": 0,
+    "logical_articles": 811,
+    "missing_lineage": 0,
+    "normalized_records": 905,
+    "raw_captures": 905,
+    "raw_payloads": 905
+  },
+  "provider": "local_finnhub_phase4a",
+  "real_pair_review": {
+    "agent_reviewed_cases": 2,
+    "cases": [
+      {
+        "development_label": "different",
+        "provider_ids": [
+          "142733043",
+          "142736500"
+        ],
+        "rationale": "Omnibus market recap headline adds a new fact; high summary similarity alone cannot establish editorial equivalence or one event."
+      },
+      {
+        "development_label": "different",
+        "provider_ids": [
+          "142706903",
+          "142704791"
+        ],
+        "rationale": "Updated futures recap, multiple companies/topics; not reliable single-event or editorial duplicate evidence."
+      }
+    ],
+    "externally_reviewed_cases": 0,
+    "review_context": "Two development negatives reviewed in the initial prefix sample (180 AAPL/20 MSFT); final pilot uses balanced round-robin sampling.",
+    "status": "pending_independent_adjudication"
+  },
+  "rebuild_same_snapshot_id": true,
+  "registry_universe_coverage": {
+    "covered_count": 11,
+    "covered_tickers": [
+      "AAPL",
+      "C",
+      "GOOG",
+      "GOOGL",
+      "JPM",
+      "META",
+      "MSFT",
+      "NVDA",
+      "T",
+      "V",
+      "XOM"
+    ],
+    "universe_count": 101
+  },
+  "registry_version": "news-entities-v1",
+  "report_version": "phase4b-pilot-v1",
+  "research_snapshot": {
+    "accepted_pair_relationships": {
+      "different": 3789
+    },
+    "ambiguous_articles": 7,
+    "articles_with_entity": 200,
+    "candidate_pairs": 3789,
+    "cluster_size_distribution": {
+      "1": 200
+    },
+    "editorial_near_groups": 0,
+    "entity_link_statuses": {
+      "ambiguous_security": 9,
+      "resolved": 352,
+      "unresolved": 2
+    },
+    "event_clusters_including_singletons": 200,
+    "exact_groups": 0,
+    "input_articles": 200,
+    "input_fingerprint": "3aeb2859d805d5b63425a3d6d31731fbb6527f10bb7409f5ffb8981e19099aaf",
+    "multi_article_event_clusters": 0,
+    "parameters_fingerprint": "2bd98c953d60029e9af50d401a346aa1ce57772047a4af444c525881f8a7e978",
+    "registry_fingerprint": "bca49c249e61d160b400cde92ef266ff080ea6388ca6b4df68d9624341a2a7d3",
+    "snapshot_id": "a96fa7fb0f83bdae1d54361a70ab82ffb64cd393638670c01680bbc43ca9f265",
+    "unresolved_articles": 0,
+    "warnings": [
+      "Retrospective deterministic reconstruction; computed_at is not historical observation.",
+      "Historical research; proxy/retrospective identities are not verified causal evidence."
+    ]
+  },
+  "sample_policy": "deterministic round-robin over first provider ticker (or unlabelled), at most 200 latest eligible revisions",
+  "sample_provider_ticker_distribution": {
+    "AAPL": 40,
+    "JPM": 40,
+    "MSFT": 40,
+    "NVDA": 40,
+    "XOM": 40
+  },
+  "snapshot_location": "data\\processed\\news_enrichment\\news-enrichment-v1\\00898f1ea1baad745335213906be0478f3788618891d463e61c6d242805924ae",
+  "status": "implemented_pending_external_review",
+  "strict_snapshot": {
+    "accepted_pair_relationships": {
+      "different": 3789
+    },
+    "ambiguous_articles": 7,
+    "articles_with_entity": 200,
+    "candidate_pairs": 3789,
+    "cluster_size_distribution": {
+      "1": 200
+    },
+    "editorial_near_groups": 0,
+    "entity_link_statuses": {
+      "ambiguous_security": 9,
+      "resolved": 352,
+      "unresolved": 2
+    },
+    "event_clusters_including_singletons": 200,
+    "exact_groups": 0,
+    "input_articles": 200,
+    "input_fingerprint": "3aeb2859d805d5b63425a3d6d31731fbb6527f10bb7409f5ffb8981e19099aaf",
+    "multi_article_event_clusters": 0,
+    "parameters_fingerprint": "2bd98c953d60029e9af50d401a346aa1ce57772047a4af444c525881f8a7e978",
+    "registry_fingerprint": "bca49c249e61d160b400cde92ef266ff080ea6388ca6b4df68d9624341a2a7d3",
+    "snapshot_id": "00898f1ea1baad745335213906be0478f3788618891d463e61c6d242805924ae",
+    "unresolved_articles": 0,
+    "warnings": [
+      "Retrospective deterministic reconstruction; computed_at is not historical observation."
+    ]
+  },
+  "threshold_decision": "Keep configured conservative v1 thresholds; development comparisons only. No adjustment from frozen synthetic evaluation."
+}

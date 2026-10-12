@@ -124,8 +124,8 @@ features y targets conservan el ticker interno.
 
 Son funcionales los schemas, validación point-in-time, datos de mercado,
 Feature Store, targets, backtesting, modelos de Phase 3 y la infraestructura de
-ingesta News de Phase 4A. El piloto real News requiere `FINNHUB_API_KEY` y sigue
-pendiente. Son contratos/stubs los clientes OpenAI/Ollama, los agentes,
+ingesta News de Phase 4A. Su piloto real local contiene 905 revisiones y 811
+artículos; nuevas capturas requieren `FINNHUB_API_KEY`. Son contratos/stubs los clientes OpenAI/Ollama, los agentes,
 optimización y ejecución futura.
 
 Phase 4A almacena evidencia en `data/raw/news`, revisiones normalizadas en
@@ -136,6 +136,17 @@ resuelve la revisión vigente y luego aplica filtros por ticker. Las etiquetas
 `direct_tickers` son evidencia del proveedor; el contexto `request_tickers`
 permanece solamente en raw/lineage. No hay interpretación LLM, sentiment, news
 features ni conexión con modelos o ejecución.
+
+Phase 4B incorpora deduplicación editorial, entidades/security/aliases y clusters
+de eventos con snapshots causales; permanece `implemented_pending_external_review`.
+La configuración vive en `config/news_grouping.yaml` y `config/news_entities.yaml`.
+El piloto offline reutiliza Phase 4A sin downloads y escribe
+`data/reports/news/phase4b_pilot.json`; los snapshots están bajo
+`data/processed/news_enrichment`. Véase [procedimiento y limitaciones](docs/news-groups.md).
+
+```powershell
+python scripts/run_phase4b_news_pilot.py --as-of 2026-10-12T13:17:53+00:00 --max-articles 200
+```
 La configuración no sensible vive en `config/news.yaml`; el piloto requiere
 `FINNHUB_API_KEY` en el entorno y, si falta, escribe un reporte bloqueado sin
 hacer solicitudes externas.

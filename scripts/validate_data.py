@@ -1,5 +1,6 @@
 from investment_system.core.config import load_news_settings, load_settings
 from investment_system.data.storage.news_store import NewsStore
+from investment_system.data.storage.news_enrichment_store import NewsEnrichmentStore
 from investment_system.data.validation.validators import validate_feature_target_separation
 
 if __name__ == "__main__":
@@ -17,3 +18,5 @@ if __name__ == "__main__":
     if failures:
         raise ValueError(f"News Store integrity failed: {failures}")
     print(f"News Store integrity passed: {integrity}")
+    enrichment_integrity = NewsEnrichmentStore(settings.paths.processed).validate_integrity(news_store)
+    print(f"News enrichment integrity passed: {enrichment_integrity}")

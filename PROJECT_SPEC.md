@@ -99,6 +99,14 @@ Finnhub company-news es un adapter opcional para el piloto reducido y requiere
 disponibilidad histórica. Phase 4A no implementa clustering, entity resolution,
 LLM, sentiment, features, entrenamiento ni conexiones a portfolio/risk/execution.
 
+Phase 4B añade grupos editoriales, resolución de entidades y snapshots de eventos
+deterministas. Conserva todas las fuentes/revisiones y usa un registry parcial
+versionado con vigencia y disponibilidad propias. La consulta as-of construye
+grupos solo con revisiones y evidencia elegibles, sin estabilizar identidades
+con noticias futuras. La investigación retrospectiva queda explícitamente
+marcada. El conjunto etiquetado sintético y el piloto local son diagnósticos de
+infraestructura/calidad y requieren revisión externa, no evalúan alpha.
+
 ## LLM y control de costos
 
 `LLMRouter` selecciona proveedor/modelo por agente y tarea, usando `config/models.yaml`. Los clientes de OpenAI y Ollama son stubs deliberados. El pricing es configurable y no incluye precios reales hardcodeados.

@@ -8,6 +8,8 @@ flowchart TD
     NP[News Provider] --> NR[Immutable Raw News]
     NR --> NN[Versioned Normalized News]
     NN --> NQ[Strict / Research PIT Query]
+    NQ --> NG[Deduplication + Temporal Entity Resolution]
+    NG --> NC[Complete-link Event Snapshots]
     IN --> RAW[Raw OHLCV]
     IN --> CA[Corporate Actions]
     RAW --> SA[Split-adjusted Series]
@@ -49,7 +51,8 @@ La información se obtiene y transforma antes de predecir. Una predicción no es
 | `data.storage` | Persistencia idempotente Parquet y consulta DuckDB | Funcional básico |
 | `data.validation` | Invariantes temporales y feature/target | Funcional |
 | `data.pilot` | Orquestación y diagnóstico no destructivo del piloto real | Funcional Phase 1C |
-| `data.news_ingestion` | Captura raw, normalización versionada y rebuild de noticias | Implementado Phase 4A; piloto real bloqueado por credenciales |
+| `data.news_ingestion` | Captura raw, normalización versionada y rebuild de noticias | Implementado Phase 4A; piloto real local disponible (905 revisiones, 811 artículos) |
+| `data.news_grouping` | Entidades temporales, grupos editoriales y snapshots complete-link | Implementado Phase 4B; pendiente revisión externa |
 | `features` | Transformaciones cuantitativas, builder as-of y targets separados | Funcional Phase 1B |
 | `agents` | Contexto/respuesta común y agentes especializados | Contratos/stubs |
 | `llm` | Router, clientes, pricing, costos y cache | Infraestructura local; clientes stub |
@@ -96,6 +99,14 @@ permanece marcado como no verificado. La revisión vigente se selecciona antes d
 aplicar filtros por ticker. `direct_tickers` proviene solo del proveedor;
 `request_tickers` permanece en el lineage raw. ADR-023 fija hashes, timestamps,
 lineage y rebuild.
+
+Phase 4B consume solo revisiones elegibles de esa API y persiste sus resultados
+en `data/processed/news_enrichment`, sin modificar Phase 4A. El registry distingue
+entidad corporativa, security, ticker, alias, vigencia y `known_at`. Deduplicados
+editoriales y eventos compartidos conservan contratos separados; el clustering
+exige compatibilidad entre todos los miembros. Cada snapshot identifica inputs,
+registry y configuración por SHA-256 y separa `computed_at` de disponibilidad.
+ADR-024 y `docs/news-groups.md` describen la reconstrucción strict/research.
 
 `MarketDataIngestionService` consulta el último dato local, aplica overlap, obtiene barras desde el adapter, valida, extrae acciones, hace upsert y reconstruye la serie latest-basis. La estructura física es `raw/tiingo/daily`, `raw/tiingo/corporate_actions` y `processed/market/split_adjusted_latest`. Los archivos permiten reconstruir provider, ingestión, schema, normalización, ticker y rango.
 

@@ -1,0 +1,14 @@
+{
+  "version": "news-entity-cases-v1",
+  "provenance": "Agent-authored synthetic entity labels and rationales; independent human adjudication pending.",
+  "cases": [
+    {"id":"company-name","headline":"Apple announces a corporate update","ticker":"","expected_entities":["apple"],"ambiguous_security":false,"rationale":"Explicit whole-name alias identifies Apple in this authored corporate scenario."},
+    {"id":"two-companies","headline":"Apple and Microsoft announce a joint corporate project","ticker":"","expected_entities":["apple","microsoft"],"ambiguous_security":false,"rationale":"Two independently named companies; retain both links."},
+    {"id":"no-substring","headline":"Pineapple growers review agricultural operations","ticker":"","expected_entities":[],"ambiguous_security":false,"rationale":"Pineapple is not a boundary-aware Apple mention."},
+    {"id":"bare-symbols","headline":"T V and C are labels in a technical document","ticker":"","expected_entities":[],"ambiguous_security":false,"rationale":"Bare single-letter symbols are not ticker evidence."},
+    {"id":"provider-label","headline":"A corporate update from an unnamed issuer","ticker":"MSFT","expected_entities":["microsoft"],"ambiguous_security":false,"rationale":"Provider ticker is distinct explicit security evidence."},
+    {"id":"unknown-symbol","headline":"A corporate update from an unnamed issuer","ticker":"UNKNOWN","expected_entities":[],"ambiguous_security":false,"rationale":"No registry entry; abstain rather than invent a mapping."},
+    {"id":"google-class","headline":"Google announces a new research program","ticker":"","expected_entities":["alphabet"],"ambiguous_security":true,"rationale":"Corporate alias identifies parent but does not distinguish Class A/C."},
+    {"id":"direct-class","headline":"An unnamed issuer reports corporate operations","ticker":"GOOG","expected_entities":["alphabet"],"ambiguous_security":false,"rationale":"Explicit GOOG provider label distinguishes Class C."}
+  ]
+}

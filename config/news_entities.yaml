@@ -1,0 +1,19 @@
+version: news-entities-v1
+universe_description: >-
+  Partial curated registry for the fixed development equities universe.
+  Not a historical PIT universe. known_at is local registry curation time;
+  historical effective dates do not imply historical knowledge by this system.
+entries:
+  - {entity_id: apple, corporate_name: Apple Inc., security_id: apple-common, ticker: AAPL, aliases: [Apple], effective_from: '2000-01-01', known_at: '2026-10-12T13:17:53Z', evidence: 'https://investor.apple.com/stock-price/default.aspx'}
+  - {entity_id: microsoft, corporate_name: Microsoft Corporation, security_id: microsoft-common, ticker: MSFT, aliases: [Microsoft], effective_from: '2000-01-01', known_at: '2026-10-12T13:17:53Z', evidence: 'https://www.microsoft.com/en-us/Investor/'}
+  - {entity_id: nvidia, corporate_name: NVIDIA Corporation, security_id: nvidia-common, ticker: NVDA, aliases: [Nvidia], effective_from: '2000-01-01', known_at: '2026-10-12T13:17:53Z', evidence: 'https://investor.nvidia.com/'}
+  - {entity_id: jpmorgan, corporate_name: JPMorgan Chase & Co., security_id: jpmorgan-common, ticker: JPM, aliases: [JPMorgan, JPMorgan Chase, J.P. Morgan, JP Morgan], effective_from: '2000-01-01', known_at: '2026-10-12T13:17:53Z', evidence: 'https://www.jpmorganchase.com/ir'}
+  - {entity_id: exxonmobil, corporate_name: Exxon Mobil Corporation, security_id: exxonmobil-common, ticker: XOM, aliases: [ExxonMobil, Exxon Mobil], effective_from: '2000-01-01', known_at: '2026-10-12T13:17:53Z', evidence: 'https://corporate.exxonmobil.com/investors'}
+  - {entity_id: alphabet, corporate_name: Alphabet Inc., security_id: alphabet-class-a, ticker: GOOGL, share_class: A, aliases: [Alphabet, Google], effective_from: '2015-10-02', known_at: '2026-10-12T13:17:53Z', evidence: 'https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm'}
+  - {entity_id: alphabet, corporate_name: Alphabet Inc., security_id: alphabet-class-c, ticker: GOOG, share_class: C, aliases: [Alphabet, Google], effective_from: '2015-10-02', known_at: '2026-10-12T13:17:53Z', evidence: 'https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm'}
+  - {entity_id: meta, corporate_name: Facebook Inc., security_id: meta-class-a, ticker: FB, share_class: A, aliases: [Facebook], effective_from: '2012-05-18', effective_to: '2021-10-28', known_at: '2026-10-12T13:17:53Z', evidence: 'https://www.nasdaqtrader.com/TraderNews.aspx?id=ECA2022-125'}
+  - {entity_id: meta, corporate_name: Meta Platforms Inc., security_id: meta-class-a, ticker: FB, share_class: A, aliases: [Meta Platforms], effective_from: '2021-10-28', effective_to: '2022-06-09', known_at: '2026-10-12T13:17:53Z', evidence: 'https://www.sec.gov/Archives/edgar/data/1326801/000132680121000071/fb-20211028.htm'}
+  - {entity_id: meta, corporate_name: Meta Platforms Inc., security_id: meta-class-a, ticker: META, share_class: A, aliases: [Meta Platforms], effective_from: '2022-06-09', known_at: '2026-10-12T13:17:53Z', evidence: 'https://www.nasdaqtrader.com/TraderNews.aspx?id=ECA2022-125'}
+  - {entity_id: att, corporate_name: AT&T Inc., security_id: att-common, ticker: T, aliases: [AT&T], effective_from: '2000-01-01', known_at: '2026-10-12T13:17:53Z', evidence: 'https://investors.att.com/'}
+  - {entity_id: visa, corporate_name: Visa Inc., security_id: visa-class-a, ticker: V, share_class: A, aliases: [Visa], effective_from: '2008-03-19', known_at: '2026-10-12T13:17:53Z', evidence: 'https://investor.visa.com/'}
+  - {entity_id: citi, corporate_name: Citigroup Inc., security_id: citi-common, ticker: C, aliases: [Citigroup], effective_from: '2000-01-01', known_at: '2026-10-12T13:17:53Z', evidence: 'https://www.citigroup.com/'}

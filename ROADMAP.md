@@ -310,7 +310,7 @@ rentabilidad de portfolio y no está aprobado para trading.
 
 ### Phase 4A — News Contracts + Point-in-Time Ingestion
 
-**Status:** implemented_pending_external_review — real provider pilot blocked by missing credentials
+**Status:** implemented_pending_external_review — real provider pilot now available locally
 
 `news-schema-v1` implementa raw content-addressed inmutable, revisiones Parquet,
 lineage, hashes deterministas, policies live/backfill, rebuild y consultas PIT
@@ -320,15 +320,33 @@ El reporte `data/reports/news/phase4a_pilot.json` registra que no existía
 infraestructura fue validada con proveedor simulado; Phase 4A espera revisión
 externa y un piloto real cuando exista acceso legítimo.
 
+Actualización factual al iniciar 4B: el piloto fue ejecutado posteriormente y
+`phase4a_pilot.json` registra `completed_pending_external_review`. Los datos
+locales contienen 905 revisiones para 811 artículos, capturados el 2026-10-12.
+El bloqueo por credenciales anterior es histórico, no el estado actual.
+
 Phase 4A.1 incorporó correcciones de integridad posteriores a revisión externa:
 la publicación ya no puede convertirse en disponibilidad verificada de una
 revisión histórica, la revisión vigente se resuelve antes del filtro por ticker
 y el contexto de request no se transforma en etiquetas del proveedor. El estado
 permanece `implemented_pending_external_review`.
 
-Subfases 4B–4F permanecen no iniciadas. 4B cubrirá deduplicación semántica,
-clustering y entity resolution; 4C interpretación LLM; 4D agregación/features;
-4E evaluación incremental; y 4F freeze/decision.
+### Phase 4B — Deduplication, Event Clustering & Entity Resolution
+
+**Status:** implemented_pending_external_review
+
+Contratos `news-enrichment-v1`, registro parcial `news-entities-v1`, resolución
+causal de entidades, deduplicación editorial conservadora y agrupación
+complete-link producen snapshots as-of auditables separados de Phase 4A.
+La auditoría offline confirma que las 94 filas adicionales del piloto son
+revisiones de `direct_tickers`, no cambios editoriales. La muestra real controlada
+usa 200 artículos vigentes; no hubo nuevas descargas. Los resultados y
+fingerprints están en `data/reports/news/phase4b_pilot.json`. Ocho pares sintéticos
+por partición y dos revisiones cualitativas reales no permiten inferir exactitud
+poblacional; la adjudicación humana y la revisión externa siguen pendientes.
+
+4C–4F permanecen no iniciadas: 4C interpretación LLM; 4D agregación/features;
+4E evaluación incremental; 4F freeze/decision.
 
 ## Phase 5 — Analyst + Earnings Agents
 
