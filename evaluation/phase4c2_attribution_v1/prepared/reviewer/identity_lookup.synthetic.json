@@ -1,0 +1,78 @@
+{
+  "version": "synthetic-review-identity-evidence-v1",
+  "fictional": true,
+  "purpose": "Neutral evidence for second-pass security annotation only; NOT a production registry or configuration",
+  "virtual_decision_time": "2026-10-13T00:05:00Z",
+  "entries": [
+    {
+      "corporate_name": "Solmere",
+      "security_id": "fictional-solmere-common",
+      "ticker": "FIC-SOL",
+      "known_at": "2026-10-13T00:00:00Z",
+      "effective_from": "2025-01-01"
+    },
+    {
+      "corporate_name": "Stoneharbor",
+      "security_id": "fictional-stoneharbor-common",
+      "ticker": "FIC-STO",
+      "known_at": "2026-10-13T00:00:00Z",
+      "effective_from": "2025-01-01"
+    },
+    {
+      "corporate_name": "Oriole",
+      "security_id": "fictional-oriole-common",
+      "ticker": "FIC-ORI",
+      "known_at": "2026-10-13T00:00:00Z",
+      "effective_from": "2025-01-01"
+    },
+    {
+      "corporate_name": "Brindle",
+      "security_id": "fictional-brindle-common",
+      "ticker": "FIC-BRI",
+      "known_at": "2026-10-13T00:00:00Z",
+      "effective_from": "2025-01-01"
+    },
+    {
+      "corporate_name": "Vireo",
+      "security_id": "fictional-vireo-common",
+      "ticker": "FIC-VIR",
+      "known_at": "2026-10-13T00:00:00Z",
+      "effective_from": "2025-01-01"
+    },
+    {
+      "corporate_name": "Weyland Industries",
+      "security_id": "fictional-weyland-common",
+      "ticker": "FIC-WEY",
+      "known_at": "2026-10-13T00:00:00Z",
+      "effective_from": "2025-01-01"
+    },
+    {
+      "corporate_name": "Eider",
+      "security_id": "fictional-eider-common",
+      "ticker": "FIC-EID",
+      "known_at": "2026-10-13T00:00:00Z",
+      "effective_from": "2025-01-01"
+    },
+    {
+      "corporate_name": "Seabright",
+      "security_id": "fictional-seabright-a",
+      "ticker": "FIC-SEA-A",
+      "known_at": "2026-10-13T00:00:00Z",
+      "effective_from": "2025-01-01"
+    },
+    {
+      "corporate_name": "Seabright",
+      "security_id": "fictional-seabright-b",
+      "ticker": "FIC-SEA-B",
+      "known_at": "2026-10-13T00:00:00Z",
+      "effective_from": "2025-01-01"
+    },
+    {
+      "corporate_name": "Quillan",
+      "security_id": "fictional-quillan-common",
+      "ticker": "FIC-QUI",
+      "known_at": "2026-10-14T00:00:00Z",
+      "effective_from": "2025-01-01"
+    }
+  ]
+}

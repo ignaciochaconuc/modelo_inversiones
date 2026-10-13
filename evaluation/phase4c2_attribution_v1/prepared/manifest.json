@@ -1,0 +1,40 @@
+{
+  "version": "attribution-blind-review-preparation-v1",
+  "status": "prepared_pending_content_rights_review",
+  "seed": "attribution-independent-review-20261013-v1",
+  "base_protocol": "docs/phase4c1-evaluation.md",
+  "base_protocol_sha256": "daee4aca0baa3f381b2e7426bf664d7c540c79733c3f8fab8b97c28b4877be13",
+  "source_sha256": "a977a9e0ab4428189b859433800477742a274e43295c26578282032a35d91395",
+  "synthetic_cases": 32,
+  "synthetic_coverage": {
+    "acquisition": 3,
+    "contract": 3,
+    "alliance": 3,
+    "product": 3,
+    "platform": 3,
+    "subsidiary": 3,
+    "competition": 3,
+    "regulation": 3,
+    "incidental": 3,
+    "challenge": 5
+  },
+  "real_candidate_cases": 24,
+  "network_requests": 0,
+  "inference_attempts": 0,
+  "human_references": 0,
+  "ai_assisted_references": 0,
+  "system_predictions": 0,
+  "production_tree_sha256": "0190f25d865ab3f32af5b592e4ffb4651ac7a89a2e7269e33e7c50d6c265652d",
+  "config_tree_sha256": "b94c4b66991e4ba8da7e07f3172d6d948973a7c7c7daeb277f0745545a2d8417",
+  "artifact_sha256": {
+    "reviewer/blind_synthetic_evidence.json": "9f046e910bb318379955c88eb1286ccaceb09e91b9fb02342dab9c7f2435809f",
+    "reviewer/identity_lookup.synthetic.json": "757d55e35e5c27f7379b7aa85cc60ec11ad28fc81a5e3810754c047ee445b83d",
+    "operator/synthetic_selection.json": "18ac6c91110a4d9a9293994613b4fcc596b4b51290436f68dfeafceb29f7a741",
+    "operator/real_candidate_metadata.json": "ac049c5738449b0f32dc2528ba2be4c6ca0b604c91b6f0048dc027cfeabf7b8b",
+    "references/human_a.template.json": "c0c185da150ff10e3de4e00c9dc1f054d7370f90a80ae1bc8708e6dd6991d896",
+    "references/human_b.template.json": "c0c185da150ff10e3de4e00c9dc1f054d7370f90a80ae1bc8708e6dd6991d896",
+    "references/ai_assisted.template.json": "324735a6d0e2f096cf4cbc48e32fa153faf7d3cf883ccba22995c915cdefa61a",
+    "system/system_outputs.template.json": "392147e4a8b6f26b5257733959b84039b49560d360560986f4b2fd71663fd04b",
+    "operator/alignment.template.json": "906ccfd5616d3e2c1a5a0311a791d93279f6bf2a6700b5e2f3335355ec6fbe07"
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "version": "attribution-blind-review-preparation-v1",
+  "reviewer_id": null,
+  "reviewed_at": null,
+  "assistance": null,
+  "independence_attestation": null,
+  "has_seen_system_outputs": null,
+  "evidence_bundle_fingerprint": "28da9aabaeb86336e8f2e1440fbece69c9ecf5e36ecb83ccaa1e527d346b44b7",
+  "cases": [
+    {
+      "case_id": "S-08ab6f2771fbf4a6",
+      "evidence_fingerprint": "c0be20e0aa4a539534563bd82cabb09167c2062eeb6fb3b333a55d6a68b5c60c",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-0b348ae4d5f9db5b",
+      "evidence_fingerprint": "40d8ba60253b7286ff6dc81939d68faa21bff2a639d9b56a1ca11994fe6c231d",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-0dfb4b77b037b9da",
+      "evidence_fingerprint": "a0f43abae4b3ce2f9f049be9506c72cc9b5e7fcfcff30134d325e5e1ec2bc61c",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-101a16357b30a7ab",
+      "evidence_fingerprint": "923193925d8cea160c52e7aa089874b196ae548d7b075eabd1da41f6e6535d01",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-17c18cde08a18186",
+      "evidence_fingerprint": "5b2f4c4ae15142f9e4cd56b9a0c25f446ae9b23eb148ad8855d80cb751a85875",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-21369de6ca9529c4",
+      "evidence_fingerprint": "ef29492946399e245adc445fcec927e7dd323c12fd22a0f38124a0b9ca1c1515",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-250bf0fb27a44ef6",
+      "evidence_fingerprint": "3603301357a073ea7bcd9819364ad5a5bbd6f4f630899294ce6467b3fbbeb90f",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-261f5495206977cc",
+      "evidence_fingerprint": "168e6b0cf3e16c42d5b4097a91f5b11db12b4eca272f76e11ddcf43c36f9e506",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-2a6f842eeab8cddb",
+      "evidence_fingerprint": "960e616d3bbdc10720b6b531693d47c20a3d22480a83e0247bb86b686a5fe77d",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-337b4818cb47ae90",
+      "evidence_fingerprint": "04da604ba70aed990ceb12b9ab89a00ac05fc6e6bede68f78d568845d3a638ea",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-35a0c5b8faaa5741",
+      "evidence_fingerprint": "d07b5351ba4f0e7809761e90363d883a90cc8df1337844f146756b74a34f5a4c",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-3735adaf106afa39",
+      "evidence_fingerprint": "a78050dd2619e2f425d5d025f6e987db304560e6b5c0699e4941a00a8640a400",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-3c30cb40dd71e6ca",
+      "evidence_fingerprint": "5dba34555183dde61c0b368554fc328db6726b690c315b4406e3dc67edb675e3",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-40501aee7851586a",
+      "evidence_fingerprint": "8963adfab7f157a727e4463641d73e6d2e28f82242bafacafb91ba3a2d1f62df",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-4a310ed5f76719a3",
+      "evidence_fingerprint": "3256bc44f27a9daf5e6ac3185420d4046f3e6612a3f0311dfdec2f4071dec483",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-4e663c72421c23f0",
+      "evidence_fingerprint": "cd2350585bb891af465cd061873676da0901bf6d7ad073be5828d56521513525",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-52efc69a6674d077",
+      "evidence_fingerprint": "837d10bc3b86b66c0d5b4b067045b0c0c30d5ba16ac5e328b35388bc44b95caf",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-5cd02bc28bc2405b",
+      "evidence_fingerprint": "ed2fcfa1dece57bd77ba50fe4eb6b53fc6226c9e8c939b597a3150f221794796",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-5e06c61a620d1290",
+      "evidence_fingerprint": "b41885751eb084829439fa670ca4e52c2a0487bd7bebb63440fe65483d4fd56f",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-5e1d0147e0529b8c",
+      "evidence_fingerprint": "ec0e03e9a1852a0d96ae9aa626242a3d9a44ee4a9b87d0656bcaa569e441e997",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-5e4223789f2cdc0f",
+      "evidence_fingerprint": "b82080c53c96ae9782e55943d0e2815f09216faef42c65a301c04a0d449c1112",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-69a88ea765d353b5",
+      "evidence_fingerprint": "55c2567efa12b9c5b02a878b8b922151a3050b45a2bc79b1192eb87c23d4e463",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-6c4db24e38ef94dc",
+      "evidence_fingerprint": "79466e1ebae9a78f85b6f3147f464405cf7a0cb473b47d1c13489ad5f11c759f",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-7394579424f4d7e8",
+      "evidence_fingerprint": "0ea2cb30b7ae899f70cc849a4a2ecc7d3cb2a643c54b7c5c8f0a86c781012ee0",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-8640db367d8f2e35",
+      "evidence_fingerprint": "803734c79f46b40fa30d4dc1dbac8ac4dd6a9c9518de7caaa2c4c1a12215e038",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-91e5c93f0cf4ece5",
+      "evidence_fingerprint": "08eb9af20e60029b86381e7bbf5d94f9914216916702adf548d787472e1d79e7",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-aa6dc0bc8f72b6b1",
+      "evidence_fingerprint": "134d104ff38e369e29e1ce546109bb8b8606172a43b8498ebb548c8a2d1beb21",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-bd80c0631533bf42",
+      "evidence_fingerprint": "dafcdcbac9987de0b11ff7763645dd23f64a07ab572d34b1573251864af485d9",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-c0e6d5edb8735e03",
+      "evidence_fingerprint": "5eacb4e2e5ed5242bb0239426b76b0dbabc4e8b50d29c6a212d2038dc77f77cb",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-c2c94e2676dcb74e",
+      "evidence_fingerprint": "62d320b101efa85ba1a258e4d977d2f22918867f8840b3357eff0969d4116295",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-c2f36114546f9be5",
+      "evidence_fingerprint": "3e555f1105373a9ab13b108f144bf0df1b7ce26639e9582c584ce1ce9f56a217",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    },
+    {
+      "case_id": "S-d73a2bcb6f94338a",
+      "evidence_fingerprint": "f7bb865c4feed376be21c519d5cda09cee17afb80a919753ec42d316cef5ac14",
+      "review_status": "pending",
+      "events": [],
+      "units": [],
+      "evidence_sufficiency": null,
+      "rationale": null
+    }
+  ]
+}
