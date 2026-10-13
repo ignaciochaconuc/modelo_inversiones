@@ -33,3 +33,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-029: Cache-write pricing and offline smoke preflight](ADR-029-cache-write-pricing-and-smoke-preflight.md)
 - [ADR-030: Explicit CLI environment bootstrap](ADR-030-explicit-cli-environment-bootstrap.md)
 - [ADR-031: Versioned exact-quote grounding](ADR-031-versioned-exact-quote-grounding.md)
+- [ADR-032: Economic entity attribution distinct from corporate identity](ADR-032-economic-entity-attribution.md)

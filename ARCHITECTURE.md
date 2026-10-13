@@ -170,7 +170,11 @@ desarrollo. ADR-031 añade 4C.2.1 opt-in: quote selection/prompt v2, resolver
 exacto único por campo/revisión, payload interno v1 y validadores sin relajar.
 Runtime/attempt v3 conserva original, trazas y resultado, con replay determinista
 y diagnósticos sanitizados. Fechas/registry/PIT y contratos históricos intactos.
-4C.2/4C.2.1: `implemented_pending_external_review`; 4C.3 `not_started`.
+ADR-032 añade 4C.2.2 opt-in: economic output/prompt v3, runtime/attempt v4,
+identidad separada de participación directa/indirecta y contexto/desconocidos.
+Evidencia relacional explícita, identidad desde registry elegible y consumidor
+revalidado sin exposición confirmada. No cambia contratos/replay anteriores.
+4C.2/4C.2.1/4C.2.2: `implemented_pending_external_review`; 4C.3 `not_started`.
 Sin Feature Store ni señales operativas; no se modifican algoritmos 4B.
 
 ## Point-in-time y Feature Store

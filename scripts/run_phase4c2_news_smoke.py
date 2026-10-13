@@ -10,7 +10,7 @@ import yaml
 
 from investment_system.agents.news_interpretation.inputs import build_interpretation_request
 from investment_system.agents.news_interpretation.runtime_schemas import InterpretationRuntimeSettings
-from investment_system.agents.news_interpretation.runtime_schemas import GroundedRuntimeSettings
+from investment_system.agents.news_interpretation.runtime_schemas import GroundedRuntimeSettings, EconomicRuntimeSettings
 from investment_system.agents.news_interpretation.persistence import LocalInterpretationStore
 from investment_system.agents.news_interpretation.service import NewsInterpretationService, prepare_invocation, reservation_bound
 from investment_system.data.news_entities import load_entity_registry
@@ -54,7 +54,7 @@ def main() -> int:
             raise ValueError("secrets are not configuration")
         if raw["adapter"]["model"] != args.model:
             raise ValueError("model flag must match the explicit profile")
-        settings_type=GroundedRuntimeSettings if raw.get("settings_version")=="news-inference-settings-v3" else InterpretationRuntimeSettings
+        settings_type=EconomicRuntimeSettings if raw.get("settings_version")=="news-inference-settings-v4" else GroundedRuntimeSettings if raw.get("settings_version")=="news-inference-settings-v3" else InterpretationRuntimeSettings
         settings=settings_type.model_validate(raw)
         if args.budget_usd <= 0 or args.budget_usd > settings.run_budget_usd:
             raise ValueError("flag cannot expand the configured budget")
@@ -71,7 +71,7 @@ def main() -> int:
             raise ValueError("secret in source content")
         # This single-article CLI now requires fully accounted four-lane pricing.
         # Original v1 manifests/records remain available for offline replay.
-        if settings.settings_version not in {"news-inference-settings-v2","news-inference-settings-v3"} or settings.max_attempts != 1:
+        if settings.settings_version not in {"news-inference-settings-v2","news-inference-settings-v3","news-inference-settings-v4"} or settings.max_attempts != 1:
             raise ValueError("smoke requires v2 pricing and one attempt")
         _, wire, key = prepare_invocation(request, settings)
         input_bound, maximum = reservation_bound(wire, settings)

@@ -149,8 +149,15 @@ class QuoteResolutionError(ValueError):
 
 def resolve_selected_quotes(selection: QuoteSelectionPayload, request: NewsInterpretationRequest):
     """Resolve exact UNIQUE matches including overlaps; no normalization or repair."""
-    request = NewsInterpretationRequest.model_validate(request.model_dump(mode="json"))
     selection = QuoteSelectionPayload.model_validate(selection.model_dump(mode="json"))
+    transformed,traces=resolve_quote_fields(selection.model_dump(mode="json"),request)
+    transformed["schema_version"] = "news-interpretation-v1"
+    return transformed,traces
+
+
+def resolve_quote_fields(data: dict, request: NewsInterpretationRequest, *, diagnostic_type=RejectionDiagnostic):
+    """Shared exact resolver; wrappers own their distinct structural contracts."""
+    request = NewsInterpretationRequest.model_validate(request.model_dump(mode="json"))
     sources = {e.evidence_id: e for e in request.evidence}
     traces = []
 
@@ -158,7 +165,7 @@ def resolve_selected_quotes(selection: QuoteSelectionPayload, request: NewsInter
         if isinstance(value, dict) and set(value) == {"evidence_id", "quote"}:
             source = sources.get(value["evidence_id"])
             def reject(rule):
-                raise QuoteResolutionError(RejectionDiagnostic(stage="evidence_resolution", field_path=path, rule=rule))
+                raise QuoteResolutionError(diagnostic_type(stage="evidence_resolution", field_path=path, rule=rule))
             if source is None:
                 reject("unknown_evidence_id")
             if source.revision_id != request.revision_id:
@@ -181,8 +188,7 @@ def resolve_selected_quotes(selection: QuoteSelectionPayload, request: NewsInter
             return [resolve(v, path+(i,)) for i, v in enumerate(value)]
         return value
 
-    transformed = resolve(selection.model_dump(mode="json"))
-    transformed["schema_version"] = "news-interpretation-v1"
+    transformed = resolve(data)
     return transformed, tuple(traces)
 
 

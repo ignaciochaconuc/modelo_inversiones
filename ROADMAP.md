@@ -379,7 +379,7 @@ Véase `docs/phase4b2-review.md` y ADR-025. No iniciar 4C.
 
 ### Phase 4C — LLM News Interpretation
 
-**Status:** in progress — experimental integration; real smoke not executed
+**Status:** in progress — experimental integration; external review pending
 
 El cierre de 4B no inició 4C; una autorización posterior habilita exclusivamente
 4C.1. Se conservan limitaciones de recall, registry y disponibilidad, artículos
@@ -428,6 +428,17 @@ replay/hashes históricos permanecen. Fechas ISO y entity registry sin ampliar.
 Diagnósticos sanitizados, regresiones sintéticas y segundo smoke preparado
 solo offline; no inferencias ni solicitudes externas. ADR-031 y
 `docs/phase4c2-1-grounding-review.md`; primer smoke sigue rechazado/desarrollo.
+
+### Phase 4C.2.2 — Economic Entity Attribution
+
+**Status:** implemented_pending_external_review
+
+Salida/prompt económico v3 y runtime/attempt v4 opt-in separan identidad,
+participación directa, relación indirecta respaldada, contexto y desconocidos.
+Citas relacionales explícitas, registry sin ampliar y consumidor tipado sin
+exposición confirmada. El segundo smoke aceptado permanece histórico: su
+auditoría es evidencia de desarrollo, no holdout independiente. ADR-032 y
+`docs/phase4c2-2-economic-attribution-review.md`; no inferencias en esta tarea.
 
 Phase 4C.3: `not_started`; ninguna interpretación se promueve a operativa ni
 se conecta a Feature Store, modelos, portfolio, riesgo o ejecución.

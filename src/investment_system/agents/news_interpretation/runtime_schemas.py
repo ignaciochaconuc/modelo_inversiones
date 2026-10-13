@@ -15,6 +15,11 @@ from investment_system.agents.news_interpretation.grounding import (
     GroundedReplayEnvelope, RejectionDiagnostic, MODEL_OUTPUT_VERSION, PROMPT_VERSION, RESOLVER_VERSION,
     VALIDATION_VERSION as GROUNDED_VALIDATION_VERSION,
 )
+from investment_system.agents.news_interpretation.economic_attribution import (
+    EconomicReplayEnvelope, AttributionDiagnostic, prepare_economic_request,
+    MODEL_OUTPUT_VERSION as ECONOMIC_OUTPUT_VERSION, PROMPT_VERSION as ECONOMIC_PROMPT_VERSION,
+    VALIDATION_VERSION as ECONOMIC_VALIDATION_VERSION, ATTRIBUTION_VERSION,
+)
 
 
 class PriceSchedule(InterpretationModel):
@@ -90,6 +95,13 @@ class GroundedRuntimeSettings(InterpretationRuntimeSettings):
     model_output_version: Literal["news-quote-selection-v2"] = MODEL_OUTPUT_VERSION
     prompt_version: Literal["news-interpretation-prompt-v2"] = PROMPT_VERSION
     resolver_version: Literal["news-exact-quote-resolver-v1"] = RESOLVER_VERSION
+
+
+class EconomicRuntimeSettings(GroundedRuntimeSettings):
+    settings_version: Literal["news-inference-settings-v4"]="news-inference-settings-v4"
+    model_output_version: Literal["news-economic-selection-v3"]=ECONOMIC_OUTPUT_VERSION
+    prompt_version: Literal["news-interpretation-prompt-v3"]=ECONOMIC_PROMPT_VERSION
+    attribution_version: Literal["news-economic-attribution-v1"]=ATTRIBUTION_VERSION
 
 
 class StoredInterpretationAttempt(InterpretationModel):
@@ -174,7 +186,7 @@ class StoredInterpretationAttemptV2(StoredInterpretationAttempt):
 
     @model_validator(mode="after")
     def cache_write_consistency(self):
-        expected = "news-inference-settings-v3" if self.schema_version == "news-inference-attempt-v3" else "news-inference-settings-v2"
+        expected = {"news-inference-attempt-v3":"news-inference-settings-v3","news-inference-attempt-v4":"news-inference-settings-v4"}.get(self.schema_version,"news-inference-settings-v2")
         if self.settings.settings_version != expected:
             raise ValueError("v2 attempt requires v2 pricing/settings")
         if self.observed_usage_cost_usd is not None:
@@ -197,6 +209,10 @@ class StoredGroundedAttempt(StoredInterpretationAttemptV2):
     def _cache_validation_version(self) -> str:
         return GROUNDED_VALIDATION_VERSION
 
+    def _prepare_model_request(self, config):
+        from investment_system.agents.news_interpretation.grounding import prepare_quote_request
+        return prepare_quote_request(self.request,config)
+
     @model_validator(mode="after")
     def grounded_consistency(self):
         from investment_system.llm.openai_client import OpenAIClient
@@ -205,7 +221,7 @@ class StoredGroundedAttempt(StoredInterpretationAttemptV2):
         a = self.settings.adapter
         config = ModelConfiguration(provider="openai", model=a.model, temperature=a.temperature,
             max_output_tokens=a.max_output_tokens, max_estimated_cost_usd=self.settings.request_budget_usd)
-        expected_wire = OpenAIClient(a).wire_payload(prepare_quote_request(self.request, config), a.model)
+        expected_wire = OpenAIClient(a).wire_payload(self._prepare_model_request(config), a.model)
         if expected_wire != self.wire_payload:
             raise ValueError("grounded transport/request binding mismatch")
         if self.interpretation and (self.interpretation.result.model_configuration != config
@@ -216,12 +232,23 @@ class StoredGroundedAttempt(StoredInterpretationAttemptV2):
         return self
 
 
+class StoredEconomicAttempt(StoredGroundedAttempt):
+    schema_version: Literal["news-inference-attempt-v4"]="news-inference-attempt-v4"
+    settings: EconomicRuntimeSettings
+    interpretation: EconomicReplayEnvelope | None=None
+    rejection_diagnostics: tuple[AttributionDiagnostic,...]=()
+
+    def _cache_validation_version(self) -> str:return ECONOMIC_VALIDATION_VERSION
+
+    def _prepare_model_request(self,config):return prepare_economic_request(self.request,config)
+
+
 class InterpretationDelivery(InterpretationModel):
     retrieval_mode: Literal["new_inference", "exact_cache_recovery", "offline_reconstruction"]
     cache_key: str
     record_id: str | None = None
     attempt_record_ids: tuple[str,...] = ()
-    record: StoredInterpretationAttempt | StoredInterpretationAttemptV2 | StoredGroundedAttempt | None = None
+    record: StoredInterpretationAttempt | StoredInterpretationAttemptV2 | StoredGroundedAttempt | StoredEconomicAttempt | None = None
     error_code: str | None = None
     additional_provider_cost_usd: float | None = None
     additional_attempts: int = 0

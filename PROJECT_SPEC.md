@@ -162,7 +162,12 @@ preservado como diagnóstico de desarrollo. 4C.2.1 añade selección textual exa
 v2 y offsets deterministas, mediante runtime v3 opt-in y ADR-031; todos los
 validadores v1 siguen ejecutándose, sin ampliar fechas ni entity registry.
 Estado `implemented_pending_external_review`, sin inferencia real en esta tarea.
-Véase `docs/phase4c2-1-grounding-review.md`; 4C.3 continúa sin iniciar.
+Véase `docs/phase4c2-1-grounding-review.md`. 4C.2.2 (ADR-032) añade contrato
+económico v3/runtime v4 opt-in: identidad no implica participación, productos no
+heredan fabricante/ticker y contexto no se convierte en exposición confirmada.
+Relaciones e impacto potencial requieren evidencia específica; ninguna
+clasificación estima retornos. Estado `implemented_pending_external_review`;
+véase `docs/phase4c2-2-economic-attribution-review.md`; 4C.3 continúa sin iniciar.
 Se preservan protocolo 4C.1 y artefactos previos; ni TEST oficial ni comparaciones
 reales se ejecutan. Véanse ADR-028 y `docs/phase4c2-review.md`.
 4C.3 permanece `not_started`; interpretaciones experimentales no operativas,

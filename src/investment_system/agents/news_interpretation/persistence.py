@@ -8,9 +8,9 @@ from pydantic import TypeAdapter
 from investment_system.core.time_utils import ensure_utc
 from investment_system.data.storage.news_store import NewsStore
 from investment_system.llm.cache import AnalysisCache
-from investment_system.agents.news_interpretation.runtime_schemas import StoredInterpretationAttempt, StoredInterpretationAttemptV2, StoredGroundedAttempt
+from investment_system.agents.news_interpretation.runtime_schemas import StoredInterpretationAttempt, StoredInterpretationAttemptV2, StoredGroundedAttempt, StoredEconomicAttempt
 
-ATTEMPT_ADAPTER = TypeAdapter(StoredInterpretationAttempt | StoredInterpretationAttemptV2 | StoredGroundedAttempt)
+ATTEMPT_ADAPTER = TypeAdapter(StoredInterpretationAttempt | StoredInterpretationAttemptV2 | StoredGroundedAttempt | StoredEconomicAttempt)
 
 
 LOCAL_ROOT=Path("data/cache/news_interpretation")

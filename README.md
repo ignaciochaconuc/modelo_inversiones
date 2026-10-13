@@ -192,7 +192,12 @@ El propietario ejecutó posteriormente el primer smoke, rechazado y preservado
 como diagnóstico de desarrollo. [4C.2.1](docs/phase4c2-1-grounding-review.md)
 endurece citas mediante selección exacta v2 y offsets deterministas, con perfil
 v3 opt-in, trazas/replay y diagnósticos seguros (ADR-031). Estado
-`implemented_pending_external_review`; segundo smoke preparado, no ejecutado.
+`implemented_pending_external_review`. El propietario ejecutó posteriormente el
+segundo smoke; su auditoría semántica detectó atribución corporativa sin respaldo.
+[4C.2.2](docs/phase4c2-2-economic-attribution-review.md) añade salida/prompt v3 y
+runtime v4 opt-in: identidad separada de participación/contexto, evidencia
+relacional y consumidor sin exposición confirmada (ADR-032). Estado
+`implemented_pending_external_review`; sin nuevas inferencias ni inicio de 4C.3.
 La configuración no sensible vive en `config/news.yaml`; el piloto requiere
 `FINNHUB_API_KEY` en el entorno y, si falta, escribe un reporte bloqueado sin
 hacer solicitudes externas.

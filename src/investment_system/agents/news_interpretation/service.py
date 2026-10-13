@@ -23,10 +23,15 @@ from investment_system.agents.news_interpretation.runtime_schemas import (
     InterpretationRuntimeSettings, StoredInterpretationAttempt, InterpretationDelivery,
     StoredInterpretationAttemptV2, CacheWritePriceSchedule,
     GroundedRuntimeSettings, StoredGroundedAttempt,
+    EconomicRuntimeSettings, StoredEconomicAttempt,
 )
 from investment_system.agents.news_interpretation.grounding import (
     prepare_quote_request, evaluate_quote_response, GroundedReplayEnvelope, RejectionDiagnostic,
     VALIDATION_VERSION as GROUNDED_VALIDATION_VERSION,
+)
+from investment_system.agents.news_interpretation.economic_attribution import (
+    prepare_economic_request, evaluate_economic_response, EconomicReplayEnvelope, AttributionDiagnostic,
+    VALIDATION_VERSION as ECONOMIC_VALIDATION_VERSION,
 )
 
 
@@ -35,13 +40,15 @@ def prepare_invocation(request: NewsInterpretationRequest, settings: Interpretat
     a = settings.adapter
     configuration = ModelConfiguration(provider="openai", model=a.model, temperature=a.temperature,
         max_output_tokens=a.max_output_tokens, max_estimated_cost_usd=settings.request_budget_usd)
-    if isinstance(settings, GroundedRuntimeSettings):
+    if isinstance(settings,EconomicRuntimeSettings):
+        llm=prepare_economic_request(request,configuration)
+    elif isinstance(settings, GroundedRuntimeSettings):
         llm = prepare_quote_request(request, configuration)
     else:
         llm = prepare_llm_request(request, configuration)
         llm.response_schema = InterpretationPayload.model_json_schema()
     wire = OpenAIClient(a).wire_payload(llm, a.model)
-    validation_version = GROUNDED_VALIDATION_VERSION if isinstance(settings, GroundedRuntimeSettings) else VALIDATION_VERSION
+    validation_version = ECONOMIC_VALIDATION_VERSION if isinstance(settings,EconomicRuntimeSettings) else GROUNDED_VALIDATION_VERSION if isinstance(settings, GroundedRuntimeSettings) else VALIDATION_VERSION
     key = fingerprint({"request": request.request_id, "evidence": request.evidence_fingerprint,
         "validation_version": validation_version, "settings": settings.model_dump(mode="json"), "wire": wire})
     return llm, wire, key
@@ -193,12 +200,15 @@ class NewsInterpretationService:
                     options=dict(validated_at=ensure_utc(self.clock()), execution_mode="retrospective_reconstruction",
                         estimated_cost_usd=cost, tokens_reported=known_usage, latency_reported="latency_ms" in response.model_fields_set)
                     if isinstance(self.settings, GroundedRuntimeSettings):
-                        resolution,result=evaluate_quote_response(request,response,self._configuration(),**options)
+                        economic=isinstance(self.settings,EconomicRuntimeSettings)
+                        evaluate=evaluate_economic_response if economic else evaluate_quote_response
+                        envelope_type=EconomicReplayEnvelope if economic else GroundedReplayEnvelope
+                        resolution,result=evaluate(request,response,self._configuration(),**options)
                         finished=ensure_utc(self.clock())
                         resolution=resolution.model_copy(update={"resolved_at":finished})
                         result=result.model_copy(update={"validated_at":finished,
                             "available_at":max(result.generated_at,finished,request.inputs_available_at)})
-                        envelope=GroundedReplayEnvelope(request=request,resolution=resolution,result=result)
+                        envelope=envelope_type(request=request,resolution=resolution,result=result)
                         diagnostics=result.diagnostics
                     else:
                         result=replay_response(request,response,self._configuration(),**options)
@@ -207,7 +217,8 @@ class NewsInterpretationService:
                         error="invalid_structured_evidence";retryable=self.settings.retry_invalid_response
                 except ValueError:
                     error="invalid_result_provenance";retryable=False
-                    diagnostics=(RejectionDiagnostic(stage="provenance",field_path=(),rule="invalid_result_provenance"),)
+                    diagnostic_type=AttributionDiagnostic if isinstance(self.settings,EconomicRuntimeSettings) else RejectionDiagnostic
+                    diagnostics=(diagnostic_type(stage="provenance",field_path=(),rule="invalid_result_provenance"),)
             outcome=envelope.result.status if envelope else (error or "unexpected_client_error")
             fields=response.model_fields_set if response else set()
             input_tokens=response.input_tokens if response and "input_tokens" in fields else None
@@ -232,8 +243,9 @@ class NewsInterpretationService:
                     stage,rule="telemetry","cost_reservation_exceeded"
                 elif error in {"model_identity_mismatch","effective_parameters_mismatch"}:
                     stage,rule="provenance","invalid_result_provenance"
-                diagnostics=(RejectionDiagnostic(stage=stage,field_path=(),rule=rule),)
-            record_type = StoredGroundedAttempt if grounded else StoredInterpretationAttemptV2 if v2 else StoredInterpretationAttempt
+                diagnostic_type=AttributionDiagnostic if isinstance(self.settings,EconomicRuntimeSettings) else RejectionDiagnostic
+                diagnostics=(diagnostic_type(stage=stage,field_path=(),rule=rule),)
+            record_type = StoredEconomicAttempt if isinstance(self.settings,EconomicRuntimeSettings) else StoredGroundedAttempt if grounded else StoredInterpretationAttemptV2 if v2 else StoredInterpretationAttempt
             extra={"cache_write_tokens":write_tokens} if v2 else {}
             if grounded: extra["rejection_diagnostics"]=diagnostics
             record=record_type(**extra,attempt_id=attempt_id,cache_key=key,run_id=self.run_id,attempt_number=number,
