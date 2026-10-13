@@ -1,0 +1,297 @@
+{
+  "evaluation_kind": "ai_assisted_exploratory_evaluation",
+  "execution_status": "not_executed",
+  "paid_calls_authorized": false,
+  "reference_freeze_sha256": null,
+  "model": null,
+  "cases": [
+    {
+      "case_id": "S-08ab6f2771fbf4a6",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-0b348ae4d5f9db5b",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-0dfb4b77b037b9da",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-101a16357b30a7ab",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-17c18cde08a18186",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-21369de6ca9529c4",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-250bf0fb27a44ef6",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-261f5495206977cc",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-2a6f842eeab8cddb",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-337b4818cb47ae90",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-35a0c5b8faaa5741",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-3735adaf106afa39",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-3c30cb40dd71e6ca",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-40501aee7851586a",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-4a310ed5f76719a3",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-4e663c72421c23f0",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-52efc69a6674d077",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-5cd02bc28bc2405b",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-5e06c61a620d1290",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-5e1d0147e0529b8c",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-5e4223789f2cdc0f",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-69a88ea765d353b5",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-6c4db24e38ef94dc",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-7394579424f4d7e8",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-8640db367d8f2e35",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-91e5c93f0cf4ece5",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-aa6dc0bc8f72b6b1",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-bd80c0631533bf42",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-c0e6d5edb8735e03",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-c2c94e2676dcb74e",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-c2f36114546f9be5",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    },
+    {
+      "case_id": "S-d73a2bcb6f94338a",
+      "outcome": "not_run",
+      "attempt_started_at": null,
+      "generated_at": null,
+      "record_id": null,
+      "output_fingerprint": null,
+      "units": []
+    }
+  ]
+}

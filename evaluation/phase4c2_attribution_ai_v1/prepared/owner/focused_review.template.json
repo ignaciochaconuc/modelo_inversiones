@@ -1,0 +1,10 @@
+{
+  "evaluation_kind": "ai_assisted_exploratory_evaluation",
+  "review_kind": "owner_unblinded_not_independent",
+  "reviewer_id": null,
+  "reviewed_at": null,
+  "observed_system_predictions": null,
+  "reference_freeze_sha256": null,
+  "selection_rule": "all disagreements, omissions, inconclusive cases, technical failures and critical attribution dimensions",
+  "cases": []
+}
