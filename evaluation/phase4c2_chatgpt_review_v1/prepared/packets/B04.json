@@ -1,0 +1,147 @@
+{
+  "block_id": "B04",
+  "cases": [
+    {
+      "case_id": "S-3c30cb40dd71e6ca",
+      "evidence_fingerprint": "5dba34555183dde61c0b368554fc328db6726b690c315b4406e3dc67edb675e3",
+      "evidence": [
+        {
+          "evidence_id": "S-3c30cb40dd71e6ca:headline",
+          "field": "headline",
+          "text": "Nerine launches device as subsidiary's contract ends"
+        },
+        {
+          "evidence_id": "S-3c30cb40dd71e6ca:summary",
+          "field": "summary",
+          "text": "Nerine launched a new device. Separately, Nerine's subsidiary Oriel terminated its supply agreement with Plover. The device announcement gives no connection to that terminated agreement."
+        }
+      ]
+    },
+    {
+      "case_id": "S-40501aee7851586a",
+      "evidence_fingerprint": "8963adfab7f157a727e4463641d73e6d2e28f82242bafacafb91ba3a2d1f62df",
+      "evidence": [
+        {
+          "evidence_id": "S-40501aee7851586a:headline",
+          "field": "headline",
+          "text": "Mallow to acquire unnamed regional business"
+        },
+        {
+          "evidence_id": "S-40501aee7851586a:summary",
+          "field": "summary",
+          "text": "Mallow agreed to buy a regional services business whose legal name is withheld. The seller is not named. An industry table includes a company named Marlow, which the text does not connect to the transaction."
+        }
+      ]
+    },
+    {
+      "case_id": "S-4a310ed5f76719a3",
+      "evidence_fingerprint": "3256bc44f27a9daf5e6ac3185420d4046f3e6612a3f0311dfdec2f4071dec483",
+      "evidence": [
+        {
+          "evidence_id": "S-4a310ed5f76719a3:headline",
+          "field": "headline",
+          "text": "Sable executives attend interoperability forum"
+        },
+        {
+          "evidence_id": "S-4a310ed5f76719a3:summary",
+          "field": "summary",
+          "text": "Executives from Sable, Tern Digital and Umbra attended an open technical forum. The organisers expressly said attendance does not constitute a commercial alliance or endorsement."
+        }
+      ]
+    },
+    {
+      "case_id": "S-4e663c72421c23f0",
+      "evidence_fingerprint": "cd2350585bb891af465cd061873676da0901bf6d7ad073be5828d56521513525",
+      "evidence": [
+        {
+          "evidence_id": "S-4e663c72421c23f0:headline",
+          "field": "headline",
+          "text": "Kestrel Marine ends announced partnership discussions"
+        },
+        {
+          "evidence_id": "S-4e663c72421c23f0:summary",
+          "field": "summary",
+          "text": "Kestrel Marine and Oxbow Energy ended discussions about a proposed offshore partnership without signing an agreement. Their suppliers were not parties to the discussions."
+        }
+      ]
+    }
+  ],
+  "identity_evidence": {
+    "version": "synthetic-review-identity-evidence-v1",
+    "fictional": true,
+    "purpose": "Neutral evidence for second-pass security annotation only; NOT a production registry or configuration",
+    "virtual_decision_time": "2026-10-13T00:05:00Z",
+    "entries": [
+      {
+        "corporate_name": "Solmere",
+        "security_id": "fictional-solmere-common",
+        "ticker": "FIC-SOL",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Stoneharbor",
+        "security_id": "fictional-stoneharbor-common",
+        "ticker": "FIC-STO",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Oriole",
+        "security_id": "fictional-oriole-common",
+        "ticker": "FIC-ORI",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Brindle",
+        "security_id": "fictional-brindle-common",
+        "ticker": "FIC-BRI",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Vireo",
+        "security_id": "fictional-vireo-common",
+        "ticker": "FIC-VIR",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Weyland Industries",
+        "security_id": "fictional-weyland-common",
+        "ticker": "FIC-WEY",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Eider",
+        "security_id": "fictional-eider-common",
+        "ticker": "FIC-EID",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Seabright",
+        "security_id": "fictional-seabright-a",
+        "ticker": "FIC-SEA-A",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Seabright",
+        "security_id": "fictional-seabright-b",
+        "ticker": "FIC-SEA-B",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Quillan",
+        "security_id": "fictional-quillan-common",
+        "ticker": "FIC-QUI",
+        "known_at": "2026-10-14T00:00:00Z",
+        "effective_from": "2025-01-01"
+      }
+    ]
+  }
+}

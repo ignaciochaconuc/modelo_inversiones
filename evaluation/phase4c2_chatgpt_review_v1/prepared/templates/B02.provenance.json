@@ -1,0 +1,23 @@
+{
+  "review_kind": "chatgpt_assisted_exploratory_review",
+  "interface": "chatgpt_conversation",
+  "block_id": "B02",
+  "recorded_by": null,
+  "conversation_reference": null,
+  "visible_model_label": null,
+  "model_label_visibility": "not_recorded",
+  "model_snapshot": null,
+  "api_parameters": null,
+  "api_tokens": null,
+  "api_calls": 0,
+  "paid_api_cost_usd": 0,
+  "subscription_cost_usd": null,
+  "subscription_cost_note": "not_measured",
+  "started_at": null,
+  "completed_at": null,
+  "fresh_conversation_declared": null,
+  "system_outputs_seen": null,
+  "context_limitations": [],
+  "response_limitations": [],
+  "packet_sha256": "3e45cf969a108df92fd7084bc6ed419dd3dec4682aedf990cf01534bb07d7cd9"
+}

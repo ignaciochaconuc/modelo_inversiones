@@ -1,0 +1,147 @@
+{
+  "block_id": "B08",
+  "cases": [
+    {
+      "case_id": "S-c0e6d5edb8735e03",
+      "evidence_fingerprint": "5eacb4e2e5ed5242bb0239426b76b0dbabc4e8b50d29c6a212d2038dc77f77cb",
+      "evidence": [
+        {
+          "evidence_id": "S-c0e6d5edb8735e03:headline",
+          "field": "headline",
+          "text": "Oriole and Brindle sign ten-year component agreement"
+        },
+        {
+          "evidence_id": "S-c0e6d5edb8735e03:summary",
+          "field": "summary",
+          "text": "Brindle will manufacture battery casings for Oriole under the signed agreement. Oriole purchases components; Brindle sells them. The estimated volumes are non-binding, and no minimum revenue is guaranteed."
+        }
+      ]
+    },
+    {
+      "case_id": "S-c2c94e2676dcb74e",
+      "evidence_fingerprint": "62d320b101efa85ba1a258e4d977d2f22918867f8840b3357eff0969d4116295",
+      "evidence": [
+        {
+          "evidence_id": "S-c2c94e2676dcb74e:headline",
+          "field": "headline",
+          "text": "Stoneharbor completes purchase of Lumenport assets"
+        },
+        {
+          "evidence_id": "S-c2c94e2676dcb74e:summary",
+          "field": "summary",
+          "text": "Lumenport's logistics assets were transferred to Stoneharbor at closing yesterday. Former owner Lumenport will retain its consulting business. The release cites an industry report by Velora Research as background."
+        }
+      ]
+    },
+    {
+      "case_id": "S-c2f36114546f9be5",
+      "evidence_fingerprint": "3e555f1105373a9ab13b108f144bf0df1b7ce26639e9582c584ce1ce9f56a217",
+      "evidence": [
+        {
+          "evidence_id": "S-c2f36114546f9be5:headline",
+          "field": "headline",
+          "text": "Vireo launches replacement sensor line"
+        },
+        {
+          "evidence_id": "S-c2f36114546f9be5:summary",
+          "field": "summary",
+          "text": "Vireo began selling its new sensor line to industrial distributors. Independent reviewer Warden Labs tested the devices but did not manufacture them. Unit margins and customer order volumes were not disclosed."
+        }
+      ]
+    },
+    {
+      "case_id": "S-d73a2bcb6f94338a",
+      "evidence_fingerprint": "f7bb865c4feed376be21c519d5cda09cee17afb80a919753ec42d316cef5ac14",
+      "evidence": [
+        {
+          "evidence_id": "S-d73a2bcb6f94338a:headline",
+          "field": "headline",
+          "text": "Quillan targets purchase, Ravel says approval is incomplete"
+        },
+        {
+          "evidence_id": "S-d73a2bcb6f94338a:summary",
+          "field": "summary",
+          "text": "Quillan described its offer to buy Ravel as final. Ravel said shareholders have not yet approved it and no assets have changed hands. The parties agree that completion is conditional, despite the offer's description."
+        }
+      ]
+    }
+  ],
+  "identity_evidence": {
+    "version": "synthetic-review-identity-evidence-v1",
+    "fictional": true,
+    "purpose": "Neutral evidence for second-pass security annotation only; NOT a production registry or configuration",
+    "virtual_decision_time": "2026-10-13T00:05:00Z",
+    "entries": [
+      {
+        "corporate_name": "Solmere",
+        "security_id": "fictional-solmere-common",
+        "ticker": "FIC-SOL",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Stoneharbor",
+        "security_id": "fictional-stoneharbor-common",
+        "ticker": "FIC-STO",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Oriole",
+        "security_id": "fictional-oriole-common",
+        "ticker": "FIC-ORI",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Brindle",
+        "security_id": "fictional-brindle-common",
+        "ticker": "FIC-BRI",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Vireo",
+        "security_id": "fictional-vireo-common",
+        "ticker": "FIC-VIR",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Weyland Industries",
+        "security_id": "fictional-weyland-common",
+        "ticker": "FIC-WEY",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Eider",
+        "security_id": "fictional-eider-common",
+        "ticker": "FIC-EID",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Seabright",
+        "security_id": "fictional-seabright-a",
+        "ticker": "FIC-SEA-A",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Seabright",
+        "security_id": "fictional-seabright-b",
+        "ticker": "FIC-SEA-B",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Quillan",
+        "security_id": "fictional-quillan-common",
+        "ticker": "FIC-QUI",
+        "known_at": "2026-10-14T00:00:00Z",
+        "effective_from": "2025-01-01"
+      }
+    ]
+  }
+}

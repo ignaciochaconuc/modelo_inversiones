@@ -1,0 +1,147 @@
+{
+  "block_id": "B06",
+  "cases": [
+    {
+      "case_id": "S-5e4223789f2cdc0f",
+      "evidence_fingerprint": "b82080c53c96ae9782e55943d0e2815f09216faef42c65a301c04a0d449c1112",
+      "evidence": [
+        {
+          "evidence_id": "S-5e4223789f2cdc0f:headline",
+          "field": "headline",
+          "text": "Portlandia vendor launches mock-up, not commercial product"
+        },
+        {
+          "evidence_id": "S-5e4223789f2cdc0f:summary",
+          "field": "summary",
+          "text": "Portlandia Instruments displayed a prototype using a display bearing the Saltwind brand. The release did not identify who owns that brand or whether the display maker supplied anything under a new agreement. Commercial launch is not scheduled."
+        }
+      ]
+    },
+    {
+      "case_id": "S-69a88ea765d353b5",
+      "evidence_fingerprint": "55c2567efa12b9c5b02a878b8b922151a3050b45a2bc79b1192eb87c23d4e463",
+      "evidence": [
+        {
+          "evidence_id": "S-69a88ea765d353b5:headline",
+          "field": "headline",
+          "text": "Nacre denies report of takeover discussions"
+        },
+        {
+          "evidence_id": "S-69a88ea765d353b5:summary",
+          "field": "summary",
+          "text": "Nacre said it is not in talks to buy Vellum Freight. A market newsletter had described preliminary discussions without identifying a source. Vellum Freight declined to comment."
+        }
+      ]
+    },
+    {
+      "case_id": "S-6c4db24e38ef94dc",
+      "evidence_fingerprint": "79466e1ebae9a78f85b6f3147f464405cf7a0cb473b47d1c13489ad5f11c759f",
+      "evidence": [
+        {
+          "evidence_id": "S-6c4db24e38ef94dc:headline",
+          "field": "headline",
+          "text": "Northwake picks open-source framework for migration"
+        },
+        {
+          "evidence_id": "S-6c4db24e38ef94dc:summary",
+          "field": "summary",
+          "text": "Northwake selected an open-source framework created by volunteers. Peregrine Cloud was cited only as an example in an old benchmark. No provider or commercial hosting contract was selected."
+        }
+      ]
+    },
+    {
+      "case_id": "S-7394579424f4d7e8",
+      "evidence_fingerprint": "0ea2cb30b7ae899f70cc849a4a2ecc7d3cb2a643c54b7c5c8f0a86c781012ee0",
+      "evidence": [
+        {
+          "evidence_id": "S-7394579424f4d7e8:headline",
+          "field": "headline",
+          "text": "Rook's price cut draws response from Seabright"
+        },
+        {
+          "evidence_id": "S-7394579424f4d7e8:summary",
+          "field": "summary",
+          "text": "Rook cut the published price of its service. Seabright, described as Rook's competitor, said it would review its own pricing but announced no change. Any effect on Seabright's customer retention is speculative."
+        }
+      ]
+    }
+  ],
+  "identity_evidence": {
+    "version": "synthetic-review-identity-evidence-v1",
+    "fictional": true,
+    "purpose": "Neutral evidence for second-pass security annotation only; NOT a production registry or configuration",
+    "virtual_decision_time": "2026-10-13T00:05:00Z",
+    "entries": [
+      {
+        "corporate_name": "Solmere",
+        "security_id": "fictional-solmere-common",
+        "ticker": "FIC-SOL",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Stoneharbor",
+        "security_id": "fictional-stoneharbor-common",
+        "ticker": "FIC-STO",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Oriole",
+        "security_id": "fictional-oriole-common",
+        "ticker": "FIC-ORI",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Brindle",
+        "security_id": "fictional-brindle-common",
+        "ticker": "FIC-BRI",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Vireo",
+        "security_id": "fictional-vireo-common",
+        "ticker": "FIC-VIR",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Weyland Industries",
+        "security_id": "fictional-weyland-common",
+        "ticker": "FIC-WEY",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Eider",
+        "security_id": "fictional-eider-common",
+        "ticker": "FIC-EID",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Seabright",
+        "security_id": "fictional-seabright-a",
+        "ticker": "FIC-SEA-A",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Seabright",
+        "security_id": "fictional-seabright-b",
+        "ticker": "FIC-SEA-B",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Quillan",
+        "security_id": "fictional-quillan-common",
+        "ticker": "FIC-QUI",
+        "known_at": "2026-10-14T00:00:00Z",
+        "effective_from": "2025-01-01"
+      }
+    ]
+  }
+}

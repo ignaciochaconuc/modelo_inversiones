@@ -1,0 +1,147 @@
+{
+  "block_id": "B01",
+  "cases": [
+    {
+      "case_id": "S-08ab6f2771fbf4a6",
+      "evidence_fingerprint": "c0be20e0aa4a539534563bd82cabb09167c2062eeb6fb3b333a55d6a68b5c60c",
+      "evidence": [
+        {
+          "evidence_id": "S-08ab6f2771fbf4a6:headline",
+          "field": "headline",
+          "text": "Cressida sells warehouse after sector rally"
+        },
+        {
+          "evidence_id": "S-08ab6f2771fbf4a6:summary",
+          "field": "summary",
+          "text": "Cressida completed a warehouse sale to Dovetail Properties. The summary also notes that shares of Eider rose during a broader sector rally. No connection between Eider and the warehouse transaction is stated."
+        }
+      ]
+    },
+    {
+      "case_id": "S-0b348ae4d5f9db5b",
+      "evidence_fingerprint": "40d8ba60253b7286ff6dc81939d68faa21bff2a639d9b56a1ca11994fe6c231d",
+      "evidence": [
+        {
+          "evidence_id": "S-0b348ae4d5f9db5b:headline",
+          "field": "headline",
+          "text": "Market authority imposes penalty on Zarina"
+        },
+        {
+          "evidence_id": "S-0b348ae4d5f9db5b:summary",
+          "field": "summary",
+          "text": "The regional market authority imposed a penalty on Zarina for disclosure failures. Zarina has appealed; the appeal does not itself suspend payment. Xanthos is mentioned as a prior unrelated enforcement example."
+        }
+      ]
+    },
+    {
+      "case_id": "S-0dfb4b77b037b9da",
+      "evidence_fingerprint": "a0f43abae4b3ce2f9f049be9506c72cc9b5e7fcfcff30134d325e5e1ec2bc61c",
+      "evidence": [
+        {
+          "evidence_id": "S-0dfb4b77b037b9da:headline",
+          "field": "headline",
+          "text": "Valerian targets sector, rival denies joint venture"
+        },
+        {
+          "evidence_id": "S-0dfb4b77b037b9da:summary",
+          "field": "summary",
+          "text": "Valerian said it intends to enter the market served by Wister. Wister denied that the companies have agreed to a joint venture. Neither statement establishes that Valerian has already begun competing in that market."
+        }
+      ]
+    },
+    {
+      "case_id": "S-101a16357b30a7ab",
+      "evidence_fingerprint": "923193925d8cea160c52e7aa089874b196ae548d7b075eabd1da41f6e6535d01",
+      "evidence": [
+        {
+          "evidence_id": "S-101a16357b30a7ab:headline",
+          "field": "headline",
+          "text": "Waverton wins dismissal of enforcement case"
+        },
+        {
+          "evidence_id": "S-101a16357b30a7ab:summary",
+          "field": "summary",
+          "text": "A court dismissed the authority's case against Waverton. The authority is considering an appeal. Bellwether was cited only in the court's discussion of an earlier precedent; it is not a defendant in this case."
+        }
+      ]
+    }
+  ],
+  "identity_evidence": {
+    "version": "synthetic-review-identity-evidence-v1",
+    "fictional": true,
+    "purpose": "Neutral evidence for second-pass security annotation only; NOT a production registry or configuration",
+    "virtual_decision_time": "2026-10-13T00:05:00Z",
+    "entries": [
+      {
+        "corporate_name": "Solmere",
+        "security_id": "fictional-solmere-common",
+        "ticker": "FIC-SOL",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Stoneharbor",
+        "security_id": "fictional-stoneharbor-common",
+        "ticker": "FIC-STO",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Oriole",
+        "security_id": "fictional-oriole-common",
+        "ticker": "FIC-ORI",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Brindle",
+        "security_id": "fictional-brindle-common",
+        "ticker": "FIC-BRI",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Vireo",
+        "security_id": "fictional-vireo-common",
+        "ticker": "FIC-VIR",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Weyland Industries",
+        "security_id": "fictional-weyland-common",
+        "ticker": "FIC-WEY",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Eider",
+        "security_id": "fictional-eider-common",
+        "ticker": "FIC-EID",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Seabright",
+        "security_id": "fictional-seabright-a",
+        "ticker": "FIC-SEA-A",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Seabright",
+        "security_id": "fictional-seabright-b",
+        "ticker": "FIC-SEA-B",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Quillan",
+        "security_id": "fictional-quillan-common",
+        "ticker": "FIC-QUI",
+        "known_at": "2026-10-14T00:00:00Z",
+        "effective_from": "2025-01-01"
+      }
+    ]
+  }
+}

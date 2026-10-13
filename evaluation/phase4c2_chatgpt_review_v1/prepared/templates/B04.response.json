@@ -1,0 +1,38 @@
+{
+  "block_id": "B04",
+  "limitations": [],
+  "cases": [
+    {
+      "case_id": "S-3c30cb40dd71e6ca",
+      "evidence_fingerprint": "5dba34555183dde61c0b368554fc328db6726b690c315b4406e3dc67edb675e3",
+      "status": "not_run",
+      "events": [],
+      "units": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "S-40501aee7851586a",
+      "evidence_fingerprint": "8963adfab7f157a727e4463641d73e6d2e28f82242bafacafb91ba3a2d1f62df",
+      "status": "not_run",
+      "events": [],
+      "units": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "S-4a310ed5f76719a3",
+      "evidence_fingerprint": "3256bc44f27a9daf5e6ac3185420d4046f3e6612a3f0311dfdec2f4071dec483",
+      "status": "not_run",
+      "events": [],
+      "units": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "S-4e663c72421c23f0",
+      "evidence_fingerprint": "cd2350585bb891af465cd061873676da0901bf6d7ad073be5828d56521513525",
+      "status": "not_run",
+      "events": [],
+      "units": [],
+      "uncertainties": []
+    }
+  ]
+}

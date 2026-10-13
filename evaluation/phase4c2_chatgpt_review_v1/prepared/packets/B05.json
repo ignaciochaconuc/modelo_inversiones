@@ -1,0 +1,147 @@
+{
+  "block_id": "B05",
+  "cases": [
+    {
+      "case_id": "S-52efc69a6674d077",
+      "evidence_fingerprint": "837d10bc3b86b66c0d5b4b067045b0c0c30d5ba16ac5e328b35388bc44b95caf",
+      "evidence": [
+        {
+          "evidence_id": "S-52efc69a6674d077:headline",
+          "field": "headline",
+          "text": "Sector digest lists three announcements"
+        },
+        {
+          "evidence_id": "S-52efc69a6674d077:summary",
+          "field": "summary",
+          "text": "Ilex opened a distribution centre. Kalmia recalled one product batch. Lorien published a hiring plan."
+        }
+      ]
+    },
+    {
+      "case_id": "S-5cd02bc28bc2405b",
+      "evidence_fingerprint": "ed2fcfa1dece57bd77ba50fe4eb6b53fc6226c9e8c939b597a3150f221794796",
+      "evidence": [
+        {
+          "evidence_id": "S-5cd02bc28bc2405b:headline",
+          "field": "headline",
+          "text": "Authority consults on proposed fee ceiling"
+        },
+        {
+          "evidence_id": "S-5cd02bc28bc2405b:summary",
+          "field": "summary",
+          "text": "A regulator opened consultation on a proposed ceiling for sector fees. Yarrow Payments and Zephyr Transfer submitted comments. The ceiling is not in force, and neither company has been fined or ordered to change prices."
+        }
+      ]
+    },
+    {
+      "case_id": "S-5e06c61a620d1290",
+      "evidence_fingerprint": "b41885751eb084829439fa670ca4e52c2a0487bd7bebb63440fe65483d4fd56f",
+      "evidence": [
+        {
+          "evidence_id": "S-5e06c61a620d1290:headline",
+          "field": "headline",
+          "text": "Dunlin and Isola establish joint research programme"
+        },
+        {
+          "evidence_id": "S-5e06c61a620d1290:summary",
+          "field": "summary",
+          "text": "Dunlin will fund laboratory equipment while Isola will provide researchers for a three-year joint programme. There is no exclusive commercial licence. Project outcomes and future product revenues remain uncertain."
+        }
+      ]
+    },
+    {
+      "case_id": "S-5e1d0147e0529b8c",
+      "evidence_fingerprint": "ec0e03e9a1852a0d96ae9aa626242a3d9a44ee4a9b87d0656bcaa569e441e997",
+      "evidence": [
+        {
+          "evidence_id": "S-5e1d0147e0529b8c:headline",
+          "field": "headline",
+          "text": "Solmere signs agreement to purchase Quayline"
+        },
+        {
+          "evidence_id": "S-5e1d0147e0529b8c:summary",
+          "field": "summary",
+          "text": "Solmere and Quayline signed a purchase agreement. The transaction requires regulatory consent and is expected to close next spring. Quayline remains independently managed pending approval. No consideration was disclosed."
+        }
+      ]
+    }
+  ],
+  "identity_evidence": {
+    "version": "synthetic-review-identity-evidence-v1",
+    "fictional": true,
+    "purpose": "Neutral evidence for second-pass security annotation only; NOT a production registry or configuration",
+    "virtual_decision_time": "2026-10-13T00:05:00Z",
+    "entries": [
+      {
+        "corporate_name": "Solmere",
+        "security_id": "fictional-solmere-common",
+        "ticker": "FIC-SOL",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Stoneharbor",
+        "security_id": "fictional-stoneharbor-common",
+        "ticker": "FIC-STO",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Oriole",
+        "security_id": "fictional-oriole-common",
+        "ticker": "FIC-ORI",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Brindle",
+        "security_id": "fictional-brindle-common",
+        "ticker": "FIC-BRI",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Vireo",
+        "security_id": "fictional-vireo-common",
+        "ticker": "FIC-VIR",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Weyland Industries",
+        "security_id": "fictional-weyland-common",
+        "ticker": "FIC-WEY",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Eider",
+        "security_id": "fictional-eider-common",
+        "ticker": "FIC-EID",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Seabright",
+        "security_id": "fictional-seabright-a",
+        "ticker": "FIC-SEA-A",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Seabright",
+        "security_id": "fictional-seabright-b",
+        "ticker": "FIC-SEA-B",
+        "known_at": "2026-10-13T00:00:00Z",
+        "effective_from": "2025-01-01"
+      },
+      {
+        "corporate_name": "Quillan",
+        "security_id": "fictional-quillan-common",
+        "ticker": "FIC-QUI",
+        "known_at": "2026-10-14T00:00:00Z",
+        "effective_from": "2025-01-01"
+      }
+    ]
+  }
+}
