@@ -5,6 +5,7 @@ import argparse
 from collections import Counter
 from datetime import datetime, timezone
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 import re
@@ -14,6 +15,14 @@ VERSION = "chatgpt-attribution-review-v1"
 DIMENSIONS = ("corporate_identity", "participation", "role", "relationship", "ticker_link",
               "event_state", "event_stage", "impact_support")
 STATUSES = {"annotated", "nonconclusive", "abstained", "technical_error"}
+EDITORIAL_VERSION = "chatgpt-attribution-review-v2"
+
+
+def editorial_chain_module():
+    """Load the offline extension lazily; preparation and v1 remain unchanged."""
+    spec = importlib.util.spec_from_file_location("chatgpt_editorial_chain", Path(__file__).with_name("chatgpt_editorial_chain.py"))
+    module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+    return module
 
 
 def fp(value: object) -> str:
@@ -235,19 +244,18 @@ def import_response(repo: Path, output: Path, bid: str, response: Path, provenan
     return {"status": "response_imported", "block_id": bid, "record_id": record["record_id"]}
 
 
-def freeze(repo: Path, output: Path, imports: Path, destination: Path) -> dict:
-    verify(repo, output); records = []; all_cases = []
-    if {p.name for p in imports.glob("*.json")} != {f"B{i:02d}.json" for i in range(1, 9)}:
-        raise ValueError("exactly_eight_imported_blocks_required")
-    for i in range(1, 9):
-        bid = f"B{i:02d}"; record = json.loads((imports / f"{bid}.json").read_bytes())
-        identity = record.pop("record_id")
-        if identity != fp(record) or record["review_kind"] != ROLE or record["independent_human_ground_truth"] is not False or record["block_id"] != bid:
-            raise ValueError("import_record_integrity_failed")
-        record["record_id"] = identity
-        packet = packet_for(repo, output, bid); validate_provenance(record["provenance"], output, bid)
-        if record["packet_sha256"] != sha(output / f"packets/{bid}.md"):
-            raise ValueError("imported_packet_fingerprint_mismatch")
+def verify_import_record(repo: Path, output: Path, record: dict, bid: str) -> dict:
+    """Validate either original v1 or explicit editorial v2 without rewriting it."""
+    content = {k: v for k, v in record.items() if k != "record_id"}
+    if (record.get("record_id") != fp(content) or record["review_kind"] != ROLE
+            or record["independent_human_ground_truth"] is not False or record["block_id"] != bid):
+        raise ValueError("import_record_integrity_failed")
+    packet = packet_for(repo, output, bid); validate_provenance(record["provenance"], output, bid)
+    if record["packet_sha256"] != sha(output / f"packets/{bid}.md"):
+        raise ValueError("imported_packet_fingerprint_mismatch")
+    if record["version"] == EDITORIAL_VERSION:
+        return editorial_chain_module().verify_record(record, packet, parse, validate_annotations, timestamp, fp)
+    if record["version"] == VERSION:
         if hashlib.sha256(record["raw_response_utf8"].encode()).hexdigest() != record["raw_response_sha256"]:
             raise ValueError("original_response_hash_failed")
         if record["transformation"] != "operator_recorded_block_failure_not_annotation":
@@ -257,6 +265,45 @@ def freeze(repo: Path, output: Path, imports: Path, destination: Path) -> dict:
         elif any(c["status"] != "technical_error" or c["units"] for c in record["annotations"]["cases"]):
             raise ValueError("operator_failure_cannot_create_reference_labels")
         validate_annotations(record["annotations"], packet)
+        return record["annotations"]
+    raise ValueError("unsupported_import_record_version")
+
+
+def import_editorial_response(repo: Path, output: Path, bid: str, original: Path, corrected: Path,
+                             manifest: Path, authorization: Path, provenance: Path, destination: Path) -> dict:
+    """Opt-in v2; stores evaluator original and post-evaluation annotation apart."""
+    packet = packet_for(repo, output, bid); prov = json.loads(provenance.read_bytes())
+    validate_provenance(prov, output, bid)
+    module = editorial_chain_module()
+    original_raw = original.read_bytes(); corrected_raw = corrected.read_bytes()
+    manifest_raw = manifest.read_bytes(); auth_raw = authorization.read_bytes()
+    manifest_data, _ = parse(manifest_raw.decode("utf-8")); auth_data, _ = parse(auth_raw.decode("utf-8"))
+    if auth_data["manifest_sha256"] != module.digest(manifest_raw):
+        raise ValueError("authorization_manifest_hash_mismatch")
+    annotations, original_validation = module.verify_chain(original_raw, corrected_raw, manifest_data, auth_data,
+        packet, parse, validate_annotations, timestamp, fp)
+    record = {"version": EDITORIAL_VERSION, "review_kind": ROLE, "independent_human_ground_truth": False,
+        "block_id": bid, "packet_sha256": sha(output / f"packets/{bid}.md"), "provenance": prov,
+        "source_kind": "editorially_corrected_annotation", "new_chatgpt_generation": False,
+        "original_provider_response": module.text_artifact(original_raw),
+        "editorially_corrected_annotation": module.text_artifact(corrected_raw),
+        "editorial_correction_manifest": module.text_artifact(manifest_raw),
+        "correction_authorization": module.text_artifact(auth_raw),
+        "transformation": module.TRANSFORMATION, "original_provider_response_validation": original_validation,
+        "annotations": annotations}
+    record["record_id"] = fp(record)
+    verify_import_record(repo, output, record, bid)
+    write_json(destination, record)
+    return {"status": "editorial_response_imported", "block_id": bid, "record_id": record["record_id"]}
+
+
+def freeze(repo: Path, output: Path, imports: Path, destination: Path) -> dict:
+    verify(repo, output); records = []; all_cases = []
+    if {p.name for p in imports.glob("*.json")} != {f"B{i:02d}.json" for i in range(1, 9)}:
+        raise ValueError("exactly_eight_imported_blocks_required")
+    for i in range(1, 9):
+        bid = f"B{i:02d}"; record = json.loads((imports / f"{bid}.json").read_bytes())
+        verify_import_record(repo, output, record, bid)
         records.append(record); all_cases.extend(record["annotations"]["cases"])
     payload = {"review_kind": ROLE, "independent_human_ground_truth": False, "records": records, "cases": all_cases}
     if destination.exists():
@@ -264,7 +311,8 @@ def freeze(repo: Path, output: Path, imports: Path, destination: Path) -> dict:
         if existing["references"] != payload or existing["reference_fingerprint"] != fp(payload):
             raise ValueError("frozen_references_cannot_be_overwritten")
     else:
-        write_json(destination, {"version": VERSION, "review_kind": ROLE, "independent_human_ground_truth": False,
+        version = EDITORIAL_VERSION if any(r["version"] == EDITORIAL_VERSION for r in records) else VERSION
+        write_json(destination, {"version": version, "review_kind": ROLE, "independent_human_ground_truth": False,
             "frozen_at": datetime.now(timezone.utc).isoformat(), "reference_fingerprint": fp(payload), "references": payload})
     return {"status": "references_frozen", "cases": len(all_cases), "freeze_sha256": sha(destination)}
 
@@ -312,9 +360,9 @@ def compare(seal_path: Path, system_path: Path, alignment_path: Path) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("prepare", "verify", "import-response", "record-failure", "freeze", "compare"))
+    parser.add_argument("command", choices=("prepare", "verify", "import-response", "import-editorial", "verify-import", "record-failure", "freeze", "compare"))
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[2]); parser.add_argument("--output", type=Path)
-    for name in ("response", "provenance", "destination", "imports", "reference-freeze", "system-file", "alignment"):
+    for name in ("response", "provenance", "destination", "imports", "reference-freeze", "system-file", "alignment", "original", "corrected", "correction-manifest", "authorization", "record"):
         parser.add_argument("--" + name, type=Path)
     parser.add_argument("--block"); parser.add_argument("--reason")
     args = parser.parse_args(); output = args.output or args.repo / "evaluation/phase4c2_chatgpt_review_v1/prepared"
@@ -322,6 +370,15 @@ def main() -> None:
         if args.command == "prepare":
             m = prepare(args.repo, output); result = {"status": m["status"], "blocks": 8, "cases": 32, "api_calls": 0}
         elif args.command == "verify":result = verify(args.repo, output)
+        elif args.command == "import-editorial":
+            if not all((args.block, args.original, args.corrected, args.correction_manifest, args.authorization, args.provenance, args.destination)):
+                parser.error("--block --original --corrected --correction-manifest --authorization --provenance --destination required")
+            result = import_editorial_response(args.repo, output, args.block, args.original, args.corrected,
+                args.correction_manifest, args.authorization, args.provenance, args.destination)
+        elif args.command == "verify-import":
+            if args.block is None or args.record is None:parser.error("--block --record required")
+            record = json.loads(args.record.read_bytes()); verify_import_record(args.repo, output, record, args.block)
+            result = {"status": "import_verified", "block_id": args.block, "version": record["version"], "record_id": record["record_id"]}
         elif args.command in {"import-response", "record-failure"}:
             if not all((args.block, args.response, args.provenance, args.destination)):parser.error("--block --response --provenance --destination required")
             if args.command == "record-failure" and args.reason is None:parser.error("--reason required")
@@ -334,7 +391,7 @@ def main() -> None:
             if not all((args.reference_freeze, args.system_file, args.alignment, args.destination)):parser.error("--reference-freeze --system-file --alignment --destination required")
             report = compare(args.reference_freeze, args.system_file, args.alignment); write_json(args.destination, report)
             result = {"status": "chatgpt_comparison_written", "review_kind": ROLE}
-    except (ValueError, KeyError, TypeError, OSError, UnicodeError):
+    except (ValueError, KeyError, TypeError, IndexError, OSError, UnicodeError):
         # Static, sanitized diagnostic: never response text, paths, or exception repr.
         parser.exit(2, "offline_review_validation_failed; inspect inputs locally, no content logged\n")
     print(json.dumps(result, sort_keys=True))
