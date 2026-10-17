@@ -11,6 +11,7 @@ from pydantic import ValidationError, model_validator
 
 from investment_system.core.time_utils import ensure_utc
 from investment_system.data.news_entities import fingerprint
+from investment_system.agents.news_interpretation.diagnostic_events import violation
 from investment_system.llm.schemas import LLMRequest, LLMResponse
 from investment_system.agents.news_interpretation.schemas import (
     EvidenceSpan, InterpretationModel, InterpretationPayload,
@@ -91,19 +92,23 @@ def validate_payload_evidence(payload: InterpretationPayload, request: NewsInter
     narratives += list(payload.economics.uncertainty) + list(payload.economics.evidence_limitations)
     if any(re.search(r"\b(BUY|SELL|HOLD)\b|(?i:price target|expected return|portfolio weight)", text) for text in narratives):
         raise ValueError("investment directive/predictive output is not an interpretation")
-    for event in payload.events:
+    for event_index, event in enumerate(payload.events):
         if any(evidence[s.evidence_id].revision_id != request.revision_id for s in _spans(event)):
             raise ValueError("event extraction must originate in the primary article")
         state = event.state_evidence.quote.casefold()
         if event.state == "confirmed" and re.search(r"\b(rumou?r|unconfirmed|may|might|expects?|expected|opinion)\b", state):
             raise ValueError("rumor/expectation/opinion cannot be promoted to confirmation")
         if event.stage == "completed" and not re.search(r"\b(completed|closed|finalized)\b", state):
-            raise ValueError("completion not supported by state evidence")
+            raise violation("completion not supported by state evidence", "semantic_validation", "stage_not_supported",
+                "completion_literal_missing", ("events", event_index, "state_evidence"))
         if event.stage in {"announced", "proposed"} and not re.search(r"\b" + event.stage + r"\b", state):
-            raise ValueError("event stage not explicitly supported")
+            raise violation("event stage not explicitly supported", "semantic_validation", "stage_not_supported",
+                "announced_literal_missing" if event.stage == "announced" else "proposed_literal_missing",
+                ("events", event_index, "state_evidence"))
         negation = bool(re.search(r"\b(not|never|no|denied|denies)\b", state))
         if negation and not event.negated:
-            raise ValueError("negation was lost")
+            raise violation("negation was lost", "semantic_validation", "negation_lost",
+                "negation_token_present_flag_false", ("events", event_index, "negated"))
         values = {}
         for number in event.numbers:
             key = (number.metric, number.period, number.unit, number.scale)

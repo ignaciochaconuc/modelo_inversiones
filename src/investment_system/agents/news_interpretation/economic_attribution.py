@@ -8,6 +8,7 @@ from typing import Literal
 from pydantic import Field, ValidationError, model_validator
 
 from investment_system.data.news_entities import fingerprint
+from investment_system.agents.news_interpretation.diagnostic_events import observe_pydantic, observed_validation
 from investment_system.llm.schemas import LLMRequest, LLMResponse
 from investment_system.agents.news_interpretation.schemas import (
     InterpretationModel, EvidenceSpan, ExtractedNewsEvent, InterpretationPayload,
@@ -335,6 +336,7 @@ Unsupported/ambiguous syntax remains unknown/contextual or triggers abstention.
 
 
 def _diagnostics(error: ValidationError,stage) -> tuple[AttributionDiagnostic,...]:
+    observe_pydantic(error)
     values=[]
     for item in error.errors(include_input=False,include_url=False):
         rule=_RULES.get(str((item.get("ctx") or {}).get("error")),("structural_contract_violation",()))[0]
@@ -343,6 +345,7 @@ def _diagnostics(error: ValidationError,stage) -> tuple[AttributionDiagnostic,..
     return tuple(values)
 
 
+@observed_validation
 def evaluate_economic_response(request: NewsInterpretationRequest,response: LLMResponse,
                                configuration: ModelConfiguration,**options):
     request=NewsInterpretationRequest.model_validate(request.model_dump(mode="json"))

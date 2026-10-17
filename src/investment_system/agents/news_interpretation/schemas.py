@@ -12,6 +12,7 @@ from investment_system.core.time_utils import ensure_utc
 from investment_system.data.news_entities import fingerprint
 from investment_system.data.schemas.news import NewsQueryMode, NewsRecord
 from investment_system.data.schemas.news_enrichment import EntityRegistryEntry
+from investment_system.agents.news_interpretation.diagnostic_events import violation
 
 
 SCHEMA_VERSION = "news-interpretation-v1"
@@ -181,17 +182,17 @@ class NumericClaim(InterpretationModel):
         try:
             lexical = Decimal(self.value_text.replace(",", ""))
         except InvalidOperation as exc:
-            raise ValueError("unparseable source number") from exc
+            raise violation("unparseable source number", "internal_schema", "numeric_fidelity", "number_lexeme_unparseable") from exc
         if not lexical.is_finite() or not self.value.is_finite() or lexical != self.value:
-            raise ValueError("invented or transformed numerical value")
+            raise violation("invented or transformed numerical value", "internal_schema", "numeric_fidelity", "number_value_nonfinite_or_transformed")
         if not re.search(r"(?<![\w.,+\-])" + re.escape(self.value_text) + r"(?![\w.,])", self.context.quote):
-            raise ValueError("source number absent from cited context")
+            raise violation("source number absent from cited context", "internal_schema", "numeric_fidelity", "number_absent_from_context")
         if self.unit and self.unit not in self.context.quote:
-            raise ValueError("invented unit")
+            raise violation("invented unit", "internal_schema", "numeric_fidelity", "unit_absent_from_context")
         if self.scale and self.scale != "one" and self.scale not in self.context.quote:
-            raise ValueError("invented numerical scale")
+            raise violation("invented numerical scale", "internal_schema", "numeric_fidelity", "scale_absent_from_context")
         if self.period and self.period not in self.context.quote:
-            raise ValueError("invented reporting period")
+            raise violation("invented reporting period", "internal_schema", "numeric_fidelity", "period_absent_from_context")
         return self
 
 

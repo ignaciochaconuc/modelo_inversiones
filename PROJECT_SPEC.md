@@ -175,6 +175,13 @@ sin Feature Store, modelos predictivos, portfolio, riesgo o ejecución.
 
 ## LLM y control de costos
 
+P0 posterior de observabilidad añade sidecars opt-in de metadata diagnóstica
+versionada, con retención independiente de 90 días y subcódigos emitidos al
+validar. No cambia reglas, prompts, esquemas de interpretación ni TTL de
+contenido; no completa retrospectivamente corridas antiguas. Véanse ADR-034 y
+`docs/phase4c2-p0-diagnostic-sidecars.md`. Integración futura requiere un plan y
+autorización nuevos; Phase 4C.3 sigue sin iniciar.
+
 `LLMRouter` selecciona proveedor/modelo por agente y tarea, usando `config/models.yaml`. Los clientes de OpenAI y Ollama son stubs deliberados. El pricing es configurable y no incluye precios reales hardcodeados.
 
 Cada llamada puede registrar tokens, cache, costo estimado, latencia, estado, agente, tarea, ticker, análisis y trade. Se contemplan agregaciones diarias, mensuales, por agente, ticker, análisis y trade.

@@ -179,6 +179,13 @@ Sin Feature Store ni señales operativas; no se modifican algoritmos 4B.
 
 ## Point-in-time y Feature Store
 
+ADR-034 añade observación diagnóstica opt-in mediante contexto local y sidecars
+metadata-only en un árbol separado. Retención de diagnóstico de 90 días,
+independiente del contenido. Los subcódigos se emiten en las ramas originales
+sin alterar aceptación, prompts, atribución o DTOs anteriores. El lector de
+sidecar no consulta respuestas/attempts; no hay backfill histórico ni activación
+automática del ejecutor de evaluación. No habilita Phase 4C.3.
+
 Los schemas preservan cuatro timestamps con semánticas distintas. `available_at <= decision_time` se valida antes de usar registros. El Feature Store tiene granularidad `ticker + decision_date`; los joins deben respetar disponibilidad y nunca usar la última revisión conocida hoy para simular una decisión pasada.
 
 Features y targets tienen registros y persistencia separados conforme a ADR-009. `model_features()` expone solo inputs. Labels se construyen en `features.targets` y solo se unen a features por `ticker + decision_date`, con cardinalidad one-to-one, mediante el builder supervisado. Los targets 5/10/20 persisten su sesión final exacta como metadata y nunca la exponen en `X`.

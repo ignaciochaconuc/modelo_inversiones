@@ -8,6 +8,9 @@ from typing import Literal
 from pydantic import Field, ValidationError, create_model, model_validator
 
 from investment_system.data.news_entities import fingerprint
+from investment_system.agents.news_interpretation.diagnostic_events import (
+    BranchDiagnostic, emit, observe_pydantic, observed_validation,
+)
 from investment_system.llm.schemas import LLMRequest, LLMResponse
 from investment_system.agents.news_interpretation.schemas import (
     InterpretationModel, EvidenceSpan, EventEntity, NumericClaim, ExtractedNewsEvent,
@@ -108,6 +111,7 @@ for _message in ("unparseable source number", "invented or transformed numerical
 
 
 def _validation_diagnostics(error: ValidationError, stage: Stage) -> tuple[RejectionDiagnostic, ...]:
+    observe_pydantic(error)
     diagnostics = []
     for item in error.errors(include_input=False, include_url=False):
         rule = _RULES.get(str((item.get("ctx") or {}).get("error")), ("structural_contract_violation" if stage == "model_schema" else "semantic_contract_violation", ()))[0]
@@ -165,6 +169,10 @@ def resolve_quote_fields(data: dict, request: NewsInterpretationRequest, *, diag
         if isinstance(value, dict) and set(value) == {"evidence_id", "quote"}:
             source = sources.get(value["evidence_id"])
             def reject(rule):
+                subcodes = {"unknown_evidence_id": "evidence_id_not_in_request", "wrong_revision": "evidence_revision_not_primary",
+                    "quote_not_found_in_declared_field": "exact_quote_absent", "ambiguous_quote": "exact_quote_ambiguous"}
+                from investment_system.agents.news_interpretation.diagnostic_events import safe_path
+                emit(BranchDiagnostic(stage="evidence_resolution", rule=rule, subcode=subcodes[rule], field_path=safe_path(path)))
                 raise QuoteResolutionError(diagnostic_type(stage="evidence_resolution", field_path=path, rule=rule))
             if source is None:
                 reject("unknown_evidence_id")
@@ -238,6 +246,7 @@ class GroundedInterpretationResult(NewsInterpretationResult):
     diagnostics: tuple[RejectionDiagnostic, ...] = ()
 
 
+@observed_validation
 def evaluate_quote_response(request: NewsInterpretationRequest, response: LLMResponse,
                             configuration: ModelConfiguration, **replay_options):
     """Pure audited transformation, then ALL unchanged v1 validators and provenance."""

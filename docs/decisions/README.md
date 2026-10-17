@@ -34,3 +34,5 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-030: Explicit CLI environment bootstrap](ADR-030-explicit-cli-environment-bootstrap.md)
 - [ADR-031: Versioned exact-quote grounding](ADR-031-versioned-exact-quote-grounding.md)
 - [ADR-032: Economic entity attribution distinct from corporate identity](ADR-032-economic-entity-attribution.md)
+- [ADR-033: Isolated synthetic attribution evaluation runner](ADR-033-isolated-synthetic-attribution-evaluation.md)
+- [ADR-034: Diagnostic metadata sidecars](ADR-034-diagnostic-metadata-sidecars.md)
