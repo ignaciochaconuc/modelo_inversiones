@@ -1,7 +1,10 @@
 # Phase 4C.2.2 — Ejecutor de evaluación Nacho preparado
 
-Estado: `nacho_evaluation_runner_prepared_pending_authorization`.
-No se han generado predicciones para estos 32 casos. Phase 4C.3: `not_started`.
+Estado actual: `nacho_evaluation_runner_p0_integrated_pending_authorization`.
+Véase [integración P0](phase4c2-runner-p0-integration.md) y ADR-035. El texto
+siguiente registra la preparación original; la corrida histórica posterior
+run01 permanece intacta y no se reutiliza. No hay nueva inferencia autorizada.
+Phase 4C.3: `not_started`.
 
 ## Componentes y alcance
 

@@ -25,12 +25,17 @@ def main() -> int:
     parser.add_argument("--confirm-real-inference", action="store_true")
     parser.add_argument("--authorization", type=Path)
     parser.add_argument("--run-id")
+    parser.add_argument("--diagnostic-sidecars", action="store_true",
+                        help="Explicit P0 opt-in; requires matching overlay and a new v2 authorization")
     args = parser.parse_args()
     if args.validate_only == args.confirm_real_inference:
         print(json.dumps({"status": "blocked", "error": "exactly_one_execution_mode_required", "provider_calls": 0}))
         return 2
     repo = Path(__file__).resolve().parents[1]
-    plan, settings, requests = preflight(repo, args.config, args.budget_usd)
+    if args.diagnostic_sidecars:
+        plan, settings, requests = preflight(repo, args.config, args.budget_usd, diagnostic_sidecars=True)
+    else:
+        plan, settings, requests = preflight(repo, args.config, args.budget_usd)
     if args.validate_only:
         print(json.dumps({"status": "validated_offline", "provider_calls": 0, "persistence_writes": 0, "plan": plan}))
         return 0
@@ -42,6 +47,12 @@ def main() -> int:
     root = repo / OUTPUT_ROOT / args.run_id
     if root.exists():
         raise ValueError("run_identity_already_used_no_automatic_resume")
+    sidecars = None
+    if args.diagnostic_sidecars:
+        p0 = runner.diagnostics_module()
+        sidecars = p0.SidecarStore(repo / p0.ROOT, allowed_root=repo / p0.ROOT)
+        if (sidecars.root / args.run_id).exists():
+            raise ValueError("diagnostic_run_identity_already_used")
     # Only after validation of explicit owner authorization, not just a key/flag.
     load_repository_environment(real_operation_authorized=True)
     if not os.getenv("OPENAI_API_KEY"):
@@ -68,12 +79,26 @@ def main() -> int:
         validate_authorization(auth, plan, args.run_id, datetime.now(timezone.utc))
         if sha(repo / runner.FREEZE_PATH) != runner.FREEZE_SHA256 or sha(args.config) != plan["config_sha256"]:
             raise ValueError("evaluation_artifact_changed_during_run")
+        if args.diagnostic_sidecars:
+            _, policy, runtime_hash = runner.load_profile(args.config, True)
+            if runtime_hash != plan["runtime_profile_sha256"] or any(
+                    plan["evaluation_diagnostics"][k] != v for k, v in policy.items()):
+                raise ValueError("diagnostic_profile_changed_during_run")
 
-    export = execute_cases(requests, service, root, plan, before_call=before_call)
+    if args.diagnostic_sidecars:
+        export = execute_cases(requests, service, root, plan, before_call=before_call,
+                               p0_authorization=auth, sidecar_store=sidecars)
+    else:
+        export = execute_cases(requests, service, root, plan, before_call=before_call)
     print(json.dumps({"status": "system_outputs_exported", "cases": len(export["cases"]),
                       "provider_attempts": len(service.tracker.records), "accounted_usd": export["accounted_usd"],
                       "unknown_cost_attempts": export["unknown_cost_attempts"],
-                      "export_sha256": sha(root / "nacho-outputs.json"), "operational": False}))
+                      "export_sha256": sha(root / "nacho-outputs.json"), "operational": False,
+                      **({"diagnostics_complete": export["diagnostics_complete"],
+                          "diagnostic_manifest_sha256": export["diagnostic_manifest_sha256"]}
+                         if args.diagnostic_sidecars else {})}))
+    if args.diagnostic_sidecars and not export["diagnostics_complete"]:
+        return 2
     return 0
 
 

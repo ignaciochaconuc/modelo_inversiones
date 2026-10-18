@@ -213,7 +213,8 @@ def interpret_observed(service, request, *, case_id: str, source_evidence_finger
 
 
 def record_not_run(request, settings, *, run_id: str, case_id: str, source_evidence_fingerprint: str,
-                   reason: Literal["not_authorized", "preflight_failed", "upstream_halt"], store: SidecarStore):
+                   reason: Literal["not_authorized", "preflight_failed", "upstream_halt"], store: SidecarStore,
+                   now: datetime | None = None):
     """Fresh lifecycle metadata only; never labels a possible failed write as no call.
 
     For a persistence failure after a possible call, halt and preserve its ledger;
@@ -226,7 +227,7 @@ def record_not_run(request, settings, *, run_id: str, case_id: str, source_evide
     if request.news.provider != "synthetic" or source_evidence_fingerprint != fingerprint({
             "headline": request.news.headline, "summary": request.news.summary or ""}):
         raise ValueError("evaluation_source_binding_mismatch")
-    now = datetime.now(timezone.utc)
+    now = now or datetime.now(timezone.utc)
     _, wire, key = prepare_invocation(request, settings)  # Pure, no client transport.
     sidecar = DiagnosticSidecar(run_id=run_id, case_id=case_id, created_at=now,
         expires_at=now + timedelta(days=RETENTION_DAYS), attempt_started_at=None, outcome="not_run",

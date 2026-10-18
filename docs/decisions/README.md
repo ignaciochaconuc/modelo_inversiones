@@ -36,3 +36,4 @@ Los ADR documentan decisiones arquitectónicas duraderas. Una decisión aceptada
 - [ADR-032: Economic entity attribution distinct from corporate identity](ADR-032-economic-entity-attribution.md)
 - [ADR-033: Isolated synthetic attribution evaluation runner](ADR-033-isolated-synthetic-attribution-evaluation.md)
 - [ADR-034: Diagnostic metadata sidecars](ADR-034-diagnostic-metadata-sidecars.md)
+- [ADR-035: Opt-in evaluation sidecar integration](ADR-035-opt-in-evaluation-sidecar-integration.md)

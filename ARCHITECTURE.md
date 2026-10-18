@@ -186,6 +186,12 @@ sin alterar aceptación, prompts, atribución o DTOs anteriores. El lector de
 sidecar no consulta respuestas/attempts; no hay backfill histórico ni activación
 automática del ejecutor de evaluación. No habilita Phase 4C.3.
 
+ADR-035 integra la ruta observada únicamente mediante overlay y flag explícitos
+del runner sintético. Un plan v2 fija política/código y exige autorización v2
+nueva. Manifest/bindings sanitizados fijan IDs canónicos; su auditoría no abre
+contenido. Fallos de sidecar detienen llamadas conservando intento y ledger,
+sin alterar resultados semánticos ni reintentar. No activa producción ni 4C.3.
+
 Los schemas preservan cuatro timestamps con semánticas distintas. `available_at <= decision_time` se valida antes de usar registros. El Feature Store tiene granularidad `ticker + decision_date`; los joins deben respetar disponibilidad y nunca usar la última revisión conocida hoy para simular una decisión pasada.
 
 Features y targets tienen registros y persistencia separados conforme a ADR-009. `model_features()` expone solo inputs. Labels se construyen en `features.targets` y solo se unen a features por `ticker + decision_date`, con cardinalidad one-to-one, mediante el builder supervisado. Los targets 5/10/20 persisten su sesión final exacta como metadata y nunca la exponen en `X`.

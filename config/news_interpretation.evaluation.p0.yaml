@@ -1,0 +1,9 @@
+# Explicit evaluation overlay only. Neither an authorization nor a price renewal.
+# Underlying attestation is expired: a future real run requires documented review.
+runtime_profile: news_interpretation.evaluation.yaml
+evaluation_diagnostics:
+  enabled: true
+  schema_version: news-evaluation-diagnostics-v1
+  retention_policy: diagnostic-metadata-retention-v1
+  retention_days: 90
+  content_retention_hours: 24

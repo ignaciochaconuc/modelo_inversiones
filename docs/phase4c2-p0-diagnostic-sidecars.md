@@ -1,6 +1,9 @@
 # Phase 4C.2.2 — P0: observabilidad diagnóstica
 
-P0 implementado; integración en futuras evaluaciones pendiente de revisión.
+P0 implementado. Integración opt-in posterior preparada; véase
+[integración offline del runner](phase4c2-runner-p0-integration.md) y ADR-035.
+Las secciones de propuesta y resultados siguientes conservan el alcance de la
+entrega P0 original; no son una autorización ni el estado actual del runner.
 No se autoriza ninguna inferencia. Phase 4C.3 sigue `not_started`.
 
 ## Implementación y contrato

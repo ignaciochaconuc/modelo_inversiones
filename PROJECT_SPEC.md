@@ -180,7 +180,10 @@ versionada, con retención independiente de 90 días y subcódigos emitidos al
 validar. No cambia reglas, prompts, esquemas de interpretación ni TTL de
 contenido; no completa retrospectivamente corridas antiguas. Véanse ADR-034 y
 `docs/phase4c2-p0-diagnostic-sidecars.md`. Integración futura requiere un plan y
-autorización nuevos; Phase 4C.3 sigue sin iniciar.
+autorización nuevos; Phase 4C.3 sigue sin iniciar. ADR-035 prepara esa integración
+con overlay/CLI explícitos, autorización v2 y manifest de IDs canónicos:
+`nacho_evaluation_runner_p0_integrated_pending_authorization`. No renueva
+precios/capacidades vencidos ni autoriza nuevas inferencias.
 
 `LLMRouter` selecciona proveedor/modelo por agente y tarea, usando `config/models.yaml`. Los clientes de OpenAI y Ollama son stubs deliberados. El pricing es configurable y no incluye precios reales hardcodeados.
 

@@ -25,6 +25,42 @@ SOURCE_ROOT = "evaluation/phase4c2_attribution_v1/prepared/reviewer"
 OUTPUT_ROOT = "data/cache/news_attribution_evaluation/nacho-v1"
 
 
+def diagnostics_module():
+    spec = importlib.util.spec_from_file_location("nacho_evaluation_diagnostics",
+        Path(__file__).with_name("nacho_evaluation_diagnostics.py"))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def load_profile(config: Path, diagnostic_sidecars: bool = False):
+    """A diagnostics overlay never changes the historical runtime profile."""
+    raw = yaml.safe_load(config.read_text(encoding="utf-8"))
+    policy, runtime_hash = None, None
+    if isinstance(raw, dict) and "runtime_profile" in raw:
+        if set(raw) != {"runtime_profile", "evaluation_diagnostics"}:
+            raise ValueError("invalid_evaluation_overlay")
+        name = raw["runtime_profile"]
+        if not isinstance(name, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+\.yaml", name):
+            raise ValueError("invalid_runtime_profile_path")
+        runtime = config.parent / name
+        if runtime.resolve() == config.resolve() or runtime.resolve().parent != config.parent.resolve():
+            raise ValueError("invalid_runtime_profile_path")
+        expected = diagnostics_module().POLICY_CONFIG
+        if raw["evaluation_diagnostics"] != expected:
+            raise ValueError("unsupported_diagnostic_policy")
+        if not diagnostic_sidecars:
+            raise ValueError("diagnostic_profile_requires_explicit_cli_opt_in")
+        policy, runtime_hash = dict(expected), sha(runtime)
+        raw = yaml.safe_load(runtime.read_text(encoding="utf-8"))
+    elif diagnostic_sidecars:
+        raise ValueError("explicit_diagnostic_profile_required")
+    settings = EconomicRuntimeSettings.model_validate(raw)
+    if policy and settings.local_content_retention_hours != 24:
+        raise ValueError("diagnostic_evaluation_requires_24_hour_content_retention")
+    return settings, policy, runtime_hash
+
+
 def review_module():
     spec = importlib.util.spec_from_file_location("chatgpt_review", Path(__file__).with_name("prepare_chatgpt_review.py"))
     module = importlib.util.module_from_spec(spec)
@@ -120,11 +156,12 @@ def build_requests(evidence: dict, identity: dict) -> list[tuple[dict, NewsInter
     return requests
 
 
-def preflight(repo: Path, config: Path, budget: float, *, now: datetime | None = None) -> tuple[dict, EconomicRuntimeSettings, list]:
+def preflight(repo: Path, config: Path, budget: float, *, now: datetime | None = None,
+              diagnostic_sidecars: bool = False) -> tuple[dict, EconomicRuntimeSettings, list]:
     """No credentials, provider transport, storage, ledger or output writes."""
     now = now or datetime.now(timezone.utc)
     evidence, identity, metadata = verified_sources(repo)
-    settings = EconomicRuntimeSettings.model_validate(yaml.safe_load(config.read_text(encoding="utf-8")))
+    settings, policy, runtime_hash = load_profile(config, diagnostic_sidecars)
     if (not Decimal(str(budget)).is_finite() or budget <= 0 or budget > settings.run_budget_usd
             or settings.max_attempts != 1 or settings.retry_invalid_response or settings.retry_delay_seconds != 0):
         raise ValueError("evaluation_budget_or_attempt_policy_invalid")
@@ -161,6 +198,13 @@ def preflight(repo: Path, config: Path, budget: float, *, now: datetime | None =
             "request_budget_usd": settings.request_budget_usd, "run_budget_usd": budget,
             "maximum_reserved_usd": float(total), "input_token_upper_bound_total": sum(b["input_token_upper_bound"] for b in bounds),
             "output_token_cap_total": len(bounds) * settings.adapter.max_output_tokens, "cases": bounds}
+    if policy:
+        plan.update(version="nacho-attribution-evaluation-runner-v2",
+            runtime_profile_sha256=runtime_hash,
+            evaluation_diagnostics={**policy, "integration_code_sha256": sha(
+                Path(__file__).with_name("nacho_evaluation_diagnostics.py")),
+                "p0_code_fingerprint": fingerprint({k: v for k, v in code_hashes.items()
+                    if k.endswith(("diagnostic_events.py", "diagnostic_sidecar.py"))})})
     plan["plan_fingerprint"] = fingerprint(plan)
     return plan, settings, requests
 
@@ -168,7 +212,14 @@ def preflight(repo: Path, config: Path, budget: float, *, now: datetime | None =
 def validate_authorization(auth: dict, plan: dict, run_id: str, now: datetime) -> None:
     fields = {"version", "approved", "authorized_by", "authorized_at", "expires_at", "plan_fingerprint",
               "freeze_sha256", "run_id", "max_provider_calls", "budget_usd"}
-    if (set(auth) != fields or auth["version"] != "nacho-evaluation-authorization-v1" or auth["approved"] is not True
+    p0 = plan.get("evaluation_diagnostics")
+    version = "nacho-evaluation-authorization-v2" if p0 else "nacho-evaluation-authorization-v1"
+    if p0:
+        fields.add("diagnostics_fingerprint")
+        if (auth.get("diagnostics_fingerprint") != fingerprint(p0)
+                or not re.fullmatch(r"eval-[a-f0-9]{32}", run_id)):
+            raise ValueError("specific_diagnostic_authorization_required")
+    if (set(auth) != fields or auth["version"] != version or auth["approved"] is not True
             or not isinstance(auth["authorized_by"], str) or not auth["authorized_by"].strip()
             or auth["plan_fingerprint"] != plan["plan_fingerprint"] or auth["freeze_sha256"] != FREEZE_SHA256
             or auth["run_id"] != run_id or type(auth["max_provider_calls"]) is not int or auth["max_provider_calls"] != 32
@@ -219,8 +270,15 @@ def export_delivery(binding: dict, delivery) -> dict:
     return row
 
 
-def execute_cases(requests: list, service, root: Path, plan: dict, *, before_call=None) -> dict:
+def execute_cases(requests: list, service, root: Path, plan: dict, *, before_call=None,
+                  p0_authorization=None, sidecar_store=None) -> dict:
     """Authorized service only; no reference payload parameter exists here."""
+    if plan.get("evaluation_diagnostics"):
+        validate_authorization(p0_authorization or {}, plan, service.run_id, service.clock())
+        return diagnostics_module().execute(requests, service, root, plan, export_delivery=export_delivery,
+            write_json=review_module().write_json,
+            before_call=before_call, store=sidecar_store,
+            authorize=lambda: validate_authorization(p0_authorization, plan, service.run_id, service.clock()))
     review = review_module()
     rows = []
     halted = False
