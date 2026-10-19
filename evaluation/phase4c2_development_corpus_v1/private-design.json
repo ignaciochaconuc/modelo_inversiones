@@ -1,0 +1,543 @@
+{
+  "version": "news-development-private-design-v1",
+  "cases": [
+    {
+      "case_id": "D-1211fcda178c57ab",
+      "family_id": "DF-1d2bfb43fdb58cbf",
+      "variant": "a",
+      "primary_stratum": "numeric_fidelity",
+      "secondary_tags": [
+        "physical_vs_monetary_units",
+        "period_basis",
+        "recycling"
+      ],
+      "counterfactual_axis": "Same lexemes and units, but aggregate-quarter versus per-month basis; not a mere change of figures.",
+      "deliberate_ambiguity": "The year of January through March is not supplied. Publication year must not be substituted for it.",
+      "originality_note": "Physical scrap tonnage collides numerically with currency receipts; the counterfactual changes aggregation basis, not a revenue literal's formatting.",
+      "relevant_registry_ids": [
+        "dev-security-cefb15173bc4e84b"
+      ],
+      "changed_field": "summary",
+      "start": 168,
+      "old": "The monetary amount covers the three months combined, not an individual month.",
+      "new": "The monetary amount applies to each individual month, not the three months combined.",
+      "packet_fingerprint": "fe5f58a0ac956895289a16a2562eec3c07b4ed7a95df22704c24cf8aafa4cf91"
+    },
+    {
+      "case_id": "D-149ae2f05939977c",
+      "family_id": "DF-c4bab53ef191e746",
+      "variant": "a",
+      "primary_stratum": "context_and_identity",
+      "secondary_tags": [
+        "land_lease",
+        "corporate_identity",
+        "context_vs_counterparty"
+      ],
+      "counterfactual_axis": "Recognizable survey author used as background versus a joint tenant with a rent obligation.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Cadastral attribution versus joint tenancy, avoiding platform-owner aliases, benchmark mentions and acquisition cameos.",
+      "relevant_registry_ids": [
+        "dev-security-ec031c33d77d4c0f",
+        "dev-security-9bc6b995b42a3ee6"
+      ],
+      "changed_field": "summary",
+      "start": 133,
+      "old": "Helqorin is identified solely as the author of the old boundary survey; it is neither a tenant nor a guarantor under this lease.",
+      "new": "Helqorin is identified as a joint tenant responsible for rent alongside Duzqarel, rather than merely the author of the old boundary survey.",
+      "packet_fingerprint": "9ebb4169189c8a3de6e42a5a5af634bed4172e52d9323932b0c5739b013062de"
+    },
+    {
+      "case_id": "D-207e8675fb16b9d4",
+      "family_id": "DF-7bee069935c5c291",
+      "variant": "b",
+      "primary_stratum": "direct_participation",
+      "secondary_tags": [
+        "indemnity",
+        "economic_obligation",
+        "incidental_distributor"
+      ],
+      "counterfactual_axis": "Qosdelun is a financial guarantor versus an incidental circular distributor with no reimbursement obligation.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Warranty indemnification allocation rather than purchase, supply agreement or buyer/target inversion.",
+      "relevant_registry_ids": [
+        "dev-security-1ccc71147e9a524e",
+        "dev-security-a5723df6b0fc06c6"
+      ],
+      "changed_field": "summary",
+      "start": 149,
+      "old": "Qosdelun guarantees half of the approved reimbursements under the signed indemnity, while Pluvarek bears the other half.",
+      "new": "Qosdelun only forwarded the circular through a public mailing list and undertakes no reimbursement obligation; Pluvarek bears every approved claim.",
+      "packet_fingerprint": "c4bea9c775c1fba2e98fa7c9b6b1759fa012d7b6a58b3d11baa9a495611e6702"
+    },
+    {
+      "case_id": "D-24ae2b54a90fb10f",
+      "family_id": "DF-52324f86ba41ef20",
+      "variant": "b",
+      "primary_stratum": "completed",
+      "secondary_tags": [
+        "asset_operation",
+        "object_of_completion",
+        "worker_cooperative"
+      ],
+      "counterfactual_axis": "Physical operational handover versus completion of an administrative step only.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Custody and operating concession with an administrative seal; no purchase, merger or closure of a due-diligence review.",
+      "relevant_registry_ids": [
+        "dev-security-943438133c48063b"
+      ],
+      "changed_field": "summary",
+      "start": 142,
+      "old": "With custody of the kiln and the operating keys now handed to Emzquorin, the cooperative has assumed day-to-day operation.",
+      "new": "Only the paperwork has been sealed: custody of the kiln and its operating keys remains with Zhulvane until a separate handover.",
+      "packet_fingerprint": "6cc628c138363e9e6beb2f35832af3277a15818f80b0765ed477a8d5c96f8ff9"
+    },
+    {
+      "case_id": "D-293a6cbca3479505",
+      "family_id": "DF-1d05c2c6647172e7",
+      "variant": "b",
+      "primary_stratum": "dates_and_pit",
+      "secondary_tags": [
+        "regulation",
+        "date_attachment",
+        "future_registry"
+      ],
+      "counterfactual_axis": "Same literal date attaches to permit effectiveness versus publication only; a future-known registry entry is excluded from both inputs.",
+      "deliberate_ambiguity": "Variant b intentionally lacks the event effective date. Fictional publication time does not fill that gap.",
+      "originality_note": "A permit date's referent and future-known identity, not conversion of October prose into an ISO financing date.",
+      "relevant_registry_ids": [
+        "dev-security-676b0fb81f483ca7",
+        "dev-security-b3c2fbdbc15a47e1"
+      ],
+      "changed_field": "summary",
+      "start": 117,
+      "old": "The entry identifies 2031-03-21 as the day the permit takes effect.",
+      "new": "The entry identifies 2031-03-21 as the bulletin's publication day; the day the permit takes effect is not supplied.",
+      "packet_fingerprint": "284464380de5e27945f42e4166408a7368431611ec22348a1cafe62104fe2162"
+    },
+    {
+      "case_id": "D-344f5524598d5af8",
+      "family_id": "DF-c4bab53ef191e746",
+      "variant": "b",
+      "primary_stratum": "context_and_identity",
+      "secondary_tags": [
+        "land_lease",
+        "corporate_identity",
+        "context_vs_counterparty"
+      ],
+      "counterfactual_axis": "Recognizable survey author used as background versus a joint tenant with a rent obligation.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Cadastral attribution versus joint tenancy, avoiding platform-owner aliases, benchmark mentions and acquisition cameos.",
+      "relevant_registry_ids": [
+        "dev-security-ec031c33d77d4c0f",
+        "dev-security-9bc6b995b42a3ee6"
+      ],
+      "changed_field": "summary",
+      "start": 133,
+      "old": "Helqorin is identified solely as the author of the old boundary survey; it is neither a tenant nor a guarantor under this lease.",
+      "new": "Helqorin is identified as a joint tenant responsible for rent alongside Duzqarel, rather than merely the author of the old boundary survey.",
+      "packet_fingerprint": "35910ac765c0a401a1d4653c7ec3d4ba0ed54be49e34cccdbb40e8c72c41ed71"
+    },
+    {
+      "case_id": "D-357c527c444fda92",
+      "family_id": "DF-cd8c9c1f4c33d976",
+      "variant": "b",
+      "primary_stratum": "proposed",
+      "secondary_tags": [
+        "public_funding",
+        "application_vs_award",
+        "capital_project"
+      ],
+      "counterfactual_axis": "Unaccepted grant application versus a binding award, not construction completion.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Public grant application and reimbursement mechanics, distinct from procurement shortlists, fee consultations and takeover proposals.",
+      "relevant_registry_ids": [
+        "dev-security-aca7c3bfe81b2819"
+      ],
+      "changed_field": "summary",
+      "start": 140,
+      "old": "The entry acknowledges receipt of Draxuvo's non-binding grant application and leaves the funding decision to a later meeting.",
+      "new": "The entry records the council's binding grant award to Draxuvo; payment awaits receipts for eligible dredging work.",
+      "packet_fingerprint": "6ee32a691ccc43db36699350888608da2811b0fad1671fccb8b156a488062e3b"
+    },
+    {
+      "case_id": "D-3b2243f6c97e1c76",
+      "family_id": "DF-cd8c9c1f4c33d976",
+      "variant": "a",
+      "primary_stratum": "proposed",
+      "secondary_tags": [
+        "public_funding",
+        "application_vs_award",
+        "capital_project"
+      ],
+      "counterfactual_axis": "Unaccepted grant application versus a binding award, not construction completion.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Public grant application and reimbursement mechanics, distinct from procurement shortlists, fee consultations and takeover proposals.",
+      "relevant_registry_ids": [
+        "dev-security-aca7c3bfe81b2819"
+      ],
+      "changed_field": "summary",
+      "start": 140,
+      "old": "The entry acknowledges receipt of Draxuvo's non-binding grant application and leaves the funding decision to a later meeting.",
+      "new": "The entry records the council's binding grant award to Draxuvo; payment awaits receipts for eligible dredging work.",
+      "packet_fingerprint": "f4842142bc3f0604b2baba20ac751a59a07d841d7437954735c7ad7ecb0e16e5"
+    },
+    {
+      "case_id": "D-40e8a2188273506b",
+      "family_id": "DF-1d05c2c6647172e7",
+      "variant": "a",
+      "primary_stratum": "dates_and_pit",
+      "secondary_tags": [
+        "regulation",
+        "date_attachment",
+        "future_registry"
+      ],
+      "counterfactual_axis": "Same literal date attaches to permit effectiveness versus publication only; a future-known registry entry is excluded from both inputs.",
+      "deliberate_ambiguity": "Variant b intentionally lacks the event effective date. Fictional publication time does not fill that gap.",
+      "originality_note": "A permit date's referent and future-known identity, not conversion of October prose into an ISO financing date.",
+      "relevant_registry_ids": [
+        "dev-security-676b0fb81f483ca7",
+        "dev-security-b3c2fbdbc15a47e1"
+      ],
+      "changed_field": "summary",
+      "start": 117,
+      "old": "The entry identifies 2031-03-21 as the day the permit takes effect.",
+      "new": "The entry identifies 2031-03-21 as the bulletin's publication day; the day the permit takes effect is not supplied.",
+      "packet_fingerprint": "f1464c1a3cce47d5bfbf1ab063bd080f4d39b0d509e278e0f2ee8de4867d8710"
+    },
+    {
+      "case_id": "D-4ea8b5ea011dc021",
+      "family_id": "DF-47418a0339f2d2bc",
+      "variant": "b",
+      "primary_stratum": "temporal_conditions",
+      "secondary_tags": [
+        "financing",
+        "condition_precedent",
+        "future_payment"
+      ],
+      "counterfactual_axis": "Outstanding versus satisfied condition precedent, with payment still future in both variants.",
+      "deliberate_ambiguity": "The relative phrase next week is intentional; it is not a literal ISO event date.",
+      "originality_note": "Debt redemption instruction versus satisfaction of escrow, not future acquisition or attributed takeover rumor.",
+      "relevant_registry_ids": [
+        "dev-security-abd0fdb4a9b15ac1"
+      ],
+      "changed_field": "summary",
+      "start": 116,
+      "old": "The payment instruction becomes operative only if an escrow certificate arrives before the window; the certificate is still outstanding.",
+      "new": "The escrow certificate has arrived, making the payment instruction operative for the window; the scheduled payment remains next week.",
+      "packet_fingerprint": "ddeb8f0bab26cb88483b3421e6973b43cd4a209b825d1189138e4a1f210894c1"
+    },
+    {
+      "case_id": "D-5f21ec91317d6943",
+      "family_id": "DF-7bee069935c5c291",
+      "variant": "a",
+      "primary_stratum": "direct_participation",
+      "secondary_tags": [
+        "indemnity",
+        "economic_obligation",
+        "incidental_distributor"
+      ],
+      "counterfactual_axis": "Qosdelun is a financial guarantor versus an incidental circular distributor with no reimbursement obligation.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Warranty indemnification allocation rather than purchase, supply agreement or buyer/target inversion.",
+      "relevant_registry_ids": [
+        "dev-security-1ccc71147e9a524e",
+        "dev-security-a5723df6b0fc06c6"
+      ],
+      "changed_field": "summary",
+      "start": 149,
+      "old": "Qosdelun guarantees half of the approved reimbursements under the signed indemnity, while Pluvarek bears the other half.",
+      "new": "Qosdelun only forwarded the circular through a public mailing list and undertakes no reimbursement obligation; Pluvarek bears every approved claim.",
+      "packet_fingerprint": "3d64f7b400bcb862d94df86268bb6c11078a95308b36502625224feeeca3ada1"
+    },
+    {
+      "case_id": "D-69d2ab33be7076dc",
+      "family_id": "DF-b7016da3fead8a18",
+      "variant": "b",
+      "primary_stratum": "indirect_relations",
+      "secondary_tags": [
+        "supply_chain",
+        "dependency",
+        "potential_not_measured_impact"
+      ],
+      "counterfactual_axis": "Current exclusive input dependency versus an obsolete sampling relationship, not a measured loss in either variant.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Upstream physical interruption and current versus obsolete input exposure; not parent ownership, franchise status or competitor repricing.",
+      "relevant_registry_ids": [
+        "dev-security-7929527f9ae390f8",
+        "dev-security-273e0423bcd93036"
+      ],
+      "changed_field": "summary",
+      "start": 187,
+      "old": "Oqzarin currently obtains all pigment for its sole coating line from Truxevan and has no substitute supplier qualified for that line.",
+      "new": "Oqzarin bought laboratory samples from Truxevan years ago but now obtains the line's pigment from a separate source and has no open Truxevan orders.",
+      "packet_fingerprint": "7b2e9cbeeb51bce6d7f9aab87e894aa1066f69652733e07c94c0cb91df4f099a"
+    },
+    {
+      "case_id": "D-6c6ef03a91cca2a9",
+      "family_id": "DF-c63cbc960ee23d4b",
+      "variant": "a",
+      "primary_stratum": "unknown_stage",
+      "secondary_tags": [
+        "plant_retooling",
+        "opaque_status",
+        "partial_information"
+      ],
+      "counterfactual_axis": "Undefined status code versus an explicit operational definition of that same code.",
+      "deliberate_ambiguity": "Variant a deliberately leaves the event stage unspecified; the actor and refit remain identifiable. No global ambiguity is implied.",
+      "originality_note": "An opaque industrial tracker plus an explicit glossary, not a morphological substitution of an acquisition verb.",
+      "relevant_registry_ids": [
+        "dev-security-4ddd083bd82a1359"
+      ],
+      "changed_field": "summary",
+      "start": 146,
+      "old": "The accompanying note does not define R7 or describe which work has occurred.",
+      "new": "The accompanying glossary defines R7 as physical commissioning accepted by the plant engineer, with the refitted line released for operation.",
+      "packet_fingerprint": "d0fc7bc23486c9ff9c4be3bcbed7aed8d8ccec32aa6627a6cd851d51ca30d54a"
+    },
+    {
+      "case_id": "D-8d5314f2c5c04bdf",
+      "family_id": "DF-52324f86ba41ef20",
+      "variant": "a",
+      "primary_stratum": "completed",
+      "secondary_tags": [
+        "asset_operation",
+        "object_of_completion",
+        "worker_cooperative"
+      ],
+      "counterfactual_axis": "Physical operational handover versus completion of an administrative step only.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Custody and operating concession with an administrative seal; no purchase, merger or closure of a due-diligence review.",
+      "relevant_registry_ids": [
+        "dev-security-943438133c48063b"
+      ],
+      "changed_field": "summary",
+      "start": 142,
+      "old": "With custody of the kiln and the operating keys now handed to Emzquorin, the cooperative has assumed day-to-day operation.",
+      "new": "Only the paperwork has been sealed: custody of the kiln and its operating keys remains with Zhulvane until a separate handover.",
+      "packet_fingerprint": "07e79bd8439272f1e816a26b556e23de010dfb061eb11b9dd0c6c016e768b512"
+    },
+    {
+      "case_id": "D-93672b713faeaaa7",
+      "family_id": "DF-8da0a59a7fca4da6",
+      "variant": "b",
+      "primary_stratum": "announced",
+      "secondary_tags": [
+        "investment",
+        "shutdown",
+        "decision_vs_agenda"
+      ],
+      "counterfactual_axis": "Corporate shutdown decision communicated versus a decision still awaiting a board vote.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Operational mothball notice, not an acquisition announcement; target is furnace capacity rather than transfer of ownership.",
+      "relevant_registry_ids": [
+        "dev-security-a6d8841285767c8f"
+      ],
+      "changed_field": "summary",
+      "start": 120,
+      "old": "The bulletin gives workers formal notice that the older furnace will be taken out of service after the current orders are filled.",
+      "new": "The bulletin puts taking the older furnace out of service on the next board agenda; directors have yet to vote on the measure.",
+      "packet_fingerprint": "829f769e9fcc4f89ce79d2f2a81e28025a0114fb849eef579cda7f6428796868"
+    },
+    {
+      "case_id": "D-9a08d4ede78dd104",
+      "family_id": "DF-b7016da3fead8a18",
+      "variant": "a",
+      "primary_stratum": "indirect_relations",
+      "secondary_tags": [
+        "supply_chain",
+        "dependency",
+        "potential_not_measured_impact"
+      ],
+      "counterfactual_axis": "Current exclusive input dependency versus an obsolete sampling relationship, not a measured loss in either variant.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Upstream physical interruption and current versus obsolete input exposure; not parent ownership, franchise status or competitor repricing.",
+      "relevant_registry_ids": [
+        "dev-security-7929527f9ae390f8",
+        "dev-security-273e0423bcd93036"
+      ],
+      "changed_field": "summary",
+      "start": 187,
+      "old": "Oqzarin currently obtains all pigment for its sole coating line from Truxevan and has no substitute supplier qualified for that line.",
+      "new": "Oqzarin bought laboratory samples from Truxevan years ago but now obtains the line's pigment from a separate source and has no open Truxevan orders.",
+      "packet_fingerprint": "8c0e55cf1d36a04c64fba76e73be42cf8514a851e909650a24b0a1d2f032dff4"
+    },
+    {
+      "case_id": "D-9a5bfd786f5c233e",
+      "family_id": "DF-aaecb7dbc6f83bde",
+      "variant": "a",
+      "primary_stratum": "negation",
+      "secondary_tags": [
+        "regulation",
+        "scope_of_negation",
+        "shipment_restriction"
+      ],
+      "counterfactual_axis": "Negation applies to the shipment suspension in b; the separate nondisclosure is unchanged in both.",
+      "deliberate_ambiguity": null,
+      "originality_note": "A shipment hold and inspector privacy, not takeover denial or undisclosed acquisition consideration.",
+      "relevant_registry_ids": [
+        "dev-security-a8f7ed56fe7e8daa"
+      ],
+      "changed_field": "summary",
+      "start": 144,
+      "old": "The notice suspends lot releases while the room is retested; it does not disclose the inspector's name.",
+      "new": "The notice does not suspend lot releases while the room is retested; it does not disclose the inspector's name.",
+      "packet_fingerprint": "cab4a4ef9338a7f6a5dfb5651b019aab4cd2a77935d0947bcf642b76fa4d6f1d"
+    },
+    {
+      "case_id": "D-a4e448038e1f3c79",
+      "family_id": "DF-aaecb7dbc6f83bde",
+      "variant": "b",
+      "primary_stratum": "negation",
+      "secondary_tags": [
+        "regulation",
+        "scope_of_negation",
+        "shipment_restriction"
+      ],
+      "counterfactual_axis": "Negation applies to the shipment suspension in b; the separate nondisclosure is unchanged in both.",
+      "deliberate_ambiguity": null,
+      "originality_note": "A shipment hold and inspector privacy, not takeover denial or undisclosed acquisition consideration.",
+      "relevant_registry_ids": [
+        "dev-security-a8f7ed56fe7e8daa"
+      ],
+      "changed_field": "summary",
+      "start": 144,
+      "old": "The notice suspends lot releases while the room is retested; it does not disclose the inspector's name.",
+      "new": "The notice does not suspend lot releases while the room is retested; it does not disclose the inspector's name.",
+      "packet_fingerprint": "82270eb3afeba158c3e5994d68db581b6c6e1da61a09e277d1127b50c540f121"
+    },
+    {
+      "case_id": "D-a8db3a0c74d93eb8",
+      "family_id": "DF-1d2bfb43fdb58cbf",
+      "variant": "b",
+      "primary_stratum": "numeric_fidelity",
+      "secondary_tags": [
+        "physical_vs_monetary_units",
+        "period_basis",
+        "recycling"
+      ],
+      "counterfactual_axis": "Same lexemes and units, but aggregate-quarter versus per-month basis; not a mere change of figures.",
+      "deliberate_ambiguity": "The year of January through March is not supplied. Publication year must not be substituted for it.",
+      "originality_note": "Physical scrap tonnage collides numerically with currency receipts; the counterfactual changes aggregation basis, not a revenue literal's formatting.",
+      "relevant_registry_ids": [
+        "dev-security-cefb15173bc4e84b"
+      ],
+      "changed_field": "summary",
+      "start": 168,
+      "old": "The monetary amount covers the three months combined, not an individual month.",
+      "new": "The monetary amount applies to each individual month, not the three months combined.",
+      "packet_fingerprint": "12165a0bcdf39f987d8ebc9062c577d7aa9acd2cae010287e603c3efd6a55599"
+    },
+    {
+      "case_id": "D-bcc9cce8989c97da",
+      "family_id": "DF-67d60d0c5faf93b7",
+      "variant": "a",
+      "primary_stratum": "insufficient_evidence",
+      "secondary_tags": [
+        "document_fragment",
+        "actor_and_object_recovery",
+        "regulation"
+      ],
+      "counterfactual_axis": "Missing versus restored caption supplies attribution and event object, with the withdrawal line unchanged.",
+      "deliberate_ambiguity": "Variant a deliberately lacks both actor and authorization scope; do not use the local registry inventory to guess either.",
+      "originality_note": "A detached regulatory index line with caption restoration, not a generic unspecified update or disputed acquisition actor.",
+      "relevant_registry_ids": [
+        "dev-security-fb17feeb72bef68a"
+      ],
+      "changed_field": "summary",
+      "start": 95,
+      "old": "The excerpt omits the filing caption and supplies neither the holder's name nor the activity covered by the authorization.",
+      "new": "The restored filing caption identifies Fzuelorin Coldrooms as the holder and its west-site refrigerated storage permit as the authorization covered.",
+      "packet_fingerprint": "3b84364f2a7046778096aa8fe2cebf0c9850104d627f17c969f3c0f6bf2ce73d"
+    },
+    {
+      "case_id": "D-dd36acb3003e1ecc",
+      "family_id": "DF-67d60d0c5faf93b7",
+      "variant": "b",
+      "primary_stratum": "insufficient_evidence",
+      "secondary_tags": [
+        "document_fragment",
+        "actor_and_object_recovery",
+        "regulation"
+      ],
+      "counterfactual_axis": "Missing versus restored caption supplies attribution and event object, with the withdrawal line unchanged.",
+      "deliberate_ambiguity": "Variant a deliberately lacks both actor and authorization scope; do not use the local registry inventory to guess either.",
+      "originality_note": "A detached regulatory index line with caption restoration, not a generic unspecified update or disputed acquisition actor.",
+      "relevant_registry_ids": [
+        "dev-security-fb17feeb72bef68a"
+      ],
+      "changed_field": "summary",
+      "start": 95,
+      "old": "The excerpt omits the filing caption and supplies neither the holder's name nor the activity covered by the authorization.",
+      "new": "The restored filing caption identifies Fzuelorin Coldrooms as the holder and its west-site refrigerated storage permit as the authorization covered.",
+      "packet_fingerprint": "03bd135d4843f037658da21a16dfa717cf3e55dfaec16351f7900eebadd2a3b3"
+    },
+    {
+      "case_id": "D-eb5cec8943bdf1a0",
+      "family_id": "DF-8da0a59a7fca4da6",
+      "variant": "a",
+      "primary_stratum": "announced",
+      "secondary_tags": [
+        "investment",
+        "shutdown",
+        "decision_vs_agenda"
+      ],
+      "counterfactual_axis": "Corporate shutdown decision communicated versus a decision still awaiting a board vote.",
+      "deliberate_ambiguity": null,
+      "originality_note": "Operational mothball notice, not an acquisition announcement; target is furnace capacity rather than transfer of ownership.",
+      "relevant_registry_ids": [
+        "dev-security-a6d8841285767c8f"
+      ],
+      "changed_field": "summary",
+      "start": 120,
+      "old": "The bulletin gives workers formal notice that the older furnace will be taken out of service after the current orders are filled.",
+      "new": "The bulletin puts taking the older furnace out of service on the next board agenda; directors have yet to vote on the measure.",
+      "packet_fingerprint": "2e7274bee88fcf96e9adbe77cf466ec8b8bb604642e54c270ca38c21628117b9"
+    },
+    {
+      "case_id": "D-fb8cc09d4a736343",
+      "family_id": "DF-47418a0339f2d2bc",
+      "variant": "a",
+      "primary_stratum": "temporal_conditions",
+      "secondary_tags": [
+        "financing",
+        "condition_precedent",
+        "future_payment"
+      ],
+      "counterfactual_axis": "Outstanding versus satisfied condition precedent, with payment still future in both variants.",
+      "deliberate_ambiguity": "The relative phrase next week is intentional; it is not a literal ISO event date.",
+      "originality_note": "Debt redemption instruction versus satisfaction of escrow, not future acquisition or attributed takeover rumor.",
+      "relevant_registry_ids": [
+        "dev-security-abd0fdb4a9b15ac1"
+      ],
+      "changed_field": "summary",
+      "start": 116,
+      "old": "The payment instruction becomes operative only if an escrow certificate arrives before the window; the certificate is still outstanding.",
+      "new": "The escrow certificate has arrived, making the payment instruction operative for the window; the scheduled payment remains next week.",
+      "packet_fingerprint": "e729d716a3e99330a2ff0511034c81b9749eddb29a25fbf736dec9eb3304754f"
+    },
+    {
+      "case_id": "D-fbf4c5c9e02691b3",
+      "family_id": "DF-c63cbc960ee23d4b",
+      "variant": "b",
+      "primary_stratum": "unknown_stage",
+      "secondary_tags": [
+        "plant_retooling",
+        "opaque_status",
+        "partial_information"
+      ],
+      "counterfactual_axis": "Undefined status code versus an explicit operational definition of that same code.",
+      "deliberate_ambiguity": "Variant a deliberately leaves the event stage unspecified; the actor and refit remain identifiable. No global ambiguity is implied.",
+      "originality_note": "An opaque industrial tracker plus an explicit glossary, not a morphological substitution of an acquisition verb.",
+      "relevant_registry_ids": [
+        "dev-security-4ddd083bd82a1359"
+      ],
+      "changed_field": "summary",
+      "start": 146,
+      "old": "The accompanying note does not define R7 or describe which work has occurred.",
+      "new": "The accompanying glossary defines R7 as physical commissioning accepted by the plant engineer, with the refitted line released for operation.",
+      "packet_fingerprint": "39850d99b492dfdef4c48ff1230e910d3d2ec020012d66c743359d4e4617b913"
+    }
+  ],
+  "not_model_input": true,
+  "semantic_reference_status": "not_created"
+}

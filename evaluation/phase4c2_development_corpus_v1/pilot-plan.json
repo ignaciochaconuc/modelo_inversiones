@@ -1,0 +1,39 @@
+{
+  "version": "news-development-timed-pilot-plan-v1",
+  "status": "proposed_not_executed",
+  "instrument": "news-semantic-review-instrument-v1",
+  "provider_calls": 0,
+  "predictions": 0,
+  "selected_case_ids": [
+    "D-1211fcda178c57ab",
+    "D-293a6cbca3479505",
+    "D-40e8a2188273506b",
+    "D-6c6ef03a91cca2a9",
+    "D-a8db3a0c74d93eb8",
+    "D-fbf4c5c9e02691b3"
+  ],
+  "selection_basis": "predeclared variation in stage certainty, aggregation and temporal attribution; convenience development sample, not a random holdout",
+  "participants_confirmed": [],
+  "started_at": null,
+  "completed_at": null,
+  "measurements": [],
+  "minimum_record_fields": [
+    "reviewer_id",
+    "provenance_kind",
+    "task",
+    "case_id",
+    "started_at",
+    "completed_at",
+    "timestamp_source",
+    "active_seconds",
+    "queue_seconds",
+    "interruption_seconds",
+    "disagreement",
+    "adjudication_seconds",
+    "completion_status"
+  ],
+  "independence_policy": "One owner's dry run measures workload only; repeated owner judgments are not independent reviewers. Do not fabricate disagreements or a third person.",
+  "response_ttl_hours": 24,
+  "metadata_retention_days": 90,
+  "reserved_execution_status": "not_executable"
+}

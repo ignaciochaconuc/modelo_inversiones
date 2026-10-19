@@ -1,0 +1,1889 @@
+{
+  "version": "news-prompt-development-corpus-v1",
+  "purpose": "development_only",
+  "fictional": true,
+  "cases": [
+    {
+      "case_id": "D-1211fcda178c57ab",
+      "primary_revision_id": "9b4d29c48530971969b216fc9dfd85b9689fa8d42b2e7d5d7af6b3ba69a834c1",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "8c43e1b9637d2315d920bd921e02352c6282d01ad6668cea5c6135fdce30b2da",
+          "revision_id": "9b4d29c48530971969b216fc9dfd85b9689fa8d42b2e7d5d7af6b3ba69a834c1",
+          "provider": "synthetic",
+          "provider_news_id": "D-1211fcda178c57ab",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Bravqulin explains the basis of its scrap disposal ledger",
+          "summary": "Bravqulin Textiles disposed of 640 tonnes of scrap during January through March. Its ledger also lists gross receipts of 640 thousand USD, before transport deductions. The monetary amount covers the three months combined, not an individual month.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "cbac15ec666bf229c654c17be369d8e5b84a77cbf480f0fb23e06a72b9bac2de",
+          "content_hash": "cbac15ec666bf229c654c17be369d8e5b84a77cbf480f0fb23e06a72b9bac2de"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-cefb15173bc4e84b",
+            "corporate_name": "Bravqulin Textiles",
+            "security_id": "dev-security-cefb15173bc4e84b",
+            "ticker": "SYNTH-DEV24-001",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "5987c43ddf12a2f7290ef41d98b01558a51ff3f9c139e63b582af5ec2790f1c6",
+      "evidence": [
+        {
+          "evidence_id": "2d793947c58a57e9f80a0356e42ca2856017e49131ae3a4d96bea9cb708226e4",
+          "news_id": "8c43e1b9637d2315d920bd921e02352c6282d01ad6668cea5c6135fdce30b2da",
+          "revision_id": "9b4d29c48530971969b216fc9dfd85b9689fa8d42b2e7d5d7af6b3ba69a834c1",
+          "field": "headline",
+          "text": "Bravqulin explains the basis of its scrap disposal ledger",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "e835404e589ff313def090251b462542f53464829c290349b32e57131180f80e",
+          "news_id": "8c43e1b9637d2315d920bd921e02352c6282d01ad6668cea5c6135fdce30b2da",
+          "revision_id": "9b4d29c48530971969b216fc9dfd85b9689fa8d42b2e7d5d7af6b3ba69a834c1",
+          "field": "summary",
+          "text": "Bravqulin Textiles disposed of 640 tonnes of scrap during January through March. Its ledger also lists gross receipts of 640 thousand USD, before transport deductions. The monetary amount covers the three months combined, not an individual month.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "ace24992647496360cf0fd6ea4962e809d28c8ba93bea9c1597930b18ae2712e",
+      "packet_fingerprint": "fe5f58a0ac956895289a16a2562eec3c07b4ed7a95df22704c24cf8aafa4cf91"
+    },
+    {
+      "case_id": "D-149ae2f05939977c",
+      "primary_revision_id": "dbc83643a2cb08b24889559599c36ce4e346bd4bd0c735fae2a1f0411dcba3f5",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "7b4c2cb76f883efe0ac31a77e72c9a21fbd218b8d91246a1a59f37cf52598e7f",
+          "revision_id": "dbc83643a2cb08b24889559599c36ce4e346bd4bd0c735fae2a1f0411dcba3f5",
+          "provider": "synthetic",
+          "provider_news_id": "D-149ae2f05939977c",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Duzqarel secures a municipal yard lease",
+          "summary": "Duzqarel Rigs secured a lease of the municipal equipment yard. Helqorin Surveyworks is named in an attachment to the lease bulletin. Helqorin is identified solely as the author of the old boundary survey; it is neither a tenant nor a guarantor under this lease.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "b6ef8c3861784b6527ba0a0bc8dfafba7038a99ca2f8b6013e51569f79bfeea7",
+          "content_hash": "b6ef8c3861784b6527ba0a0bc8dfafba7038a99ca2f8b6013e51569f79bfeea7"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-ec031c33d77d4c0f",
+            "corporate_name": "Duzqarel Rigs",
+            "security_id": "dev-security-ec031c33d77d4c0f",
+            "ticker": "SYNTH-DEV24-003",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          },
+          {
+            "entity_id": "dev-entity-9bc6b995b42a3ee6",
+            "corporate_name": "Helqorin Surveyworks",
+            "security_id": "dev-security-9bc6b995b42a3ee6",
+            "ticker": "SYNTH-DEV24-005",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "cf7e7d9b21cc301cb156809ffe6cf239081d15396260c90fb160b1c0ac9a91ad",
+      "evidence": [
+        {
+          "evidence_id": "f4b11f01f85c795ce6dfc235d854f3cea74cf9c7f87c607a3872f2ca0f422b3a",
+          "news_id": "7b4c2cb76f883efe0ac31a77e72c9a21fbd218b8d91246a1a59f37cf52598e7f",
+          "revision_id": "dbc83643a2cb08b24889559599c36ce4e346bd4bd0c735fae2a1f0411dcba3f5",
+          "field": "headline",
+          "text": "Duzqarel secures a municipal yard lease",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "dfc4fe2769198422c28e88ea6508f90c0609a2b678e5133a309eda3d4be50efa",
+          "news_id": "7b4c2cb76f883efe0ac31a77e72c9a21fbd218b8d91246a1a59f37cf52598e7f",
+          "revision_id": "dbc83643a2cb08b24889559599c36ce4e346bd4bd0c735fae2a1f0411dcba3f5",
+          "field": "summary",
+          "text": "Duzqarel Rigs secured a lease of the municipal equipment yard. Helqorin Surveyworks is named in an attachment to the lease bulletin. Helqorin is identified solely as the author of the old boundary survey; it is neither a tenant nor a guarantor under this lease.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "7ad516b93849f5a72a2079a0a624b200a1727a1cb91254e59ae5f4c2a152ccc4",
+      "packet_fingerprint": "9ebb4169189c8a3de6e42a5a5af634bed4172e52d9323932b0c5739b013062de"
+    },
+    {
+      "case_id": "D-207e8675fb16b9d4",
+      "primary_revision_id": "7755388348f2d607f92be0fd843fd1df5ed4084ea54bc1722b50ab654ac3be90",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "1a7195c0704f01c3b70c9ef8c8c12cc16cd4414bfac41c1813667939f2bcaf66",
+          "revision_id": "7755388348f2d607f92be0fd843fd1df5ed4084ea54bc1722b50ab654ac3be90",
+          "provider": "synthetic",
+          "provider_news_id": "D-207e8675fb16b9d4",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Pluvarek sets out repair reimbursement arrangements",
+          "summary": "Pluvarek Pumps established a reimbursement pool for repairs to a discontinued valve series. Qosdelun Mutual's name appears on the customer circular. Qosdelun only forwarded the circular through a public mailing list and undertakes no reimbursement obligation; Pluvarek bears every approved claim.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "6564b1d6ed58885952d571630f2337efde4d59cb5bedb437a7474b43fcae9e95",
+          "content_hash": "6564b1d6ed58885952d571630f2337efde4d59cb5bedb437a7474b43fcae9e95"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-1ccc71147e9a524e",
+            "corporate_name": "Pluvarek Pumps",
+            "security_id": "dev-security-1ccc71147e9a524e",
+            "ticker": "SYNTH-DEV24-007",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          },
+          {
+            "entity_id": "dev-entity-a5723df6b0fc06c6",
+            "corporate_name": "Qosdelun Mutual",
+            "security_id": "dev-security-a5723df6b0fc06c6",
+            "ticker": "SYNTH-DEV24-009",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "3b5cc335b00e5886eb6c28b00a30be7bc38b37da370df2487b2a500d19353695",
+      "evidence": [
+        {
+          "evidence_id": "1b79ac6698c441c88e1118a739a5b1d6900e287f5d1f9dbacdb9579410d2b9e0",
+          "news_id": "1a7195c0704f01c3b70c9ef8c8c12cc16cd4414bfac41c1813667939f2bcaf66",
+          "revision_id": "7755388348f2d607f92be0fd843fd1df5ed4084ea54bc1722b50ab654ac3be90",
+          "field": "headline",
+          "text": "Pluvarek sets out repair reimbursement arrangements",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "c9cedcd7d173d98a5e71f589d44f3aa5c4cb6faa1f400096265083ef8976c733",
+          "news_id": "1a7195c0704f01c3b70c9ef8c8c12cc16cd4414bfac41c1813667939f2bcaf66",
+          "revision_id": "7755388348f2d607f92be0fd843fd1df5ed4084ea54bc1722b50ab654ac3be90",
+          "field": "summary",
+          "text": "Pluvarek Pumps established a reimbursement pool for repairs to a discontinued valve series. Qosdelun Mutual's name appears on the customer circular. Qosdelun only forwarded the circular through a public mailing list and undertakes no reimbursement obligation; Pluvarek bears every approved claim.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "dbdb5eb0cc8157246cebf90d957ed340d35b8c05216aa8a6d4706fb36786eafd",
+      "packet_fingerprint": "c4bea9c775c1fba2e98fa7c9b6b1759fa012d7b6a58b3d11baa9a495611e6702"
+    },
+    {
+      "case_id": "D-24ae2b54a90fb10f",
+      "primary_revision_id": "20638c1b6fc513e551c10f7efa4c0c2a3052582792c79c0cb3a7c84511357422",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "dd67d5bb0d490522f4816cc980d46e02c1ff6ab089048c191d8fcfc2340cc26f",
+          "revision_id": "20638c1b6fc513e551c10f7efa4c0c2a3052582792c79c0cb3a7c84511357422",
+          "provider": "synthetic",
+          "provider_news_id": "D-24ae2b54a90fb10f",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Zhulvane kiln dossier passes its final administrative milestone",
+          "summary": "Zhulvane Ceramics and Emzquorin Cooperative issued a joint update on the kiln operating concession. A municipal clerk has sealed the dossier. Only the paperwork has been sealed: custody of the kiln and its operating keys remains with Zhulvane until a separate handover.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "0a302d124ccb3f488397af8f7843f0f8e4cb9f86c507080df443930db3ffd0b0",
+          "content_hash": "0a302d124ccb3f488397af8f7843f0f8e4cb9f86c507080df443930db3ffd0b0"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-943438133c48063b",
+            "corporate_name": "Zhulvane Ceramics",
+            "security_id": "dev-security-943438133c48063b",
+            "ticker": "SYNTH-DEV24-015",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "db5fdbf3ce3d7207a3d3118a83a8fd5a802fe39c1d3d2ff0f1b841f14d3f49c8",
+      "evidence": [
+        {
+          "evidence_id": "ccbf6fe6680a99238a51b57dc680ace5eeced5bb9cc68ed9861e3f219cd43385",
+          "news_id": "dd67d5bb0d490522f4816cc980d46e02c1ff6ab089048c191d8fcfc2340cc26f",
+          "revision_id": "20638c1b6fc513e551c10f7efa4c0c2a3052582792c79c0cb3a7c84511357422",
+          "field": "headline",
+          "text": "Zhulvane kiln dossier passes its final administrative milestone",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "fa9e6a571c5210c27f41b0e91bb584cc38f14a6467604604cb05956d1a2cd51b",
+          "news_id": "dd67d5bb0d490522f4816cc980d46e02c1ff6ab089048c191d8fcfc2340cc26f",
+          "revision_id": "20638c1b6fc513e551c10f7efa4c0c2a3052582792c79c0cb3a7c84511357422",
+          "field": "summary",
+          "text": "Zhulvane Ceramics and Emzquorin Cooperative issued a joint update on the kiln operating concession. A municipal clerk has sealed the dossier. Only the paperwork has been sealed: custody of the kiln and its operating keys remains with Zhulvane until a separate handover.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "56e9d27d1a70ce33d928650511751e803f620395aa0fd293cbc34c1b0e9d60c2",
+      "packet_fingerprint": "6cc628c138363e9e6beb2f35832af3277a15818f80b0765ed477a8d5c96f8ff9"
+    },
+    {
+      "case_id": "D-293a6cbca3479505",
+      "primary_revision_id": "1e5ff39b0957e278fc823fe0a6d5ef5a17acd775faf0fa10f730c482adf203da",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "21a3d20a839f947de182b345fdd54a88eb215a10d1f722b5e49cbec2e12e540b",
+          "revision_id": "1e5ff39b0957e278fc823fe0a6d5ef5a17acd775faf0fa10f730c482adf203da",
+          "provider": "synthetic",
+          "provider_news_id": "D-293a6cbca3479505",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Yrvexil permit bulletin carries a dated entry",
+          "summary": "The Yrvexil Bioceramics kiln permit bulletin contains the date 2031-03-21. It gives no output forecast for the kiln. The entry identifies 2031-03-21 as the bulletin's publication day; the day the permit takes effect is not supplied.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "4004d65c284da44aacb2a9c39d66376189eef4668384a9e03a695a1301c33c13",
+          "content_hash": "4004d65c284da44aacb2a9c39d66376189eef4668384a9e03a695a1301c33c13"
+        },
+        "context_news": [],
+        "registry_entries": [],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "917a4ce59147cb5975846277861dd9ca4b3bc1ef34b2f8d2778e6c7e9fdac06c",
+      "evidence": [
+        {
+          "evidence_id": "b5dc7e89ed44ad3798983c08dd35babc48c4b754bebfac812d4b8893dad59ee4",
+          "news_id": "21a3d20a839f947de182b345fdd54a88eb215a10d1f722b5e49cbec2e12e540b",
+          "revision_id": "1e5ff39b0957e278fc823fe0a6d5ef5a17acd775faf0fa10f730c482adf203da",
+          "field": "headline",
+          "text": "Yrvexil permit bulletin carries a dated entry",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "f200cf2bd8e1752483fc091f2497f67397ceefa20ee3b3cbf7af71eb9081f701",
+          "news_id": "21a3d20a839f947de182b345fdd54a88eb215a10d1f722b5e49cbec2e12e540b",
+          "revision_id": "1e5ff39b0957e278fc823fe0a6d5ef5a17acd775faf0fa10f730c482adf203da",
+          "field": "summary",
+          "text": "The Yrvexil Bioceramics kiln permit bulletin contains the date 2031-03-21. It gives no output forecast for the kiln. The entry identifies 2031-03-21 as the bulletin's publication day; the day the permit takes effect is not supplied.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "b0e5f76eb6ea407a9f765c15941cc321b5d7fb21129c20b927d8e5f8073faf46",
+      "packet_fingerprint": "284464380de5e27945f42e4166408a7368431611ec22348a1cafe62104fe2162"
+    },
+    {
+      "case_id": "D-344f5524598d5af8",
+      "primary_revision_id": "9bd0d2bf3384c278e252734cd9094f3349a0a4f3d5c7069d1d1a7c8ff2e2bd86",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "b7ca8f0dd5128a5b82940f32911c9ff3b067554d75eb4660b7c97c705a8f4783",
+          "revision_id": "9bd0d2bf3384c278e252734cd9094f3349a0a4f3d5c7069d1d1a7c8ff2e2bd86",
+          "provider": "synthetic",
+          "provider_news_id": "D-344f5524598d5af8",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Duzqarel secures a municipal yard lease",
+          "summary": "Duzqarel Rigs secured a lease of the municipal equipment yard. Helqorin Surveyworks is named in an attachment to the lease bulletin. Helqorin is identified as a joint tenant responsible for rent alongside Duzqarel, rather than merely the author of the old boundary survey.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "7a6e9602da09a85cc66cb1d568d1a3b2d0ded74bcbae49939b56f9d41325bac5",
+          "content_hash": "7a6e9602da09a85cc66cb1d568d1a3b2d0ded74bcbae49939b56f9d41325bac5"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-ec031c33d77d4c0f",
+            "corporate_name": "Duzqarel Rigs",
+            "security_id": "dev-security-ec031c33d77d4c0f",
+            "ticker": "SYNTH-DEV24-003",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          },
+          {
+            "entity_id": "dev-entity-9bc6b995b42a3ee6",
+            "corporate_name": "Helqorin Surveyworks",
+            "security_id": "dev-security-9bc6b995b42a3ee6",
+            "ticker": "SYNTH-DEV24-005",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "0f570ee763fef7a8b8ad61c4d8cdb8cec21032576a586b1d5d5513693be52260",
+      "evidence": [
+        {
+          "evidence_id": "7723c17c4e2a8f9cef167df9be6bbb4233364cfcc4d7eef74b86098ab88e0e44",
+          "news_id": "b7ca8f0dd5128a5b82940f32911c9ff3b067554d75eb4660b7c97c705a8f4783",
+          "revision_id": "9bd0d2bf3384c278e252734cd9094f3349a0a4f3d5c7069d1d1a7c8ff2e2bd86",
+          "field": "headline",
+          "text": "Duzqarel secures a municipal yard lease",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "b8fcb72e86182feb3d501213001f086a48ccd35d52de2b45672674fe52914048",
+          "news_id": "b7ca8f0dd5128a5b82940f32911c9ff3b067554d75eb4660b7c97c705a8f4783",
+          "revision_id": "9bd0d2bf3384c278e252734cd9094f3349a0a4f3d5c7069d1d1a7c8ff2e2bd86",
+          "field": "summary",
+          "text": "Duzqarel Rigs secured a lease of the municipal equipment yard. Helqorin Surveyworks is named in an attachment to the lease bulletin. Helqorin is identified as a joint tenant responsible for rent alongside Duzqarel, rather than merely the author of the old boundary survey.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "8659a90c359089fc57b1b577f391783fcc622245d1d0a7ee86036ae95e409abe",
+      "packet_fingerprint": "35910ac765c0a401a1d4653c7ec3d4ba0ed54be49e34cccdbb40e8c72c41ed71"
+    },
+    {
+      "case_id": "D-357c527c444fda92",
+      "primary_revision_id": "b80f5d4ef2a77e798e0cf0769560d3fe0ccd97ef695f82d8713759032490e92b",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "d95f22b8e096580c0b47ba95cbd463c458ef8f67413c5a2f175475e2da964b95",
+          "revision_id": "b80f5d4ef2a77e798e0cf0769560d3fe0ccd97ef695f82d8713759032490e92b",
+          "provider": "synthetic",
+          "provider_news_id": "D-357c527c444fda92",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Draxuvo seeks council support for a deeper access channel",
+          "summary": "Draxuvo Ports wants to deepen the access channel beside its cargo pier. Lemsuvik Estuary Council published a funding entry for the project. The entry records the council's binding grant award to Draxuvo; payment awaits receipts for eligible dredging work.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "039b4898ea4cd1c775f925d2967f68830373fa63721ed23aed705bc5e17c13d2",
+          "content_hash": "039b4898ea4cd1c775f925d2967f68830373fa63721ed23aed705bc5e17c13d2"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-aca7c3bfe81b2819",
+            "corporate_name": "Draxuvo Ports",
+            "security_id": "dev-security-aca7c3bfe81b2819",
+            "ticker": "SYNTH-DEV24-002",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "b6b0f9fc52e162f2405589fae7e6c9f3218f5fffc1f6af4c81cf61705e63f17c",
+      "evidence": [
+        {
+          "evidence_id": "1a1258c8436e0da1d34440def8e2bb7d3fbe30187e807246a184d5ef3278e0b7",
+          "news_id": "d95f22b8e096580c0b47ba95cbd463c458ef8f67413c5a2f175475e2da964b95",
+          "revision_id": "b80f5d4ef2a77e798e0cf0769560d3fe0ccd97ef695f82d8713759032490e92b",
+          "field": "headline",
+          "text": "Draxuvo seeks council support for a deeper access channel",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "528c7fecbaa63c6e5132529abef294f5be753e9796492913b7ee866be31b7ef2",
+          "news_id": "d95f22b8e096580c0b47ba95cbd463c458ef8f67413c5a2f175475e2da964b95",
+          "revision_id": "b80f5d4ef2a77e798e0cf0769560d3fe0ccd97ef695f82d8713759032490e92b",
+          "field": "summary",
+          "text": "Draxuvo Ports wants to deepen the access channel beside its cargo pier. Lemsuvik Estuary Council published a funding entry for the project. The entry records the council's binding grant award to Draxuvo; payment awaits receipts for eligible dredging work.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "32e2b9c670aff11c986c7d4cc48dfb2e62dea56195e73047c481d27199357637",
+      "packet_fingerprint": "6ee32a691ccc43db36699350888608da2811b0fad1671fccb8b156a488062e3b"
+    },
+    {
+      "case_id": "D-3b2243f6c97e1c76",
+      "primary_revision_id": "581c6de14e980433eb3d5c6afaa4e7cd7a27d509e3144982a3a007fd921f9b9d",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "fd0e8cbf3b318ba2bbdc804f222328875cc42267e0f10fbb686b04cb45224b60",
+          "revision_id": "581c6de14e980433eb3d5c6afaa4e7cd7a27d509e3144982a3a007fd921f9b9d",
+          "provider": "synthetic",
+          "provider_news_id": "D-3b2243f6c97e1c76",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Draxuvo seeks council support for a deeper access channel",
+          "summary": "Draxuvo Ports wants to deepen the access channel beside its cargo pier. Lemsuvik Estuary Council published a funding entry for the project. The entry acknowledges receipt of Draxuvo's non-binding grant application and leaves the funding decision to a later meeting.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "855609dde0201086dd70ef8956aaeeb8f81c06857283f98fb33b1fb8b280faa3",
+          "content_hash": "855609dde0201086dd70ef8956aaeeb8f81c06857283f98fb33b1fb8b280faa3"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-aca7c3bfe81b2819",
+            "corporate_name": "Draxuvo Ports",
+            "security_id": "dev-security-aca7c3bfe81b2819",
+            "ticker": "SYNTH-DEV24-002",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "a6d44f508fe5c7812676c27f47f5c8a3c6ad1939ed9280e01283f90598563a27",
+      "evidence": [
+        {
+          "evidence_id": "9a038c954eacf71f9f6ec2baf77b1c759efe6d80bf6a08dc0fc5189656be02c2",
+          "news_id": "fd0e8cbf3b318ba2bbdc804f222328875cc42267e0f10fbb686b04cb45224b60",
+          "revision_id": "581c6de14e980433eb3d5c6afaa4e7cd7a27d509e3144982a3a007fd921f9b9d",
+          "field": "headline",
+          "text": "Draxuvo seeks council support for a deeper access channel",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "b7cf3d74ca7cd76e8be98de86cac040d07d6bb3ffabdad9ba239eea790ba2c32",
+          "news_id": "fd0e8cbf3b318ba2bbdc804f222328875cc42267e0f10fbb686b04cb45224b60",
+          "revision_id": "581c6de14e980433eb3d5c6afaa4e7cd7a27d509e3144982a3a007fd921f9b9d",
+          "field": "summary",
+          "text": "Draxuvo Ports wants to deepen the access channel beside its cargo pier. Lemsuvik Estuary Council published a funding entry for the project. The entry acknowledges receipt of Draxuvo's non-binding grant application and leaves the funding decision to a later meeting.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "aafc6d88f54ad5726b0e7cd5f2007d109569ced4c8d5f463f6bceebf2065b8ee",
+      "packet_fingerprint": "f4842142bc3f0604b2baba20ac751a59a07d841d7437954735c7ad7ecb0e16e5"
+    },
+    {
+      "case_id": "D-40e8a2188273506b",
+      "primary_revision_id": "7b027ad1d997f2959a09017eaebe13caddb12d64243344c3d7e9a819488609fd",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "07ddab68e8f6c29d4d4987a7cadd5c2f8be596500f7a4b32ea5b9fb13f89b8c7",
+          "revision_id": "7b027ad1d997f2959a09017eaebe13caddb12d64243344c3d7e9a819488609fd",
+          "provider": "synthetic",
+          "provider_news_id": "D-40e8a2188273506b",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Yrvexil permit bulletin carries a dated entry",
+          "summary": "The Yrvexil Bioceramics kiln permit bulletin contains the date 2031-03-21. It gives no output forecast for the kiln. The entry identifies 2031-03-21 as the day the permit takes effect.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "465e92f923ea32e65ff1645eb218decbf3fbbd8517a9a64875ccbb9e7aa94391",
+          "content_hash": "465e92f923ea32e65ff1645eb218decbf3fbbd8517a9a64875ccbb9e7aa94391"
+        },
+        "context_news": [],
+        "registry_entries": [],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "634b0b07927081776785732066b5b25bb6aab4e3056c93cf0d359ebf2f535f0c",
+      "evidence": [
+        {
+          "evidence_id": "c6dcd4940809223e7e8ec68fd8ff8e784189e78c9fe73423d3d9a245dabd7b63",
+          "news_id": "07ddab68e8f6c29d4d4987a7cadd5c2f8be596500f7a4b32ea5b9fb13f89b8c7",
+          "revision_id": "7b027ad1d997f2959a09017eaebe13caddb12d64243344c3d7e9a819488609fd",
+          "field": "headline",
+          "text": "Yrvexil permit bulletin carries a dated entry",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "b6049f7d4431d84c3ab13cf96a88129cf54bf95fa3ec3431a1caf3c0a4b627ab",
+          "news_id": "07ddab68e8f6c29d4d4987a7cadd5c2f8be596500f7a4b32ea5b9fb13f89b8c7",
+          "revision_id": "7b027ad1d997f2959a09017eaebe13caddb12d64243344c3d7e9a819488609fd",
+          "field": "summary",
+          "text": "The Yrvexil Bioceramics kiln permit bulletin contains the date 2031-03-21. It gives no output forecast for the kiln. The entry identifies 2031-03-21 as the day the permit takes effect.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "b5d1917ecdf84d23459277c09c1e49009f52a85cfaa5af0f32fdb99e79ee2a63",
+      "packet_fingerprint": "f1464c1a3cce47d5bfbf1ab063bd080f4d39b0d509e278e0f2ee8de4867d8710"
+    },
+    {
+      "case_id": "D-4ea8b5ea011dc021",
+      "primary_revision_id": "1b521900302f623ed6ec8e5e128992b217d0e4d92e230c8bbc1fed4b6a212d3e",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "7d4c9fb65ac4134e0f754619431600bb0b08b2368ed5f9a7a64a3917396dfee9",
+          "revision_id": "1b521900302f623ed6ec8e5e128992b217d0e4d92e230c8bbc1fed4b6a212d3e",
+          "provider": "synthetic",
+          "provider_news_id": "D-4ea8b5ea011dc021",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Xemvori schedules the redemption window for seasonal notes",
+          "summary": "Xemvori Transit set next week's redemption window for its seasonal notes. No cash has yet been paid to noteholders. The escrow certificate has arrived, making the payment instruction operative for the window; the scheduled payment remains next week.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "18d956bda40d2d2faddfcbf84f01effc18302be29a36f9ad460db819329c37e5",
+          "content_hash": "18d956bda40d2d2faddfcbf84f01effc18302be29a36f9ad460db819329c37e5"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-abd0fdb4a9b15ac1",
+            "corporate_name": "Xemvori Transit",
+            "security_id": "dev-security-abd0fdb4a9b15ac1",
+            "ticker": "SYNTH-DEV24-013",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "846518c2fdab03614f81cc963152da35b6961505aa1b53e7c9a63653e4296d98",
+      "evidence": [
+        {
+          "evidence_id": "c694bdc99aae2c51cbf45513a2d0b304f2464527e58ea4490bfa9e4d8c9eca83",
+          "news_id": "7d4c9fb65ac4134e0f754619431600bb0b08b2368ed5f9a7a64a3917396dfee9",
+          "revision_id": "1b521900302f623ed6ec8e5e128992b217d0e4d92e230c8bbc1fed4b6a212d3e",
+          "field": "headline",
+          "text": "Xemvori schedules the redemption window for seasonal notes",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "64188a5366af2dd8ecd2039c4e3e56ca693c50eaebf12794af83ae03b9bd53e8",
+          "news_id": "7d4c9fb65ac4134e0f754619431600bb0b08b2368ed5f9a7a64a3917396dfee9",
+          "revision_id": "1b521900302f623ed6ec8e5e128992b217d0e4d92e230c8bbc1fed4b6a212d3e",
+          "field": "summary",
+          "text": "Xemvori Transit set next week's redemption window for its seasonal notes. No cash has yet been paid to noteholders. The escrow certificate has arrived, making the payment instruction operative for the window; the scheduled payment remains next week.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "445f6213df71f3569bad083c8624e2a28233c577827efc7c5cf4cb8ad967b52e",
+      "packet_fingerprint": "ddeb8f0bab26cb88483b3421e6973b43cd4a209b825d1189138e4a1f210894c1"
+    },
+    {
+      "case_id": "D-5f21ec91317d6943",
+      "primary_revision_id": "098130ce32d226829fc7a3098c93156be0e0795e8397385c5eccfbbaa9799093",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "e15db7e52d6b980aaef34acdae0e6546472db11406ad818c030f4b15a32ba69f",
+          "revision_id": "098130ce32d226829fc7a3098c93156be0e0795e8397385c5eccfbbaa9799093",
+          "provider": "synthetic",
+          "provider_news_id": "D-5f21ec91317d6943",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Pluvarek sets out repair reimbursement arrangements",
+          "summary": "Pluvarek Pumps established a reimbursement pool for repairs to a discontinued valve series. Qosdelun Mutual's name appears on the customer circular. Qosdelun guarantees half of the approved reimbursements under the signed indemnity, while Pluvarek bears the other half.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "2ab4f5eb288b05767da732e4b0897899a4d4a1a70619ff5ad5fd0063118c757c",
+          "content_hash": "2ab4f5eb288b05767da732e4b0897899a4d4a1a70619ff5ad5fd0063118c757c"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-1ccc71147e9a524e",
+            "corporate_name": "Pluvarek Pumps",
+            "security_id": "dev-security-1ccc71147e9a524e",
+            "ticker": "SYNTH-DEV24-007",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          },
+          {
+            "entity_id": "dev-entity-a5723df6b0fc06c6",
+            "corporate_name": "Qosdelun Mutual",
+            "security_id": "dev-security-a5723df6b0fc06c6",
+            "ticker": "SYNTH-DEV24-009",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "bcd1a5f528c9d4c35a094dbbfcc83e264ae65cca7d8f07825fc5d98e922ad628",
+      "evidence": [
+        {
+          "evidence_id": "02609efcccae50df60c3a024f38759eb818040e25ae67e5ae9f4818c6ff0fae0",
+          "news_id": "e15db7e52d6b980aaef34acdae0e6546472db11406ad818c030f4b15a32ba69f",
+          "revision_id": "098130ce32d226829fc7a3098c93156be0e0795e8397385c5eccfbbaa9799093",
+          "field": "headline",
+          "text": "Pluvarek sets out repair reimbursement arrangements",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "13b9e3b7fb45624151144295d0a65d72fe151ef20dcd877f1893c0240e496f4d",
+          "news_id": "e15db7e52d6b980aaef34acdae0e6546472db11406ad818c030f4b15a32ba69f",
+          "revision_id": "098130ce32d226829fc7a3098c93156be0e0795e8397385c5eccfbbaa9799093",
+          "field": "summary",
+          "text": "Pluvarek Pumps established a reimbursement pool for repairs to a discontinued valve series. Qosdelun Mutual's name appears on the customer circular. Qosdelun guarantees half of the approved reimbursements under the signed indemnity, while Pluvarek bears the other half.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "0967cb4e4c712f0efcff1468c656aa5754fc9b975b7068755a1bedc315ce3d50",
+      "packet_fingerprint": "3d64f7b400bcb862d94df86268bb6c11078a95308b36502625224feeeca3ada1"
+    },
+    {
+      "case_id": "D-69d2ab33be7076dc",
+      "primary_revision_id": "185615d0221f26a9e19d865e2a64ff217369f5a1e816345b380b9dc42d5b064b",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "93e5b38af749d783408b4f98993b7db743824bb9d9f3e7d11d921a78289bd0e9",
+          "revision_id": "185615d0221f26a9e19d865e2a64ff217369f5a1e816345b380b9dc42d5b064b",
+          "provider": "synthetic",
+          "provider_news_id": "D-69d2ab33be7076dc",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Truxevan fire interrupts deliveries of filter pigment",
+          "summary": "A fire at Truxevan Filters halted pigment deliveries for an unspecified period. Oqzarin Coatings was mentioned in the distribution bulletin. No downstream production loss was quantified. Oqzarin bought laboratory samples from Truxevan years ago but now obtains the line's pigment from a separate source and has no open Truxevan orders.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "58efc294e9fcf82ed7f4011c1c648df7ba2e06cd1bd8f7e37c522a3e15303d42",
+          "content_hash": "58efc294e9fcf82ed7f4011c1c648df7ba2e06cd1bd8f7e37c522a3e15303d42"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-7929527f9ae390f8",
+            "corporate_name": "Oqzarin Coatings",
+            "security_id": "dev-security-7929527f9ae390f8",
+            "ticker": "SYNTH-DEV24-006",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          },
+          {
+            "entity_id": "dev-entity-273e0423bcd93036",
+            "corporate_name": "Truxevan Filters",
+            "security_id": "dev-security-273e0423bcd93036",
+            "ticker": "SYNTH-DEV24-010",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "1713e3697c73e06a713dce6dd64dd10620005131d4d5f1b4a0b1ffbdc1c9fe1d",
+      "evidence": [
+        {
+          "evidence_id": "2c210e6f7fe0ee9a61c552c3cf9d880524ebee745bc924023fb5112ec3ec8d19",
+          "news_id": "93e5b38af749d783408b4f98993b7db743824bb9d9f3e7d11d921a78289bd0e9",
+          "revision_id": "185615d0221f26a9e19d865e2a64ff217369f5a1e816345b380b9dc42d5b064b",
+          "field": "headline",
+          "text": "Truxevan fire interrupts deliveries of filter pigment",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "4194fc640c4817ee330d16d048ed5e1d081ad9aea7abdf18c0b967d641bf692f",
+          "news_id": "93e5b38af749d783408b4f98993b7db743824bb9d9f3e7d11d921a78289bd0e9",
+          "revision_id": "185615d0221f26a9e19d865e2a64ff217369f5a1e816345b380b9dc42d5b064b",
+          "field": "summary",
+          "text": "A fire at Truxevan Filters halted pigment deliveries for an unspecified period. Oqzarin Coatings was mentioned in the distribution bulletin. No downstream production loss was quantified. Oqzarin bought laboratory samples from Truxevan years ago but now obtains the line's pigment from a separate source and has no open Truxevan orders.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "7550e347d1b74fe64753d3fe3d937c258165a61087f8cf22064af846f1192c74",
+      "packet_fingerprint": "7b2e9cbeeb51bce6d7f9aab87e894aa1066f69652733e07c94c0cb91df4f099a"
+    },
+    {
+      "case_id": "D-6c6ef03a91cca2a9",
+      "primary_revision_id": "c96efe1b988f6c2dab349ef0211e5bfb5a09d59bb3347bb4e4069d243daef2f8",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "08163120480bbe755a18f80b7d086852797b7e0348011fea5a4e432eb28cb341",
+          "revision_id": "c96efe1b988f6c2dab349ef0211e5bfb5a09d59bb3347bb4e4069d243daef2f8",
+          "provider": "synthetic",
+          "provider_news_id": "D-6c6ef03a91cca2a9",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Umqerra records a status change in its fibre-line refit log",
+          "summary": "Umqerra Fibres moved the fibre-line refit to status R7 in its internal project log. The log identifies the refit but lists no production volumes. The accompanying note does not define R7 or describe which work has occurred.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "196aa4887697b95c1e8d0ff770d6f29b0b3b2d940dd7f5757bd7ba116873934e",
+          "content_hash": "196aa4887697b95c1e8d0ff770d6f29b0b3b2d940dd7f5757bd7ba116873934e"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-4ddd083bd82a1359",
+            "corporate_name": "Umqerra Fibres",
+            "security_id": "dev-security-4ddd083bd82a1359",
+            "ticker": "SYNTH-DEV24-011",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "34676e83f6375ed8d2ce2acfdcb47ddf6b3aab69aed044a9eb90aefbcfc346e4",
+      "evidence": [
+        {
+          "evidence_id": "3867235a5721478330e70a666fe1205bcf9c36dbcd860545ae039825967aacad",
+          "news_id": "08163120480bbe755a18f80b7d086852797b7e0348011fea5a4e432eb28cb341",
+          "revision_id": "c96efe1b988f6c2dab349ef0211e5bfb5a09d59bb3347bb4e4069d243daef2f8",
+          "field": "headline",
+          "text": "Umqerra records a status change in its fibre-line refit log",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "93004779bba84e0e73cded240f5153bbf8e52addf6b3d491e4d4307c20c1f8fd",
+          "news_id": "08163120480bbe755a18f80b7d086852797b7e0348011fea5a4e432eb28cb341",
+          "revision_id": "c96efe1b988f6c2dab349ef0211e5bfb5a09d59bb3347bb4e4069d243daef2f8",
+          "field": "summary",
+          "text": "Umqerra Fibres moved the fibre-line refit to status R7 in its internal project log. The log identifies the refit but lists no production volumes. The accompanying note does not define R7 or describe which work has occurred.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "f982fb60cb49171cb34cbfb37b898b045913dd6303c53f8678061b7c59b96a0b",
+      "packet_fingerprint": "d0fc7bc23486c9ff9c4be3bcbed7aed8d8ccec32aa6627a6cd851d51ca30d54a"
+    },
+    {
+      "case_id": "D-8d5314f2c5c04bdf",
+      "primary_revision_id": "f438d4a7db45a8bbb733c2cd700807d01885eef995bd30d3f28f7f233066324e",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "8570c247f93d98c9c8a4959688e87d5a2245ea56362c15f960515e08e666ccf9",
+          "revision_id": "f438d4a7db45a8bbb733c2cd700807d01885eef995bd30d3f28f7f233066324e",
+          "provider": "synthetic",
+          "provider_news_id": "D-8d5314f2c5c04bdf",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Zhulvane kiln dossier passes its final administrative milestone",
+          "summary": "Zhulvane Ceramics and Emzquorin Cooperative issued a joint update on the kiln operating concession. A municipal clerk has sealed the dossier. With custody of the kiln and the operating keys now handed to Emzquorin, the cooperative has assumed day-to-day operation.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "6bed3787706e63c6956d4526bf70f234eaeb5c77f6ddcec595772b682cb20b56",
+          "content_hash": "6bed3787706e63c6956d4526bf70f234eaeb5c77f6ddcec595772b682cb20b56"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-943438133c48063b",
+            "corporate_name": "Zhulvane Ceramics",
+            "security_id": "dev-security-943438133c48063b",
+            "ticker": "SYNTH-DEV24-015",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "b19753cfe762f81d0f1213d7b1521ffc272bfdbfd7b433fafe519e2656c7ed42",
+      "evidence": [
+        {
+          "evidence_id": "1687d7dfa50be00b4f0146db3f0d998b9beb04e0783ff493b14bd264d8789bf1",
+          "news_id": "8570c247f93d98c9c8a4959688e87d5a2245ea56362c15f960515e08e666ccf9",
+          "revision_id": "f438d4a7db45a8bbb733c2cd700807d01885eef995bd30d3f28f7f233066324e",
+          "field": "headline",
+          "text": "Zhulvane kiln dossier passes its final administrative milestone",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "fc41c94e44ea5874d2e7d48daf81dbdddb0e29ff44f01dfc864cec4d8b07dcb9",
+          "news_id": "8570c247f93d98c9c8a4959688e87d5a2245ea56362c15f960515e08e666ccf9",
+          "revision_id": "f438d4a7db45a8bbb733c2cd700807d01885eef995bd30d3f28f7f233066324e",
+          "field": "summary",
+          "text": "Zhulvane Ceramics and Emzquorin Cooperative issued a joint update on the kiln operating concession. A municipal clerk has sealed the dossier. With custody of the kiln and the operating keys now handed to Emzquorin, the cooperative has assumed day-to-day operation.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "36931afcb99e3782877a76b5b6c9fe5dd02e0af654424c58770d65283ee550af",
+      "packet_fingerprint": "07e79bd8439272f1e816a26b556e23de010dfb061eb11b9dd0c6c016e768b512"
+    },
+    {
+      "case_id": "D-93672b713faeaaa7",
+      "primary_revision_id": "89cdcfe7b3cdb7270bac34d4e1ece8a3ba6c090f4d71f09c6acdd26dd90ae18e",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "db8f676a8d52c7d212a1a175c3cd9e52b35f394881c2468d7c48680723f12652",
+          "revision_id": "89cdcfe7b3cdb7270bac34d4e1ece8a3ba6c090f4d71f09c6acdd26dd90ae18e",
+          "provider": "synthetic",
+          "provider_news_id": "D-93672b713faeaaa7",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Qevrith board bulletin addresses the older melting furnace",
+          "summary": "Qevrith Glassworks reviewed the electricity burden of its older melting furnace. The newer line will remain in service. The bulletin puts taking the older furnace out of service on the next board agenda; directors have yet to vote on the measure.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "32e6d62ed1d0e417931b14e8fc7b92292e68b4d3cd4c1ea2b2a8d1f4e9ec6b10",
+          "content_hash": "32e6d62ed1d0e417931b14e8fc7b92292e68b4d3cd4c1ea2b2a8d1f4e9ec6b10"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-a6d8841285767c8f",
+            "corporate_name": "Qevrith Glassworks",
+            "security_id": "dev-security-a6d8841285767c8f",
+            "ticker": "SYNTH-DEV24-008",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "fddaab0d9b909701c6993a6c27b8fcc1d17fdc6580ed765ab57f90d5f9196f12",
+      "evidence": [
+        {
+          "evidence_id": "6460c328f1f5f0d1d051115695a422bd6241897f37b788a3768ca6f13f7aac30",
+          "news_id": "db8f676a8d52c7d212a1a175c3cd9e52b35f394881c2468d7c48680723f12652",
+          "revision_id": "89cdcfe7b3cdb7270bac34d4e1ece8a3ba6c090f4d71f09c6acdd26dd90ae18e",
+          "field": "headline",
+          "text": "Qevrith board bulletin addresses the older melting furnace",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "d0797729db8a8e6fd40b6e544b7c8603c18212a5bec1cc90f0632cab81041628",
+          "news_id": "db8f676a8d52c7d212a1a175c3cd9e52b35f394881c2468d7c48680723f12652",
+          "revision_id": "89cdcfe7b3cdb7270bac34d4e1ece8a3ba6c090f4d71f09c6acdd26dd90ae18e",
+          "field": "summary",
+          "text": "Qevrith Glassworks reviewed the electricity burden of its older melting furnace. The newer line will remain in service. The bulletin puts taking the older furnace out of service on the next board agenda; directors have yet to vote on the measure.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "ea4a4d4d762dce8779e7537e61d00f20efc1e0c6cd11f292d63fa9cb6183ba56",
+      "packet_fingerprint": "829f769e9fcc4f89ce79d2f2a81e28025a0114fb849eef579cda7f6428796868"
+    },
+    {
+      "case_id": "D-9a08d4ede78dd104",
+      "primary_revision_id": "7b9cf081a4bceef7a5f062a785b51630415cf00d1f82fb3ab220745e5740c071",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "565df52b61e4b004bdbe3049fbf150fef2327c54b9d2ef30d3de007fee0d9f3c",
+          "revision_id": "7b9cf081a4bceef7a5f062a785b51630415cf00d1f82fb3ab220745e5740c071",
+          "provider": "synthetic",
+          "provider_news_id": "D-9a08d4ede78dd104",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Truxevan fire interrupts deliveries of filter pigment",
+          "summary": "A fire at Truxevan Filters halted pigment deliveries for an unspecified period. Oqzarin Coatings was mentioned in the distribution bulletin. No downstream production loss was quantified. Oqzarin currently obtains all pigment for its sole coating line from Truxevan and has no substitute supplier qualified for that line.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "50e638b235bb709cde087996d3b747e4d59f47cc1b3d332e89b0f8ac67b8a673",
+          "content_hash": "50e638b235bb709cde087996d3b747e4d59f47cc1b3d332e89b0f8ac67b8a673"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-7929527f9ae390f8",
+            "corporate_name": "Oqzarin Coatings",
+            "security_id": "dev-security-7929527f9ae390f8",
+            "ticker": "SYNTH-DEV24-006",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          },
+          {
+            "entity_id": "dev-entity-273e0423bcd93036",
+            "corporate_name": "Truxevan Filters",
+            "security_id": "dev-security-273e0423bcd93036",
+            "ticker": "SYNTH-DEV24-010",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "d0601aaa6354e67641b0c777b5581b01fd27b607f84a21f6ae07d81310412b5a",
+      "evidence": [
+        {
+          "evidence_id": "cacca11340fc7f5d2e402e0c10c69c2ec6565852075b71ae3aa4c98f23c275ae",
+          "news_id": "565df52b61e4b004bdbe3049fbf150fef2327c54b9d2ef30d3de007fee0d9f3c",
+          "revision_id": "7b9cf081a4bceef7a5f062a785b51630415cf00d1f82fb3ab220745e5740c071",
+          "field": "headline",
+          "text": "Truxevan fire interrupts deliveries of filter pigment",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "37944b1108f51a5e27677dc5abfa847b83f1b4b12f0aa8204580410a8579504e",
+          "news_id": "565df52b61e4b004bdbe3049fbf150fef2327c54b9d2ef30d3de007fee0d9f3c",
+          "revision_id": "7b9cf081a4bceef7a5f062a785b51630415cf00d1f82fb3ab220745e5740c071",
+          "field": "summary",
+          "text": "A fire at Truxevan Filters halted pigment deliveries for an unspecified period. Oqzarin Coatings was mentioned in the distribution bulletin. No downstream production loss was quantified. Oqzarin currently obtains all pigment for its sole coating line from Truxevan and has no substitute supplier qualified for that line.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "56348c73f2d93e1a69e097694e731892d9f9e635a9bcc87f2bd2dea44b5ce804",
+      "packet_fingerprint": "8c0e55cf1d36a04c64fba76e73be42cf8514a851e909650a24b0a1d2f032dff4"
+    },
+    {
+      "case_id": "D-9a5bfd786f5c233e",
+      "primary_revision_id": "b9f427b790aa9a1448035ceaf887f208ad5d06dd156fcfeaf8d59c6e15b8c015",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "101452d8299907b68ceea8459d1c9061150afa93b4b7a3aba0546bdaf125e66c",
+          "revision_id": "b9f427b790aa9a1448035ceaf887f208ad5d06dd156fcfeaf8d59c6e15b8c015",
+          "provider": "synthetic",
+          "provider_news_id": "D-9a5bfd786f5c233e",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Vuqelith circulates a notice following a sterility inspection",
+          "summary": "Vuqelith Diagnostics circulated the inspector's notice to distributors of its assay kits. The notice covers lots at the eastern packaging room. The notice suspends lot releases while the room is retested; it does not disclose the inspector's name.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "cb84aa703852a91087d0dd7c3d0a3a64a24ec18e1abeea07ee01cd113454107a",
+          "content_hash": "cb84aa703852a91087d0dd7c3d0a3a64a24ec18e1abeea07ee01cd113454107a"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-a8f7ed56fe7e8daa",
+            "corporate_name": "Vuqelith Diagnostics",
+            "security_id": "dev-security-a8f7ed56fe7e8daa",
+            "ticker": "SYNTH-DEV24-012",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "772e3deb2b1543e5978fa4b76be23d8014e45d13b2ebf8c642fb23120b0ab4b9",
+      "evidence": [
+        {
+          "evidence_id": "c3f3a9135bf279872e57317c839eb1818288cf376d3b8cdba66e8c9a36499aee",
+          "news_id": "101452d8299907b68ceea8459d1c9061150afa93b4b7a3aba0546bdaf125e66c",
+          "revision_id": "b9f427b790aa9a1448035ceaf887f208ad5d06dd156fcfeaf8d59c6e15b8c015",
+          "field": "headline",
+          "text": "Vuqelith circulates a notice following a sterility inspection",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "9cebc091eeebc53e10099ca69f1d9cab4925e918b46e57f85e0e6ea6ddc2c0a0",
+          "news_id": "101452d8299907b68ceea8459d1c9061150afa93b4b7a3aba0546bdaf125e66c",
+          "revision_id": "b9f427b790aa9a1448035ceaf887f208ad5d06dd156fcfeaf8d59c6e15b8c015",
+          "field": "summary",
+          "text": "Vuqelith Diagnostics circulated the inspector's notice to distributors of its assay kits. The notice covers lots at the eastern packaging room. The notice suspends lot releases while the room is retested; it does not disclose the inspector's name.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "c142374718714c0a6f4c88fab81abb00a99df844c7d7cac54fb93d28debc862b",
+      "packet_fingerprint": "cab4a4ef9338a7f6a5dfb5651b019aab4cd2a77935d0947bcf642b76fa4d6f1d"
+    },
+    {
+      "case_id": "D-a4e448038e1f3c79",
+      "primary_revision_id": "f06cc21100caba47f39e49298f48bbefa6b325baf317a43fc0e40dcfc18ba3df",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "78d663b3f004fe0a117491fd96abfbbba870dc83328b461e8dff3f5e368fa700",
+          "revision_id": "f06cc21100caba47f39e49298f48bbefa6b325baf317a43fc0e40dcfc18ba3df",
+          "provider": "synthetic",
+          "provider_news_id": "D-a4e448038e1f3c79",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Vuqelith circulates a notice following a sterility inspection",
+          "summary": "Vuqelith Diagnostics circulated the inspector's notice to distributors of its assay kits. The notice covers lots at the eastern packaging room. The notice does not suspend lot releases while the room is retested; it does not disclose the inspector's name.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "dcc9734882be2e020c3cc01f0b074b6034338d161d118c286cc0bf1027e2b2e9",
+          "content_hash": "dcc9734882be2e020c3cc01f0b074b6034338d161d118c286cc0bf1027e2b2e9"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-a8f7ed56fe7e8daa",
+            "corporate_name": "Vuqelith Diagnostics",
+            "security_id": "dev-security-a8f7ed56fe7e8daa",
+            "ticker": "SYNTH-DEV24-012",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "f4890a3503fc44556406eb86719e8cde6b5e4055f55dbb797e77fa31ed8cb2cd",
+      "evidence": [
+        {
+          "evidence_id": "33e242d84201b9d140ecace5d60d2876247d854e80ba615ce10c214a477128fc",
+          "news_id": "78d663b3f004fe0a117491fd96abfbbba870dc83328b461e8dff3f5e368fa700",
+          "revision_id": "f06cc21100caba47f39e49298f48bbefa6b325baf317a43fc0e40dcfc18ba3df",
+          "field": "headline",
+          "text": "Vuqelith circulates a notice following a sterility inspection",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "5c36a521b9ca764d0a1202d98c5dbf9ee545f702600548d8fa01d083076227af",
+          "news_id": "78d663b3f004fe0a117491fd96abfbbba870dc83328b461e8dff3f5e368fa700",
+          "revision_id": "f06cc21100caba47f39e49298f48bbefa6b325baf317a43fc0e40dcfc18ba3df",
+          "field": "summary",
+          "text": "Vuqelith Diagnostics circulated the inspector's notice to distributors of its assay kits. The notice covers lots at the eastern packaging room. The notice does not suspend lot releases while the room is retested; it does not disclose the inspector's name.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "bfcaf99a8a3ac69ab1ff8ac6070611d861b5e0d1e96b9c1d9df9e1bab5bf0901",
+      "packet_fingerprint": "82270eb3afeba158c3e5994d68db581b6c6e1da61a09e277d1127b50c540f121"
+    },
+    {
+      "case_id": "D-a8db3a0c74d93eb8",
+      "primary_revision_id": "d3f3b2189687dc3838a746e4f98cd20e9fd736c73885fc295aa9acc6192b132a",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "c48cfe9c75c141d907a032469ce5165269d4a48e3f0c8a48f4761919b38b771d",
+          "revision_id": "d3f3b2189687dc3838a746e4f98cd20e9fd736c73885fc295aa9acc6192b132a",
+          "provider": "synthetic",
+          "provider_news_id": "D-a8db3a0c74d93eb8",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Bravqulin explains the basis of its scrap disposal ledger",
+          "summary": "Bravqulin Textiles disposed of 640 tonnes of scrap during January through March. Its ledger also lists gross receipts of 640 thousand USD, before transport deductions. The monetary amount applies to each individual month, not the three months combined.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "96bac0b44e19e01af714e1b521a0096139128e6a87e161bb200fad02646d84e0",
+          "content_hash": "96bac0b44e19e01af714e1b521a0096139128e6a87e161bb200fad02646d84e0"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-cefb15173bc4e84b",
+            "corporate_name": "Bravqulin Textiles",
+            "security_id": "dev-security-cefb15173bc4e84b",
+            "ticker": "SYNTH-DEV24-001",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "48207f5960220166176f6b34436d2a185e90cae368889839a57ae9294976a7a0",
+      "evidence": [
+        {
+          "evidence_id": "89a40bcb2fd7ef1b5bba4b6214d24bf19ab613af4429a0457fbd4c06da8755af",
+          "news_id": "c48cfe9c75c141d907a032469ce5165269d4a48e3f0c8a48f4761919b38b771d",
+          "revision_id": "d3f3b2189687dc3838a746e4f98cd20e9fd736c73885fc295aa9acc6192b132a",
+          "field": "headline",
+          "text": "Bravqulin explains the basis of its scrap disposal ledger",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "bc585df8fa66d4b10adf405f88060e616e9b929a0c166238894ae52edc0cc458",
+          "news_id": "c48cfe9c75c141d907a032469ce5165269d4a48e3f0c8a48f4761919b38b771d",
+          "revision_id": "d3f3b2189687dc3838a746e4f98cd20e9fd736c73885fc295aa9acc6192b132a",
+          "field": "summary",
+          "text": "Bravqulin Textiles disposed of 640 tonnes of scrap during January through March. Its ledger also lists gross receipts of 640 thousand USD, before transport deductions. The monetary amount applies to each individual month, not the three months combined.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "d7d249b3bcc94a6aa2048e088750ca57471a9bd57d3714196ff8c9e666e15194",
+      "packet_fingerprint": "12165a0bcdf39f987d8ebc9062c577d7aa9acd2cae010287e603c3efd6a55599"
+    },
+    {
+      "case_id": "D-bcc9cce8989c97da",
+      "primary_revision_id": "f0f78cc2a07bc1b545987aadd37170928134be784fcfc8653f112eb79f8b3dac",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "f33d9e07eb2a5b7a069347b48589da0689cab9aaa97e54a01b698946a0678bc8",
+          "revision_id": "f0f78cc2a07bc1b545987aadd37170928134be784fcfc8653f112eb79f8b3dac",
+          "provider": "synthetic",
+          "provider_news_id": "D-bcc9cce8989c97da",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "A filing index carries an authorization withdrawal entry",
+          "summary": "A filing-index excerpt contains the line 'Authorization withdrawn following the annual check.' The excerpt omits the filing caption and supplies neither the holder's name nor the activity covered by the authorization.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "70988e5724f19c2451fa835a1d59216319d33ac1b290774a33641fc950ed442e",
+          "content_hash": "70988e5724f19c2451fa835a1d59216319d33ac1b290774a33641fc950ed442e"
+        },
+        "context_news": [],
+        "registry_entries": [],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "3b2a0b6f316e35018dcaac13a485199d7de528bfa76c13f824d6a0d612256757",
+      "evidence": [
+        {
+          "evidence_id": "82a7cb48ca25635e9f289d57d2a81cef0cc5b265c6e210f4af060b30edd461ed",
+          "news_id": "f33d9e07eb2a5b7a069347b48589da0689cab9aaa97e54a01b698946a0678bc8",
+          "revision_id": "f0f78cc2a07bc1b545987aadd37170928134be784fcfc8653f112eb79f8b3dac",
+          "field": "headline",
+          "text": "A filing index carries an authorization withdrawal entry",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "5b0ae5766c2f9157de2511c84763162c3e92cc50d8e3a91238e914fa134926d8",
+          "news_id": "f33d9e07eb2a5b7a069347b48589da0689cab9aaa97e54a01b698946a0678bc8",
+          "revision_id": "f0f78cc2a07bc1b545987aadd37170928134be784fcfc8653f112eb79f8b3dac",
+          "field": "summary",
+          "text": "A filing-index excerpt contains the line 'Authorization withdrawn following the annual check.' The excerpt omits the filing caption and supplies neither the holder's name nor the activity covered by the authorization.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "c64a9d689dc525b9279ba298194c29af664d359d0d1aac859efbaa017223154a",
+      "packet_fingerprint": "3b84364f2a7046778096aa8fe2cebf0c9850104d627f17c969f3c0f6bf2ce73d"
+    },
+    {
+      "case_id": "D-dd36acb3003e1ecc",
+      "primary_revision_id": "421ff67e0991af19725ccac548d888daffcfe21ea5c6fb19ed864adc30da5a6c",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "bfdd9a84a7e3b3f27db2ed8412e166fe09090751df93337aed1acf649cf22948",
+          "revision_id": "421ff67e0991af19725ccac548d888daffcfe21ea5c6fb19ed864adc30da5a6c",
+          "provider": "synthetic",
+          "provider_news_id": "D-dd36acb3003e1ecc",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "A filing index carries an authorization withdrawal entry",
+          "summary": "A filing-index excerpt contains the line 'Authorization withdrawn following the annual check.' The restored filing caption identifies Fzuelorin Coldrooms as the holder and its west-site refrigerated storage permit as the authorization covered.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "16135961188c132c33d9b1791bf7699106fd576c94ba66f141edf7729d11e501",
+          "content_hash": "16135961188c132c33d9b1791bf7699106fd576c94ba66f141edf7729d11e501"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-fb17feeb72bef68a",
+            "corporate_name": "Fzuelorin Coldrooms",
+            "security_id": "dev-security-fb17feeb72bef68a",
+            "ticker": "SYNTH-DEV24-004",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "3d1a6bca01140e2c69b5003ca4574de3f8b4913a92bf543cb900ce08522e0c55",
+      "evidence": [
+        {
+          "evidence_id": "0cd3469371f53ca1ca14893991c72b6810411428397b804d1dbd61be922c942b",
+          "news_id": "bfdd9a84a7e3b3f27db2ed8412e166fe09090751df93337aed1acf649cf22948",
+          "revision_id": "421ff67e0991af19725ccac548d888daffcfe21ea5c6fb19ed864adc30da5a6c",
+          "field": "headline",
+          "text": "A filing index carries an authorization withdrawal entry",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "4ec5a2448749e038f7f59fc0338a1af5ade0e78645d2ee848a51890f79fcba54",
+          "news_id": "bfdd9a84a7e3b3f27db2ed8412e166fe09090751df93337aed1acf649cf22948",
+          "revision_id": "421ff67e0991af19725ccac548d888daffcfe21ea5c6fb19ed864adc30da5a6c",
+          "field": "summary",
+          "text": "A filing-index excerpt contains the line 'Authorization withdrawn following the annual check.' The restored filing caption identifies Fzuelorin Coldrooms as the holder and its west-site refrigerated storage permit as the authorization covered.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "01f29df9dde89d5dac4f3428f3bf1a479bed1d841588d110e0aac4d2da508fa2",
+      "packet_fingerprint": "03bd135d4843f037658da21a16dfa717cf3e55dfaec16351f7900eebadd2a3b3"
+    },
+    {
+      "case_id": "D-eb5cec8943bdf1a0",
+      "primary_revision_id": "73154de4fcc1e5334fd35fd1a9be5273857ac334f2ae5c5ea81d1489a8ead185",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "844649c316d5c97d649e976dcf4922869700f7d41daced5c707820d12d2ce9d9",
+          "revision_id": "73154de4fcc1e5334fd35fd1a9be5273857ac334f2ae5c5ea81d1489a8ead185",
+          "provider": "synthetic",
+          "provider_news_id": "D-eb5cec8943bdf1a0",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Qevrith board bulletin addresses the older melting furnace",
+          "summary": "Qevrith Glassworks reviewed the electricity burden of its older melting furnace. The newer line will remain in service. The bulletin gives workers formal notice that the older furnace will be taken out of service after the current orders are filled.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "b7d6b9d37e411d1c7d8d8dd688c2142b927bcc9e156d27eeba8b06e7231e2766",
+          "content_hash": "b7d6b9d37e411d1c7d8d8dd688c2142b927bcc9e156d27eeba8b06e7231e2766"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-a6d8841285767c8f",
+            "corporate_name": "Qevrith Glassworks",
+            "security_id": "dev-security-a6d8841285767c8f",
+            "ticker": "SYNTH-DEV24-008",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "78a0a04b388fd62e64441acdb861bf5ac2f89da42db3d90255e641f97230f87f",
+      "evidence": [
+        {
+          "evidence_id": "53c784766f0d1115961427b104b3195e1e74c36e7a844614515eb7483844c570",
+          "news_id": "844649c316d5c97d649e976dcf4922869700f7d41daced5c707820d12d2ce9d9",
+          "revision_id": "73154de4fcc1e5334fd35fd1a9be5273857ac334f2ae5c5ea81d1489a8ead185",
+          "field": "headline",
+          "text": "Qevrith board bulletin addresses the older melting furnace",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "58696865ead9b1c615bf6018b78772e60a833a2cb6b394d29137247a11f84db1",
+          "news_id": "844649c316d5c97d649e976dcf4922869700f7d41daced5c707820d12d2ce9d9",
+          "revision_id": "73154de4fcc1e5334fd35fd1a9be5273857ac334f2ae5c5ea81d1489a8ead185",
+          "field": "summary",
+          "text": "Qevrith Glassworks reviewed the electricity burden of its older melting furnace. The newer line will remain in service. The bulletin gives workers formal notice that the older furnace will be taken out of service after the current orders are filled.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "7b418b7a5a61175c48408dde404593b08dd5a2c8e5ffac7228ccf35d41c0dad7",
+      "packet_fingerprint": "2e7274bee88fcf96e9adbe77cf466ec8b8bb604642e54c270ca38c21628117b9"
+    },
+    {
+      "case_id": "D-fb8cc09d4a736343",
+      "primary_revision_id": "1938c182c82b673f043b019d160e8ca498e5360adea7865c3a2790d8efb4433d",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "5f11e256c865979b66c0bf5124ddfd5cd33fdb67bbb1f47c208e79b046d8147f",
+          "revision_id": "1938c182c82b673f043b019d160e8ca498e5360adea7865c3a2790d8efb4433d",
+          "provider": "synthetic",
+          "provider_news_id": "D-fb8cc09d4a736343",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Xemvori schedules the redemption window for seasonal notes",
+          "summary": "Xemvori Transit set next week's redemption window for its seasonal notes. No cash has yet been paid to noteholders. The payment instruction becomes operative only if an escrow certificate arrives before the window; the certificate is still outstanding.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "eb649e70527dabfe786fb82519661f85634c850553a8d6f0ef3d5c84529affc6",
+          "content_hash": "eb649e70527dabfe786fb82519661f85634c850553a8d6f0ef3d5c84529affc6"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-abd0fdb4a9b15ac1",
+            "corporate_name": "Xemvori Transit",
+            "security_id": "dev-security-abd0fdb4a9b15ac1",
+            "ticker": "SYNTH-DEV24-013",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "97b5dab6af48c3a9e1f18a638034feae83ac0fc6a48417d2c8b16256a182218f",
+      "evidence": [
+        {
+          "evidence_id": "4047af5013d994efdfcc75abad686ce65af28a03b75d3afa7b34728e053f1efc",
+          "news_id": "5f11e256c865979b66c0bf5124ddfd5cd33fdb67bbb1f47c208e79b046d8147f",
+          "revision_id": "1938c182c82b673f043b019d160e8ca498e5360adea7865c3a2790d8efb4433d",
+          "field": "headline",
+          "text": "Xemvori schedules the redemption window for seasonal notes",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "38ed6143d219f835c09b4a038245f0d8a503f3ac702cd2c0a80e6d8cad768ca5",
+          "news_id": "5f11e256c865979b66c0bf5124ddfd5cd33fdb67bbb1f47c208e79b046d8147f",
+          "revision_id": "1938c182c82b673f043b019d160e8ca498e5360adea7865c3a2790d8efb4433d",
+          "field": "summary",
+          "text": "Xemvori Transit set next week's redemption window for its seasonal notes. No cash has yet been paid to noteholders. The payment instruction becomes operative only if an escrow certificate arrives before the window; the certificate is still outstanding.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "e2a138efa5b3109dd0ce14138e565d2ecc61ede82355e417f8863c725766c885",
+      "packet_fingerprint": "e729d716a3e99330a2ff0511034c81b9749eddb29a25fbf736dec9eb3304754f"
+    },
+    {
+      "case_id": "D-fbf4c5c9e02691b3",
+      "primary_revision_id": "6532b5cb77d92b9a1b85dbf9bc4c6f8feed2d075fea5aeef48d9f3fff1321bae",
+      "request": {
+        "schema_version": "news-interpretation-v1",
+        "prompt_version": "news-interpretation-prompt-v1",
+        "taxonomy_version": "news-event-taxonomy-v1",
+        "decision_time": "2031-03-21T10:04:00Z",
+        "mode": "strict",
+        "allow_historical_proxy": false,
+        "allow_retrospective_registry": false,
+        "news": {
+          "news_id": "9b0f6df69d3329ec2aacd9f5c738a8acf90788d1fd191d9ab2e670a255a092f0",
+          "revision_id": "6532b5cb77d92b9a1b85dbf9bc4c6f8feed2d075fea5aeef48d9f3fff1321bae",
+          "provider": "synthetic",
+          "provider_news_id": "D-fbf4c5c9e02691b3",
+          "schema_version": "news-schema-v1",
+          "normalizer_version": "news-normalizer-v1",
+          "headline": "Umqerra records a status change in its fibre-line refit log",
+          "summary": "Umqerra Fibres moved the fibre-line refit to status R7 in its internal project log. The log identifies the refit but lists no production volumes. The accompanying glossary defines R7 as physical commissioning accepted by the plant engineer, with the refitted line released for operation.",
+          "content_ref": null,
+          "source_name": "synthetic",
+          "source_url": null,
+          "language": "en",
+          "direct_tickers": [],
+          "provider_entities": [],
+          "published_at": "2031-03-21T10:00:00Z",
+          "first_seen_at": "2031-03-21T10:02:00Z",
+          "available_at": "2031-03-21T10:02:00Z",
+          "available_at_source": "local_first_seen",
+          "historical_proxy_at": null,
+          "historical_proxy_source": null,
+          "event_date": null,
+          "ingested_at": "2031-03-21T10:03:00Z",
+          "raw_payload_hash": "0a5e10da85a214ee8d62873f962d4bf702614e583a5cafca1f7e7435e015372e",
+          "content_hash": "0a5e10da85a214ee8d62873f962d4bf702614e583a5cafca1f7e7435e015372e"
+        },
+        "context_news": [],
+        "registry_entries": [
+          {
+            "entity_id": "dev-entity-4ddd083bd82a1359",
+            "corporate_name": "Umqerra Fibres",
+            "security_id": "dev-security-4ddd083bd82a1359",
+            "ticker": "SYNTH-DEV24-011",
+            "share_class": null,
+            "aliases": [],
+            "effective_from": "2031-01-01",
+            "effective_to": null,
+            "known_at": "2031-03-20T09:00:00Z",
+            "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+          }
+        ],
+        "snapshot": null,
+        "target": null
+      },
+      "request_fingerprint": "d69383ef2ccb51b87167581472d600ac37bed31ca963e6dea9e53376b7a07397",
+      "evidence": [
+        {
+          "evidence_id": "98a307520efbd145ad3669701dab44cb57179530d9e3df43136f13d8d96eae94",
+          "news_id": "9b0f6df69d3329ec2aacd9f5c738a8acf90788d1fd191d9ab2e670a255a092f0",
+          "revision_id": "6532b5cb77d92b9a1b85dbf9bc4c6f8feed2d075fea5aeef48d9f3fff1321bae",
+          "field": "headline",
+          "text": "Umqerra records a status change in its fibre-line refit log",
+          "available_at": "2031-03-21T10:02:00Z"
+        },
+        {
+          "evidence_id": "fed217aeccde5469a684228007cd18d2150b8c6652f932953044fe90f898ec6e",
+          "news_id": "9b0f6df69d3329ec2aacd9f5c738a8acf90788d1fd191d9ab2e670a255a092f0",
+          "revision_id": "6532b5cb77d92b9a1b85dbf9bc4c6f8feed2d075fea5aeef48d9f3fff1321bae",
+          "field": "summary",
+          "text": "Umqerra Fibres moved the fibre-line refit to status R7 in its internal project log. The log identifies the refit but lists no production volumes. The accompanying glossary defines R7 as physical commissioning accepted by the plant engineer, with the refitted line released for operation.",
+          "available_at": "2031-03-21T10:02:00Z"
+        }
+      ],
+      "evidence_fingerprint": "a9faae3875643d439ae4d7913616dabc7f60b3af3344bfa67465e38997891f31",
+      "packet_fingerprint": "39850d99b492dfdef4c48ff1230e910d3d2ec020012d66c743359d4e4617b913"
+    }
+  ],
+  "corpus_fingerprint": "ab621ee8518052d5c01b9189365626e49eaab3e003ffbaaca1bfbae61e52cdda"
+}

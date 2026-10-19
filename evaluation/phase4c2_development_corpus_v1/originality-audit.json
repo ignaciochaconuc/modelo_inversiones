@@ -1,0 +1,953 @@
+{
+  "version": "news-development-originality-audit-v1",
+  "compared_source_cases": 80,
+  "comparisons": 1920,
+  "source_files": {
+    "evaluation/phase4c2_attribution_v1/synthetic_sources.json": "a977a9e0ab4428189b859433800477742a274e43295c26578282032a35d91395",
+    "evaluation/phase4c2_p1_prompt_v4/fixtures.json": "c6d25d3d8720643785379b038019759535bce47adf0e4346c76511de1e53dc46",
+    "evaluation/phase4c2_semantic_review_workshop_v1/examples.json": "8d90c6ba7a16d542e1ee8e1905158706127035a3e562c626d3939245419f3c5f"
+  },
+  "method": "NFKC token, name/number-delexicalized bigrams, longest token span, broad-topic lexicon; not semantic proof",
+  "thresholds": "surface-review triage only; not model scoring or statistical adoption thresholds",
+  "conceptual_review": "AI author self-review in private design and documentation; independent review pending",
+  "entity_name_reuse": [],
+  "historical_predictions_and_annotations_consulted": false,
+  "cases": [
+    {
+      "case_id": "D-1211fcda178c57ab",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_p1_prompt_v4/fixtures.json",
+          "id": "P1-015",
+          "token_jaccard": 0.073171,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S02",
+          "token_jaccard": 0.046875,
+          "delexicalized_bigram_jaccard": 0.026316,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S02",
+          "token_jaccard": 0.046875,
+          "delexicalized_bigram_jaccard": 0.026316,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_semantic_review_workshop_v1/examples.json",
+          "id": "W-04",
+          "token_jaccard": 0.018182,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 1
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-149ae2f05939977c",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S01",
+          "token_jaccard": 0.157895,
+          "delexicalized_bigram_jaccard": 0.038462,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S01",
+          "token_jaccard": 0.157895,
+          "delexicalized_bigram_jaccard": 0.038462,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "M03",
+          "token_jaccard": 0.109091,
+          "delexicalized_bigram_jaccard": 0.013514,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "X04",
+          "token_jaccard": 0.076923,
+          "delexicalized_bigram_jaccard": 0.012048,
+          "longest_common_tokens": 1,
+          "topic_overlap": 1
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-207e8675fb16b9d4",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.142857,
+          "delexicalized_bigram_jaccard": 0.025316,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.142857,
+          "delexicalized_bigram_jaccard": 0.025316,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.142857,
+          "delexicalized_bigram_jaccard": 0.025316,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "X04",
+          "token_jaccard": 0.056338,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 1
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-24ae2b54a90fb10f",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S02",
+          "token_jaccard": 0.118644,
+          "delexicalized_bigram_jaccard": 0.038462,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.096774,
+          "delexicalized_bigram_jaccard": 0.051282,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.096774,
+          "delexicalized_bigram_jaccard": 0.051282,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S03",
+          "token_jaccard": 0.047619,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-293a6cbca3479505",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_semantic_review_workshop_v1/examples.json",
+          "id": "W-05",
+          "token_jaccard": 0.15,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.333333
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "F02",
+          "token_jaccard": 0.102041,
+          "delexicalized_bigram_jaccard": 0.032258,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "M03",
+          "token_jaccard": 0.074074,
+          "delexicalized_bigram_jaccard": 0.014493,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "F01",
+          "token_jaccard": 0.084746,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-344f5524598d5af8",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S01",
+          "token_jaccard": 0.155172,
+          "delexicalized_bigram_jaccard": 0.038961,
+          "longest_common_tokens": 3,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S01",
+          "token_jaccard": 0.155172,
+          "delexicalized_bigram_jaccard": 0.038961,
+          "longest_common_tokens": 3,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S01",
+          "token_jaccard": 0.155172,
+          "delexicalized_bigram_jaccard": 0.038961,
+          "longest_common_tokens": 3,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "X04",
+          "token_jaccard": 0.075758,
+          "delexicalized_bigram_jaccard": 0.024691,
+          "longest_common_tokens": 2,
+          "topic_overlap": 1
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-357c527c444fda92",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "X02",
+          "token_jaccard": 0.089286,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "I03",
+          "token_jaccard": 0.038462,
+          "delexicalized_bigram_jaccard": 0.032787,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.079365,
+          "delexicalized_bigram_jaccard": 0.012658,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "A01",
+          "token_jaccard": 0.047619,
+          "delexicalized_bigram_jaccard": 0.012987,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-3b2243f6c97e1c76",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_semantic_review_workshop_v1/examples.json",
+          "id": "W-04",
+          "token_jaccard": 0.096154,
+          "delexicalized_bigram_jaccard": 0.015385,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "I03",
+          "token_jaccard": 0.037037,
+          "delexicalized_bigram_jaccard": 0.031746,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C01",
+          "token_jaccard": 0.080645,
+          "delexicalized_bigram_jaccard": 0.0125,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "R02",
+          "token_jaccard": 0.074627,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 1
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-40e8a2188273506b",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "F02",
+          "token_jaccard": 0.113636,
+          "delexicalized_bigram_jaccard": 0.036364,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "F02",
+          "token_jaccard": 0.113636,
+          "delexicalized_bigram_jaccard": 0.036364,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "P02",
+          "token_jaccard": 0.086957,
+          "delexicalized_bigram_jaccard": 0.017544,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "F01",
+          "token_jaccard": 0.053571,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-4ea8b5ea011dc021",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.122807,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "F02",
+          "token_jaccard": 0.058824,
+          "delexicalized_bigram_jaccard": 0.015873,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "F02",
+          "token_jaccard": 0.058824,
+          "delexicalized_bigram_jaccard": 0.015873,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "A01",
+          "token_jaccard": 0.033333,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.4
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-5f21ec91317d6943",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.095238,
+          "delexicalized_bigram_jaccard": 0.012987,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "K02",
+          "token_jaccard": 0.083333,
+          "delexicalized_bigram_jaccard": 0.027397,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C01",
+          "token_jaccard": 0.064516,
+          "delexicalized_bigram_jaccard": 0.026667,
+          "longest_common_tokens": 3,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "X04",
+          "token_jaccard": 0.028571,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 1
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-69d2ab33be7076dc",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "F03",
+          "token_jaccard": 0.106061,
+          "delexicalized_bigram_jaccard": 0.011628,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "R03",
+          "token_jaccard": 0.104478,
+          "delexicalized_bigram_jaccard": 0.021277,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "F01",
+          "token_jaccard": 0.083333,
+          "delexicalized_bigram_jaccard": 0.011236,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0.5
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "F01",
+          "token_jaccard": 0.083333,
+          "delexicalized_bigram_jaccard": 0.011236,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-6c6ef03a91cca2a9",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "R02",
+          "token_jaccard": 0.129032,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "A03",
+          "token_jaccard": 0.087719,
+          "delexicalized_bigram_jaccard": 0.014493,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C03",
+          "token_jaccard": 0.098361,
+          "delexicalized_bigram_jaccard": 0.012987,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S03",
+          "token_jaccard": 0.1,
+          "delexicalized_bigram_jaccard": 0.013333,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-8d5314f2c5c04bdf",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S02",
+          "token_jaccard": 0.101695,
+          "delexicalized_bigram_jaccard": 0.0125,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "I01",
+          "token_jaccard": 0.084746,
+          "delexicalized_bigram_jaccard": 0.038961,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.098361,
+          "delexicalized_bigram_jaccard": 0.037975,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_semantic_review_workshop_v1/examples.json",
+          "id": "W-05",
+          "token_jaccard": 0.042553,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-93672b713faeaaa7",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_p1_prompt_v4/fixtures.json",
+          "id": "P1-013",
+          "token_jaccard": 0.131579,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "K01",
+          "token_jaccard": 0.083333,
+          "delexicalized_bigram_jaccard": 0.025641,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.048387,
+          "delexicalized_bigram_jaccard": 0.012987,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S03",
+          "token_jaccard": 0.032787,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-9a08d4ede78dd104",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_semantic_review_workshop_v1/examples.json",
+          "id": "W-03",
+          "token_jaccard": 0.111111,
+          "delexicalized_bigram_jaccard": 0.014925,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "A03",
+          "token_jaccard": 0.078125,
+          "delexicalized_bigram_jaccard": 0.026316,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "R03",
+          "token_jaccard": 0.092308,
+          "delexicalized_bigram_jaccard": 0.022222,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S03",
+          "token_jaccard": 0.042857,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.666667
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-9a5bfd786f5c233e",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "R03",
+          "token_jaccard": 0.122807,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S03",
+          "token_jaccard": 0.118644,
+          "delexicalized_bigram_jaccard": 0.027027,
+          "longest_common_tokens": 3,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S03",
+          "token_jaccard": 0.118644,
+          "delexicalized_bigram_jaccard": 0.027027,
+          "longest_common_tokens": 3,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "X04",
+          "token_jaccard": 0.044118,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-a4e448038e1f3c79",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "R03",
+          "token_jaccard": 0.122807,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S03",
+          "token_jaccard": 0.118644,
+          "delexicalized_bigram_jaccard": 0.026667,
+          "longest_common_tokens": 3,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S03",
+          "token_jaccard": 0.118644,
+          "delexicalized_bigram_jaccard": 0.026667,
+          "longest_common_tokens": 3,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "X04",
+          "token_jaccard": 0.044118,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-a8db3a0c74d93eb8",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "I01",
+          "token_jaccard": 0.080645,
+          "delexicalized_bigram_jaccard": 0.012987,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S02",
+          "token_jaccard": 0.0625,
+          "delexicalized_bigram_jaccard": 0.025974,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S02",
+          "token_jaccard": 0.0625,
+          "delexicalized_bigram_jaccard": 0.025974,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_semantic_review_workshop_v1/examples.json",
+          "id": "W-04",
+          "token_jaccard": 0.036364,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 1
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-bcc9cce8989c97da",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "A02",
+          "token_jaccard": 0.081633,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "P01",
+          "token_jaccard": 0.052632,
+          "delexicalized_bigram_jaccard": 0.014286,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "M01",
+          "token_jaccard": 0.056604,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "X04",
+          "token_jaccard": 0.04918,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-dd36acb3003e1ecc",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "A02",
+          "token_jaccard": 0.076923,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "P01",
+          "token_jaccard": 0.067797,
+          "delexicalized_bigram_jaccard": 0.014493,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S01",
+          "token_jaccard": 0.067797,
+          "delexicalized_bigram_jaccard": 0.013889,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "X04",
+          "token_jaccard": 0.063492,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-eb5cec8943bdf1a0",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C03",
+          "token_jaccard": 0.083333,
+          "delexicalized_bigram_jaccard": 0.013158,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "K01",
+          "token_jaccard": 0.064516,
+          "delexicalized_bigram_jaccard": 0.025641,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C03",
+          "token_jaccard": 0.083333,
+          "delexicalized_bigram_jaccard": 0.013158,
+          "longest_common_tokens": 2,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S03",
+          "token_jaccard": 0.032258,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-fb8cc09d4a736343",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "C02",
+          "token_jaccard": 0.112903,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "M01",
+          "token_jaccard": 0.084746,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.25
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "M01",
+          "token_jaccard": 0.084746,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.25
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "A01",
+          "token_jaccard": 0.046875,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.4
+        }
+      },
+      "surface_review_flag": false
+    },
+    {
+      "case_id": "D-fbf4c5c9e02691b3",
+      "exact_normalized_match": false,
+      "nearest": {
+        "token_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "X02",
+          "token_jaccard": 0.12069,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "delexicalized_bigram_jaccard": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "M01",
+          "token_jaccard": 0.063492,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "longest_common_tokens": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "M01",
+          "token_jaccard": 0.063492,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0
+        },
+        "topic_overlap": {
+          "group": "evaluation/phase4c2_attribution_v1/synthetic_sources.json",
+          "id": "S03",
+          "token_jaccard": 0.060606,
+          "delexicalized_bigram_jaccard": 0,
+          "longest_common_tokens": 1,
+          "topic_overlap": 0.5
+        }
+      },
+      "surface_review_flag": false
+    }
+  ]
+}

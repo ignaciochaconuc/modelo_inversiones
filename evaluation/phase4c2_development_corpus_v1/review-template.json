@@ -1,0 +1,417 @@
+{
+  "version": "news-development-unfilled-review-template-v1",
+  "instrument": "news-semantic-review-instrument-v1",
+  "status": "unfilled_not_a_reference",
+  "factual_forms": [
+    {
+      "case_id": "D-1211fcda178c57ab",
+      "source_fingerprint": "fe5f58a0ac956895289a16a2562eec3c07b4ed7a95df22704c24cf8aafa4cf91",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-149ae2f05939977c",
+      "source_fingerprint": "9ebb4169189c8a3de6e42a5a5af634bed4172e52d9323932b0c5739b013062de",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-207e8675fb16b9d4",
+      "source_fingerprint": "c4bea9c775c1fba2e98fa7c9b6b1759fa012d7b6a58b3d11baa9a495611e6702",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-24ae2b54a90fb10f",
+      "source_fingerprint": "6cc628c138363e9e6beb2f35832af3277a15818f80b0765ed477a8d5c96f8ff9",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-293a6cbca3479505",
+      "source_fingerprint": "284464380de5e27945f42e4166408a7368431611ec22348a1cafe62104fe2162",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-344f5524598d5af8",
+      "source_fingerprint": "35910ac765c0a401a1d4653c7ec3d4ba0ed54be49e34cccdbb40e8c72c41ed71",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-357c527c444fda92",
+      "source_fingerprint": "6ee32a691ccc43db36699350888608da2811b0fad1671fccb8b156a488062e3b",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-3b2243f6c97e1c76",
+      "source_fingerprint": "f4842142bc3f0604b2baba20ac751a59a07d841d7437954735c7ad7ecb0e16e5",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-40e8a2188273506b",
+      "source_fingerprint": "f1464c1a3cce47d5bfbf1ab063bd080f4d39b0d509e278e0f2ee8de4867d8710",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-4ea8b5ea011dc021",
+      "source_fingerprint": "ddeb8f0bab26cb88483b3421e6973b43cd4a209b825d1189138e4a1f210894c1",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-5f21ec91317d6943",
+      "source_fingerprint": "3d64f7b400bcb862d94df86268bb6c11078a95308b36502625224feeeca3ada1",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-69d2ab33be7076dc",
+      "source_fingerprint": "7b2e9cbeeb51bce6d7f9aab87e894aa1066f69652733e07c94c0cb91df4f099a",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-6c6ef03a91cca2a9",
+      "source_fingerprint": "d0fc7bc23486c9ff9c4be3bcbed7aed8d8ccec32aa6627a6cd851d51ca30d54a",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-8d5314f2c5c04bdf",
+      "source_fingerprint": "07e79bd8439272f1e816a26b556e23de010dfb061eb11b9dd0c6c016e768b512",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-93672b713faeaaa7",
+      "source_fingerprint": "829f769e9fcc4f89ce79d2f2a81e28025a0114fb849eef579cda7f6428796868",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-9a08d4ede78dd104",
+      "source_fingerprint": "8c0e55cf1d36a04c64fba76e73be42cf8514a851e909650a24b0a1d2f032dff4",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-9a5bfd786f5c233e",
+      "source_fingerprint": "cab4a4ef9338a7f6a5dfb5651b019aab4cd2a77935d0947bcf642b76fa4d6f1d",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-a4e448038e1f3c79",
+      "source_fingerprint": "82270eb3afeba158c3e5994d68db581b6c6e1da61a09e277d1127b50c540f121",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-a8db3a0c74d93eb8",
+      "source_fingerprint": "12165a0bcdf39f987d8ebc9062c577d7aa9acd2cae010287e603c3efd6a55599",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-bcc9cce8989c97da",
+      "source_fingerprint": "3b84364f2a7046778096aa8fe2cebf0c9850104d627f17c969f3c0f6bf2ce73d",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-dd36acb3003e1ecc",
+      "source_fingerprint": "03bd135d4843f037658da21a16dfa717cf3e55dfaec16351f7900eebadd2a3b3",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-eb5cec8943bdf1a0",
+      "source_fingerprint": "2e7274bee88fcf96e9adbe77cf466ec8b8bb604642e54c270ca38c21628117b9",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-fb8cc09d4a736343",
+      "source_fingerprint": "e729d716a3e99330a2ff0511034c81b9749eddb29a25fbf736dec9eb3304754f",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    },
+    {
+      "case_id": "D-fbf4c5c9e02691b3",
+      "source_fingerprint": "39850d99b492dfdef4c48ff1230e910d3d2ec020012d66c743359d4e4617b913",
+      "reviewer_id": null,
+      "provenance_kind": null,
+      "started_at": null,
+      "completed_at": null,
+      "timestamp_source": null,
+      "facts": []
+    }
+  ],
+  "separate_contract_forms": [
+    {
+      "case_id": "D-1211fcda178c57ab",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-149ae2f05939977c",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-207e8675fb16b9d4",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-24ae2b54a90fb10f",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-293a6cbca3479505",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-344f5524598d5af8",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-357c527c444fda92",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-3b2243f6c97e1c76",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-40e8a2188273506b",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-4ea8b5ea011dc021",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-5f21ec91317d6943",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-69d2ab33be7076dc",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-6c6ef03a91cca2a9",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-8d5314f2c5c04bdf",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-93672b713faeaaa7",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-9a08d4ede78dd104",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-9a5bfd786f5c233e",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-a4e448038e1f3c79",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-a8db3a0c74d93eb8",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-bcc9cce8989c97da",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-dd36acb3003e1ecc",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-eb5cec8943bdf1a0",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-fb8cc09d4a736343",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    },
+    {
+      "case_id": "D-fbf4c5c9e02691b3",
+      "contract_version": "news-economic-validation-v3",
+      "source_factual_reference_sha256": null,
+      "allowed_outcomes": [],
+      "mappings": []
+    }
+  ]
+}
