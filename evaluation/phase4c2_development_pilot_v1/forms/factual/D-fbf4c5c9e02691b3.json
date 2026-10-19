@@ -1,0 +1,75 @@
+{
+  "schema_version": "news-pilot-factual-form-v1",
+  "case_id": "D-fbf4c5c9e02691b3",
+  "packet_fingerprint": "ea24eef102322b680a6e16004172850e1c71bfaf768846a5bf1defee4bc4efd5",
+  "status": "unfilled",
+  "facts": [],
+  "must_not_omit": [],
+  "dimension_assessments": {
+    "events": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "event_stage": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "evidence": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "identity": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "participation": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "role": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "relationship": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "ticker_link": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "quantities": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "dates": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "negation": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "impact": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    },
+    "material_omissions": {
+      "status": null,
+      "fact_ids": [],
+      "note": null
+    }
+  }
+}

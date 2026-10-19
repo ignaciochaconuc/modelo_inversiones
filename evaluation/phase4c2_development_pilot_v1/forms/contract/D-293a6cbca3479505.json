@@ -1,0 +1,11 @@
+{
+  "schema_version": "news-pilot-contract-form-v1",
+  "case_id": "D-293a6cbca3479505",
+  "packet_fingerprint": "64c2fa7320751a6866ac7fb95c0ee02c803f583b86ef4e86d6f0a66a8e1572e2",
+  "status": "unfilled",
+  "contract_version": "news-economic-validation-v3",
+  "factual_record_sha256": null,
+  "mappings": [],
+  "allowed_outcomes": [],
+  "rationale": null
+}

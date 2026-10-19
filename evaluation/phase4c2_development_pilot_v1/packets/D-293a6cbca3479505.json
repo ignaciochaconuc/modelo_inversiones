@@ -1,0 +1,102 @@
+{
+  "version": "news-development-pilot-packets-v1",
+  "case_id": "D-293a6cbca3479505",
+  "fictional": true,
+  "source_packet_fingerprint": "284464380de5e27945f42e4166408a7368431611ec22348a1cafe62104fe2162",
+  "primary_revision_id": "1e5ff39b0957e278fc823fe0a6d5ef5a17acd775faf0fa10f730c482adf203da",
+  "headline": "Yrvexil permit bulletin carries a dated entry",
+  "summary": "The Yrvexil Bioceramics kiln permit bulletin contains the date 2031-03-21. It gives no output forecast for the kiln. The entry identifies 2031-03-21 as the bulletin's publication day; the day the permit takes effect is not supplied.",
+  "evidence": [
+    {
+      "evidence_id": "b5dc7e89ed44ad3798983c08dd35babc48c4b754bebfac812d4b8893dad59ee4",
+      "news_id": "21a3d20a839f947de182b345fdd54a88eb215a10d1f722b5e49cbec2e12e540b",
+      "revision_id": "1e5ff39b0957e278fc823fe0a6d5ef5a17acd775faf0fa10f730c482adf203da",
+      "field": "headline",
+      "text": "Yrvexil permit bulletin carries a dated entry",
+      "available_at": "2031-03-21T10:02:00Z"
+    },
+    {
+      "evidence_id": "f200cf2bd8e1752483fc091f2497f67397ceefa20ee3b3cbf7af71eb9081f701",
+      "news_id": "21a3d20a839f947de182b345fdd54a88eb215a10d1f722b5e49cbec2e12e540b",
+      "revision_id": "1e5ff39b0957e278fc823fe0a6d5ef5a17acd775faf0fa10f730c482adf203da",
+      "field": "summary",
+      "text": "The Yrvexil Bioceramics kiln permit bulletin contains the date 2031-03-21. It gives no output forecast for the kiln. The entry identifies 2031-03-21 as the bulletin's publication day; the day the permit takes effect is not supplied.",
+      "available_at": "2031-03-21T10:02:00Z"
+    }
+  ],
+  "virtual_clock": {
+    "published_at": "2031-03-21T10:00:00Z",
+    "first_seen_at": "2031-03-21T10:02:00Z",
+    "available_at": "2031-03-21T10:02:00Z",
+    "ingested_at": "2031-03-21T10:03:00Z",
+    "decision_time": "2031-03-21T10:04:00Z"
+  },
+  "eligible_registry": [],
+  "factual_instructions": {
+    "instrument": "news-semantic-review-instrument-v1",
+    "task": "Anote los hechos del texto, sin decidir cómo encajarlos en un contrato técnico.",
+    "principles": [
+      "Distinga hechos explícitos, inferencias, incertidumbre y ausencia de información.",
+      "No convierta identidad o ticker en prueba de participación, exposición o retorno.",
+      "Registre las condiciones materiales y el alcance de las negaciones sin recortarlos.",
+      "Use citas literales del campo indicado y offsets Unicode half-open [start,end); no bytes ni UTF-16.",
+      "Mantenga indeterminaciones; no fuerce consenso ni complete datos ausentes.",
+      "Cierre la anotación factual antes de abrir el formulario contractual separado."
+    ],
+    "dimensions": [
+      {
+        "id": "events",
+        "instruction": "¿Qué acontecimientos afirma realmente la fuente y con qué condiciones?"
+      },
+      {
+        "id": "event_stage",
+        "instruction": "Separar anuncio/propuesta/cierre, certeza y hecho al que se refiere el verbo."
+      },
+      {
+        "id": "evidence",
+        "instruction": "Localización literal y apoyo de la proposición son juicios distintos."
+      },
+      {
+        "id": "identity",
+        "instruction": "Nombre corporativo/identidad desconocida; registry neutral no prueba participación."
+      },
+      {
+        "id": "participation",
+        "instruction": "Directa, indirecta respaldada, contextual o desconocida."
+      },
+      {
+        "id": "role",
+        "instruction": "Comprador/objetivo/emisor/proveedor/etc., sin inferir rol por ticker."
+      },
+      {
+        "id": "relationship",
+        "instruction": "Tipo, contraparte, dirección y estado de relación."
+      },
+      {
+        "id": "ticker_link",
+        "instruction": "Vínculo bursátil elegible distinto de exposición económica."
+      },
+      {
+        "id": "quantities",
+        "instruction": "Lexema, magnitud, unidad, escala, período y contradicciones."
+      },
+      {
+        "id": "dates",
+        "instruction": "Fecha del acontecimiento, publicación, fecha textual y límites PIT."
+      },
+      {
+        "id": "negation",
+        "instruction": "Alcance sobre evento o dato incidental; no recortar calificadores."
+      },
+      {
+        "id": "impact",
+        "instruction": "Impacto potencial inferido frente a causalidad, materialidad o exposición no demostradas."
+      },
+      {
+        "id": "material_omissions",
+        "instruction": "Hechos/condiciones/actores/cifras que cambian la interpretación si se omiten."
+      }
+    ]
+  },
+  "packet_fingerprint": "64c2fa7320751a6866ac7fb95c0ee02c803f583b86ef4e86d6f0a66a8e1572e2"
+}

@@ -1,0 +1,115 @@
+{
+  "version": "news-development-pilot-packets-v1",
+  "case_id": "D-1211fcda178c57ab",
+  "fictional": true,
+  "source_packet_fingerprint": "fe5f58a0ac956895289a16a2562eec3c07b4ed7a95df22704c24cf8aafa4cf91",
+  "primary_revision_id": "9b4d29c48530971969b216fc9dfd85b9689fa8d42b2e7d5d7af6b3ba69a834c1",
+  "headline": "Bravqulin explains the basis of its scrap disposal ledger",
+  "summary": "Bravqulin Textiles disposed of 640 tonnes of scrap during January through March. Its ledger also lists gross receipts of 640 thousand USD, before transport deductions. The monetary amount covers the three months combined, not an individual month.",
+  "evidence": [
+    {
+      "evidence_id": "2d793947c58a57e9f80a0356e42ca2856017e49131ae3a4d96bea9cb708226e4",
+      "news_id": "8c43e1b9637d2315d920bd921e02352c6282d01ad6668cea5c6135fdce30b2da",
+      "revision_id": "9b4d29c48530971969b216fc9dfd85b9689fa8d42b2e7d5d7af6b3ba69a834c1",
+      "field": "headline",
+      "text": "Bravqulin explains the basis of its scrap disposal ledger",
+      "available_at": "2031-03-21T10:02:00Z"
+    },
+    {
+      "evidence_id": "e835404e589ff313def090251b462542f53464829c290349b32e57131180f80e",
+      "news_id": "8c43e1b9637d2315d920bd921e02352c6282d01ad6668cea5c6135fdce30b2da",
+      "revision_id": "9b4d29c48530971969b216fc9dfd85b9689fa8d42b2e7d5d7af6b3ba69a834c1",
+      "field": "summary",
+      "text": "Bravqulin Textiles disposed of 640 tonnes of scrap during January through March. Its ledger also lists gross receipts of 640 thousand USD, before transport deductions. The monetary amount covers the three months combined, not an individual month.",
+      "available_at": "2031-03-21T10:02:00Z"
+    }
+  ],
+  "virtual_clock": {
+    "published_at": "2031-03-21T10:00:00Z",
+    "first_seen_at": "2031-03-21T10:02:00Z",
+    "available_at": "2031-03-21T10:02:00Z",
+    "ingested_at": "2031-03-21T10:03:00Z",
+    "decision_time": "2031-03-21T10:04:00Z"
+  },
+  "eligible_registry": [
+    {
+      "entity_id": "dev-entity-cefb15173bc4e84b",
+      "corporate_name": "Bravqulin Textiles",
+      "security_id": "dev-security-cefb15173bc4e84b",
+      "ticker": "SYNTH-DEV24-001",
+      "share_class": null,
+      "aliases": [],
+      "effective_from": "2031-01-01",
+      "effective_to": null,
+      "known_at": "2031-03-20T09:00:00Z",
+      "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+    }
+  ],
+  "factual_instructions": {
+    "instrument": "news-semantic-review-instrument-v1",
+    "task": "Anote los hechos del texto, sin decidir cómo encajarlos en un contrato técnico.",
+    "principles": [
+      "Distinga hechos explícitos, inferencias, incertidumbre y ausencia de información.",
+      "No convierta identidad o ticker en prueba de participación, exposición o retorno.",
+      "Registre las condiciones materiales y el alcance de las negaciones sin recortarlos.",
+      "Use citas literales del campo indicado y offsets Unicode half-open [start,end); no bytes ni UTF-16.",
+      "Mantenga indeterminaciones; no fuerce consenso ni complete datos ausentes.",
+      "Cierre la anotación factual antes de abrir el formulario contractual separado."
+    ],
+    "dimensions": [
+      {
+        "id": "events",
+        "instruction": "¿Qué acontecimientos afirma realmente la fuente y con qué condiciones?"
+      },
+      {
+        "id": "event_stage",
+        "instruction": "Separar anuncio/propuesta/cierre, certeza y hecho al que se refiere el verbo."
+      },
+      {
+        "id": "evidence",
+        "instruction": "Localización literal y apoyo de la proposición son juicios distintos."
+      },
+      {
+        "id": "identity",
+        "instruction": "Nombre corporativo/identidad desconocida; registry neutral no prueba participación."
+      },
+      {
+        "id": "participation",
+        "instruction": "Directa, indirecta respaldada, contextual o desconocida."
+      },
+      {
+        "id": "role",
+        "instruction": "Comprador/objetivo/emisor/proveedor/etc., sin inferir rol por ticker."
+      },
+      {
+        "id": "relationship",
+        "instruction": "Tipo, contraparte, dirección y estado de relación."
+      },
+      {
+        "id": "ticker_link",
+        "instruction": "Vínculo bursátil elegible distinto de exposición económica."
+      },
+      {
+        "id": "quantities",
+        "instruction": "Lexema, magnitud, unidad, escala, período y contradicciones."
+      },
+      {
+        "id": "dates",
+        "instruction": "Fecha del acontecimiento, publicación, fecha textual y límites PIT."
+      },
+      {
+        "id": "negation",
+        "instruction": "Alcance sobre evento o dato incidental; no recortar calificadores."
+      },
+      {
+        "id": "impact",
+        "instruction": "Impacto potencial inferido frente a causalidad, materialidad o exposición no demostradas."
+      },
+      {
+        "id": "material_omissions",
+        "instruction": "Hechos/condiciones/actores/cifras que cambian la interpretación si se omiten."
+      }
+    ]
+  },
+  "packet_fingerprint": "962304f37c4f9d75967600320a5e91290a975c82218b4635aaec72b698a062f9"
+}

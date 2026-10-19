@@ -1,0 +1,121 @@
+{
+  "$defs": {
+    "Mapping": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "structured",
+            "faithful_partial_only",
+            "not_representable",
+            "indeterminate"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "rationale": {
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fact_id",
+        "mode",
+        "rationale"
+      ],
+      "title": "Mapping",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-contract-form-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "case_id": {
+      "title": "Case Id",
+      "type": "string"
+    },
+    "packet_fingerprint": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Packet Fingerprint",
+      "type": "string"
+    },
+    "contract_version": {
+      "const": "news-economic-validation-v3",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "unfilled",
+        "in_progress",
+        "completed"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "factual_record_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Factual Record Sha256"
+    },
+    "mappings": {
+      "items": {
+        "$ref": "#/$defs/Mapping"
+      },
+      "title": "Mappings",
+      "type": "array"
+    },
+    "allowed_outcomes": {
+      "items": {
+        "enum": [
+          "interpreted",
+          "abstained",
+          "indeterminate"
+        ],
+        "type": "string"
+      },
+      "title": "Allowed Outcomes",
+      "type": "array"
+    },
+    "rationale": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Rationale"
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "packet_fingerprint",
+    "contract_version",
+    "status",
+    "factual_record_sha256",
+    "mappings",
+    "allowed_outcomes",
+    "rationale"
+  ],
+  "title": "Contract",
+  "type": "object"
+}

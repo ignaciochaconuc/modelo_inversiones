@@ -1,0 +1,240 @@
+{
+  "$defs": {
+    "Assessment": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "anyOf": [
+            {
+              "enum": [
+                "recorded",
+                "insufficient",
+                "indeterminate",
+                "not_applicable"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "fact_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Fact Ids",
+          "type": "array"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Note"
+        }
+      },
+      "required": [
+        "status",
+        "fact_ids",
+        "note"
+      ],
+      "title": "Assessment",
+      "type": "object"
+    },
+    "Citation": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "field": {
+          "enum": [
+            "headline",
+            "summary"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "integer"
+        },
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "field",
+        "start",
+        "end",
+        "quote"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "Fact": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "pattern": "^F[0-9]{3}$",
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "dimension": {
+          "enum": [
+            "events",
+            "event_stage",
+            "evidence",
+            "identity",
+            "participation",
+            "role",
+            "relationship",
+            "ticker_link",
+            "quantities",
+            "dates",
+            "negation",
+            "impact",
+            "material_omissions"
+          ],
+          "title": "Dimension",
+          "type": "string"
+        },
+        "meaning": {
+          "minLength": 1,
+          "title": "Meaning",
+          "type": "string"
+        },
+        "certainty": {
+          "enum": [
+            "conclusive",
+            "uncertain",
+            "indeterminate"
+          ],
+          "title": "Certainty",
+          "type": "string"
+        },
+        "material": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Material"
+        },
+        "citations": {
+          "items": {
+            "$ref": "#/$defs/Citation"
+          },
+          "minItems": 1,
+          "title": "Citations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fact_id",
+        "dimension",
+        "meaning",
+        "certainty",
+        "material",
+        "citations"
+      ],
+      "title": "Fact",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-factual-form-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "case_id": {
+      "title": "Case Id",
+      "type": "string"
+    },
+    "packet_fingerprint": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Packet Fingerprint",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "unfilled",
+        "in_progress",
+        "completed"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "facts": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "title": "Facts",
+      "type": "array"
+    },
+    "dimension_assessments": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Assessment"
+      },
+      "propertyNames": {
+        "enum": [
+          "events",
+          "event_stage",
+          "evidence",
+          "identity",
+          "participation",
+          "role",
+          "relationship",
+          "ticker_link",
+          "quantities",
+          "dates",
+          "negation",
+          "impact",
+          "material_omissions"
+        ]
+      },
+      "title": "Dimension Assessments",
+      "type": "object"
+    },
+    "must_not_omit": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Must Not Omit",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "packet_fingerprint",
+    "status",
+    "facts",
+    "dimension_assessments",
+    "must_not_omit"
+  ],
+  "title": "Factual",
+  "type": "object"
+}

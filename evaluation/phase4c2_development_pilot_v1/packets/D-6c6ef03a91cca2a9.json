@@ -1,0 +1,115 @@
+{
+  "version": "news-development-pilot-packets-v1",
+  "case_id": "D-6c6ef03a91cca2a9",
+  "fictional": true,
+  "source_packet_fingerprint": "d0fc7bc23486c9ff9c4be3bcbed7aed8d8ccec32aa6627a6cd851d51ca30d54a",
+  "primary_revision_id": "c96efe1b988f6c2dab349ef0211e5bfb5a09d59bb3347bb4e4069d243daef2f8",
+  "headline": "Umqerra records a status change in its fibre-line refit log",
+  "summary": "Umqerra Fibres moved the fibre-line refit to status R7 in its internal project log. The log identifies the refit but lists no production volumes. The accompanying note does not define R7 or describe which work has occurred.",
+  "evidence": [
+    {
+      "evidence_id": "3867235a5721478330e70a666fe1205bcf9c36dbcd860545ae039825967aacad",
+      "news_id": "08163120480bbe755a18f80b7d086852797b7e0348011fea5a4e432eb28cb341",
+      "revision_id": "c96efe1b988f6c2dab349ef0211e5bfb5a09d59bb3347bb4e4069d243daef2f8",
+      "field": "headline",
+      "text": "Umqerra records a status change in its fibre-line refit log",
+      "available_at": "2031-03-21T10:02:00Z"
+    },
+    {
+      "evidence_id": "93004779bba84e0e73cded240f5153bbf8e52addf6b3d491e4d4307c20c1f8fd",
+      "news_id": "08163120480bbe755a18f80b7d086852797b7e0348011fea5a4e432eb28cb341",
+      "revision_id": "c96efe1b988f6c2dab349ef0211e5bfb5a09d59bb3347bb4e4069d243daef2f8",
+      "field": "summary",
+      "text": "Umqerra Fibres moved the fibre-line refit to status R7 in its internal project log. The log identifies the refit but lists no production volumes. The accompanying note does not define R7 or describe which work has occurred.",
+      "available_at": "2031-03-21T10:02:00Z"
+    }
+  ],
+  "virtual_clock": {
+    "published_at": "2031-03-21T10:00:00Z",
+    "first_seen_at": "2031-03-21T10:02:00Z",
+    "available_at": "2031-03-21T10:02:00Z",
+    "ingested_at": "2031-03-21T10:03:00Z",
+    "decision_time": "2031-03-21T10:04:00Z"
+  },
+  "eligible_registry": [
+    {
+      "entity_id": "dev-entity-4ddd083bd82a1359",
+      "corporate_name": "Umqerra Fibres",
+      "security_id": "dev-security-4ddd083bd82a1359",
+      "ticker": "SYNTH-DEV24-011",
+      "share_class": null,
+      "aliases": [],
+      "effective_from": "2031-01-01",
+      "effective_to": null,
+      "known_at": "2031-03-20T09:00:00Z",
+      "evidence": "Fictional identity and non-market security identifier authored for development; no economic relationship asserted."
+    }
+  ],
+  "factual_instructions": {
+    "instrument": "news-semantic-review-instrument-v1",
+    "task": "Anote los hechos del texto, sin decidir cómo encajarlos en un contrato técnico.",
+    "principles": [
+      "Distinga hechos explícitos, inferencias, incertidumbre y ausencia de información.",
+      "No convierta identidad o ticker en prueba de participación, exposición o retorno.",
+      "Registre las condiciones materiales y el alcance de las negaciones sin recortarlos.",
+      "Use citas literales del campo indicado y offsets Unicode half-open [start,end); no bytes ni UTF-16.",
+      "Mantenga indeterminaciones; no fuerce consenso ni complete datos ausentes.",
+      "Cierre la anotación factual antes de abrir el formulario contractual separado."
+    ],
+    "dimensions": [
+      {
+        "id": "events",
+        "instruction": "¿Qué acontecimientos afirma realmente la fuente y con qué condiciones?"
+      },
+      {
+        "id": "event_stage",
+        "instruction": "Separar anuncio/propuesta/cierre, certeza y hecho al que se refiere el verbo."
+      },
+      {
+        "id": "evidence",
+        "instruction": "Localización literal y apoyo de la proposición son juicios distintos."
+      },
+      {
+        "id": "identity",
+        "instruction": "Nombre corporativo/identidad desconocida; registry neutral no prueba participación."
+      },
+      {
+        "id": "participation",
+        "instruction": "Directa, indirecta respaldada, contextual o desconocida."
+      },
+      {
+        "id": "role",
+        "instruction": "Comprador/objetivo/emisor/proveedor/etc., sin inferir rol por ticker."
+      },
+      {
+        "id": "relationship",
+        "instruction": "Tipo, contraparte, dirección y estado de relación."
+      },
+      {
+        "id": "ticker_link",
+        "instruction": "Vínculo bursátil elegible distinto de exposición económica."
+      },
+      {
+        "id": "quantities",
+        "instruction": "Lexema, magnitud, unidad, escala, período y contradicciones."
+      },
+      {
+        "id": "dates",
+        "instruction": "Fecha del acontecimiento, publicación, fecha textual y límites PIT."
+      },
+      {
+        "id": "negation",
+        "instruction": "Alcance sobre evento o dato incidental; no recortar calificadores."
+      },
+      {
+        "id": "impact",
+        "instruction": "Impacto potencial inferido frente a causalidad, materialidad o exposición no demostradas."
+      },
+      {
+        "id": "material_omissions",
+        "instruction": "Hechos/condiciones/actores/cifras que cambian la interpretación si se omiten."
+      }
+    ]
+  },
+  "packet_fingerprint": "842f7ef09649319f34c665fe2520fcd5258ef333cd306efffc924f593534c8ed"
+}
