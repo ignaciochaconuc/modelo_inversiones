@@ -191,6 +191,10 @@ el prompt v3, runtime, validadores y perfil permanecen intactos. Véase
 `docs/phase4c2-p1-prompt-validator-alignment.md`. No implica adherencia del LLM,
 calidad semántica demostrada ni activación de Phase 4C.3.
 
+La revisión posterior prepara draft2 separado y conserva draft1 y sus expectativas:
+`phase4c2_p1_prompt_v4_draft2_pending_review`. Véase
+`docs/phase4c2-p1-prompt-v4-draft2-review.md`; ninguna revisión está activada.
+
 `LLMRouter` selecciona proveedor/modelo por agente y tarea, usando `config/models.yaml`. Los clientes de OpenAI y Ollama son stubs deliberados. El pricing es configurable y no incluye precios reales hardcodeados.
 
 Cada llamada puede registrar tokens, cache, costo estimado, latencia, estado, agente, tarea, ticker, análisis y trade. Se contemplan agregaciones diarias, mensuales, por agente, ticker, análisis y trade.

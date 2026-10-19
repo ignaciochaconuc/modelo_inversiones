@@ -1,0 +1,47 @@
+{
+  "artifact_version": "economic-prompt-draft-review-v1",
+  "prompt_version": "news-interpretation-prompt-v4",
+  "draft_revision": "draft2",
+  "supersedes_for_review_only": "draft1",
+  "status": "phase4c2_p1_prompt_v4_draft2_pending_review",
+  "production_activation": false,
+  "model_output_version": "news-economic-selection-v3",
+  "validation_version": "news-economic-validation-v3",
+  "resolver_version": "news-exact-quote-resolver-v1",
+  "review_kind": "ai_assisted_offline_development_review",
+  "independent_evaluation": false,
+  "provider_calls": 0,
+  "model_adherence_evaluated": false,
+  "token_estimate_method": "ceil(characters / 4), heuristic only; not tokenizer, billing or upper bound",
+  "length_metrics": {
+    "news-interpretation-prompt-v4.draft1.txt": {
+      "bytes_utf8": 10455,
+      "characters": 10455,
+      "words_whitespace": 1421,
+      "lines": 139,
+      "rough_tokens_characters_div4": 2614
+    },
+    "news-interpretation-prompt-v4.draft2.txt": {
+      "bytes_utf8": 8028,
+      "characters": 8028,
+      "words_whitespace": 1075,
+      "lines": 106,
+      "rough_tokens_characters_div4": 2007
+    }
+  },
+  "sha256": {
+    "evaluation/phase4c2_p1_prompt_v4/news-interpretation-prompt-v4.draft1.txt": "0d345c3201fe5475c2a69030b22538a0f659df6a8225227ea6df9a7a58d09482",
+    "evaluation/phase4c2_p1_prompt_v4/news-interpretation-prompt-v4.draft2.txt": "7ed068f02f0f99769af7b83072d265745ffb7f6941fa9528d98fb87ae7182d34",
+    "evaluation/phase4c2_p1_prompt_v4/proposal.json": "c956b078fd4d0f527eedf04d7357daf3e9ee490e571639294bd525c5f9c28c13",
+    "evaluation/phase4c2_p1_prompt_v4/fixtures.json": "c6d25d3d8720643785379b038019759535bce47adf0e4346c76511de1e53dc46",
+    "tests/integration/test_economic_prompt_v4_proposal.py": "17d26609dd56220004d04fca9cf2ececacb7b56faa82f432501c07d2f4783fa2",
+    "tests/integration/test_economic_prompt_v4_draft2.py": "259e5b08f4b4906f119122d06a53b8e65185eaa49422679270e26b0a6a2612af",
+    "docs/phase4c2-p1-prompt-validator-alignment.md": "af9007d2eb970147e4556bfd5141a138a24811841760eb4714c314b5064778c3",
+    "src/investment_system/agents/news_interpretation/economic_attribution.py": "3622243db89447dfed379fd46bd8d4c1037052403fac88983bb8ee1af04b602f",
+    "src/investment_system/agents/news_interpretation/replay.py": "dc7e4cae316fba7699575802865b8efa6a010d5c3e8e76adf4d520c363b5cd44",
+    "src/investment_system/agents/news_interpretation/grounding.py": "cfd68f74edd513837349bf6d03b94cf3c56f28e7ee216e5925ed5462b30576e5",
+    "src/investment_system/agents/news_interpretation/schemas.py": "92c1ac381c7806aa674e5032812d52ccd2f09ae438a948fa6bd759b9a53ff5c1",
+    "src/investment_system/agents/news_interpretation/runtime_schemas.py": "537bc3edb9cfffe8f2a40ac7ada329a1b2736f2ae852a2f689e8aca2f9324cb8",
+    "src/investment_system/agents/news_interpretation/service.py": "f49d5fd82f67b6fb0cef5990d00c3847f022583e8ee8701129868ab26af4f5dc"
+  }
+}
