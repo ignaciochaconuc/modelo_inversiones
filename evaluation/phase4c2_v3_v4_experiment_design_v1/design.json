@@ -1,0 +1,201 @@
+{
+  "design_version": "news-prompt-comparison-design-v1",
+  "status": "phase4c2_v3_v4_experiment_design_pending_review",
+  "execution_authorized": false,
+  "production_activation": false,
+  "corpus_created": false,
+  "reserved_frozen": false,
+  "references_generated": false,
+  "predictions_generated": false,
+  "phase4c3": "not_started",
+  "scope": "paired_exploratory_synthetic_prompt_comparison",
+  "arms": {
+    "baseline": {
+      "prompt_version": "news-interpretation-prompt-v3",
+      "header_encoding": "UTF-8 of exact prepare_economic_request header including trailing newline",
+      "header_sha256": "60cfccd2a2fbf0e5134e2cd0e4beba72112bd10765522d981d9e4925e18fa83b"
+    },
+    "candidate": {
+      "prompt_version": "news-interpretation-prompt-v4",
+      "draft_revision": "draft2",
+      "path": "evaluation/phase4c2_p1_prompt_v4/news-interpretation-prompt-v4.draft2.txt",
+      "sha256": "7ed068f02f0f99769af7b83072d265745ffb7f6941fa9528d98fb87ae7182d34",
+      "proposal_sha256": "c4d8674a30a13cfc085027edddd74f23ea232d6254363647b6d78b174b4c7a90"
+    }
+  },
+  "shared_output": {
+    "model_output_version": "news-economic-selection-v3",
+    "schema_fingerprint": "928e28c7a9572c983065026832d715d3080f77ee947743137c6c571bf017055d",
+    "resolver_version": "news-exact-quote-resolver-v1",
+    "validation_version": "news-economic-validation-v3",
+    "attribution_version": "news-economic-attribution-v1"
+  },
+  "corpus_blueprint": {
+    "development_cases": 24,
+    "reserved_cases": 96,
+    "development_families": 12,
+    "reserved_families": 48,
+    "cases_per_family": 2,
+    "strata": [
+      {
+        "id": "announced",
+        "coverage": "Anuncio frente a cumplimiento; condiciones de cierre",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "completed",
+        "coverage": "Cierre real frente a cierre de otra actuación",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "proposed",
+        "coverage": "Propuesta, intención y acuerdo sin consumación",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "unknown_stage",
+        "coverage": "Evidencia semántica parcial y morfología no codificable",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "negation",
+        "coverage": "Negación del evento frente a información incidental",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "temporal_conditions",
+        "coverage": "Futuro, condición, rumor atribuido y modalidad",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "direct_participation",
+        "coverage": "Comprador/objetivo, emisor, cliente/proveedor y contraparte",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "indirect_relations",
+        "coverage": "Propiedad, suministro, competencia y licencia respaldadas",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "context_and_identity",
+        "coverage": "Identidad corporativa sin participación; productos/plataformas",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "numeric_fidelity",
+        "coverage": "Cifras, signos, locales, unidades, escalas, períodos y contradicciones",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "dates_and_pit",
+        "coverage": "Fechas textuales/ISO y registry temporal neutral",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      },
+      {
+        "id": "insufficient_evidence",
+        "coverage": "Abstención, incertidumbre parcial y múltiples acontecimientos",
+        "development_families": 1,
+        "reserved_families": 4,
+        "cases_per_family": 2
+      }
+    ],
+    "excluded_material": [
+      "original_32_and_frozen_references",
+      "both_real_smokes",
+      "draft1_draft2_contract_probes",
+      "prior_development_or_semantic_review_cases",
+      "Phase3_official_TEST",
+      "Finnhub_content"
+    ]
+  },
+  "planned_execution": {
+    "model_alias_pending_reverification": "gpt-5.6-luna",
+    "max_attempts_per_case_arm": 1,
+    "max_output_tokens": 2048,
+    "reasoning_effort_pending_reverification": "none",
+    "strict_structured_outputs": true,
+    "reserved_provider_calls": 192,
+    "optional_separately_authorized_development_calls": 48,
+    "cache_recovery": false,
+    "balanced_order_seed": 20261019,
+    "microbatch_cases": 16
+  },
+  "retention": {
+    "content_hours": 24,
+    "diagnostic_days": 90,
+    "p0_version": "news-evaluation-diagnostics-v1",
+    "policy": "diagnostic-metadata-retention-v1"
+  },
+  "decision_proposal": {
+    "scope": "research_candidate_only_not_production",
+    "critical_accepted_safety_errors_allowed": 0,
+    "minimum_primary_delta": 0.05,
+    "minimum_conclusive_reference_cases": 87,
+    "minimum_fully_attempted_pairs": 87,
+    "minimum_semantic_review_coverage": 0.9,
+    "cluster_bootstrap_replicates": 10000,
+    "analysis_seed": 20261019,
+    "ci_level": 0.95,
+    "no_worsening_common_denominator_dimensions": [
+      "incorrect_identity",
+      "incorrect_participation",
+      "material_omissions",
+      "numeric_errors",
+      "temporal_errors"
+    ],
+    "no_prompt_edits_after_reserved_predictions": true,
+    "all_predeclared_safety_cases_require_conclusive_review": true,
+    "missing_semantic_review_policy": "selection must pass conservative bounds (v4 worst, v3 best); no imputed semantic labels"
+  },
+  "budget_scenario": {
+    "currency": "USD",
+    "basis": "historical expired profile, illustrative only; not current official prices",
+    "profile": "config/news_interpretation.evaluation.yaml",
+    "valid_until": "2026-10-15T20:39:20Z",
+    "historical_rates_per_million": {
+      "input": 0.2,
+      "cache_read": 0.02,
+      "cache_write": 0.25,
+      "output": 1.2
+    },
+    "planning_input_bound_per_wire": 48000,
+    "output_cap": 2048,
+    "worst_input_rate": 0.25,
+    "reservation_per_call": 0.0144576,
+    "reserved_total_reservation": 2.7758592,
+    "optional_development_reservation": 0.6939648,
+    "proposed_reserved_application_cap": 3.2,
+    "proposed_optional_development_application_cap": 0.8,
+    "proposed_combined_cap": 4,
+    "reference_annotation_cost_included": false,
+    "authorization_granted": false,
+    "renewal_performed": false,
+    "reserved_per_arm_reservation": 1.3879296,
+    "proposed_reserved_per_arm_cap": 1.6,
+    "optional_development_per_arm_reservation": 0.3469824,
+    "proposed_optional_development_per_arm_cap": 0.4
+  }
+}

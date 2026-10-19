@@ -1,0 +1,30 @@
+{
+  "version": "news-prompt-comparison-design-manifest-v1",
+  "status": "phase4c2_v3_v4_experiment_design_pending_review",
+  "execution_authorized": false,
+  "production_activation": false,
+  "reserved_corpus_sha256": null,
+  "reference_set_sha256": null,
+  "future_runtime_implementation_fingerprint": null,
+  "meaning": "design artifact pins only; not an evaluation corpus freeze or inference authorization",
+  "sha256": {
+    "evaluation/phase4c2_v3_v4_experiment_design_v1/design.json": "1940b4cb59ffaab9080429f1601fa08ecd2bbc81886438e98abf1c05373a07c3",
+    "docs/phase4c2-v3-v4-experimental-protocol.md": "07afb9ec798ca3c22d5eafff501b6ea18d748daba4d4887f6fb12d72a2a3db55",
+    "docs/phase4c2-v3-v4-versioning-plan.md": "5f380cd54b23415de3a5d1c442562a7d951fe61b918365bf7733cbee7590dd7c",
+    "evaluation/phase4c2_p1_prompt_v4/news-interpretation-prompt-v4.draft2.txt": "7ed068f02f0f99769af7b83072d265745ffb7f6941fa9528d98fb87ae7182d34",
+    "evaluation/phase4c2_p1_prompt_v4/proposal.draft2.json": "c4d8674a30a13cfc085027edddd74f23ea232d6254363647b6d78b174b4c7a90",
+    "config/news_interpretation.evaluation.yaml": "88152aeba1f6ca15648aee77c227125ba2e2b7ea10db371e4414ad69fb1407ab",
+    "config/news_interpretation.evaluation.p0.yaml": "5e6a35bb5364f9fccedf0c844997fd8bc83ce1aa4a0f26e2919d99eef3af36a3",
+    "src/investment_system/agents/news_interpretation/economic_attribution.py": "3622243db89447dfed379fd46bd8d4c1037052403fac88983bb8ee1af04b602f",
+    "src/investment_system/agents/news_interpretation/runtime_schemas.py": "537bc3edb9cfffe8f2a40ac7ada329a1b2736f2ae852a2f689e8aca2f9324cb8",
+    "src/investment_system/agents/news_interpretation/service.py": "f49d5fd82f67b6fb0cef5990d00c3847f022583e8ee8701129868ab26af4f5dc",
+    "src/investment_system/agents/news_interpretation/persistence.py": "a49fec28c18218409cd973d99229d232ba59a4e95575f62a70b4e03d0e5fe071",
+    "src/investment_system/agents/news_interpretation/diagnostic_events.py": "6f7de1c9b40409de57d4bf4dc59ebe28abf967925ce821e3971a7f553fab0bc2",
+    "src/investment_system/agents/news_interpretation/diagnostic_sidecar.py": "7742ea6e55045561e00dd9bfed71fe747c9abb977b96b5f2dd6dfca97fbca965",
+    "src/investment_system/agents/news_interpretation/grounding.py": "cfd68f74edd513837349bf6d03b94cf3c56f28e7ee216e5925ed5462b30576e5",
+    "src/investment_system/agents/news_interpretation/replay.py": "dc7e4cae316fba7699575802865b8efa6a010d5c3e8e76adf4d520c363b5cd44",
+    "src/investment_system/agents/news_interpretation/schemas.py": "92c1ac381c7806aa674e5032812d52ccd2f09ae438a948fa6bd759b9a53ff5c1",
+    "tools/evaluation/nacho_attribution_runner.py": "7577367899e95ec47fe32e057a232e7a6e444c9c812347af075867097c5d2f43",
+    "tools/evaluation/nacho_evaluation_diagnostics.py": "3ae30d9012dada6f385a9a4085a0f5f4c04772be2b7bead75e90aeacb2401e92"
+  }
+}
