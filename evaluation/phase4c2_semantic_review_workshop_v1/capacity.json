@@ -1,0 +1,60 @@
+{
+  "version": "news-semantic-review-capacity-plan-v1",
+  "execution_status": "not_executable",
+  "confirmed_primary_reviewers": [],
+  "confirmed_adjudicators": [],
+  "confirmed_availability_slots": [],
+  "owner_authorization_role": "Nacho; no review-time commitment inferred",
+  "reference_review_mode": "unassigned",
+  "output_review_mode": "unassigned",
+  "microblocks": 6,
+  "cases_per_microblock": 16,
+  "outputs_per_microblock": 32,
+  "total_outputs": 192,
+  "independent_reviews_per_output": 2,
+  "time_assumptions_minutes": {
+    "primary_review": 12,
+    "adjudication": 6
+  },
+  "time_assumptions_source": "planning estimates, NOT measured human or AI throughput",
+  "worst_case_disagreement_fraction": 1,
+  "contingency_multiplier": 1.25,
+  "ttl_hours": 24,
+  "diagnostic_days": 90,
+  "operational_safety_buffer_minutes": 60,
+  "human_workload_hours": {
+    "primary": 76.8,
+    "adjudication_worst_case": 19.2,
+    "total_with_contingency": 120
+  },
+  "demonstration_only": {
+    "primary_pool_sizes": [
+      6,
+      6
+    ],
+    "adjudicator_pool_size": 3,
+    "availability_window_hours": 16,
+    "release_spacing_hours": 1,
+    "simulated_latest_completion_hours": 8.2505555556,
+    "confirms_actual_staffing": false
+  },
+  "stop_conditions": [
+    "unassigned_or_unconfirmed_reviewers",
+    "per_response_deadline_or_safety_buffer_would_be_missed",
+    "review_capacity_below_frozen_calendar",
+    "price_or_authorization_expiry",
+    "unknown_cost_or_persistence_failure",
+    "critical_security_event"
+  ],
+  "alternatives": [
+    "verified_and_separately_authorized_AI_assisted_review_with_measured_operator_time_and_actual_provenance",
+    "larger_confirmed_parallel_human_pool",
+    "new_preregistered_design_before_reserved_creation_if_scope_or_calendar_must_change"
+  ],
+  "never_allowed": [
+    "extend_response_TTL",
+    "copy_responses_to_permanent_reference_files",
+    "silent_reduction_of_cases_or_reviewers_after_results",
+    "claim_simulated_capacity_is_actual_availability"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "version": "news-semantic-review-methodology-manifest-v1",
+  "status": "phase4c2_v3_v4_methodology_prepared_pending_review",
+  "status_identifier_provisional": true,
+  "execution_status": "not_executable",
+  "execution_authorized": false,
+  "production_activation": false,
+  "provider_calls": 0,
+  "scope": "offline simulated development workshop, not reserved corpus or inference authorization",
+  "original_24_development_cases_created": 0,
+  "reserved_96_cases_created": 0,
+  "validation": {
+    "pytest_passed": 869,
+    "new_workshop_tests": 14,
+    "self_test": "passed",
+    "validate_data": "passed",
+    "compileall": "passed",
+    "preexisting_files_unchanged": 3558,
+    "original_design_pins_verified": 18
+  },
+  "sha256": {
+    "PROJECT_SPEC.md": "ea16e931742f11fffcb4589919989d534059516a2fbc95fd1d2c5a44b767d1c5",
+    "docs/phase4c2-v3-v4-experimental-protocol.md": "07afb9ec798ca3c22d5eafff501b6ea18d748daba4d4887f6fb12d72a2a3db55",
+    "docs/phase4c2-v3-v4-methodology-readiness.md": "b1c2ce26208bd118b9209682b2fe55b39a0733b623b1d56e157ec528a69c5915",
+    "docs/phase4c2-v3-v4-versioning-plan.md": "5f380cd54b23415de3a5d1c442562a7d951fe61b918365bf7733cbee7590dd7c",
+    "evaluation/phase4c2_semantic_review_workshop_v1/budgets.json": "2124c184d38c395539c8cbe18f78f0947301f37a7a4cacd8cbddb7e645a9a5ce",
+    "evaluation/phase4c2_semantic_review_workshop_v1/capacity.json": "3df5cb8badf7919a21941383d49c14112ea8296466f87bbfa963beed60390c80",
+    "evaluation/phase4c2_semantic_review_workshop_v1/examples.json": "8d90c6ba7a16d542e1ee8e1905158706127035a3e562c626d3939245419f3c5f",
+    "evaluation/phase4c2_semantic_review_workshop_v1/instrument.json": "8b1a7ea331377bb177ef98bf11ae03b53eaf0216326196e88bc28cdd61420c55",
+    "evaluation/phase4c2_v3_v4_experiment_design_v1/design-manifest.json": "e121c7e07294df5853932ab7111c9f36be7b19aa1f29c428770ba3a07a52ead2",
+    "evaluation/phase4c2_v3_v4_experiment_design_v1/design.json": "1940b4cb59ffaab9080429f1601fa08ecd2bbc81886438e98abf1c05373a07c3",
+    "tests/unit/test_semantic_review_workshop.py": "60b2983755743393d129a481f75d9283d63aff126e2a6f369b379d91f2860ef1",
+    "tools/evaluation/semantic_review_workshop.py": "f757b69c02cbd8c5a6b85f360a64cdd8adad6b17c7106ad2b5c2e672ee25af1e"
+  }
+}

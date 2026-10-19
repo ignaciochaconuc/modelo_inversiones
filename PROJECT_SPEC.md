@@ -200,6 +200,10 @@ propuesta de corpus nuevo, métricas y versiones en
 `docs/phase4c2-v3-v4-experimental-protocol.md`. No crea un holdout congelado
 ni soporte de ejecución del candidato; tampoco renueva el perfil o autoriza inferencias.
 
+La preparación metodológica añade un instrumento y taller offline separado:
+`docs/phase4c2-v3-v4-methodology-readiness.md`. Sin capacidad de revisión confirmada,
+el experimento sigue no ejecutable; no se crean los 96 casos ni se activa v4.
+
 `LLMRouter` selecciona proveedor/modelo por agente y tarea, usando `config/models.yaml`. Los clientes de OpenAI y Ollama son stubs deliberados. El pricing es configurable y no incluye precios reales hardcodeados.
 
 Cada llamada puede registrar tokens, cache, costo estimado, latencia, estado, agente, tarea, ticker, análisis y trade. Se contemplan agregaciones diarias, mensuales, por agente, ticker, análisis y trade.

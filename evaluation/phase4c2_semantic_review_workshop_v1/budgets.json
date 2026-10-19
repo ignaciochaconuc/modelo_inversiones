@@ -1,0 +1,42 @@
+{
+  "version": "news-semantic-review-budget-separation-v1",
+  "currency": "USD",
+  "executed_api_calls": 0,
+  "costs": {
+    "nacho_predictions": {
+      "proposed_reserved_cap": 3.2,
+      "optional_development_cap": 0.8,
+      "basis": "historical expired rates only; not reverified or authorized",
+      "executed_cost": 0
+    },
+    "reference_generation_ai": {
+      "model": null,
+      "tariff": null,
+      "expected_calls": null,
+      "estimated_cost": null,
+      "approved_cap": null,
+      "executed_cost": 0
+    },
+    "output_review_ai": {
+      "model": null,
+      "tariff": null,
+      "expected_calls": null,
+      "estimated_cost": null,
+      "approved_cap": null,
+      "executed_cost": 0
+    },
+    "human_work": {
+      "api_cost": 0,
+      "confirmed_hours": null,
+      "hourly_rate": null,
+      "cash_cost": null,
+      "forecast_output_review_hours_with_contingency": 120,
+      "reference_annotation_hours_not_estimated": true
+    },
+    "other_costs": {
+      "subscription_fx_tax_storage_costs": null
+    }
+  },
+  "unknown_is_not_zero": true,
+  "no_combined_authorization_issued": true
+}

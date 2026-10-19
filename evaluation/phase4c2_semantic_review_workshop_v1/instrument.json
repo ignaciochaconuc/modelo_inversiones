@@ -1,0 +1,155 @@
+{
+  "version": "news-semantic-review-instrument-v1",
+  "status": "phase4c2_v3_v4_methodology_prepared_pending_review",
+  "status_identifier_note": "provisional: requested final identifier was truncated after p",
+  "execution_status": "not_executable",
+  "implemented_scope": "offline_simulated_development_only",
+  "production_activation": false,
+  "provider_calls": 0,
+  "dimensions": [
+    {
+      "id": "events",
+      "instruction": "¿Qué acontecimientos afirma realmente la fuente y con qué condiciones?"
+    },
+    {
+      "id": "event_stage",
+      "instruction": "Separar anuncio/propuesta/cierre, certeza y hecho al que se refiere el verbo."
+    },
+    {
+      "id": "evidence",
+      "instruction": "Localización literal y apoyo de la proposición son juicios distintos."
+    },
+    {
+      "id": "identity",
+      "instruction": "Nombre corporativo/identidad desconocida; registry neutral no prueba participación."
+    },
+    {
+      "id": "participation",
+      "instruction": "Directa, indirecta respaldada, contextual o desconocida."
+    },
+    {
+      "id": "role",
+      "instruction": "Comprador/objetivo/emisor/proveedor/etc., sin inferir rol por ticker."
+    },
+    {
+      "id": "relationship",
+      "instruction": "Tipo, contraparte, dirección y estado de relación."
+    },
+    {
+      "id": "ticker_link",
+      "instruction": "Vínculo bursátil elegible distinto de exposición económica."
+    },
+    {
+      "id": "quantities",
+      "instruction": "Lexema, magnitud, unidad, escala, período y contradicciones."
+    },
+    {
+      "id": "dates",
+      "instruction": "Fecha del acontecimiento, publicación, fecha textual y límites PIT."
+    },
+    {
+      "id": "negation",
+      "instruction": "Alcance sobre evento o dato incidental; no recortar calificadores."
+    },
+    {
+      "id": "impact",
+      "instruction": "Impacto potencial inferido frente a causalidad, materialidad o exposición no demostradas."
+    },
+    {
+      "id": "material_omissions",
+      "instruction": "Hechos/condiciones/actores/cifras que cambian la interpretación si se omiten."
+    }
+  ],
+  "annotation_stages": [
+    "factual_annotation_without_predictions_or_contract_rules",
+    "separate_contract_representability_layer",
+    "pre_prediction_reference_adjudication_and_freeze",
+    "ephemeral_blind_output_packet",
+    "individual_dimension_review",
+    "explicit_output_adjudication_preserving_both_reviews",
+    "family_weighted_endpoint_and_secondary_counts"
+  ],
+  "factual_form": {
+    "case_id": null,
+    "source_fingerprint": null,
+    "reviewer_id": null,
+    "provenance_kind": null,
+    "facts": [
+      {
+        "fact_id": null,
+        "dimension": null,
+        "meaning": null,
+        "certainty": null,
+        "material": null,
+        "citations": [
+          {
+            "field": null,
+            "start": null,
+            "end": null,
+            "quote": null
+          }
+        ]
+      }
+    ]
+  },
+  "contract_form": {
+    "contract_version": "news-economic-validation-v3",
+    "source_factual_reference_sha256": null,
+    "allowed_outcomes": [],
+    "mappings": [
+      {
+        "fact_id": null,
+        "mode": null,
+        "rationale": null
+      }
+    ]
+  },
+  "output_review_form": {
+    "blind_id": null,
+    "reviewer_id": null,
+    "provenance_kind": null,
+    "review_started_at": null,
+    "review_completed_at": null,
+    "timestamp_source": null,
+    "model_label": null,
+    "model_snapshot": null,
+    "api_parameters": null,
+    "api_tokens": null,
+    "api_cost_usd": null,
+    "verdicts": {
+      "allowed": [
+        "pass",
+        "fail",
+        "indeterminate",
+        "not_applicable"
+      ],
+      "counts": [
+        "matched",
+        "omitted",
+        "unsupported"
+      ],
+      "abstention": [
+        "not_applicable",
+        "justified",
+        "unjustified",
+        "indeterminate"
+      ]
+    },
+    "rationale_content_storage": "24h only, never in 90d diagnostic metadata"
+  },
+  "provenance_policy": {
+    "actual_reviewer_or_model_identity_required": true,
+    "never_infer_snapshot": true,
+    "human_independence_must_be_verified": true,
+    "owner_unblinded_review_separate": true,
+    "implemented_harness_kind": "simulated_development",
+    "future_real_importer_requires_separate_implementation_and_review": true
+  },
+  "retention": {
+    "response_hours": 24,
+    "review_metadata_days": 90,
+    "p0_diagnostic_days": 90,
+    "reference_policy": "own synthetic sources annotated before responses; never provider-response copies"
+  },
+  "unchanged_design": "evaluation/phase4c2_v3_v4_experiment_design_v1/design.json"
+}
