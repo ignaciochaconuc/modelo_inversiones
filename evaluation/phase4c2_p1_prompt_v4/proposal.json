@@ -1,0 +1,25 @@
+{
+  "artifact_version": "economic-prompt-proposal-v1",
+  "prompt_version": "news-interpretation-prompt-v4",
+  "draft_revision": "draft1",
+  "status": "phase4c2_p1_prompt_v4_proposed_pending_review",
+  "production_activation": false,
+  "model_output_version": "news-economic-selection-v3",
+  "validation_version": "news-economic-validation-v3",
+  "resolver_version": "news-exact-quote-resolver-v1",
+  "fixture_role": "ai_authored_development_contract_probes",
+  "independent_evaluation": false,
+  "provider_calls": 0,
+  "artifact_sha256": {
+    "news-interpretation-prompt-v4.draft1.txt": "0d345c3201fe5475c2a69030b22538a0f659df6a8225227ea6df9a7a58d09482",
+    "fixtures.json": "c6d25d3d8720643785379b038019759535bce47adf0e4346c76511de1e53dc46"
+  },
+  "production_source_sha256": {
+    "src/investment_system/agents/news_interpretation/economic_attribution.py": "3622243db89447dfed379fd46bd8d4c1037052403fac88983bb8ee1af04b602f",
+    "src/investment_system/agents/news_interpretation/replay.py": "dc7e4cae316fba7699575802865b8efa6a010d5c3e8e76adf4d520c363b5cd44",
+    "src/investment_system/agents/news_interpretation/grounding.py": "cfd68f74edd513837349bf6d03b94cf3c56f28e7ee216e5925ed5462b30576e5",
+    "src/investment_system/agents/news_interpretation/schemas.py": "92c1ac381c7806aa674e5032812d52ccd2f09ae438a948fa6bd759b9a53ff5c1",
+    "src/investment_system/agents/news_interpretation/runtime_schemas.py": "537bc3edb9cfffe8f2a40ac7ada329a1b2736f2ae852a2f689e8aca2f9324cb8",
+    "src/investment_system/agents/news_interpretation/service.py": "f49d5fd82f67b6fb0cef5990d00c3847f022583e8ee8701129868ab26af4f5dc"
+  }
+}
