@@ -1,0 +1,40 @@
+{
+  "version": "news-pilot-semantic-timing-separation-manifest-v1",
+  "proposal_status": "proposed_pending_owner_approval",
+  "protocol_changed": false,
+  "code_or_original_forms_changed": false,
+  "content_approved": false,
+  "case_one_factual_status": "in_progress",
+  "case_one_duration_eligible": false,
+  "next_case_id": "D-a8db3a0c74d93eb8",
+  "next_case_started": false,
+  "contract_review_opened": false,
+  "provider_calls": 0,
+  "phase4c3": "not_started",
+  "validation": {
+    "full_pytest_passed": 925,
+    "validate_data": "passed",
+    "inline_integrity_and_empty_material_checks": "passed",
+    "preexisting_files_unchanged": 3727
+  },
+  "sha256": {
+    "data/cache/news_development_pilot/manual-20261102-attempt01/provenance-v2.json": "af7c6e5ec2891ad3ea9acf23f6c7116e0f2c088e8bf7733e639f691758e40702",
+    "data/cache/news_development_pilot/manual-20261102-attempt01/untimed-disposition-v1.json": "d7b8528c9494c6b1e81614d9d08240512923f3869a317b2a60ee9d1d8dba86e9",
+    "data/cache/news_development_pilot/manual-20261102-attempt02/START.md": "083d48093f8c94b2d73a420e58add491d8aef08cc138ab51d78429ef18eaf215",
+    "data/cache/news_development_pilot/manual-20261102-attempt02/time-log-template.csv": "5cf5e8935f4e892d08d1c442080ec7f31ff33f8d8dd6ea932b7c646b55565a0a",
+    "data/cache/news_development_pilot/manual-20261102-attempt02/factual/D-a8db3a0c74d93eb8.json": "f591d12faa423aad2751879c880820e8ded5fef3a5204c901d468a881d0b6c80",
+    "data/cache/news_development_pilot/manual-20261102-attempt02/packets/D-a8db3a0c74d93eb8.json": "0031eaa8200c0c1f2a22b1c9df82000f0b5d16b1e8f9e17f04bc0f7fec719795",
+    "data/cache/news_development_pilot/manual-20261102-attempt02/packets/D-a8db3a0c74d93eb8.md": "04105ebe45645bcb1633f0c4478ac6c72cb2174f35398e369acc20676b3d09e0",
+    "data/cache/news_development_pilot/manual-20261102-attempt02/timing/D-a8db3a0c74d93eb8.json": "181bde425453915ec9c826ea4c1a77a5e6dcc098892f6e81580d6438697caf3a",
+    "data/cache/news_development_pilot/manual-20261102-attempt01/factual/D-293a6cbca3479505.json": "9072b179f81639e507d0c05c84fbe495f17de3647984591c335d99c32ecb396b",
+    "data/cache/news_development_pilot/manual-20261102-attempt01/timing/D-293a6cbca3479505.json": "c44fe91a9cbad1f2fe17ac6ef8091f4ea6d45ba435275b0af8ac1a2d9eaabfe5",
+    "evaluation/phase4c2_development_pilot_v1/manifest.json": "d7ee6107e0cb59fd6b7881ff6a30085c4beae51edc14bd3330208f7ff1b3c4f3",
+    "evaluation/phase4c2_development_pilot_v1/review-order.json": "268c9aa3b757fd2ec1bad2a0b6ca7874ed4d81ce0e2ad59a51d87d77fdcc0afc",
+    "evaluation/phase4c2_pilot_methodology_amendment_v1/proposal.json": "25293a590b92d9fec9f86846c7d7dcedbb0d52fa21098beddb8fbe1610ef9ed7",
+    "tools/evaluation/development_pilot_review.py": "adf8364b2e460f22cda977b3baadb90ddcd7c2158abb4f9143fa7f63f6109c8a",
+    "docs/phase4c2-development-pilot-operator.md": "6207268854a05695dee45018f428c246bb0472b5fd0e6060c66b164cc0f4ba75",
+    "docs/phase4c2-pilot-semantic-timing-separation-proposal-v1.md": "908bf30e1a20a1dafe35c08428f65edf67a3138f8936829c0d5a538594318798",
+    "docs/phase4c2-v3-v4-experimental-protocol.md": "07afb9ec798ca3c22d5eafff501b6ea18d748daba4d4887f6fb12d72a2a3db55",
+    "docs/phase4c2-v3-v4-methodology-readiness.md": "b1c2ce26208bd118b9209682b2fe55b39a0733b623b1d56e157ec528a69c5915"
+  }
+}

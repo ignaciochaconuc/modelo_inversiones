@@ -1,0 +1,69 @@
+{
+  "version": "news-pilot-semantic-timing-separation-proposal-v1",
+  "status": "proposed_pending_owner_approval",
+  "implementation_status": "not_implemented",
+  "scope": "development_manual_pilot_only",
+  "production_contract_changes": false,
+  "current_protocol_finding": {
+    "retain_assisted_draft_without_measurements": true,
+    "integral_pilot_completion_without_required_times": false,
+    "standalone_owner_approved_untimed_outcome": "not_defined_by_current_integral_instrument"
+  },
+  "proposed_axes": {
+    "content_approval": [
+      "pending_owner_approval",
+      "owner_approved_content",
+      "revisions_requested"
+    ],
+    "timing_eligibility": [
+      "unknown_excluded",
+      "prospectively_measured_pending_validation",
+      "eligible_measured_scope"
+    ],
+    "integral_pilot_status": [
+      "incomplete",
+      "complete_under_existing_requirements"
+    ]
+  },
+  "proposed_approval_record_required": [
+    "case_id",
+    "exact_annotation_sha256",
+    "approval_state",
+    "approver_identity",
+    "explicit_decision_source",
+    "scope",
+    "ai_assistance_origin",
+    "independence_limitations",
+    "timing_eligibility"
+  ],
+  "constraints": [
+    "Do not create approval until explicit owner decision on the exact content hash.",
+    "Owner approval is not independent human adjudication, ground truth or a freeze.",
+    "Preserve historical factual v2 and original instrument forms; do not silently map owner approval to legacy completed.",
+    "Never infer missing generation or review timestamps from receipt, filesystem times or approval time.",
+    "An approval timestamp, if actually documented, is a new decision event, not recovered review time.",
+    "Unknown duration remains null and excluded from timing/capacity denominators, not zero.",
+    "Do not exclude the untimed attempt from qualitative history or hide it from case counts.",
+    "No changes to experiment endpoints, thresholds, coverage gates, reserved set, model settings or TTL.",
+    "No contract review opened automatically upon factual approval."
+  ],
+  "current_case": {
+    "case_id": "D-293a6cbca3479505",
+    "annotation_sha256": "9072b179f81639e507d0c05c84fbe495f17de3647984591c335d99c32ecb396b",
+    "factual_status": "in_progress",
+    "content_approval": "pending_owner_approval",
+    "annotation_kind": "chatgpt_assisted_exploratory_review",
+    "independent_human_review": false,
+    "adjudication_claimed": false,
+    "timing_eligibility": "unknown_excluded",
+    "active_seconds": null
+  },
+  "future_implementation_requires": [
+    "Explicit acceptance of amendment scope.",
+    "Versioned offline approval sidecar instrument and tests before any machine-readable approved outcome is consumed.",
+    "Separate owner approval of exact factual content; current request is not that approval.",
+    "Preserve failure of legacy aggregate validation when its timing requirements are unmet."
+  ],
+  "inference_authorized": false,
+  "phase4c3": "not_started"
+}
