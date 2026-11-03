@@ -1,0 +1,45 @@
+{
+  "version": "news-pilot-semantic-timing-separation-proposal-manifest-v2",
+  "status": "proposed_pending_owner_approval",
+  "implementation_status": "not_implemented",
+  "scope": "development_manual_pilot_only",
+  "proposal_document": "docs/phase4c2-pilot-semantic-timing-separation-proposal-v2.md",
+  "historical_proposal_preserved": true,
+  "existing_approval_records_changed": false,
+  "existing_form_statuses_changed": false,
+  "production_contracts_changed": false,
+  "contract_review_opened": false,
+  "official_phase_states_changed": false,
+  "verification": {
+    "pytest": {
+      "passed": 925,
+      "seconds": 207.62
+    },
+    "packages": {
+      "cases": 6,
+      "completed_cases": 0,
+      "semantic_truth": "not_assessed"
+    },
+    "approval_hash_chains_checked": 6,
+    "existing_files_unchanged": 3801,
+    "new_adaptation_schema_or_validator_tests": "Specified in proposal; not implemented or claimed as passed",
+    "validate_data": "Not rerun: only proposal documentation and this manifest added; no data/schema/temporal behavior changed"
+  },
+  "timestamp_policy": "No review, approval or closure timestamps inferred or created",
+  "inferences": 0,
+  "provider_calls": 0,
+  "new_cases": 0,
+  "phase4c3": "not_started",
+  "sha256": {
+    "docs/phase4c2-pilot-semantic-timing-separation-proposal-v2.md": "663102a7caaf7ef6ea53b5dfec90a1b0bf22933d72a6982ebd4b0e385601d453",
+    "docs/phase4c2-factual-pilot-six-case-balance-v1.md": "f49e81a0fe6aebf76ab37151dd3a94af41e48f1234e0ac3207c682d244e05377",
+    "docs/phase4c2-pilot-semantic-timing-separation-proposal-v1.md": "908bf30e1a20a1dafe35c08428f65edf67a3138f8936829c0d5a538594318798",
+    "evaluation/phase4c2_pilot_methodology_amendment_v1/proposal.json": "25293a590b92d9fec9f86846c7d7dcedbb0d52fa21098beddb8fbe1610ef9ed7",
+    "evaluation/phase4c2_pilot_methodology_amendment_v1/manifest.json": "cf892a338672e3f11083585f59f6dd502af55a41366512dd916935e35854e3f0",
+    "tools/evaluation/development_pilot_review.py": "adf8364b2e460f22cda977b3baadb90ddcd7c2158abb4f9143fa7f63f6109c8a",
+    "docs/phase4c2-development-pilot-operator.md": "6207268854a05695dee45018f428c246bb0472b5fd0e6060c66b164cc0f4ba75",
+    "docs/phase4c2-v3-v4-experimental-protocol.md": "07afb9ec798ca3c22d5eafff501b6ea18d748daba4d4887f6fb12d72a2a3db55",
+    "docs/phase4c2-v3-v4-methodology-readiness.md": "b1c2ce26208bd118b9209682b2fe55b39a0733b623b1d56e157ec528a69c5915",
+    "data/cache/news_development_pilot/factual-six-case-balance-v1/inventory.json": "c016de6fb0dcaa0372e6db58cf9d54aa45b4f98ddffea36f87e246a6cc2feb18"
+  }
+}
