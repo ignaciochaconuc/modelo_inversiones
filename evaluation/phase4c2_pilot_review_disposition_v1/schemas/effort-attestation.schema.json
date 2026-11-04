@@ -1,0 +1,115 @@
+{
+  "$defs": {
+    "Ref": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "title": "Ref",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-effort-attestation-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "case_id": {
+      "title": "Case Id",
+      "type": "string"
+    },
+    "measurement_sha256": {
+      "title": "Measurement Sha256",
+      "type": "string"
+    },
+    "review_id": {
+      "title": "Review Id",
+      "type": "string"
+    },
+    "reviewer_id": {
+      "title": "Reviewer Id",
+      "type": "string"
+    },
+    "scope": {
+      "items": {
+        "enum": [
+          "reading",
+          "factual_annotation",
+          "citation_check",
+          "contract_review",
+          "discrepancies",
+          "adjudication",
+          "administration"
+        ],
+        "type": "string"
+      },
+      "title": "Scope",
+      "type": "array"
+    },
+    "clock_evidence": {
+      "$ref": "#/$defs/Ref"
+    },
+    "quality_reviewed_by": {
+      "minLength": 1,
+      "title": "Quality Reviewed By",
+      "type": "string"
+    },
+    "decision_source": {
+      "minLength": 1,
+      "title": "Decision Source",
+      "type": "string"
+    },
+    "population": {
+      "minLength": 1,
+      "title": "Population",
+      "type": "string"
+    },
+    "familiarity": {
+      "minLength": 1,
+      "title": "Familiarity",
+      "type": "string"
+    },
+    "assistance": {
+      "minLength": 1,
+      "title": "Assistance",
+      "type": "string"
+    },
+    "human_time_separated_from_ai_and_waits": {
+      "const": true,
+      "title": "Human Time Separated From Ai And Waits",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "measurement_sha256",
+    "review_id",
+    "reviewer_id",
+    "scope",
+    "clock_evidence",
+    "quality_reviewed_by",
+    "decision_source",
+    "population",
+    "familiarity",
+    "assistance",
+    "human_time_separated_from_ai_and_waits"
+  ],
+  "title": "EffortAttestation",
+  "type": "object"
+}

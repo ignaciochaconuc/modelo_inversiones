@@ -1,0 +1,138 @@
+{
+  "$defs": {
+    "Coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Canonical Ids",
+          "type": "array"
+        },
+        "rationale": {
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        }
+      },
+      "required": [
+        "canonical_ids",
+        "rationale"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-factual-closure-decision-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "policy_version": {
+      "const": "news-pilot-semantic-timing-separation-proposal-v2",
+      "title": "Policy Version",
+      "type": "string"
+    },
+    "case_id": {
+      "title": "Case Id",
+      "type": "string"
+    },
+    "packet_fingerprint": {
+      "title": "Packet Fingerprint",
+      "type": "string"
+    },
+    "annotation_sha256": {
+      "title": "Annotation Sha256",
+      "type": "string"
+    },
+    "approval_sha256": {
+      "title": "Approval Sha256",
+      "type": "string"
+    },
+    "authorization_sha256": {
+      "title": "Authorization Sha256",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "closed_content_only_untimed",
+        "closed_under_legacy_protocol"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "explicitly_approved": {
+      "const": true,
+      "title": "Explicitly Approved",
+      "type": "boolean"
+    },
+    "decided_by": {
+      "minLength": 1,
+      "title": "Decided By",
+      "type": "string"
+    },
+    "decision_source": {
+      "minLength": 1,
+      "title": "Decision Source",
+      "type": "string"
+    },
+    "decided_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Decided At"
+    },
+    "factual_evidence_reviewed": {
+      "const": true,
+      "title": "Factual Evidence Reviewed",
+      "type": "boolean"
+    },
+    "uncertainty_preserved": {
+      "const": true,
+      "title": "Uncertainty Preserved",
+      "type": "boolean"
+    },
+    "unresolved_semantic_changes": {
+      "const": false,
+      "title": "Unresolved Semantic Changes",
+      "type": "boolean"
+    },
+    "material_coverage": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Coverage"
+      },
+      "title": "Material Coverage",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "policy_version",
+    "case_id",
+    "packet_fingerprint",
+    "annotation_sha256",
+    "approval_sha256",
+    "authorization_sha256",
+    "mode",
+    "explicitly_approved",
+    "decided_by",
+    "decision_source",
+    "decided_at",
+    "factual_evidence_reviewed",
+    "uncertainty_preserved",
+    "unresolved_semantic_changes",
+    "material_coverage"
+  ],
+  "title": "ClosureDecision",
+  "type": "object"
+}

@@ -1,0 +1,121 @@
+{
+  "$defs": {
+    "Ref": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "title": "Ref",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-methodology-authorization-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "policy_version": {
+      "const": "news-pilot-semantic-timing-separation-proposal-v2",
+      "title": "Policy Version",
+      "type": "string"
+    },
+    "proposal": {
+      "$ref": "#/$defs/Ref"
+    },
+    "approved": {
+      "const": true,
+      "title": "Approved",
+      "type": "boolean"
+    },
+    "authorized_by": {
+      "minLength": 1,
+      "title": "Authorized By",
+      "type": "string"
+    },
+    "decision_source": {
+      "minLength": 1,
+      "title": "Decision Source",
+      "type": "string"
+    },
+    "owner_statement": {
+      "minLength": 1,
+      "title": "Owner Statement",
+      "type": "string"
+    },
+    "source_message_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Source Message Id"
+    },
+    "authorized_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Authorized At"
+    },
+    "scope": {
+      "const": "development_pilot_dispositions_only",
+      "title": "Scope",
+      "type": "string"
+    },
+    "case_closures_authorized_by_this_record": {
+      "const": false,
+      "title": "Case Closures Authorized By This Record",
+      "type": "boolean"
+    },
+    "contractual_adapter_authorized": {
+      "const": false,
+      "title": "Contractual Adapter Authorized",
+      "type": "boolean"
+    },
+    "inference_authorized": {
+      "const": false,
+      "title": "Inference Authorized",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "policy_version",
+    "proposal",
+    "approved",
+    "authorized_by",
+    "decision_source",
+    "owner_statement",
+    "source_message_id",
+    "authorized_at",
+    "scope",
+    "case_closures_authorized_by_this_record",
+    "contractual_adapter_authorized",
+    "inference_authorized"
+  ],
+  "title": "Authorization",
+  "type": "object"
+}

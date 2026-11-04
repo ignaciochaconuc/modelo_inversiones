@@ -1,0 +1,18 @@
+{
+  "schema_version": "news-pilot-methodology-authorization-v1",
+  "policy_version": "news-pilot-semantic-timing-separation-proposal-v2",
+  "proposal": {
+    "path": "docs/phase4c2-pilot-semantic-timing-separation-proposal-v2.md",
+    "sha256": "663102a7caaf7ef6ea53b5dfec90a1b0bf22933d72a6982ebd4b0e385601d453"
+  },
+  "approved": true,
+  "authorized_by": "Project owner, current conversation participant",
+  "decision_source": "Explicit owner instruction approving proposal v2 and authorizing only its minimal offline semantic/timing separation mechanism in this development conversation.",
+  "owner_statement": "Apruebo la dirección metodológica de `docs/phase4c2-pilot-semantic-timing-separation-proposal-v2.md` y autorizo implementar su mecanismo mínimo de separación semántica y temporal.",
+  "source_message_id": null,
+  "authorized_at": null,
+  "scope": "development_pilot_dispositions_only",
+  "case_closures_authorized_by_this_record": false,
+  "contractual_adapter_authorized": false,
+  "inference_authorized": false
+}

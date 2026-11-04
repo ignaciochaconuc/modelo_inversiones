@@ -1,0 +1,54 @@
+{
+  "$defs": {
+    "Ref": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "title": "Ref",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-review-disposition-manifest-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "policy": {
+      "$ref": "#/$defs/Ref"
+    },
+    "source_inventory": {
+      "$ref": "#/$defs/Ref"
+    },
+    "records": {
+      "items": {
+        "$ref": "#/$defs/Ref"
+      },
+      "title": "Records",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "policy",
+    "source_inventory",
+    "records"
+  ],
+  "title": "Manifest",
+  "type": "object"
+}

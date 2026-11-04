@@ -1,0 +1,426 @@
+{
+  "$defs": {
+    "Closure": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "open",
+            "closed_content_only_untimed",
+            "closed_under_legacy_protocol"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "decision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "decision"
+      ],
+      "title": "Closure",
+      "type": "object"
+    },
+    "Content": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "owner_approved_content",
+          "title": "Status",
+          "type": "string"
+        },
+        "decision": {
+          "$ref": "#/$defs/Ref"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "status",
+        "decision",
+        "provenance"
+      ],
+      "title": "Content",
+      "type": "object"
+    },
+    "Declaration": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "minimum": 0,
+          "title": "Value",
+          "type": "number"
+        },
+        "unit": {
+          "const": "seconds",
+          "title": "Unit",
+          "type": "string"
+        },
+        "source": {
+          "const": "owner_declaration",
+          "title": "Source",
+          "type": "string"
+        },
+        "measurement_method": {
+          "title": "Measurement Method",
+          "type": "null"
+        },
+        "stopwatch_used": {
+          "title": "Stopwatch Used",
+          "type": "null"
+        },
+        "is_estimate": {
+          "title": "Is Estimate",
+          "type": "null"
+        },
+        "independently_verified": {
+          "const": false,
+          "title": "Independently Verified",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "source",
+        "measurement_method",
+        "stopwatch_used",
+        "is_estimate",
+        "independently_verified"
+      ],
+      "title": "Declaration",
+      "type": "object"
+    },
+    "Effort": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "excluded",
+            "eligible_for_named_scope"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "scope": {
+          "items": {
+            "enum": [
+              "reading",
+              "factual_annotation",
+              "citation_check",
+              "contract_review",
+              "discrepancies",
+              "adjudication",
+              "administration"
+            ],
+            "type": "string"
+          },
+          "title": "Scope",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "attestation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "scope",
+        "reason",
+        "attestation"
+      ],
+      "title": "Effort",
+      "type": "object"
+    },
+    "Estimate": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "minimum": 0,
+          "title": "Value",
+          "type": "number"
+        },
+        "unit": {
+          "const": "minute",
+          "title": "Unit",
+          "type": "string"
+        },
+        "approximate": {
+          "const": true,
+          "title": "Approximate",
+          "type": "boolean"
+        },
+        "source": {
+          "const": "owner_estimate",
+          "title": "Source",
+          "type": "string"
+        },
+        "exact_measurement": {
+          "const": false,
+          "title": "Exact Measurement",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "approximate",
+        "source",
+        "exact_measurement"
+      ],
+      "title": "Estimate",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "approver_identity": {
+          "minLength": 1,
+          "title": "Approver Identity",
+          "type": "string"
+        },
+        "decision_source": {
+          "minLength": 1,
+          "title": "Decision Source",
+          "type": "string"
+        },
+        "annotation_origin": {
+          "const": "chatgpt_assisted_exploratory_review",
+          "title": "Annotation Origin",
+          "type": "string"
+        },
+        "independent_human_review": {
+          "const": false,
+          "title": "Independent Human Review",
+          "type": "boolean"
+        },
+        "adjudication_claimed": {
+          "const": false,
+          "title": "Adjudication Claimed",
+          "type": "boolean"
+        },
+        "approval_timestamp": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Approval Timestamp"
+        }
+      },
+      "required": [
+        "approver_identity",
+        "decision_source",
+        "annotation_origin",
+        "independent_human_review",
+        "adjudication_claimed",
+        "approval_timestamp"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "Ref": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "title": "Ref",
+      "type": "object"
+    },
+    "TimingAxis": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "unknown",
+            "estimate_only",
+            "declared_duration_unvalidated",
+            "valid_measured_scope",
+            "valid_complete_measurement",
+            "invalid_or_expired"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "original_form": {
+          "$ref": "#/$defs/Ref"
+        },
+        "reading": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Estimate"
+            },
+            {
+              "$ref": "#/$defs/Declaration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reading"
+        },
+        "measurement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "measured_scope": {
+          "items": {
+            "enum": [
+              "reading",
+              "factual_annotation",
+              "citation_check",
+              "contract_review",
+              "discrepancies",
+              "adjudication",
+              "administration"
+            ],
+            "type": "string"
+          },
+          "title": "Measured Scope",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "original_form",
+        "reading",
+        "measurement",
+        "measured_scope"
+      ],
+      "title": "TimingAxis",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-review-disposition-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "disposition_id": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Disposition Id",
+      "type": "string"
+    },
+    "case_id": {
+      "minLength": 1,
+      "title": "Case Id",
+      "type": "string"
+    },
+    "packet_fingerprint": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Packet Fingerprint",
+      "type": "string"
+    },
+    "annotation": {
+      "$ref": "#/$defs/Ref"
+    },
+    "annotation_version": {
+      "minLength": 1,
+      "title": "Annotation Version",
+      "type": "string"
+    },
+    "annotation_schema": {
+      "const": "news-pilot-factual-form-v1",
+      "title": "Annotation Schema",
+      "type": "string"
+    },
+    "legacy_factual_status": {
+      "enum": [
+        "unfilled",
+        "in_progress",
+        "completed"
+      ],
+      "title": "Legacy Factual Status",
+      "type": "string"
+    },
+    "methodology_authorization": {
+      "$ref": "#/$defs/Ref"
+    },
+    "content": {
+      "$ref": "#/$defs/Content"
+    },
+    "closure": {
+      "$ref": "#/$defs/Closure"
+    },
+    "timing": {
+      "$ref": "#/$defs/TimingAxis"
+    },
+    "effort": {
+      "$ref": "#/$defs/Effort"
+    },
+    "supersedes": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Ref"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "disposition_id",
+    "case_id",
+    "packet_fingerprint",
+    "annotation",
+    "annotation_version",
+    "annotation_schema",
+    "legacy_factual_status",
+    "methodology_authorization",
+    "content",
+    "closure",
+    "timing",
+    "effort",
+    "supersedes"
+  ],
+  "title": "Disposition",
+  "type": "object"
+}
