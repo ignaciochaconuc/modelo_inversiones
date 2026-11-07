@@ -33,6 +33,8 @@ WORKFLOW_ERRORS = frozenset({
     "separate_opening_authorization_required", "workflow_receipt_mismatch",
     "source_uncertainty_not_preserved", "incomplete_workflow_operation",
     "clock_history_mismatch",
+    "retry_not_eligible", "retry_reason_not_observed", "retry_lineage_mismatch",
+    "retry_predecessor_changed", "retry_cycle", "retry_time_overlap",
 })
 
 
@@ -44,6 +46,31 @@ class Preparation(m.Model):
     form_path: str
     session_path: str
     materials: tuple[m.Ref, ...]
+
+
+RetryReason = Literal["contract_mapping_not_timed", "owner_review_not_timed"]
+
+
+class RetryPreparation(Preparation):
+    record_version: Literal["news-pilot-contract-workflow-v2"]
+    retry_lineage: m.Ref
+
+
+class RetryLineage(m.Model):
+    record_version: Literal["news-pilot-contract-retry-lineage-v1"]
+    case_id: str
+    predecessor_review_id: str
+    review_id: str
+    reason: RetryReason
+    predecessor_workflow: m.Ref
+    predecessor_manifest: m.Ref
+    predecessor_form: m.Ref
+    predecessor_session: m.Ref
+    predecessor_inventory: tuple[m.Ref, ...]
+    derived_proposal: m.Ref
+    independent_evaluation: Literal[False]
+    proposal_initially_approved: Literal[False]
+    prior_times_transferred: Literal[False]
 
 
 class Submission(m.Model):
@@ -77,9 +104,13 @@ def _folder(repo: Path, folder: Path) -> Path:
     return folder
 
 
-def _load(repo: Path, folder: Path, *, now: datetime):
+def _load(repo: Path, folder: Path, *, now: datetime, _ancestry: frozenset[Path] = frozenset()):
     folder = _folder(repo, folder)
-    prep = Preparation.model_validate(_json(folder/"workflow.json"))
+    m.d.require(folder not in _ancestry, "retry_cycle")
+    raw = _json(folder/"workflow.json")
+    model = RetryPreparation if raw.get("record_version") == "news-pilot-contract-workflow-v2" else Preparation
+    prep = model.model_validate(raw)
+    m.d.require(not (folder/"retry-lineage-v1.json").exists() or isinstance(prep,RetryPreparation), "retry_lineage_mismatch")
     m.d.bound_path(repo, prep.source_manifest)
     for ref in prep.materials:
         m.d.bound_path(repo, ref)
@@ -103,7 +134,63 @@ def _load(repo: Path, folder: Path, *, now: datetime):
             _audit_clock(repo, folder)
     else:
         m.d.require(form.status == "unfilled", "separate_opening_authorization_required")
+    if isinstance(prep, RetryPreparation):
+        _validate_retry(repo, folder, prep, form, now=now, ancestry=_ancestry | {folder})
     return prep, form, manifest, result
+
+
+def _inventory(repo: Path, folder: Path) -> tuple[m.Ref, ...]:
+    return tuple(_ref(repo, path) for path in sorted(folder.rglob("*"))
+                 if path.is_file() and "__pycache__" not in path.parts)
+
+
+def _retry_source(repo: Path, source: Path, case_id: str, reason: RetryReason, *, now: datetime,
+                  ancestry: frozenset[Path] = frozenset()):
+    """Read-only eligibility check, including the existing reader's 90-day TTL."""
+    prep, form, manifest, _ = _load(repo, source, now=now, _ancestry=ancestry)
+    m.d.require(prep.case_id == case_id and form.status == "in_progress"
+        and form.owner_decision is None and not (source/"content-approval.json").exists(), "retry_not_eligible")
+    session = m.ContractSession.model_validate(m.d.read_ref(repo, form.session))
+    m.d.require(session.status == "completed" and session.review_id == prep.review_id, "retry_not_eligible")
+    tip = m.d.read_ref(repo,m.Ref.model_validate(_json(source/"clock/state.json")["last_event"]))
+    m.d.require(tip["action"] == "stop" and tip["next_kind"] == "stopped", "retry_not_eligible")
+    m.d.require(reason in {"contract_mapping_not_timed", "owner_review_not_timed"}, "retry_not_eligible")
+    phase = reason.removesuffix("_not_timed")
+    m.d.require(not any(i.kind == "active" and i.phase == phase for i in session.intervals), "retry_reason_not_observed")
+    m.d.require(len(form.mappings) == len(form.factual_snapshot["facts"])
+        and {entry.fact_id for entry in form.mappings} == {f["fact_id"] for f in form.factual_snapshot["facts"]}
+        and bool(form.allowed_outcomes) and bool(form.rationale), "all_facts_contractual_review_required")
+    return prep, form, manifest, session
+
+
+def _validate_retry(repo: Path, folder: Path, prep: RetryPreparation, form, *, now: datetime,
+                    ancestry: frozenset[Path]) -> None:
+    m.d.require(m.d.path_for(repo,prep.retry_lineage.path).is_relative_to(folder), "retry_lineage_mismatch")
+    lineage = RetryLineage.model_validate(m.d.read_ref(repo, prep.retry_lineage))
+    source = m.d.path_for(repo, lineage.predecessor_workflow.path).parent
+    old_prep, old_form, _, old_session = _retry_source(repo, source, lineage.case_id, lineage.reason,
+        now=now, ancestry=ancestry)
+    m.d.require(lineage.case_id == prep.case_id and lineage.review_id == prep.review_id
+        and lineage.predecessor_review_id == old_prep.review_id and prep.review_id != old_prep.review_id
+        and lineage.predecessor_workflow == _ref(repo,source/"workflow.json")
+        and lineage.predecessor_manifest == prep.source_manifest == _ref(repo,source/"manifest.json")
+        and lineage.predecessor_form == _ref(repo,m.d.path_for(repo,old_prep.form_path))
+        and lineage.predecessor_session == old_form.session
+        and form.factual == old_form.factual and form.closure_decision == old_form.closure_decision
+        and form.closed_disposition == old_form.closed_disposition
+        and form.technical_reference == old_form.technical_reference, "retry_lineage_mismatch")
+    m.d.require(lineage.predecessor_inventory == _inventory(repo,source), "retry_predecessor_changed")
+    m.d.require(m.d.path_for(repo,lineage.derived_proposal.path).is_relative_to(folder), "retry_lineage_mismatch")
+    proposal = Submission.model_validate(m.d.read_ref(repo,lineage.derived_proposal))
+    m.d.require(proposal.case_id == prep.case_id and proposal.review_id == prep.review_id
+        and proposal.factual == old_form.factual and proposal.technical_reference == old_form.technical_reference
+        and proposal.model_dump(mode="json")["mappings"] == old_form.model_dump(mode="json")["mappings"]
+        and proposal.allowed_outcomes == old_form.allowed_outcomes and proposal.rationale == old_form.rationale,
+        "retry_lineage_mismatch")
+    session = m.ContractSession.model_validate(m.d.read_ref(repo,form.session))
+    m.d.require(form.session.path != old_form.session.path, "retry_lineage_mismatch")
+    if session.started_at is not None:
+        m.d.require(session.started_at >= old_session.completed_at, "retry_time_overlap")
 
 
 def _audit(repo: Path, folder: Path) -> None:
@@ -158,15 +245,30 @@ def _audit_clock(repo: Path, folder: Path) -> None:
 
 def prepare(repo: Path, source: Path, folder: Path, case_id: str, *, now: datetime) -> dict:
     """Prepare a new independent workspace, not an opening or semantic annotation."""
+    return _prepare(repo, source, folder, case_id, now=now)
+
+
+def prepare_retry(repo: Path, source: Path, folder: Path, case_id: str, *, reason: RetryReason, now: datetime) -> dict:
+    """Explicit new attempt only; never resets or writes the completed predecessor clock."""
+    return _prepare(repo, source, folder, case_id, retry_reason=reason, now=now)
+
+
+def _prepare(repo: Path, source: Path, folder: Path, case_id: str, *, now: datetime,
+             retry_reason: RetryReason | None = None) -> dict:
     source, folder = _folder(repo, source), _folder(repo, folder)
     m.d.require(not folder.exists() and not folder.is_relative_to(source)
         and not source.is_relative_to(folder), "new_separate_workspace_required")
     result = m.verify(repo, source, now=now)
-    m.d.require(all(r["status"] in {"unfilled", "completed"} for r in result["cases"]), "source_review_still_active")
+    predecessor = None
+    if retry_reason is None:
+        m.d.require(all(r["status"] in {"unfilled", "completed"} for r in result["cases"]), "source_review_still_active")
+    else:
+        predecessor = _retry_source(repo, source, case_id, retry_reason, now=now)
     manifest = m.Manifest.model_validate(_json(source/"manifest.json"))
     forms = [(ref, m.ContractForm.model_validate(m.d.read_ref(repo, ref))) for ref in manifest.forms]
     selected = [(ref, form) for ref, form in forms if form.case_id == case_id]
-    m.d.require(len(selected) == 1 and selected[0][1].status == "unfilled", "case_not_available")
+    expected_status = "in_progress" if predecessor else "unfilled"
+    m.d.require(len(selected) == 1 and selected[0][1].status == expected_status, "case_not_available")
     old_ref, form = selected[0]
     review_id = "contract-"+case_id+"-"+uuid.uuid4().hex
     m.d.require(all(r["review_id"] != review_id for r in result["cases"]), "reserved_review_id_already_used")
@@ -175,6 +277,9 @@ def prepare(repo: Path, source: Path, folder: Path, case_id: str, *, now: dateti
     factual = m.d.read_ref(repo, form.factual)
     reference = m.d.read_ref(repo, form.technical_reference)
     disposition = m.d.Disposition.model_validate(m.d.read_ref(repo, form.closed_disposition))
+    if predecessor:
+        session = m.blank_session(disposition)
+    inventory = _inventory(repo,source) if predecessor else None
     # Resolve all inputs before the first write. Completed source cases are never copied or edited.
     sources = {name: m.d.bound_path(repo, m.Ref(path=name, sha256=sha)).read_bytes()
                for name, sha in reference["files"].items()}
@@ -183,6 +288,9 @@ def prepare(repo: Path, source: Path, folder: Path, case_id: str, *, now: dateti
     _write(session_path, c._bytes(session))
     raw = form.model_dump(mode="json")
     raw["session"] = _ref(repo, session_path).model_dump()
+    if predecessor:
+        raw = m.blank_form(form.closed_disposition, disposition, factual, form.technical_reference,
+                           _ref(repo, session_path))
     _write(form_path, c._bytes(raw))
     data = manifest.model_dump(mode="json")
     data["forms"] = [_ref(repo, form_path).model_dump() if r == old_ref else r.model_dump() for r in manifest.forms]
@@ -211,6 +319,15 @@ def prepare(repo: Path, source: Path, folder: Path, case_id: str, *, now: dateti
         "Indeterminate del instrumento no es un estado ejecutable del payload v3.\n\n")
     sections = [("Noticia original", packet), ("Factual completo aprobado", factual),
                 ("Referencia tecnica", reference), ("Plantilla de entrega", annotation)]
+    if predecessor:
+        derived = Submission(case_id=case_id, review_id=review_id, factual=form.factual,
+            technical_reference=form.technical_reference, mappings=form.mappings,
+            allowed_outcomes=form.allowed_outcomes, rationale=form.rationale)
+        materials["DERIVED-PROPOSAL-v1.json"] = c._bytes(derived.model_dump(mode="json"))
+        sections.append(("Propuesta derivada del intento anterior: no aprobada ni independiente", derived.model_dump(mode="json")))
+        instructions += ("Este es un reintento por " + retry_reason + ". La propuesta se copio del intento anterior; "
+                         "no es una evaluacion nueva independiente ni una aprobacion. Medir una comprobacion humana "
+                         "real de todos los mappings y la revision del propietario; no transferir tiempos.\n\n")
     text = instructions+"\n".join("## "+title+"\n\n```json\n"+json.dumps(value, ensure_ascii=False, indent=2)+"\n```\n"
                                      for title, value in sections)
     for name, payload in sources.items():
@@ -220,10 +337,31 @@ def prepare(repo: Path, source: Path, folder: Path, case_id: str, *, now: dateti
         _write(folder/"materials"/name, payload)
     _write(folder/"OPENING-TEMPLATE.json", c._bytes(opening))
     _write(folder/"ANNOTATION-TEMPLATE.json", c._bytes(annotation))
-    prep = Preparation(record_version="news-pilot-contract-workflow-v1", case_id=case_id,
+    metadata = dict(record_version="news-pilot-contract-workflow-v1", case_id=case_id,
         review_id=review_id, source_manifest=_ref(repo, source/"manifest.json"),
         form_path=form_path.relative_to(repo).as_posix(), session_path=session_path.relative_to(repo).as_posix(),
         materials=tuple(_ref(repo, folder/"materials"/name) for name in materials))
+    if predecessor:
+        _write(folder/"DERIVED-PROPOSAL-v1.json", c._bytes(derived.model_dump(mode="json")))
+        approval = dict(schema_version="news-pilot-contract-owner-decision-v1", case_id=case_id,
+            review_id=review_id, review_fingerprint=None, factual_sha256=form.factual.sha256,
+            explicitly_approved=None, decided_by=disposition.content.provenance.approver_identity,
+            decision_source=None, decided_at=None, independent_human_review=False, adjudication_claimed=False)
+        _write(folder/"CONTENT-APPROVAL-TEMPLATE.json", c._bytes(approval))
+        old_prep, old_form, _, _ = predecessor
+        lineage = RetryLineage(record_version="news-pilot-contract-retry-lineage-v1", case_id=case_id,
+            predecessor_review_id=old_prep.review_id, review_id=review_id, reason=retry_reason,
+            predecessor_workflow=_ref(repo,source/"workflow.json"),
+            predecessor_manifest=_ref(repo,source/"manifest.json"),
+            predecessor_form=_ref(repo,m.d.path_for(repo,old_prep.form_path)), predecessor_session=old_form.session,
+            predecessor_inventory=inventory, derived_proposal=_ref(repo,folder/"DERIVED-PROPOSAL-v1.json"),
+            independent_evaluation=False, proposal_initially_approved=False, prior_times_transferred=False)
+        lineage_path = folder/"retry-lineage-v1.json"
+        _write(lineage_path,c._bytes(lineage.model_dump(mode="json")))
+        metadata.update(record_version="news-pilot-contract-workflow-v2", retry_lineage=_ref(repo,lineage_path))
+        prep = RetryPreparation(**metadata)
+    else:
+        prep = Preparation(**metadata)
     _write(folder/"workflow.json", c._bytes(prep.model_dump(mode="json")))
     return validate(repo, folder, now=now)
 
@@ -396,6 +534,9 @@ def main() -> int:
     parser.add_argument("--workspace", required=True, type=Path)
     sub = parser.add_subparsers(dest="action", required=True)
     p = sub.add_parser("prepare"); p.add_argument("--source",required=True,type=Path); p.add_argument("--case",required=True)
+    p = sub.add_parser("prepare-retry")
+    p.add_argument("--source",required=True,type=Path); p.add_argument("--case",required=True)
+    p.add_argument("--reason",required=True,choices=["contract_mapping_not_timed","owner_review_not_timed"])
     p = sub.add_parser("open"); p.add_argument("--authorization",required=True,type=Path)
     p = sub.add_parser("clock")
     p.add_argument("event",choices=["status","start","phase","pause","resume","stop"])
@@ -414,6 +555,8 @@ def main() -> int:
         repo=Path(__file__).resolve().parents[2]; now=datetime.now(timezone.utc); folder=_folder(repo,args.workspace)
         if args.action == "prepare":
             result=prepare(repo,args.source,folder,args.case,now=now)
+        elif args.action == "prepare-retry":
+            result=prepare_retry(repo,args.source,folder,args.case,reason=args.reason,now=now)
         elif args.action == "open":
             result=open_review(repo,folder,args.authorization.resolve(),now=now)
         elif args.action == "clock":
