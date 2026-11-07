@@ -275,6 +275,15 @@ def test_ttl_boundary_not_reset_by_new_disposition(sample):
         validate(sample, d, now=end+timedelta(days=90))
 
 
+def test_scope_cannot_include_an_unobserved_zero_duration_task(sample):
+    d, t = measured(sample)
+    t["phase_seconds"]["factual_annotation"] = 0
+    d["timing"]["measured_scope"].append("factual_annotation")
+    d["timing"]["measurement"] = write(sample[0], "measurement.json", t)
+    with pytest.raises(ValueError, match="unobserved_measurement_scope"):
+        validate(sample, d)
+
+
 def test_supersession_checks_entire_chain(sample):
     repo, _, _, d = sample
     original = identify(d)
@@ -285,6 +294,15 @@ def test_supersession_checks_entire_chain(sample):
     (repo/"previous.json").write_text("{}", encoding="utf-8")
     with pytest.raises(ValueError, match="reference_hash_mismatch"):
         validate(sample, newer)
+
+
+def test_supersession_cannot_silently_reopen_closed_same_content(sample):
+    d, _ = close(sample)
+    previous = write(sample[0], "closed-previous.json", identify(d))
+    d["supersedes"] = previous
+    d["closure"] = dict(status="open", decision=None)
+    with pytest.raises(ValueError, match="closure_cannot_silently_reopen"):
+        validate(sample, d)
 
 
 @pytest.mark.parametrize("path", ["../secret.json", "C:/secret.json", "C:secret.json", "/secret.json", "https://example.com", "file.json:stream"])

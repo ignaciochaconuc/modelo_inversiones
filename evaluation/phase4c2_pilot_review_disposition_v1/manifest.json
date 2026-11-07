@@ -1,0 +1,63 @@
+{
+  "schema_version": "news-pilot-review-disposition-instrument-manifest-v1",
+  "implementation_status": "implemented",
+  "scope": "development_pilot_dispositions_only",
+  "compatibility": {
+    "proposal_version": "news-pilot-semantic-timing-separation-proposal-v2",
+    "compatible": true,
+    "contradictions_found": false,
+    "contractual_adapter_deferred": true
+  },
+  "authorization": {
+    "path": "evaluation/phase4c2_pilot_review_disposition_v1/authorization.json",
+    "sha256": "c011df5f07c7db6dbb00840cbbc6955dc5ddf8a64752769783def8ca84e5328d"
+  },
+  "verification": {
+    "full_pytest_passed": 981,
+    "full_pytest_seconds": 178.42,
+    "specific_and_legacy_tests_passed": 95,
+    "new_specific_tests": 56,
+    "validate_data": "passed",
+    "compileall_src_scripts_tools_evaluation": "passed",
+    "generated_schemas_match": 5,
+    "original_packages_verified": 6,
+    "content_approved": 6,
+    "factual_closed": 0,
+    "eligible_measured_attempts": 0,
+    "legacy_factual_status": "in_progress",
+    "original_timing_forms": "unfilled_unchanged",
+    "historical_file_inventory_count": 3803,
+    "historical_files_changed": [],
+    "frozen_32_references_sha256": "1484dab560f898c71a857c40d3fe9ee3312981cbafdfa2eb4936b1e093fbfb39"
+  },
+  "limitations": [
+    "Structural and declared provenance validation, not semantic truth or authenticated human identity.",
+    "Historical six attempts remain excluded; no missing timing reconstructed.",
+    "Contractual adapter absent; explicit case closure decisions still required.",
+    "No new inference, evaluation, reserved cases or official phase transition."
+  ],
+  "provider_calls": 0,
+  "predictions": 0,
+  "case_closure_decisions_created": 0,
+  "contractual_adapter": "not_implemented",
+  "official_phase_states_changed": false,
+  "sha256": {
+    "data/cache/news_development_pilot/review-dispositions-v1/D-1211fcda178c57ab.json": "0e99e85bc61f6c12e18905aaec0436a81e128895a087d677a2a0393b4ea03656",
+    "data/cache/news_development_pilot/review-dispositions-v1/D-293a6cbca3479505.json": "b8ee6c85de58e3ddf59d8440908191722101ec171f740a537abf98d70f566721",
+    "data/cache/news_development_pilot/review-dispositions-v1/D-40e8a2188273506b.json": "515cd89b7e40de7ca538eb140ac423d89f3ab5c6e869f062f5f365724ca957d1",
+    "data/cache/news_development_pilot/review-dispositions-v1/D-6c6ef03a91cca2a9.json": "1ce9870f3fb80717e1f91d53b55d1e29519203eefd9c1e2eca36a0f4ae12309e",
+    "data/cache/news_development_pilot/review-dispositions-v1/D-a8db3a0c74d93eb8.json": "c603c9313a74a58b9c59559dd3075d23f4dbee3748b2d721663d74581ffec9d5",
+    "data/cache/news_development_pilot/review-dispositions-v1/D-fbf4c5c9e02691b3.json": "8233a6fdb569ab43ffc95d1b98851f2a9b964441ed77e1dbd44a63ddbb3f2da6",
+    "data/cache/news_development_pilot/review-dispositions-v1/manifest.json": "1938966f6685592862fbf3f96031fe5d61c2371d0731bc3c007f00e2d4577fca",
+    "evaluation/phase4c2_pilot_review_disposition_v1/authorization.json": "c011df5f07c7db6dbb00840cbbc6955dc5ddf8a64752769783def8ca84e5328d",
+    "evaluation/phase4c2_pilot_review_disposition_v1/schemas/authorization.schema.json": "9265da969e61b5e4d3c7f0a3bf7f36a52bf42737449705a41cd9b9faa0c1bb4e",
+    "evaluation/phase4c2_pilot_review_disposition_v1/schemas/closure-decision.schema.json": "a87abba4b12fa949e9feffb6f538b6c2e1897571d0203de4ec1f16ef482aaa56",
+    "evaluation/phase4c2_pilot_review_disposition_v1/schemas/disposition.schema.json": "480d6d591b2189fdd0604f76a1ad4a9a98378d792ba82c9bc3d13190afae8542",
+    "evaluation/phase4c2_pilot_review_disposition_v1/schemas/effort-attestation.schema.json": "911b70adad827f3cd26f234e684d4cb6025b6c674fd86f2d15dc588e3ba75a75",
+    "evaluation/phase4c2_pilot_review_disposition_v1/schemas/manifest.schema.json": "4256515fcadd1744f4c5fa7c2efa95d52c45fe89262fabc6aebe67ba9f34255a",
+    "tests/unit/test_pilot_review_disposition.py": "8953773d1f18fbc2107e6f066f2bc920d7906b206f2421437c414c550c972000",
+    "tools/evaluation/pilot_review_disposition.py": "2bb59f628a399144e259546d8c330c557cd39423040a3eb5be2c947e79e4960b",
+    "docs/phase4c2-pilot-review-dispositions.md": "bcf6144eeb2048fad3e4905f92ed4e9c228e1f2971c5a0d73b1ad12d3f8fc90c",
+    "docs/decisions/ADR-037-pilot-semantic-timing-separation.md": "1d17fb7b752e2e47ef8f0c8b94fec154a6a85cbc9cc1e821622287431479da71"
+  }
+}

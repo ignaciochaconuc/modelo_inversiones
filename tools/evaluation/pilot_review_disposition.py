@@ -221,7 +221,10 @@ def bound_path(repo: Path, ref: Ref) -> Path:
 
 
 def read_ref(repo: Path, ref: Ref) -> dict:
-    return json.loads(bound_path(repo, ref).read_text(encoding="utf-8"))
+    # Parse exactly the bytes whose digest was checked, not a second file read.
+    payload = path_for(repo, ref.path).read_bytes()
+    require(hashlib.sha256(payload).hexdigest() == ref.sha256, "reference_hash_mismatch")
+    return json.loads(payload.decode("utf-8"))
 
 
 def check_date(value: datetime | None, now: datetime) -> None:
@@ -292,6 +295,8 @@ def validate_record(repo: Path, record: Disposition, packet: dict, *, now: datet
         require(bool(scope) and len(scope) == len(set(scope)), "measurement_scope_required")
         active = {i.phase for i in timing.intervals if i.kind == "active"}
         require(active <= set(scope) and all(timing.phase_seconds[p] is not None for p in scope), "measurement_scope_mismatch")
+        if record.timing.status == "valid_measured_scope":
+            require(active == set(scope), "unobserved_measurement_scope")
         if record.timing.status == "valid_complete_measurement":
             require(timing.status == "completed" and set(scope) == set(legacy.PHASES), "incomplete_measurement")
 
@@ -339,6 +344,8 @@ def validate_record(repo: Path, record: Disposition, packet: dict, *, now: datet
         require(previous.case_id == record.case_id and previous.packet_fingerprint == record.packet_fingerprint,
                 "supersession_case_mismatch")
         validate_record(repo, previous, packet, now=now, seen=seen | {record.disposition_id})
+        if previous.annotation == record.annotation and previous.closure.status != "open":
+            require(record.closure.status != "open", "closure_cannot_silently_reopen")
     return dict(case_id=record.case_id, content=record.content.status, closure=c.status,
                 timing=record.timing.status, effort=e.status, semantic_truth="not_assessed",
                 contractual_adapter="not_implemented", legacy_state_changed=False)
