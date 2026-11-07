@@ -64,7 +64,7 @@ class Reservation(m.Model):
     session_path: str
 
 
-def _load(repo: Path, folder: Path, *, now: datetime):
+def _load(repo: Path, folder: Path, *, now: datetime, allow_completed_other_cases: bool = False):
     m.d.require(folder.resolve().is_relative_to(repo.resolve()), "workspace_outside_repository")
     result = m.verify(repo, folder, now=now)
     reservation = Reservation.model_validate(json.loads((folder/"opening/reservation.json").read_text(encoding="utf-8")))
@@ -85,7 +85,8 @@ def _load(repo: Path, folder: Path, *, now: datetime):
     m.d.check_date(auth.authorized_at, now)
     m.d.require(all(r["case_id"] == reservation.case_id or r["review_id"] != reservation.review_id for r in result["cases"]),
         "reserved_review_id_already_used")
-    m.d.require(all(r["case_id"] == reservation.case_id or r["status"] == "unfilled" for r in result["cases"]),
+    other_states = {"unfilled", "completed"} if allow_completed_other_cases else {"unfilled"}
+    m.d.require(all(r["case_id"] == reservation.case_id or r["status"] in other_states for r in result["cases"]),
         "other_cases_must_remain_unfilled")
     session = m.ContractSession.model_validate(m.d.read_ref(repo, form.session))
     if session.status != "unfilled":
@@ -119,8 +120,9 @@ def _event_chain(repo: Path, state: dict, reservation: Reservation, session_ref)
     return newest
 
 
-def status(repo: Path, folder: Path, *, now: datetime) -> dict:
-    reservation, form, session, _, _ = _load(repo, folder, now=now)
+def status(repo: Path, folder: Path, *, now: datetime, allow_completed_other_cases: bool = False) -> dict:
+    reservation, form, session, _, _ = _load(repo, folder, now=now,
+        allow_completed_other_cases=allow_completed_other_cases)
     state_path = folder/"clock/state.json"
     if session.status == "unfilled":
         m.d.require(not state_path.exists(), "unfilled_session_has_clock_state")
@@ -144,9 +146,11 @@ def _ref(path: Path, repo: Path, payload: bytes):
 
 def record(repo: Path, folder: Path, action: str, *, now: datetime, phase: str | None = None,
            reason: str | None = None, reviewer_id: str | None = None, reviewer_name: str | None = None,
-           context: str | None = None, model_label: str | None = None) -> dict:
+           context: str | None = None, model_label: str | None = None,
+           allow_completed_other_cases: bool = False) -> dict:
     """Called only by explicit operator action; tests inject synthetic clocks in temp dirs."""
-    reservation, form, session, disposition, manifest = _load(repo, folder, now=now)
+    reservation, form, session, disposition, manifest = _load(repo, folder, now=now,
+        allow_completed_other_cases=allow_completed_other_cases)
     raw = session.model_dump(mode="json")
     state_path = folder/"clock/state.json"
     previous = None
@@ -232,7 +236,7 @@ def record(repo: Path, folder: Path, action: str, *, now: datetime, phase: str |
             out.write(payload)
         os.replace(temporary, path)
     m.verify(repo, folder, now=now)
-    return status(repo, folder, now=now)
+    return status(repo, folder, now=now, allow_completed_other_cases=allow_completed_other_cases)
 
 
 def main() -> int:
