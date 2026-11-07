@@ -1,0 +1,69 @@
+{
+  "record_version": "news-pilot-contract-adapter-instrument-manifest-v1",
+  "implementation_status": "implemented_offline_prepared_not_started",
+  "instrument": "news-pilot-contract-form-v2",
+  "economic_contract": "news-economic-validation-v3",
+  "implementation_authorization": {
+    "path": "evaluation/phase4c2_pilot_contract_adapter_v1/implementation-authorization.json",
+    "sha256": "cb0ef06aa73285093c8c5cb3195ee7fccbe4f2840bbfccdd6d2a5ea24750f03d"
+  },
+  "validation": {
+    "full_pytest_passed": 1041,
+    "full_pytest_seconds": 175.31,
+    "new_unit_tests_passed": 60,
+    "validate_data": "passed",
+    "compileall": "passed",
+    "generated_schemas_match": 6,
+    "current_factual_closures_verified": 6,
+    "full_factual_snapshots_verified": 6,
+    "factual_entries_retained": 74,
+    "citation_occurrences_retained": 159,
+    "prepared_not_started": 6,
+    "started": 0,
+    "completed": 0,
+    "contractual_judgments_created": 0,
+    "opening_authorizations_created": 0,
+    "require_completed": "blocked_as_expected"
+  },
+  "integrity": {
+    "preexisting_files_unchanged": 3866,
+    "preexisting_files_changed": [],
+    "frozen_32_references_sha256": "1484dab560f898c71a857c40d3fe9ee3312981cbafdfa2eb4936b1e093fbfb39"
+  },
+  "limitations": [
+    "Factual and technical judgments remain separate; free-text rationale needs owner semantic review.",
+    "No case may open without a subsequent case/session-specific authorization and prospective session provenance.",
+    "Original factual timing remains unknown or declared and excluded; no independent human review claimed.",
+    "This adapter does not complete the integral pilot or v3/v4 experiment, and does not authorize inference."
+  ],
+  "official_phase_states_changed": false,
+  "provider_calls": 0,
+  "inferences": 0,
+  "sha256": {
+    "data/cache/news_development_pilot/contract-review-v2/manifest.json": "49f4f909c8c06505624453aa0c009a5f44b74e9fc5c14dce9b352508d522707d",
+    "data/cache/news_development_pilot/contract-review-v2/forms/D-1211fcda178c57ab.json": "2c0a18b1d6f6f5b1673e374b8f47f4cfff1f754cdd0d277dd6ffe353f7ec5d5d",
+    "data/cache/news_development_pilot/contract-review-v2/forms/D-293a6cbca3479505.json": "e9ffb69eaf5d3896d550da2a9bc9d0621689061e41faee6dbe616e599f3039f1",
+    "data/cache/news_development_pilot/contract-review-v2/forms/D-40e8a2188273506b.json": "3b6c82fa612bda153950f7b83565dd5f280702811d2caafc44f4b8a009a374ae",
+    "data/cache/news_development_pilot/contract-review-v2/forms/D-6c6ef03a91cca2a9.json": "63c95945c9e9300668024b159c39539927c18514d44ffeaf577e99f0e8fc8a20",
+    "data/cache/news_development_pilot/contract-review-v2/forms/D-a8db3a0c74d93eb8.json": "d1378115e8663a192b5c1389e3cbca0130123fcdc633293ac13c8a5c340dc4da",
+    "data/cache/news_development_pilot/contract-review-v2/forms/D-fbf4c5c9e02691b3.json": "8c6d5882327356b235ab0079038539dbf3640b1b6c6b16ef80569bbb623fc8a7",
+    "data/cache/news_development_pilot/contract-review-v2/sessions/D-1211fcda178c57ab.json": "237a1ed0dc4c4cb262390520ae15fb31496ce895c22fb06fc154ad99a379871a",
+    "data/cache/news_development_pilot/contract-review-v2/sessions/D-293a6cbca3479505.json": "cd8dd0ef343e5707bb8963bd0aa40f6a4b7a440281ad8093d701bc17379f9bb2",
+    "data/cache/news_development_pilot/contract-review-v2/sessions/D-40e8a2188273506b.json": "1d09acf633a7cd507f95b1f0548224a46d600cf9e41dad2f61706703715d4481",
+    "data/cache/news_development_pilot/contract-review-v2/sessions/D-6c6ef03a91cca2a9.json": "d568ec4eaa9ea3bfad0c1d488cf1f851f9c43e585fb73147363dc93e3707c0e6",
+    "data/cache/news_development_pilot/contract-review-v2/sessions/D-a8db3a0c74d93eb8.json": "39919b1730610f1eea6ebfca6b3b6c098d3d7e8fb6e14ee054c38ebf218a36a3",
+    "data/cache/news_development_pilot/contract-review-v2/sessions/D-fbf4c5c9e02691b3.json": "0d9483d829a8ca0bd1af17fe287e1bdf3c52982da801a19031dead454cd8e718",
+    "evaluation/phase4c2_pilot_contract_adapter_v1/implementation-authorization.json": "cb0ef06aa73285093c8c5cb3195ee7fccbe4f2840bbfccdd6d2a5ea24750f03d",
+    "evaluation/phase4c2_pilot_contract_adapter_v1/technical-reference.json": "9d0884b4759bc87d9ca61e0ac54a5c4ed6b67cdbdae7c9c6d01c288743d08b1c",
+    "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/contract-form.schema.json": "a4d4d41343b4238e1ee7a32e5dc53569548f74896bfefb6790a42193364dc71e",
+    "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/contract-session.schema.json": "5a62e2796740d452bdd96fe5a1876d4d97ce82234c55c4ceb9282c6ac63023a9",
+    "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/manifest.schema.json": "ce950c23496f35c3ba7548ddfd01933a9765a721a73d60faaa5cc63277019ca1",
+    "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/opening-authorization.schema.json": "e30a0d544bf8a19485ed801dc31ed3eb9b8d0c7d5e41662b6beef2279b3a9181",
+    "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/owner-decision.schema.json": "f293309f9286bf148a0c0166b4820af8275de0a6b12ca32fe5976d637cc0cac5",
+    "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/technical-reference.schema.json": "0207e9f7cbf99242959a2cc77825ca1c563684c0dabe5ed99e5870aff8532ccc",
+    "tests/unit/test_pilot_contract_review.py": "932075655b5dc1a8731b2bd1c6e2d3f277b99026ef6d325c71dd2b66473b19bb",
+    "tools/evaluation/pilot_contract_review.py": "d5ac27680a1dd9b088a01de25332dea85fa83c4aae0ee6273ee2910afee4e068",
+    "docs/phase4c2-pilot-contract-adapter-v1.md": "63465ff4d7989a3a0a108afec2f1994828cbd0549b5838aea896683c5e1ab09e",
+    "docs/decisions/ADR-038-pilot-contract-review-adapter.md": "6825980fe1f46b2fc7930b2635d1167ccc1f54758dd665189e6fc79b4d7e2dd1"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-contract-opening-authorization-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "case_id": {
+      "title": "Case Id",
+      "type": "string"
+    },
+    "review_id": {
+      "title": "Review Id",
+      "type": "string"
+    },
+    "disposition_id": {
+      "title": "Disposition Id",
+      "type": "string"
+    },
+    "factual_sha256": {
+      "title": "Factual Sha256",
+      "type": "string"
+    },
+    "closure_sha256": {
+      "title": "Closure Sha256",
+      "type": "string"
+    },
+    "explicitly_authorized": {
+      "const": true,
+      "title": "Explicitly Authorized",
+      "type": "boolean"
+    },
+    "authorized_by": {
+      "minLength": 1,
+      "title": "Authorized By",
+      "type": "string"
+    },
+    "decision_source": {
+      "minLength": 1,
+      "title": "Decision Source",
+      "type": "string"
+    },
+    "authorized_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Authorized At"
+    },
+    "source_message_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Source Message Id"
+    },
+    "inference_authorized": {
+      "const": false,
+      "title": "Inference Authorized",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "review_id",
+    "disposition_id",
+    "factual_sha256",
+    "closure_sha256",
+    "explicitly_authorized",
+    "authorized_by",
+    "decision_source",
+    "authorized_at",
+    "source_message_id",
+    "inference_authorized"
+  ],
+  "title": "OpeningAuthorization",
+  "type": "object"
+}

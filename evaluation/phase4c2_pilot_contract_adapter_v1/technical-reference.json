@@ -1,0 +1,10 @@
+{
+  "schema_version": "news-pilot-contract-technical-reference-v1",
+  "contract_version": "news-economic-validation-v3",
+  "files": {
+    "src/investment_system/agents/news_interpretation/economic_attribution.py": "3622243db89447dfed379fd46bd8d4c1037052403fac88983bb8ee1af04b602f",
+    "src/investment_system/agents/news_interpretation/grounding.py": "cfd68f74edd513837349bf6d03b94cf3c56f28e7ee216e5925ed5462b30576e5",
+    "src/investment_system/agents/news_interpretation/replay.py": "dc7e4cae316fba7699575802865b8efa6a010d5c3e8e76adf4d520c363b5cd44",
+    "src/investment_system/agents/news_interpretation/schemas.py": "92c1ac381c7806aa674e5032812d52ccd2f09ae438a948fa6bd759b9a53ff5c1"
+  }
+}

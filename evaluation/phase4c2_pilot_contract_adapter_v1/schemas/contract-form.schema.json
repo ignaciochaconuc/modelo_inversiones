@@ -1,0 +1,184 @@
+{
+  "$defs": {
+    "ContractMapping": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "pattern": "^F[0-9]{3}$",
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "structured",
+            "faithful_partial_only",
+            "not_representable",
+            "indeterminate"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "rationale": {
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "limits_acknowledged": {
+          "items": {
+            "enum": [
+              "uncertain_fact",
+              "indeterminate_fact",
+              "insufficient_dimension",
+              "indeterminate_dimension"
+            ],
+            "type": "string"
+          },
+          "title": "Limits Acknowledged",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fact_id",
+        "mode",
+        "rationale",
+        "limits_acknowledged"
+      ],
+      "title": "ContractMapping",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "Ref": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "title": "Ref",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-contract-form-v2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "case_id": {
+      "title": "Case Id",
+      "type": "string"
+    },
+    "packet_fingerprint": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Packet Fingerprint",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "unfilled",
+        "in_progress",
+        "completed"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "closed_disposition": {
+      "$ref": "#/$defs/Ref"
+    },
+    "closure_decision": {
+      "$ref": "#/$defs/Ref"
+    },
+    "factual": {
+      "$ref": "#/$defs/Ref"
+    },
+    "factual_snapshot": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Factual Snapshot",
+      "type": "object"
+    },
+    "technical_reference": {
+      "$ref": "#/$defs/Ref"
+    },
+    "contract_version": {
+      "const": "news-economic-validation-v3",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "session": {
+      "$ref": "#/$defs/Ref"
+    },
+    "mappings": {
+      "items": {
+        "$ref": "#/$defs/ContractMapping"
+      },
+      "title": "Mappings",
+      "type": "array"
+    },
+    "allowed_outcomes": {
+      "items": {
+        "enum": [
+          "interpreted",
+          "abstained",
+          "indeterminate"
+        ],
+        "type": "string"
+      },
+      "title": "Allowed Outcomes",
+      "type": "array"
+    },
+    "rationale": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Rationale"
+    },
+    "owner_decision": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Ref"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "packet_fingerprint",
+    "status",
+    "closed_disposition",
+    "closure_decision",
+    "factual",
+    "factual_snapshot",
+    "technical_reference",
+    "contract_version",
+    "session",
+    "mappings",
+    "allowed_outcomes",
+    "rationale",
+    "owner_decision"
+  ],
+  "title": "ContractForm",
+  "type": "object"
+}

@@ -1,0 +1,15 @@
+{
+  "record_version": "news-pilot-contract-adapter-implementation-authorization-v1",
+  "record_kind": "explicit_owner_implementation_scope_only",
+  "authorized_by": "Project owner, current conversation participant",
+  "decision_source": "Explicit owner instruction in this conversation titled Phase 4C.2 — Adaptador contractual del piloto de desarrollo.",
+  "owner_instruction": "Autoriza esta instrucción a diseñar e implementar offline el adaptador contractual versionado para esos seis casos, pero NO a iniciar sus revisiones contractuales.",
+  "source_message_id": null,
+  "authorized_at": null,
+  "signature": null,
+  "implementation_authorized": true,
+  "contractual_review_opening_authorized": false,
+  "owner_contractual_judgments_recorded": false,
+  "inference_authorized": false,
+  "official_phase_transition_authorized": false
+}

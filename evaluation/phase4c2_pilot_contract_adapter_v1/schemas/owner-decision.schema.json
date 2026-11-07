@@ -1,0 +1,78 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-contract-owner-decision-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "case_id": {
+      "title": "Case Id",
+      "type": "string"
+    },
+    "review_id": {
+      "title": "Review Id",
+      "type": "string"
+    },
+    "review_fingerprint": {
+      "title": "Review Fingerprint",
+      "type": "string"
+    },
+    "factual_sha256": {
+      "title": "Factual Sha256",
+      "type": "string"
+    },
+    "explicitly_approved": {
+      "const": true,
+      "title": "Explicitly Approved",
+      "type": "boolean"
+    },
+    "decided_by": {
+      "minLength": 1,
+      "title": "Decided By",
+      "type": "string"
+    },
+    "decision_source": {
+      "minLength": 1,
+      "title": "Decision Source",
+      "type": "string"
+    },
+    "decided_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Decided At"
+    },
+    "independent_human_review": {
+      "const": false,
+      "title": "Independent Human Review",
+      "type": "boolean"
+    },
+    "adjudication_claimed": {
+      "const": false,
+      "title": "Adjudication Claimed",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "review_id",
+    "review_fingerprint",
+    "factual_sha256",
+    "explicitly_approved",
+    "decided_by",
+    "decision_source",
+    "decided_at",
+    "independent_human_review",
+    "adjudication_claimed"
+  ],
+  "title": "OwnerDecision",
+  "type": "object"
+}

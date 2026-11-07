@@ -1,0 +1,29 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "news-pilot-contract-technical-reference-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "contract_version": {
+      "const": "news-economic-validation-v3",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "files": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Files",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "contract_version",
+    "files"
+  ],
+  "title": "TechnicalReference",
+  "type": "object"
+}
