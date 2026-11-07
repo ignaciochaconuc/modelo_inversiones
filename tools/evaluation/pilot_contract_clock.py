@@ -11,6 +11,7 @@ import sys
 import uuid
 from typing import Literal
 
+from pydantic import ValidationError
 
 def _adapter():
     name = "contract_clock_adapter"
@@ -23,6 +24,35 @@ def _adapter():
 
 
 m = _adapter()
+
+# Only fixed rule identifiers may cross the CLI boundary. Never print exception
+# messages from parsers, filesystem operations or caller-supplied values.
+SAFE_ERROR_CODES = frozenset({
+    "clock_not_running", "clock_already_started", "clock_already_stopped",
+    "clock_did_not_advance", "invalid_phase_transition", "invalid_pause_transition",
+    "invalid_resume_transition", "unknown_clock_action", "operator_provenance_required",
+    "clock_state_binding_mismatch", "clock_event_cycle", "clock_event_binding_mismatch",
+    "clock_event_order_mismatch", "clock_chain_missing_start", "session_changed_outside_clock",
+    "workspace_outside_repository", "reserved_form_not_selected", "reservation_source_mismatch",
+    "reserved_file_outside_workspace", "reserved_authorization_mismatch",
+    "reserved_review_id_already_used", "other_cases_must_remain_unfilled",
+    "active_session_not_reserved", "unfilled_session_has_clock_state",
+    "reference_hash_mismatch", "session_duration_mismatch", "incomplete_session_timeline",
+    "incomplete_completed_session", "contract_session_metadata_expired",
+    "owner_review_not_timed", "contract_mapping_not_timed",
+})
+
+
+def error_code(exc: Exception) -> str:
+    """Expose an allowlisted condition, never arbitrary exception content."""
+    if type(exc) is ValueError and len(exc.args) == 1 and isinstance(exc.args[0], str):
+        if exc.args[0] in SAFE_ERROR_CODES:
+            return exc.args[0]
+    if isinstance(exc, ValidationError):
+        return "schema_validation_failed"
+    if isinstance(exc, OSError):
+        return "clock_io_failed"
+    return "unclassified_clock_failure"
 
 
 class Reservation(m.Model):
@@ -226,8 +256,9 @@ def main() -> int:
                 reviewer_id=args.reviewer_id,reviewer_name=args.reviewer_name,context=args.context,model_label=args.model_label)
         print(json.dumps(result))
         return 0
-    except Exception:
-        print(json.dumps(dict(status="blocked",error="contract_clock_validation_failed",provider_calls=0)))
+    except Exception as exc:
+        print(json.dumps(dict(status="blocked",error="contract_clock_validation_failed",
+            error_code=error_code(exc),provider_calls=0)))
         return 2
 
 

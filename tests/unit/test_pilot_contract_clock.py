@@ -153,6 +153,57 @@ def test_cannot_resume_a_stopped_session(sample):
         c.record(sample[0],sample[1],"resume",now=START+timedelta(seconds=21),phase="material_reading")
 
 
+def test_second_stop_reports_exact_condition_without_writes(sample, monkeypatch, capsys):
+    repo,folder,_,_=sample
+    begin(sample)
+    c.record(repo,folder,"stop",now=START+timedelta(seconds=20))
+    before={p:p.read_bytes() for p in repo.rglob("*") if p.is_file()}
+    original=c.record
+    # Exercise the CLI error boundary against a temporary fixture, never the pilot.
+    monkeypatch.setattr(c,"record",lambda *a, **kw: original(repo,folder,"stop",now=START+timedelta(seconds=21)))
+    monkeypatch.setattr(sys,"argv",["clock","--workspace",str(folder),"stop"])
+    assert c.main()==2
+    assert json.loads(capsys.readouterr().out)["error_code"]=="clock_not_running"
+    assert before=={p:p.read_bytes() for p in repo.rglob("*") if p.is_file()}
+
+
+def test_stop_from_ai_wait_does_not_require_or_invent_owner_review(sample):
+    repo,folder,_,_=sample
+    begin(sample)
+    c.record(repo,folder,"phase",now=START+timedelta(seconds=10),phase="contract_mapping")
+    c.record(repo,folder,"pause",now=START+timedelta(seconds=20),reason="ai_wait")
+    assert c.record(repo,folder,"stop",now=START+timedelta(seconds=30))["clock"]=="stopped"
+    session=json.loads((folder/"sessions/case.json").read_text())
+    assert session["pause_seconds"]==10 and session["phase_seconds"]["owner_review"]==0
+    assert not any(i["phase"]=="owner_review" for i in session["intervals"])
+    form=json.loads((folder/"forms/case.json").read_text())
+    assert form["status"]=="in_progress" and form["owner_decision"] is None
+
+
+@pytest.mark.parametrize("exc,expected",[
+    (ValueError("invalid_resume_transition"),"invalid_resume_transition"),
+    (ValueError("secret quote /private/path API_KEY"),"unclassified_clock_failure"),
+    (ValueError("clock_not_running", "secret"),"unclassified_clock_failure"),
+    (OSError("secret filename"),"clock_io_failed"),
+    (RuntimeError("secret response"),"unclassified_clock_failure"),
+])
+def test_cli_error_codes_never_publish_exception_content(exc,expected,monkeypatch,capsys):
+    def fail(*a,**kw):
+        raise exc
+    monkeypatch.setattr(c,"status",fail)
+    monkeypatch.setattr(sys,"argv",["clock","--workspace","unused","status"])
+    assert c.main()==2
+    output=capsys.readouterr()
+    assert json.loads(output.out)["error_code"]==expected
+    assert "secret" not in output.out and not output.err
+
+
+def test_schema_errors_expose_no_input_values():
+    with pytest.raises(c.ValidationError) as caught:
+        c.Reservation.model_validate({"case_id":"secret input"})
+    assert c.error_code(caught.value)=="schema_validation_failed"
+
+
 def test_unknown_phase_times_stay_null_until_observed_session_end(sample):
     begin(sample)
     c.record(sample[0],sample[1],"phase",now=START+timedelta(seconds=20),phase="evidence_check")
