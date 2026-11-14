@@ -1,0 +1,183 @@
+{
+  "$defs": {
+    "Ref": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "title": "Ref",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "adjudication_claimed": {
+      "const": false,
+      "title": "Adjudication Claimed",
+      "type": "boolean"
+    },
+    "assistance": {
+      "enum": [
+        "manual_human",
+        "manual_chatgpt_owner"
+      ],
+      "title": "Assistance",
+      "type": "string"
+    },
+    "authorized_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Authorized At"
+    },
+    "authorized_by": {
+      "title": "Authorized By",
+      "type": "string"
+    },
+    "decision_source": {
+      "title": "Decision Source",
+      "type": "string"
+    },
+    "explicitly_authorized": {
+      "title": "Explicitly Authorized",
+      "type": "boolean"
+    },
+    "factual_content_ready": {
+      "title": "Factual Content Ready",
+      "type": "boolean"
+    },
+    "factual_source": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Ref"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "factual_tip": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Factual Tip"
+    },
+    "familiarity_basis": {
+      "title": "Familiarity Basis",
+      "type": "string"
+    },
+    "familiarity_confirmed": {
+      "title": "Familiarity Confirmed",
+      "type": "boolean"
+    },
+    "first_reading": {
+      "title": "First Reading",
+      "type": "boolean"
+    },
+    "independent_human_review": {
+      "const": false,
+      "title": "Independent Human Review",
+      "type": "boolean"
+    },
+    "inference_authorized": {
+      "const": false,
+      "title": "Inference Authorized",
+      "type": "boolean"
+    },
+    "plan_fingerprint": {
+      "title": "Plan Fingerprint",
+      "type": "string"
+    },
+    "reviewer_id": {
+      "title": "Reviewer Id",
+      "type": "string"
+    },
+    "reviewer_name": {
+      "title": "Reviewer Name",
+      "type": "string"
+    },
+    "session_id": {
+      "title": "Session Id",
+      "type": "string"
+    },
+    "source_message_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Source Message Id"
+    },
+    "unseen_counterfactual": {
+      "title": "Unseen Counterfactual",
+      "type": "boolean"
+    },
+    "version": {
+      "const": "news-prospective-timing-authorization-v1",
+      "title": "Version",
+      "type": "string"
+    },
+    "visible_model_label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Visible Model Label"
+    }
+  },
+  "required": [
+    "version",
+    "plan_fingerprint",
+    "session_id",
+    "explicitly_authorized",
+    "authorized_by",
+    "decision_source",
+    "authorized_at",
+    "source_message_id",
+    "reviewer_id",
+    "reviewer_name",
+    "assistance",
+    "visible_model_label",
+    "familiarity_confirmed",
+    "first_reading",
+    "unseen_counterfactual",
+    "familiarity_basis",
+    "factual_tip",
+    "factual_source",
+    "factual_content_ready",
+    "independent_human_review",
+    "adjudication_claimed",
+    "inference_authorized"
+  ],
+  "title": "Authorization",
+  "type": "object"
+}

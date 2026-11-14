@@ -1,0 +1,162 @@
+{
+  "$defs": {
+    "Candidate": {
+      "additionalProperties": false,
+      "properties": {
+        "case_id": {
+          "title": "Case Id",
+          "type": "string"
+        },
+        "family_id": {
+          "title": "Family Id",
+          "type": "string"
+        },
+        "packet_fingerprint": {
+          "title": "Packet Fingerprint",
+          "type": "string"
+        },
+        "request_fingerprint": {
+          "title": "Request Fingerprint",
+          "type": "string"
+        }
+      },
+      "required": [
+        "case_id",
+        "family_id",
+        "packet_fingerprint",
+        "request_fingerprint"
+      ],
+      "title": "Candidate",
+      "type": "object"
+    },
+    "Ref": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "title": "Ref",
+      "type": "object"
+    },
+    "Slot": {
+      "additionalProperties": false,
+      "properties": {
+        "case_id": {
+          "title": "Case Id",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "stage": {
+          "enum": [
+            "factual",
+            "contractual"
+          ],
+          "title": "Stage",
+          "type": "string"
+        }
+      },
+      "required": [
+        "session_id",
+        "case_id",
+        "stage"
+      ],
+      "title": "Slot",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "administration_id": {
+      "title": "Administration Id",
+      "type": "string"
+    },
+    "candidates": {
+      "items": {
+        "$ref": "#/$defs/Candidate"
+      },
+      "title": "Candidates",
+      "type": "array"
+    },
+    "corpus": {
+      "$ref": "#/$defs/Ref"
+    },
+    "historical_selection": {
+      "$ref": "#/$defs/Ref"
+    },
+    "instrument": {
+      "$ref": "#/$defs/Ref"
+    },
+    "kind": {
+      "enum": [
+        "prepared_real_calibration",
+        "synthetic_fixture"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "private_design": {
+      "$ref": "#/$defs/Ref"
+    },
+    "protocol": {
+      "$ref": "#/$defs/Ref"
+    },
+    "purpose": {
+      "const": "development_workload_only",
+      "title": "Purpose",
+      "type": "string"
+    },
+    "records_directory": {
+      "title": "Records Directory",
+      "type": "string"
+    },
+    "sessions": {
+      "items": {
+        "$ref": "#/$defs/Slot"
+      },
+      "title": "Sessions",
+      "type": "array"
+    },
+    "source_manifest": {
+      "$ref": "#/$defs/Ref"
+    },
+    "technical_reference": {
+      "$ref": "#/$defs/Ref"
+    },
+    "version": {
+      "const": "news-prospective-timing-pilot-v1",
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "purpose",
+    "records_directory",
+    "instrument",
+    "protocol",
+    "source_manifest",
+    "corpus",
+    "private_design",
+    "historical_selection",
+    "technical_reference",
+    "candidates",
+    "sessions",
+    "administration_id"
+  ],
+  "title": "Plan",
+  "type": "object"
+}

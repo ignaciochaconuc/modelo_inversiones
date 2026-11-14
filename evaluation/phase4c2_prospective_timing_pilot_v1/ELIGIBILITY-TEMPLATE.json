@@ -1,0 +1,21 @@
+{
+  "decided_at": null,
+  "decided_by": null,
+  "decision_source": null,
+  "eligible_for_named_scope": null,
+  "explicitly_attested": null,
+  "independent_human_review": false,
+  "no_unlogged_multitasking": null,
+  "plan_fingerprint": "63203d4cb428ab2ff6a2727d83ce310f32c77c5b0db41f6dac0020bc8b52ae95",
+  "recording_complete": null,
+  "scope": [
+    "factual_reading",
+    "factual_annotation",
+    "citation_check",
+    "factual_owner_review"
+  ],
+  "session_id": "pt-7876c40dc93144768f9d1adc19b8b052",
+  "session_tip": null,
+  "task_complete": null,
+  "version": "news-prospective-timing-eligibility-v1"
+}

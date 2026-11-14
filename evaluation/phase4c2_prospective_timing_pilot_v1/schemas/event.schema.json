@@ -1,0 +1,128 @@
+{
+  "$defs": {
+    "Ref": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "title": "Ref",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "enum": [
+        "start",
+        "phase",
+        "pause",
+        "resume",
+        "stop"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "at": {
+      "format": "date-time",
+      "title": "At",
+      "type": "string"
+    },
+    "authorization": {
+      "$ref": "#/$defs/Ref"
+    },
+    "kind": {
+      "enum": [
+        "prepared_real_calibration",
+        "synthetic_fixture"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "next_kind": {
+      "enum": [
+        "active",
+        "pause",
+        "stopped"
+      ],
+      "title": "Next Kind",
+      "type": "string"
+    },
+    "pause_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Pause Reason"
+    },
+    "phase": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Phase"
+    },
+    "plan_fingerprint": {
+      "title": "Plan Fingerprint",
+      "type": "string"
+    },
+    "previous": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Previous"
+    },
+    "sequence": {
+      "title": "Sequence",
+      "type": "integer"
+    },
+    "session_id": {
+      "title": "Session Id",
+      "type": "string"
+    },
+    "version": {
+      "const": "news-prospective-timing-event-v1",
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "kind",
+    "plan_fingerprint",
+    "session_id",
+    "sequence",
+    "previous",
+    "action",
+    "at",
+    "next_kind",
+    "phase",
+    "pause_reason",
+    "authorization"
+  ],
+  "title": "Event",
+  "type": "object"
+}

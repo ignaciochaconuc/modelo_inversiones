@@ -1,0 +1,87 @@
+{
+  "administration_id": "pt-7703596798234aa4aae9e3b45653abb5",
+  "candidates": [
+    {
+      "case_id": "D-5f21ec91317d6943",
+      "family_id": "DF-7bee069935c5c291",
+      "packet_fingerprint": "3d64f7b400bcb862d94df86268bb6c11078a95308b36502625224feeeca3ada1",
+      "request_fingerprint": "bcd1a5f528c9d4c35a094dbbfcc83e264ae65cca7d8f07825fc5d98e922ad628"
+    },
+    {
+      "case_id": "D-8d5314f2c5c04bdf",
+      "family_id": "DF-52324f86ba41ef20",
+      "packet_fingerprint": "07e79bd8439272f1e816a26b556e23de010dfb061eb11b9dd0c6c016e768b512",
+      "request_fingerprint": "b19753cfe762f81d0f1213d7b1521ffc272bfdbfd7b433fafe519e2656c7ed42"
+    },
+    {
+      "case_id": "D-bcc9cce8989c97da",
+      "family_id": "DF-67d60d0c5faf93b7",
+      "packet_fingerprint": "3b84364f2a7046778096aa8fe2cebf0c9850104d627f17c969f3c0f6bf2ce73d",
+      "request_fingerprint": "3b2a0b6f316e35018dcaac13a485199d7de528bfa76c13f824d6a0d612256757"
+    }
+  ],
+  "corpus": {
+    "path": "evaluation/phase4c2_development_corpus_v1/corpus.json",
+    "sha256": "4d3a89c4f9c8b2ad59c824ba9e8e2071e54b2c207aded9e97a7d0b50ab05c5ab"
+  },
+  "historical_selection": {
+    "path": "evaluation/phase4c2_development_corpus_v1/pilot-plan.json",
+    "sha256": "83111f8f622abba1283152faffedd8d055ef734173d83f2e24ff565930e22aca"
+  },
+  "instrument": {
+    "path": "tools/evaluation/prospective_timing_pilot.py",
+    "sha256": "3e9f3123a19b6e77fe065b129bfa88acea6165ca7666fa26cb6218f127cb5dfd"
+  },
+  "kind": "prepared_real_calibration",
+  "private_design": {
+    "path": "evaluation/phase4c2_development_corpus_v1/private-design.json",
+    "sha256": "c083e03f67023651b84b795a8f1b4be934ad5aa0bb20410d05ec76ce1dae8336"
+  },
+  "protocol": {
+    "path": "docs/phase4c2-prospective-timing-pilot-v1.md",
+    "sha256": "2b9e9e62886e015da9865390f6a22e7e79ba59dc04aa064aafb6384b3ad9686b"
+  },
+  "purpose": "development_workload_only",
+  "records_directory": "data/cache/news_prospective_timing_pilot/calibration-v1",
+  "sessions": [
+    {
+      "case_id": "D-5f21ec91317d6943",
+      "session_id": "pt-7876c40dc93144768f9d1adc19b8b052",
+      "stage": "factual"
+    },
+    {
+      "case_id": "D-5f21ec91317d6943",
+      "session_id": "pt-6b6229bbaf244855961ade9d32008070",
+      "stage": "contractual"
+    },
+    {
+      "case_id": "D-8d5314f2c5c04bdf",
+      "session_id": "pt-11554b077981407b9e17fc2cd1103405",
+      "stage": "factual"
+    },
+    {
+      "case_id": "D-8d5314f2c5c04bdf",
+      "session_id": "pt-2c281cb582d74a07a6e8cc701809febb",
+      "stage": "contractual"
+    },
+    {
+      "case_id": "D-bcc9cce8989c97da",
+      "session_id": "pt-433d00de8de542fdb67410a0380e0e30",
+      "stage": "factual"
+    },
+    {
+      "case_id": "D-bcc9cce8989c97da",
+      "session_id": "pt-f1a5b759d7a540299035c5d2b50b95ac",
+      "stage": "contractual"
+    }
+  ],
+  "source_manifest": {
+    "path": "evaluation/phase4c2_development_corpus_v1/manifest.json",
+    "sha256": "a661f3c9f2b3e12d152c78b56b98e7a6f7673a6ed675d1d84fa9849dfec59b3c"
+  },
+  "technical_reference": {
+    "path": "evaluation/phase4c2_pilot_contract_adapter_v1/technical-reference.json",
+    "sha256": "9d0884b4759bc87d9ca61e0ac54a5c4ed6b67cdbdae7c9c6d01c288743d08b1c"
+  },
+  "version": "news-prospective-timing-pilot-v1"
+}

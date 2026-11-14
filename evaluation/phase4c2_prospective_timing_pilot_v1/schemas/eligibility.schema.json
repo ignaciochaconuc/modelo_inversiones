@@ -1,0 +1,92 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "decided_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Decided At"
+    },
+    "decided_by": {
+      "title": "Decided By",
+      "type": "string"
+    },
+    "decision_source": {
+      "title": "Decision Source",
+      "type": "string"
+    },
+    "eligible_for_named_scope": {
+      "title": "Eligible For Named Scope",
+      "type": "boolean"
+    },
+    "explicitly_attested": {
+      "title": "Explicitly Attested",
+      "type": "boolean"
+    },
+    "independent_human_review": {
+      "const": false,
+      "title": "Independent Human Review",
+      "type": "boolean"
+    },
+    "no_unlogged_multitasking": {
+      "title": "No Unlogged Multitasking",
+      "type": "boolean"
+    },
+    "plan_fingerprint": {
+      "title": "Plan Fingerprint",
+      "type": "string"
+    },
+    "recording_complete": {
+      "title": "Recording Complete",
+      "type": "boolean"
+    },
+    "scope": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Scope",
+      "type": "array"
+    },
+    "session_id": {
+      "title": "Session Id",
+      "type": "string"
+    },
+    "session_tip": {
+      "title": "Session Tip",
+      "type": "string"
+    },
+    "task_complete": {
+      "title": "Task Complete",
+      "type": "boolean"
+    },
+    "version": {
+      "const": "news-prospective-timing-eligibility-v1",
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "plan_fingerprint",
+    "session_id",
+    "session_tip",
+    "explicitly_attested",
+    "eligible_for_named_scope",
+    "scope",
+    "task_complete",
+    "recording_complete",
+    "no_unlogged_multitasking",
+    "decided_by",
+    "decision_source",
+    "decided_at",
+    "independent_human_review"
+  ],
+  "title": "Attestation",
+  "type": "object"
+}
