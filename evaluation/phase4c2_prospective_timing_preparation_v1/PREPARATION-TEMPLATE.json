@@ -1,0 +1,32 @@
+{
+  "adjudication_claimed": false,
+  "assistance": "manual_chatgpt_owner",
+  "case_id": "D-5f21ec91317d6943",
+  "declaration_source": null,
+  "declared_at": null,
+  "eligibility_granted": false,
+  "familiarity_statement": null,
+  "familiarity_status": "unknown",
+  "first_reading": "unknown",
+  "independent_human_review": false,
+  "packet_fingerprint": "3d64f7b400bcb862d94df86268bb6c11078a95308b36502625224feeeca3ada1",
+  "pending_fields": [
+    "reviewer_id",
+    "familiarity_confirmed",
+    "first_reading",
+    "unseen_counterfactual",
+    "execution_authorization",
+    "familiarity_statement",
+    "declaration_source"
+  ],
+  "plan_fingerprint": "63203d4cb428ab2ff6a2727d83ce310f32c77c5b0db41f6dac0020bc8b52ae95",
+  "responsible_reference": "Project owner, current conversation participant",
+  "reviewer_id": null,
+  "scope": "preparation_and_preflight_only",
+  "session_id": "pt-7876c40dc93144768f9d1adc19b8b052",
+  "source_message_id": null,
+  "start_authorized": false,
+  "status": "preparation_only",
+  "variant_exposure": "unknown",
+  "version": "news-prospective-timing-preparation-v1"
+}

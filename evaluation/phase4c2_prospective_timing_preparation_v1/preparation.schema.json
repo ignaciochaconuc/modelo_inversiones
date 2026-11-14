@@ -1,0 +1,193 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "adjudication_claimed": {
+      "const": false,
+      "title": "Adjudication Claimed",
+      "type": "boolean"
+    },
+    "assistance": {
+      "const": "manual_chatgpt_owner",
+      "title": "Assistance",
+      "type": "string"
+    },
+    "case_id": {
+      "title": "Case Id",
+      "type": "string"
+    },
+    "declaration_source": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Declaration Source"
+    },
+    "declared_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Declared At"
+    },
+    "eligibility_granted": {
+      "const": false,
+      "title": "Eligibility Granted",
+      "type": "boolean"
+    },
+    "familiarity_statement": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Familiarity Statement"
+    },
+    "familiarity_status": {
+      "enum": [
+        "unknown",
+        "owner_declares_seen",
+        "owner_declares_unseen"
+      ],
+      "title": "Familiarity Status",
+      "type": "string"
+    },
+    "first_reading": {
+      "enum": [
+        "unknown",
+        "declared_yes",
+        "declared_no"
+      ],
+      "title": "First Reading",
+      "type": "string"
+    },
+    "independent_human_review": {
+      "const": false,
+      "title": "Independent Human Review",
+      "type": "boolean"
+    },
+    "packet_fingerprint": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Packet Fingerprint",
+      "type": "string"
+    },
+    "pending_fields": {
+      "items": {
+        "enum": [
+          "reviewer_id",
+          "familiarity_statement",
+          "declaration_source",
+          "familiarity_confirmed",
+          "first_reading",
+          "unseen_counterfactual",
+          "execution_authorization"
+        ],
+        "type": "string"
+      },
+      "title": "Pending Fields",
+      "type": "array"
+    },
+    "plan_fingerprint": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Plan Fingerprint",
+      "type": "string"
+    },
+    "responsible_reference": {
+      "const": "Project owner, current conversation participant",
+      "title": "Responsible Reference",
+      "type": "string"
+    },
+    "reviewer_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Reviewer Id"
+    },
+    "scope": {
+      "const": "preparation_and_preflight_only",
+      "title": "Scope",
+      "type": "string"
+    },
+    "session_id": {
+      "title": "Session Id",
+      "type": "string"
+    },
+    "source_message_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Source Message Id"
+    },
+    "start_authorized": {
+      "const": false,
+      "title": "Start Authorized",
+      "type": "boolean"
+    },
+    "status": {
+      "const": "preparation_only",
+      "title": "Status",
+      "type": "string"
+    },
+    "variant_exposure": {
+      "enum": [
+        "unknown",
+        "owner_declares_seen",
+        "owner_declares_unseen"
+      ],
+      "title": "Variant Exposure",
+      "type": "string"
+    },
+    "version": {
+      "const": "news-prospective-timing-preparation-v1",
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "status",
+    "scope",
+    "start_authorized",
+    "eligibility_granted",
+    "plan_fingerprint",
+    "case_id",
+    "session_id",
+    "packet_fingerprint",
+    "responsible_reference",
+    "reviewer_id",
+    "familiarity_statement",
+    "familiarity_status",
+    "first_reading",
+    "variant_exposure",
+    "assistance",
+    "declaration_source",
+    "declared_at",
+    "source_message_id",
+    "independent_human_review",
+    "adjudication_claimed",
+    "pending_fields"
+  ],
+  "title": "Preparation",
+  "type": "object"
+}
