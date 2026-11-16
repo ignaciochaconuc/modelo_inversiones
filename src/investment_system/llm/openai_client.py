@@ -39,18 +39,24 @@ class OpenAIClient(BaseLLMClient):
         if not key:
             raise LLMProviderError("missing_api_key")
         started = time.monotonic()
+        transport_error = None
         try:
             with httpx.Client(transport=self.transport, timeout=self.settings.timeout_seconds,
                               follow_redirects=False, trust_env=False) as client:
                 http = client.post(self.settings.endpoint, headers={"Authorization": "Bearer " + key}, json=payload)
         except httpx.TimeoutException:
-            raise LLMProviderError("timeout", retryable=True) from None
+            transport_error = "timeout"
         except httpx.TransportError:
-            raise LLMProviderError("disconnect", retryable=True) from None
+            transport_error = "disconnect"
+        # Raise outside the handler: `from None` alone retains the private
+        # exception (including its authenticated request) in __context__.
+        if transport_error is not None:
+            raise LLMProviderError(transport_error, retryable=True)
         if http.status_code != 200:
             retryable = http.status_code == 429 or 500 <= http.status_code <= 599
             code = "authentication" if http.status_code == 401 else "authorization" if http.status_code == 403 else "rate_limit" if http.status_code == 429 else "server_error" if http.status_code >= 500 else "permanent_http_error"
             raise LLMProviderError(code, retryable=retryable) from None
+        invalid_envelope = False
         try:
             body = http.json()
             actual_model = body["model"]
@@ -75,7 +81,10 @@ class OpenAIClient(BaseLLMClient):
             if type(written) is int and written >= 0:
                 response.raw["cache_write_tokens"] = written
         except (ValueError, KeyError, TypeError, AttributeError, OverflowError):
-            raise LLMProviderError("invalid_provider_envelope", retryable=True) from None
+            invalid_envelope = True
+        # JSONDecodeError.doc and other parser internals must not be chained.
+        if invalid_envelope:
+            raise LLMProviderError("invalid_provider_envelope", retryable=True)
         if key in content or key in actual_model:
             response.content = ""
             if key in actual_model:
