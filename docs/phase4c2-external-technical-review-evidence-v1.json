@@ -1,0 +1,4295 @@
+{
+  "authorization_message_id": null,
+  "authorizing_source": "Owner instruction in current conversation: preparation of external technical review dossier only",
+  "cases": [
+    {
+      "case_id": "D-293a6cbca3479505",
+      "citation_occurrences": 11,
+      "dimensions": 13,
+      "facts": 11,
+      "form": {
+        "path": "data/cache/news_development_pilot/contract-manual-attempt01/forms/D-293a6cbca3479505.json",
+        "sha256": "c76498d2a4d59d0993adf27ee50828391b8de54be0658c12419c836e99796de0"
+      },
+      "mappings": 11,
+      "references": {
+        "closed_disposition": {
+          "path": "data/cache/news_development_pilot/review-dispositions-v1/D-293a6cbca3479505.json",
+          "sha256": "16b285f6d704b96eb90c239faa738308e09727173fa97edc1be38868beb0a1f7"
+        },
+        "closure_decision": {
+          "path": "data/cache/news_development_pilot/factual-closures-v1/D-293a6cbca3479505.closure-v1.json",
+          "sha256": "c1bbc3a858742b140bbcbeb6466667f4a89d67a11e9ff3c7dd181969d0af3b30"
+        },
+        "factual": {
+          "path": "data/cache/news_development_pilot/manual-20261102-attempt01/factual/D-293a6cbca3479505.json",
+          "sha256": "9072b179f81639e507d0c05c84fbe495f17de3647984591c335d99c32ecb396b"
+        },
+        "opening_authorization": {
+          "path": "data/cache/news_development_pilot/contract-manual-attempt01/opening/D-293a6cbca3479505.authorization-v1.json",
+          "sha256": "9eb9b3fb4c75831b5cd303498c0ab2471852edb61d9b900a217683fc1760c748"
+        },
+        "owner_decision": {
+          "path": "data/cache/news_development_pilot/contract-manual-attempt01/owner-decisions/D-293a6cbca3479505.owner-decision-v1.json",
+          "sha256": "9eaa703f92fb49a3261405bdf0635c140235fb1a8d059500f7f6ac961d104b42"
+        },
+        "session": {
+          "path": "data/cache/news_development_pilot/contract-manual-attempt01/sessions/D-293a6cbca3479505.json",
+          "sha256": "35488235aa0f9d87e89884484f08f988209415ca65fa628f1355d272dc6245cd"
+        },
+        "technical_reference": {
+          "path": "evaluation/phase4c2_pilot_contract_adapter_v1/technical-reference.json",
+          "sha256": "9d0884b4759bc87d9ca61e0ac54a5c4ed6b67cdbdae7c9c6d01c288743d08b1c"
+        }
+      },
+      "review_fingerprint": "b04d2b77f21c187c517783a50e6a6e834d26eb280499fdde715ce89101387cdd",
+      "review_id": "contract-D-293a6cbca3479505-b33eb3a505444869",
+      "status": "completed"
+    },
+    {
+      "case_id": "D-a8db3a0c74d93eb8",
+      "citation_occurrences": 22,
+      "dimensions": 13,
+      "facts": 13,
+      "form": {
+        "path": "data/cache/news_development_pilot/contract-D-a8db3a0c74d93eb8-attempt02/forms/D-a8db3a0c74d93eb8.json",
+        "sha256": "2aee1006b6ee939cf443c00f8d3a237e433f248c6c191b97ea6d9960b6b38347"
+      },
+      "mappings": 13,
+      "references": {
+        "closed_disposition": {
+          "path": "data/cache/news_development_pilot/review-dispositions-v1/D-a8db3a0c74d93eb8.json",
+          "sha256": "7c06f5fa468584a50f2f48b557843fe5671e7d46a61afe1b10edf11d65ae4fcc"
+        },
+        "closure_decision": {
+          "path": "data/cache/news_development_pilot/factual-closures-v1/D-a8db3a0c74d93eb8.closure-v1.json",
+          "sha256": "bdee5ae4a787d3ca7448ff1401568559c351786ef15b55957416836932efc95d"
+        },
+        "factual": {
+          "path": "data/cache/news_development_pilot/manual-20261102-attempt02/factual/D-a8db3a0c74d93eb8.json",
+          "sha256": "77e82bca3bd1358f54faffd59babfe12b62b0ca40eb1131437cb100433260ec6"
+        },
+        "opening_authorization": {
+          "path": "data/cache/news_development_pilot/contract-D-a8db3a0c74d93eb8-attempt02/opening/authorization.json",
+          "sha256": "95abaa00c4f768cc9a6947d7b0e9f8c54821d267d3145549fe82050d0f545989"
+        },
+        "owner_decision": {
+          "path": "data/cache/news_development_pilot/contract-D-a8db3a0c74d93eb8-attempt02/content-approval.json",
+          "sha256": "a50e5548c4d9a246f7d7aa283c6317969dc50a95b5e2050c0c6d55ee8ccb52ab"
+        },
+        "session": {
+          "path": "data/cache/news_development_pilot/contract-D-a8db3a0c74d93eb8-attempt02/sessions/D-a8db3a0c74d93eb8.json",
+          "sha256": "7311e4de8b228939b650264a39176d152ec12f50b0a68f6e38a9f0ff5397f8d0"
+        },
+        "technical_reference": {
+          "path": "evaluation/phase4c2_pilot_contract_adapter_v1/technical-reference.json",
+          "sha256": "9d0884b4759bc87d9ca61e0ac54a5c4ed6b67cdbdae7c9c6d01c288743d08b1c"
+        }
+      },
+      "review_fingerprint": "873869e1c2f89371db09fbdf322f4fc0ea727adf236ae5dbd4e5d17cae452c9c",
+      "review_id": "contract-D-a8db3a0c74d93eb8-d1e4a52295a94df285645ab582fed94d",
+      "status": "completed"
+    },
+    {
+      "case_id": "D-fbf4c5c9e02691b3",
+      "citation_occurrences": 26,
+      "dimensions": 13,
+      "facts": 12,
+      "form": {
+        "path": "data/cache/news_development_pilot/contract-D-fbf4c5c9e02691b3-attempt01/forms/D-fbf4c5c9e02691b3.json",
+        "sha256": "b1ad2d5207fb63c455029812bbc348b2877d23fc26177f39ab6c50f256b3e843"
+      },
+      "mappings": 12,
+      "references": {
+        "closed_disposition": {
+          "path": "data/cache/news_development_pilot/review-dispositions-v1/D-fbf4c5c9e02691b3.json",
+          "sha256": "1874e0434215153a6a3322c49f8fb765c6ffc13400d1f925a9e8d2da6eb4b552"
+        },
+        "closure_decision": {
+          "path": "data/cache/news_development_pilot/factual-closures-v1/D-fbf4c5c9e02691b3.closure-v1.json",
+          "sha256": "e786d310485dd996fd4adb6469cbab2c73dc53e50eaa9891307e7de7641f74d6"
+        },
+        "factual": {
+          "path": "data/cache/news_development_pilot/manual-20261102-attempt03/factual/D-fbf4c5c9e02691b3.json",
+          "sha256": "5c0ff99410a3371b5cfdcd49e9134842bd4dcca9333ecec2bfcb2da33a2b457b"
+        },
+        "opening_authorization": {
+          "path": "data/cache/news_development_pilot/contract-D-fbf4c5c9e02691b3-attempt01/opening/authorization.json",
+          "sha256": "e9561f0b904ad14bb80ad913b7112f007a143375b737b078bcee1e72fa564169"
+        },
+        "owner_decision": {
+          "path": "data/cache/news_development_pilot/contract-D-fbf4c5c9e02691b3-attempt01/content-approval.json",
+          "sha256": "7e4989b6c74b1bd57962b307c10781cff7e9ca52b9c3a8da1f9fc4d1b3e5def0"
+        },
+        "session": {
+          "path": "data/cache/news_development_pilot/contract-D-fbf4c5c9e02691b3-attempt01/sessions/D-fbf4c5c9e02691b3.json",
+          "sha256": "8dbbcf9050b90d8aceb943f1356af5ea56d6579a3673412816ae1b69103acded"
+        },
+        "technical_reference": {
+          "path": "evaluation/phase4c2_pilot_contract_adapter_v1/technical-reference.json",
+          "sha256": "9d0884b4759bc87d9ca61e0ac54a5c4ed6b67cdbdae7c9c6d01c288743d08b1c"
+        }
+      },
+      "review_fingerprint": "06cde897afc6da5082b47e7253584a98cc26fc1c23e22c88882b1a8c0469c725",
+      "review_id": "contract-D-fbf4c5c9e02691b3-f0d5bc0e422442e88f203fb6751fa7b7",
+      "status": "completed"
+    },
+    {
+      "case_id": "D-40e8a2188273506b",
+      "citation_occurrences": 31,
+      "dimensions": 13,
+      "facts": 12,
+      "form": {
+        "path": "data/cache/news_development_pilot/contract-D-40e8a2188273506b-attempt01/forms/D-40e8a2188273506b.json",
+        "sha256": "145bf0e6210eba00a869809f6f340d84deefc9ad6a229f88c48ecad07eed203c"
+      },
+      "mappings": 12,
+      "references": {
+        "closed_disposition": {
+          "path": "data/cache/news_development_pilot/review-dispositions-v1/D-40e8a2188273506b.json",
+          "sha256": "b699bc116cb12774804c61365323419c8bf3cf57290f6d848c6de9c20327ded5"
+        },
+        "closure_decision": {
+          "path": "data/cache/news_development_pilot/factual-closures-v1/D-40e8a2188273506b.closure-v1.json",
+          "sha256": "870a51d9439ff95017545c832e7168c08a5362d7b3cceb7e1dcf91c9465f81e9"
+        },
+        "factual": {
+          "path": "data/cache/news_development_pilot/manual-20261102-attempt04/factual/D-40e8a2188273506b.json",
+          "sha256": "67ab00ba7c50a6415820a77b57901dcb3b6a372cb986c7f7451325a21cbeea65"
+        },
+        "opening_authorization": {
+          "path": "data/cache/news_development_pilot/contract-D-40e8a2188273506b-attempt01/opening/authorization.json",
+          "sha256": "7155fd46b636fcc12c58e1f0a19ac55c362570bc7f2469645a3eaa142b30d7b0"
+        },
+        "owner_decision": {
+          "path": "data/cache/news_development_pilot/contract-D-40e8a2188273506b-attempt01/content-approval.json",
+          "sha256": "b8e346f7b8c38759d8dc8325381ddc57fd20fe6e3b74e7e0d0138ab97e9f6891"
+        },
+        "session": {
+          "path": "data/cache/news_development_pilot/contract-D-40e8a2188273506b-attempt01/sessions/D-40e8a2188273506b.json",
+          "sha256": "5b4ac5abc534ffacc37973ad9996f6709372491de59580c0f937ac8935f3e3c2"
+        },
+        "technical_reference": {
+          "path": "evaluation/phase4c2_pilot_contract_adapter_v1/technical-reference.json",
+          "sha256": "9d0884b4759bc87d9ca61e0ac54a5c4ed6b67cdbdae7c9c6d01c288743d08b1c"
+        }
+      },
+      "review_fingerprint": "7ff2d86ecea1e82a70d84f349428ec14ccdc198ae1ccff52c3b0e572f9a032c1",
+      "review_id": "contract-D-40e8a2188273506b-5a8930e78cf44d04bd2d0ef880f4f55a",
+      "status": "completed"
+    },
+    {
+      "case_id": "D-1211fcda178c57ab",
+      "citation_occurrences": 40,
+      "dimensions": 13,
+      "facts": 14,
+      "form": {
+        "path": "data/cache/news_development_pilot/contract-D-1211fcda178c57ab-attempt01/forms/D-1211fcda178c57ab.json",
+        "sha256": "bb92ae73bcc66550459ce736111808e2845caed72ca53759a3f285fa2bbfcf25"
+      },
+      "mappings": 14,
+      "references": {
+        "closed_disposition": {
+          "path": "data/cache/news_development_pilot/review-dispositions-v1/D-1211fcda178c57ab.json",
+          "sha256": "2d2545881dd75e75992cf1faf03a3e941bdb2e1b0151ac41c8020816437a0e5d"
+        },
+        "closure_decision": {
+          "path": "data/cache/news_development_pilot/factual-closures-v1/D-1211fcda178c57ab.closure-v1.json",
+          "sha256": "b6db2db930f26aeb6596885559aa2fa3b4e8b5b529cf176c0ace79cc22e31ea0"
+        },
+        "factual": {
+          "path": "data/cache/news_development_pilot/manual-20261102-attempt05/factual/D-1211fcda178c57ab.json",
+          "sha256": "62806d79ae2f8455a0408cf2b34e681599b94fd2cd2219f7ca2ee1e02129552d"
+        },
+        "opening_authorization": {
+          "path": "data/cache/news_development_pilot/contract-D-1211fcda178c57ab-attempt01/opening/authorization.json",
+          "sha256": "22596a446678d4b19cd276143cec1fa2eb6128badd435c614535b3cad27d1acd"
+        },
+        "owner_decision": {
+          "path": "data/cache/news_development_pilot/contract-D-1211fcda178c57ab-attempt01/content-approval.json",
+          "sha256": "a6da74124350ff1eb1a8686d2ebd3650f8fe08560f4d895e93e1877057794b8c"
+        },
+        "session": {
+          "path": "data/cache/news_development_pilot/contract-D-1211fcda178c57ab-attempt01/sessions/D-1211fcda178c57ab.json",
+          "sha256": "ad985d2180dd7e132777f66b86fdd26794f27fe009824af9ee50f062234a2419"
+        },
+        "technical_reference": {
+          "path": "evaluation/phase4c2_pilot_contract_adapter_v1/technical-reference.json",
+          "sha256": "9d0884b4759bc87d9ca61e0ac54a5c4ed6b67cdbdae7c9c6d01c288743d08b1c"
+        }
+      },
+      "review_fingerprint": "3feca9f4db4b2b21403624fdddd9d366c8514232143bea849ad2a492c9189cc5",
+      "review_id": "contract-D-1211fcda178c57ab-072d41eaa8eb49caad96333a7ca2b062",
+      "status": "completed"
+    },
+    {
+      "case_id": "D-6c6ef03a91cca2a9",
+      "citation_occurrences": 29,
+      "dimensions": 13,
+      "facts": 12,
+      "form": {
+        "path": "data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01/forms/D-6c6ef03a91cca2a9.json",
+        "sha256": "976a330a13c7b845620e857af4ea9a00faaefef5382194038ee51ba10b2c230a"
+      },
+      "mappings": 12,
+      "references": {
+        "closed_disposition": {
+          "path": "data/cache/news_development_pilot/review-dispositions-v1/D-6c6ef03a91cca2a9.json",
+          "sha256": "21c3306e2f25ad5a56ecd22e3be3589d1aa89873f73badaf1b09888be95014e5"
+        },
+        "closure_decision": {
+          "path": "data/cache/news_development_pilot/factual-closures-v1/D-6c6ef03a91cca2a9.closure-v1.json",
+          "sha256": "acfe4e4c2c6670fca17d6a2505c8ae1c468645303e508c23b422fd8dc31b71eb"
+        },
+        "factual": {
+          "path": "data/cache/news_development_pilot/manual-20261102-attempt06/factual/D-6c6ef03a91cca2a9.json",
+          "sha256": "3d8bfb39f17fc3f5e0430220d2c6f5dfe82e1a862bcf7426147aec347a837afe"
+        },
+        "opening_authorization": {
+          "path": "data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01/opening/authorization.json",
+          "sha256": "9560fa70c1b96a738e5c8befef4017287bb397275f385542bc7d61b71bfc3867"
+        },
+        "owner_decision": {
+          "path": "data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01/content-approval.json",
+          "sha256": "1fd6177be7d7b3b83e619c3762cb6ceb16edc19f0bdd92d0105e07510d4b7030"
+        },
+        "session": {
+          "path": "data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01/sessions/D-6c6ef03a91cca2a9.json",
+          "sha256": "2bcc830cef060ba70f04800e886ea7a509fe1672ca057aa0c4d8eb3506ec524c"
+        },
+        "technical_reference": {
+          "path": "evaluation/phase4c2_pilot_contract_adapter_v1/technical-reference.json",
+          "sha256": "9d0884b4759bc87d9ca61e0ac54a5c4ed6b67cdbdae7c9c6d01c288743d08b1c"
+        }
+      },
+      "review_fingerprint": "e1e88cf31df86efdb835ba9bc1daece39e9bef591bc1e32750c943056ecac212",
+      "review_id": "contract-D-6c6ef03a91cca2a9-44ccb50badcb4feea0790120ba814f05",
+      "status": "completed"
+    }
+  ],
+  "descriptive_totals": {
+    "citation_occurrences": 159,
+    "dimension_statuses": {
+      "indeterminate": 1,
+      "insufficient": 24,
+      "recorded": 53
+    },
+    "dimensions": 78,
+    "interpretation": "Manual assisted instrument counts, not NewsAgent accuracy",
+    "mapping_modes": {
+      "faithful_partial_only": 68,
+      "structured": 6
+    },
+    "mappings": 74
+  },
+  "distribution_notice": "Inventory does not authorize distribution. Selective access only; no .env, Finnhub text, expired responses or reserved materials included.",
+  "document_version": "phase4c2-external-technical-review-evidence-v1",
+  "dossier_documents": [
+    {
+      "path": "docs/phase4c2-external-technical-review-dossier-v1.md",
+      "sha256": "221b41423068e55eecc6ee90ddc522824ed1492ad4f2c112b24ed6340dddd462"
+    },
+    {
+      "path": "docs/phase4c2-external-technical-review-matrix-v1.md",
+      "sha256": "c094426098ff511f317e28f48a0797fb60522d38d5f5c20be5c594e02f5bf20a"
+    },
+    {
+      "path": "docs/phase4c2-external-technical-review-verdict-template-v1.md",
+      "sha256": "9b744a9e0a1ba6e9e5a4b8f2b5f75ecb006b6f3d9ed7505a9791da5c5f455bd5"
+    }
+  ],
+  "external_review_status": "not_performed_by_this_preparation",
+  "files": [
+    {
+      "access": "repository_source",
+      "bytes": 432,
+      "path": ".gitignore",
+      "roles": [
+        "normative_or_repository_context"
+      ],
+      "sha256": "beb4b4ba04f1ebe5b9383a8666b37bb5b8617acbfddf99133f399c0fd69ffe0b"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 6676,
+      "line_count": 95,
+      "path": "AGENTS.md",
+      "roles": [
+        "normative_or_repository_context"
+      ],
+      "sha256": "851f469699113aab0f03888fe88f799e49200679392def6005b813a015c06b65"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 29900,
+      "line_count": 413,
+      "path": "ARCHITECTURE.md",
+      "roles": [
+        "normative_or_repository_context"
+      ],
+      "sha256": "8c235397c097e63f3ab1a2a8851b21ae68843d404bb4b96128ff65304fcc00e8"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 25720,
+      "line_count": 326,
+      "path": "PROJECT_SPEC.md",
+      "roles": [
+        "normative_or_repository_context"
+      ],
+      "sha256": "ea16e931742f11fffcb4589919989d534059516a2fbc95fd1d2c5a44b767d1c5"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 15903,
+      "line_count": 222,
+      "path": "README.md",
+      "roles": [
+        "normative_or_repository_context"
+      ],
+      "sha256": "0f163534d3dafa8ee02b6b61aa256dbe7c344fb4d249d41f53e198f2711e951c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 26964,
+      "line_count": 486,
+      "path": "ROADMAP.md",
+      "roles": [
+        "normative_or_repository_context"
+      ],
+      "sha256": "4fe84b0773225fefac85d84d6ae38eee3a2c03e3e4cf84176c49c774c8430d6f"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 303,
+      "line_count": 6,
+      "path": "config/models.yaml",
+      "roles": [
+        "explicit_configuration_not_current_price_or_capability_attestation"
+      ],
+      "sha256": "65c94aaee5f414322bef5dc8e878b7b52a16d6f7efedbc5afc51b78920c6a0e5"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1500,
+      "line_count": 47,
+      "path": "config/news_interpretation.economic.example.yaml",
+      "roles": [
+        "explicit_configuration_not_current_price_or_capability_attestation"
+      ],
+      "sha256": "8db7d21667923948925c36086b4c06c374db845b5c10240738ecb2f363961954"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 411,
+      "line_count": 9,
+      "path": "config/news_interpretation.evaluation.p0.yaml",
+      "roles": [
+        "explicit_configuration_not_current_price_or_capability_attestation"
+      ],
+      "sha256": "5e6a35bb5364f9fccedf0c844997fd8bc83ce1aa4a0f26e2919d99eef3af36a3"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1767,
+      "line_count": 48,
+      "path": "config/news_interpretation.evaluation.yaml",
+      "roles": [
+        "explicit_configuration_not_current_price_or_capability_attestation"
+      ],
+      "sha256": "88152aeba1f6ca15648aee77c227125ba2e2b7ea10db371e4414ad69fb1407ab"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1019,
+      "line_count": 35,
+      "path": "config/news_interpretation.example.yaml",
+      "roles": [
+        "explicit_configuration_not_current_price_or_capability_attestation"
+      ],
+      "sha256": "4369e8155ba7d8e4b68b90348d99c4e5711e3d4f2805d2e1b2dfbda002b6b03b"
+    },
+    {
+      "access": "opaque_hash_only_not_exported",
+      "bytes": 1667509,
+      "path": "data/cache/news_attribution_review/chatgpt-v1/references-frozen.json",
+      "roles": [
+        "exploratory_reference_freeze"
+      ],
+      "sha256": "1484dab560f898c71a857c40d3fe9ee3312981cbafdfa2eb4936b1e093fbfb39"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1280,
+      "path": "data/cache/news_development_pilot/contract-D-1211fcda178c57ab-attempt01/content-approval.json",
+      "roles": [
+        "case_owner_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "a6da74124350ff1eb1a8686d2ebd3650f8fe08560f4d895e93e1877057794b8c"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 32565,
+      "path": "data/cache/news_development_pilot/contract-D-1211fcda178c57ab-attempt01/forms/D-1211fcda178c57ab.json",
+      "roles": [
+        "canonical_completed_form",
+        "closure_document_reference"
+      ],
+      "sha256": "bb92ae73bcc66550459ce736111808e2845caed72ca53759a3f285fa2bbfcf25"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1263,
+      "path": "data/cache/news_development_pilot/contract-D-1211fcda178c57ab-attempt01/opening/authorization.json",
+      "roles": [
+        "case_opening_authorization"
+      ],
+      "sha256": "22596a446678d4b19cd276143cec1fa2eb6128badd435c614535b3cad27d1acd"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2211,
+      "path": "data/cache/news_development_pilot/contract-D-1211fcda178c57ab-attempt01/sessions/D-1211fcda178c57ab.json",
+      "roles": [
+        "case_session"
+      ],
+      "sha256": "ad985d2180dd7e132777f66b86fdd26794f27fe009824af9ee50f062234a2419"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2680,
+      "path": "data/cache/news_development_pilot/contract-D-1211fcda178c57ab-attempt01/workflow-history/c5565343beb5465da2c7fbb69b1c0ef6/receipt.json",
+      "roles": [
+        "closure_document_reference"
+      ],
+      "sha256": "8a1de758b424ccbfea3a483b44cb16257ec0d82e84cce7c904ac983ebeb4074a"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1280,
+      "path": "data/cache/news_development_pilot/contract-D-40e8a2188273506b-attempt01/content-approval.json",
+      "roles": [
+        "case_owner_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "b8e346f7b8c38759d8dc8325381ddc57fd20fe6e3b74e7e0d0138ab97e9f6891"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 25951,
+      "path": "data/cache/news_development_pilot/contract-D-40e8a2188273506b-attempt01/forms/D-40e8a2188273506b.json",
+      "roles": [
+        "canonical_completed_form",
+        "closure_document_reference"
+      ],
+      "sha256": "145bf0e6210eba00a869809f6f340d84deefc9ad6a229f88c48ecad07eed203c"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1258,
+      "path": "data/cache/news_development_pilot/contract-D-40e8a2188273506b-attempt01/opening/authorization.json",
+      "roles": [
+        "case_opening_authorization"
+      ],
+      "sha256": "7155fd46b636fcc12c58e1f0a19ac55c362570bc7f2469645a3eaa142b30d7b0"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2212,
+      "path": "data/cache/news_development_pilot/contract-D-40e8a2188273506b-attempt01/sessions/D-40e8a2188273506b.json",
+      "roles": [
+        "case_session"
+      ],
+      "sha256": "5b4ac5abc534ffacc37973ad9996f6709372491de59580c0f937ac8935f3e3c2"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2484,
+      "path": "data/cache/news_development_pilot/contract-D-40e8a2188273506b-attempt01/workflow-history/e368ba0aa0944b768a8dd3110806b5ff/receipt.json",
+      "roles": [
+        "closure_document_reference"
+      ],
+      "sha256": "842d3883ba1a049400a77ab575e32f9f6039cd6146a1e2bf852ae4026091dd2d"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 917,
+      "path": "data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01/content-approval.json",
+      "roles": [
+        "case_owner_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "1fd6177be7d7b3b83e619c3762cb6ceb16edc19f0bdd92d0105e07510d4b7030"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 26531,
+      "path": "data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01/forms/D-6c6ef03a91cca2a9.json",
+      "roles": [
+        "canonical_completed_form",
+        "closure_document_reference"
+      ],
+      "sha256": "976a330a13c7b845620e857af4ea9a00faaefef5382194038ee51ba10b2c230a"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1760,
+      "path": "data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01/manifest.json",
+      "roles": [
+        "canonical_six_case_manifest",
+        "closure_document_reference"
+      ],
+      "sha256": "12ca3264af7c423a7b304b355f362efa3c755c5bce1bc8d8576b216eb43eb3f1"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1288,
+      "path": "data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01/opening/authorization.json",
+      "roles": [
+        "case_opening_authorization"
+      ],
+      "sha256": "9560fa70c1b96a738e5c8befef4017287bb397275f385542bc7d61b71bfc3867"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2213,
+      "path": "data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01/sessions/D-6c6ef03a91cca2a9.json",
+      "roles": [
+        "case_session"
+      ],
+      "sha256": "2bcc830cef060ba70f04800e886ea7a509fe1672ca057aa0c4d8eb3506ec524c"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2679,
+      "path": "data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01/workflow-history/85b58bcc6f9a42948be5e417628ced96/receipt.json",
+      "roles": [
+        "closure_document_reference"
+      ],
+      "sha256": "24c00ceefeea3e16aee01332ee8a44ee4b2a8093e5ea76341feb57915d314634"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1165,
+      "path": "data/cache/news_development_pilot/contract-D-a8db3a0c74d93eb8-attempt02/content-approval.json",
+      "roles": [
+        "case_owner_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "a50e5548c4d9a246f7d7aa283c6317969dc50a95b5e2050c0c6d55ee8ccb52ab"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 24735,
+      "path": "data/cache/news_development_pilot/contract-D-a8db3a0c74d93eb8-attempt02/forms/D-a8db3a0c74d93eb8.json",
+      "roles": [
+        "canonical_completed_form",
+        "closure_document_reference"
+      ],
+      "sha256": "2aee1006b6ee939cf443c00f8d3a237e433f248c6c191b97ea6d9960b6b38347"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1212,
+      "path": "data/cache/news_development_pilot/contract-D-a8db3a0c74d93eb8-attempt02/opening/authorization.json",
+      "roles": [
+        "case_opening_authorization"
+      ],
+      "sha256": "95abaa00c4f768cc9a6947d7b0e9f8c54821d267d3145549fe82050d0f545989"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2444,
+      "path": "data/cache/news_development_pilot/contract-D-a8db3a0c74d93eb8-attempt02/sessions/D-a8db3a0c74d93eb8.json",
+      "roles": [
+        "case_session"
+      ],
+      "sha256": "7311e4de8b228939b650264a39176d152ec12f50b0a68f6e38a9f0ff5397f8d0"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2425,
+      "path": "data/cache/news_development_pilot/contract-D-a8db3a0c74d93eb8-attempt02/workflow-history/4f935df588c34369b6d0ca0dead18e16/receipt.json",
+      "roles": [
+        "closure_document_reference"
+      ],
+      "sha256": "dfb37927904f6bec49a4e72ee45a8d86c263777b8be3afa54307239d24f4123f"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1168,
+      "path": "data/cache/news_development_pilot/contract-D-fbf4c5c9e02691b3-attempt01/content-approval.json",
+      "roles": [
+        "case_owner_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "7e4989b6c74b1bd57962b307c10781cff7e9ca52b9c3a8da1f9fc4d1b3e5def0"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 24310,
+      "path": "data/cache/news_development_pilot/contract-D-fbf4c5c9e02691b3-attempt01/forms/D-fbf4c5c9e02691b3.json",
+      "roles": [
+        "canonical_completed_form",
+        "closure_document_reference"
+      ],
+      "sha256": "b1ad2d5207fb63c455029812bbc348b2877d23fc26177f39ab6c50f256b3e843"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1187,
+      "path": "data/cache/news_development_pilot/contract-D-fbf4c5c9e02691b3-attempt01/opening/authorization.json",
+      "roles": [
+        "case_opening_authorization"
+      ],
+      "sha256": "e9561f0b904ad14bb80ad913b7112f007a143375b737b078bcee1e72fa564169"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2212,
+      "path": "data/cache/news_development_pilot/contract-D-fbf4c5c9e02691b3-attempt01/sessions/D-fbf4c5c9e02691b3.json",
+      "roles": [
+        "case_session"
+      ],
+      "sha256": "8dbbcf9050b90d8aceb943f1356af5ea56d6579a3673412816ae1b69103acded"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2467,
+      "path": "data/cache/news_development_pilot/contract-D-fbf4c5c9e02691b3-attempt01/workflow-history/ff356eaa7af448a8921454fa39735dac/receipt.json",
+      "roles": [
+        "closure_document_reference"
+      ],
+      "sha256": "c7284d6bde56733eefd637d8e45afbb1ac405a71e373ff8c7e1adebdadcbb32f"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 4579,
+      "path": "data/cache/news_development_pilot/contract-manual-attempt01/contract-approval-v1/application-record-v1.json",
+      "roles": [
+        "closure_document_reference"
+      ],
+      "sha256": "855ef7f42e69d088e1b9faa99d5d0c447b0e9f9344904d1520ead19dede11b98"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 19703,
+      "path": "data/cache/news_development_pilot/contract-manual-attempt01/forms/D-293a6cbca3479505.json",
+      "roles": [
+        "canonical_completed_form",
+        "closure_document_reference"
+      ],
+      "sha256": "c76498d2a4d59d0993adf27ee50828391b8de54be0658c12419c836e99796de0"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 980,
+      "path": "data/cache/news_development_pilot/contract-manual-attempt01/opening/D-293a6cbca3479505.authorization-v1.json",
+      "roles": [
+        "case_opening_authorization"
+      ],
+      "sha256": "9eb9b3fb4c75831b5cd303498c0ab2471852edb61d9b900a217683fc1760c748"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1130,
+      "path": "data/cache/news_development_pilot/contract-manual-attempt01/owner-decisions/D-293a6cbca3479505.owner-decision-v1.json",
+      "roles": [
+        "case_owner_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "9eaa703f92fb49a3261405bdf0635c140235fb1a8d059500f7f6ac961d104b42"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2622,
+      "path": "data/cache/news_development_pilot/contract-manual-attempt01/sessions/D-293a6cbca3479505.json",
+      "roles": [
+        "case_session"
+      ],
+      "sha256": "35488235aa0f9d87e89884484f08f988209415ca65fa628f1355d272dc6245cd"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 4643,
+      "path": "data/cache/news_development_pilot/factual-closures-v1/D-1211fcda178c57ab.closure-v1.json",
+      "roles": [
+        "case_closure_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "b6db2db930f26aeb6596885559aa2fa3b4e8b5b529cf176c0ace79cc22e31ea0"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 4331,
+      "path": "data/cache/news_development_pilot/factual-closures-v1/D-293a6cbca3479505.closure-v1.json",
+      "roles": [
+        "case_closure_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "c1bbc3a858742b140bbcbeb6466667f4a89d67a11e9ff3c7dd181969d0af3b30"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 3775,
+      "path": "data/cache/news_development_pilot/factual-closures-v1/D-40e8a2188273506b.closure-v1.json",
+      "roles": [
+        "case_closure_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "870a51d9439ff95017545c832e7168c08a5362d7b3cceb7e1dcf91c9465f81e9"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 4388,
+      "path": "data/cache/news_development_pilot/factual-closures-v1/D-6c6ef03a91cca2a9.closure-v1.json",
+      "roles": [
+        "case_closure_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "acfe4e4c2c6670fca17d6a2505c8ae1c468645303e508c23b422fd8dc31b71eb"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 3558,
+      "path": "data/cache/news_development_pilot/factual-closures-v1/D-a8db3a0c74d93eb8.closure-v1.json",
+      "roles": [
+        "case_closure_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "bdee5ae4a787d3ca7448ff1401568559c351786ef15b55957416836932efc95d"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 3995,
+      "path": "data/cache/news_development_pilot/factual-closures-v1/D-fbf4c5c9e02691b3.closure-v1.json",
+      "roles": [
+        "case_closure_decision",
+        "closure_document_reference"
+      ],
+      "sha256": "e786d310485dd996fd4adb6469cbab2c73dc53e50eaa9891307e7de7641f74d6"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 9175,
+      "path": "data/cache/news_development_pilot/manual-20261102-attempt01/factual/D-293a6cbca3479505.json",
+      "roles": [
+        "case_factual",
+        "closure_document_reference"
+      ],
+      "sha256": "9072b179f81639e507d0c05c84fbe495f17de3647984591c335d99c32ecb396b"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 15618,
+      "path": "data/cache/news_development_pilot/manual-20261102-attempt02/factual/D-a8db3a0c74d93eb8.json",
+      "roles": [
+        "case_factual",
+        "closure_document_reference"
+      ],
+      "sha256": "77e82bca3bd1358f54faffd59babfe12b62b0ca40eb1131437cb100433260ec6"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 15235,
+      "path": "data/cache/news_development_pilot/manual-20261102-attempt03/factual/D-fbf4c5c9e02691b3.json",
+      "roles": [
+        "case_factual",
+        "closure_document_reference"
+      ],
+      "sha256": "5c0ff99410a3371b5cfdcd49e9134842bd4dcca9333ecec2bfcb2da33a2b457b"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 15906,
+      "path": "data/cache/news_development_pilot/manual-20261102-attempt04/factual/D-40e8a2188273506b.json",
+      "roles": [
+        "case_factual",
+        "closure_document_reference"
+      ],
+      "sha256": "67ab00ba7c50a6415820a77b57901dcb3b6a372cb986c7f7451325a21cbeea65"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 20161,
+      "path": "data/cache/news_development_pilot/manual-20261102-attempt05/factual/D-1211fcda178c57ab.json",
+      "roles": [
+        "case_factual",
+        "closure_document_reference"
+      ],
+      "sha256": "62806d79ae2f8455a0408cf2b34e681599b94fd2cd2219f7ca2ee1e02129552d"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 15828,
+      "path": "data/cache/news_development_pilot/manual-20261102-attempt06/factual/D-6c6ef03a91cca2a9.json",
+      "roles": [
+        "case_factual",
+        "closure_document_reference"
+      ],
+      "sha256": "3d8bfb39f17fc3f5e0430220d2c6f5dfe82e1a862bcf7426147aec347a837afe"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2786,
+      "path": "data/cache/news_development_pilot/review-dispositions-v1/D-1211fcda178c57ab.json",
+      "roles": [
+        "case_closed_disposition"
+      ],
+      "sha256": "2d2545881dd75e75992cf1faf03a3e941bdb2e1b0151ac41c8020816437a0e5d"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2537,
+      "path": "data/cache/news_development_pilot/review-dispositions-v1/D-293a6cbca3479505.json",
+      "roles": [
+        "case_closed_disposition"
+      ],
+      "sha256": "16b285f6d704b96eb90c239faa738308e09727173fa97edc1be38868beb0a1f7"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2786,
+      "path": "data/cache/news_development_pilot/review-dispositions-v1/D-40e8a2188273506b.json",
+      "roles": [
+        "case_closed_disposition"
+      ],
+      "sha256": "b699bc116cb12774804c61365323419c8bf3cf57290f6d848c6de9c20327ded5"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2786,
+      "path": "data/cache/news_development_pilot/review-dispositions-v1/D-6c6ef03a91cca2a9.json",
+      "roles": [
+        "case_closed_disposition"
+      ],
+      "sha256": "21c3306e2f25ad5a56ecd22e3be3589d1aa89873f73badaf1b09888be95014e5"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2684,
+      "path": "data/cache/news_development_pilot/review-dispositions-v1/D-a8db3a0c74d93eb8.json",
+      "roles": [
+        "case_closed_disposition"
+      ],
+      "sha256": "7c06f5fa468584a50f2f48b557843fe5671e7d46a61afe1b10edf11d65ae4fcc"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 2786,
+      "path": "data/cache/news_development_pilot/review-dispositions-v1/D-fbf4c5c9e02691b3.json",
+      "roles": [
+        "case_closed_disposition"
+      ],
+      "sha256": "1874e0434215153a6a3322c49f8fb765c6ffc13400d1f925a9e8d2da6eb4b552"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1635,
+      "path": "data/cache/news_development_pilot/review-dispositions-v1/manifest.json",
+      "roles": [
+        "closure_document_reference",
+        "preserved_historical_preparation_or_dispositions"
+      ],
+      "sha256": "107827b725b83a7c81e3b7491a0a760583013dc1eca0b1e18a30d8758d6ed322"
+    },
+    {
+      "access": "local_access_ttl_and_authorization_required",
+      "bytes": 1367,
+      "path": "data/cache/news_prospective_timing_pilot/preparations/first-factual-v1.json",
+      "roles": [
+        "preserved_historical_preparation_or_dispositions"
+      ],
+      "sha256": "4285761e9bcc1e1c97d32889b0326e502f65601ad4c01ee4e2344c43016eea1e"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4467,
+      "line_count": 72,
+      "path": "docs/decisions/ADR-027-news-interpretation-contracts-and-derived-pit.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "b8bd6fc1dda26c0e73a685e82229e2ac2a45dd15796f5daeb73197d3c2e32c62"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3213,
+      "line_count": 53,
+      "path": "docs/decisions/ADR-028-real-news-inference-and-cost-governance.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "59029c2d56d9434200fe7300a15a01c239e78237e284285d4825df10a7ce73ed"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3853,
+      "line_count": 67,
+      "path": "docs/decisions/ADR-029-cache-write-pricing-and-smoke-preflight.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "42e6981bbab38fe97ff8f1782278480abbfb19d9ca4e6d134566823cdd6f145f"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3163,
+      "line_count": 53,
+      "path": "docs/decisions/ADR-030-explicit-cli-environment-bootstrap.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "de1126dcca4113fcd3b22b23b7f3844727442c1750c6e433039105a9a2772ee0"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4450,
+      "line_count": 74,
+      "path": "docs/decisions/ADR-031-versioned-exact-quote-grounding.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "3f7a9617263f3882888eb7ad5e97a279a2086cf508cee2db975cbbad1aa792ba"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4065,
+      "line_count": 71,
+      "path": "docs/decisions/ADR-032-economic-entity-attribution.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "f09e0bdfdfc848d891ab69a82610b78179cc9d6c18fb4ff4565bbffd4b9fc3b3"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4971,
+      "line_count": 83,
+      "path": "docs/decisions/ADR-033-isolated-synthetic-attribution-evaluation.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "18fe806bdbb919444856cf4e9fa3d44929758b27c417f82cf5f07d9ed675f1c2"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3840,
+      "line_count": 66,
+      "path": "docs/decisions/ADR-034-diagnostic-metadata-sidecars.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "a25ec750fb70b1c4623a838886c007df6c2ac8c14e3608852a80615128e8446e"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2599,
+      "line_count": 47,
+      "path": "docs/decisions/ADR-035-opt-in-evaluation-sidecar-integration.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "7d3ceb3ea0250ff5b350aed00f7fa755b66834857199932cc7699b6cb2a9fdaa"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2271,
+      "line_count": 42,
+      "path": "docs/decisions/ADR-036-proposed-economic-prompt-v4.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "c6b2470571d0dd4f4a2e71d1e86a9817f76ce5ef7fe893581f074e336d9233e1"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2708,
+      "line_count": 49,
+      "path": "docs/decisions/ADR-037-pilot-semantic-timing-separation.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "1d17fb7b752e2e47ef8f0c8b94fec154a6a85cbc9cc1e821622287431479da71"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2667,
+      "line_count": 47,
+      "path": "docs/decisions/ADR-038-pilot-contract-review-adapter.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "6825980fe1f46b2fc7930b2635d1167ccc1f54758dd665189e6fc79b4d7e2dd1"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3110,
+      "line_count": 54,
+      "path": "docs/decisions/ADR-039-opt-in-contract-review-workflow.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "f6bc4427fbed84a891ed663d5a195d599495ea6f3580593404bad331fe78852c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3595,
+      "line_count": 64,
+      "path": "docs/decisions/ADR-040-traceable-contract-retry.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "9c29fd9ba0f883ea96022237dae6045030f977ab5cde652a382946496f39eb3c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 5059,
+      "line_count": 90,
+      "path": "docs/decisions/ADR-041-bounded-assisted-development-review-closure.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "c29e029502be281d28bd6db9e7ec32c9ddd6193b2236aab35b5064120b17def9"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4056,
+      "line_count": 72,
+      "path": "docs/decisions/ADR-042-isolated-prospective-timing-pilot.md",
+      "roles": [
+        "architecture_or_methodology_decision"
+      ],
+      "sha256": "444854200e63a5f58984e1427abb79c62c77bd8a99a7df6923487e83e17ab383"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 6682,
+      "line_count": 90,
+      "path": "docs/phase4c1-evaluation.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "daee4aca0baa3f381b2e7426bf664d7c540c79733c3f8fab8b97c28b4877be13"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 13264,
+      "line_count": 224,
+      "path": "docs/phase4c1-review.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "50207be9615032106fdb014281bbaa1e9a9cb90eff2c1e8cb9a919d766597f99"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 10676,
+      "line_count": 172,
+      "path": "docs/phase4c2-1-grounding-review.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "629e55298902d2d942f9fa79efcb4182f8cec8017fdd4503274787df9206b132"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14815,
+      "line_count": 231,
+      "path": "docs/phase4c2-2-ai-assisted-exploratory-evaluation.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "ff880476cfc30e37a7ef394c3173cc7bc5f9dff66f628b3f60b04cc231cd5d69"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 12847,
+      "line_count": 212,
+      "path": "docs/phase4c2-2-chatgpt-exploratory-review.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "ef51094766817264b225ba6791efb1b2032b02f9b9cdf318cc13937ef015e7ee"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 9303,
+      "line_count": 156,
+      "path": "docs/phase4c2-2-economic-attribution-review.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "e8d7a2ba0139d58a19fcd86302ef79831ee9065345e9df3280e75ef4a7ff92ce"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14639,
+      "line_count": 242,
+      "path": "docs/phase4c2-2-independent-attribution-evaluation.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "b8e9cedd471f84a348742533f51e08a4ad91538057917eb4182d65f5461500bb"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 20361,
+      "line_count": 308,
+      "path": "docs/phase4c2-bounded-assisted-development-review-closure-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "04522bc1837d714dea54127f7815c0f5e81ad52b540ef8d23d3fc3583aa912aa"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 8014,
+      "line_count": 122,
+      "path": "docs/phase4c2-chatgpt-editorial-import-v2.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "7e4ea2e5c788320272953b46a7fc667ed7112b1afcc3e9c45044630f4737533e"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 8485,
+      "line_count": 155,
+      "path": "docs/phase4c2-chatgpt-reference-freeze.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "b88e17e88047f7c61e6577233f723633a96df87e0d574d5a6fcf94cb2789bb31"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 5037,
+      "line_count": 93,
+      "path": "docs/phase4c2-contract-clock-stop-diagnosis-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "7886b71bb2f67a4b1aa91f2889f8f9a84ec9e2f7301dc97ded3eb143675bd536"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 7249,
+      "line_count": 130,
+      "path": "docs/phase4c2-contract-retry-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "9ad39af47f1498e715d3ad37e26268de363a319ad6d9462b32c712183ce64a67"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 9074,
+      "line_count": 169,
+      "path": "docs/phase4c2-contract-workflow-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "107d17f7d373c8a1f3bc8627516d8af21451d29150a67e8fc04f7ae3acad5f3c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 10674,
+      "line_count": 181,
+      "path": "docs/phase4c2-development-pilot-operator.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "6207268854a05695dee45018f428c246bb0472b5fd0e6060c66b164cc0f4ba75"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 17587,
+      "line_count": 247,
+      "path": "docs/phase4c2-external-technical-review-dossier-v1.md",
+      "roles": [
+        "phase_documentation",
+        "new_dossier_document"
+      ],
+      "sha256": "221b41423068e55eecc6ee90ddc522824ed1492ad4f2c112b24ed6340dddd462"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 10360,
+      "line_count": 49,
+      "path": "docs/phase4c2-external-technical-review-matrix-v1.md",
+      "roles": [
+        "phase_documentation",
+        "new_dossier_document"
+      ],
+      "sha256": "c094426098ff511f317e28f48a0797fb60522d38d5f5c20be5c594e02f5bf20a"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 6245,
+      "line_count": 112,
+      "path": "docs/phase4c2-external-technical-review-verdict-template-v1.md",
+      "roles": [
+        "phase_documentation",
+        "new_dossier_document"
+      ],
+      "sha256": "9b744a9e0a1ba6e9e5a4b8f2b5f75ecb006b6f3d9ed7505a9791da5c5f455bd5"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 8879,
+      "line_count": 142,
+      "path": "docs/phase4c2-factual-closure-preparation-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "c62239f406f263ff1949b780b88989b005365eb782aebb21ecfdb1bb71f8af39"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 9299,
+      "line_count": 147,
+      "path": "docs/phase4c2-factual-closure-preparation-v2.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "fe3ec20e1472e3e102fd1a0e8b0d1714f21d8aa7c63b3eaeb522441bd390b4a1"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 8161,
+      "line_count": 56,
+      "path": "docs/phase4c2-factual-pilot-six-case-balance-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "f49e81a0fe6aebf76ab37151dd3a94af41e48f1234e0ac3207c682d244e05377"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 8422,
+      "line_count": 150,
+      "path": "docs/phase4c2-first-contract-opening-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "ae8f8ac73d26b0deb5feab729d0aef9e2dd3ee9cd3f962568d4daa355f74e22e"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4233,
+      "line_count": 88,
+      "path": "docs/phase4c2-first-contractual-approval-applied-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "5acd5af19d212413a75e7583f43ec8c9783c6e2aedf20ea5dfdd66deb2ce30ee"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 10674,
+      "line_count": 172,
+      "path": "docs/phase4c2-first-smoke-diagnosis.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "7a94a766c57b4d8626b8f76a46cc2dc062759f41e836ef7346087814adc87e8e"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 11962,
+      "line_count": 212,
+      "path": "docs/phase4c2-nacho-evaluation-runner.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "39453efdb35283591efac01e154d0702cced3cd527afd404ffbe40f180d693b0"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 9435,
+      "line_count": 169,
+      "path": "docs/phase4c2-nacho-first-run.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "b5573acd0780a0e88747e9900d1d405d8d259aa5ec31af0078d4d664710a681d"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 8777,
+      "line_count": 158,
+      "path": "docs/phase4c2-p0-diagnostic-sidecars.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "66460853fd737c1c823b34fc3dedb0a9a6d8560f155f499b51f518caf1e7d871"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14907,
+      "line_count": 168,
+      "path": "docs/phase4c2-p1-prompt-v4-draft2-review.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "18261c70806dd655f2c21fa166b68b10ff1799521addbf71125824b3ae05693d"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14449,
+      "line_count": 162,
+      "path": "docs/phase4c2-p1-prompt-validator-alignment.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "af9007d2eb970147e4556bfd5141a138a24811841760eb4714c314b5064778c3"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 12227,
+      "line_count": 202,
+      "path": "docs/phase4c2-pilot-contract-adapter-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "63465ff4d7989a3a0a108afec2f1994828cbd0549b5838aea896683c5e1ab09e"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 9978,
+      "line_count": 151,
+      "path": "docs/phase4c2-pilot-review-dispositions.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "bcf6144eeb2048fad3e4905f92ed4e9c228e1f2971c5a0d73b1ad12d3f8fc90c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 7408,
+      "line_count": 120,
+      "path": "docs/phase4c2-pilot-semantic-timing-separation-proposal-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "908bf30e1a20a1dafe35c08428f65edf67a3138f8936829c0d5a538594318798"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14348,
+      "line_count": 184,
+      "path": "docs/phase4c2-pilot-semantic-timing-separation-proposal-v2.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "663102a7caaf7ef6ea53b5dfec90a1b0bf22933d72a6982ebd4b0e385601d453"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 13543,
+      "line_count": 229,
+      "path": "docs/phase4c2-prospective-timing-pilot-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "2b9e9e62886e015da9865390f6a22e7e79ba59dc04aa064aafb6384b3ad9686b"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 6819,
+      "line_count": 114,
+      "path": "docs/phase4c2-prospective-timing-preparation-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "659ed97c1f79363cc800e5ea5a5d0762aaa6652091ebecc5041a5546e84e4044"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 16812,
+      "line_count": 270,
+      "path": "docs/phase4c2-rejection-diagnosis-ttl-limited.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "ea1e4711ddc06ccd08e6164f0c5232d2ff5659e02f3b1d53e877946a87a7c3de"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14070,
+      "line_count": 224,
+      "path": "docs/phase4c2-review.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "80edecc5137b06f38ff70be1044e76c8006c8a5e5c9a6c94f38e6ec64b1b76ce"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 7793,
+      "line_count": 133,
+      "path": "docs/phase4c2-runner-p0-integration.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "1c5d7a15726f4e85016f8d1f2fbc62012ac1f58eedfc5891e620cca8d2d12b94"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 13515,
+      "line_count": 209,
+      "path": "docs/phase4c2-second-smoke-semantic-audit.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "d72259ca36d37ab6569e54665b76ecb433bcafe1009879428ac6c946cd4a3e35"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 6877,
+      "line_count": 118,
+      "path": "docs/phase4c2-six-factual-closures-applied-v1.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "66f19027f10e23dc9e646250ac0da43b6598f38d12b9b294ee309dc72cec75da"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 9250,
+      "line_count": 146,
+      "path": "docs/phase4c2-smoke-preparation.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "202a937c0e87c1494115e635e1be3039cbece40d0888b18b560c1a00969ac010"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 17363,
+      "line_count": 254,
+      "path": "docs/phase4c2-v3-v4-development-corpus.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "4fbf588509b9a713a33dc9716e73d65f8030d1b194fcfd2507ad9ef74928651c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 24814,
+      "line_count": 352,
+      "path": "docs/phase4c2-v3-v4-experimental-protocol.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "07afb9ec798ca3c22d5eafff501b6ea18d748daba4d4887f6fb12d72a2a3db55"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 20241,
+      "line_count": 289,
+      "path": "docs/phase4c2-v3-v4-methodology-readiness.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "b1c2ce26208bd118b9209682b2fe55b39a0733b623b1d56e157ec528a69c5915"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 7754,
+      "line_count": 92,
+      "path": "docs/phase4c2-v3-v4-versioning-plan.md",
+      "roles": [
+        "phase_documentation"
+      ],
+      "sha256": "5f380cd54b23415de3a5d1c442562a7d951fe61b918365bf7733cbee7590dd7c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 844,
+      "path": "evaluation/phase4c2_pilot_contract_adapter_v1/implementation-authorization.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "cb0ef06aa73285093c8c5cb3195ee7fccbe4f2840bbfccdd6d2a5ea24750f03d"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 5596,
+      "path": "evaluation/phase4c2_pilot_contract_adapter_v1/manifest.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "a082e3a0a42182c3d0c65847122d59728056dc06869772e6de3c9f02c3025319"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3822,
+      "path": "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/contract-form.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "a4d4d41343b4238e1ee7a32e5dc53569548f74896bfefb6790a42193364dc71e"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 7234,
+      "path": "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/contract-session.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "5a62e2796740d452bdd96fe5a1876d4d97ce82234c55c4ceb9282c6ac63023a9"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1055,
+      "path": "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/manifest.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "ce950c23496f35c3ba7548ddfd01933a9765a721a73d60faaa5cc63277019ca1"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1825,
+      "path": "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/opening-authorization.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "e30a0d544bf8a19485ed801dc31ed3eb9b8d0c7d5e41662b6beef2279b3a9181"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1639,
+      "path": "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/owner-decision.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "f293309f9286bf148a0c0166b4820af8275de0a6b12ca32fe5976d637cc0cac5"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 610,
+      "path": "evaluation/phase4c2_pilot_contract_adapter_v1/schemas/technical-reference.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "0207e9f7cbf99242959a2cc77825ca1c563684c0dabe5ed99e5870aff8532ccc"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 693,
+      "path": "evaluation/phase4c2_pilot_contract_adapter_v1/technical-reference.json",
+      "roles": [
+        "instrument_schema_or_metadata",
+        "case_technical_reference"
+      ],
+      "sha256": "9d0884b4759bc87d9ca61e0ac54a5c4ed6b67cdbdae7c9c6d01c288743d08b1c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1034,
+      "path": "evaluation/phase4c2_pilot_review_disposition_v1/authorization.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "c011df5f07c7db6dbb00840cbbc6955dc5ddf8a64752769783def8ca84e5328d"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4316,
+      "path": "evaluation/phase4c2_pilot_review_disposition_v1/manifest.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "6c5b55ac6e52f2ae0ff96f2f5fa401ac7fa394d35d479623fae50e8a570ec336"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2614,
+      "path": "evaluation/phase4c2_pilot_review_disposition_v1/schemas/authorization.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "9265da969e61b5e4d3c7f0a3bf7f36a52bf42737449705a41cd9b9faa0c1bb4e"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3064,
+      "path": "evaluation/phase4c2_pilot_review_disposition_v1/schemas/closure-decision.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "a87abba4b12fa949e9feffb6f538b6c2e1897571d0203de4ec1f16ef482aaa56"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 9499,
+      "path": "evaluation/phase4c2_pilot_review_disposition_v1/schemas/disposition.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "480d6d591b2189fdd0604f76a1ad4a9a98378d792ba82c9bc3d13190afae8542"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2414,
+      "path": "evaluation/phase4c2_pilot_review_disposition_v1/schemas/effort-attestation.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "911b70adad827f3cd26f234e684d4cb6025b6c674fd86f2d15dc588e3ba75a75"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1029,
+      "path": "evaluation/phase4c2_pilot_review_disposition_v1/schemas/manifest.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "4256515fcadd1744f4c5fa7c2efa95d52c45fe89262fabc6aebe67ba9f34255a"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 796,
+      "path": "evaluation/phase4c2_prospective_timing_pilot_v1/AUTHORIZATION-TEMPLATE.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "18dc5907a2365bf475fb4e5db818e483911101de9a53db8636c7ef29a0cd5172"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 608,
+      "path": "evaluation/phase4c2_prospective_timing_pilot_v1/ELIGIBILITY-TEMPLATE.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "32fb78f56db7152f976145a1d765a60e92b55a91a6ad7c04e07dec0f1f135cdf"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3251,
+      "path": "evaluation/phase4c2_prospective_timing_pilot_v1/plan.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "63203d4cb428ab2ff6a2727d83ce310f32c77c5b0db41f6dac0020bc8b52ae95"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3715,
+      "path": "evaluation/phase4c2_prospective_timing_pilot_v1/schemas/authorization.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "33bdb3717a465b92fb52adcaa969cd9c9bca220c9c05a98038e559ed9ab70822"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1943,
+      "path": "evaluation/phase4c2_prospective_timing_pilot_v1/schemas/eligibility.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "7854a9737cbc8b8f6fee8223fb7f24f459f28b84a18bd2953a38a0c7adb1bf5b"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2219,
+      "path": "evaluation/phase4c2_prospective_timing_pilot_v1/schemas/event.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "048d80693bc4b34a21e3637de97743d23d1dc023a7276c6f67031c742ec9b23c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3284,
+      "path": "evaluation/phase4c2_prospective_timing_pilot_v1/schemas/plan.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "9843589a6128f6d0f7a78493bd75fcf3f8c4f2bd2c4bc813a09394eea31e1cd2"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1102,
+      "path": "evaluation/phase4c2_prospective_timing_preparation_v1/PREPARATION-TEMPLATE.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "08d5f2f67e40ba25f4cbc69035c5a49476ec136a533dcf0a7a3ef41613c026b3"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4076,
+      "path": "evaluation/phase4c2_prospective_timing_preparation_v1/preparation.schema.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "dca4f9b5eeb6992d432b350cc2d4bd3abb1ba877961206fa5da4a831c89cdc72"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1120,
+      "path": "evaluation/phase4c2_semantic_review_workshop_v1/budgets.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "2124c184d38c395539c8cbe18f78f0947301f37a7a4cacd8cbddb7e645a9a5ce"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2015,
+      "path": "evaluation/phase4c2_semantic_review_workshop_v1/capacity.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "3df5cb8badf7919a21941383d49c14112ea8296466f87bbfa963beed60390c80"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4626,
+      "path": "evaluation/phase4c2_semantic_review_workshop_v1/instrument.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "8b1a7ea331377bb177ef98bf11ae03b53eaf0216326196e88bc28cdd61420c55"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2256,
+      "path": "evaluation/phase4c2_semantic_review_workshop_v1/methodology-manifest.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "f21868bd410bd5e5f680955d87aecf70ca09a208b1a10b91b160bfc5596d043a"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2821,
+      "path": "evaluation/phase4c2_v3_v4_experiment_design_v1/design-manifest.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "e121c7e07294df5853932ab7111c9f36be7b19aa1f29c428770ba3a07a52ead2"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 7105,
+      "path": "evaluation/phase4c2_v3_v4_experiment_design_v1/design.json",
+      "roles": [
+        "instrument_schema_or_metadata"
+      ],
+      "sha256": "1940b4cb59ffaab9080429f1601fa08ecd2bbc81886438e98abf1c05373a07c3"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 6053,
+      "line_count": 106,
+      "path": "scripts/run_phase4c2_attribution_evaluation.py",
+      "roles": [
+        "implementation_or_offline_validation"
+      ],
+      "sha256": "9454fd253b1c60ccafa609de729a7b7e09440daa743f370b4d95aab4aecd36b6"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 7713,
+      "line_count": 118,
+      "path": "scripts/run_phase4c2_news_smoke.py",
+      "roles": [
+        "implementation_or_offline_validation"
+      ],
+      "sha256": "7f04e41b97762ad9a1ae1889089de5b96f0d644e48ab0f248e3703f59d9556ee"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1207,
+      "line_count": 22,
+      "path": "scripts/validate_data.py",
+      "roles": [
+        "implementation_or_offline_validation"
+      ],
+      "sha256": "cd94ba06ee0020b2c18c7937694ee70ea71cb42140f05c093e990fe7e3fdf1b3"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 77,
+      "line_count": 1,
+      "path": "src/investment_system/agents/news_interpretation/__init__.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "9019b2323a3654473ea1cbba82810c517bce63aac3ed3ccdaae9d2fdb9a990be"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3697,
+      "line_count": 64,
+      "path": "src/investment_system/agents/news_interpretation/budget.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "243a848e911155e898597ef133b4bc1ce3ff1373c10fd22a780d18970f1ebfcb"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 7849,
+      "line_count": 166,
+      "path": "src/investment_system/agents/news_interpretation/diagnostic_events.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "6f7de1c9b40409de57d4bf4dc59ebe28abf967925ce821e3971a7f553fab0bc2"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14665,
+      "line_count": 240,
+      "path": "src/investment_system/agents/news_interpretation/diagnostic_sidecar.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "7742ea6e55045561e00dd9bfed71fe747c9abb977b96b5f2dd6dfca97fbca965"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 25424,
+      "line_count": 426,
+      "path": "src/investment_system/agents/news_interpretation/economic_attribution.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "3622243db89447dfed379fd46bd8d4c1037052403fac88983bb8ee1af04b602f"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 18313,
+      "line_count": 334,
+      "path": "src/investment_system/agents/news_interpretation/grounding.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "cfd68f74edd513837349bf6d03b94cf3c56f28e7ee216e5925ed5462b30576e5"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3606,
+      "line_count": 65,
+      "path": "src/investment_system/agents/news_interpretation/inputs.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "bdb455f6f556ff5446b6d617e8e7239270a78977c1bb713884e3332803a01811"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2969,
+      "line_count": 59,
+      "path": "src/investment_system/agents/news_interpretation/persistence.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "a49fec28c18218409cd973d99229d232ba59a4e95575f62a70b4e03d0e5fe071"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 12666,
+      "line_count": 218,
+      "path": "src/investment_system/agents/news_interpretation/replay.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "dc7e4cae316fba7699575802865b8efa6a010d5c3e8e76adf4d520c363b5cd44"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 13882,
+      "line_count": 254,
+      "path": "src/investment_system/agents/news_interpretation/runtime_schemas.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "537bc3edb9cfffe8f2a40ac7ada329a1b2736f2ae852a2f689e8aca2f9324cb8"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 18083,
+      "line_count": 371,
+      "path": "src/investment_system/agents/news_interpretation/schemas.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "92c1ac381c7806aa674e5032812d52ccd2f09ae438a948fa6bd759b9a53ff5c1"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 21321,
+      "line_count": 283,
+      "path": "src/investment_system/agents/news_interpretation/service.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "f49d5fd82f67b6fb0cef5990d00c3847f022583e8ee8701129868ab26af4f5dc"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2643,
+      "line_count": 67,
+      "path": "src/investment_system/core/environment.py",
+      "roles": [
+        "implementation_or_offline_validation"
+      ],
+      "sha256": "0204ac8bbb239f059b95800656ebdf80d8de8987d8064903db025fbeba0bb3fc"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 75,
+      "line_count": 2,
+      "path": "src/investment_system/llm/__init__.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "701af6bdd769aef4919d86855d82e7c06c03c6b0fbae93be0c178ee6efd86474"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 280,
+      "line_count": 8,
+      "path": "src/investment_system/llm/base.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "b0e6de5c900037099fce78cf0715bd9590927d601386cb74df10fc6edcf3abe0"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1434,
+      "line_count": 25,
+      "path": "src/investment_system/llm/cache.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "f32e5af4893200c78a70838e98a748dd6a2d9e81656705f02b980b9d685b8146"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2162,
+      "line_count": 43,
+      "path": "src/investment_system/llm/cost_tracker.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "fbf280ef339e4633e6cfdba318381e5dd05b7cdd53d85c4f8309c0c782ba3d0a"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 416,
+      "line_count": 8,
+      "path": "src/investment_system/llm/ollama_client.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "eb838451b6e58f2605437e3929f3401dfca30e1fdc62a8891faf8bd1bd46e34a"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 6411,
+      "line_count": 98,
+      "path": "src/investment_system/llm/openai_client.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "7f739aea7d5c8d15b7e502b074479f4803da05640dd6b564c8fa48df5b912e37"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4444,
+      "line_count": 95,
+      "path": "src/investment_system/llm/openai_settings.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "3a61fb5e6cc7caa9ed232c9b8a80fa84a133bfb1515f9400852843a5c4353aae"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1368,
+      "line_count": 32,
+      "path": "src/investment_system/llm/pricing.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "59383a7bab585438e7ecc24e4e4d3d24bfa45917cec054b16138cbff50d6cb6f"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 974,
+      "line_count": 18,
+      "path": "src/investment_system/llm/router.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "bbbc7dd73d0ab8d924e6b02751440fcf11c56c64de888ae729b3ee2dbf170b44"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 785,
+      "line_count": 25,
+      "path": "src/investment_system/llm/schemas.py",
+      "roles": [
+        "implementation"
+      ],
+      "sha256": "3a46b7ec27d121fa11bab89b7d1d3b5cfa1e52ee71f618e74bbed9f9a300164e"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1447,
+      "line_count": 29,
+      "path": "tests/conftest.py",
+      "roles": [
+        "implementation_or_offline_validation"
+      ],
+      "sha256": "46f84325058f37e4307fdfce86afcf1b5d0dc4c6f97e35c11609c06cf40c43c0"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 8797,
+      "line_count": 176,
+      "path": "tests/integration/test_cli_environment.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "8ad466db6d1c7585b15b228d8d06582108be59b3d11645852e3c747dca378fb8"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 21015,
+      "line_count": 375,
+      "path": "tests/integration/test_economic_entity_attribution.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "9031b29d76138b08ecd6f36e1c7693b6196bcdac2acbcdca4b6d1f9bba40efb9"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 12259,
+      "line_count": 208,
+      "path": "tests/integration/test_economic_prompt_v4_draft2.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "259e5b08f4b4906f119122d06a53b8e65185eaa49422679270e26b0a6a2612af"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 12032,
+      "line_count": 218,
+      "path": "tests/integration/test_economic_prompt_v4_proposal.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "17d26609dd56220004d04fca9cf2ececacb7b56faa82f432501c07d2f4783fa2"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 15842,
+      "line_count": 302,
+      "path": "tests/integration/test_nacho_runner_diagnostics.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "71cfbb675098a39573d6d68b3353593a558a9566341c80c5c6cc53c8af65d77c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 9144,
+      "line_count": 182,
+      "path": "tests/integration/test_news_cache_write_accounting.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "36007b0fc52131e4f76257acfee715f9a43d4126a07023e18a5a1299e9080bb8"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14495,
+      "line_count": 263,
+      "path": "tests/integration/test_news_diagnostic_sidecar.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "5ef4e23220c4eb3840a5321baa7f2af50ae1123abd70d7b292e5943165f14ee6"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 9115,
+      "line_count": 142,
+      "path": "tests/integration/test_news_interpretation_pit.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "456ceed9e5ca9b34d9d11e3cdc50ba658dd3c1cc32ceebc64c7d5f300d9dcefc"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 21822,
+      "line_count": 367,
+      "path": "tests/integration/test_news_interpretation_runtime.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "32836da1ea27a6aec2d793518fb437ed7e4fc66e0da83800a5fcb947745613d2"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 24540,
+      "line_count": 451,
+      "path": "tests/integration/test_news_quote_grounding.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "9ea54f2b81807a5d940def4dc7af0b4ab164a5ef945b368387a4284bc816bb3f"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 3776,
+      "line_count": 76,
+      "path": "tests/integration/test_phase4c2_smoke_cli.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "e26aae2bc667d4cda523e6b0cefde9331f2fbdcd469dbf82866a6dc582738d7e"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 2296,
+      "line_count": 35,
+      "path": "tests/integration/test_semantic_review_lineage.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "a9a99ae6df53802f562714c0922d57286f437e4524de44c8b96267ec993ba041"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 5720,
+      "line_count": 95,
+      "path": "tests/unit/test_ai_attribution_review_preparation.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "152897382caecb57e50d2be474c991b8c51286abf2d8e62ceb07a50f01741808"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 4812,
+      "line_count": 90,
+      "path": "tests/unit/test_attribution_review_preparation.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "7bae0c7cfa17b76eed96f3e0553d16a15b89025f1c491b25bd9cea6efa433048"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 11592,
+      "line_count": 174,
+      "path": "tests/unit/test_chatgpt_editorial_import.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "5f80c0977257c405033ad7a27a3de435ca8bb24e47278afb8905faccd494dc03"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 10430,
+      "line_count": 164,
+      "path": "tests/unit/test_chatgpt_review_preparation.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "9bb52de0fb23f5d97e6fa480d3a8d9b0941a31c4edbd4bd9fc617684d4679a37"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 1111,
+      "line_count": 18,
+      "path": "tests/unit/test_cost_tracker.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "efe95a905a3ac4db12b1d0adb078baefc72f8dfba75b6f428766262c73cbd954"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 13781,
+      "line_count": 248,
+      "path": "tests/unit/test_development_pilot_review.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "c60d9653c492b8df3a05a55b07594aeb3fa6be8f9103c6d80b6281fcadc97c98"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14243,
+      "line_count": 250,
+      "path": "tests/unit/test_nacho_attribution_runner.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "25c8e6da3c53ad2de1cfcdc56c72b06ad5ad9246b192396f3e3069579f1c7b8b"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 12393,
+      "line_count": 212,
+      "path": "tests/unit/test_news_interpretation.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "0a99ba09a29e27afcfdcbef9520bbe35a333f629f8a51d29245f483251f9425c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 10178,
+      "line_count": 182,
+      "path": "tests/unit/test_news_semantic_review.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "d3652e40e585e993c6fb4c7b6854c671106d21739497e0a9906613d188a635a3"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 6969,
+      "line_count": 140,
+      "path": "tests/unit/test_news_smoke_diagnostic_regressions.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "ea7705f9cac165a4b3a94b191cc71863c9a8fa7684f7f4aad6e39075626a44e1"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 12256,
+      "line_count": 238,
+      "path": "tests/unit/test_pilot_contract_clock.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "6f1c2ec3776894cc9c1519e3bf4d40befc985f976b04e64e231ffb67b2917635"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14407,
+      "line_count": 262,
+      "path": "tests/unit/test_pilot_contract_retry.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "2e87e823f2998e0a675617e27b64dcdb1df2aec45540f81832e4ed6c6069358d"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 20374,
+      "line_count": 369,
+      "path": "tests/unit/test_pilot_contract_review.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "932075655b5dc1a8731b2bd1c6e2d3f277b99026ef6d325c71dd2b66473b19bb"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 14458,
+      "line_count": 295,
+      "path": "tests/unit/test_pilot_contract_workflow.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "2a0d706b518e52d8a457c53e4d61faf500791770ec8a2b826213da1325e572e4"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 22266,
+      "line_count": 426,
+      "path": "tests/unit/test_pilot_review_disposition.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "8953773d1f18fbc2107e6f066f2bc920d7906b206f2421437c414c550c972000"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 15428,
+      "line_count": 242,
+      "path": "tests/unit/test_prospective_timing_pilot.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "26de531e161abdc61ad6275eaaeebd4d37b54f63d7904a250d19ad82088ea3e5"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 8778,
+      "line_count": 164,
+      "path": "tests/unit/test_prospective_timing_preparation.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "fe8f9b34eb263750af242998ec3b285d0eaefdf90e939caae1357c730ee13d44"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 10224,
+      "line_count": 199,
+      "path": "tests/unit/test_semantic_review_workshop.py",
+      "roles": [
+        "automated_test_suite"
+      ],
+      "sha256": "60b2983755743393d129a481f75d9283d63aff126e2a6f369b379d91f2860ef1"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 11122,
+      "line_count": 162,
+      "path": "tools/evaluation/chatgpt_editorial_chain.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "9ec8c3c311c46c103b3d7c61be9fa38e8b734e73eae4103c7d774a0ce9beb681"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 23835,
+      "line_count": 434,
+      "path": "tools/evaluation/development_pilot_review.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "adf8364b2e460f22cda977b3baadb90ddcd7c2158abb4f9143fa7f63f6109c8a"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 19292,
+      "line_count": 312,
+      "path": "tools/evaluation/nacho_attribution_runner.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "7577367899e95ec47fe32e057a232e7a6e444c9c812347af075867097c5d2f43"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 10854,
+      "line_count": 194,
+      "path": "tools/evaluation/nacho_evaluation_diagnostics.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "3ae30d9012dada6f385a9a4085a0f5f4c04772be2b7bead75e90aeacb2401e92"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 15135,
+      "line_count": 270,
+      "path": "tools/evaluation/pilot_contract_clock.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "8affbb459aab4c0134edbea9eae55dc76ca216a21d5f417ba072b677132f7c94"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 19386,
+      "line_count": 356,
+      "path": "tools/evaluation/pilot_contract_review.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "d5ac27680a1dd9b088a01de25332dea85fa83c4aae0ee6273ee2910afee4e068"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 35810,
+      "line_count": 584,
+      "path": "tools/evaluation/pilot_contract_workflow.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "209e308104a1c1032d348778423eaa356e19c97ea5015d0a91e0d790e87e35a7"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 20188,
+      "line_count": 399,
+      "path": "tools/evaluation/pilot_review_disposition.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "2bb59f628a399144e259546d8c330c557cd39423040a3eb5be2c947e79e4960b"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 18791,
+      "line_count": 284,
+      "path": "tools/evaluation/prepare_ai_attribution_review.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "3992148104e396d27a5ffcb4292b1c4dd9326cc1332c2a4a69162a5f9104086c"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 15899,
+      "line_count": 273,
+      "path": "tools/evaluation/prepare_attribution_review.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "0c1ceca288c9593059569a4f19ca07fbed3b37a835a5843ba8e3387b71d00576"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 25993,
+      "line_count": 401,
+      "path": "tools/evaluation/prepare_chatgpt_review.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "47711b85116aa875c96fd592777ec78e5a3ec12768a0ad5cf44b125a0e5262f2"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 25200,
+      "line_count": 487,
+      "path": "tools/evaluation/prospective_timing_pilot.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "3e9f3123a19b6e77fe065b129bfa88acea6165ca7666fa26cb6218f127cb5dfd"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 6429,
+      "line_count": 134,
+      "path": "tools/evaluation/prospective_timing_preparation.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "2c19bbf444ca36803e5a5875a5b40b8ac37b33533fb438295d8513687ef7ae55"
+    },
+    {
+      "access": "repository_source",
+      "bytes": 26645,
+      "line_count": 467,
+      "path": "tools/evaluation/semantic_review_workshop.py",
+      "roles": [
+        "evaluation_instrument"
+      ],
+      "sha256": "f757b69c02cbd8c5a6b85f360a64cdd8adad6b17c7106ad2b5c2e672ee25af1e"
+    }
+  ],
+  "kind": "documentary_inventory_not_execution_or_new_contract",
+  "official_status_unchanged": {
+    "factual_timing_rehabilitated": false,
+    "integral_pilot_completed": false,
+    "phase4c2": "implemented_pending_external_review",
+    "phase4c3": "not_started",
+    "semantic_truth": "not_assessed"
+  },
+  "owner_approval_timestamp": null,
+  "preparation_checks": {
+    "compileall": "not_run_no_bytecode_writes_needed_for_documentary_preparation",
+    "contract_verification": {
+      "command": "python -B tools/evaluation/pilot_contract_review.py --validate data/cache/news_development_pilot/contract-D-6c6ef03a91cca2a9-attempt01",
+      "completed": 6,
+      "historical_factual_status": "in_progress",
+      "result": "offline_contract_adapter_verified"
+    },
+    "data_validation": {
+      "bad_raw_hashes": 0,
+      "command": "python -B scripts/validate_data.py",
+      "duplicate_records": 0,
+      "logical_articles": 811,
+      "missing_lineage": 0,
+      "original_enrichment_snapshots": 4,
+      "raw_captures": 905,
+      "result": "passed"
+    },
+    "disposition_verification": {
+      "command": "python -B tools/evaluation/pilot_review_disposition.py --validate data/cache/news_development_pilot/review-dispositions-v1",
+      "content_approved": 6,
+      "eligible_measured_attempts": 0,
+      "factual_closed": 6,
+      "historical_contractual_adapter_label": "not_implemented is historical disposition output, not current adapter availability",
+      "result": "offline_dispositions_verified"
+    },
+    "phase_transitions": 0,
+    "preservation": {
+      "aggregate_sha256_before_and_after": "54907e21ce99d63926996b1f120255f9cf8f955769bae483241497999aaf6f7b",
+      "algorithm": "SHA256 of concatenated UTF8 compact ensure_ascii JSON [relative_posix_path,file_sha256], files sorted by pathlib.Path; .git excluded; four new dossier files excluded",
+      "preexisting_files": 4653,
+      "result": "matched_after_test_execution_before_inventory_write"
+    },
+    "provider_calls": 0,
+    "pytest": {
+      "command": "python -B -m pytest -p no:cacheprovider",
+      "historical_result": false,
+      "network": "Blocked by tests/conftest.py; repository dotenv isolated in temporary directories",
+      "result": "1174 passed in 290.01s"
+    },
+    "real_inferences": 0,
+    "timing_verification": {
+      "command": "python -B tools/evaluation/prospective_timing_pilot.py --plan evaluation/phase4c2_prospective_timing_pilot_v1/plan.json --records data/cache/news_prospective_timing_pilot/calibration-v1 validate",
+      "eligible_records": 0,
+      "plan_fingerprint": "63203d4cb428ab2ff6a2727d83ce310f32c77c5b0db41f6dac0020bc8b52ae95",
+      "result": "offline_timing_verified",
+      "unfilled_case_sessions": 6
+    }
+  },
+  "prepared_at": "2026-11-16T18:43:32.695427+00:00",
+  "prepared_by": "Development assistant, ChatGPT-assisted; not independent external reviewer",
+  "reference_freeze": {
+    "path": "data/cache/news_attribution_review/chatgpt-v1/references-frozen.json",
+    "sha256": "1484dab560f898c71a857c40d3fe9ee3312981cbafdfa2eb4936b1e093fbfb39"
+  },
+  "retention_notice": "Revalidate typed readers and original TTL before local content access. Hashes do not renew retention. Provider content 24h; relevant session and diagnostic metadata 90d under original policies.",
+  "self_hash_policy": "Inventory is not self-hashed. Retain its SHA256 separately at handoff.",
+  "test_interpretation": "Definition locations are inspectable; not independent semantic coverage, population accuracy, current provider compatibility or measured human capacity.",
+  "test_suites": [
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_cli_environment.py",
+      "test_definitions": [
+        {
+          "line": 15,
+          "name": "test_root_is_anchored_to_module_not_current_directory"
+        },
+        {
+          "line": 28,
+          "name": "test_environment_priority_including_explicit_empty_values"
+        },
+        {
+          "line": 35,
+          "name": "test_no_authorization_never_touches_file_or_dotenv"
+        },
+        {
+          "line": 43,
+          "name": "test_missing_file_keeps_system_credentials"
+        },
+        {
+          "line": 49,
+          "name": "test_options_and_no_interpolation"
+        },
+        {
+          "line": 65,
+          "name": "test_imports_and_yaml_configuration_never_load_dotenv"
+        },
+        {
+          "line": 80,
+          "name": "test_loader_error_has_no_secret_or_exception_context"
+        },
+        {
+          "line": 92,
+          "name": "test_dotenv_symlink_is_rejected_before_loading"
+        },
+        {
+          "line": 102,
+          "name": "test_cli_errors_logs_and_provider_reports_are_secret_safe"
+        },
+        {
+          "line": 126,
+          "name": "test_all_external_cli_require_confirmation_before_bootstrap"
+        },
+        {
+          "line": 147,
+          "name": "test_offline_modes_skip_bootstrap_even_with_confirmation"
+        },
+        {
+          "line": 162,
+          "name": "test_authorized_smoke_loads_only_synthetic_key_without_provider"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_economic_entity_attribution.py",
+      "test_definitions": [
+        {
+          "line": 74,
+          "name": "test_direct_party_identity_participation_and_exposure_are_different"
+        },
+        {
+          "line": 85,
+          "name": "test_acquisition_target_is_not_the_buyer"
+        },
+        {
+          "line": 92,
+          "name": "test_recognized_context_company_is_not_economic_participation"
+        },
+        {
+          "line": 102,
+          "name": "test_product_or_platform_cannot_inherit_manufacturer_registry_identity"
+        },
+        {
+          "line": 117,
+          "name": "test_corporate_alias_inside_product_or_near_other_parties_is_not_a_buyer"
+        },
+        {
+          "line": 125,
+          "name": "test_words_acquisition_and_supplier_do_not_replace_entity_specific_frame"
+        },
+        {
+          "line": 131,
+          "name": "test_supplier_with_explicit_event_contract_and_customer_roles"
+        },
+        {
+          "line": 147,
+          "name": "test_explicit_indirect_relations_never_become_direct_exposure"
+        },
+        {
+          "line": 158,
+          "name": "test_related_peer_must_be_participant_in_this_event_not_unrelated_context"
+        },
+        {
+          "line": 164,
+          "name": "test_relation_from_different_event_cannot_be_attached_to_this_subject"
+        },
+        {
+          "line": 171,
+          "name": "test_unresolved_subsidiary_does_not_get_parent_ticker"
+        },
+        {
+          "line": 184,
+          "name": "test_unknown_relations_are_preserved_without_invented_identity"
+        },
+        {
+          "line": 193,
+          "name": "test_direct_participant_without_specific_evidence_is_rejected"
+        },
+        {
+          "line": 198,
+          "name": "test_context_cannot_smuggle_a_role_relation_or_potential_impact"
+        },
+        {
+          "line": 206,
+          "name": "test_potential_impact_is_conditional_and_never_confirmed_exposure"
+        },
+        {
+          "line": 215,
+          "name": "test_unrelated_impact_quote_or_return_estimate_rejected"
+        },
+        {
+          "line": 223,
+          "name": "test_consumer_contract_rejects_context_ticker_and_confirmed_exposure"
+        },
+        {
+          "line": 229,
+          "name": "test_rumor_and_negation_still_fail_closed"
+        },
+        {
+          "line": 237,
+          "name": "test_company_identity_unavailable_at_cutoff_is_never_added"
+        },
+        {
+          "line": 244,
+          "name": "test_original_exact_resolver_wrong_revision_and_ambiguity_preserved"
+        },
+        {
+          "line": 255,
+          "name": "test_replay_provenance_tampering_and_context_projection_bypass_rejected"
+        },
+        {
+          "line": 271,
+          "name": "test_new_output_requires_version_and_does_not_accept_old_smoke_shape"
+        },
+        {
+          "line": 278,
+          "name": "test_safe_diagnostics_do_not_echo_unknown_fields_or_claim_text"
+        },
+        {
+          "line": 286,
+          "name": "test_runtime_cost_cache_retention_and_original_bytes"
+        },
+        {
+          "line": 307,
+          "name": "test_cache_identity_separates_v3_and_v4"
+        },
+        {
+          "line": 313,
+          "name": "test_future_revision_does_not_change_historical_attribution"
+        },
+        {
+          "line": 325,
+          "name": "test_abstention_preserved"
+        },
+        {
+          "line": 331,
+          "name": "test_ambiguous_security_registry_ref_never_selects_last_or_first"
+        },
+        {
+          "line": 340,
+          "name": "test_signed_contract_does_not_identify_supplier_direction_automatically"
+        },
+        {
+          "line": 349,
+          "name": "test_all_new_fields_remain_strictly_source_grounded_and_dates_unexpanded"
+        },
+        {
+          "line": 357,
+          "name": "test_new_cli_preflight_never_initializes_credentials_storage_or_provider"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_economic_prompt_v4_draft2.py",
+      "test_definitions": [
+        {
+          "line": 41,
+          "name": "test_critical_instruction_removal_is_detected"
+        },
+        {
+          "line": 74,
+          "name": "test_issuer_has_no_mandatory_counterparty_and_identity_quote_is_name_only"
+        },
+        {
+          "line": 87,
+          "name": "test_partial_uncertainty_does_not_require_whole_article_abstention"
+        },
+        {
+          "line": 107,
+          "name": "test_unrepresentable_amount_is_preserved_not_converted_or_hidden"
+        },
+        {
+          "line": 121,
+          "name": "test_native_acceptance_can_still_hide_material_qualifiers"
+        },
+        {
+          "line": 141,
+          "name": "test_independent_incidental_negation_retained_without_negating_event"
+        },
+        {
+          "line": 152,
+          "name": "test_conflicting_amounts_cannot_be_silently_reduced_to_one"
+        },
+        {
+          "line": 166,
+          "name": "test_product_and_unknown_entities_do_not_become_economic_exposure"
+        },
+        {
+          "line": 183,
+          "name": "test_inseparable_uncertainty_abstains_without_neutral_claim"
+        },
+        {
+          "line": 191,
+          "name": "test_manifest_pins_both_drafts_old_expectations_and_production"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_economic_prompt_v4_proposal.py",
+      "test_definitions": [
+        {
+          "line": 70,
+          "name": "test_current_validator_contract_probe"
+        },
+        {
+          "line": 124,
+          "name": "test_identity_participation_and_context_are_separate"
+        },
+        {
+          "line": 160,
+          "name": "test_draft_artifact_is_pinned_separate_and_not_activated"
+        },
+        {
+          "line": 184,
+          "name": "test_future_prompt_cannot_be_mislabeled_as_supported_runtime"
+        },
+        {
+          "line": 192,
+          "name": "test_fixture_integrity_disjointness_and_deterministic_replay"
+        },
+        {
+          "line": 211,
+          "name": "test_abstention_is_not_a_neutral_fabricated_event"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_nacho_runner_diagnostics.py",
+      "test_definitions": [
+        {
+          "line": 126,
+          "name": "test_full_32_run_same_semantics_budgets_and_specific_subcodes"
+        },
+        {
+          "line": 166,
+          "name": "test_new_specific_authorization_required"
+        },
+        {
+          "line": 173,
+          "name": "test_missing_authorization_blocks_before_attempt_and_writes"
+        },
+        {
+          "line": 181,
+          "name": "test_service_authorization_is_not_bypassed"
+        },
+        {
+          "line": 189,
+          "name": "test_pre_call_failure_records_no_call_without_false_attempt"
+        },
+        {
+          "line": 204,
+          "name": "test_requests_cannot_be_swapped_after_plan"
+        },
+        {
+          "line": 214,
+          "name": "test_sidecar_failure_preserves_attempt_and_halts_without_retry"
+        },
+        {
+          "line": 234,
+          "name": "test_unknown_cost_halts_and_registers_remaining_not_run"
+        },
+        {
+          "line": 250,
+          "name": "test_overlay_requires_both_opt_ins_and_preserves_expiry"
+        },
+        {
+          "line": 261,
+          "name": "test_metadata_audit_rejects_tampering"
+        },
+        {
+          "line": 291,
+          "name": "test_cli_offline_and_unapproved_no_credentials"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_news_cache_write_accounting.py",
+      "test_definitions": [
+        {
+          "line": 33,
+          "name": "test_v1_roundtrip_unchanged_and_versions_cannot_mix"
+        },
+        {
+          "line": 45,
+          "name": "test_disjoint_cache_write_charge_roundtrip_cache_and_core_contract"
+        },
+        {
+          "line": 67,
+          "name": "test_missing_or_malformed_writes_are_unknown_never_zero"
+        },
+        {
+          "line": 79,
+          "name": "test_overlapping_reads_writes_rejected_and_not_retried"
+        },
+        {
+          "line": 88,
+          "name": "test_reservation_uses_most_expensive_input_lane_and_price_band"
+        },
+        {
+          "line": 103,
+          "name": "test_budget_insufficient_before_any_attempt"
+        },
+        {
+          "line": 110,
+          "name": "test_single_attempt_even_on_transient_error"
+        },
+        {
+          "line": 117,
+          "name": "test_responses_wire_and_write_usage_with_mock_transport"
+        },
+        {
+          "line": 140,
+          "name": "test_offline_cli_preflight_never_initializes_live_runtime"
+        },
+        {
+          "line": 169,
+          "name": "test_local_profile_is_explicit_secret_free_and_officially_sourced"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_news_diagnostic_sidecar.py",
+      "test_definitions": [
+        {
+          "line": 38,
+          "name": "test_stage_branches_do_not_change_legacy_result"
+        },
+        {
+          "line": 55,
+          "name": "test_six_numeric_branches_are_observed_without_values"
+        },
+        {
+          "line": 67,
+          "name": "test_negation_condition_is_recorded_not_repaired"
+        },
+        {
+          "line": 75,
+          "name": "test_unknown_evidence_id_does_not_leak_identifier_or_quote"
+        },
+        {
+          "line": 110,
+          "name": "test_persist_rejection_then_audit_after_content_ttl_without_content_reader"
+        },
+        {
+          "line": 130,
+          "name": "test_success_abstention_and_transport_have_bound_outcomes"
+        },
+        {
+          "line": 142,
+          "name": "test_untrusted_extra_field_name_does_not_enter_sidecar"
+        },
+        {
+          "line": 152,
+          "name": "test_adversarial_paths_are_rejected"
+        },
+        {
+          "line": 156,
+          "name": "test_integrity_immutability_and_no_sensitive_fields"
+        },
+        {
+          "line": 171,
+          "name": "test_sidecar_failure_does_not_retry_or_change_attempt_outcome"
+        },
+        {
+          "line": 181,
+          "name": "test_historical_run_id_is_blocked_before_service_invocation"
+        },
+        {
+          "line": 187,
+          "name": "test_not_authorized_does_not_call_or_invent_attempt"
+        },
+        {
+          "line": 198,
+          "name": "test_schema_and_wire_contracts_are_not_versioned_or_modified"
+        },
+        {
+          "line": 203,
+          "name": "test_capture_isolation_and_non_retroactive_generation"
+        },
+        {
+          "line": 214,
+          "name": "test_offline_preflight_has_no_credential_or_provider_access"
+        },
+        {
+          "line": 227,
+          "name": "test_retention_cannot_be_extended_by_rehashing"
+        },
+        {
+          "line": 234,
+          "name": "test_source_binding_is_checked_before_any_provider_call"
+        },
+        {
+          "line": 241,
+          "name": "test_new_sidecar_requires_specific_codes_not_retrospective_coarse_diagnostics"
+        },
+        {
+          "line": 250,
+          "name": "test_sidecar_rejects_duplicate_json_fields_and_unknown_codes"
+        },
+        {
+          "line": 259,
+          "name": "test_same_prepared_wire_and_cache_key_with_observation_enabled"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_news_interpretation_pit.py",
+      "test_definitions": [
+        {
+          "line": 29,
+          "name": "test_strict_latest_revision_selection_and_future_invariance"
+        },
+        {
+          "line": 48,
+          "name": "test_direct_contract_rejects_future_registry_and_after_cutoff_retrieval"
+        },
+        {
+          "line": 62,
+          "name": "test_strict_research_separation_and_actual_late_availability"
+        },
+        {
+          "line": 85,
+          "name": "test_cluster_context_is_optional_and_cannot_be_future_computation"
+        },
+        {
+          "line": 101,
+          "name": "test_context_latest_revision_future_and_target_scope"
+        },
+        {
+          "line": 113,
+          "name": "test_existing_router_contract_compatibility_with_only_simulated_client"
+        },
+        {
+          "line": 134,
+          "name": "test_replay_provider_mismatch_and_time_provenance_rejected"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_news_interpretation_runtime.py",
+      "test_definitions": [
+        {
+          "line": 75,
+          "name": "test_success_abstention_cache_exact_replay_and_immutable_storage"
+        },
+        {
+          "line": 94,
+          "name": "test_transient_retry_unknown_cost_keeps_conservative_hold"
+        },
+        {
+          "line": 107,
+          "name": "test_permanent_errors_do_not_retry"
+        },
+        {
+          "line": 115,
+          "name": "test_invalid_and_truncated_responses_cost_money_and_retry_within_bound"
+        },
+        {
+          "line": 125,
+          "name": "test_retry_ceiling_budget_unknown_price_and_expired_price"
+        },
+        {
+          "line": 141,
+          "name": "test_run_budget_is_durable_and_applies_across_articles"
+        },
+        {
+          "line": 152,
+          "name": "test_revision_policy_settings_and_model_cache_identity"
+        },
+        {
+          "line": 169,
+          "name": "test_wrong_router_model_provider_provenance_and_no_authorization"
+        },
+        {
+          "line": 182,
+          "name": "test_expiry_and_hash_tamper_never_returns_an_authorized_cache_record"
+        },
+        {
+          "line": 194,
+          "name": "test_pit_future_revisions_registry_and_real_generation_not_historical"
+        },
+        {
+          "line": 211,
+          "name": "test_wire_schema_capabilities_injection_and_no_real_network"
+        },
+        {
+          "line": 228,
+          "name": "test_http_adapter_errors_are_safe_and_never_follow_redirects"
+        },
+        {
+          "line": 239,
+          "name": "test_http_adapter_success_usage_refusal_incomplete_timeout_and_missing_tokens"
+        },
+        {
+          "line": 266,
+          "name": "test_legacy_request_serialization_and_pricing_are_unchanged"
+        },
+        {
+          "line": 271,
+          "name": "test_successful_event_extraction_is_validated_against_primary_text"
+        },
+        {
+          "line": 283,
+          "name": "test_partial_tokens_are_preserved_but_cost_unknown_and_no_zero_fabrication"
+        },
+        {
+          "line": 293,
+          "name": "test_budget_denies_retry_and_detects_actual_overrun"
+        },
+        {
+          "line": 308,
+          "name": "test_comparison_plan_freezes_inputs_without_execution"
+        },
+        {
+          "line": 317,
+          "name": "test_secret_echo_and_secret_input_are_never_persisted"
+        },
+        {
+          "line": 329,
+          "name": "test_cache_identity_and_durable_response_cannot_be_rebound"
+        },
+        {
+          "line": 343,
+          "name": "test_explicit_model_output_and_context_capabilities_fail_before_calls"
+        },
+        {
+          "line": 353,
+          "name": "test_failed_or_nonfinal_provider_envelopes_are_not_blindly_retried"
+        },
+        {
+          "line": 364,
+          "name": "test_news_flow_never_silently_uses_the_default_route"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_news_quote_grounding.py",
+      "test_definitions": [
+        {
+          "line": 96,
+          "name": "test_unique_exact_quote_offsets_provenance_and_reproducibility"
+        },
+        {
+          "line": 118,
+          "name": "test_missing_quote_or_source_rejected"
+        },
+        {
+          "line": 129,
+          "name": "test_repeated_and_overlapping_quotes_never_choose_first"
+        },
+        {
+          "line": 136,
+          "name": "test_repeated_short_entity_can_use_unique_larger_quote"
+        },
+        {
+          "line": 146,
+          "name": "test_unicode_half_open_offsets_and_no_normalization"
+        },
+        {
+          "line": 159,
+          "name": "test_declared_field_is_authoritative_not_cross_field_search"
+        },
+        {
+          "line": 170,
+          "name": "test_same_quote_in_two_fields_uses_declared_id_only"
+        },
+        {
+          "line": 179,
+          "name": "test_even_eligible_context_revision_cannot_ground_primary_or_economics"
+        },
+        {
+          "line": 191,
+          "name": "test_offsets_are_forbidden_in_new_model_output_and_tampering_detected"
+        },
+        {
+          "line": 206,
+          "name": "test_structured_schema_does_not_imply_grounding"
+        },
+        {
+          "line": 217,
+          "name": "test_product_and_wrong_ticker_not_mapped_to_corporation"
+        },
+        {
+          "line": 227,
+          "name": "test_unresolved_product_and_eligible_corporate_identity_controls"
+        },
+        {
+          "line": 240,
+          "name": "test_textual_date_stays_rejected_until_explicit_future_version"
+        },
+        {
+          "line": 252,
+          "name": "test_literal_iso_date_and_no_publication_date_auto_attribution"
+        },
+        {
+          "line": 260,
+          "name": "test_rumor_cannot_become_confirmation"
+        },
+        {
+          "line": 268,
+          "name": "test_negation_preserved"
+        },
+        {
+          "line": 276,
+          "name": "test_numbers_units_still_run_original_validators_after_resolution"
+        },
+        {
+          "line": 286,
+          "name": "test_abstention_has_no_resolution_or_invented_neutral_result"
+        },
+        {
+          "line": 296,
+          "name": "test_json_stage_diagnostics"
+        },
+        {
+          "line": 301,
+          "name": "test_safe_diagnostics_never_echo_unknown_keys_or_private_values"
+        },
+        {
+          "line": 309,
+          "name": "test_runtime_cache_persistence_retention_and_exact_original_response"
+        },
+        {
+          "line": 325,
+          "name": "test_invalid_grounding_stored_sanitized_and_not_cached_or_retried"
+        },
+        {
+          "line": 334,
+          "name": "test_original_request_pit_and_future_revision_invariance"
+        },
+        {
+          "line": 351,
+          "name": "test_timestamp_provenance_not_backdated"
+        },
+        {
+          "line": 359,
+          "name": "test_legacy_replay_and_invocation_unchanged_new_cache_namespace"
+        },
+        {
+          "line": 376,
+          "name": "test_legacy_attempt_v2_still_readable_without_migrating_identity"
+        },
+        {
+          "line": 399,
+          "name": "test_new_settings_offline_cli_does_not_load_credentials_or_persist"
+        },
+        {
+          "line": 422,
+          "name": "test_excessive_json_nesting_fails_closed_with_safe_diagnostic"
+        },
+        {
+          "line": 429,
+          "name": "test_new_setting_bindings_reject_mixed_or_unknown_versions"
+        },
+        {
+          "line": 438,
+          "name": "test_new_model_contract_requires_explicit_version_no_legacy_guessing"
+        },
+        {
+          "line": 443,
+          "name": "test_runtime_stamps_availability_after_resolution_and_validation"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_phase4c2_smoke_cli.py",
+      "test_definitions": [
+        {
+          "line": 16,
+          "name": "test_cli_disabled_before_config_key_or_news_access"
+        },
+        {
+          "line": 24,
+          "name": "test_cli_missing_key_never_calls_provider"
+        },
+        {
+          "line": 31,
+          "name": "test_cli_template_is_deliberately_incomplete_and_secret_free"
+        },
+        {
+          "line": 44,
+          "name": "test_cli_help_does_not_initialize_runtime"
+        },
+        {
+          "line": 51,
+          "name": "test_invalid_yaml_never_echoes_context_or_secret"
+        },
+        {
+          "line": 59,
+          "name": "test_yaml_timestamps_are_accepted_without_real_execution"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/integration/test_semantic_review_lineage.py",
+      "test_definitions": [
+        {
+          "line": 15,
+          "name": "test_review_keeps_original_revision_and_raw_lineage"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_ai_attribution_review_preparation.py",
+      "test_definitions": [
+        {
+          "line": 15,
+          "name": "test_prepare_preserves_blind_packet_and_never_generates_references"
+        },
+        {
+          "line": 27,
+          "name": "test_pending_reference_and_changed_packet_blocked"
+        },
+        {
+          "line": 53,
+          "name": "test_freeze_is_idempotent_does_not_upgrade_ai_to_human"
+        },
+        {
+          "line": 67,
+          "name": "test_freeze_rejects_incomplete_or_unblinded_reference"
+        },
+        {
+          "line": 78,
+          "name": "test_comparison_keeps_all_cases_and_blocks_pre_freeze_generation"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_attribution_review_preparation.py",
+      "test_definitions": [
+        {
+          "line": 15,
+          "name": "test_prepare_is_immutable_and_blind_without_predictions"
+        },
+        {
+          "line": 33,
+          "name": "test_synthetic_cases_are_unique_and_cover_all_requested_domains"
+        },
+        {
+          "line": 40,
+          "name": "test_no_overwrite_or_tampered_artifact"
+        },
+        {
+          "line": 67,
+          "name": "test_comparison_blocks_unverified_ai_or_missing_reference"
+        },
+        {
+          "line": 74,
+          "name": "test_technical_failure_abstention_and_no_execution_counted"
+        },
+        {
+          "line": 83,
+          "name": "test_inconclusive_and_duplicate_units_are_not_hidden"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_chatgpt_editorial_import.py",
+      "test_definitions": [
+        {
+          "line": 63,
+          "name": "test_chain_preserves_all_non_quote_values_and_records_original_rejection"
+        },
+        {
+          "line": 73,
+          "name": "test_rejects_unauthorized_or_incorrect_manifest"
+        },
+        {
+          "line": 92,
+          "name": "test_hidden_semantic_edit_rejected_even_with_recomputed_derived_hash"
+        },
+        {
+          "line": 102,
+          "name": "test_substantive_quote_rewrite_is_rejected_even_if_authorized"
+        },
+        {
+          "line": 110,
+          "name": "test_legacy_manifest_hash_and_fields_must_match"
+        },
+        {
+          "line": 149,
+          "name": "test_import_is_idempotent_and_mixed_freeze_reconstructs_all_chains"
+        },
+        {
+          "line": 165,
+          "name": "test_freeze_rejects_tampered_chain_even_with_rehashed_record"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_chatgpt_review_preparation.py",
+      "test_definitions": [
+        {
+          "line": 31,
+          "name": "test_prepare_blind_blocks_are_identical_to_original_cases"
+        },
+        {
+          "line": 41,
+          "name": "test_tamper_and_overwrite_blocked"
+        },
+        {
+          "line": 49,
+          "name": "test_json_parser_rejects_ambiguous_incomplete_or_nonfinite"
+        },
+        {
+          "line": 53,
+          "name": "test_import_preserves_raw_unicode_fence_and_unknown_api_metadata"
+        },
+        {
+          "line": 70,
+          "name": "test_response_validation_does_not_fix_or_invent_annotations"
+        },
+        {
+          "line": 89,
+          "name": "test_unknown_or_unblinded_provenance_not_upgraded"
+        },
+        {
+          "line": 104,
+          "name": "test_freeze_requires_all_blocks_and_never_changes_existing_seal"
+        },
+        {
+          "line": 116,
+          "name": "test_explicit_failure_retains_cases_without_creating_labels"
+        },
+        {
+          "line": 128,
+          "name": "test_comparison_counts_all_cases_and_technical_states"
+        },
+        {
+          "line": 147,
+          "name": "test_comparison_dimensions_are_separate_and_omissions_not_agreement"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_cost_tracker.py",
+      "test_definitions": [
+        {
+          "line": 9,
+          "name": "test_cost_aggregations"
+        },
+        {
+          "line": 16,
+          "name": "test_configurable_pricing"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_development_pilot_review.py",
+      "test_definitions": [
+        {
+          "line": 64,
+          "name": "test_exact_six_packages_and_reproducible_nonadjacent_order"
+        },
+        {
+          "line": 82,
+          "name": "test_blind_packets_contain_no_private_or_prompt_metadata"
+        },
+        {
+          "line": 96,
+          "name": "test_unfilled_prepared_forms_have_no_measurements_or_semantics"
+        },
+        {
+          "line": 109,
+          "name": "test_full_simulated_six_case_form_flow"
+        },
+        {
+          "line": 131,
+          "name": "test_exact_unicode_citations_reject_invalid_bindings"
+        },
+        {
+          "line": 147,
+          "name": "test_uncertainty_materiality_and_representability_remain_separate"
+        },
+        {
+          "line": 165,
+          "name": "test_complete_closed_factual_schema"
+        },
+        {
+          "line": 178,
+          "name": "test_timing_and_provenance_adversarial"
+        },
+        {
+          "line": 198,
+          "name": "test_factual_must_close_before_contract_and_hash_is_required"
+        },
+        {
+          "line": 208,
+          "name": "test_unknown_case_or_incomplete_inventory_blocked"
+        },
+        {
+          "line": 213,
+          "name": "test_original_manifest_or_package_tampering_blocked"
+        },
+        {
+          "line": 227,
+          "name": "test_forms_cannot_be_reassigned_to_another_packet"
+        },
+        {
+          "line": 238,
+          "name": "test_duplicate_review_identity_is_not_silently_reused"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_nacho_attribution_runner.py",
+      "test_definitions": [
+        {
+          "line": 48,
+          "name": "test_preflight_is_pure_and_reproducible"
+        },
+        {
+          "line": 63,
+          "name": "test_original_text_and_pit_registry_are_preserved"
+        },
+        {
+          "line": 79,
+          "name": "test_no_reference_annotations_enter_wire"
+        },
+        {
+          "line": 94,
+          "name": "test_changed_inputs_fail_closed"
+        },
+        {
+          "line": 100,
+          "name": "test_budget_cannot_expand_or_omit_output"
+        },
+        {
+          "line": 104,
+          "name": "test_expired_prices_block_offline"
+        },
+        {
+          "line": 112,
+          "name": "test_explicit_authorization_cannot_be_reused_or_expanded"
+        },
+        {
+          "line": 117,
+          "name": "test_authorization_accepts_only_bound_owner_declaration"
+        },
+        {
+          "line": 121,
+          "name": "test_annotation_fields_are_rejected_by_adapter"
+        },
+        {
+          "line": 148,
+          "name": "test_simulated_outputs_failures_abstention_and_unknown_cost"
+        },
+        {
+          "line": 169,
+          "name": "test_cli_offline_and_unauthorized_modes_never_bootstrap"
+        },
+        {
+          "line": 185,
+          "name": "test_fake_failure_is_sanitized_and_records_remaining_cases"
+        },
+        {
+          "line": 199,
+          "name": "test_comparator_accepts_native_export_without_real_comparison"
+        },
+        {
+          "line": 218,
+          "name": "test_paid_branch_with_unapproved_record_never_loads_credentials"
+        },
+        {
+          "line": 231,
+          "name": "test_exactly_32_simulated_attempts_with_known_cost_and_shared_budget"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_news_interpretation.py",
+      "test_definitions": [
+        {
+          "line": 55,
+          "name": "test_exact_replay_identities_serialization_and_actual_availability"
+        },
+        {
+          "line": 75,
+          "name": "test_zero_one_multiple_events_and_context_independence"
+        },
+        {
+          "line": 97,
+          "name": "test_malformed_or_unrecognized_model_fields_fail_closed"
+        },
+        {
+          "line": 103,
+          "name": "test_fabricated_quotes_actors_dates_and_economic_facts_rejected"
+        },
+        {
+          "line": 120,
+          "name": "test_inference_unknown_and_qualitative_economics_without_return_signals"
+        },
+        {
+          "line": 141,
+          "name": "test_rumor_announcement_opinion_and_negation"
+        },
+        {
+          "line": 147,
+          "name": "test_numerical_units_scaling_period_and_contradictions"
+        },
+        {
+          "line": 164,
+          "name": "test_prompt_injection_is_data_never_instruction_or_external_tool"
+        },
+        {
+          "line": 179,
+          "name": "test_unknown_cost_budget_failure_and_metadata_no_raw_secrets"
+        },
+        {
+          "line": 192,
+          "name": "test_versions_cache_keys_and_new_inference_not_exact_replay"
+        },
+        {
+          "line": 207,
+          "name": "test_literal_fixture_references_are_checked_separately_without_model_labels"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_news_semantic_review.py",
+      "test_definitions": [
+        {
+          "line": 41,
+          "name": "test_selection_ids_seed_and_physical_order_are_reproducible"
+        },
+        {
+          "line": 51,
+          "name": "test_blind_file_has_no_algorithm_scores_or_sampling_categories"
+        },
+        {
+          "line": 61,
+          "name": "test_pending_review_never_fabricates_metrics"
+        },
+        {
+          "line": 74,
+          "name": "test_attributed_synthetic_completion_and_uncertain_exclusion"
+        },
+        {
+          "line": 88,
+          "name": "test_mismatched_ids_changed_predictions_and_changed_content_are_rejected"
+        },
+        {
+          "line": 104,
+          "name": "test_incomplete_attribution_and_naive_review_time_are_rejected"
+        },
+        {
+          "line": 116,
+          "name": "test_metrics_against_handcrafted_synthetic_confusion_matrix"
+        },
+        {
+          "line": 143,
+          "name": "test_cutoff_and_previous_development_pairs_are_excluded"
+        },
+        {
+          "line": 152,
+          "name": "test_invalid_strict_snapshot_is_rejected"
+        },
+        {
+          "line": 159,
+          "name": "test_write_preserves_human_edits_and_restricted_publication_is_blocked"
+        },
+        {
+          "line": 179,
+          "name": "test_gitignore_explicitly_covers_every_local_review_artifact"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_news_smoke_diagnostic_regressions.py",
+      "test_definitions": [
+        {
+          "line": 44,
+          "name": "test_exact_quotes_with_inclusive_end_rejected_without_mutating_input"
+        },
+        {
+          "line": 57,
+          "name": "test_length_consistent_but_displaced_quote_fails_only_grounding_stage"
+        },
+        {
+          "line": 69,
+          "name": "test_field_specific_offsets_not_concatenated_headline_summary_offsets"
+        },
+        {
+          "line": 81,
+          "name": "test_unicode_offsets_are_codepoints_not_utf8_or_utf16"
+        },
+        {
+          "line": 91,
+          "name": "test_repeated_quotes_have_multiple_valid_offsets_no_unique_auto_repair"
+        },
+        {
+          "line": 103,
+          "name": "test_unambiguous_human_date_still_rejected_by_current_iso_literal_policy"
+        },
+        {
+          "line": 112,
+          "name": "test_unknown_date_and_literal_iso_date_controls"
+        },
+        {
+          "line": 122,
+          "name": "test_product_name_cannot_inherit_parent_security_identity"
+        },
+        {
+          "line": 138,
+          "name": "test_abstention_remains_available_without_fabricated_evidence"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_pilot_contract_clock.py",
+      "test_definitions": [
+        {
+          "line": 61,
+          "name": "test_authorization_can_be_reserved_without_inventing_session_time"
+        },
+        {
+          "line": 71,
+          "name": "test_explicit_start_is_only_when_prospective_clock_and_person_are_supplied"
+        },
+        {
+          "line": 81,
+          "name": "test_phases_ai_wait_and_stop_are_distinct_without_creating_contract_judgments"
+        },
+        {
+          "line": 100,
+          "name": "test_clock_cannot_run_before_real_start"
+        },
+        {
+          "line": 107,
+          "name": "test_start_requires_real_operator_provenance_and_selected_phase"
+        },
+        {
+          "line": 115,
+          "name": "test_cannot_start_twice_or_resume_active_clock"
+        },
+        {
+          "line": 122,
+          "name": "test_no_backdated_clock_or_silent_interval_correction"
+        },
+        {
+          "line": 131,
+          "name": "test_clock_events_have_hash_integrity"
+        },
+        {
+          "line": 139,
+          "name": "test_session_backup_is_not_overwritten_by_same_basename_form"
+        },
+        {
+          "line": 149,
+          "name": "test_cannot_resume_a_stopped_session"
+        },
+        {
+          "line": 156,
+          "name": "test_second_stop_reports_exact_condition_without_writes"
+        },
+        {
+          "line": 170,
+          "name": "test_stop_from_ai_wait_does_not_require_or_invent_owner_review"
+        },
+        {
+          "line": 190,
+          "name": "test_cli_error_codes_never_publish_exception_content"
+        },
+        {
+          "line": 201,
+          "name": "test_schema_errors_expose_no_input_values"
+        },
+        {
+          "line": 207,
+          "name": "test_unknown_phase_times_stay_null_until_observed_session_end"
+        },
+        {
+          "line": 216,
+          "name": "test_pending_authorization_must_match_reserved_case_and_version"
+        },
+        {
+          "line": 227,
+          "name": "test_status_and_import_do_not_load_credentials"
+        },
+        {
+          "line": 233,
+          "name": "test_cli_has_no_backdating_argument_and_errors_are_sanitized"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_pilot_contract_retry.py",
+      "test_definitions": [
+        {
+          "line": 71,
+          "name": "test_explicit_retry_preserves_predecessor_and_proposal_without_authorization"
+        },
+        {
+          "line": 82,
+          "name": "test_ordinary_prepare_keeps_its_block"
+        },
+        {
+          "line": 95,
+          "name": "test_retry_refuses_unjustified_or_approved_attempt"
+        },
+        {
+          "line": 114,
+          "name": "test_expired_attempt_cannot_be_read_or_revived"
+        },
+        {
+          "line": 121,
+          "name": "test_retry_reason_must_match_the_actual_missing_phase"
+        },
+        {
+          "line": 128,
+          "name": "test_completed_label_requires_a_real_stop_event"
+        },
+        {
+          "line": 140,
+          "name": "test_missing_owner_review_is_supported_without_synthesizing_it"
+        },
+        {
+          "line": 153,
+          "name": "test_lineage_or_predecessor_tampering_blocks_validation"
+        },
+        {
+          "line": 175,
+          "name": "test_new_attempt_requires_new_opening_and_new_measured_phases"
+        },
+        {
+          "line": 200,
+          "name": "test_predecessor_times_cannot_be_inserted_into_new_session"
+        },
+        {
+          "line": 212,
+          "name": "test_thirteen_mappings_survive_exact_derivation"
+        },
+        {
+          "line": 243,
+          "name": "test_failed_retry_write_keeps_source_intact_and_does_not_retry"
+        },
+        {
+          "line": 254,
+          "name": "test_cli_requires_explicit_reason_and_keeps_secrets_out"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_pilot_contract_review.py",
+      "test_definitions": [
+        {
+          "line": 116,
+          "name": "test_preparation_retains_all_facts_and_does_not_start_any_session"
+        },
+        {
+          "line": 126,
+          "name": "test_wrong_source_hash_is_rejected"
+        },
+        {
+          "line": 131,
+          "name": "test_open_disposition_is_rejected_even_for_empty_contract"
+        },
+        {
+          "line": 139,
+          "name": "test_factual_content_evidence_or_uncertainty_cannot_be_rewritten"
+        },
+        {
+          "line": 153,
+          "name": "test_annotations_require_a_separate_opening_and_new_session"
+        },
+        {
+          "line": 161,
+          "name": "test_no_authorization_to_open_follows_from_implementation_or_factual_closure"
+        },
+        {
+          "line": 170,
+          "name": "test_opening_authorization_is_specific_to_this_review"
+        },
+        {
+          "line": 178,
+          "name": "test_numeric_boolean_is_not_an_explicit_authorization"
+        },
+        {
+          "line": 187,
+          "name": "test_incomplete_active_provenance_cannot_be_filled_implicitly"
+        },
+        {
+          "line": 194,
+          "name": "test_unknown_model_label_stays_null_in_manual_chatgpt_session"
+        },
+        {
+          "line": 202,
+          "name": "test_old_factual_clock_and_adjudications_do_not_fit_the_new_session"
+        },
+        {
+          "line": 207,
+          "name": "test_representation_cannot_drop_uncertainty_qualifiers"
+        },
+        {
+          "line": 215,
+          "name": "test_mapping_cannot_add_a_new_claim_or_certainty_field"
+        },
+        {
+          "line": 220,
+          "name": "test_complete_review_covers_noncanonical_facts_and_needs_owner_decision"
+        },
+        {
+          "line": 228,
+          "name": "test_owner_decision_cannot_be_inferred_from_a_complete_session"
+        },
+        {
+          "line": 238,
+          "name": "test_new_session_requires_a_coherent_real_timeline"
+        },
+        {
+          "line": 252,
+          "name": "test_completed_clock_does_not_renew_ttl_from_adapter_or_owner_approval"
+        },
+        {
+          "line": 260,
+          "name": "test_historical_contract_validator_still_blocks_untimed_factual"
+        },
+        {
+          "line": 271,
+          "name": "test_technical_reference_cannot_mix_versions_or_modified_sources"
+        },
+        {
+          "line": 278,
+          "name": "test_import_and_validation_do_not_bootstrap_credentials"
+        },
+        {
+          "line": 285,
+          "name": "test_explicit_cli_selection_and_sanitized_errors"
+        },
+        {
+          "line": 344,
+          "name": "test_aggregate_reports_prepared_and_not_started_and_cannot_claim_completion"
+        },
+        {
+          "line": 355,
+          "name": "test_aggregate_rejects_missing_duplicate_or_stale_source_links"
+        },
+        {
+          "line": 365,
+          "name": "test_aggregate_rejects_one_unclosed_factual_case"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_pilot_contract_workflow.py",
+      "test_definitions": [
+        {
+          "line": 95,
+          "name": "test_preparation_is_not_opening_and_packet_contains_every_fact"
+        },
+        {
+          "line": 110,
+          "name": "test_opening_does_not_invent_a_start_and_legacy_clock_remains_strict"
+        },
+        {
+          "line": 119,
+          "name": "test_end_to_end_all_facts_three_authorities_and_prospective_time"
+        },
+        {
+          "line": 149,
+          "name": "test_import_rejects_missing_facts_hidden_changes_and_lost_uncertainty"
+        },
+        {
+          "line": 167,
+          "name": "test_no_implicit_opening_start_or_completed_review"
+        },
+        {
+          "line": 191,
+          "name": "test_closure_requires_separate_explicit_authority"
+        },
+        {
+          "line": 204,
+          "name": "test_content_approval_freezes_draft_but_does_not_close_it"
+        },
+        {
+          "line": 210,
+          "name": "test_approval_cannot_bypass_recording_step"
+        },
+        {
+          "line": 222,
+          "name": "test_integrity_tampering_blocks_read_only_validation"
+        },
+        {
+          "line": 234,
+          "name": "test_persistence_failure_blocks_without_retry_or_clock_rewrite"
+        },
+        {
+          "line": 248,
+          "name": "test_expired_session_not_reopened_or_exported"
+        },
+        {
+          "line": 255,
+          "name": "test_clock_archives_and_partial_operations_cannot_be_ignored"
+        },
+        {
+          "line": 269,
+          "name": "test_partial_archive_before_receipt_blocks_next_operation"
+        },
+        {
+          "line": 277,
+          "name": "test_no_overwrite_completed_case_or_existing_workspace"
+        },
+        {
+          "line": 286,
+          "name": "test_offline_import_and_error_boundary_do_not_load_credentials"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_pilot_review_disposition.py",
+      "test_definitions": [
+        {
+          "line": 128,
+          "name": "test_content_approval_neither_closes_nor_measures"
+        },
+        {
+          "line": 137,
+          "name": "test_tampered_sources_are_rejected"
+        },
+        {
+          "line": 146,
+          "name": "test_wrong_identity_or_version_rejected"
+        },
+        {
+          "line": 153,
+          "name": "test_identity_is_not_repaired_by_validator"
+        },
+        {
+          "line": 160,
+          "name": "test_missing_provenance_is_not_filled_in"
+        },
+        {
+          "line": 166,
+          "name": "test_provenance_cannot_claim_independence_or_invent_time"
+        },
+        {
+          "line": 178,
+          "name": "test_closure_requires_new_separate_explicit_decision"
+        },
+        {
+          "line": 187,
+          "name": "test_valid_untimed_closure_preserves_uncertainty_and_historical_state"
+        },
+        {
+          "line": 199,
+          "name": "test_fictitious_or_incomplete_closure_rejected"
+        },
+        {
+          "line": 212,
+          "name": "test_legacy_closure_cannot_be_manufactured_from_untimed_content"
+        },
+        {
+          "line": 218,
+          "name": "test_estimate_and_partial_declaration_are_preserved_and_excluded"
+        },
+        {
+          "line": 235,
+          "name": "test_real_scope_requires_intervals_and_evidence_of_human_effort"
+        },
+        {
+          "line": 243,
+          "name": "test_scope_does_not_become_complete_measurement"
+        },
+        {
+          "line": 250,
+          "name": "test_complete_measurement_is_not_automatically_effort_eligible"
+        },
+        {
+          "line": 257,
+          "name": "test_invalid_clock_data_rejected"
+        },
+        {
+          "line": 270,
+          "name": "test_ttl_boundary_not_reset_by_new_disposition"
+        },
+        {
+          "line": 278,
+          "name": "test_scope_cannot_include_an_unobserved_zero_duration_task"
+        },
+        {
+          "line": 287,
+          "name": "test_supersession_checks_entire_chain"
+        },
+        {
+          "line": 299,
+          "name": "test_supersession_cannot_silently_reopen_closed_same_content"
+        },
+        {
+          "line": 309,
+          "name": "test_reference_path_cannot_escape_repository"
+        },
+        {
+          "line": 314,
+          "name": "test_cli_requires_explicit_selection_and_sanitizes_errors"
+        },
+        {
+          "line": 327,
+          "name": "test_import_does_not_read_artifacts_credentials_or_call_network"
+        },
+        {
+          "line": 338,
+          "name": "test_closure_cannot_bypass_original_factual_checks"
+        },
+        {
+          "line": 353,
+          "name": "test_legacy_factual_closure_can_validate_without_completed_contract"
+        },
+        {
+          "line": 402,
+          "name": "test_six_approvals_remain_open_and_excluded_without_any_writes"
+        },
+        {
+          "line": 413,
+          "name": "test_batch_rejects_inventory_or_historical_changes"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_prospective_timing_pilot.py",
+      "test_definitions": [
+        {
+          "line": 99,
+          "name": "test_preflight_is_readonly_unfilled_and_has_no_material_disclosure"
+        },
+        {
+          "line": 110,
+          "name": "test_six_simulated_sessions_and_admin_preserve_historical_and_never_certify_truth"
+        },
+        {
+          "line": 135,
+          "name": "test_start_rejects_missing_or_fictitious_authorization_without_writing"
+        },
+        {
+          "line": 144,
+          "name": "test_no_confirmation_no_clock_and_protected_storage_refused"
+        },
+        {
+          "line": 153,
+          "name": "test_contract_cannot_start_without_completed_bound_factual"
+        },
+        {
+          "line": 160,
+          "name": "test_pause_excludes_wait_and_no_overlap_with_batch_administration"
+        },
+        {
+          "line": 178,
+          "name": "test_ttl_strict_and_no_renewal_from_later_eligibility"
+        },
+        {
+          "line": 186,
+          "name": "test_tampered_event_and_duplicate_stop_rejected"
+        },
+        {
+          "line": 196,
+          "name": "test_source_contract_rejects_answers_historical_cases_and_reserved"
+        },
+        {
+          "line": 214,
+          "name": "test_stale_lock_and_partial_persistence_block_without_repair"
+        },
+        {
+          "line": 221,
+          "name": "test_real_completion_requires_explicit_attestation_and_preserves_it"
+        },
+        {
+          "line": 232,
+          "name": "test_reversed_or_naive_time_rejected_before_write"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_prospective_timing_preparation.py",
+      "test_definitions": [
+        {
+          "line": 67,
+          "name": "test_unknowns_valid_and_validation_readonly_without_eligibility"
+        },
+        {
+          "line": 89,
+          "name": "test_unsafe_or_incomplete_preparation_rejected"
+        },
+        {
+          "line": 98,
+          "name": "test_stale_or_wrong_binding_rejected"
+        },
+        {
+          "line": 105,
+          "name": "test_contractual_slot_cannot_be_mislabelled_factual_preparation"
+        },
+        {
+          "line": 114,
+          "name": "test_original_clock_start_rejects_preparation_regardless_of_path"
+        },
+        {
+          "line": 124,
+          "name": "test_simple_version_rename_or_defaults_cannot_convert_preparation"
+        },
+        {
+          "line": 132,
+          "name": "test_missing_fields_are_not_supplied_by_defaults"
+        },
+        {
+          "line": 139,
+          "name": "test_existing_executable_authorizations_still_require_all_original_claims"
+        },
+        {
+          "line": 149,
+          "name": "test_draft_template_can_keep_statement_and_source_pending"
+        },
+        {
+          "line": 156,
+          "name": "test_more_definite_declarations_still_never_become_execution_consent"
+        }
+      ]
+    },
+    {
+      "count_type": "definitions_not_parametrized_cases_or_coverage_percentage",
+      "path": "tests/unit/test_semantic_review_workshop.py",
+      "test_definitions": [
+        {
+          "line": 26,
+          "name": "test_complete_offline_flow_and_family_weighting"
+        },
+        {
+          "line": 59,
+          "name": "test_post_ttl_audit_reads_only_review_metadata"
+        },
+        {
+          "line": 74,
+          "name": "test_review_metadata_tampering_is_rejected"
+        },
+        {
+          "line": 94,
+          "name": "test_reference_freeze_cannot_be_overwritten_or_rehashed"
+        },
+        {
+          "line": 105,
+          "name": "test_anonymization_is_paired_and_omits_arm_metadata"
+        },
+        {
+          "line": 124,
+          "name": "test_review_and_fact_disagreements_need_explicit_adjudication"
+        },
+        {
+          "line": 138,
+          "name": "test_endpoint_handles_indeterminate_and_missing_without_dropping_pairs"
+        },
+        {
+          "line": 154,
+          "name": "test_future_source_and_false_pass_are_blocked"
+        },
+        {
+          "line": 166,
+          "name": "test_capacity_no_owner_commitment_and_one_person_are_not_executable"
+        },
+        {
+          "line": 173,
+          "name": "test_mock_parallel_capacity_covers_all_six_microblocks_not_real_availability"
+        },
+        {
+          "line": 186,
+          "name": "test_review_timestamp_after_content_expiry_and_invalid_denominators"
+        }
+      ]
+    }
+  ],
+  "timestamp_source": "actual_local_environment_clock_for_document_preparation_only_not_owner_approval",
+  "verdict": null
+}
