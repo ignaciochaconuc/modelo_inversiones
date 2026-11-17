@@ -1,0 +1,127 @@
+{
+  "public_institutional_metadata_requests": [
+    {
+      "url": "https://www.gov.uk/api/content/government/news/remedies-offered-to-resolve-concerns-in-non-domestic-meter-reading-merger",
+      "requested_at": "2026-11-17T15:03:54.355582+00:00",
+      "completed_at": "2026-11-17T15:03:55.621923+00:00",
+      "status": "metadata_extracted_full_payload_not_retained"
+    },
+    {
+      "url": "https://www.gov.uk/api/content/government/news/cma-considers-proposals-to-address-concerns-over-cash-machine-deal",
+      "requested_at": "2026-11-17T15:03:55.622087+00:00",
+      "completed_at": "2026-11-17T15:03:56.567824+00:00",
+      "status": "metadata_extracted_full_payload_not_retained"
+    },
+    {
+      "url": "https://www.gov.uk/api/content/government/news/cma-proposes-to-accept-remedies-package-in-co-op-group-deal-to-address-competition-concerns",
+      "requested_at": "2026-11-17T15:03:56.567936+00:00",
+      "completed_at": "2026-11-17T15:03:57.697017+00:00",
+      "status": "metadata_extracted_full_payload_not_retained"
+    },
+    {
+      "url": "https://www.gov.uk/api/content/government/news/cma-takes-first-steps-to-ensure-choice-in-business-software",
+      "requested_at": "2026-11-17T15:03:57.697148+00:00",
+      "completed_at": "2026-11-17T15:03:57.957838+00:00",
+      "status": "metadata_extracted_full_payload_not_retained"
+    },
+    {
+      "url": "https://www.gov.uk/api/content/government/news/cma-launches-strategic-market-status-investigation-into-microsofts-business-software-ecosystem",
+      "requested_at": "2026-11-17T15:03:57.957911+00:00",
+      "completed_at": "2026-11-17T15:03:59.099934+00:00",
+      "status": "metadata_extracted_full_payload_not_retained"
+    },
+    {
+      "url": "https://www.gov.uk/api/content/government/news/cma-announces-package-of-actions-on-business-software-and-cloud-services",
+      "requested_at": "2026-11-17T15:03:59.100002+00:00",
+      "completed_at": "2026-11-17T15:04:00.264232+00:00",
+      "status": "metadata_extracted_full_payload_not_retained"
+    },
+    {
+      "url": "https://www.gov.uk/api/content/government/news/cma-opens-investigation-into-metas-commercial-terms--2",
+      "requested_at": "2026-11-17T15:04:00.264315+00:00",
+      "completed_at": "2026-11-17T15:04:01.436142+00:00",
+      "status": "metadata_extracted_full_payload_not_retained"
+    },
+    {
+      "url": "https://www.gov.uk/api/content/government/news/cma-outlines-proposals-to-unlock-contactless-technology-on-apple-iphone",
+      "requested_at": "2026-11-17T15:04:01.436225+00:00",
+      "completed_at": "2026-11-17T15:04:02.596895+00:00",
+      "status": "metadata_extracted_full_payload_not_retained"
+    }
+  ],
+  "model_provider_requests": 0,
+  "ai_content_transfer": false,
+  "full_source_responses_retained": false,
+  "note": "Content API returns source details to a local process in memory; only allowlisted metadata persisted or printed. This is not document-content incorporation.",
+  "official_index_queries": [
+    {
+      "endpoint": "https://www.gov.uk/api/search.json",
+      "organisation_filter": "competition-and-markets-authority",
+      "format_filter": "press_release",
+      "q": "merger",
+      "count": 3,
+      "fields": [
+        "title",
+        "link",
+        "public_timestamp",
+        "format",
+        "organisations"
+      ],
+      "requested_at": null,
+      "timestamp_note": "Exact request time was not captured; do not reconstruct it",
+      "raw_result_retained": false
+    },
+    {
+      "endpoint": "https://www.gov.uk/api/search.json",
+      "organisation_filter": "competition-and-markets-authority",
+      "format_filter": "press_release",
+      "q": "cloud",
+      "count": 3,
+      "fields": [
+        "title",
+        "link",
+        "public_timestamp",
+        "format",
+        "organisations"
+      ],
+      "requested_at": null,
+      "timestamp_note": "Exact request time was not captured; do not reconstruct it",
+      "raw_result_retained": false
+    },
+    {
+      "endpoint": "https://www.gov.uk/api/search.json",
+      "organisation_filter": "competition-and-markets-authority",
+      "format_filter": "press_release",
+      "q": "licensing",
+      "count": 3,
+      "fields": [
+        "title",
+        "link",
+        "public_timestamp",
+        "format",
+        "organisations"
+      ],
+      "requested_at": null,
+      "timestamp_note": "Exact request time was not captured; do not reconstruct it",
+      "raw_result_retained": false
+    },
+    {
+      "endpoint": "https://www.gov.uk/api/search.json",
+      "organisation_filter": "competition-and-markets-authority",
+      "format_filter": "press_release",
+      "q": "platform",
+      "count": 3,
+      "fields": [
+        "title",
+        "link",
+        "public_timestamp",
+        "format",
+        "organisations"
+      ],
+      "requested_at": null,
+      "timestamp_note": "Exact request time was not captured; do not reconstruct it",
+      "raw_result_retained": false
+    }
+  ],
+  "http_count_scope": "4 initial index searches + 8 content-metadata requests + 8 HTML footer checks = 20 GOV.UK requests; no model-provider requests. Licence-policy web research is not a news acquisition."
+}

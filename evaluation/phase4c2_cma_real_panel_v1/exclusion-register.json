@@ -1,0 +1,78 @@
+{
+  "schema_version": "cma-real-panel-exclusion-register-v1",
+  "meaning": "All candidates withheld from content incorporation pending checks; no determination that reuse is legally forbidden",
+  "items": [
+    {
+      "candidate_id": "CMA-7d39475df70cc2f7",
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ]
+    },
+    {
+      "candidate_id": "CMA-9dd247c547b34299",
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ]
+    },
+    {
+      "candidate_id": "CMA-2f8db21e8d1c4b13",
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ]
+    },
+    {
+      "candidate_id": "CMA-3bbd8a57e518e3fc",
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ]
+    },
+    {
+      "candidate_id": "CMA-121aeab8c5d1fb1a",
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ]
+    },
+    {
+      "candidate_id": "CMA-d772a05fc46eb1cf",
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ]
+    },
+    {
+      "candidate_id": "CMA-4a7c6ca3d25b4b22",
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ]
+    },
+    {
+      "candidate_id": "CMA-cc4dc36763e44f87",
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ]
+    }
+  ]
+}

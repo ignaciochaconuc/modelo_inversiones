@@ -1,0 +1,24 @@
+{
+  "schema_version": "cma-panel-preparation-authority-evidence-v1",
+  "authority": "Project owner, current conversation participant",
+  "source_kind": "Owner instruction provided in attached text file in this conversation",
+  "source_attachment_path": "C:\\Users\\chaco\\.codex\\attachments\\00712481-571b-4a76-9d2f-634e2e154816\\Pasted text.txt",
+  "source_attachment_sha256": "2e6e48d5d80f5c517e722ad9110c3d4475d39a4f94a6379c157266ed38c008a1",
+  "source_message_id": null,
+  "authorized_at": null,
+  "recorded_at": "2026-11-17T15:09:06.598017+00:00",
+  "recorded_by": "Codex preparing assistant",
+  "scope": [
+    "select up to eight CMA/GOV.UK documents",
+    "verify rights before incorporation",
+    "prepare documentary materials",
+    "run offline deterministic checks"
+  ],
+  "not_authorized": [
+    "source content transfer to AI",
+    "semantic adjudication",
+    "NewsAgent inference",
+    "phase transition"
+  ],
+  "no_new_owner_statement_fabricated": true
+}

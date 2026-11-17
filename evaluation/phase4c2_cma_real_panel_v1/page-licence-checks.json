@@ -1,0 +1,133 @@
+{
+  "scope": "Footer links only; complete HTML transient in local process, never printed, sent to AI or retained",
+  "checks": [
+    {
+      "candidate_id": "CMA-7d39475df70cc2f7",
+      "url": "https://www.gov.uk/government/news/remedies-offered-to-resolve-concerns-in-non-domestic-meter-reading-merger",
+      "resolved_url": "https://www.gov.uk/government/news/remedies-offered-to-resolve-concerns-in-non-domestic-meter-reading-merger",
+      "licence_footer_checked_at": "2026-11-17T15:04:51.627375+00:00",
+      "page_sha256": "414c2d91451ddc966dee22bc0a61c9c6c42a5d25573d10d0735caec35ed519b1",
+      "page_sha256_scope": "HTML fetched locally for footer check, not retained; not an incorporated evidence hash",
+      "footer_ogl_v3_links": [
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+      ],
+      "body_copyright_exclusions_reviewed": false,
+      "body_personal_data_reviewed": false,
+      "body_third_party_material_reviewed": false,
+      "source_body_persisted": false,
+      "source_body_sent_to_ai": false
+    },
+    {
+      "candidate_id": "CMA-9dd247c547b34299",
+      "url": "https://www.gov.uk/government/news/cma-considers-proposals-to-address-concerns-over-cash-machine-deal",
+      "resolved_url": "https://www.gov.uk/government/news/cma-considers-proposals-to-address-concerns-over-cash-machine-deal",
+      "licence_footer_checked_at": "2026-11-17T15:04:52.152036+00:00",
+      "page_sha256": "7c19b664acab9865a0bf51f30e2bf45199fdbf7b1e23882f679849d68df8ebf9",
+      "page_sha256_scope": "HTML fetched locally for footer check, not retained; not an incorporated evidence hash",
+      "footer_ogl_v3_links": [
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+      ],
+      "body_copyright_exclusions_reviewed": false,
+      "body_personal_data_reviewed": false,
+      "body_third_party_material_reviewed": false,
+      "source_body_persisted": false,
+      "source_body_sent_to_ai": false
+    },
+    {
+      "candidate_id": "CMA-2f8db21e8d1c4b13",
+      "url": "https://www.gov.uk/government/news/cma-proposes-to-accept-remedies-package-in-co-op-group-deal-to-address-competition-concerns",
+      "resolved_url": "https://www.gov.uk/government/news/cma-proposes-to-accept-remedies-package-in-co-op-group-deal-to-address-competition-concerns",
+      "licence_footer_checked_at": "2026-11-17T15:04:52.673138+00:00",
+      "page_sha256": "75732001e5c8d908ac6e775f81fd7eba54736668f4f3625343682696b5305079",
+      "page_sha256_scope": "HTML fetched locally for footer check, not retained; not an incorporated evidence hash",
+      "footer_ogl_v3_links": [
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+      ],
+      "body_copyright_exclusions_reviewed": false,
+      "body_personal_data_reviewed": false,
+      "body_third_party_material_reviewed": false,
+      "source_body_persisted": false,
+      "source_body_sent_to_ai": false
+    },
+    {
+      "candidate_id": "CMA-3bbd8a57e518e3fc",
+      "url": "https://www.gov.uk/government/news/cma-takes-first-steps-to-ensure-choice-in-business-software",
+      "resolved_url": "https://www.gov.uk/government/news/cma-takes-first-steps-to-ensure-choice-in-business-software",
+      "licence_footer_checked_at": "2026-11-17T15:04:54.275647+00:00",
+      "page_sha256": "4972b5b1a4636282405f9f860082f5c5785e56914b0996391595c421b1c67700",
+      "page_sha256_scope": "HTML fetched locally for footer check, not retained; not an incorporated evidence hash",
+      "footer_ogl_v3_links": [
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+      ],
+      "body_copyright_exclusions_reviewed": false,
+      "body_personal_data_reviewed": false,
+      "body_third_party_material_reviewed": false,
+      "source_body_persisted": false,
+      "source_body_sent_to_ai": false
+    },
+    {
+      "candidate_id": "CMA-121aeab8c5d1fb1a",
+      "url": "https://www.gov.uk/government/news/cma-launches-strategic-market-status-investigation-into-microsofts-business-software-ecosystem",
+      "resolved_url": "https://www.gov.uk/government/news/cma-launches-strategic-market-status-investigation-into-microsofts-business-software-ecosystem",
+      "licence_footer_checked_at": "2026-11-17T15:04:55.442196+00:00",
+      "page_sha256": "56b19d32f3b465a47bfe161f3f66ed1feeb84ccac6722f36a0d9a946410aecd8",
+      "page_sha256_scope": "HTML fetched locally for footer check, not retained; not an incorporated evidence hash",
+      "footer_ogl_v3_links": [
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+      ],
+      "body_copyright_exclusions_reviewed": false,
+      "body_personal_data_reviewed": false,
+      "body_third_party_material_reviewed": false,
+      "source_body_persisted": false,
+      "source_body_sent_to_ai": false
+    },
+    {
+      "candidate_id": "CMA-d772a05fc46eb1cf",
+      "url": "https://www.gov.uk/government/news/cma-announces-package-of-actions-on-business-software-and-cloud-services",
+      "resolved_url": "https://www.gov.uk/government/news/cma-announces-package-of-actions-on-business-software-and-cloud-services",
+      "licence_footer_checked_at": "2026-11-17T15:04:55.758547+00:00",
+      "page_sha256": "22b0faefbbcd73d2efc63418804618d21e58508f4e84508786792a52af778cca",
+      "page_sha256_scope": "HTML fetched locally for footer check, not retained; not an incorporated evidence hash",
+      "footer_ogl_v3_links": [
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+      ],
+      "body_copyright_exclusions_reviewed": false,
+      "body_personal_data_reviewed": false,
+      "body_third_party_material_reviewed": false,
+      "source_body_persisted": false,
+      "source_body_sent_to_ai": false
+    },
+    {
+      "candidate_id": "CMA-4a7c6ca3d25b4b22",
+      "url": "https://www.gov.uk/government/news/cma-opens-investigation-into-metas-commercial-terms--2",
+      "resolved_url": "https://www.gov.uk/government/news/cma-opens-investigation-into-metas-commercial-terms--2",
+      "licence_footer_checked_at": "2026-11-17T15:04:56.944677+00:00",
+      "page_sha256": "94008c5c8ed1d0394e0dd4a2ca6149795f9ed4aa2810d5ecec2f27207eaf991a",
+      "page_sha256_scope": "HTML fetched locally for footer check, not retained; not an incorporated evidence hash",
+      "footer_ogl_v3_links": [
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+      ],
+      "body_copyright_exclusions_reviewed": false,
+      "body_personal_data_reviewed": false,
+      "body_third_party_material_reviewed": false,
+      "source_body_persisted": false,
+      "source_body_sent_to_ai": false
+    },
+    {
+      "candidate_id": "CMA-cc4dc36763e44f87",
+      "url": "https://www.gov.uk/government/news/cma-outlines-proposals-to-unlock-contactless-technology-on-apple-iphone",
+      "resolved_url": "https://www.gov.uk/government/news/cma-outlines-proposals-to-unlock-contactless-technology-on-apple-iphone",
+      "licence_footer_checked_at": "2026-11-17T15:04:58.416781+00:00",
+      "page_sha256": "6614c182690038fa358ca26e21870c2a2e095321aebfce092e8f7c4ee2f1ac9f",
+      "page_sha256_scope": "HTML fetched locally for footer check, not retained; not an incorporated evidence hash",
+      "footer_ogl_v3_links": [
+        "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+      ],
+      "body_copyright_exclusions_reviewed": false,
+      "body_personal_data_reviewed": false,
+      "body_third_party_material_reviewed": false,
+      "source_body_persisted": false,
+      "source_body_sent_to_ai": false
+    }
+  ]
+}

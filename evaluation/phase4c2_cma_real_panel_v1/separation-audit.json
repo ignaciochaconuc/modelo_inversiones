@@ -1,0 +1,62 @@
+{
+  "scope": "URL identity only in docs/evaluation/tests, not Finnhub text or expired responses",
+  "candidate_checks": [
+    {
+      "candidate_id": "CMA-7d39475df70cc2f7",
+      "canonical_url_matches_in_scanned_documents": [],
+      "exact_content_hash_comparison": "not_performed_content_not_incorporated",
+      "conceptual_similarity": "unknown",
+      "originality_certified": false
+    },
+    {
+      "candidate_id": "CMA-9dd247c547b34299",
+      "canonical_url_matches_in_scanned_documents": [],
+      "exact_content_hash_comparison": "not_performed_content_not_incorporated",
+      "conceptual_similarity": "unknown",
+      "originality_certified": false
+    },
+    {
+      "candidate_id": "CMA-2f8db21e8d1c4b13",
+      "canonical_url_matches_in_scanned_documents": [],
+      "exact_content_hash_comparison": "not_performed_content_not_incorporated",
+      "conceptual_similarity": "unknown",
+      "originality_certified": false
+    },
+    {
+      "candidate_id": "CMA-3bbd8a57e518e3fc",
+      "canonical_url_matches_in_scanned_documents": [],
+      "exact_content_hash_comparison": "not_performed_content_not_incorporated",
+      "conceptual_similarity": "unknown",
+      "originality_certified": false
+    },
+    {
+      "candidate_id": "CMA-121aeab8c5d1fb1a",
+      "canonical_url_matches_in_scanned_documents": [],
+      "exact_content_hash_comparison": "not_performed_content_not_incorporated",
+      "conceptual_similarity": "unknown",
+      "originality_certified": false
+    },
+    {
+      "candidate_id": "CMA-d772a05fc46eb1cf",
+      "canonical_url_matches_in_scanned_documents": [],
+      "exact_content_hash_comparison": "not_performed_content_not_incorporated",
+      "conceptual_similarity": "unknown",
+      "originality_certified": false
+    },
+    {
+      "candidate_id": "CMA-4a7c6ca3d25b4b22",
+      "canonical_url_matches_in_scanned_documents": [],
+      "exact_content_hash_comparison": "not_performed_content_not_incorporated",
+      "conceptual_similarity": "unknown",
+      "originality_certified": false
+    },
+    {
+      "candidate_id": "CMA-cc4dc36763e44f87",
+      "canonical_url_matches_in_scanned_documents": [],
+      "exact_content_hash_comparison": "not_performed_content_not_incorporated",
+      "conceptual_similarity": "unknown",
+      "originality_certified": false
+    }
+  ],
+  "full_originality_review_pending": true
+}

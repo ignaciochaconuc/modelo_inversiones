@@ -1,0 +1,315 @@
+{
+  "schema_version": "cma-real-panel-candidate-manifest-v1",
+  "state": "candidate_metadata_prepared_pending_local_rights_review",
+  "authority": "Explicit owner instruction in attached request; preparation only, no adjudication or transfer of source bodies to AI",
+  "source_message_id": null,
+  "authorized_at": null,
+  "recorded_by": "Codex, preparing assistant; not an external adjudicator",
+  "preparation_started_at": "2026-11-17T15:03:54.355311+00:00",
+  "prepared_at": "2026-11-17T15:04:03.097483+00:00",
+  "selection": "Eight metadata candidates from four limited official index searches; not a random sample or eight semantically qualified cases",
+  "content_incorporated_count": 0,
+  "candidates": [
+    {
+      "candidate_id": "CMA-7d39475df70cc2f7",
+      "canonical_url": "https://www.gov.uk/government/news/remedies-offered-to-resolve-concerns-in-non-domestic-meter-reading-merger",
+      "content_api_url": "https://www.gov.uk/api/content/government/news/remedies-offered-to-resolve-concerns-in-non-domestic-meter-reading-merger",
+      "content_id": "2a84fb8f-d955-4ad0-aa36-3d68342d5c01",
+      "title": "Remedies offered to resolve concerns in non-domestic meter reading merger",
+      "document_type": "press_release",
+      "organisation_content_ids": [
+        "957eb4ec-089b-4f71-ba2a-dc69ac8919ea"
+      ],
+      "cma_publisher_metadata_verified": true,
+      "published_at": "2026-10-09T12:22:06+01:00",
+      "public_updated_at": "2026-10-09T12:22:06+01:00",
+      "metadata_observed_at": "2026-11-17T15:03:55.621923+00:00",
+      "metadata_ingested_at": "2026-11-17T15:03:55.622007+00:00",
+      "source_content_observed_at": null,
+      "source_content_available_at": null,
+      "source_content_ingested_at": null,
+      "cutoff": null,
+      "source_content_sha256": null,
+      "evidence": [],
+      "content_transfer_to_ai_authorized": false,
+      "incorporated": false,
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ],
+      "prior_exposure": {
+        "title_metadata_seen_by_preparing_assistant": true,
+        "body_sent_to_ai": false,
+        "future_reviewer_exposure": "unknown"
+      },
+      "publication_source": "GOV.UK Content API first_published_at",
+      "revision_source": "content_id and public_updated_at identify metadata only; no content snapshot or exact replay claimed"
+    },
+    {
+      "candidate_id": "CMA-9dd247c547b34299",
+      "canonical_url": "https://www.gov.uk/government/news/cma-considers-proposals-to-address-concerns-over-cash-machine-deal",
+      "content_api_url": "https://www.gov.uk/api/content/government/news/cma-considers-proposals-to-address-concerns-over-cash-machine-deal",
+      "content_id": "54c66896-a84e-4006-bbb7-38b64423b504",
+      "title": "CMA considers proposals to address concerns over cash machine deal",
+      "document_type": "press_release",
+      "organisation_content_ids": [
+        "957eb4ec-089b-4f71-ba2a-dc69ac8919ea"
+      ],
+      "cma_publisher_metadata_verified": true,
+      "published_at": "2026-10-08T10:00:27+01:00",
+      "public_updated_at": "2026-10-08T10:00:27+01:00",
+      "metadata_observed_at": "2026-11-17T15:03:56.567824+00:00",
+      "metadata_ingested_at": "2026-11-17T15:03:56.567877+00:00",
+      "source_content_observed_at": null,
+      "source_content_available_at": null,
+      "source_content_ingested_at": null,
+      "cutoff": null,
+      "source_content_sha256": null,
+      "evidence": [],
+      "content_transfer_to_ai_authorized": false,
+      "incorporated": false,
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ],
+      "prior_exposure": {
+        "title_metadata_seen_by_preparing_assistant": true,
+        "body_sent_to_ai": false,
+        "future_reviewer_exposure": "unknown"
+      },
+      "publication_source": "GOV.UK Content API first_published_at",
+      "revision_source": "content_id and public_updated_at identify metadata only; no content snapshot or exact replay claimed"
+    },
+    {
+      "candidate_id": "CMA-2f8db21e8d1c4b13",
+      "canonical_url": "https://www.gov.uk/government/news/cma-proposes-to-accept-remedies-package-in-co-op-group-deal-to-address-competition-concerns",
+      "content_api_url": "https://www.gov.uk/api/content/government/news/cma-proposes-to-accept-remedies-package-in-co-op-group-deal-to-address-competition-concerns",
+      "content_id": "09504070-bed9-4105-81d3-6868ed59d6c5",
+      "title": "CMA proposes to accept remedies package in Co-op Group deal to address competition concerns",
+      "document_type": "press_release",
+      "organisation_content_ids": [
+        "957eb4ec-089b-4f71-ba2a-dc69ac8919ea"
+      ],
+      "cma_publisher_metadata_verified": true,
+      "published_at": "2026-09-29T10:00:12+01:00",
+      "public_updated_at": "2026-09-29T10:00:12+01:00",
+      "metadata_observed_at": "2026-11-17T15:03:57.697017+00:00",
+      "metadata_ingested_at": "2026-11-17T15:03:57.697082+00:00",
+      "source_content_observed_at": null,
+      "source_content_available_at": null,
+      "source_content_ingested_at": null,
+      "cutoff": null,
+      "source_content_sha256": null,
+      "evidence": [],
+      "content_transfer_to_ai_authorized": false,
+      "incorporated": false,
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ],
+      "prior_exposure": {
+        "title_metadata_seen_by_preparing_assistant": true,
+        "body_sent_to_ai": false,
+        "future_reviewer_exposure": "unknown"
+      },
+      "publication_source": "GOV.UK Content API first_published_at",
+      "revision_source": "content_id and public_updated_at identify metadata only; no content snapshot or exact replay claimed"
+    },
+    {
+      "candidate_id": "CMA-3bbd8a57e518e3fc",
+      "canonical_url": "https://www.gov.uk/government/news/cma-takes-first-steps-to-ensure-choice-in-business-software",
+      "content_api_url": "https://www.gov.uk/api/content/government/news/cma-takes-first-steps-to-ensure-choice-in-business-software",
+      "content_id": "be75f2e1-9b0b-426e-9efb-6aac3932ceeb",
+      "title": "CMA takes first steps to ensure choice in business software",
+      "document_type": "press_release",
+      "organisation_content_ids": [
+        "957eb4ec-089b-4f71-ba2a-dc69ac8919ea"
+      ],
+      "cma_publisher_metadata_verified": true,
+      "published_at": "2026-10-16T10:00:00+01:00",
+      "public_updated_at": "2026-10-16T10:00:00+01:00",
+      "metadata_observed_at": "2026-11-17T15:03:57.957838+00:00",
+      "metadata_ingested_at": "2026-11-17T15:03:57.957872+00:00",
+      "source_content_observed_at": null,
+      "source_content_available_at": null,
+      "source_content_ingested_at": null,
+      "cutoff": null,
+      "source_content_sha256": null,
+      "evidence": [],
+      "content_transfer_to_ai_authorized": false,
+      "incorporated": false,
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ],
+      "prior_exposure": {
+        "title_metadata_seen_by_preparing_assistant": true,
+        "body_sent_to_ai": false,
+        "future_reviewer_exposure": "unknown"
+      },
+      "publication_source": "GOV.UK Content API first_published_at",
+      "revision_source": "content_id and public_updated_at identify metadata only; no content snapshot or exact replay claimed"
+    },
+    {
+      "candidate_id": "CMA-121aeab8c5d1fb1a",
+      "canonical_url": "https://www.gov.uk/government/news/cma-launches-strategic-market-status-investigation-into-microsofts-business-software-ecosystem",
+      "content_api_url": "https://www.gov.uk/api/content/government/news/cma-launches-strategic-market-status-investigation-into-microsofts-business-software-ecosystem",
+      "content_id": "8c385f12-e828-439d-a9dd-165e18b12546",
+      "title": "CMA launches strategic market status investigation into Microsoft’s business software ecosystem",
+      "document_type": "press_release",
+      "organisation_content_ids": [
+        "957eb4ec-089b-4f71-ba2a-dc69ac8919ea"
+      ],
+      "cma_publisher_metadata_verified": true,
+      "published_at": "2026-05-14T11:20:00+01:00",
+      "public_updated_at": "2026-05-14T11:20:00+01:00",
+      "metadata_observed_at": "2026-11-17T15:03:59.099934+00:00",
+      "metadata_ingested_at": "2026-11-17T15:03:59.099966+00:00",
+      "source_content_observed_at": null,
+      "source_content_available_at": null,
+      "source_content_ingested_at": null,
+      "cutoff": null,
+      "source_content_sha256": null,
+      "evidence": [],
+      "content_transfer_to_ai_authorized": false,
+      "incorporated": false,
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ],
+      "prior_exposure": {
+        "title_metadata_seen_by_preparing_assistant": true,
+        "body_sent_to_ai": false,
+        "future_reviewer_exposure": "unknown"
+      },
+      "publication_source": "GOV.UK Content API first_published_at",
+      "revision_source": "content_id and public_updated_at identify metadata only; no content snapshot or exact replay claimed"
+    },
+    {
+      "candidate_id": "CMA-d772a05fc46eb1cf",
+      "canonical_url": "https://www.gov.uk/government/news/cma-announces-package-of-actions-on-business-software-and-cloud-services",
+      "content_api_url": "https://www.gov.uk/api/content/government/news/cma-announces-package-of-actions-on-business-software-and-cloud-services",
+      "content_id": "26723a65-8a72-492b-bad6-418fa41cf6c6",
+      "title": "CMA announces package of actions on business software and cloud services",
+      "document_type": "press_release",
+      "organisation_content_ids": [
+        "957eb4ec-089b-4f71-ba2a-dc69ac8919ea"
+      ],
+      "cma_publisher_metadata_verified": true,
+      "published_at": "2026-03-31T12:03:00+01:00",
+      "public_updated_at": "2026-03-31T12:03:00+01:00",
+      "metadata_observed_at": "2026-11-17T15:04:00.264232+00:00",
+      "metadata_ingested_at": "2026-11-17T15:04:00.264270+00:00",
+      "source_content_observed_at": null,
+      "source_content_available_at": null,
+      "source_content_ingested_at": null,
+      "cutoff": null,
+      "source_content_sha256": null,
+      "evidence": [],
+      "content_transfer_to_ai_authorized": false,
+      "incorporated": false,
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ],
+      "prior_exposure": {
+        "title_metadata_seen_by_preparing_assistant": true,
+        "body_sent_to_ai": false,
+        "future_reviewer_exposure": "unknown"
+      },
+      "publication_source": "GOV.UK Content API first_published_at",
+      "revision_source": "content_id and public_updated_at identify metadata only; no content snapshot or exact replay claimed"
+    },
+    {
+      "candidate_id": "CMA-4a7c6ca3d25b4b22",
+      "canonical_url": "https://www.gov.uk/government/news/cma-opens-investigation-into-metas-commercial-terms--2",
+      "content_api_url": "https://www.gov.uk/api/content/government/news/cma-opens-investigation-into-metas-commercial-terms--2",
+      "content_id": "e7eeb6f8-ab0f-428c-bdbd-8477f5858d2a",
+      "title": "CMA opens investigation into Meta’s commercial terms",
+      "document_type": "press_release",
+      "organisation_content_ids": [
+        "957eb4ec-089b-4f71-ba2a-dc69ac8919ea"
+      ],
+      "cma_publisher_metadata_verified": true,
+      "published_at": "2026-10-30T12:05:53+00:00",
+      "public_updated_at": "2026-10-30T12:05:53+00:00",
+      "metadata_observed_at": "2026-11-17T15:04:01.436142+00:00",
+      "metadata_ingested_at": "2026-11-17T15:04:01.436181+00:00",
+      "source_content_observed_at": null,
+      "source_content_available_at": null,
+      "source_content_ingested_at": null,
+      "cutoff": null,
+      "source_content_sha256": null,
+      "evidence": [],
+      "content_transfer_to_ai_authorized": false,
+      "incorporated": false,
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ],
+      "prior_exposure": {
+        "title_metadata_seen_by_preparing_assistant": true,
+        "body_sent_to_ai": false,
+        "future_reviewer_exposure": "unknown"
+      },
+      "publication_source": "GOV.UK Content API first_published_at",
+      "revision_source": "content_id and public_updated_at identify metadata only; no content snapshot or exact replay claimed"
+    },
+    {
+      "candidate_id": "CMA-cc4dc36763e44f87",
+      "canonical_url": "https://www.gov.uk/government/news/cma-outlines-proposals-to-unlock-contactless-technology-on-apple-iphone",
+      "content_api_url": "https://www.gov.uk/api/content/government/news/cma-outlines-proposals-to-unlock-contactless-technology-on-apple-iphone",
+      "content_id": "610f4645-925d-41a3-9225-2d277853752b",
+      "title": "CMA outlines proposals to unlock contactless technology on Apple iPhone",
+      "document_type": "press_release",
+      "organisation_content_ids": [
+        "957eb4ec-089b-4f71-ba2a-dc69ac8919ea"
+      ],
+      "cma_publisher_metadata_verified": true,
+      "published_at": "2026-10-20T11:00:00+01:00",
+      "public_updated_at": "2026-10-20T11:00:00+01:00",
+      "metadata_observed_at": "2026-11-17T15:04:02.596895+00:00",
+      "metadata_ingested_at": "2026-11-17T15:04:02.596940+00:00",
+      "source_content_observed_at": null,
+      "source_content_available_at": null,
+      "source_content_ingested_at": null,
+      "cutoff": null,
+      "source_content_sha256": null,
+      "evidence": [],
+      "content_transfer_to_ai_authorized": false,
+      "incorporated": false,
+      "decision": "deferred_not_incorporated",
+      "reasons": [
+        "document_specific_rights_exclusions_not_human_verified",
+        "textual_evidence_sufficiency_not_adjudicated",
+        "cross_corpus_content_similarity_not_verified"
+      ],
+      "prior_exposure": {
+        "title_metadata_seen_by_preparing_assistant": true,
+        "body_sent_to_ai": false,
+        "future_reviewer_exposure": "unknown"
+      },
+      "publication_source": "GOV.UK Content API first_published_at",
+      "revision_source": "content_id and public_updated_at identify metadata only; no content snapshot or exact replay claimed"
+    }
+  ],
+  "integral_pilot_completed": false,
+  "semantic_truth": "not_assessed",
+  "factual_timing_rehabilitated": false,
+  "phase4c2": "implemented_pending_external_review",
+  "phase4c3": "not_started"
+}
